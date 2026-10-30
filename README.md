@@ -5,7 +5,7 @@ Decisões monocráticas e acórdãos em que o Desembargador Federal **Luís Carl
 **Central Paradigmas · Acervo · Minutas:** **https://brndutra.github.io/trf3-muta-jurisprudencia/central/**
 - **I · Paradigmas**: pesquisa, leitura, citação e verificação das 33.207 decisões do gabinete.
 - **II · Acervo**: importa os relatórios do PJe/BI (só no navegador, nada é enviado) e cruza cada processo com o banco: paradigmas próprios (decisões do gabinete no próprio processo), paradigmas similares e modelos sugeridos.
-- **III · Minutas**: 752 modelos extraídos do acervo (`modelos/`), com gerador que preenche os campos, vincula o processo do acervo e insere citações de paradigmas.
+- **III · Minutas**: 752 modelos extraídos do acervo (`modelos/`), em modo **Padrão** (modelo com campos) ou **Matriz** (blocos fixos e opcionais do grupo, com o percentual de uso); relatório estruturado (Forma A/B e espécies próprias); **editor** da minuta; **painel de diretrizes** com indicadores de correção. O painel usa o *Padrão Muta* (regras de redação, normas, diretrizes e roteiros do gabinete), que **não é publicado** neste repositório: é carregado pelo usuário a partir do arquivo `padrao_muta.json` e fica guardado apenas no navegador.
 
 **Painel de consulta (somente jurisprudência):** https://brndutra.github.io/trf3-muta-jurisprudencia/consulta/
 
@@ -37,7 +37,7 @@ SHA256SUMS                   hashes dos arquivos (formato `sha256sum -c`)
 scripts/organizar.py         gera dados/, MANIFESTO e SHA256SUMS a partir dos JSON exportados
 scripts/modelos.py           extrai os modelos (arquétipos) de monocráticas e acórdãos → modelos/
 central/index.html           central tripartite: Paradigmas · Acervo · Minutas
-modelos/modelos.json(.gz)    752 modelos por fase do gabinete, com texto-base rastreável
+modelos/modelos.json(.gz)    752 modelos por fase do gabinete, com texto-base rastreável e blocos da matriz
 ```
 
 Os arquivos são JSON compactados com gzip (`zcat dados/acordaos/2021.json.gz | jq '.registros[0]'`).

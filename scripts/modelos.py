@@ -199,6 +199,52 @@ def agrupar(docs):
     return grupos
 
 
+RE_FIM_REL = re.compile(r'^(É o relatório\.?|DECIDO\.?|V\s?O\s?T\s?O)\s*$', re.I)
+RE_DISP = re.compile(r'^(Ante o exposto|Em face do exposto|Diante do exposto|Pelo exposto|Por estes fundamentos)', re.I)
+
+
+def matriz(membros, pars, blocos, literal, nucleo):
+    """Blocos do grupo para o modo matriz: fixos (>= 50% das decisões) e opcionais (>= 15%),
+    na ordem média em que aparecem e com a seção (relatório, fundamentação, dispositivo)."""
+    n = len(membros)
+    cont, pos, sec = collections.Counter(), collections.defaultdict(list), collections.defaultdict(collections.Counter)
+    for r in membros:
+        ps = [(tp, l) for tp, l in estrutura(r['inteiro_teor']) if tp in ('par', 'secao')]
+        tot = max(1, len(ps))
+        estado, vistos = 'relatorio', set()
+        for i, (tp, l) in enumerate(ps):
+            if tp == 'secao' or RE_FIM_REL.match(l):
+                u = re.sub(r'\s', '', l).upper()
+                if u.startswith('EMENTA'):
+                    estado = 'ementa'
+                elif u.startswith(('ACÓRDÃO', 'ACORDAO')):
+                    estado = 'acordao'
+                elif u.startswith(('VOTO', 'DECIDO', 'ÉORELATÓRIO', 'EORELATORIO')):
+                    estado = 'fundamentacao'
+                continue
+            b = norm(l)
+            if b not in blocos or len(l) < 60 or b in vistos:
+                continue
+            vistos.add(b)
+            cont[b] += 1
+            pos[b].append(i / tot)
+            st = 'acordao' if l.startswith('Vistos e relatados') else estado
+            if st == 'fundamentacao' and RE_DISP.match(l):
+                st = 'dispositivo'
+            sec[b][st] += 1
+    out = []
+    for b, c in cont.items():
+        if c < max(2, n * 0.15):
+            continue
+        var = collections.Counter(literal[r['id']][b] for r in membros if b in literal[r['id']])
+        lit, k = var.most_common(1)[0]
+        texto = lit if k >= max(2, sum(var.values()) * 0.6) else campos(lit)
+        out.append({'texto': texto, 'uso': round(c / n, 2), 'fixo': c >= n * 0.5 or b in nucleo,
+                    'secao': sec[b].most_common(1)[0][0], 'ordem': round(sum(pos[b]) / len(pos[b]), 3)})
+    out.sort(key=lambda x: ({'relatorio': 0, 'fundamentacao': 1, 'dispositivo': 2, 'ementa': 3, 'acordao': 4}[x['secao']], x['ordem']))
+    return out[:60]
+
+
 def montar(r, nucleo_norm, prefixos, literais=None):
     linhas = []
     for tp, l in estrutura(r['inteiro_teor']):
@@ -283,6 +329,7 @@ def main():
                             if len(w) >= 8:
                                 pc[' '.join(w[:7])] += 1
                     prefixos = [p for p, c in pc.items() if c >= max(3, len(membros) * 0.3)]
+                    blocos_mx = matriz(membros, pars, blocos, literal, g['nucleo'] | nucleo_total)
                     res = collections.Counter(resultado(r, tipo) for r in membros).most_common(1)[0][0]
                     datas = sorted(r.get('data_julgamento_iso') or r.get('data_decisao_iso') for r in membros)
                     classes = collections.Counter(r.get('classe_sigla') for r in membros)
@@ -301,6 +348,7 @@ def main():
                         'ementa_modelo': campos(sem_cabecalho(med.get('ementa'))) if tipo == 'acordaos' else None,
                         'modelo': montar(med, nucleo_total, prefixos, {b: collections.Counter(literal[i][b] for i in g['ids'] if b in literal[i]) for b in nucleo_total}),
                         'palavras_chave': chaves(g['nucleo'], idf),
+                        'blocos': blocos_mx,
                     })
     saida.sort(key=lambda m: ({'TRMS': 0, '1T': 1, '3T': 2}[m['fase']], m['tipo'] != 'monocrática', -m['frequencia']))
     for i, m in enumerate(saida, 1):

@@ -292,6 +292,88 @@ html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
 .sh-t td.mono{font-family:ui-monospace,Menlo,Consolas,monospace}
 .sh-t td.r,.sh-t th.r{text-align:right}
 .sh-more{padding:10px;text-align:center;color:var(--muted);font-size:12px}
+
+/* ===== Minutas: layout de trabalho, editor, matriz e painel de diretrizes ===== */
+#mMod:not(.sem-detalhe){grid-template-columns:300px minmax(0,1fr)}
+#mMod:not(.sem-detalhe)>aside.filtros{display:none}
+#mMod:not(.sem-detalhe) .crow{grid-template-columns:38px minmax(0,1fr) 0 0;}
+#mMod:not(.sem-detalhe) .crow .c2{display:none}#mMod:not(.sem-detalhe) .crow .c3{display:none}
+#mDet{background:var(--bg)}
+#mDet .dhead{background:var(--panel2);position:static}
+.min-blk{border:1px solid var(--line2);border-radius:10px;background:var(--panel2);padding:4px 12px 2px;margin:10px 0}
+.min-blk>summary{cursor:pointer;list-style:none;font:800 10px Figtree,Inter,system-ui,sans-serif;color:var(--f-minuta);text-transform:uppercase;letter-spacing:.1em;padding:7px 0}
+.min-blk>summary::-webkit-details-marker{display:none}
+.min-blk>summary::before{content:"▸ ";color:var(--muted)}.min-blk[open]>summary::before{content:"▾ "}
+.min-blk .lote{margin-top:4px}
+.min-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0;align-items:start;min-height:calc(100% - 90px)}
+.min-main{padding:12px 18px 40px;min-width:0}
+.min-main .gl{display:grid;grid-template-columns:170px 1fr;gap:6px 10px;align-items:start;margin-bottom:10px}
+.min-main .gl>label{font:600 11.5px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut);padding-top:7px}
+.min-main input,.min-main textarea,.min-main select.inp{width:100%;border:1px solid var(--line2);background:var(--panel2);border-radius:7px;padding:6px 9px;font:500 13px Figtree,Inter,system-ui,sans-serif;color:var(--text)}
+.min-main textarea{min-height:54px;resize:vertical;line-height:1.4}
+.min-main .lote{font:800 10px Figtree,Inter,system-ui,sans-serif;color:var(--f-minuta);text-transform:uppercase;letter-spacing:.1em;margin:14px 0 8px;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
+.min-main.rel-on [data-rel]{display:none}
+.edbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:6px;border:1px solid var(--line2);border-bottom:0;border-radius:9px 9px 0 0;background:var(--panel2);position:sticky;top:0;z-index:3}
+textarea.editor{display:block;width:100%;min-height:62vh;border:1px solid var(--line2);border-radius:0 0 9px 9px;background:var(--panel2);padding:22px 30px;font:15.5px/1.65 var(--serif)!important;color:var(--text);resize:vertical;text-align:justify;outline:none;box-shadow:inset 3px 0 0 var(--f-minuta)}
+textarea.editor:focus{border-color:color-mix(in srgb,var(--f-minuta) 60%,transparent)}
+.min-ref{margin-top:12px;border:1px solid var(--line2);border-radius:9px;background:var(--panel2);padding:8px 12px}
+.min-ref>summary{cursor:pointer;font:700 12px Figtree,Inter,system-ui,sans-serif;color:var(--muted)}
+.mx-sec{border:1px solid var(--line2);border-radius:10px;background:var(--panel2);margin-bottom:8px;overflow:hidden}
+.mx-h{font:800 10px Figtree,Inter,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--c-ink2);background:var(--field);padding:6px 10px;display:flex;gap:8px;align-items:baseline}
+.mx-b{display:grid;grid-template-columns:18px 42px 1fr;gap:6px;align-items:start;padding:6px 10px;border-top:1px solid var(--line);cursor:pointer;font:500 12.5px/1.45 Figtree,Inter,system-ui,sans-serif;color:var(--c-ink2)}
+.mx-b:hover{background:var(--f-minuta-s)}
+.mx-b input{width:auto!important;margin-top:3px}
+.mx-u{font:800 10.5px Figtree,Inter,system-ui,sans-serif;color:var(--muted);text-align:right;padding-top:2px}
+.mx-b.fx .mx-u{color:var(--f-acervo)}
+.mx-t{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mx-b:has(input:checked) .mx-t{color:var(--text)}
+.mx-b:not(:has(input:checked)){opacity:.72}
+.mx-free{display:block;padding:8px 10px;border-top:1px solid var(--line)}
+.mx-free span{display:block;font:700 11px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut);margin-bottom:4px}
+/* painel de diretrizes — escuro, como no gerador */
+.dz{position:sticky;top:0;align-self:start;height:calc(100vh - 72px);display:flex;flex-direction:column;background:#2e3137;color:#c9cdd3;border-left:1px solid #3f434b;font:500 12.5px/1.5 Figtree,Inter,system-ui,sans-serif}
+.dz-head{padding:14px 16px 0;border-bottom:1px solid #3f434b}
+.dz-ey{font:800 10px Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#d8a846}
+.dz-head h3{margin:3px 0 0;font:800 15px Figtree,Inter,system-ui,sans-serif;color:#e9ebee}
+.dz-tabs{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:10px}
+.dz-tabs button{background:transparent;border:0;border-bottom:2px solid transparent;padding:6px 1px 8px;font:800 10px/1.2 Figtree,Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#9aa0a9;cursor:pointer;position:relative}
+.dz-tabs button:hover{color:#e9ebee}
+.dz-tabs button.active{color:#d8a846;border-bottom-color:#d8a846}
+.dz-tabs button[data-n]:not([data-n=""])::after{content:attr(data-n);position:absolute;top:-2px;right:-12px;min-width:15px;height:15px;border-radius:8px;background:#d0473a;color:#fff;font:800 9px/15px Figtree,sans-serif;text-align:center;padding:0 3px}
+.dz-body{flex:1;overflow:auto;padding:12px 16px 24px}
+.dz-muted{color:#9aa0a9;font-size:11.5px}
+.dz-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
+.dz-kpis .k{background:#23262b;border:1px solid #3f434b;border-radius:9px;padding:7px 9px}
+.dz-kpis .k b{display:block;font:800 19px/1.1 Figtree,sans-serif;color:#e9ebee}
+.dz-kpis .k span{font:700 10px Figtree,sans-serif;color:#9aa0a9;text-transform:uppercase;letter-spacing:.06em}
+.dz-kpis .k:first-child{grid-column:span 1}
+.dz-kpis .ok b{color:#7cc19c}.dz-kpis .md b{color:#e3c47c}.dz-kpis .bad b{color:#ef8a8a}
+.dz-kpis .cor{box-shadow:inset 3px 0 0 #e06666}.dz-kpis .ale{box-shadow:inset 3px 0 0 #d8a846}.dz-kpis .pend{box-shadow:inset 3px 0 0 #9aa0a9}.dz-kpis .sug{box-shadow:inset 3px 0 0 #8fb3e6}
+.dz-btn{width:100%;margin:0 0 10px;height:30px;border:0;border-radius:8px;background:#d8a846;color:#1d2024;font:800 11.5px Figtree,sans-serif;cursor:pointer}
+.dz-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.dz-list li{background:#23262b;border:1px solid #3f434b;border-left:3px solid #9aa0a9;border-radius:8px;padding:7px 9px;color:#d5d9de}
+.dz-list li.s-cor{border-left-color:#e06666}.dz-list li.s-ale,.dz-list li.s-est{border-left-color:#d8a846}.dz-list li.s-sug{border-left-color:#8fb3e6}.dz-list li.s-ok{border-left-color:#7cc19c}
+.dz-li-h{display:flex;justify-content:space-between;gap:6px;margin-bottom:2px}
+.dz-sev{font:800 9.5px Figtree,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#e9ebee}
+.dz-src{font-size:10px;color:#7f858e}
+.dz-list q{display:block;margin-top:3px;font:12px ui-monospace,Menlo,Consolas,monospace;color:#e3c47c;quotes:"«" "»"}
+.dz-to{font-size:11.5px;color:#7cc19c}
+.dz-acts{display:flex;gap:4px;margin-top:5px}
+.dz-acts button{border:1px solid #4a4f58;background:transparent;color:#c9cdd3;border-radius:6px;padding:2px 8px;font:700 10.5px Figtree,sans-serif;cursor:pointer}
+.dz-acts button:hover{border-color:#d8a846;color:#d8a846}
+.dz .rdoc h3{margin:16px 0 6px;font:800 10px Figtree,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#d8a846}
+.dz .rdoc p,.dz .rdoc li{color:#c9cdd3}
+.dz .rdoc ul,.dz .rdoc ol{padding-left:18px}
+.dz .rdoc code,.dz-rot code{font:11.5px ui-monospace,Menlo,Consolas,monospace;background:rgba(216,168,70,.12);color:#e3c47c;border-radius:4px;padding:0 4px}
+.dz .rdoc table{width:100%;border-collapse:collapse;font-size:11.5px;margin:4px 0 8px}
+.dz .rdoc td,.dz .rdoc th{border-bottom:1px solid #3f434b;padding:5px 4px;vertical-align:top;text-align:left}
+.dz-rg{background:#23262b;border:1px solid #3f434b;border-radius:8px;padding:7px 9px;margin-bottom:6px}
+.dz-rg b{color:#e9ebee;display:block}.dz-rg .pf{color:#9fd3b6;margin-top:3px}.dz-rg .ev{color:#ef9a9a;margin-top:2px}
+.dz-sel{width:100%;height:32px;border:1px solid #4a4f58;border-radius:7px;background:#23262b;color:#e9ebee;padding:0 8px;margin-bottom:8px}
+.dz-rot{padding-left:18px;margin:6px 0}
+.dz-rot li{margin-bottom:10px}.dz-rot b{color:#e9ebee;display:block}.dz-rot small{display:block;color:#7f858e}
+.dz-pos{display:inline-block;font:800 9.5px Figtree,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#d8a846;margin-bottom:2px}
+@media(max-width:1300px){.min-grid{grid-template-columns:1fr}.dz{position:static;height:auto;max-height:70vh}}
 @media(max-width:1100px){main,main.sem-detalhe{grid-template-columns:250px 1fr}section.detalhe{position:fixed;inset:56px 0 0 0;z-index:20}main.sem-detalhe section.detalhe{display:none}}
 @media(max-width:720px){main,main.sem-detalhe{grid-template-columns:1fr}aside.filtros{display:none}aside.filtros.aberto{display:block;position:fixed;inset:56px 0 0 0;z-index:21}.status{display:none}.brand-ey{display:none}}
 @media print{nav.appbar,aside.filtros,section.lista,.dacts,.dx{display:none!important}main{display:block}section.detalhe{display:block!important}}
@@ -868,7 +950,7 @@ function abrirConfig(){
 }
 $('pastaLocal').addEventListener('change',async e=>{
   LOCAL.clear();
-  for(const f of e.target.files){const p=f.webkitRelativePath.split('/');const i=p.indexOf('dados'); if(i>=0) LOCAL.set(p.slice(i+1).join('/'),f); else if(p.at(-1)==='MANIFESTO.json') LOCAL.set('../MANIFESTO.json',f); else if(p.at(-2)==='modelos') LOCAL.set('../modelos/'+p.at(-1),f)}
+  for(const f of e.target.files){const p=f.webkitRelativePath.split('/');const i=p.indexOf('dados'); if(i>=0) LOCAL.set(p.slice(i+1).join('/'),f); else if(p.at(-1)==='MANIFESTO.json') LOCAL.set('../MANIFESTO.json',f); else if(p.at(-2)==='modelos') LOCAL.set('../modelos/'+p.at(-1),f); else if(p.at(-2)==='diretrizes') LOCAL.set('../diretrizes/'+p.at(-1),f)}
   if(!LOCAL.has('indice.json.gz')){toast('Pasta sem dados/indice.json.gz — selecione a raiz do repositório.',6000);LOCAL.clear();return}
   dlg.close(); SHARDS.clear(); MANIF=null; hitsIntegral=null; await iniciar();
 });
@@ -968,29 +1050,6 @@ function aplicarModelos(){
 }
 $('mRes').addEventListener('click',e=>{const li=e.target.closest('li[data-id]');if(!li)return;const m=MOD_POR.get(li.dataset.id);
   if(e.target.closest('[data-act=copiar]')){copiarTexto(m.modelo,'Modelo copiado.');return}abrirModelo(m.id)});
-function abrirModelo(id){
-  const m=MOD_POR.get(id); modSel=id; $('mMod').classList.remove('sem-detalhe');
-  $('mRes').querySelectorAll('li').forEach(l=>l.classList.toggle('sel',l.dataset.id===id));
-  const fonte=POR_ID.get(m.fonte_modelo);
-  $('mDet').innerHTML=`<div class="dhead">
-    <div class="dtit"><span class="tag ${m.tipo==='acórdão'?'A':'M'}">${m.tipo==='acórdão'?'Modelo de acórdão':'Modelo de monocrática'}</span><span class="proc">${esc(m.id)}</span><button class="dx" onclick="fecharLateral('modelos')">×</button></div>
-    <div style="font-weight:700;margin:8px 0 2px">${esc(m.nome)}</div>
-    <div class="dmeta"><div><span>Fase</span>${esc(m.fase_nome)}</div><div><span>Uso no acervo</span>${m.frequencia} decisões · ${esc(fmtData(m.periodo[0]))} a ${esc(fmtData(m.periodo[1]))}</div>
-      <div><span>Classes</span>${esc(Object.entries(m.classes).map(([k,v])=>k+' '+v).join(', '))}</div><div><span>Texto-base</span><a href="#" onclick="irParaDecisao('${m.fonte_modelo}');return false">${esc(m.processo_modelo)}</a></div></div>
-    <div class="dacts"><button class="btn sm pri" onclick="copiarTexto(MOD_POR.get('${id}').modelo,'Modelo copiado.')">Copiar modelo</button>
-      ${m.ementa_modelo?`<button class="btn sm" onclick="copiarTexto(MOD_POR.get('${id}').ementa_modelo,'Ementa-modelo copiada.')">Copiar ementa-modelo</button>`:''}</div></div>
-  <div class="dbody">
-    <div class="aviso">O texto fixo foi transcrito da decisão <b>${esc(m.processo_modelo)}</b>${fonte?` (${fonte.t==='A'?'julgada':'decidida'} em ${fmtData(fonte.d)})`:''}. Os trechos <span class="cp" style="background:var(--amber-soft);padding:0 3px;border-radius:3px">[entre colchetes]</span> são próprios de cada caso. Confira teses e modulações vigentes.</div>
-    ${m.abertura?`<h3 class="sec">Abertura típica</h3><div class="ementa-box">${cpRender(m.abertura)}</div>`:''}
-    ${m.ementa_modelo?`<h3 class="sec">Ementa-modelo</h3><div class="ementa-box">${cpRender(m.ementa_modelo)}</div>`:''}
-    <h3 class="sec">Gerar minuta</h3>${geradorHTML(m)}
-    <h3 class="sec">Modelo (texto-base)</h3><div class="modelo-txt">${cpRender(m.modelo)}</div>
-    <h3 class="sec">Decisões que seguem o modelo</h3>
-    <div class="sim-list">${m.exemplos.map(i=>{const x=POR_ID.get(i);return x?`<div class="sim" onclick="irParaDecisao('${i}')"><div class="h"><span class="tp ${x.t}" style="min-width:20px;height:20px;font-size:10.5px">${x.t}</span><span class="num">${esc(x.n)}</span><span class="ct2">${esc(x.c)}</span><span class="meta">${fmtData(x.d)}</span></div>${esc((x.e||'').slice(0,220))}</div>`:''}).join('')}</div>
-  </div>`;
-  $('mDet').scrollTop=0;
-  atualizarMinuta();
-}
 chipsGrupo('mfFase',v=>{modF.fase=v;modF.esp=modF.res='';preencherModSelects();aplicarModelos()});
 chipsGrupo('mfTipo',v=>{modF.tipo=v;modF.esp=modF.res='';preencherModSelects();aplicarModelos()});
 $('mfEsp').onchange=e=>{modF.esp=e.target.value;aplicarModelos()};
@@ -1161,51 +1220,154 @@ async function abrirProcesso(num){
   $('aDet').scrollTop=0;
 }
 /* =====================================================================
-   GERADOR DE MINUTAS — modelo + processo vinculado do acervo + precedentes
+   GERADOR DE MINUTAS — relatório estruturado · modelo padrão ou matriz ·
+   editor · painel de diretrizes com indicadores de correção
+   Fontes: modelos extraídos do acervo (modelos/) e Padrão Muta do gerador
+   do gabinete (diretrizes/padrao_muta.json: redação, normas, diretrizes,
+   roteiros).
    ===================================================================== */
-let MIN_PROC=null; // processo do acervo vinculado à minuta
+let MIN_PROC=null;            // processo do acervo vinculado à minuta
+let MIN_MODO='padrao';        // 'padrao' | 'matriz'
+let MX=null;                  // estado da matriz: blocos selecionados e textos livres
+let ED_DIRTY=false;           // o editor foi alterado à mão
+let DIR=null, REGRAS=null, DZ_TAB='correcao', ROT_SEL='mestre';
 const RX_CAMPO=/\[[^\]\n]{1,80}\]/g;
-function camposDoModelo(m){
-  const out=[];let k=0;
-  m.modelo.replace(RX_CAMPO,(t,pos)=>{const antes=m.modelo.slice(Math.max(0,pos-70),pos).replace(/\s+/g,' ').trim();out.push({k:k++,t,antes,pos});return t});
-  return out;
+const escRx=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+
+/* O Padrão Muta (diretrizes internas do gabinete) não é publicado no repositório:
+   é lido de uma pasta local, de um arquivo carregado pelo usuário (guardado só neste
+   navegador) ou, se o gabinete decidir publicá-lo, de diretrizes/ no repositório. */
+async function carregarDiretrizes(){
+  if(DIR&&!DIR.erro) return DIR;
+  const salvo=LS.get('acv_padrao_muta');
+  if(salvo){try{DIR=JSON.parse(salvo);prepararRegras();return DIR}catch(e){}}
+  try{DIR=await lerGz('../diretrizes/padrao_muta.json');prepararRegras()}
+  catch(e){DIR={erro:'nao_carregado'}}
+  return DIR;
 }
-function valorInicial(c,m){
-  const a=MIN_PROC&&AC.get(MIN_PROC);
-  if(c.t==='[nº do processo]'&&a) return a.processo;
-  return '';
+function carregarPadraoArquivo(inp){
+  const f=inp.files&&inp.files[0]; if(!f) return;
+  f.text().then(t=>{const d=JSON.parse(t);if(!d.redacao||!d.redacao.registros)throw new Error('arquivo sem o banco de redação');
+    DIR=d;prepararRegras();try{localStorage.setItem('acv_padrao_muta',t)}catch(e){}renderDZ();lint();toast('Padrão Muta carregado e guardado neste navegador.')})
+   .catch(e=>toast('Arquivo inválido: '+esc(e.message),6000));
 }
-function geradorHTML(m){
-  const cs=camposDoModelo(m), a=MIN_PROC&&AC.get(MIN_PROC), fonte=POR_ID.get(m.fonte_modelo);
-  const sims=a?(a._sims||similares(a)).slice(0,6):[];
-  const reg=regiaoRelatorio(m);
-  const linhas=cs.map(c=>{
-    const longo=/trecho|complementar|dispositivo|citação/.test(c.t);
-    const noRel=reg&&c.pos>=reg.rs&&c.pos<reg.re;
-    const dica=c.t==='[dispositivo]'&&fonte&&fonte.r?`Dispositivo da decisão-base: ${fonte.r}`:(c.antes?'…'+c.antes:'');
-    const v=esc(valorInicial(c,m));
-    return `<label for="gc${c.k}" title="${esc(dica)}" ${noRel?'data-rel="1"':''}>${esc(c.t.replace(/[\[\]]/g,''))}${noRel?' <small>(relatório)</small>':''}</label>${longo?`<textarea id="gc${c.k}" data-k="${c.k}" ${noRel?'data-rel="1"':''} placeholder="${esc(dica)}">${v}</textarea>`:`<input id="gc${c.k}" data-k="${c.k}" ${noRel?'data-rel="1"':''} value="${v}" placeholder="${esc(dica)}">`}`;
-  }).join('');
-  return `<div class="gerador" id="gerador" data-m="${m.id}">
-    <div class="lote">Processo</div>
-    <div class="gl"><label>Vinculado</label><div>${a?`<span class="ponte a" onclick="setModulo('acervo');abrirProcesso('${a.processo}')">II · ${esc(a.processo)}</span> <span class="meta">${esc(a.classe||'')} · ${esc(a.assunto||'')}</span>`:`<span class="meta">Nenhum — abra um processo na faceta <b>II · Acervo</b> e use “Gerar minuta”, ou preencha os campos abaixo.</span>`}</div></div>
-    ${relatorioHTML(m,a)}
-    ${cs.length?`<div class="lote">Campos do modelo (${cs.length})<span class="meta" id="relNota" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div><div class="gl">${linhas}</div>`:'<p class="ajuda">Este modelo não tem campos variáveis.</p>'}
-    ${sims.length?`<div class="lote">Paradigmas para citar · faceta I</div><div style="display:flex;flex-wrap:wrap;gap:6px">${sims.map(x=>`<span class="ponte j" onclick="inserirCitacao('${x.id}')" title="Inserir a citação do paradigma no campo selecionado">+ ${esc(x.c)} ${esc(x.n)}</span>`).join('')}</div>`:''}
-    <div class="lote">Minuta</div>
-    <div class="modelo-txt" id="minPrev" style="background:var(--panel2);border:1px solid var(--line2);border-radius:8px;padding:14px 16px;max-height:420px;overflow:auto"></div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
-      <button class="btn sm pri" onclick="copiarTexto(textoMinuta(),'Minuta copiada.')">Copiar minuta</button>
-      <button class="btn sm" onclick="baixarMinuta()">Baixar .doc</button>
-      <span class="meta" id="minPend" style="align-self:center"></span>
+function esquecerPadrao(){try{localStorage.removeItem('acv_padrao_muta')}catch(e){}DIR=null;REGRAS=null;LINT=[];renderDZ();toast('Padrão Muta removido deste navegador.')}
+
+/* ---------- abertura do modelo ---------- */
+function abrirModelo(id){
+  const m=MOD_POR.get(id); modSel=id; $('mMod').classList.remove('sem-detalhe');
+  $('mRes').querySelectorAll('li').forEach(l=>l.classList.toggle('sel',l.dataset.id===id));
+  const fonte=POR_ID.get(m.fonte_modelo);
+  MX={sel:new Set((m.blocos||[]).map((b,i)=>b.fixo?i:-1).filter(i=>i>=0)),analise:'',disp:''};
+  ED_DIRTY=false;
+  $('mDet').innerHTML=`<div class="dhead">
+    <div class="dtit"><span class="tag ${m.tipo==='acórdão'?'A':'M'}">${m.tipo==='acórdão'?'Modelo de acórdão':'Modelo de monocrática'}</span><span class="proc">${esc(m.id)}</span>
+      <div class="acs-mode" id="minModo" style="margin-left:10px" title="Padrão: o modelo com campos a preencher · Matriz: blocos fixos e opcionais do grupo, selecionáveis">
+        <button data-m="padrao" class="${MIN_MODO==='padrao'?'on':''}">PADRÃO</button><button data-m="matriz" class="${MIN_MODO==='matriz'?'on':''}">MATRIZ</button></div>
+      <button class="dx" onclick="fecharLateral('modelos')">×</button></div>
+    <div style="font-weight:700;margin:6px 0 2px">${esc(m.nome)}</div>
+    <div class="meta">${esc(m.fase_nome)} · ${m.frequencia} decisões (${esc(fmtData(m.periodo[0]))} a ${esc(fmtData(m.periodo[1]))}) · texto-base <a href="#" onclick="irParaDecisao('${m.fonte_modelo}');return false">${esc(m.processo_modelo)}</a>${fonte?` (${fmtData(fonte.d)})`:''}</div>
+  </div>
+  <div class="min-grid">
+    <div class="min-main" id="gerador" data-m="${m.id}">
+      ${vinculoHTML()}
+      <details class="min-blk" open><summary>Relatório · dados do processo</summary>${relatorioHTML(m,MIN_PROC&&AC.get(MIN_PROC))}</details>
+      <details class="min-blk" open id="minCamposD"><summary id="minCamposS">${MIN_MODO==='padrao'?'Campos do modelo':'Matriz · blocos do grupo'}</summary><div id="minCampos">${MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m)}</div></details>
+      ${paradigmasCitarHTML()}
+      <div class="lote">Minuta · editor <span class="meta" id="edEstado" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div>
+      <div class="edbar">
+        <button class="btn sm" onclick="regerar()" title="Recompõe o texto a partir do formulário e do modelo">↻ Regerar</button>
+        <button class="btn sm pri" onclick="copiarTexto($('minEd').value,'Minuta copiada.')">Copiar</button>
+        <button class="btn sm" onclick="baixarMinuta()">Baixar .doc</button>
+        <span class="meta" id="edConta" style="margin-left:auto"></span>
+      </div>
+      <textarea id="minEd" class="editor" spellcheck="true"></textarea>
+      <details class="min-ref"><summary>Modelo-base (texto transcrito de ${esc(m.processo_modelo)})</summary>
+        ${m.ementa_modelo?`<h3 class="sec">Ementa-modelo</h3><div class="ementa-box">${cpRender(m.ementa_modelo)}</div>`:''}
+        <div class="modelo-txt" style="margin-top:8px">${cpRender(m.modelo)}</div></details>
+      <details class="min-ref"><summary>Decisões que seguem o modelo (${m.exemplos.length})</summary>
+        <div class="sim-list" style="margin-top:8px">${m.exemplos.map(i=>{const x=POR_ID.get(i);return x?`<div class="sim" onclick="irParaDecisao('${i}')"><div class="h"><span class="tp ${x.t}" style="min-width:20px;height:20px;font-size:10.5px">${x.t}</span><span class="num">${esc(x.n)}</span><span class="ct2">${esc(x.c)}</span><span class="meta">${fmtData(x.d)}</span></div>${esc((x.e||'').slice(0,220))}</div>`:''}).join('')}</div></details>
     </div>
+    <aside class="dz" id="dz"><div class="dz-head"><span class="dz-ey">Minuta · consulta e apoio</span><h3>Diretrizes</h3>
+      <nav class="dz-tabs" id="dzTabs">${[['correcao','Correção'],['relatorio','Relatório'],['gerais','Gerais'],['minuta','Minuta'],['vocab','Vocabulário'],['roteiros','Roteiros']].map(([k,t])=>`<button data-t="${k}" class="${DZ_TAB===k?'active':''}">${t}</button>`).join('')}</nav></div>
+      <div class="dz-body" id="dzBody"><p class="dz-muted">Carregando o Padrão Muta…</p></div></aside>
   </div>`;
+  $('mDet').scrollTop=0;
+  $('minModo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MIN_MODO=b.dataset.m;$('minModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('minCampos').innerHTML=MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m);$('minCamposS').textContent=MIN_MODO==='padrao'?'Campos do modelo':'Matriz · blocos do grupo';$('minCamposD').open=true;atualizarMinuta()});
+  $('dzTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;DZ_TAB=b.dataset.t;$('dzTabs').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));renderDZ()});
+  $('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor();agendarLint()});
+  atualizarMinuta();
+  carregarDiretrizes().then(()=>{renderDZ();lint()});
 }
-let campoAtivo=null;
-document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.dataset.k!=null)campoAtivo=e.target});
-document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador'))atualizarMinuta()});
-document.addEventListener('change',e=>{if(e.target.closest&&e.target.closest('#gerador'))atualizarMinuta()});
-/* ---------- Relatório: dados do processo (fórmulas extraídas dos relatórios do gabinete) ---------- */
+function vinculoHTML(){
+  const a=MIN_PROC&&AC.get(MIN_PROC);
+  return `<div class="lote">Processo</div><div class="gl"><label>Vinculado</label><div>${a?`<span class="ponte a" onclick="setModulo('acervo');abrirProcesso('${a.processo}')">II · ${esc(a.processo)}</span> <span class="meta">${esc(a.classe||'')} · ${esc(a.assunto||'')}</span>`:`<span class="meta">Nenhum — abra um processo na faceta <b>II · Acervo</b> e use “Gerar minuta”, ou preencha o relatório abaixo.</span>`}</div></div>`;
+}
+function paradigmasCitarHTML(){
+  const a=MIN_PROC&&AC.get(MIN_PROC); const sims=a?(a._sims||similares(a)).slice(0,6):[];
+  return sims.length?`<div class="lote">Paradigmas para citar · faceta I</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">${sims.map(x=>`<span class="ponte j" onclick="inserirCitacao('${x.id}')" title="Insere a citação no ponto do cursor no editor (ou no campo selecionado)">+ ${esc(x.c)} ${esc(x.n)}</span>`).join('')}</div>`:'';
+}
+
+/* ---------- modo PADRÃO: campos do modelo ---------- */
+function camposDoModelo(m){const out=[];let k=0;m.modelo.replace(RX_CAMPO,(t,pos)=>{const antes=m.modelo.slice(Math.max(0,pos-70),pos).replace(/\s+/g,' ').trim();out.push({k:k++,t,antes,pos});return t});return out}
+function camposHTML(m){
+  const cs=camposDoModelo(m), fonte=POR_ID.get(m.fonte_modelo), reg=regiaoRelatorio(m), a=MIN_PROC&&AC.get(MIN_PROC);
+  if(!cs.length) return '<p class="ajuda">Este modelo não tem campos variáveis.</p>';
+  return `<div class="lote">Campos do modelo (${cs.length})<span class="meta" id="relNota" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div><div class="gl">${cs.map(c=>{
+    const longo=/trecho|complementar|dispositivo|citação/.test(c.t), noRel=reg&&c.pos>=reg.rs&&c.pos<reg.re;
+    const dica=c.t==='[dispositivo]'&&fonte&&fonte.r?`Dispositivo da decisão-base: ${fonte.r}`:(c.antes?'…'+c.antes:'');
+    const v=c.t==='[nº do processo]'&&a?esc(a.processo):'';
+    const at=`id="gc${c.k}" data-k="${c.k}" ${noRel?'data-rel="1"':''} placeholder="${esc(dica)}"`;
+    return `<label for="gc${c.k}" title="${esc(dica)}" ${noRel?'data-rel="1"':''}>${esc(c.t.replace(/[\[\]]/g,''))}${noRel?' <small>(relatório)</small>':''}</label>${longo?`<textarea ${at}>${v}</textarea>`:`<input ${at} value="${v}">`}`}).join('')}</div>`;
+}
+function partesModelo(m){const P=[];let last=0,k=0;m.modelo.replace(RX_CAMPO,(t,pos)=>{if(pos>last)P.push({a:last,b:pos});P.push({a:pos,b:pos+t.length,k:k++,t});last=pos+t.length;return t});if(last<m.modelo.length)P.push({a:last,b:m.modelo.length});return P}
+function textoPadrao(m){
+  const src=m.modelo, reg=relAtivo()?regiaoRelatorio(m):null, rel=reg?montarRelatorio():'';
+  let out='',ins=false;
+  const campo=p=>{const el=$('gc'+p.k);const v=el&&el.value.trim();return v||p.t};
+  for(const p of partesModelo(m)){
+    if(!reg||p.b<=reg.rs||p.a>=reg.re){if(reg&&!ins&&p.a>=reg.re){out+='\n\n'+rel+'\n\n';ins=true}out+=p.k!=null?campo(p):src.slice(p.a,p.b);continue}
+    if(p.k!=null) continue;
+    if(p.a<reg.rs) out+=src.slice(p.a,reg.rs);
+    if(!ins){out+='\n\n'+rel+'\n\n';ins=true}
+    if(p.b>reg.re) out+=src.slice(reg.re,p.b);
+  }
+  if(reg&&!ins) out+='\n\n'+rel;
+  return out.replace(/\n{3,}/g,'\n\n').trim();
+}
+
+/* ---------- modo MATRIZ: blocos fixos e opcionais do grupo ---------- */
+const SEC_ROT={relatorio:'Relatório',fundamentacao:'Fundamentação',dispositivo:'Dispositivo',ementa:'Ementa',acordao:'Acórdão'};
+function matrizHTML(m){
+  const B=m.blocos||[]; if(!B.length) return '<p class="ajuda">Este modelo não tem blocos para a matriz.</p>';
+  const fonte=POR_ID.get(m.fonte_modelo);
+  const secs=['relatorio','fundamentacao','dispositivo','ementa','acordao'].filter(s=>B.some(b=>b.secao===s)||s==='fundamentacao'||s==='dispositivo');
+  return `<div class="lote">Matriz · ${B.length} blocos do grupo (${B.filter(b=>b.fixo).length} fixos, ${B.filter(b=>!b.fixo).length} opcionais)</div>
+  <p class="ajuda" style="margin-top:-4px">Fixos: presentes em ao menos metade das ${m.frequencia} decisões do grupo (já marcados). Opcionais: em 15% a 50% — marque os que se aplicam ao caso. O percentual é o uso no grupo.</p>
+  ${secs.map(s=>{const L=B.map((b,i)=>({b,i})).filter(o=>o.b.secao===s);
+    return `<div class="mx-sec"><div class="mx-h">${SEC_ROT[s]} <span class="meta">${L.filter(o=>MX.sel.has(o.i)).length}/${L.length}</span>${s==='relatorio'?'<span class="meta" id="mxRelNota"></span>':''}</div>
+      ${L.map(o=>`<label class="mx-b${o.b.fixo?' fx':''}"><input type="checkbox" data-mx="${o.i}"${MX.sel.has(o.i)?' checked':''}><span class="mx-u" title="uso no grupo">${Math.round(o.b.uso*100)}%</span><span class="mx-t">${cpRender(o.b.texto)}</span></label>`).join('')}
+      ${s==='fundamentacao'?`<label class="mx-free"><span>Análise do caso concreto</span><textarea data-mxf="analise" placeholder="R01 · abrir pelo caso concreto: “Na espécie, …” — fatos com a fonte (ID), valoração da prova e subsunção">${esc(MX.analise)}</textarea></label>`:''}
+      ${s==='dispositivo'?`<label class="mx-free"><span>Dispositivo (se nenhum bloco acima)</span><textarea data-mxf="disp" placeholder="${esc(fonte&&fonte.r?'Na decisão-base: '+fonte.r:'Ante o exposto, …')}">${esc(MX.disp)}</textarea></label>`:''}
+    </div>`}).join('')}`;
+}
+document.addEventListener('change',e=>{const i=e.target.dataset&&e.target.dataset.mx;if(i==null||!MX)return;e.target.checked?MX.sel.add(+i):MX.sel.delete(+i);const sec=e.target.closest('.mx-sec');if(sec){const n=sec.querySelectorAll('input[data-mx]:checked').length,t=sec.querySelectorAll('input[data-mx]').length;sec.querySelector('.mx-h .meta').textContent=`${n}/${t}`}atualizarMinuta()});
+document.addEventListener('input',e=>{const f=e.target.dataset&&e.target.dataset.mxf;if(f&&MX){MX[f]=e.target.value;atualizarMinuta()}});
+function textoMatriz(m){
+  const B=m.blocos||[], S=sec=>B.map((b,i)=>({b,i})).filter(o=>o.b.secao===sec&&MX.sel.has(o.i)).map(o=>o.b.texto);
+  const mono=m.tipo!=='acórdão', P=[];
+  P.push(mono?'DECISÃO':'RELATÓRIO');
+  const rel=relAtivo()?montarRelatorio():S('relatorio').join('\n\n');
+  P.push(rel||'[relatório]');
+  P.push('É o relatório.'); P.push(mono?'DECIDO.':'VOTO');
+  P.push(...S('fundamentacao'));
+  P.push(MX.analise.trim()||'[análise do caso concreto]');
+  const d=S('dispositivo'); if(d.length) P.push(...d); else P.push(MX.disp.trim()||'[dispositivo]');
+  if(!mono){const e=S('ementa');if(e.length)P.push('EMENTA',...e);const a=S('acordao');if(a.length)P.push('ACÓRDÃO',...a)}
+  return P.join('\n\n');
+}
+
+/* ---------- Relatório · dados do processo (diretrizes do relatório do gabinete) ---------- */
 const ESP_REL={'Apelação':'ap','Agravo de instrumento':'ai','Remessa necessária':'rn','Embargos de declaração':'ed'};
 function regiaoRelatorio(m){
   const t=m.modelo;
@@ -1215,81 +1377,105 @@ function regiaoRelatorio(m){
   return e<0?null:{rs,re:rs+e};
 }
 function relatorioHTML(m,a){
-  const esp=ESP_REL[m.especie]||'ap', R=(id,rot,ph,tipo)=>`<label for="${id}">${rot}</label>${tipo==='ta'?`<textarea id="${id}" data-relf placeholder="${esc(ph)}"></textarea>`:`<input id="${id}" data-relf placeholder="${esc(ph)}">`}`;
-  const sel=(id,rot,ops)=>`<label for="${id}">${rot}</label><select id="${id}" data-relf class="inp" style="height:32px">${ops.map(o=>`<option>${esc(o)}</option>`).join('')}</select>`;
-  const rec={ap:'Apelou',ai:'Agravante',rn:'',ed:'Embargante'}[esp];
-  return `<div class="lote">Relatório · dados do processo</div>
+  const esp=ESP_REL[m.especie]||(m.tipo==='monocrática'?'ap':'ap');
+  const R=(id,rot,ph,ta)=>`<label for="${id}">${rot}</label>${ta?`<textarea id="${id}" data-relf placeholder="${esc(ph)}"></textarea>`:`<input id="${id}" data-relf placeholder="${esc(ph)}">`}`;
+  const S=(id,rot,ops,dica)=>`<label for="${id}">${rot}</label><select id="${id}" data-relf class="inp" style="height:32px" ${dica?`title="${esc(dica)}"`:''}>${ops.map(o=>Array.isArray(o)?`<option value="${esc(o[0])}">${esc(o[1])}</option>`:`<option>${esc(o)}</option>`).join('')}</select>`;
+  return `<p class="ajuda" style="margin:2px 0 8px">Fórmulas das diretrizes do relatório do gabinete (aba <b>Relatório</b> do painel). Preenchido, substitui o relatório do modelo.</p>
   <div class="gl">
-    <label>Espécie</label><select id="rEsp" data-relf class="inp" style="height:32px">${[['ap','Apelação'],['ai','Agravo de instrumento'],['rn','Remessa necessária'],['ed','Embargos de declaração']].map(([v,t])=>`<option value="${v}"${v===esp?' selected':''}>${t}</option>`).join('')}</select>
-    ${R('rObj','Ação de origem','ex.: concessão de benefício por incapacidade'+(a&&a.assunto?' — assunto PJe: '+a.assunto:''))}
-    ${R('rDecId','ID da decisão recorrida','ex.: 287103188, f. 65')}
-    ${R('rDec','Decisão recorrida','ex.: julgou improcedente o pedido, condenando a autora ao pagamento de honorários…','ta')}
-    ${R('rRec','Recorrente','ex.: o INSS · a autora · a agravante'+(a&&a.poloAtivo&&!/#/.test(a.poloAtivo)?' — polo ativo: '+a.poloAtivo:''))}
+    <label>Espécie</label><select id="rEsp" data-relf class="inp" style="height:32px">${[['ap','Apelação'],['dap','Dupla apelação'],['rnap','Remessa necessária e apelação'],['rn','Remessa necessária'],['ai','Agravo de instrumento'],['agint','Agravo interno'],['ed','Embargos de declaração']].map(([v,t])=>`<option value="${v}"${v===esp?' selected':''}>${t}</option>`).join('')}</select>
+    ${S('rForma','Forma da abertura',[['A','Forma A — parágrafo único (padrão)'],['B','Forma B — “interposta em ação de…” (excepcional)']],'Diretrizes: a Forma A é o padrão em todas as matérias; a Forma B é opção manual.')}
+    ${R('rDecId','ID da decisão recorrida','ex.: 287103188 · ou 287103188, f. 65')}
+    ${R('rCtx','Contexto (ação de origem)','ex.: ação de concessão de benefício por incapacidade'+(a&&a.assunto?' — assunto PJe: '+a.assunto:''))}
+    ${R('rDec','Resultado da decisão recorrida','verbo nuclear: julgou improcedente o pedido · extinguiu o processo, sem resolução do mérito, … · denegou a ordem…',true)}
+    ${R('rHon','Honorários / custas (opcional)','Forma A: frase nova — “Condenou a autora ao pagamento de honorários advocatícios de 10% sobre o valor atualizado da causa, suspensa a exigibilidade…”',true)}
+    ${R('rRec','Recorrente','pela posição na origem: o autor · a impetrante · o exequente · a União (pelo nome)'+(a&&a.poloAtivo&&!/#/.test(a.poloAtivo)?' — polo ativo: '+a.poloAtivo:''))}
     ${R('rRecId','ID do recurso','ex.: 287103190')}
-    ${R('rAleg','Alegações (uma por linha)','cada linha vira um item (1), (2), (3)…','ta')}
-    ${sel('rContra','Contrarrazões',esp==='ai'?['Houve contraminuta (ID).','Não houve contraminuta.','Sem contraminuta.','—']:['Houve contrarrazões (ID).','Não houve contrarrazões.','Houve contrarrazões.','—'])}
-    ${R('rContraId','ID das contrarrazões','opcional')}
-    ${sel('rMpf','Ministério Público',['—','A Procuradoria Regional da República opinou pelo regular prosseguimento do feito (ID).','A Procuradoria Regional da República manifestou-se pelo desprovimento do recurso (ID).','O Ministério Público Federal opinou pelo desprovimento da remessa necessária (ID).','Com parecer do Ministério Público Federal, vieram os autos a esta Corte (ID).'])}
+    ${S('rRaz','Forma das razões',[['que','alegando, em suma, que: (1) … — verbo flexionado'],['inf','alegando, em suma: (1) ter … — orações no infinitivo']])}
+    ${R('rAleg','Alegações (uma por linha)','cada linha vira um item (1), (2), … e o último é introduzido por “e”',true)}
+    ${R('rPed','Pedido (opcional)','encerra o parágrafo: “pelo que requereu …”')}
+    ${S('rContra','Contrarrazões / contraminuta',[['nao','Não houve'],['sim','Houve (ID …)'],['pre','Houve, com arguição preliminar de …'],['-','— omitir']])}
+    ${R('rContraId','ID / preliminar','ID das contrarrazões · e, se houver, a preliminar arguida (após “;”)')}
+    ${S('rMpf','Ministério Público',[['-','— não houve manifestação'],['desp','opinou pelo desprovimento do recurso'],['prov','opinou pelo provimento do recurso'],['pross','opinou pelo prosseguimento do feito, abstendo-se de manifestação sobre o mérito'],['desn','opinou pela desnecessidade de sua intervenção']],'Diretrizes I.2.2.2: no Tribunal, “A Procuradoria Regional da República”, em parágrafo próprio.')}
     ${R('rMpfId','ID do parecer','opcional')}
-    ${R('rOutros','Outros fatos (opcional)','ex.: fato superveniente, pedido de efeito suspensivo…','ta')}
-  </div>
-  <p class="ajuda" style="margin-top:-4px">Preenchido o relatório, ele substitui o relatório do modelo (até “É o relatório” / “VOTO”). As fórmulas são as usadas pelo gabinete nos relatórios da Turma Regional.</p>`;
+    ${R('rOutros','Ocorrências (opcional)','ex.: A União opôs embargos de declaração (ID …), os quais foram rejeitados (ID …). — uma por linha',true)}
+    <label>Ementa embargada</label><textarea id="rEmenta" data-relf placeholder="Só para embargos de declaração: a ementa transcrita do acórdão embargado"></textarea>
+  </div>`;
 }
-function vRel(id){const el=$(id);return el?el.value.trim():''}
-function comId(frase,id){return id?frase.replace('(ID)',`(ID ${id})`):frase.replace(' (ID)','')}
-function relAtivo(){return ['rObj','rDec','rRec','rAleg','rOutros','rDecId'].some(i=>vRel(i))}
+const vRel=id=>{const el=$(id);return el?el.value.trim():''};
+function relAtivo(){return ['rCtx','rDec','rRec','rAleg','rOutros','rDecId','rEmenta'].some(i=>vRel(i))}
+function enumerar(itens){
+  if(!itens.length) return '';
+  if(itens.length===1) return itens[0];
+  return itens.map((x,i)=>`(${i+1}) ${x}`).map((x,i,a)=>i===a.length-1?'e '+x:x).join('; ');
+}
 function montarRelatorio(){
-  const esp=vRel('rEsp')||'ap', obj=vRel('rObj').replace(/^a[çc][ãa]o de /i,''), dec=vRel('rDec').replace(/\.$/,''), decId=vRel('rDecId'), rec=vRel('rRec'), recId=vRel('rRecId');
-  const al=vRel('rAleg').split('\n').map(x=>x.trim().replace(/[;.]$/,'')).filter(Boolean);
-  const itens=al.length>1?al.map((x,i)=>`(${i+1}) ${x}`).join('; ').replace(/; (\(\d+\) [^;]*)$/,'; e $1')+'.':al.length?al[0]+'.':'';
-  const P=[];
-  if(esp==='ap'){
-    P.push(`Trata-se de apelação interposta em ação de ${obj||'[ação de origem]'}.`);
-    if(dec||decId) P.push(`A sentença${decId?` (ID ${decId})`:''} ${dec||'[decisão recorrida]'}.`);
-    if(rec||itens) P.push(`Apelou ${rec||'[recorrente]'}${recId?` (ID ${recId})`:''}, alegando, em síntese: ${itens||'[alegações]'}`.replace(/: \(1\)/,': (1)'));
+  const esp=vRel('rEsp')||'ap', forma=vRel('rForma')||'A', decId=vRel('rDecId'), ctx=vRel('rCtx').replace(/^em\s+/i,''), dec=vRel('rDec').replace(/\.$/,'');
+  const hon=vRel('rHon').replace(/\.$/,''), rec=vRel('rRec')||'[recorrente]', recId=vRel('rRecId'), ped=vRel('rPed').replace(/\.$/,'');
+  const al=vRel('rAleg').split('\n').map(x=>x.trim().replace(/[;.]+$/,'')).filter(Boolean);
+  const ID=v=>v?` (ID ${v})`:' (ID [nº])', P=[];
+  const sentenca=`sentença${ID(decId)} que${ctx?`, em ${ctx},`:''} ${dec||'[resultado]'}`;
+  const razoes=()=>{const base=vRel('rRaz')==='inf'?'alegando, em suma: ':'alegando, em suma, que: ';return al.length?base+enumerar(al):base+'[alegações]'};
+  if(esp==='ed'){
+    P.push('Trata-se de embargos de declaração contra acórdão assim ementado:');
+    P.push(vRel('rEmenta')?`“${vRel('rEmenta')}”`:'“[ementa do acórdão embargado]”');
+    P.push(`Alegou-se omissão, inclusive em prequestionamento, pois: ${al.length?enumerar(al):'[alegações]'}${ped?', pelo que requereu '+ped:''}.`);
+  }else if(esp==='agint'){
+    P.push(`Trata-se de agravo interno à negativa de provimento a agravo de instrumento interposto contra decisão que ${dec||'[decisão agravada]'}.`);
+    P.push(`Alegou ${rec}, em suma${ID(recId)}: ${al.length?enumerar(al):'[alegações]'}${ped?', pelo que requereu '+ped:''}.`);
   }else if(esp==='ai'){
-    P.push(`Trata-se de agravo de instrumento à decisão que, em ação de ${obj||'[ação de origem]'}, ${dec||'[decisão agravada]'}${decId?` (ID ${decId})`:''}.`);
-    if(rec||itens) P.push(`${rec?rec.charAt(0).toUpperCase()+rec.slice(1):'A agravante'} alegou${recId?` (ID ${recId})`:''}, em suma: ${itens||'[alegações]'}`);
+    P.push(`Trata-se de agravo de instrumento à decisão${ID(decId)} que${ctx?`, em ${ctx},`:''} ${dec||'[decisão agravada]'}.${hon?' '+hon+'.':''}`);
+    P.push(`Agravou ${rec}${recId?ID(recId):''}, ${razoes()}${ped?', pelo que requereu '+ped:''}.`);
   }else if(esp==='rn'){
-    P.push(`Trata-se de remessa necessária à sentença que ${dec||'[resultado da sentença]'}${decId?` (ID ${decId})`:''}, em ação de ${obj||'[ação de origem]'}.`);
+    P.push(`Trata-se de remessa necessária à ${sentenca}.${hon?' '+hon+'.':''}`);
+  }else if(forma==='B'&&(esp==='ap')){
+    P.push(`Trata-se de apelação interposta em ação de ${ctx.replace(/^a[çc][ãa]o de /i,'')||'[objeto]'}.`);
+    P.push(`A sentença${ID(decId)} ${dec||'[resultado]'}${hon?', '+hon.replace(/^Condenou\s+/i,'condenando ').replace(/^./,c=>c.toLowerCase()):''}.`);
+    P.push(`Apelou ${rec}${recId?ID(recId):''}, ${razoes()}${ped?', pelo que requereu '+ped:''}.`);
   }else{
-    P.push(`Trata-se de embargos de declaração${rec?` opostos por ${rec}`:''} contra acórdão${decId?` (ID ${decId})`:''} ${dec?'que '+dec:'[acórdão embargado]'}.`);
-    if(itens) P.push(`Alegou-se${recId?` (ID ${recId})`:''}, em suma: ${itens}`);
+    const ab={ap:'apelação à',dap:'dupla apelação à',rnap:'remessa necessária e de apelação interposta contra'}[esp]||'apelação à';
+    P.push(`Trata-se de ${ab} ${sentenca}.${hon?' '+hon.charAt(0).toUpperCase()+hon.slice(1)+'.':''}`);
+    P.push(`Apelou ${rec}${recId?ID(recId):''}, ${razoes()}${ped?', pelo que requereu '+ped:''}.`);
   }
-  const ct=vRel('rContra'); if(ct&&ct!=='—') P.push(comId(ct,vRel('rContraId')));
-  const mp=vRel('rMpf'); if(mp&&mp!=='—') P.push(comId(mp,vRel('rMpfId')));
+  const ag=esp==='ai'||esp==='agint', ct=vRel('rContra'), [ctId,pre]=vRel('rContraId').split(';').map(x=>(x||'').trim());
+  if(esp!=='rn'&&esp!=='ed'){
+    if(ct==='nao') P.push(ag?'Não houve contraminuta.':'Não houve contrarrazões.');
+    else if(ct==='sim'||ct==='pre') P.push(`Houve ${ag?'contraminuta':'contrarrazões'}${ID(ctId)}${ct==='pre'?`, com arguição preliminar de ${pre||'[preliminar]'}`:''}.`);
+  }
+  const mp={desp:'opinou pelo desprovimento do recurso',prov:'opinou pelo provimento do recurso',pross:'opinou pelo prosseguimento do feito, abstendo-se de manifestação sobre o mérito',desn:'opinou pela desnecessidade de sua intervenção'}[vRel('rMpf')];
+  if(mp) P.push(`A Procuradoria Regional da República ${mp}${vRel('rMpfId')?ID(vRel('rMpfId')):''}.`);
   const ou=vRel('rOutros'); if(ou) P.push(...ou.split(/\n+/).map(x=>x.trim()).filter(Boolean));
   return P.join('\n\n');
 }
-function partesModelo(m){const P=[];let last=0,k=0;m.modelo.replace(RX_CAMPO,(t,pos)=>{if(pos>last)P.push({a:last,b:pos});P.push({a:pos,b:pos+t.length,k:k++,t});last=pos+t.length;return t});if(last<m.modelo.length)P.push({a:last,b:m.modelo.length});return P}
-function textoMinuta(marcar){
-  const g=$('gerador'); if(!g) return ''; const m=MOD_POR.get(g.dataset.m), src=m.modelo;
-  const reg=relAtivo()?regiaoRelatorio(m):null; const rel=reg?montarRelatorio():'';
-  const relTxt=marcar?'\u0005'+rel+'\u0006':rel;
-  let out='',inserido=false;
-  const campo=p=>{const el=$('gc'+p.k);const v=el&&el.value.trim();return v?(marcar?'\u0001'+v+'\u0002':v):(marcar?'\u0003'+p.t+'\u0004':p.t)};
-  for(const p of partesModelo(m)){
-    if(!reg||p.b<=reg.rs||p.a>=reg.re){if(reg&&!inserido&&p.a>=reg.re){out+='\n\n'+relTxt+'\n\n';inserido=true}out+=p.k!=null?campo(p):src.slice(p.a,p.b);continue}
-    if(p.k!=null) continue; // campo dentro do relatório substituído
-    if(p.a<reg.rs) out+=src.slice(p.a,reg.rs);
-    if(!inserido){out+='\n\n'+relTxt+'\n\n';inserido=true}
-    if(p.b>reg.re) out+=src.slice(reg.re,p.b);
-  }
-  if(reg&&!inserido) out+='\n\n'+relTxt;
-  return out.replace(/\n{3,}/g,'\n\n').trim();
+
+/* ---------- editor ---------- */
+function gerarTexto(){const g=$('gerador');if(!g)return '';const m=MOD_POR.get(g.dataset.m);return MIN_MODO==='matriz'?textoMatriz(m):textoPadrao(m)}
+function textoMinuta(){return $('minEd')?$('minEd').value:''}
+function estadoEditor(){
+  const ed=$('minEd'); if(!ed) return;
+  const t=ed.value, pal=(t.match(/\S+/g)||[]).length;
+  $('edConta').textContent=`${pal.toLocaleString('pt-BR')} palavras · ${t.length.toLocaleString('pt-BR')} caracteres`;
+  $('edEstado').textContent=ED_DIRTY?'· editado à mão — mudanças no formulário não sobrescrevem; use ↻ Regerar':'· acompanha o formulário';
 }
 function atualizarMinuta(){
-  const p=$('minPrev'); if(!p) return; const t=textoMinuta(true);
-  p.innerHTML=esc(t).replace(/\u0005([\s\S]*?)\u0006/g,(x,r)=>'<span style="display:block;background:var(--f-juris-s);border-left:3px solid var(--f-juris);padding:4px 8px;border-radius:4px">'+r.replace(/\[[^\]\n]{1,60}\]/g,'<span class="cp">$&</span>')+'</span>').replace(/\u0001([\s\S]*?)\u0002/g,'<span style="background:var(--f-acervo-s);border-radius:3px">$1</span>').replace(/\u0003([\s\S]*?)\u0004/g,'<span class="cp">$1</span>');
-  const pend=(t.match(/\u0003/g)||[]).length; $('minPend').textContent=pend?`${pend} campo(s) a preencher`:'todos os campos preenchidos';
-  const on=relAtivo(); $('gerador').classList.toggle('rel-on',on); const nt=$('relNota'); if(nt) nt.textContent=on?' · campos do relatório do modelo substituídos pelo relatório montado':'';
+  const ed=$('minEd'); if(!ed) return;
+  const on=relAtivo(); const g=$('gerador'); g.classList.toggle('rel-on',on);
+  const nt=$('relNota'); if(nt) nt.textContent=on?' · campos do relatório do modelo substituídos pelo relatório montado':'';
+  const mx=$('mxRelNota'); if(mx) mx.textContent=on?' · substituído pelo relatório montado':'';
+  if(!ED_DIRTY) ed.value=gerarTexto();
+  estadoEditor(); agendarLint();
 }
+function regerar(){if(ED_DIRTY&&!confirm('Substituir o texto editado à mão pelo texto recomposto do formulário?'))return;ED_DIRTY=false;atualizarMinuta()}
+let campoAtivo=null;
+document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('#gerador')&&(e.target.dataset.k!=null||e.target.id==='minEd'||e.target.dataset.mxf))campoAtivo=e.target});
+document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.id!=='minEd'&&!e.target.dataset.mxf)atualizarMinuta()});
+document.addEventListener('change',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.tagName==='SELECT')atualizarMinuta()});
 async function inserirCitacao(id){
-  const x=POR_ID.get(id); try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o precedente.');return}
-  const cit=citacao(registro(id));
-  let el=campoAtivo&&document.body.contains(campoAtivo)?campoAtivo:[...document.querySelectorAll('#gerador [data-k]')].find(e=>/citação|trecho/.test(e.previousElementSibling?.textContent||'')&&!e.value);
-  if(!el){copiarTexto(cit,'Citação copiada (nenhum campo livre).');return}
-  el.value=(el.value?el.value+'\n\n':'')+cit; atualizarMinuta(); toast('Citação inserida.');
+  const x=POR_ID.get(id); try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o paradigma.');return}
+  const cit=citacao(registro(id)), el=campoAtivo&&document.body.contains(campoAtivo)?campoAtivo:$('minEd');
+  if(!el){copiarTexto(cit,'Citação copiada.');return}
+  if(el.id==='minEd'){const i=el.selectionStart??el.value.length;el.value=el.value.slice(0,i)+(i&&el.value[i-1]!=='\n'?'\n\n':'')+cit+'\n\n'+el.value.slice(i);ED_DIRTY=true;estadoEditor();agendarLint()}
+  else{el.value=(el.value?el.value+'\n\n':'')+cit;if(el.dataset.mxf)MX[el.dataset.mxf]=el.value;atualizarMinuta()}
+  toast('Citação inserida.');
 }
 function baixarMinuta(){
   const g=$('gerador'); const m=MOD_POR.get(g.dataset.m); const proc=MIN_PROC||'minuta';
@@ -1304,6 +1490,126 @@ async function levarParaMinuta(num){
   if(mod){modF.fase=mod.fase;$('mfFase').querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.v===mod.fase));modF.min=5;$('mfMin').value='5';preencherModSelects();aplicarModelos();abrirModelo(mod.id);toast(`Modelo sugerido para ${esc(num)} aberto na faceta III.`)}
   else toast('Nenhum modelo sugerido pelo assunto — escolha um na lista.');
 }
+
+/* =====================================================================
+   PAINEL DE DIRETRIZES · indicadores de correção (Padrão Muta)
+   ===================================================================== */
+function prepararRegras(){
+  REGRAS={cor:[],ale:[],pref:[]};
+  if(!DIR||!DIR.redacao) return;
+  const fl=(f,g)=>{f=f||'';return g&&!f.includes('g')?f+'g':f};
+  for(const r of DIR.redacao.registros){try{
+    if(r.tipo==='correcao') REGRAS.cor.push({re:new RegExp(r.padrao,fl(r.flags,1)),sub:r.substituir,msg:r.motivo,artigo:r.artigo,id:r.id});
+    else if(r.tipo==='alerta') REGRAS.ale.push({re:new RegExp(r.padrao,fl(r.flags,1)),msg:r.mensagem,escopo:r.escopo,id:r.id});
+    else if(r.tipo==='preferencia'&&!r.regra&&r.evitar&&r.preferir&&r.evitar.split(/\s+/).length<=4&&!/[…,(;]|salvo|exce|corpo/i.test(r.evitar))
+      REGRAS.pref.push({re:new RegExp('(?<![\\wÀ-ÿ])'+escRx(r.evitar)+'(?![\\wÀ-ÿ])','g'),sub:r.preferir,msg:`preferir “${r.preferir}” a “${r.evitar}”`,id:r.id});
+  }catch(e){}}
+}
+const SEV={cor:['Correção',5],ale:['Alerta',3],est:['Estrutura',4],sug:['Sugestão',1],pend:['Pendência',4]};
+function achados(t){
+  const A=[]; if(!REGRAS) return A;
+  const add=(sev,re,msg,sub,fonte,extra)=>{re.lastIndex=0;let m,n=0;while((m=re.exec(t))&&n<60){A.push({sev,i:m.index,len:m[0].length,trecho:m[0],msg,sub:typeof sub==='function'?sub(m):sub,fonte,...(extra||{})});n++;if(!re.global)break;if(m[0]==='')re.lastIndex++}};
+  for(const r of REGRAS.cor) add('cor',r.re,r.msg,r.sub,'Redação · correção',{artigo:r.artigo});
+  for(const r of REGRAS.ale) add('ale',r.re,r.msg+(r.escopo?` (${r.escopo})`:''),null,'Redação · alerta');
+  for(const r of REGRAS.pref) add('sug',r.re,r.msg,r.sub,'Redação · preferência');
+  add('pend',/\[[^\]\n]{1,80}\]/g,'campo a preencher',null,'Modelo');
+  add('cor',/\b(Lei(?: Complementar)?|Decreto(?:-Lei)?|Medida Provisória)\s+n[º°o.]\s*(?=\d)/g,'normas sem “nº” (nome canônico, ex.: “Lei 8.213/1991”)',m=>m[1]+' ','Normas');
+  add('cor',/\b(Lei(?: Complementar)?|Decreto(?:-Lei)?)\s+(\d{1,2}\.?\d{3})\/(\d{2})(?!\d)/g,'ano da norma com quatro dígitos',m=>`${m[1]} ${m[2]}/${+m[3]<=40?'20':'19'}${m[3]}`,'Normas');
+  add('sug',/alegando, em síntese/g,'razões: base “alegando, em suma” (diretrizes do relatório)','alegando, em suma','Diretrizes · Relatório');
+  add('sug',/O Ministério Público Federal (opinou|manifestou-se)/g,'no Tribunal, identificar a unidade: “A Procuradoria Regional da República” (I.2.2.2)',m=>`A Procuradoria Regional da República ${m[1]}`,'Diretrizes · Relatório');
+  add('sug',/Trata-se de apelação interposta em ação de/g,'Forma B de abertura é excepcional; o padrão é a Forma A: “Trata-se de apelação à sentença (ID …) que …”',null,'Diretrizes · Relatório');
+  add('sug',/\bId\.?\s*(?=\d)|\bID:\s*(?=\d)|\bID nº\s*/g,'referência documental no formato “(ID …)”','ID ','Diretrizes · Relatório');
+  add('cor',/[^\S\n]{2,}/g,'espaços duplicados',' ','Formatação');
+  // estrutura
+  if(/^\s*(RELATÓRIO|DECISÃO)\s*$/im.test(t)&&!/É o relatório\./i.test(t)) A.push({sev:'est',i:0,len:0,trecho:'',msg:'fecho padrão do relatório ausente: “É o relatório.”',fonte:'Diretrizes · Relatório'});
+  if(/^\s*DECISÃO\s*$/im.test(t)&&!/^\s*DECIDO\.?\s*$/im.test(t)) A.push({sev:'est',i:0,len:0,trecho:'',msg:'monocrática: “DECIDO.” após o relatório (R04)',fonte:'Diretrizes · Minuta'});
+  // enumeração: último item introduzido por “e”
+  const reEn=/\((\d+)\)[^()\n]*?(?=;\s*\((\d+)\)|$)/g;
+  t.split('\n').reduce((pos,par)=>{const it=[...par.matchAll(/;\s*(e\s+)?\((\d+)\)/g)];if(it.length){const u=it[it.length-1];if(!u[1])A.push({sev:'ale',i:pos+u.index,len:u[0].length,trecho:u[0],msg:'enumeração: o último item é introduzido por “e” — “(1) …; (2) …; e (3) …”',sub:u[0].replace(/;\s*\(/,'; e ('),fonte:'Diretrizes · Relatório'})}return pos+par.length+1},0);
+  // siglas de tribunais no corpo (fora de citações)
+  t.split('\n').reduce((pos,par)=>{if(!/Rel\.|DJe|DJEN|Tema\s|Súmula/.test(par))for(const m of par.matchAll(/(?<![\/\wÀ-ÿ])(STF|STJ)(?![\/\wÀ-ÿ])/g))A.push({sev:'sug',i:pos+m.index,len:3,trecho:m[0],msg:`no corpo do voto, por extenso: “${m[0]==='STF'?'Supremo Tribunal Federal':'Superior Tribunal de Justiça'}”`,sub:m[0]==='STF'?'Supremo Tribunal Federal':'Superior Tribunal de Justiça',fonte:'Redação · preferência'});return pos+par.length+1},0);
+  // remove sobreposições (mantém o mais grave)
+  A.sort((a,b)=>a.i-b.i||SEV[b.sev][1]-SEV[a.sev][1]);
+  const out=[];
+  for(const x of A){
+    const y=x.len&&x.sev!=='pend'&&out.find(y=>y.len&&y.sev!=='pend'&&y.i<=x.i&&x.i<y.i+y.len);
+    if(!y){out.push(x);continue}
+    // sobreposição: prevalece o mais grave; aproveita-se a correção do outro quando cobre o mesmo trecho
+    if(y.sub==null&&x.sub!=null&&x.i===y.i&&x.len===y.len){y.sub=x.sub;y.fonte+=' · '+x.fonte}
+  }
+  return out;
+}
+function aplicarFix(t,x){
+  let antes=t.slice(0,x.i), dep=t.slice(x.i+x.len);
+  if(x.artigo==='masc>fem') antes=antes.replace(/\b(o|do|no|ao|pelo)(\s+)$/i,(m,a,s)=>({o:'a',do:'da',no:'na',ao:'à',pelo:'pela'}[a.toLowerCase()]||a)+s);
+  if(x.artigo==='fem>masc') antes=antes.replace(/\b(a|da|na|à|pela)(\s+)$/i,(m,a,s)=>({a:'o',da:'do',na:'no','à':'ao',pela:'pelo'}[a.toLowerCase()]||a)+s);
+  let sub=x.sub; if(typeof sub==='string'&&/\$\d/.test(sub)){const re=new RegExp((REGRAS.cor.find(r=>r.msg===x.msg)||{}).re?.source||escRx(x.trecho),'i');sub=x.trecho.replace(re,sub)}
+  return antes+sub+dep;
+}
+let LINT=[], lintT=null;
+function agendarLint(){clearTimeout(lintT);lintT=setTimeout(lint,350)}
+function lint(){
+  const ed=$('minEd'); if(!ed||!REGRAS){LINT=[];return}
+  LINT=achados(ed.value);
+  if(DZ_TAB==='correcao') renderDZ();
+  const n=LINT.filter(x=>x.sev!=='sug').length; const b=$('dzTabs')&&$('dzTabs').querySelector('[data-t=correcao]'); if(b) b.dataset.n=n||'';
+}
+function irPara(i,len){const ed=$('minEd');ed.focus();ed.setSelectionRange(i,i+len);const linhas=ed.value.slice(0,i).split('\n').length;ed.scrollTop=Math.max(0,(linhas-4)*22)}
+function corrigir(k){const x=LINT[k];if(!x||x.sub==null)return;const ed=$('minEd');ed.value=aplicarFix(ed.value,x);ED_DIRTY=true;estadoEditor();lint()}
+function corrigirTodas(){
+  const ed=$('minEd');let t=ed.value,n=0;
+  for(let passo=0;passo<4;passo++){ // várias passadas: correções sobrepostas (ex.: “Lei nº 8.213/91”) se resolvem em sequência
+    const F=achados(t).filter(x=>x.sub!=null&&x.len).sort((a,b)=>b.i-a.i); if(!F.length)break;
+    let ult=Infinity; for(const x of F){if(x.i+x.len>ult)continue;t=aplicarFix(t,x);ult=x.i;n++}
+  }
+  ed.value=t;ED_DIRTY=true;estadoEditor();lint();toast(`${n} correção(ões) aplicada(s).`)}
+function renderDZ(){
+  const B=$('dzBody'); if(!B) return;
+  if(!DIR||DIR.erro){B.innerHTML=`<p style="color:#e9ebee;font-weight:700;margin:4px 0 6px">Carregue o Padrão Muta</p>
+    <p class="dz-muted">As diretrizes, as regras de redação (correções, alertas, preferências), as normas e os roteiros são material interno do gabinete e não ficam no repositório público. Carregue o arquivo <code>padrao_muta.json</code> uma vez: ele fica guardado só neste navegador.</p>
+    <label class="dz-btn" style="display:grid;place-items:center;cursor:pointer">Escolher padrao_muta.json<input type="file" accept=".json,application/json" hidden onchange="carregarPadraoArquivo(this)"></label>
+    <p class="dz-muted">Sem ele, o editor, os modelos e o relatório funcionam normalmente; só o painel de diretrizes e os indicadores ficam indisponíveis.</p>`;return}
+  if(DZ_TAB==='correcao'){
+    const c=s=>LINT.filter(x=>x.sev===s).length, pen=LINT.filter(x=>x.sev!=='pend').reduce((s,x)=>s+SEV[x.sev][1],0), conf=Math.max(0,100-pen);
+    const fix=LINT.filter(x=>x.sub!=null&&x.len).length;
+    B.innerHTML=`<div class="dz-kpis">
+      <div class="k ${conf>=85?'ok':conf>=60?'md':'bad'}" title="Padrão Muta: 100 menos 5 por correção, 4 por falha de estrutura, 3 por alerta e 1 por sugestão. Campos a preencher contam à parte."><b>${conf}%</b><span>conformidade</span></div>
+      <div class="k cor"><b>${c('cor')}</b><span>correções</span></div><div class="k ale"><b>${c('ale')+c('est')}</b><span>alertas</span></div>
+      <div class="k pend"><b>${c('pend')}</b><span>pendências</span></div><div class="k sug"><b>${c('sug')}</b><span>sugestões</span></div></div>
+      ${fix?`<button class="dz-btn" onclick="corrigirTodas()">Corrigir automaticamente (${fix})</button>`:''}
+      <ul class="dz-list">${LINT.slice(0,200).map((x,k)=>`<li class="s-${x.sev}"><div class="dz-li-h"><span class="dz-sev">${SEV[x.sev][0]}</span><span class="dz-src">${esc(x.fonte||'')}</span></div>
+        <div>${esc(x.msg)}</div>${x.trecho?`<q>${esc(x.trecho.slice(0,80))}</q>`:''}${x.sub!=null&&x.len?` <span class="dz-to">→ ${esc(String(x.sub).slice(0,60))}</span>`:''}
+        <div class="dz-acts">${x.len?`<button onclick="irPara(${x.i},${x.len})">ir</button>`:''}${x.sub!=null&&x.len?`<button onclick="corrigir(${k})">corrigir</button>`:''}</div></li>`).join('')||'<li class="s-ok">Nenhuma inconformidade encontrada pelas regras do Padrão Muta.</li>'}</ul>
+      <p class="dz-muted">Verificação automática por ${REGRAS.cor.length} correções, ${REGRAS.ale.length} alertas e ${REGRAS.pref.length} preferências do banco de redação, mais as regras estruturais das diretrizes do relatório. Não substitui a revisão. <a href="#" style="color:#9aa0a9" onclick="esquecerPadrao();return false">Remover o Padrão Muta deste navegador</a></p>`;
+    return;
+  }
+  if(DZ_TAB==='relatorio'||DZ_TAB==='gerais'){B.innerHTML=`<div class="rdoc">${DIR.diretrizes_html[DZ_TAB]||''}</div>`;return}
+  if(DZ_TAB==='minuta'){
+    const R=DIR.redacao.registros.filter(r=>r.regra), G=[...new Set(R.map(r=>r.grupo))];
+    B.innerHTML=`<div class="rdoc"><p class="dz-muted">Diretrizes de minuta no padrão Carlos Muta (R01–R30).</p>${G.map(g=>`<h3>${esc(g)}</h3>${R.filter(r=>r.grupo===g).map(r=>`<div class="dz-rg"><b>${esc(r.regra)} · ${esc(r.titulo)}</b>${r.preferir?`<div class="pf">✓ ${esc(r.preferir)}</div>`:''}${r.evitar?`<div class="ev">✗ ${esc(r.evitar)}</div>`:''}</div>`).join('')}`).join('')}</div>`;
+    return;
+  }
+  if(DZ_TAB==='vocab'){
+    const R=DIR.redacao.registros, sec=(t,rows)=>rows.length?`<h3>${t}</h3><table>${rows.join('')}</table>`:'';
+    B.innerHTML=`<div class="rdoc">${sec('Conectivos',R.filter(r=>r.tipo==='conectivo').map(r=>`<tr><td><code>${esc(r.expressao)}</code></td><td>${esc(r.funcao||'')}</td></tr>`))}
+      ${sec('Verbos',R.filter(r=>r.tipo==='verbo').map(r=>`<tr><td><code>${esc(r.construcao)}</code></td><td>${esc(r.emprego||'')}</td></tr>`))}
+      ${sec('Preferir × evitar',R.filter(r=>r.tipo==='preferencia'&&!r.regra).map(r=>`<tr><td>✓ ${esc(r.preferir)}</td><td>✗ ${esc(r.evitar||'')}</td></tr>`))}
+      ${sec('Normas — nome canônico',DIR.normas.registros.filter(n=>n.seletor).map(n=>`<tr><td><code>${esc(n.nome)}</code></td><td>${esc(n.prosa||'')} · rodapé ${esc(n.sigla||'')}</td></tr>`))}</div>`;
+    return;
+  }
+  if(DZ_TAB==='roteiros'){
+    const RT=DIR.roteiros, todos=[RT.MESTRE,...RT.ESP,...RT.ASS,...RT.TRV], POS=Object.fromEntries(RT.POS);
+    const r=todos.find(x=>x.id===ROT_SEL)||RT.MESTRE;
+    B.innerHTML=`<select class="dz-sel" onchange="ROT_SEL=this.value;renderDZ()">
+      <option value="mestre"${ROT_SEL==='mestre'?' selected':''}>Roteiro-mestre</option>
+      <optgroup label="Espécies">${RT.ESP.map(x=>`<option value="${x.id}"${ROT_SEL===x.id?' selected':''}>${esc(x.t)}</option>`).join('')}</optgroup>
+      ${RT.GRP.map(g=>`<optgroup label="${esc(g.t)}">${RT.ASS.filter(x=>x.g===g.id).map(x=>`<option value="${x.id}"${ROT_SEL===x.id?' selected':''}>${esc(x.t)}</option>`).join('')}</optgroup>`).join('')}
+      <optgroup label="Transversais">${RT.TRV.map(x=>`<option value="${x.id}"${ROT_SEL===x.id?' selected':''}>${esc(x.t)}</option>`).join('')}</optgroup></select>
+      <p class="dz-muted">${esc(r.s||'')}</p>
+      <ol class="dz-rot">${r.steps.map(s=>`<li><span class="dz-pos">${esc(POS[s[0]]||s[0])}</span><b>${esc(s[1])}</b><div>${esc(s[2]||'')}</div>${s[4]?`<code>${esc(s[4])}</code>`:''}${s[5]?`<small>${esc(s[5])}</small>`:''}</li>`).join('')}</ol>`;
+  }
+}
+
 function limparAcervo(){ACS.termos=[];ACS.lote=[];ACS.crit=[];ACS.colf={};$('aSheet').innerHTML='';AC.clear();ACFONTES.length=0;SIMCACHE.clear();acFilt=[];$('aRes').innerHTML='<div class="vazio">Acervo descartado.</div>';$('aResumo').textContent='Nenhum acervo importado.';$('aResumo2').textContent='';$('acFontes').innerHTML='';$('ctAc').textContent='importar planilhas';MIN_PROC=null;fecharLateral('acervo')}
 const drop=$('acDrop');
 ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('on')}));
