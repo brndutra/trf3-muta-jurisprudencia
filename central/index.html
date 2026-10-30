@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Central Juris · Acervo · Minutas — Gabinete CMT · TRF3</title>
+<title>Central Paradigmas · Acervo · Minutas — Gabinete CMT · TRF3</title>
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
@@ -226,6 +226,8 @@ html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
 .gerador label{font:600 11.5px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut);padding-top:6px}
 .gerador input,.gerador textarea{width:100%;border:1px solid var(--line2);background:var(--panel2);border-radius:7px;padding:6px 9px;font:500 13px Figtree,Inter,system-ui,sans-serif;color:var(--text)}
 .gerador textarea{min-height:58px;resize:vertical;line-height:1.4}
+.gerador.rel-on [data-rel]{display:none}
+.gerador select.inp{width:100%}
 .gerador .lote{font:700 10px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut2);text-transform:uppercase;letter-spacing:.08em;margin:10px 0 6px}
 @media(max-width:1250px){.faceta .ft small{display:none}.faceta{height:38px}}
 .drop{border:1.5px dashed var(--line2);border-radius:10px;padding:14px;text-align:center;font-size:13px;background:var(--panel2);transition:all .15s}
@@ -242,6 +244,54 @@ html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
 .kpi span{font:600 10.5px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut)}
 .modelo-txt{font-family:var(--serif);font-size:15px;line-height:1.6;white-space:pre-wrap;text-align:justify}
 .modelo-txt .cp{background:var(--amber-soft);color:var(--amber);border-radius:3px;padding:0 3px;font-family:Inter,system-ui,sans-serif;font-size:12.5px;font-weight:600}
+
+[hidden]{display:none!important}
+/* ===== Acervo · busca · filtro · seleção (padrão da Central de Comando) ===== */
+.acs-box{display:flex;align-items:center;gap:6px;border:1px solid var(--line2);border-radius:10px;background:var(--panel2);padding:4px}
+.acs-mode{display:flex;gap:2px;background:var(--field);border-radius:8px;padding:2px;flex:none}
+.acs-mode button{border:0;background:none;border-radius:6px;padding:5px 9px;font:800 9.5px/1 Figtree,Inter,sans-serif;letter-spacing:.04em;color:var(--muted);cursor:pointer}
+.acs-mode button.on{background:var(--f-acervo);color:#fff}
+.acs-box input,.acs-box textarea{flex:1;min-width:0;border:0;background:transparent;padding:6px;font:500 13px Figtree,Inter,sans-serif;color:var(--text);outline:none;resize:vertical}
+.acs-box textarea{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;min-height:30px}
+.acs-inc,.acs-app{border:0;border-radius:8px;padding:7px 11px;font:800 10.5px Figtree,Inter,sans-serif;cursor:pointer;white-space:nowrap}
+.acs-inc{background:var(--f-juris-s);color:var(--f-juris)}.acs-app{background:var(--f-acervo);color:#fff}
+.acs-chips{display:flex;flex-wrap:wrap;gap:5px}.acs-chips:empty{display:none}
+.acs-chip{border:1px solid color-mix(in srgb,var(--f-acervo) 45%,transparent);background:var(--f-acervo-s);color:var(--text);border-radius:99px;padding:3px 9px;font:700 11px Figtree,Inter,sans-serif;cursor:pointer}
+.acs-chip.lote{border-color:color-mix(in srgb,var(--f-juris) 45%,transparent);background:var(--f-juris-s)}
+.acs-chip.clr{background:none;border-style:dashed;color:var(--muted)}
+.acs-build{border:1px solid var(--line2);border-radius:10px;background:var(--panel2)}
+.acs-build>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:8px;padding:7px 10px;font:800 9.5px Figtree,Inter,sans-serif;letter-spacing:.07em;color:var(--f-acervo)}
+.acs-build>summary::-webkit-details-marker{display:none}
+.acs-build>summary em{font-style:normal;font-weight:600;letter-spacing:0;color:var(--muted)}
+.acs-cols{display:grid;grid-template-columns:170px 1fr 1fr;gap:10px;padding:0 10px 10px}
+.acs-c1{display:flex;flex-direction:column;gap:6px}
+.acs-c1 label,.acs-k{display:flex;flex-direction:column;gap:3px;font:800 9.5px Figtree,Inter,sans-serif;letter-spacing:.07em;color:var(--muted)}
+.acs-c1 select,.acs-c2 input,.acs-c3 textarea{border:1px solid var(--line2);border-radius:7px;background:var(--panel2);color:var(--text);font:500 12px Figtree,Inter,sans-serif;padding:5px 7px;width:100%}
+.acs-c3 textarea{min-height:86px;resize:vertical}
+.acs-vals{max-height:120px;overflow:auto;border:1px solid var(--line);border-radius:7px;margin-top:4px;padding:3px}
+.acs-vals label{display:flex;align-items:center;gap:6px;font:500 11.5px Figtree,Inter,sans-serif;padding:2px 4px;cursor:pointer;border-radius:4px}
+.acs-vals label:hover{background:var(--field)}
+.acs-vals label span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acs-vals label b{font-size:10.5px;color:var(--muted)}
+.acs-viewbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.acs-colsd{position:relative}.acs-colsd>summary{list-style:none}.acs-colsd>summary::-webkit-details-marker{display:none}
+.acs-colsl{position:absolute;left:0;top:calc(100% + 4px);z-index:20;background:var(--panel2);border:1px solid var(--line2);border-radius:10px;padding:8px 10px;display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:3px 12px;font-size:12.4px;width:max-content;box-shadow:var(--shadow)}
+.acs-colsl label{display:flex;gap:6px;align-items:center;white-space:nowrap;cursor:pointer}
+.sh-wrap{flex:1;overflow:auto;background:var(--panel2)}
+.sh-t{border-collapse:separate;border-spacing:0;font:500 12.2px Figtree,Inter,sans-serif;width:max-content;min-width:100%}
+.sh-t thead th{position:sticky;background:var(--panel2);z-index:2;text-align:left;padding:6px 8px;border-bottom:1px solid var(--line2);white-space:nowrap;font-weight:700;color:var(--muted)}
+.sh-t thead tr:first-child th{top:0;cursor:pointer;user-select:none}
+.sh-t thead tr:nth-child(2) th{top:30px;padding:4px 6px;background:var(--field)}
+.sh-t thead th.asc:after{content:" ▲";font-size:9px;color:var(--f-acervo)}.sh-t thead th.desc:after{content:" ▼";font-size:9px;color:var(--f-acervo)}
+.sh-t thead th:hover{color:var(--f-acervo)}
+.sh-t .shf input{width:100%;min-width:70px;border:1px solid var(--line2);border-radius:6px;background:var(--panel2);color:var(--text);font:500 11.5px Figtree,Inter,sans-serif;padding:3px 6px}
+.sh-t tbody td{padding:5px 8px;border-bottom:1px solid var(--line);max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}
+.sh-t tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--field) 55%,var(--panel2))}
+.sh-t tbody tr:hover td{background:var(--f-acervo-s)}
+.sh-t tbody tr.sel td{background:var(--f-acervo-s);box-shadow:inset 0 -1px 0 var(--f-acervo)}
+.sh-t td.mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+.sh-t td.r,.sh-t th.r{text-align:right}
+.sh-more{padding:10px;text-align:center;color:var(--muted);font-size:12px}
 @media(max-width:1100px){main,main.sem-detalhe{grid-template-columns:250px 1fr}section.detalhe{position:fixed;inset:56px 0 0 0;z-index:20}main.sem-detalhe section.detalhe{display:none}}
 @media(max-width:720px){main,main.sem-detalhe{grid-template-columns:1fr}aside.filtros{display:none}aside.filtros.aberto{display:block;position:fixed;inset:56px 0 0 0;z-index:21}.status{display:none}.brand-ey{display:none}}
 @media print{nav.appbar,aside.filtros,section.lista,.dacts,.dx{display:none!important}main{display:block}section.detalhe{display:block!important}}
@@ -256,7 +306,7 @@ html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
   </div>
   <nav class="facetas" role="tablist" aria-label="Facetas da central">
     <button class="faceta mtab active" data-mod="juris" style="--fc:var(--f-juris);--fcs:var(--f-juris-s)" onclick="setModulo('juris')" title="Alt+1" role="tab">
-      <span class="fn">I</span><span class="ft"><b>Jurisprudência</b><small><span id="ctT">—</span> decisões do gabinete</small></span></button>
+      <span class="fn">I</span><span class="ft"><b>Paradigmas</b><small><span id="ctT">—</span> decisões do gabinete</small></span></button>
     <span class="fluxo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     <button class="faceta mtab" data-mod="acervo" style="--fc:var(--f-acervo);--fcs:var(--f-acervo-s)" onclick="setModulo('acervo')" title="Alt+2" role="tab">
       <span class="fn">II</span><span class="ft"><b>Acervo</b><small><span id="ctAc">importar planilhas</span></small></span></button>
@@ -331,7 +381,7 @@ html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
 
   <section class="lista">
     <div class="lbar">
-      <div class="fac-tit"><i>I</i>Jurisprudência <span>· banco do gabinete no GitHub — pesquise, leia, cite</span></div>
+      <div class="fac-tit"><i>I</i>Paradigmas <span>· decisões do gabinete no GitHub — pesquise, leia, cite</span></div>
       <div class="qwrap">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input class="inp" id="q" placeholder='Buscar — ex.: "perda superveniente" gratuidade -penal   ( / )' autocomplete="off" spellcheck="false">
@@ -403,11 +453,11 @@ html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
         <span class="chip" data-v="">Todos</span>
         <span class="chip" data-v="baixados">Baixados/arquivados</span>
       </div></div>
-    <div class="grp"><span class="lbl">Cruzamento com o banco</span>
+    <div class="grp"><span class="lbl">Cruzamento com os paradigmas</span>
       <div class="seg" id="afBanco">
         <span class="chip on" data-v="">Qualquer</span>
-        <span class="chip" data-v="proprio" title="O próprio processo já tem decisão do gabinete no banco">Já decidido no banco</span>
-        <span class="chip" data-v="sim" title="Há casos similares no banco">Com similares</span>
+        <span class="chip" data-v="proprio" title="O próprio processo já tem decisão do gabinete entre os paradigmas">Com paradigma próprio</span>
+        <span class="chip" data-v="sim" title="Há paradigmas similares">Com paradigmas similares</span>
       </div></div>
     <div class="grp"><span class="lbl">Tarefa atual</span><select class="inp" id="afTarefa"><option value="">Todas</option></select></div>
     <div class="grp"><span class="lbl">Assunto</span><select class="inp" id="afAssunto"><option value="">Todos</option></select></div>
@@ -420,13 +470,37 @@ html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
   </aside>
   <section class="lista">
     <div class="lbar">
-      <div class="fac-tit"><i>II</i>Acervo <span>· seus processos do PJe — só neste navegador, cruzados com o banco</span></div>
-      <div class="qwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input class="inp" id="aq" placeholder="Filtrar por número, assunto, etiqueta, tarefa…" autocomplete="off" spellcheck="false"></div>
+      <div class="fac-tit"><i>II</i>Acervo <span>· seus processos do PJe — só neste navegador, cruzados com os paradigmas</span></div>
+      <div class="acs-box">
+        <div class="acs-mode" id="acsMode"><button data-m="text" class="on">TEXTO</button><button data-m="batch">LOTE</button></div>
+        <input id="aq" placeholder="Buscar no acervo… (Enter inclui o termo como critério)" autocomplete="off" spellcheck="false">
+        <textarea id="aLote" rows="1" placeholder="Colar processos em lote — um por linha, vírgula ou ;" hidden></textarea>
+        <button class="acs-inc" id="acsInc" title="Incluir como critério">+ INCLUIR</button><button class="acs-app" id="acsApp" hidden>APLICAR</button>
+      </div>
+      <div id="acsChips" class="acs-chips"></div>
+      <details class="acs-build" id="acsBuild"><summary><span>CONSTRUTOR DE CRITÉRIOS</span><em>coluna · operador · valores existentes · trechos livres · OU/E</em></summary>
+        <div class="acs-cols">
+          <div class="acs-c1">
+            <label><span>COLUNA</span><select id="acsCol"></select></label>
+            <label><span>OPERADOR</span><select id="acsOp"><option value="contains">contém</option><option value="equals">é igual a</option><option value="notempty">não vazio</option><option value="empty">vazio</option></select></label>
+            <label><span>LÓGICA DO BLOCO</span><select id="acsComb"><option value="any">QUALQUER (OU)</option><option value="all">TODOS (E)</option></select></label>
+          </div>
+          <div class="acs-c2"><span class="acs-k">VALORES EXISTENTES · MÚLTIPLOS</span><input id="acsVq" type="search" placeholder="Buscar nos valores…"><div class="acs-vals" id="acsVals"></div></div>
+          <div class="acs-c3"><span class="acs-k">TRECHOS LIVRES · MÚLTIPLOS</span><textarea id="acsTre" placeholder="Um por linha, vírgula ou ;"></textarea>
+            <button class="acs-app" id="acsAdd" style="margin-top:6px">ADICIONAR CRITÉRIO</button></div>
+        </div>
+      </details>
+      <div class="acs-viewbar">
+        <div class="acs-mode" id="acsView"><button data-v="painel" class="on">PAINEL</button><button data-v="planilha">PLANILHA</button></div>
+        <button class="btn sm" onclick="copiarNumeros()" title="Copiar os números dos processos filtrados">⧉ Copiar números</button>
+        <button class="btn sm" onclick="exportarAcervo()" title="Exportar o recorte em .csv">Exportar .csv</button>
+        <details class="acs-colsd" id="acsColsD" hidden><summary class="btn sm">Colunas ▾</summary><div class="acs-colsl" id="acsColsL"></div></details>
+      </div>
       <div class="prog" id="acProg"><i></i></div>
       <div class="resumo"><span id="aResumo">Nenhum acervo importado.</span><span class="meta" id="aResumo2"></span></div>
     </div>
-    <ul class="res" id="aRes"><div class="vazio">Importe o relatório <b>Relação do Acervo dos Gabinetes</b> do PJe (e, se quiser, as planilhas do BI) para ver, em cada processo, as decisões do gabinete já proferidas nele, os casos similares do acervo jurisprudencial e os modelos aplicáveis.</div></ul>
+    <div class="sh-wrap" id="aSheet" hidden></div>
+    <ul class="res" id="aRes"><div class="vazio">Importe o relatório <b>Relação do Acervo dos Gabinetes</b> do PJe (e, se quiser, as planilhas do BI) para ver, em cada processo, as decisões do gabinete já proferidas nele, os paradigmas similares e os modelos aplicáveis.</div></ul>
   </section>
   <section class="detalhe" id="aDet"></section>
 </main>
@@ -688,7 +762,7 @@ async function abrir(id){
     </div>
     <div class="dacts">
       <button class="btn sm pri" onclick="copiarCitacao('${id}')" title="Formato usado nos votos do gabinete">Copiar citação</button>
-      <button class="ponte m" onclick="if($('gerador')){inserirCitacao('${id}');setModulo('modelos')}else toast('Abra um modelo na faceta III · Minutas para citar este precedente.')" title="Insere a citação no campo selecionado da minuta em elaboração">III · Citar na minuta</button>
+      <button class="ponte m" onclick="if($('gerador')){inserirCitacao('${id}');setModulo('modelos')}else toast('Abra um modelo na faceta III · Minutas para citar este paradigma.')" title="Insere a citação deste paradigma no campo selecionado da minuta em elaboração">III · Citar na minuta</button>
       ${x.t==='A'&&r.ementa?`<button class="btn sm" onclick="copiar('${id}','ementa')">Copiar ementa</button>`:''}
       ${r.inteiro_teor?`<button class="btn sm" onclick="copiar('${id}','inteiro_teor')">Copiar inteiro teor</button>`:''}
       ${r.link_pje?`<a class="btn sm" href="${esc(r.link_pje)}" target="_blank" rel="noopener">PJe</a>`:''}
@@ -843,7 +917,11 @@ function fecharLateral(m){const el=m==='modelos'?$('mMod'):$('mAc');el.classList
 function irParaDecisao(id){setModulo('juris');if(!POR_ID.has(id))return;if(!filtrados.some(x=>x.id===id)){setTipo(POR_ID.get(id).t)}abrir(id)}
 function chipsGrupo(el,cb){$(el).addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;$(el).querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c));cb(c.dataset.v)})}
 const cpRender=s=>esc(s).replace(/\[[^\]\n]{1,80}\]/g,m=>`<span class="cp">${m}</span>`);
-function tokens(s){return [...new Set(semAcento(s||'').replace(/\(.*?\)/g,' ').split(/[^a-z0-9,%]+/).filter(w=>(w.length>=4&&!STOPB.has(w))||/\d+,\d+/.test(w)).map(w=>w.length>8?w.slice(0,7):w))]}
+const RX_SIGLA=/(?:^|[^A-Za-zÀ-ÿ])([A-ZÁÉÍÓÚÂÊÔÃÕÇ]{3,})(?![A-Za-zÀ-ÿ])/g;
+function siglas(s){return [...String(s||'').matchAll(RX_SIGLA)].map(m=>semAcento(m[1]))}
+function generico(tk,s){return !tk.length||(tk.length===1&&tk[0].length<7&&!siglas(s).includes(tk[0]))}
+function tokens(s){return [...new Set([...siglas(s),...tokens0(s)])]}
+function tokens0(s){return [...new Set(semAcento(s||'').replace(/\(.*?\)/g,' ').split(/[^a-z0-9,%]+/).filter(w=>(w.length>=4&&!STOPB.has(w))||/\d+,\d+/.test(w)).map(w=>w.length>8?w.slice(0,7):w))]}
 const RXT=new Map();
 function rxTok(t){if(!RXT.has(t)){const e=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');RXT.set(t,new RegExp('(?:^|[^a-z0-9])'+e+(t.length>=7?'':'s?(?![a-z0-9])')))}return RXT.get(t)}
 const STOPB=new Set('para pela pelo pelos pelas como sobre entre demais outros outras afins geral especial tipo acao acoes processo processual civil federal direito pedido regime lei/ art artigo inclusao concessao revisao'.split(' '));
@@ -934,7 +1012,7 @@ function dataBR(v){if(v==null||v==='')return '';if(v instanceof Date)return v.to
 const COLS={processo:['processo','numeroprocesso','número do processo','numero do processo'],classe:['classe_judicial','classe','classejudicial'],assunto:['assunto_judicial','assunto_principal','assuntoprincipal','assunto'],
   tarefa:['tarefa_atual','nometarefa','tarefa'],entradaTarefa:['data_entrada_tarefa','datachegada','data de entrada na tarefa'],prioridade:['prioridade'],etiquetas:['etiquetas','tagsprocessolist'],
   distribuicao:['data_distribuição','data_distribuicao','data distribuição'],indicador:['indicador'],fase:['fase'],complemento:['complemento'],ultimaMov:['última_movimentação','ultima_movimentacao'],dataUltMov:['data_última_movimentação','data_ultima_movimentacao'],
-  tempo:['tempo_de_tramitação','tempo_de_tramitacao'],conclusao:['data_conclusão','data_conclusao'],sigilo:['nível_sigilo','nivel_sigilo','sigiloso'],assuntos:['assuntos_do_processo']};
+  tempo:['tempo_de_tramitação','tempo_de_tramitacao'],conclusao:['data_conclusão','data_conclusao'],poloAtivo:['polo_ativo','poloativo','polo ativo'],sigilo:['nível_sigilo','nivel_sigilo','sigiloso'],assuntos:['assuntos_do_processo']};
 function lerTabela(rows,nome){
   const lc=r=>r.map(c=>semAcento(String(c??'')).trim());
   const hi=rows.findIndex(r=>lc(r).some(c=>COLS.processo.map(semAcento).includes(c)));
@@ -945,7 +1023,7 @@ function lerTabela(rows,nome){
     const num=normNum(r[idx.processo]); if(!num) continue; n++;
     const a=AC.get(num)||{processo:num,tarefas:[],etiquetas:new Set(),fontes:new Set()};
     const g=k=>idx[k]!=null?r[idx[k]]:undefined;
-    for(const k of ['classe','assunto','prioridade','indicador','fase','complemento','ultimaMov','tempo','sigilo','assuntos']){const v=g(k);if(v!=null&&v!==''&&!a[k])a[k]=String(v).trim()}
+    for(const k of ['classe','assunto','prioridade','indicador','fase','complemento','ultimaMov','tempo','sigilo','assuntos','poloAtivo']){const v=g(k);if(v!=null&&v!==''&&!a[k])a[k]=String(v).trim()}
     for(const k of ['distribuicao','conclusao','dataUltMov']){const v=g(k);if(v&&!a[k])a[k]=dataBR(v)}
     const t=g('tarefa'); if(t){const e=dataBR(g('entradaTarefa'));if(!a.tarefas.some(x=>x.t===t))a.tarefas.push({t:String(t).trim(),e})}
     const et=g('etiquetas'); if(et) String(et).split(/\s*,\s*/).filter(Boolean).forEach(x=>a.etiquetas.add(x.trim()));
@@ -996,20 +1074,20 @@ function aplicarAcervo(){
   if(!AC.size) return;
   const c=parseConsulta($('aq').value.trim());
   acFilt=[...AC.values()].filter(a=>(acF.sit==='ativos'?!baixado(a):acF.sit==='baixados'?baixado(a):true)&&(!acF.tarefa||a._t.t===acF.tarefa)&&(!acF.assunto||a.assunto===acF.assunto)&&(!acF.classe||a.classe===acF.classe)
-    &&(acF.banco!=='proprio'||a.proprias.length)&&(acF.banco!=='sim'||similares(a).length)&&(c.vazia||casa(a._txt,c)));
+    &&(acF.banco!=='proprio'||a.proprias.length)&&(acF.banco!=='sim'||similares(a).length)&&(c.vazia||casa(a._txt,c))&&passaACS(a));
   const o=acF.ordem;
   acFilt.sort(o==='dist'?(x,y)=>(x.distribuicao||'9').localeCompare(y.distribuicao||'9'):o==='assunto'?(x,y)=>(x.assunto||'').localeCompare(y.assunto||''):o==='processo'?(x,y)=>x.processo.localeCompare(y.processo):(x,y)=>(y._dias??-1)-(x._dias??-1));
   const pro=acFilt.filter(a=>a.proprias.length).length;
   $('aResumo').innerHTML=`<b>${acFilt.length.toLocaleString('pt-BR')}</b> processo${acFilt.length===1?'':'s'}`;
-  $('aResumo2').textContent=`${pro.toLocaleString('pt-BR')} já com decisão do gabinete no banco`;
-  acMostrados=0; $('aRes').innerHTML=''; renderAcMais();
+  $('aResumo2').textContent=`${pro.toLocaleString('pt-BR')} com paradigma próprio (decisão do gabinete no processo)`;
+  acMostrados=0; $('aRes').innerHTML=''; renderAcMais(); renderChips(); if(ACS.view==='planilha') renderSheet(); if($('acsBuild').open) renderVals();
 }
 let acMostrados=0;
 function renderAcMais(){
   const fim=Math.min(acFilt.length,acMostrados+150); let h='';
   for(let i=acMostrados;i<fim;i++){const a=acFilt[i];
     h+=`<li class="proc${a.processo===acSel?' sel':''}" data-p="${a.processo}"><div class="crow">
-      <div class="c0"><span class="tp ${a.proprias.length?'A':'M'}" title="${a.proprias.length?a.proprias.length+' decisão(ões) do gabinete neste processo':'sem decisão no banco'}" style="${a.proprias.length?'':'background:var(--c-chip);color:var(--c-mut2)'}">${a.proprias.length||'–'}</span></div>
+      <div class="c0"><span class="tp ${a.proprias.length?'A':'M'}" title="${a.proprias.length?a.proprias.length+' decisão(ões) do gabinete neste processo':'sem paradigma próprio'}" style="${a.proprias.length?'':'background:var(--c-chip);color:var(--c-mut2)'}">${a.proprias.length||'–'}</span></div>
       <div class="c1"><span class="num">${esc(a.processo)}</span><span class="sub" title="${esc(a.classe||'')}">${esc(a.classe||'classe n/i')}</span></div>
       <div class="c2 csep"><span class="ass" title="${esc(a.assunto||'')}">${esc(a.assunto||'(assunto não informado)')}</span>
         <div class="ctags"><span class="ct2" title="Tarefa atual">${esc(a._t.t.slice(0,48))}</span>${a._dias!=null?`<span class="ct2${a._dias>100?' dash':''}" style="${a._dias>100?'color:var(--c-s4);box-shadow:inset 0 0 0 1px var(--c-s4b)':''}" title="Dias na tarefa">${a._dias} d</span>`:''}${/sim/i.test(a.prioridade||'')?'<span class="ct2" style="background:var(--c-warnbg);color:var(--c-warn)">prioridade</span>':''}${/segredo|sigil/i.test(a.sigilo||'')?'<span class="ct2" style="background:var(--c-s4b);color:var(--c-s4)">sigilo</span>':''}${[...a.etiquetas].slice(0,3).map(e=>`<span class="ct2 dash">${esc(e.slice(0,28))}</span>`).join('')}</div></div>
@@ -1026,7 +1104,7 @@ const FAM={'APELACAO CIVEL':['ApCiv','Ap','ApelRemNec','ApReeNec'],'APELACAO / R
 function similares(a,lim=8){
   const chave=(a.assunto||'')+'|'+(a.classe||'');
   if(SIMCACHE.has(chave)) return SIMCACHE.get(chave).filter(x=>x.n!==a.processo).slice(0,lim);
-  const tk=tokens(a.assunto); if(!tk.length||(tk.length===1&&tk[0].length<7)){SIMCACHE.set(chave,[]);return []}
+  const tk=tokens(a.assunto); if(generico(tk,a.assunto)){SIMCACHE.set(chave,[]);return []}
   if(!IDXN) IDXN=IDX.map(x=>semAcento((x.e||'')+' '+(x.r||'')+' '+(x.cl||'')));
   const fam=FAM[semAcento(a.classe||'').toUpperCase()];
   const req=tk.length<=2?tk.length:Math.ceil(tk.length*0.6);
@@ -1044,7 +1122,7 @@ function modelosPara(a,lim=4){
   if(!MODS) return [];
   const tk=tokens(a.assunto), fam=semAcento(a.classe||'');
   const esp=/agravo/.test(fam)?'Agravo de instrumento':/remessa necessaria civel/.test(fam)?'Remessa necessária':/apelacao/.test(fam)?'Apelação':/conflito/.test(fam)?'Conflito de competência':'';
-  if(!tk.length||(tk.length===1&&tk[0].length<7)) return []; // uma palavra curta (ex.: “Seguro”) é genérica demais
+  if(generico(tk,a.assunto)) return []; // uma palavra curta comum (ex.: “Seguro”) é genérica demais; siglas (FIES, PIS) não
   if(!MOD_IDF){MOD_IDF=new Map();}
   const w=t=>{if(!MOD_IDF.has(t)){const df=MODS.reduce((n,m)=>n+(rxTok(t).test(m._txt)?1:0),0);MOD_IDF.set(t,Math.log((MODS.length+1)/(df+1)))}return MOD_IDF.get(t)};
   const tot=tk.reduce((s,t)=>s+w(t),0)||1;
@@ -1069,14 +1147,14 @@ async function abrirProcesso(num){
       ${a.indicador?`<div><span>Indicador</span>${esc(a.indicador)}${a.fase?' · '+esc(a.fase):''}</div>`:''}${a.conclusao?`<div><span>Conclusão</span>${esc(fmtData(a.conclusao))}</div>`:''}
       ${a.sigilo?`<div><span>Sigilo</span>${esc(a.sigilo)}</div>`:''}${a.etiquetas.size?`<div style="grid-column:1/-1"><span>Etiquetas</span>${esc([...a.etiquetas].join(' · '))}</div>`:''}
     </div>
-    <div class="dacts"><button class="btn sm pri" onclick="levarParaMinuta('${num}')" title="Abre o modelo sugerido na faceta Minutas, já vinculado a este processo e com os precedentes similares à mão">III · Gerar minuta</button>
+    <div class="dacts"><button class="btn sm pri" onclick="levarParaMinuta('${num}')" title="Abre o modelo sugerido na faceta Minutas, já vinculado a este processo e com os paradigmas similares à mão">III · Gerar minuta</button>
       <a class="btn sm" href="https://pje2g.trf3.jus.br/pje/ConsultaPublica/listView.seam?numProcesso=${num.replace(/\D/g,'')}" target="_blank" rel="noopener">Consulta pública PJe</a></div>
   </div>
   <div class="dbody">
-    <div class="kpis"><div class="kpi"><b>${a.proprias.length}</b><span>decisões do gabinete neste processo</span></div><div class="kpi"><b>${sims.length}</b><span>casos similares no banco</span></div><div class="kpi"><b>${mods.length}</b><span>modelos sugeridos</span></div></div>
-    ${a.proprias.length?`<h3 class="sec">Decisões já proferidas neste processo</h3><div class="sim-list">${a.proprias.map(x=>simHTML(x,'<span class="sc">mesmo processo</span>')).join('')}</div>`:''}
-    <h3 class="sec">Casos similares do acervo jurisprudencial</h3>
-    ${sims.length?`<div class="sim-list">${sims.map(x=>simHTML(x,`<span class="sc">${Math.round(x.score*100)}% do assunto</span>`)).join('')}</div><p class="ajuda">Semelhança pelo assunto CNJ (${esc(tokens(a.assunto).join(', '))}) na ementa e no resultado, mesma família de classe; prioriza a Turma Regional, texto integral e julgados recentes.</p>`:`<p class="ajuda">Nenhum similar pelo assunto “${esc(a.assunto||'')}”. Experimente buscar termos do caso na aba Jurisprudência.</p>`}
+    <div class="kpis"><div class="kpi"><b>${a.proprias.length}</b><span>paradigmas próprios (neste processo)</span></div><div class="kpi"><b>${sims.length}</b><span>paradigmas similares</span></div><div class="kpi"><b>${mods.length}</b><span>modelos sugeridos</span></div></div>
+    ${a.proprias.length?`<h3 class="sec">Paradigmas próprios — decisões já proferidas neste processo</h3><div class="sim-list">${a.proprias.map(x=>simHTML(x,'<span class="sc">mesmo processo</span>')).join('')}</div>`:''}
+    <h3 class="sec">Paradigmas similares</h3>
+    ${sims.length?`<div class="sim-list">${sims.map(x=>simHTML(x,`<span class="sc">${Math.round(x.score*100)}% do assunto</span>`)).join('')}</div><p class="ajuda">Semelhança pelo assunto CNJ (${esc(tokens(a.assunto).join(', '))}) na ementa e no resultado, mesma família de classe; prioriza a Turma Regional, texto integral e julgados recentes.</p>`:`<p class="ajuda">Nenhum paradigma similar pelo assunto “${esc(a.assunto||'')}”. Experimente buscar termos do caso na faceta I · Paradigmas.</p>`}
     <h3 class="sec">Modelos sugeridos</h3>
     ${mods.length?`<div class="sim-list">${mods.map(m=>`<div class="sim" onclick="setModulo('modelos');abrirModelo('${m.id}')"><div class="h"><span class="tp ${m.tipo==='acórdão'?'A':'M'}" style="min-width:20px;height:20px;font-size:10.5px">${m.tipo==='acórdão'?'A':'M'}</span><b>${esc(m.especie)} · ${esc(m.resultado)}</b><span class="ct2 org ${m.fase==='TRMS'?'oms':m.fase==='3T'?'o3':'o1'}">${{TRMS:'TRMS','1T':'1ª T','3T':'3ª T'}[m.fase]}</span><span class="sc">${m.frequencia} usos</span></div>${esc(m.tema||(m.palavras_chave||[]).join(' · '))}</div>`).join('')}</div>`:'<p class="ajuda">Nenhum modelo com assunto correspondente (assuntos muito genéricos não geram sugestão).</p>'}${mods.length?'<p class="ajuda">Sugestão automática pelo assunto CNJ e pela classe, priorizando a fase atual (TRMS) — confira a pertinência antes de usar.</p>':''}
   </div>`;
@@ -1100,17 +1178,20 @@ function valorInicial(c,m){
 function geradorHTML(m){
   const cs=camposDoModelo(m), a=MIN_PROC&&AC.get(MIN_PROC), fonte=POR_ID.get(m.fonte_modelo);
   const sims=a?(a._sims||similares(a)).slice(0,6):[];
+  const reg=regiaoRelatorio(m);
   const linhas=cs.map(c=>{
     const longo=/trecho|complementar|dispositivo|citação/.test(c.t);
+    const noRel=reg&&c.pos>=reg.rs&&c.pos<reg.re;
     const dica=c.t==='[dispositivo]'&&fonte&&fonte.r?`Dispositivo da decisão-base: ${fonte.r}`:(c.antes?'…'+c.antes:'');
     const v=esc(valorInicial(c,m));
-    return `<label for="gc${c.k}" title="${esc(dica)}">${esc(c.t.replace(/[\[\]]/g,''))}</label>${longo?`<textarea id="gc${c.k}" data-k="${c.k}" placeholder="${esc(dica)}">${v}</textarea>`:`<input id="gc${c.k}" data-k="${c.k}" value="${v}" placeholder="${esc(dica)}">`}`;
+    return `<label for="gc${c.k}" title="${esc(dica)}" ${noRel?'data-rel="1"':''}>${esc(c.t.replace(/[\[\]]/g,''))}${noRel?' <small>(relatório)</small>':''}</label>${longo?`<textarea id="gc${c.k}" data-k="${c.k}" ${noRel?'data-rel="1"':''} placeholder="${esc(dica)}">${v}</textarea>`:`<input id="gc${c.k}" data-k="${c.k}" ${noRel?'data-rel="1"':''} value="${v}" placeholder="${esc(dica)}">`}`;
   }).join('');
   return `<div class="gerador" id="gerador" data-m="${m.id}">
     <div class="lote">Processo</div>
     <div class="gl"><label>Vinculado</label><div>${a?`<span class="ponte a" onclick="setModulo('acervo');abrirProcesso('${a.processo}')">II · ${esc(a.processo)}</span> <span class="meta">${esc(a.classe||'')} · ${esc(a.assunto||'')}</span>`:`<span class="meta">Nenhum — abra um processo na faceta <b>II · Acervo</b> e use “Gerar minuta”, ou preencha os campos abaixo.</span>`}</div></div>
-    ${cs.length?`<div class="lote">Campos do modelo (${cs.length})</div><div class="gl">${linhas}</div>`:'<p class="ajuda">Este modelo não tem campos variáveis.</p>'}
-    ${sims.length?`<div class="lote">Precedentes do gabinete para citar · faceta I</div><div style="display:flex;flex-wrap:wrap;gap:6px">${sims.map(x=>`<span class="ponte j" onclick="inserirCitacao('${x.id}')" title="Inserir citação no campo selecionado (ou ao final)">+ ${esc(x.c)} ${esc(x.n)}</span>`).join('')}</div>`:''}
+    ${relatorioHTML(m,a)}
+    ${cs.length?`<div class="lote">Campos do modelo (${cs.length})<span class="meta" id="relNota" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div><div class="gl">${linhas}</div>`:'<p class="ajuda">Este modelo não tem campos variáveis.</p>'}
+    ${sims.length?`<div class="lote">Paradigmas para citar · faceta I</div><div style="display:flex;flex-wrap:wrap;gap:6px">${sims.map(x=>`<span class="ponte j" onclick="inserirCitacao('${x.id}')" title="Inserir a citação do paradigma no campo selecionado">+ ${esc(x.c)} ${esc(x.n)}</span>`).join('')}</div>`:''}
     <div class="lote">Minuta</div>
     <div class="modelo-txt" id="minPrev" style="background:var(--panel2);border:1px solid var(--line2);border-radius:8px;padding:14px 16px;max-height:420px;overflow:auto"></div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
@@ -1123,14 +1204,85 @@ function geradorHTML(m){
 let campoAtivo=null;
 document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.dataset.k!=null)campoAtivo=e.target});
 document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador'))atualizarMinuta()});
+document.addEventListener('change',e=>{if(e.target.closest&&e.target.closest('#gerador'))atualizarMinuta()});
+/* ---------- Relatório: dados do processo (fórmulas extraídas dos relatórios do gabinete) ---------- */
+const ESP_REL={'Apelação':'ap','Agravo de instrumento':'ai','Remessa necessária':'rn','Embargos de declaração':'ed'};
+function regiaoRelatorio(m){
+  const t=m.modelo;
+  const h=t.match(/^(RELAT[ÓO]RIO|DECIS[ÃA]O|R\s?E\s?L\s?A\s?T\s?[ÓO]\s?R\s?I\s?O|D\s?E\s?C\s?I\s?S\s?[ÃA]\s?O)\s*$/im);
+  const rs=h&&h.index<300?h.index+h[0].length:0;
+  const e=t.slice(rs).search(/^(É O RELAT[ÓO]RIO\.?|DECIDO\.?|V\s?O\s?T\s?O)\s*$/im);
+  return e<0?null:{rs,re:rs+e};
+}
+function relatorioHTML(m,a){
+  const esp=ESP_REL[m.especie]||'ap', R=(id,rot,ph,tipo)=>`<label for="${id}">${rot}</label>${tipo==='ta'?`<textarea id="${id}" data-relf placeholder="${esc(ph)}"></textarea>`:`<input id="${id}" data-relf placeholder="${esc(ph)}">`}`;
+  const sel=(id,rot,ops)=>`<label for="${id}">${rot}</label><select id="${id}" data-relf class="inp" style="height:32px">${ops.map(o=>`<option>${esc(o)}</option>`).join('')}</select>`;
+  const rec={ap:'Apelou',ai:'Agravante',rn:'',ed:'Embargante'}[esp];
+  return `<div class="lote">Relatório · dados do processo</div>
+  <div class="gl">
+    <label>Espécie</label><select id="rEsp" data-relf class="inp" style="height:32px">${[['ap','Apelação'],['ai','Agravo de instrumento'],['rn','Remessa necessária'],['ed','Embargos de declaração']].map(([v,t])=>`<option value="${v}"${v===esp?' selected':''}>${t}</option>`).join('')}</select>
+    ${R('rObj','Ação de origem','ex.: concessão de benefício por incapacidade'+(a&&a.assunto?' — assunto PJe: '+a.assunto:''))}
+    ${R('rDecId','ID da decisão recorrida','ex.: 287103188, f. 65')}
+    ${R('rDec','Decisão recorrida','ex.: julgou improcedente o pedido, condenando a autora ao pagamento de honorários…','ta')}
+    ${R('rRec','Recorrente','ex.: o INSS · a autora · a agravante'+(a&&a.poloAtivo&&!/#/.test(a.poloAtivo)?' — polo ativo: '+a.poloAtivo:''))}
+    ${R('rRecId','ID do recurso','ex.: 287103190')}
+    ${R('rAleg','Alegações (uma por linha)','cada linha vira um item (1), (2), (3)…','ta')}
+    ${sel('rContra','Contrarrazões',esp==='ai'?['Houve contraminuta (ID).','Não houve contraminuta.','Sem contraminuta.','—']:['Houve contrarrazões (ID).','Não houve contrarrazões.','Houve contrarrazões.','—'])}
+    ${R('rContraId','ID das contrarrazões','opcional')}
+    ${sel('rMpf','Ministério Público',['—','A Procuradoria Regional da República opinou pelo regular prosseguimento do feito (ID).','A Procuradoria Regional da República manifestou-se pelo desprovimento do recurso (ID).','O Ministério Público Federal opinou pelo desprovimento da remessa necessária (ID).','Com parecer do Ministério Público Federal, vieram os autos a esta Corte (ID).'])}
+    ${R('rMpfId','ID do parecer','opcional')}
+    ${R('rOutros','Outros fatos (opcional)','ex.: fato superveniente, pedido de efeito suspensivo…','ta')}
+  </div>
+  <p class="ajuda" style="margin-top:-4px">Preenchido o relatório, ele substitui o relatório do modelo (até “É o relatório” / “VOTO”). As fórmulas são as usadas pelo gabinete nos relatórios da Turma Regional.</p>`;
+}
+function vRel(id){const el=$(id);return el?el.value.trim():''}
+function comId(frase,id){return id?frase.replace('(ID)',`(ID ${id})`):frase.replace(' (ID)','')}
+function relAtivo(){return ['rObj','rDec','rRec','rAleg','rOutros','rDecId'].some(i=>vRel(i))}
+function montarRelatorio(){
+  const esp=vRel('rEsp')||'ap', obj=vRel('rObj').replace(/^a[çc][ãa]o de /i,''), dec=vRel('rDec').replace(/\.$/,''), decId=vRel('rDecId'), rec=vRel('rRec'), recId=vRel('rRecId');
+  const al=vRel('rAleg').split('\n').map(x=>x.trim().replace(/[;.]$/,'')).filter(Boolean);
+  const itens=al.length>1?al.map((x,i)=>`(${i+1}) ${x}`).join('; ').replace(/; (\(\d+\) [^;]*)$/,'; e $1')+'.':al.length?al[0]+'.':'';
+  const P=[];
+  if(esp==='ap'){
+    P.push(`Trata-se de apelação interposta em ação de ${obj||'[ação de origem]'}.`);
+    if(dec||decId) P.push(`A sentença${decId?` (ID ${decId})`:''} ${dec||'[decisão recorrida]'}.`);
+    if(rec||itens) P.push(`Apelou ${rec||'[recorrente]'}${recId?` (ID ${recId})`:''}, alegando, em síntese: ${itens||'[alegações]'}`.replace(/: \(1\)/,': (1)'));
+  }else if(esp==='ai'){
+    P.push(`Trata-se de agravo de instrumento à decisão que, em ação de ${obj||'[ação de origem]'}, ${dec||'[decisão agravada]'}${decId?` (ID ${decId})`:''}.`);
+    if(rec||itens) P.push(`${rec?rec.charAt(0).toUpperCase()+rec.slice(1):'A agravante'} alegou${recId?` (ID ${recId})`:''}, em suma: ${itens||'[alegações]'}`);
+  }else if(esp==='rn'){
+    P.push(`Trata-se de remessa necessária à sentença que ${dec||'[resultado da sentença]'}${decId?` (ID ${decId})`:''}, em ação de ${obj||'[ação de origem]'}.`);
+  }else{
+    P.push(`Trata-se de embargos de declaração${rec?` opostos por ${rec}`:''} contra acórdão${decId?` (ID ${decId})`:''} ${dec?'que '+dec:'[acórdão embargado]'}.`);
+    if(itens) P.push(`Alegou-se${recId?` (ID ${recId})`:''}, em suma: ${itens}`);
+  }
+  const ct=vRel('rContra'); if(ct&&ct!=='—') P.push(comId(ct,vRel('rContraId')));
+  const mp=vRel('rMpf'); if(mp&&mp!=='—') P.push(comId(mp,vRel('rMpfId')));
+  const ou=vRel('rOutros'); if(ou) P.push(...ou.split(/\n+/).map(x=>x.trim()).filter(Boolean));
+  return P.join('\n\n');
+}
+function partesModelo(m){const P=[];let last=0,k=0;m.modelo.replace(RX_CAMPO,(t,pos)=>{if(pos>last)P.push({a:last,b:pos});P.push({a:pos,b:pos+t.length,k:k++,t});last=pos+t.length;return t});if(last<m.modelo.length)P.push({a:last,b:m.modelo.length});return P}
 function textoMinuta(marcar){
-  const g=$('gerador'); if(!g) return ''; const m=MOD_POR.get(g.dataset.m); let k=0;
-  return m.modelo.replace(RX_CAMPO,t=>{const el=$('gc'+(k++));const v=el&&el.value.trim();return v?(marcar?'\u0001'+v+'\u0002':v):(marcar?'\u0003'+t+'\u0004':t)});
+  const g=$('gerador'); if(!g) return ''; const m=MOD_POR.get(g.dataset.m), src=m.modelo;
+  const reg=relAtivo()?regiaoRelatorio(m):null; const rel=reg?montarRelatorio():'';
+  const relTxt=marcar?'\u0005'+rel+'\u0006':rel;
+  let out='',inserido=false;
+  const campo=p=>{const el=$('gc'+p.k);const v=el&&el.value.trim();return v?(marcar?'\u0001'+v+'\u0002':v):(marcar?'\u0003'+p.t+'\u0004':p.t)};
+  for(const p of partesModelo(m)){
+    if(!reg||p.b<=reg.rs||p.a>=reg.re){if(reg&&!inserido&&p.a>=reg.re){out+='\n\n'+relTxt+'\n\n';inserido=true}out+=p.k!=null?campo(p):src.slice(p.a,p.b);continue}
+    if(p.k!=null) continue; // campo dentro do relatório substituído
+    if(p.a<reg.rs) out+=src.slice(p.a,reg.rs);
+    if(!inserido){out+='\n\n'+relTxt+'\n\n';inserido=true}
+    if(p.b>reg.re) out+=src.slice(reg.re,p.b);
+  }
+  if(reg&&!inserido) out+='\n\n'+relTxt;
+  return out.replace(/\n{3,}/g,'\n\n').trim();
 }
 function atualizarMinuta(){
   const p=$('minPrev'); if(!p) return; const t=textoMinuta(true);
-  p.innerHTML=esc(t).replace(/\u0001([\s\S]*?)\u0002/g,'<span style="background:var(--f-acervo-s);border-radius:3px">$1</span>').replace(/\u0003([\s\S]*?)\u0004/g,'<span class="cp">$1</span>');
+  p.innerHTML=esc(t).replace(/\u0005([\s\S]*?)\u0006/g,(x,r)=>'<span style="display:block;background:var(--f-juris-s);border-left:3px solid var(--f-juris);padding:4px 8px;border-radius:4px">'+r.replace(/\[[^\]\n]{1,60}\]/g,'<span class="cp">$&</span>')+'</span>').replace(/\u0001([\s\S]*?)\u0002/g,'<span style="background:var(--f-acervo-s);border-radius:3px">$1</span>').replace(/\u0003([\s\S]*?)\u0004/g,'<span class="cp">$1</span>');
   const pend=(t.match(/\u0003/g)||[]).length; $('minPend').textContent=pend?`${pend} campo(s) a preencher`:'todos os campos preenchidos';
+  const on=relAtivo(); $('gerador').classList.toggle('rel-on',on); const nt=$('relNota'); if(nt) nt.textContent=on?' · campos do relatório do modelo substituídos pelo relatório montado':'';
 }
 async function inserirCitacao(id){
   const x=POR_ID.get(id); try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o precedente.');return}
@@ -1152,7 +1304,7 @@ async function levarParaMinuta(num){
   if(mod){modF.fase=mod.fase;$('mfFase').querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.v===mod.fase));modF.min=5;$('mfMin').value='5';preencherModSelects();aplicarModelos();abrirModelo(mod.id);toast(`Modelo sugerido para ${esc(num)} aberto na faceta III.`)}
   else toast('Nenhum modelo sugerido pelo assunto — escolha um na lista.');
 }
-function limparAcervo(){AC.clear();ACFONTES.length=0;SIMCACHE.clear();acFilt=[];$('aRes').innerHTML='<div class="vazio">Acervo descartado.</div>';$('aResumo').textContent='Nenhum acervo importado.';$('aResumo2').textContent='';$('acFontes').innerHTML='';$('ctAc').textContent='importar planilhas';MIN_PROC=null;fecharLateral('acervo')}
+function limparAcervo(){ACS.termos=[];ACS.lote=[];ACS.crit=[];ACS.colf={};$('aSheet').innerHTML='';AC.clear();ACFONTES.length=0;SIMCACHE.clear();acFilt=[];$('aRes').innerHTML='<div class="vazio">Acervo descartado.</div>';$('aResumo').textContent='Nenhum acervo importado.';$('aResumo2').textContent='';$('acFontes').innerHTML='';$('ctAc').textContent='importar planilhas';MIN_PROC=null;fecharLateral('acervo')}
 const drop=$('acDrop');
 ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('on')}));
 ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('on')}));
@@ -1164,6 +1316,100 @@ chipsGrupo('afSit',v=>{acF.sit=v;prepararAcervo()});
 chipsGrupo('afBanco',v=>{acF.banco=v;aplicarAcervo()});
 [['afTarefa','tarefa'],['afAssunto','assunto'],['afClasse','classe'],['afOrdem','ordem']].forEach(([el,k])=>$(el).onchange=e=>{acF[k]=e.target.value;aplicarAcervo()});
 let adeb;$('aq').addEventListener('input',()=>{clearTimeout(adeb);adeb=setTimeout(aplicarAcervo,180)});
+
+/* ---------- Busca · Filtro · Seleção (padrão da Central de Comando) ---------- */
+const ACS={mode:'text',termos:[],lote:[],crit:[],view:'painel',sort:{c:null,d:1},colf:{},vsel:new Set(),
+  cols:new Set(['Processo','Classe','Assunto','Tarefa atual','Dias na tarefa','Etiquetas','Paradigmas próprios','Distribuição'])};
+const ACOLS={
+  'Processo':a=>a.processo,'Classe':a=>a.classe||'','Assunto':a=>a.assunto||'','Tarefa atual':a=>a._t.t||'','Dias na tarefa':a=>a._dias,
+  'Etiquetas':a=>[...a.etiquetas],'Prioridade':a=>a.prioridade||'','Sigilo':a=>a.sigilo||'','Indicador':a=>a.indicador||'','Fase':a=>a.fase||'',
+  'Complemento':a=>a.complemento||'','Polo ativo':a=>a.poloAtivo||'','Distribuição':a=>a.distribuicao||'','Conclusão':a=>a.conclusao||'',
+  'Última movimentação':a=>a.ultimaMov||'','Paradigmas próprios':a=>a.proprias.length||'','Todas as tarefas':a=>a.tarefas.map(t=>t.t)};
+const NUMCOL=new Set(['Dias na tarefa','Paradigmas próprios']);
+const canon=v=>semAcento(String(v??'')).trim();
+function valoresDe(a,col){const v=ACOLS[col](a);return Array.isArray(v)?v:[v]}
+function testaCrit(a,k){
+  const vs=valoresDe(a,k.col).map(canon).filter(x=>x!==''&&x!=='null');
+  if(k.op==='empty') return !vs.length;
+  if(k.op==='notempty') return vs.length>0;
+  const alvos=[...k.vals.map(x=>({t:canon(x),eq:true})),...k.tre.map(x=>({t:canon(x),eq:k.op==='equals'}))];
+  if(!alvos.length) return true;
+  const ok=x=>x.eq?vs.some(v=>v===x.t):vs.some(v=>v.includes(x.t));
+  return k.comb==='all'?alvos.every(ok):alvos.some(ok);
+}
+function passaACS(a){
+  if(ACS.lote.length&&!ACS.loteSet.has(a.processo)) return false;
+  for(const t of ACS.termos) if(!casa(a._txt,parseConsulta(t))) return false;
+  for(const k of ACS.crit) if(!testaCrit(a,k)) return false;
+  return true;
+}
+function renderChips(){
+  const ch=[...ACS.termos.map((t,i)=>`<button class="acs-chip" data-x="t${i}" title="Remover">texto: ${esc(t)} ×</button>`),
+    ...(ACS.lote.length?[`<button class="acs-chip lote" data-x="lote" title="Remover lote">LOTE ${ACS.lote.length} processos${ACS.loteFora?` · ${ACS.loteFora} fora do acervo`:''} ×</button>`]:[]),
+    ...ACS.crit.map((k,i)=>`<button class="acs-chip" data-x="c${i}" title="Remover">${esc(k.col)} · ${{contains:'contém',equals:'é igual a',notempty:'não vazio',empty:'vazio'}[k.op]}${k.vals.length+k.tre.length?` · ${k.comb==='all'?'todos':'qualquer'}: ${esc([...k.vals,...k.tre].slice(0,3).join(' | '))}${k.vals.length+k.tre.length>3?'…':''}`:''} ×</button>`)];
+  $('acsChips').innerHTML=ch.length?ch.join('')+'<button class="acs-chip clr" data-x="all">limpar critérios</button>':'';
+}
+$('acsChips').addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(!b)return;const x=b.dataset.x;
+  if(x==='all'){ACS.termos=[];ACS.lote=[];ACS.crit=[]}else if(x==='lote')ACS.lote=[];else if(x[0]==='t')ACS.termos.splice(+x.slice(1),1);else ACS.crit.splice(+x.slice(1),1);aplicarAcervo()});
+$('acsMode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ACS.mode=b.dataset.m;$('acsMode').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const lote=ACS.mode==='batch';$('aq').hidden=lote;$('aLote').hidden=!lote;$('acsApp').hidden=!lote;(lote?$('aLote'):$('aq')).focus()});
+function incluirTexto(){const v=$('aq').value.trim();if(!v)return;ACS.termos.push(v);$('aq').value='';aplicarAcervo()}
+function aplicarLote(){const nums=[...new Set(($('aLote').value.match(/\d{7}-?\d{2}\.?\d{4}\.?\d\.?\d{2}\.?\d{4}|\d{20}/g)||[]).map(normNum).filter(Boolean))];
+  if(!nums.length){toast('Nenhum número de processo reconhecido no lote.');return}
+  ACS.lote=[...new Set([...ACS.lote,...nums])];ACS.loteSet=new Set(ACS.lote);ACS.loteFora=ACS.lote.filter(n=>!AC.has(n)).length;$('aLote').value='';aplicarAcervo();
+  if(ACS.loteFora) toast(`${ACS.loteFora} processo(s) do lote não estão no acervo importado.`,5000)}
+$('aq').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();incluirTexto()}});
+$('acsInc').onclick=()=>ACS.mode==='batch'?aplicarLote():incluirTexto();
+$('acsApp').onclick=aplicarLote;
+/* construtor */
+$('acsCol').innerHTML=Object.keys(ACOLS).map(c=>`<option>${esc(c)}</option>`).join('');
+$('acsCol').value='Tarefa atual';
+function renderVals(){
+  const col=$('acsCol').value, q=canon($('acsVq').value), cnt=new Map();
+  for(const a of acFilt) for(const v of valoresDe(a,col)){if(v===''||v==null)continue;const k=String(v);cnt.set(k,(cnt.get(k)||0)+1)}
+  const vis=[...cnt].filter(([v])=>!q||canon(v).includes(q)).sort((x,y)=>y[1]-x[1]).slice(0,300);
+  $('acsVals').innerHTML=vis.map(([v,n])=>`<label><input type="checkbox" data-v="${esc(v)}"${ACS.vsel.has(v)?' checked':''}><span title="${esc(v)}">${esc(v)}</span><b>${n.toLocaleString('pt-BR')}</b></label>`).join('')||'<span class="meta" style="padding:4px">Nenhum valor nesta coluna no recorte atual.</span>';
+}
+$('acsBuild').addEventListener('toggle',()=>{if($('acsBuild').open)renderVals()});
+$('acsCol').onchange=()=>{ACS.vsel.clear();renderVals()};
+$('acsVq').addEventListener('input',renderVals);
+$('acsVals').addEventListener('change',e=>{const v=e.target.dataset.v;if(v==null)return;e.target.checked?ACS.vsel.add(v):ACS.vsel.delete(v)});
+$('acsAdd').onclick=()=>{
+  const k={col:$('acsCol').value,op:$('acsOp').value,comb:$('acsComb').value,vals:[...ACS.vsel],tre:$('acsTre').value.split(/[\n;,]+/).map(x=>x.trim()).filter(Boolean)};
+  if((k.op==='contains'||k.op==='equals')&&!k.vals.length&&!k.tre.length){toast('Marque valores existentes ou escreva trechos livres.');return}
+  ACS.crit.push(k);ACS.vsel.clear();$('acsTre').value='';aplicarAcervo();toast('Critério adicionado.')};
+/* painel | planilha */
+$('acsView').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ACS.view=b.dataset.v;$('acsView').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  const pl=ACS.view==='planilha';$('aSheet').hidden=!pl;$('aRes').hidden=pl;$('acsColsD').hidden=!pl;if(pl){renderColsL();renderSheet()}});
+function renderColsL(){$('acsColsL').innerHTML=Object.keys(ACOLS).map(c=>`<label><input type="checkbox" data-c="${esc(c)}"${ACS.cols.has(c)?' checked':''}> ${esc(c)}</label>`).join('')}
+$('acsColsL').addEventListener('change',e=>{const c=e.target.dataset.c;if(!c)return;e.target.checked?ACS.cols.add(c):ACS.cols.delete(c);renderSheet()});
+let shLim=300;
+function celula(a,c){const v=ACOLS[c](a);if(Array.isArray(v))return v.join(', ');if(v==null)return '';if(/Distribuição|Conclusão/.test(c)&&v)return fmtData(v);return String(v)}
+function linhasSheet(){
+  const cols=Object.keys(ACOLS).filter(c=>ACS.cols.has(c));
+  let L=acFilt.filter(a=>cols.every(c=>!ACS.colf[c]||canon(celula(a,c)).includes(canon(ACS.colf[c]))));
+  const {c,d}=ACS.sort;
+  if(c){L=[...L].sort((x,y)=>{const a1=ACOLS[c](x),b1=ACOLS[c](y);if(NUMCOL.has(c))return d*(((a1===''||a1==null)?-1:+a1)-((b1===''||b1==null)?-1:+b1));return d*String(Array.isArray(a1)?a1.join(','):a1??'').localeCompare(String(Array.isArray(b1)?b1.join(','):b1??''),'pt-BR')})}
+  return {cols,L};
+}
+function renderSheet(){
+  if(!AC.size){$('aSheet').innerHTML='<div class="vazio">Importe o acervo para ver a planilha.</div>';return}
+  const {cols,L}=linhasSheet(), foco=document.activeElement&&document.activeElement.dataset.f, pos=foco?document.activeElement.selectionStart:0;
+  $('aSheet').innerHTML=`<table class="sh-t"><thead><tr>${cols.map(c=>`<th data-s="${esc(c)}" class="${ACS.sort.c===c?(ACS.sort.d>0?'asc':'desc'):''}${NUMCOL.has(c)?' r':''}">${esc(c)}</th>`).join('')}</tr>
+    <tr class="shf">${cols.map(c=>`<th><input data-f="${esc(c)}" value="${esc(ACS.colf[c]||'')}" placeholder="filtrar"></th>`).join('')}</tr></thead>
+    <tbody>${L.slice(0,shLim).map(a=>`<tr data-p="${a.processo}" class="${a.processo===acSel?'sel':''}">${cols.map(c=>`<td class="${c==='Processo'?'mono':''}${NUMCOL.has(c)?' r':''}" title="${esc(celula(a,c))}">${esc(celula(a,c))}</td>`).join('')}</tr>`).join('')}</tbody></table>
+    <div class="sh-more">${L.length.toLocaleString('pt-BR')} linha(s)${L.length>shLim?` · exibindo ${shLim} <button class="btn sm" onclick="shLim+=500;renderSheet()">mostrar mais</button>`:''}</div>`;
+  if(foco){const el=$('aSheet').querySelector(`input[data-f="${CSS.escape(foco)}"]`);if(el){el.focus();el.setSelectionRange(pos,pos)}}
+}
+$('aSheet').addEventListener('click',e=>{const th=e.target.closest('th[data-s]');if(th){const c=th.dataset.s;ACS.sort=ACS.sort.c===c?{c,d:-ACS.sort.d}:{c,d:1};renderSheet();return}
+  const tr=e.target.closest('tr[data-p]');if(tr){abrirProcesso(tr.dataset.p);$('aSheet').querySelectorAll('tr.sel').forEach(x=>x.classList.remove('sel'));tr.classList.add('sel')}});
+let shdeb;$('aSheet').addEventListener('input',e=>{const c=e.target.dataset.f;if(c==null)return;ACS.colf[c]=e.target.value;clearTimeout(shdeb);shdeb=setTimeout(renderSheet,200)});
+function recorteAtual(){return ACS.view==='planilha'?linhasSheet().L:acFilt}
+function copiarNumeros(){const L=recorteAtual();if(!L.length){toast('Nada a copiar.');return}copiarTexto(L.map(a=>a.processo).join('\n'),`${L.length.toLocaleString('pt-BR')} número(s) copiado(s).`)}
+function exportarAcervo(){const L=recorteAtual();if(!L.length){toast('Nada a exportar.');return}
+  const cols=ACS.view==='planilha'?Object.keys(ACOLS).filter(c=>ACS.cols.has(c)):Object.keys(ACOLS);
+  const csv='﻿'+[cols,...L.map(a=>cols.map(c=>celula(a,c)))].map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(';')).join('\r\n');
+  const el=document.createElement('a');el.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));el.download=`acervo_recorte_${new Date().toISOString().slice(0,10)}.csv`;el.click();setTimeout(()=>URL.revokeObjectURL(el.href),5000)}
 $('btnFiltrosMob').onclick=()=>$('filtros').classList.toggle('aberto');
 if(matchMedia('(max-width:720px)').matches)$('btnFiltrosMob').style.display='grid';
 

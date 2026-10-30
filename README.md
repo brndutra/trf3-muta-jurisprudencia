@@ -2,10 +2,10 @@
 
 Decisões monocráticas e acórdãos em que o Desembargador Federal **Luís Carlos Hiroki Muta** figura como relator (ou relator para o acórdão), extraídos da **base pública de jurisprudência do TRF3** e organizados para consulta, pesquisa e verificação de integridade.
 
-**Central Juris · Acervo · Minutas:** **https://brndutra.github.io/trf3-muta-jurisprudencia/central/**
-- **I · Jurisprudência**: pesquisa, leitura, citação e verificação das 33.207 decisões.
-- **II · Acervo**: importa os relatórios do PJe/BI (só no navegador, nada é enviado) e cruza cada processo com o banco: decisões do gabinete no próprio processo, casos similares e modelos sugeridos.
-- **III · Minutas**: 752 modelos extraídos do acervo (`modelos/`), com gerador que preenche os campos, vincula o processo do acervo e insere citações de precedentes.
+**Central Paradigmas · Acervo · Minutas:** **https://brndutra.github.io/trf3-muta-jurisprudencia/central/**
+- **I · Paradigmas**: pesquisa, leitura, citação e verificação das 33.207 decisões do gabinete.
+- **II · Acervo**: importa os relatórios do PJe/BI (só no navegador, nada é enviado) e cruza cada processo com o banco: paradigmas próprios (decisões do gabinete no próprio processo), paradigmas similares e modelos sugeridos.
+- **III · Minutas**: 752 modelos extraídos do acervo (`modelos/`), com gerador que preenche os campos, vincula o processo do acervo e insere citações de paradigmas.
 
 **Painel de consulta (somente jurisprudência):** https://brndutra.github.io/trf3-muta-jurisprudencia/consulta/
 
@@ -36,7 +36,7 @@ MANIFESTO.json               hashes SHA-256 de cada arquivo e de cada registro +
 SHA256SUMS                   hashes dos arquivos (formato `sha256sum -c`)
 scripts/organizar.py         gera dados/, MANIFESTO e SHA256SUMS a partir dos JSON exportados
 scripts/modelos.py           extrai os modelos (arquétipos) de monocráticas e acórdãos → modelos/
-central/index.html           central tripartite: Jurisprudência · Acervo · Minutas
+central/index.html           central tripartite: Paradigmas · Acervo · Minutas
 modelos/modelos.json(.gz)    752 modelos por fase do gabinete, com texto-base rastreável
 ```
 
