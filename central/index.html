@@ -1695,8 +1695,8 @@ function ementaMatriz(X,esco){
     'I. Caso em exame', N('[caso em exame: recurso, decisão recorrida e pedido]'),
     'II. Questão em discussão', N('[questão em discussão]'),
     'III. Razões de decidir', ...(raz.length?raz:['[razões de decidir]']).map(N),
-    'IV. Dispositivo'+(disp.length?'':' e tese'), ...(disp.length?disp:['[dispositivo]']).map(N),
-    ...refs];
+    'IV. Dispositivo', ...(disp.length?disp:['[dispositivo]']).map(N),
+    ...(refs.length?['__________',...refs]:[])];
 }
 function textoMatriz(m){
   if(!MXT||!MXT.X) return '[modelo-matriz não carregado]';
