@@ -2,7 +2,9 @@
 
 Decisões monocráticas e acórdãos em que o Desembargador Federal **Luís Carlos Hiroki Muta** figura como relator (ou relator para o acórdão), extraídos da **base pública de jurisprudência do TRF3** e organizados para consulta, pesquisa e verificação de integridade.
 
-**Painel de consulta:** [`consulta/index.html`](consulta/index.html). Abra o arquivo no navegador; ele lê os dados diretamente deste repositório. Também funciona com uma cópia local (⚙ › *Abrir pasta local*).
+**Painel de consulta online:** **https://brndutra.github.io/trf3-muta-jurisprudencia/**
+
+O código do painel está em [`consulta/index.html`](consulta/index.html). Também pode ser aberto direto do arquivo, lendo os dados deste repositório, ou com uma cópia local (⚙ › *Abrir pasta local*). Links diretos para uma decisão: `…/consulta/#id=A00001`.
 
 ## Conteúdo
 
