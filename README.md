@@ -2,7 +2,12 @@
 
 Decisões monocráticas e acórdãos em que o Desembargador Federal **Luís Carlos Hiroki Muta** figura como relator (ou relator para o acórdão), extraídos da **base pública de jurisprudência do TRF3** e organizados para consulta, pesquisa e verificação de integridade.
 
-**Painel de consulta online:** **https://brndutra.github.io/trf3-muta-jurisprudencia/**
+**Central Juris · Acervo · Minutas:** **https://brndutra.github.io/trf3-muta-jurisprudencia/central/**
+- **I · Jurisprudência**: pesquisa, leitura, citação e verificação das 33.207 decisões.
+- **II · Acervo**: importa os relatórios do PJe/BI (só no navegador, nada é enviado) e cruza cada processo com o banco: decisões do gabinete no próprio processo, casos similares e modelos sugeridos.
+- **III · Minutas**: 752 modelos extraídos do acervo (`modelos/`), com gerador que preenche os campos, vincula o processo do acervo e insere citações de precedentes.
+
+**Painel de consulta (somente jurisprudência):** https://brndutra.github.io/trf3-muta-jurisprudencia/consulta/
 
 O código do painel está em [`consulta/index.html`](consulta/index.html). Também pode ser aberto direto do arquivo, lendo os dados deste repositório, ou com uma cópia local (⚙ › *Abrir pasta local*). Links diretos para uma decisão: `…/consulta/#id=A00001`.
 
@@ -30,6 +35,9 @@ dados/monocraticas/AAAA.json.gz  monocráticas por ano da decisão
 MANIFESTO.json               hashes SHA-256 de cada arquivo e de cada registro + contagens
 SHA256SUMS                   hashes dos arquivos (formato `sha256sum -c`)
 scripts/organizar.py         gera dados/, MANIFESTO e SHA256SUMS a partir dos JSON exportados
+scripts/modelos.py           extrai os modelos (arquétipos) de monocráticas e acórdãos → modelos/
+central/index.html           central tripartite: Jurisprudência · Acervo · Minutas
+modelos/modelos.json(.gz)    752 modelos por fase do gabinete, com texto-base rastreável
 ```
 
 Os arquivos são JSON compactados com gzip (`zcat dados/acordaos/2021.json.gz | jq '.registros[0]'`).
@@ -67,3 +75,7 @@ sha256sum -c SHA256SUMS
 ```
 
 O `.gz` é gerado com `mtime=0`; portanto a mesma entrada produz os mesmos bytes.
+
+## Modelos
+
+`scripts/modelos.py` identifica, em cada fase do gabinete (3ª Turma 2020–23, 1ª Turma 2023–24, Turma Regional de MS 2026), os parágrafos repetidos literalmente em várias decisões e agrupa as decisões que compartilham o mesmo conjunto desses blocos. Para cada grupo com 5 ou mais decisões, o modelo reproduz a decisão mais típica (`fonte_modelo`), mantendo o texto fixo — inclusive precedentes citados com suas datas — e trocando por `[campos]` apenas o que varia entre os casos (`[trecho próprio do caso]`, `ID [nº]`, `[dispositivo]` etc.). Nenhum trecho é redigido pelo algoritmo.

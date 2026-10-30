@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Central Juris · Acervo · Minutas — Gabinete CMT · TRF3</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
+<script>try{if(localStorage.getItem('acv_tema')==='noturno')document.documentElement.setAttribute('data-tema','noturno')}catch(e){}</script>
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#f7f8f8;--panel:#f9fafa;--panel2:#ffffff;--field:#f1f3f5;--line:#e6e8eb;--line2:#dbdee1;
+  --text:#1d2025;--muted:#5f6670;--faint:#8c929a;--accent:#275ba5;--accent-soft:rgba(45,103,183,.10);--accent-line:rgba(45,103,183,.42);
+  --green:#2f7552;--green-soft:rgba(47,117,82,.10);--red:#c02b2b;--amber:#9a6a12;--amber-soft:rgba(216,168,70,.16);
+  --h-bg:#2e3137;--h-bg2:#34383f;--h-field:#23262b;--h-line:#3f434b;--h-line2:#4a4f58;--h-text:#e9ebee;--h-muted:#9aa0a9;--h-gold:#d8a846;
+  --mark:#fde7a6;--shadow:0 1px 2px rgba(20,24,30,.05),0 6px 18px rgba(20,24,30,.06);
+  --serif:"Georgia","Cambria","Times New Roman",serif;
+}
+html[data-tema="noturno"]{
+  --bg:#26292e;--panel:#2c3036;--panel2:#30343a;--field:#23262b;--line:#383c43;--line2:#444951;
+  --text:#e3e6ea;--muted:#a3a9b2;--faint:#7f858e;--accent:#8fb3e6;--accent-soft:rgba(143,179,230,.12);--accent-line:rgba(143,179,230,.45);
+  --green:#7cc19c;--green-soft:rgba(124,193,156,.12);--red:#ef8a8a;--amber:#e3c47c;--amber-soft:rgba(216,168,70,.14);--mark:#6b5418;--shadow:0 1px 2px rgba(0,0,0,.3);
+}
+html,body{margin:0;height:100%}
+body{display:flex;flex-direction:column;background:var(--bg);color:var(--text);font:14px/1.45 Inter,"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+a{color:var(--accent)}
+kbd{font:600 10.5px/1 ui-monospace,Consolas,monospace;border:1px solid var(--line2);border-radius:4px;padding:2px 5px;color:var(--muted)}
+
+/* ===== appbar (padrão Gabinete CMT) ===== */
+nav.appbar{display:flex;align-items:center;gap:16px;padding:9px 18px;background:var(--h-bg);border-bottom:1px solid var(--h-line);box-shadow:0 1px 0 rgba(0,0,0,.25),0 6px 18px rgba(0,0,0,.12);color:var(--h-text);color-scheme:dark;flex:0 0 auto;position:relative;z-index:5}
+.brand{display:flex;flex-direction:column;justify-content:center}
+.brand-ey{font:800 10px/1.05 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--h-gold);white-space:nowrap;margin-bottom:2px}
+.brand-t{display:flex;align-items:center;gap:9px;margin:0;font-family:"Arial Narrow","Roboto Condensed","Helvetica Neue",Inter,system-ui,sans-serif;font-stretch:condensed;font-size:23px;line-height:1;font-weight:800;letter-spacing:.01em;text-transform:uppercase;color:#fff;white-space:nowrap}
+.brand-uf{display:inline-flex;align-items:center;height:18px;padding:0 7px;border:1px solid rgba(216,168,70,.55);border-radius:4px;color:var(--h-gold);font:800 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:.06em}
+.tabs{display:flex;border:1px solid var(--h-line2);border-radius:7px;overflow:hidden}
+.tab{background:transparent;color:#c9cdd3;border:0;padding:7px 14px;cursor:pointer;font-weight:600;font-size:13px;display:flex;gap:8px;align-items:center}
+.tab+.tab{border-left:1px solid var(--h-line2)}
+.tab:hover:not(.active){background:var(--h-bg2);color:#fff}
+.tab.active{background:#f1f2f4;color:#1d2024}
+.tab .ct{font:700 10.5px/1 Inter;padding:3px 6px;border-radius:9px;background:rgba(255,255,255,.08);color:var(--h-muted)}
+.tab.active .ct{background:#dfe2e6;color:#4b525c}
+.spacer{flex:1}
+.status{display:flex;align-items:center;gap:7px;color:var(--h-muted);font-size:12px;white-space:nowrap}
+.status i{width:8px;height:8px;border-radius:50%;background:#7b818a;display:inline-block}
+.status i.ok{background:#5cbf8a}.status i.warn{background:var(--h-gold)}.status i.err{background:#e06666}
+.icobtn{width:34px;height:34px;display:grid;place-items:center;border-radius:7px;border:1px solid var(--h-line2);background:transparent;color:#c9cdd3;cursor:pointer}
+.icobtn:hover{background:var(--h-bg2);color:#fff}
+.icobtn svg{width:17px;height:17px}
+
+/* ===== layout ===== */
+main{flex:1;display:grid;grid-template-columns:290px minmax(380px,1fr) minmax(420px,1.25fr);min-height:0}
+main.sem-detalhe{grid-template-columns:290px 1fr 0}
+aside.filtros{border-right:1px solid var(--line2);background:var(--panel);overflow:auto;padding:16px 16px 28px}
+section.lista{display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--line2)}
+section.detalhe{min-height:0;overflow:auto;background:var(--panel2)}
+main.sem-detalhe section.detalhe{display:none}
+
+.grp{margin-bottom:16px}
+.lbl{display:block;font:800 10px/1 Inter,system-ui;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0 0 7px}
+.inp,select.inp{width:100%;height:34px;border:1px solid var(--line2);background:var(--panel2);border-radius:7px;padding:0 10px;outline:none}
+.inp:focus{border-color:var(--accent-line);box-shadow:0 0 0 3px var(--accent-soft)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line2);background:var(--panel2);border-radius:999px;padding:4px 10px;font-size:12px;cursor:pointer;color:var(--muted);user-select:none}
+.chip.on{background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent);font-weight:600}
+.btn{height:34px;padding:0 13px;border-radius:7px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.btn:hover{border-color:var(--accent-line);color:var(--accent)}
+a.btn{text-decoration:none;color:var(--text)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+html[data-tema="noturno"] .btn.pri{color:#1d2025}
+.btn.pri:hover{filter:brightness(1.08);color:#fff}
+.btn.sm{height:28px;padding:0 10px;font-size:12px}
+.btn[disabled]{opacity:.5;cursor:default}
+.ajuda{font-size:12px;color:var(--muted);margin:6px 0 0}
+.ajuda code{background:var(--field);padding:1px 4px;border-radius:3px;font-size:11.5px}
+hr.sep{border:0;border-top:1px solid var(--line2);margin:18px 0}
+
+/* barra de busca da lista */
+.lbar{padding:12px 16px;border-bottom:1px solid var(--line2);background:var(--panel);display:flex;flex-direction:column;gap:9px}
+.qwrap{position:relative}
+.qwrap svg{position:absolute;left:11px;top:10px;width:16px;height:16px;color:var(--faint)}
+.qwrap .inp{padding-left:34px;height:38px;font-size:14.5px}
+.qmodo{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.qmodo label{display:flex;align-items:center;gap:5px;cursor:pointer}
+.resumo{display:flex;align-items:center;gap:10px;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.resumo b{color:var(--text)}
+.prog{height:3px;background:var(--line);border-radius:3px;overflow:hidden;display:none}
+.prog.on{display:block}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+ul.res{list-style:none;margin:0;padding:0;overflow:auto;flex:1}
+ul.res li{padding:11px 16px 12px;border-bottom:1px solid var(--line);cursor:pointer;position:relative}
+ul.res li:hover{background:var(--accent-soft)}
+ul.res li.sel{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+.r1{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px}
+.proc{font:700 13px/1.2 ui-monospace,"SF Mono",Consolas,monospace;letter-spacing:-.01em}
+.tag{font:700 10px/1 Inter;letter-spacing:.04em;padding:3px 6px;border-radius:4px;border:1px solid var(--line2);color:var(--muted);text-transform:uppercase}
+.tag.M{color:var(--amber);border-color:rgba(216,168,70,.55);background:var(--amber-soft)}
+.tag.A{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
+.tag.k-apenas_acordao,.tag.k-apenas_ementa{color:var(--faint);border-style:dashed}
+.meta{font-size:12px;color:var(--muted)}
+.prev{font-size:13px;color:var(--text);margin-top:5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.resul{font-size:12px;color:var(--green);margin-top:4px;font-weight:600}
+.hit{font-size:12.5px;color:var(--muted);margin-top:5px;border-left:2px solid var(--h-gold);padding-left:8px}
+mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
+.mais{padding:14px;text-align:center}
+.vazio{padding:40px 24px;text-align:center;color:var(--muted)}
+
+/* detalhe */
+.dhead{position:sticky;top:0;background:var(--panel2);border-bottom:1px solid var(--line2);padding:14px 22px 12px;z-index:2}
+.dtit{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.dtit .proc{font-size:15.5px}
+.dx{margin-left:auto;border:0;background:transparent;cursor:pointer;color:var(--muted);font-size:20px;line-height:1}
+.dmeta{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px 18px;margin:10px 0 10px;font-size:12.5px}
+.dmeta div span{display:block;font:800 9.5px/1.2 Inter;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.dacts{display:flex;gap:6px;flex-wrap:wrap}
+.dbody{padding:18px 26px 50px;max-width:880px}
+.aviso{font-size:12.5px;border:1px solid rgba(216,168,70,.55);background:var(--amber-soft);border-radius:7px;padding:9px 12px;margin:0 0 16px;color:var(--text)}
+.aviso.ok{border-color:rgba(47,117,82,.45);background:var(--green-soft)}
+.aviso.err{border-color:rgba(192,43,43,.45);background:rgba(192,43,43,.08)}
+h3.sec{font:800 10.5px/1 Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:22px 0 10px;display:flex;align-items:center;gap:8px}
+h3.sec:after{content:"";flex:1;border-top:1px solid var(--line2)}
+.texto{font-family:var(--serif);font-size:15.5px;line-height:1.62;white-space:pre-wrap;word-wrap:break-word;text-align:justify;hyphens:auto}
+.ementa-box{font-family:var(--serif);font-size:14.5px;line-height:1.55;white-space:pre-wrap;background:var(--field);border-radius:8px;padding:14px 16px;border:1px solid var(--line)}
+.partes{font-size:13px;display:grid;grid-template-columns:max-content 1fr;gap:3px 12px}
+.partes b{font-weight:600;color:var(--muted)}
+.hash{font:11.5px/1.4 ui-monospace,Consolas,monospace;color:var(--muted);word-break:break-all}
+
+/* diálogo */
+dialog{border:1px solid var(--line2);border-radius:12px;padding:0;background:var(--panel2);color:var(--text);width:min(640px,94vw);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(20,22,26,.45)}
+.dlg-h{padding:16px 20px;border-bottom:1px solid var(--line2);font-weight:700;display:flex;align-items:center}
+.dlg-b{padding:16px 20px;font-size:13.5px}
+.dlg-f{padding:12px 20px;border-top:1px solid var(--line2);display:flex;gap:8px;justify-content:flex-end}
+table.st{border-collapse:collapse;width:100%;font-size:12.5px}
+table.st td,table.st th{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left}
+table.st th{font-weight:700;color:var(--muted)}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#2e3137;color:#fff;padding:9px 16px;border-radius:8px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:50;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw}
+.toast.on{opacity:1}
+.carregando{position:fixed;inset:0;display:grid;place-items:center;background:var(--bg);z-index:40}
+.carregando .cx{text-align:center;color:var(--muted)}
+.carregando .cx b{display:block;color:var(--text);font-size:16px;margin-bottom:6px}
+/* ===== card do processo (padrão Gabinete CMT · card funcional) ===== */
+:root{--c-ink:#16283a;--c-ink2:#43566b;--c-mut:#6b7d90;--c-mut2:#93a3b3;--c-line:#e6ebef;--c-line2:#eef2f5;--c-bg:#eef1f4;--c-panel:#f5f7f9;--c-chip:#f2f5f7;--c-w:#fff;--c-navy:#1f3d63;--c-teal:#123440;--c-ok:#22744f;--c-okbg:#e6f3ec;--c-warn:#8b5a12;--c-warnbg:#fdf3dc;--c-s1:#2a4f9e;--c-s1b:#e8eef9;--c-s2:#7a4fb0;--c-s2b:#f1eaf9;--c-s3:#b83d7a;--c-s3b:#fbe8f1;--c-s4:#8c2f47;--c-s4b:#f6e6ea}
+html[data-tema="noturno"]{--c-ink:#e3e6ea;--c-ink2:#c3c9d1;--c-mut:#a3a9b2;--c-mut2:#7f858e;--c-line:#3a3f46;--c-line2:#353a41;--c-bg:#26292e;--c-panel:#2a2e34;--c-chip:#353a41;--c-w:#30343a;--c-navy:#8fb3e6;--c-teal:#d8a846;--c-okbg:rgba(124,193,156,.14);--c-ok:#7cc19c;--c-warnbg:rgba(216,168,70,.14);--c-warn:#e3c47c;--c-s1b:rgba(143,179,230,.14);--c-s1:#8fb3e6;--c-s2b:rgba(180,150,230,.14);--c-s2:#bba4e6;--c-s3b:rgba(230,140,190,.14);--c-s3:#e6a0c4;--c-s4b:rgba(220,130,150,.14);--c-s4:#e39aaa}
+ul.res{background:var(--c-bg);padding:8px 10px 20px;display:flex;flex-direction:column;gap:6px;font:500 12px/1.35 Figtree,Inter,system-ui,sans-serif;color:var(--c-ink)}
+ul.res li.proc{background:var(--c-w);border-radius:12px;box-shadow:0 0 0 1px var(--c-line);padding:0;border:0;cursor:default}
+ul.res li.proc:hover{background:var(--c-w);box-shadow:0 0 0 1px #d5dde3}
+ul.res li.proc.sel{box-shadow:0 0 0 2px var(--c-navy),0 6px 18px rgba(22,40,58,.08)}
+ul.res li.proc.open{box-shadow:0 0 0 1px #d5dde3,0 6px 18px rgba(22,40,58,.06)}
+.crow{display:grid;grid-template-columns:62px minmax(150px,208px) minmax(0,1fr) auto;align-items:center;column-gap:8px;padding:6px 10px;min-height:50px;cursor:pointer}
+li.proc.open .crow{border-bottom:1px solid var(--c-line2)}
+.c0{display:flex;align-items:center;gap:6px}
+.chev{width:20px;height:22px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:6px;background:var(--c-chip);color:var(--c-teal);padding:0;cursor:pointer}
+.chev svg{width:12px;height:12px;transition:transform .15s}
+li.proc.open .chev svg{transform:rotate(180deg)}
+.tp{min-width:26px;height:26px;padding:0 6px;border-radius:7px;font:800 12px Figtree,Inter,system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center}
+.tp.A{background:var(--c-s1b);color:var(--c-s1)}.tp.M{background:var(--c-warnbg);color:var(--c-warn)}
+.c1,.c2{display:flex;flex-direction:column;justify-content:center;gap:3px;min-width:0;line-height:1.2}
+.c1 .num{font:600 12.5px ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+.c1 .sub{font:600 11px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.csep{border-left:1px solid var(--c-line2);padding-left:10px}
+.ass{font:700 12.5px Figtree,Inter,system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ctags{display:flex;align-items:center;gap:4px;min-width:0;overflow:hidden}
+.ct2{height:16px;display:inline-flex;align-items:center;padding:0 6px;border-radius:4px;font:700 9.5px Figtree,Inter,system-ui,sans-serif;white-space:nowrap;background:var(--c-chip);color:var(--c-ink2)}
+.ct2.org{font-weight:800}.ct2.o3{background:var(--c-s1b);color:var(--c-s1)}.ct2.oms{background:var(--c-s4b);color:var(--c-s4)}.ct2.o1{background:var(--c-s2b);color:var(--c-s2)}.ct2.ooutro{background:var(--c-s3b);color:var(--c-s3)}
+.ct2.res{background:var(--c-okbg);color:var(--c-ok)}
+.ct2.dash{background:transparent;color:var(--c-mut2);box-shadow:inset 0 0 0 1px var(--c-line)}
+.c3{display:flex;align-items:center;gap:2px}
+.c3 .dt{font:600 11px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut);margin-right:6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ib{width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--c-mut);border-radius:6px;padding:0;cursor:pointer;text-decoration:none}
+.ib:hover{background:var(--c-chip);color:var(--c-ink)}
+.ib svg{width:14px;height:14px}
+.cbody{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:8px;padding:8px 10px 10px}
+.pnl{background:var(--c-panel);border-radius:10px;padding:8px 10px;min-width:0}
+.pnl .lb{font:700 9.5px Figtree,Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--c-mut);margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.pnl .lb .hint{margin-left:auto;letter-spacing:0;text-transform:none;font:700 10px Figtree,Inter,system-ui,sans-serif;color:var(--c-navy);background:var(--c-s1b);border-radius:4px;padding:0 5px;height:15px;display:inline-flex;align-items:center}
+.pnl .tx{font:500 12px/1.45 Figtree,Inter,system-ui,sans-serif;color:var(--c-ink2)}
+.pnl .note{font:500 11px/1.4 Figtree,Inter,system-ui,sans-serif;color:var(--c-ink2);background:var(--c-w);border-radius:6px;padding:6px 8px;border-left:3px solid #7cc3a0;margin-top:6px}
+.pr{display:grid;grid-template-columns:86px minmax(0,1fr);column-gap:8px;padding:3px 0;border-bottom:1px solid var(--c-line)}
+.pr:last-child{border-bottom:0}
+.pr .pl{font:600 11px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut)}
+.pr .pv{font:500 12px Figtree,Inter,system-ui,sans-serif;color:var(--c-ink);min-width:0;overflow-wrap:anywhere}
+.cfoot{grid-column:1/-1;display:flex;gap:6px;justify-content:flex-end}
+.mini{height:28px;display:inline-flex;align-items:center;gap:5px;border:0;border-radius:6px;background:var(--c-chip);color:var(--c-ink2);font:600 12px Figtree,Inter,system-ui,sans-serif;padding:0 10px;cursor:pointer;text-decoration:none}
+.mini:hover{color:var(--c-ink)}
+.mini.pri{background:var(--c-teal);color:#fff}
+html[data-tema="noturno"] .mini.pri{color:#1d2025}
+.mini svg{width:13px;height:13px}
+ul.res .vazio,ul.res .mais{background:transparent}
+main:not(.sem-detalhe) .crow{grid-template-columns:62px minmax(140px,190px) minmax(0,1fr) auto}
+main:not(.sem-detalhe) .c3 .dt{display:none}
+main:not(.sem-detalhe) .cbody{grid-template-columns:1fr}
+main.modulo[hidden]{display:none!important}
+/* ===== tripartição: três facetas distintas e encadeadas ===== */
+:root{--f-juris:#5b8fd6;--f-juris-s:rgba(91,143,214,.16);--f-acervo:#4fb38a;--f-acervo-s:rgba(79,179,138,.16);--f-minuta:#d8a846;--f-minuta-s:rgba(216,168,70,.16)}
+.facetas{display:flex;align-items:center;gap:6px;margin-left:8px}
+.faceta{display:flex;align-items:center;gap:10px;height:44px;padding:0 14px 0 8px;border-radius:10px;border:1px solid var(--h-line2);background:var(--h-field);color:#c9cdd3;cursor:pointer;position:relative;transition:all .15s;text-align:left}
+.faceta:hover{border-color:var(--fc);color:#fff}
+.faceta .fn{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font:800 11.5px/1 Georgia,serif;letter-spacing:.02em;background:var(--fcs);color:var(--fc);border:1px solid color-mix(in srgb,var(--fc) 45%,transparent)}
+.faceta .ft{display:flex;flex-direction:column;gap:2px;line-height:1.1}
+.faceta .ft b{font:700 13.5px Inter,system-ui,sans-serif;color:inherit;letter-spacing:.01em}
+.faceta .ft small{font:600 10.5px Inter,system-ui,sans-serif;color:var(--h-muted);white-space:nowrap}
+.faceta.active{background:var(--fcs);border-color:var(--fc);color:#fff;box-shadow:inset 0 -3px 0 var(--fc)}
+.faceta.active .fn{background:var(--fc);color:#1d2024}
+.faceta.active .ft small{color:#d5d9de}
+.fluxo{color:var(--h-line2);display:grid;place-items:center}
+.fluxo svg{width:16px;height:16px}
+main.modulo{border-top:3px solid var(--fc-main,var(--f-juris))}
+main.modulo[data-mod="juris"]{--fc-main:var(--f-juris)}
+main.modulo[data-mod="acervo"]{--fc-main:var(--f-acervo)}
+main.modulo[data-mod="modelos"]{--fc-main:var(--f-minuta)}
+main.modulo .lbar{position:relative}
+.fac-tit{display:flex;align-items:center;gap:8px;font:800 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--fc-main);margin:0 0 2px}
+.fac-tit i{font-style:normal;width:18px;height:18px;border-radius:5px;display:grid;place-items:center;background:var(--fc-main);color:#1d2024;font:800 9.5px/1 Georgia,serif;letter-spacing:0}
+.fac-tit span{color:var(--faint);letter-spacing:.04em;text-transform:none;font-weight:600}
+.ponte{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;font:700 11px Inter,system-ui,sans-serif;cursor:pointer;border:1px solid;white-space:nowrap}
+.ponte.j{color:var(--f-juris);border-color:color-mix(in srgb,var(--f-juris) 45%,transparent);background:var(--f-juris-s)}
+.ponte.a{color:var(--f-acervo);border-color:color-mix(in srgb,var(--f-acervo) 45%,transparent);background:var(--f-acervo-s)}
+.ponte.m{color:#a87b1c;border-color:color-mix(in srgb,var(--f-minuta) 55%,transparent);background:var(--f-minuta-s)}
+html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
+.gerador{background:var(--c-panel);border-radius:12px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--f-minuta) 40%,transparent)}
+.gerador .gl{display:grid;grid-template-columns:150px 1fr;gap:6px 10px;align-items:start;margin-bottom:10px}
+.gerador label{font:600 11.5px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut);padding-top:6px}
+.gerador input,.gerador textarea{width:100%;border:1px solid var(--line2);background:var(--panel2);border-radius:7px;padding:6px 9px;font:500 13px Figtree,Inter,system-ui,sans-serif;color:var(--text)}
+.gerador textarea{min-height:58px;resize:vertical;line-height:1.4}
+.gerador .lote{font:700 10px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut2);text-transform:uppercase;letter-spacing:.08em;margin:10px 0 6px}
+@media(max-width:1250px){.faceta .ft small{display:none}.faceta{height:38px}}
+.drop{border:1.5px dashed var(--line2);border-radius:10px;padding:14px;text-align:center;font-size:13px;background:var(--panel2);transition:all .15s}
+.drop.on{border-color:var(--accent);background:var(--accent-soft)}
+.sim-list{display:flex;flex-direction:column;gap:6px}
+.sim{background:var(--c-panel);border-radius:9px;padding:8px 10px;cursor:pointer;font:500 12px/1.4 Figtree,Inter,system-ui,sans-serif;color:var(--c-ink2);border:1px solid transparent}
+.sim:hover{border-color:var(--accent-line)}
+.sim .h{display:flex;gap:6px;align-items:center;margin-bottom:3px;flex-wrap:wrap}
+.sim .h .num{font:600 12px ui-monospace,Menlo,Consolas,monospace;color:var(--c-ink)}
+.sim .sc{margin-left:auto;font:700 10px Figtree,Inter,system-ui,sans-serif;color:var(--c-ok)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin:4px 0 6px}
+.kpi{background:var(--c-panel);border-radius:9px;padding:8px 10px}
+.kpi b{display:block;font:800 18px/1.1 Figtree,Inter,system-ui,sans-serif;color:var(--c-ink)}
+.kpi span{font:600 10.5px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut)}
+.modelo-txt{font-family:var(--serif);font-size:15px;line-height:1.6;white-space:pre-wrap;text-align:justify}
+.modelo-txt .cp{background:var(--amber-soft);color:var(--amber);border-radius:3px;padding:0 3px;font-family:Inter,system-ui,sans-serif;font-size:12.5px;font-weight:600}
+@media(max-width:1100px){main,main.sem-detalhe{grid-template-columns:250px 1fr}section.detalhe{position:fixed;inset:56px 0 0 0;z-index:20}main.sem-detalhe section.detalhe{display:none}}
+@media(max-width:720px){main,main.sem-detalhe{grid-template-columns:1fr}aside.filtros{display:none}aside.filtros.aberto{display:block;position:fixed;inset:56px 0 0 0;z-index:21}.status{display:none}.brand-ey{display:none}}
+@media print{nav.appbar,aside.filtros,section.lista,.dacts,.dx{display:none!important}main{display:block}section.detalhe{display:block!important}}
+</style>
+</head>
+<body>
+<nav class="appbar">
+  <button class="icobtn" id="btnFiltrosMob" title="Filtros" style="display:none" aria-label="Filtros"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button>
+  <div class="brand">
+    <span class="brand-ey">TRF3 · Gab. Des. Fed. Carlos Muta</span>
+    <h1 class="brand-t">Gabinete CMT<span class="brand-uf" title="Turma Regional de Mato Grosso do Sul">MS</span></h1>
+  </div>
+  <nav class="facetas" role="tablist" aria-label="Facetas da central">
+    <button class="faceta mtab active" data-mod="juris" style="--fc:var(--f-juris);--fcs:var(--f-juris-s)" onclick="setModulo('juris')" title="Alt+1" role="tab">
+      <span class="fn">I</span><span class="ft"><b>Jurisprudência</b><small><span id="ctT">—</span> decisões do gabinete</small></span></button>
+    <span class="fluxo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    <button class="faceta mtab" data-mod="acervo" style="--fc:var(--f-acervo);--fcs:var(--f-acervo-s)" onclick="setModulo('acervo')" title="Alt+2" role="tab">
+      <span class="fn">II</span><span class="ft"><b>Acervo</b><small><span id="ctAc">importar planilhas</span></small></span></button>
+    <span class="fluxo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    <button class="faceta mtab" data-mod="modelos" style="--fc:var(--f-minuta);--fcs:var(--f-minuta-s)" onclick="setModulo('modelos')" title="Alt+3" role="tab">
+      <span class="fn">III</span><span class="ft"><b>Minutas</b><small><span id="ctMod">—</span> modelos extraídos</small></span></button>
+  </nav>
+  <div class="spacer"></div>
+  <div class="status"><i id="stDot"></i><span id="stTxt">carregando índice…</span></div>
+  <button class="icobtn" onclick="abrirSobre()" title="Fonte, autenticidade e verificação" aria-label="Sobre o acervo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></button>
+  <button class="icobtn" onclick="alternarTema()" title="Tema claro/noturno" aria-label="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  <button class="icobtn" onclick="abrirConfig()" title="Fonte dos dados" aria-label="Configurações"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+</nav>
+
+<main class="sem-detalhe modulo" id="main" data-mod="juris">
+  <aside class="filtros" id="filtros">
+    <div class="grp">
+      <span class="lbl">Tipo</span>
+      <div class="seg" id="fTipo">
+        <span class="chip on" data-v="A">Acórdãos <b id="ctA" class="meta"></b></span>
+        <span class="chip" data-v="M">Monocráticas <b id="ctM" class="meta"></b></span>
+        <span class="chip" data-v="*">Todos</span>
+      </div>
+    </div>
+    <div class="grp">
+      <span class="lbl">Classe</span>
+      <select class="inp" id="fClasse"><option value="">Todas</option></select>
+    </div>
+    <div class="grp">
+      <span class="lbl">Órgão julgador</span>
+      <select class="inp" id="fOrgao"><option value="">Todos</option></select>
+    </div>
+    <div class="grp">
+      <span class="lbl">Período (ano)</span>
+      <div class="row2"><select class="inp" id="fAno1"></select><select class="inp" id="fAno2"></select></div>
+    </div>
+    <div class="grp" id="grpConteudo">
+      <span class="lbl">Texto disponível</span>
+      <div class="seg" id="fConteudo">
+        <span class="chip on" data-v="">Qualquer</span>
+        <span class="chip" data-v="integral" title="Relatório, voto e acórdão">Integral</span>
+        <span class="chip" data-v="apenas_acordao" title="Ementa e parágrafo do acórdão">Ementa + acórdão</span>
+        <span class="chip" data-v="apenas_ementa">Só ementa</span>
+      </div>
+    </div>
+    <div class="grp" id="grpAtuacao">
+      <span class="lbl">Atuação</span>
+      <div class="seg" id="fAtuacao">
+        <span class="chip on" data-v="">Qualquer</span>
+        <span class="chip" data-v="relator">Relator</span>
+        <span class="chip" data-v="p">Relator p/ acórdão</span>
+      </div>
+    </div>
+    <div class="grp">
+      <span class="lbl">Ordenar</span>
+      <select class="inp" id="fOrdem">
+        <option value="recente">Mais recentes primeiro</option>
+        <option value="antigo">Mais antigos primeiro</option>
+        <option value="processo">Número do processo</option>
+      </select>
+    </div>
+    <button class="btn" style="width:100%;justify-content:center" onclick="limparFiltros()">Limpar filtros</button>
+    <hr class="sep">
+    <span class="lbl">Distribuição no recorte</span>
+    <div id="histo" style="display:flex;align-items:flex-end;gap:2px;height:70px;margin-top:4px"></div>
+    <div class="meta" id="histoLeg" style="display:flex;justify-content:space-between;margin-top:4px"></div>
+    <hr class="sep">
+    <button class="btn sm" onclick="exportar('json')">Exportar recorte (.json)</button>
+    <button class="btn sm" onclick="exportar('csv')" style="margin-top:6px">Exportar recorte (.csv)</button>
+    <p class="ajuda">Exporta os metadados dos resultados listados (sem o inteiro teor).</p>
+  </aside>
+
+  <section class="lista">
+    <div class="lbar">
+      <div class="fac-tit"><i>I</i>Jurisprudência <span>· banco do gabinete no GitHub — pesquise, leia, cite</span></div>
+      <div class="qwrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input class="inp" id="q" placeholder='Buscar — ex.: "perda superveniente" gratuidade -penal   ( / )' autocomplete="off" spellcheck="false">
+      </div>
+      <div class="qmodo">
+        <label><input type="radio" name="modo" value="indice" checked> Índice <span class="meta">(número, classe, ementa e resultado — instantâneo)</span></label>
+        <label><input type="radio" name="modo" value="integral"> Texto integral <span class="meta">(baixa os anos do recorte)</span></label>
+        <button class="btn sm pri" id="btnBuscar" onclick="buscar()" style="margin-left:auto">Buscar</button>
+      </div>
+      <div class="prog" id="prog"><i></i></div>
+      <div class="resumo"><span id="resumo">—</span><span id="resumo2" class="meta"></span></div>
+    </div>
+    <ul class="res" id="res"></ul>
+  </section>
+
+  <section class="detalhe" id="detalhe"></section>
+</main>
+
+<!-- ===================== MÓDULO MODELOS ===================== -->
+<main class="sem-detalhe modulo" id="mMod" data-mod="modelos" hidden>
+  <aside class="filtros">
+    <div class="grp"><span class="lbl">Fase do gabinete</span>
+      <div class="seg" id="mfFase">
+        <span class="chip on" data-v="TRMS" title="Turma Regional de MS · 2026 — padrão atual">TRMS 2026</span>
+        <span class="chip" data-v="1T">1ª Turma 23–24</span>
+        <span class="chip" data-v="3T">3ª Turma 20–23</span>
+        <span class="chip" data-v="">Todas</span>
+      </div></div>
+    <div class="grp"><span class="lbl">Tipo</span>
+      <div class="seg" id="mfTipo">
+        <span class="chip on" data-v="">Ambos</span>
+        <span class="chip" data-v="monocrática">Monocrática</span>
+        <span class="chip" data-v="acórdão">Acórdão</span>
+      </div></div>
+    <div class="grp"><span class="lbl">Espécie</span><select class="inp" id="mfEsp"><option value="">Todas</option></select></div>
+    <div class="grp"><span class="lbl">Resultado</span><select class="inp" id="mfRes"><option value="">Todos</option></select></div>
+    <div class="grp"><span class="lbl">Uso mínimo</span>
+      <select class="inp" id="mfMin"><option value="5">5+ decisões</option><option value="10">10+ decisões</option><option value="20" selected>20+ decisões</option><option value="50">50+ decisões</option></select></div>
+    <hr class="sep">
+    <p class="ajuda"><b>Como os modelos foram extraídos.</b> Em cada fase, os parágrafos que o gabinete repete literalmente em várias decisões foram identificados; decisões que compartilham o mesmo conjunto desses blocos formam um modelo. O texto fixo é transcrito da decisão mais típica do grupo (indicada na ficha); o que é próprio de cada caso aparece como <code>[campo]</code>.</p>
+    <p class="ajuda">Confira teses, temas e modulações vigentes antes de reutilizar um modelo antigo.</p>
+  </aside>
+  <section class="lista">
+    <div class="lbar">
+      <div class="fac-tit"><i>III</i>Minutas <span>· modelos extraídos do acervo — escolha, preencha, gere</span></div>
+      <div class="qwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input class="inp" id="mq" placeholder='Buscar modelos — ex.: deserção, "perda superveniente", BPC' autocomplete="off" spellcheck="false"></div>
+      <div class="resumo"><span id="mResumo">—</span><span class="meta" id="mResumo2"></span></div>
+    </div>
+    <ul class="res" id="mRes"></ul>
+  </section>
+  <section class="detalhe" id="mDet"></section>
+</main>
+
+<!-- ===================== MÓDULO ACERVO ===================== -->
+<main class="sem-detalhe modulo" id="mAc" data-mod="acervo" hidden>
+  <aside class="filtros">
+    <div class="grp"><span class="lbl">Relatórios do PJe</span>
+      <div class="drop" id="acDrop">
+        <b>Arraste aqui as planilhas</b><br>ou <a href="#" onclick="$('acArq').click();return false">escolha os arquivos</a>
+        <div class="ajuda" style="margin-top:6px">Relação do Acervo (ID 44/278), BI de tramitação (data_56) e sigilo (data_57) — .xlsx ou .csv; podem ser combinados.</div>
+      </div>
+      <input type="file" id="acArq" accept=".xlsx,.xls,.csv" multiple hidden>
+      <div id="acFontes" class="ajuda"></div>
+    </div>
+    <div class="grp"><span class="lbl">Situação</span>
+      <div class="seg" id="afSit">
+        <span class="chip on" data-v="ativos">Em tramitação</span>
+        <span class="chip" data-v="">Todos</span>
+        <span class="chip" data-v="baixados">Baixados/arquivados</span>
+      </div></div>
+    <div class="grp"><span class="lbl">Cruzamento com o banco</span>
+      <div class="seg" id="afBanco">
+        <span class="chip on" data-v="">Qualquer</span>
+        <span class="chip" data-v="proprio" title="O próprio processo já tem decisão do gabinete no banco">Já decidido no banco</span>
+        <span class="chip" data-v="sim" title="Há casos similares no banco">Com similares</span>
+      </div></div>
+    <div class="grp"><span class="lbl">Tarefa atual</span><select class="inp" id="afTarefa"><option value="">Todas</option></select></div>
+    <div class="grp"><span class="lbl">Assunto</span><select class="inp" id="afAssunto"><option value="">Todos</option></select></div>
+    <div class="grp"><span class="lbl">Classe</span><select class="inp" id="afClasse"><option value="">Todas</option></select></div>
+    <div class="grp"><span class="lbl">Ordenar</span>
+      <select class="inp" id="afOrdem"><option value="tarefa">Há mais tempo na tarefa</option><option value="dist">Distribuição mais antiga</option><option value="assunto">Assunto</option><option value="processo">Número</option></select></div>
+    <hr class="sep">
+    <p class="ajuda"><b>Privacidade.</b> As planilhas são lidas só neste navegador e ficam apenas na memória desta aba: nada é enviado ao GitHub nem gravado. Ao fechar a aba, é preciso importar de novo.</p>
+    <button class="btn sm" onclick="limparAcervo()">Descartar acervo importado</button>
+  </aside>
+  <section class="lista">
+    <div class="lbar">
+      <div class="fac-tit"><i>II</i>Acervo <span>· seus processos do PJe — só neste navegador, cruzados com o banco</span></div>
+      <div class="qwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input class="inp" id="aq" placeholder="Filtrar por número, assunto, etiqueta, tarefa…" autocomplete="off" spellcheck="false"></div>
+      <div class="prog" id="acProg"><i></i></div>
+      <div class="resumo"><span id="aResumo">Nenhum acervo importado.</span><span class="meta" id="aResumo2"></span></div>
+    </div>
+    <ul class="res" id="aRes"><div class="vazio">Importe o relatório <b>Relação do Acervo dos Gabinetes</b> do PJe (e, se quiser, as planilhas do BI) para ver, em cada processo, as decisões do gabinete já proferidas nele, os casos similares do acervo jurisprudencial e os modelos aplicáveis.</div></ul>
+  </section>
+  <section class="detalhe" id="aDet"></section>
+</main>
+
+<div class="carregando" id="carregando"><div class="cx"><b>Abrindo o acervo…</b><span id="carregandoMsg">carregando o índice de 33 mil decisões</span></div></div>
+
+<dialog id="dlg"><div class="dlg-h"><span id="dlgT"></span><button class="dx" onclick="dlg.close()" aria-label="Fechar">×</button></div><div class="dlg-b" id="dlgB"></div><div class="dlg-f" id="dlgF"></div></dialog>
+<div class="toast" id="toast"></div>
+<input type="file" id="pastaLocal" webkitdirectory multiple hidden>
+
+<script>
+'use strict';
+/* =====================================================================
+   ACERVO CARLOS MUTA — painel de consulta
+   Fonte canônica: github.com/brndutra/trf3-muta-jurisprudencia (pasta dados/)
+   O painel lê o índice compacto e, sob demanda, os arquivos anuais com o
+   inteiro teor. Nada é gravado fora do navegador.
+   ===================================================================== */
+const REPO={dono:'brndutra',repo:'trf3-muta-jurisprudencia',ramo:'main'};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+function baseDados(){
+  const cfg=LS.get('acv_base'); if(cfg) return cfg.replace(/\/?$/,'/');
+  if(/github\.io$/.test(location.hostname)) return new URL('../dados/',location.href).href;
+  return `https://raw.githubusercontent.com/${REPO.dono}/${REPO.repo}/${REPO.ramo}/dados/`;
+}
+const LOCAL=new Map(); // caminho relativo a dados/ -> File (modo pasta local)
+
+async function lerGz(caminho,onProg){
+  let buf;
+  if(LOCAL.size){
+    const f=LOCAL.get(caminho); if(!f) throw new Error('arquivo ausente na pasta local: '+caminho);
+    buf=new Uint8Array(await f.arrayBuffer());
+  }else{
+    const r=await fetch(baseDados()+caminho,{cache:'force-cache'});
+    if(!r.ok) throw new Error(`HTTP ${r.status} em ${caminho}`);
+    const tot=+r.headers.get('content-length')||0, rd=r.body.getReader(), parts=[]; let n=0;
+    for(;;){const {done,value}=await rd.read(); if(done)break; parts.push(value); n+=value.length; onProg&&onProg(n,tot)}
+    buf=new Uint8Array(n); let o=0; for(const p of parts){buf.set(p,o);o+=p.length}
+  }
+  let txt;
+  if(buf[0]===0x1f&&buf[1]===0x8b){
+    const ds=new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'));
+    txt=await new Response(ds).text();
+  }else txt=new TextDecoder().decode(buf);
+  return JSON.parse(txt);
+}
+
+/* ---------- estado ---------- */
+let IDX=[], IDX_POR_NUM=new Map(), POR_ID=new Map(), tipo='A', filtrados=[], mostrados=0, selId=null;
+let termosAtivos=null, hitsIntegral=null; // resultado da busca no texto integral: Map id -> trecho
+const SHARDS=new Map(); // 'acordaos/2020' -> Map(id -> registro)
+const PAGINA=150;
+
+/* ---------- busca: parser de consulta ---------- */
+const ACENTOS={a:'aáàâãä',e:'eéèêë',i:'iíìîï',o:'oóòôõö',u:'uúùûü',c:'cç',n:'nñ'};
+function semAcento(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()}
+function rxTermo(t){
+  const b=semAcento(t).replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/[aeioucn]/g,c=>'['+ACENTOS[c]+ACENTOS[c].toUpperCase()+']').replace(/\s+/g,'\\s+');
+  return new RegExp(b,'i');
+}
+function parseConsulta(q){
+  const inc=[],exc=[]; const re=/(-?)"([^"]+)"|(-?)(\S+)/g; let m;
+  while((m=re.exec(q))){const neg=m[1]||m[3], t=(m[2]||m[4]||'').trim(); if(!t||t==='-')continue; (neg?exc:inc).push(t)}
+  return {inc,exc,rxInc:inc.map(rxTermo),rxExc:exc.map(rxTermo),vazia:!inc.length&&!exc.length};
+}
+function casa(texto,c){
+  if(!texto) return !c.rxInc.length;
+  for(const r of c.rxExc) if(r.test(texto)) return false;
+  for(const r of c.rxInc) if(!r.test(texto)) return false;
+  return true;
+}
+function realcar(html,c){
+  if(!c||!c.inc.length) return html;
+  const src=c.inc.map(t=>rxTermo(esc(t)).source).join('|');
+  try{return html.replace(new RegExp('('+src+')','gi'),'<mark>$1</mark>')}catch(e){return html}
+}
+function trecho(texto,c,larg=160){
+  if(!texto||!c.rxInc.length) return '';
+  const m=c.rxInc[0].exec(texto); if(!m) return '';
+  const i=Math.max(0,m.index-larg), f=Math.min(texto.length,m.index+m[0].length+larg);
+  return (i?'…':'')+texto.slice(i,f).replace(/\s+/g,' ')+(f<texto.length?'…':'');
+}
+
+/* ---------- filtros ---------- */
+const F={classe:'',orgao:'',ano1:'',ano2:'',conteudo:'',atuacao:'',ordem:'recente'};
+function passaFiltros(x){
+  if(tipo!=='*'&&x.t!==tipo) return false;
+  if(F.classe&&x.c!==F.classe) return false;
+  if(F.orgao&&(x.o||'(não informado)')!==F.orgao) return false;
+  if(F.ano1&&x.y<F.ano1) return false;
+  if(F.ano2&&x.y>F.ano2) return false;
+  if(F.conteudo&&x.k!==F.conteudo) return false;
+  if(F.atuacao==='relator'&&x.a!=='relator') return false;
+  if(F.atuacao==='p'&&x.a==='relator') return false;
+  return true;
+}
+function textoIndice(x){return [x.n,x.c,x.cl,x.o,x.e,x.r,x.d&&x.d.split('-').reverse().join('/')].join(' ')}
+
+function aplicar(){
+  const q=$('q').value.trim(), c=parseConsulta(q);
+  termosAtivos=c.vazia?null:c;
+  const usarIntegral=hitsIntegral&&hitsIntegral.q===q;
+  const integralPendente=!c.vazia&&!usarIntegral&&modoAtual()==='integral';
+  filtrados=IDX.filter(x=>passaFiltros(x)&&(c.vazia||integralPendente||(usarIntegral?hitsIntegral.m.has(x.id):casa(textoIndice(x),c))));
+  const o=F.ordem;
+  filtrados.sort(o==='antigo'?(a,b)=>(a.d||'').localeCompare(b.d||''):o==='processo'?(a,b)=>a.n.localeCompare(b.n):(a,b)=>(b.d||'').localeCompare(a.d||''));
+  mostrados=0; $('res').innerHTML=''; renderMais();
+  const nA=filtrados.filter(x=>x.t==='A').length, nM=filtrados.length-nA;
+  $('resumo').innerHTML=`<b>${filtrados.length.toLocaleString('pt-BR')}</b> resultado${filtrados.length===1?'':'s'}`+(tipo==='*'?` · ${nA.toLocaleString('pt-BR')} acórdãos · ${nM.toLocaleString('pt-BR')} monocráticas`:'');
+  if(integralPendente) termosAtivos=null;
+  $('resumo2').textContent=usarIntegral?`busca no texto integral · ${hitsIntegral.anos} arquivo(s) anuais lidos`:integralPendente?'recorte sem a busca — pressione Buscar para pesquisar no texto integral':(c.vazia?'':'busca no índice');
+  histograma(); salvarHash();
+}
+function renderMais(){
+  const ul=$('res'); const fim=Math.min(filtrados.length,mostrados+PAGINA); let h='';
+  for(let i=mostrados;i<fim;i++) h+=cardHTML(filtrados[i]);
+  if(mostrados===0&&!filtrados.length) h=`<div class="vazio">Nenhuma decisão no recorte.${modoAtual()==='indice'&&termosAtivos?' O índice cobre número, classe, prévia da ementa e resultado — experimente a busca no <b>texto integral</b> ou amplie os filtros.':' Amplie os filtros ou revise os termos.'}</div>`;
+  ul.querySelector('.mais')?.remove();
+  ul.insertAdjacentHTML('beforeend',h); mostrados=fim;
+  if(mostrados<filtrados.length) ul.insertAdjacentHTML('beforeend',`<div class="mais"><button class="btn sm" onclick="renderMais()">Mostrar mais ${Math.min(PAGINA,filtrados.length-mostrados)} de ${(filtrados.length-mostrados).toLocaleString('pt-BR')}</button></div>`);
+}
+/* ---------- card do processo ---------- */
+const ICO={
+  chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
+  cit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h4v4H7zM7 11c0 3-1 4-3 5M15 7h4v4h-4zM15 11c0 3-1 4-3 5"/></svg>',
+  ext:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>'
+};
+const ABERTOS=new Set();
+function classeOrgao(o){if(!o)return 'dash';if(/Mato Grosso do Sul/.test(o))return 'oms';if(/^3ª Turma/.test(o))return 'o3';if(/^1ª Turma/.test(o))return 'o1';return 'ooutro'}
+function siglaOrgao(o){if(!o)return 'órgão n/i';if(/Mato Grosso do Sul/.test(o))return 'TRMS';return o.replace(' Turma','ª T').replace('ªª','ª').replace(' Seção','ª S').replace('Órgão Especial','OE').replace('Vice-Presidência','VP').replace('Presidência','PRES')}
+function assunto(x){
+  const e=(x.e||'').replace(/^…/,'');
+  if(x.t==='A'){const m=e.match(/^((?:[^.]{2,90}\.\s*){1,3})/);return (m?m[1]:e).trim()}
+  return e.split(/(?<=\.)\s/)[0];
+}
+function cardHTML(x){
+  const hit=hitsIntegral&&hitsIntegral.m.get(x.id), aberto=ABERTOS.has(x.id), c=termosAtivos;
+  const kRot={integral:'integral',apenas_acordao:'ementa + acórdão',apenas_ementa:'só ementa'}[x.k];
+  return `<li class="proc${x.id===selId?' sel':''}${aberto?' open':''}" data-id="${x.id}">
+  <div class="crow" data-act="abrir">
+    <div class="c0"><button class="chev" data-act="toggle" aria-expanded="${aberto}" aria-label="${aberto?'Recolher':'Expandir'} o card" title="Expandir / recolher">${ICO.chev}</button><span class="tp ${x.t}" title="${x.t==='A'?'Acórdão':'Decisão monocrática'}">${x.t}</span></div>
+    <div class="c1"><span class="num">${esc(x.n)}</span><span class="sub" title="${esc(x.cl||'')}">${esc(x.c||'')} · ${esc(x.cl||'')}</span></div>
+    <div class="c2 csep"><span class="ass" title="${esc(assunto(x))}">${realcar(esc(assunto(x)||'(sem prévia)'),c)}</span>
+      <div class="ctags"><span class="ct2 org ${classeOrgao(x.o)}" title="${esc(x.o||'Órgão julgador não informado')}">${esc(siglaOrgao(x.o))}</span><span class="ct2" title="${x.t==='A'?'Julgamento':'Decisão'}">${esc(x.y)}</span>${x.t==='A'&&x.k!=='integral'?`<span class="ct2 dash" title="Texto disponível na base">${kRot}</span>`:''}${x.a!=='relator'?'<span class="ct2" style="background:var(--c-warnbg);color:var(--c-warn)" title="Muta como relator para o acórdão">rel. p/ acórdão</span>':''}${x.r?`<span class="ct2 res" title="${esc(x.r)}">${esc(resumoResultado(x.r))}</span>`:''}</div></div>
+    <div class="c3 csep"><span class="dt" title="${x.t==='A'?'Julgado':'Decidido'} em">${fmtData(x.d)}</span><button class="ib" data-act="citar" title="Copiar citação (formato do gabinete)" aria-label="Copiar citação">${ICO.cit}</button><button class="ib" data-act="abrir" title="Abrir inteiro teor" aria-label="Abrir inteiro teor">${ICO.doc}</button></div>
+  </div>
+  ${aberto?`<div class="cbody">
+    <div class="pnl"><div class="lb">${hit?'Ocorrência no texto integral':(x.t==='A'?'Ementa':'Trecho inicial')}${hit?'<span class="hint">busca integral</span>':''}</div><div class="tx">${realcar(esc(hit||x.e||'—'),c)}</div>${x.r?`<div class="note"><b>${x.t==='A'?'Resultado':'Dispositivo'}:</b> ${realcar(esc(x.r),c)}</div>`:''}</div>
+    <div class="pnl"><div class="lb">Dados</div>
+      <div class="pr"><span class="pl">Classe</span><span class="pv">${esc(x.cl||'—')}</span></div>
+      <div class="pr"><span class="pl">Órgão</span><span class="pv">${esc(x.o||'não informado')}</span></div>
+      <div class="pr"><span class="pl">${x.t==='A'?'Julgamento':'Decisão'}</span><span class="pv">${fmtData(x.d)}</span></div>
+      <div class="pr"><span class="pl">Publicação</span><span class="pv">${esc([x.v,x.p].filter(Boolean).join(' · ')||'—')}</span></div>
+      <div class="pr"><span class="pl">Atuação</span><span class="pv">${x.a==='relator'?'Relator':'Relator para o acórdão'}</span></div>
+      <div class="pr"><span class="pl">Registro</span><span class="pv">${x.id}</span></div>
+    </div>
+    <div class="cfoot"><button class="mini" data-act="citar">${ICO.cit}Copiar citação</button><button class="mini pri" data-act="abrir">${ICO.doc}Abrir inteiro teor</button></div>
+  </div>`:''}
+</li>`;
+}
+function resumoResultado(r){
+  const s=r.toLowerCase();
+  const m=[['não conhec','não conhecido'],['prejudicad','prejudicado'],['parcial provimento','parcial provimento'],['negou provimento','desprovido'],['negar provimento','desprovido'],['nego provimento','desprovido'],['nego-lhe','desprovido'],['deu provimento','provido'],['dar provimento','provido'],['dou provimento','provido'],['rejeit','rejeitados'],['acolh','acolhidos'],['homolog','homologação'],['extin','extinção'],['indefer','indeferido'],['defiro','deferido'],['defer','deferido']];
+  for(const [k,v] of m) if(s.includes(k)) return v;
+  return 'resultado';
+}
+async function citarId(id){const x=POR_ID.get(id);try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar: '+e.message);return}copiarCitacao(id)}
+$('res').addEventListener('click',e=>{
+  const li=e.target.closest('li[data-id]'); if(!li) return; const id=li.dataset.id;
+  const act=e.target.closest('[data-act]')?.dataset.act||'abrir';
+  if(act==='toggle'){e.stopPropagation();ABERTOS.has(id)?ABERTOS.delete(id):ABERTOS.add(id);const x=POR_ID.get(id);li.outerHTML=cardHTML(x);return}
+  if(act==='citar'){e.stopPropagation();citarId(id);return}
+  abrir(id);
+});
+$('res').addEventListener('scroll',e=>{const u=e.target; if(u.scrollTop+u.clientHeight>u.scrollHeight-300&&mostrados<filtrados.length) renderMais()});
+
+function modoAtual(){return document.querySelector('input[name=modo]:checked').value}
+function nomeFonte(){if(LOCAL.size)return 'pasta local';const b=baseDados();return /raw\.githubusercontent\.com|github\.io/.test(b)?'acervo do GitHub':new URL(b).host}
+function fmtData(d){return d?d.split('-').reverse().join('/'):'—'}
+
+function histograma(){
+  const cont={}; filtrados.forEach(x=>cont[x.y]=(cont[x.y]||0)+1);
+  const anos=Object.keys(cont).sort(); if(!anos.length){$('histo').innerHTML='';$('histoLeg').innerHTML='';return}
+  const a0=+anos[0],a1=+anos.at(-1),mx=Math.max(...Object.values(cont)); let h='';
+  for(let a=a0;a<=a1;a++){const v=cont[a]||0;h+=`<div title="${a}: ${v.toLocaleString('pt-BR')}" style="flex:1;min-width:2px;background:var(--accent);opacity:${v?.75:.12};height:${v?Math.max(3,v/mx*100):3}%;border-radius:2px 2px 0 0;cursor:pointer" onclick="filtrarAno('${a}')"></div>`}
+  $('histo').innerHTML=h; $('histoLeg').innerHTML=`<span>${a0}</span><span>${a1}</span>`;
+}
+function filtrarAno(a){F.ano1=F.ano2=a;$('fAno1').value=a;$('fAno2').value=a;hitsIntegral=null;aplicar()}
+
+/* ---------- busca no texto integral ---------- */
+function arquivosDoRecorte(){
+  const s=new Set(); IDX.forEach(x=>{if(passaFiltros(x)&&(x.t==='M'||x.k!=='apenas_ementa')) s.add((x.t==='A'?'acordaos/':'monocraticas/')+x.y)});
+  return [...s].sort();
+}
+async function carregarShard(chave,onProg){
+  if(SHARDS.has(chave)) return SHARDS.get(chave);
+  const j=await lerGz(chave+'.json.gz',onProg); const m=new Map(j.registros.map(r=>[r.id,r])); SHARDS.set(chave,m); return m;
+}
+let buscando=false;
+async function buscar(){
+  const modo=document.querySelector('input[name=modo]:checked').value, q=$('q').value.trim();
+  if(modo==='indice'||!q){hitsIntegral=null;aplicar();return}
+  if(buscando) return;
+  const c=parseConsulta(q); if(!c.rxInc.length){toast('Informe ao menos um termo positivo para a busca integral.');return}
+  const arqs=arquivosDoRecorte(); if(!arqs.length){hitsIntegral=null;aplicar();return}
+  const naoCarregados=arqs.filter(a=>!SHARDS.has(a)).length;
+  if(naoCarregados>8&&!confirmarGrande(naoCarregados)) return;
+  buscando=true; $('btnBuscar').disabled=true; $('prog').classList.add('on'); const bar=$('prog').firstChild;
+  const m=new Map();
+  try{
+    for(let i=0;i<arqs.length;i++){
+      $('resumo2').textContent=`lendo ${arqs[i].replace('/',' · ')} (${i+1}/${arqs.length})…`;
+      const sh=await carregarShard(arqs[i],(n,t)=>{bar.style.width=((i+(t?n/t:.5))/arqs.length*100).toFixed(1)+'%'});
+      for(const [id,r] of sh){
+        const x=POR_ID.get(id); if(!x||!passaFiltros(x)) continue;
+        const t=(r.ementa?r.ementa+'\n':'')+(r.inteiro_teor||'');
+        if(casa(t,c)) m.set(id,trecho(r.inteiro_teor&&c.rxInc[0].test(r.inteiro_teor)?r.inteiro_teor:t,c));
+      }
+      bar.style.width=((i+1)/arqs.length*100)+'%';
+      await new Promise(r=>setTimeout(r));
+    }
+    hitsIntegral={q,m,anos:arqs.length}; aplicar();
+  }catch(e){toast('Falha ao ler o acervo: '+e.message,7000)}
+  finally{buscando=false;$('btnBuscar').disabled=false;setTimeout(()=>{$('prog').classList.remove('on');bar.style.width=0},400)}
+}
+function confirmarGrande(n){return confirm(`A busca integral vai baixar ${n} arquivos anuais (até ~90 MB no acervo completo). Restrinja o período ou a classe para acelerar.\n\nContinuar?`)}
+
+/* ---------- detalhe ---------- */
+async function abrir(id){
+  const x=POR_ID.get(id); if(!x) return; selId=id;
+  document.querySelectorAll('#res li.sel').forEach(l=>l.classList.remove('sel'));
+  document.querySelector(`#res li[data-id="${id}"]`)?.classList.add('sel');
+  $('main').classList.remove('sem-detalhe');
+  const D=$('detalhe'); D.innerHTML=`<div class="dbody"><p class="meta">Carregando ${esc(x.n)}…</p></div>`;
+  salvarHash();
+  let r;
+  try{const sh=await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y); r=sh.get(id)}
+  catch(e){D.innerHTML=`<div class="dbody"><div class="aviso err">Não foi possível carregar o registro: ${esc(e.message)}</div></div>`;return}
+  if(selId!==id) return;
+  const c=termosAtivos;
+  const pub=[r.publicacao_veiculo,r.data_publicacao].filter(Boolean).join(' · ');
+  const ementaLimpa=limparEmenta(r.ementa);
+  const avisoTexto=x.t==='A'&&r.conteudo_texto!=='integral'
+    ? `<div class="aviso">${r.conteudo_texto==='apenas_ementa'?'A base pública do TRF3 oferece apenas a <b>ementa</b> deste acórdão.':'A base pública do TRF3 oferece apenas a <b>ementa e o parágrafo do acórdão</b>; relatório e voto não constam do texto disponibilizado.'} Consulte a íntegra pelos links abaixo.</div>`:'';
+  D.innerHTML=`
+  <div class="dhead">
+    <div class="dtit"><span class="tag ${x.t}">${x.t==='A'?'Acórdão':'Decisão monocrática'}</span><span class="proc">${esc(r.numero_processo)}</span><span class="tag">${esc(r.classe_sigla||'')}</span><button class="dx" onclick="fechar()" title="Fechar (Esc)">×</button></div>
+    <div class="dmeta">
+      <div><span>Classe</span>${esc(r.classe||'—')}</div>
+      <div><span>Órgão julgador</span>${esc(r.orgao_julgador||'não informado')}</div>
+      <div><span>${x.t==='A'?'Julgamento':'Decisão'}</span>${esc(r.data_julgamento||r.data_decisao||'—')}</div>
+      <div><span>Publicação</span>${esc(pub||'—')}</div>
+      <div><span>Relator</span>${esc(r.relator||'—')}${r.atuacao_muta&&r.atuacao_muta!=='relator'?'<br><em class="meta">Muta: relator para o acórdão</em>':''}</div>
+      <div><span>Registro</span>${esc(r.id)}</div>
+    </div>
+    <div class="dacts">
+      <button class="btn sm pri" onclick="copiarCitacao('${id}')" title="Formato usado nos votos do gabinete">Copiar citação</button>
+      <button class="ponte m" onclick="if($('gerador')){inserirCitacao('${id}');setModulo('modelos')}else toast('Abra um modelo na faceta III · Minutas para citar este precedente.')" title="Insere a citação no campo selecionado da minuta em elaboração">III · Citar na minuta</button>
+      ${x.t==='A'&&r.ementa?`<button class="btn sm" onclick="copiar('${id}','ementa')">Copiar ementa</button>`:''}
+      ${r.inteiro_teor?`<button class="btn sm" onclick="copiar('${id}','inteiro_teor')">Copiar inteiro teor</button>`:''}
+      ${r.link_pje?`<a class="btn sm" href="${esc(r.link_pje)}" target="_blank" rel="noopener">PJe</a>`:''}
+      ${r.link_impressao?`<a class="btn sm" href="${esc(r.link_impressao)}" target="_blank" rel="noopener">Impressão TRF3</a>`:''}
+      ${r.link_pdf?`<a class="btn sm" href="${esc(r.link_pdf)}" target="_blank" rel="noopener">PDF</a>`:''}
+      ${r.link_integra_externa?`<a class="btn sm" href="${esc(r.link_integra_externa)}" target="_blank" rel="noopener">Íntegra (site antigo)</a>`:''}
+      <button class="btn sm" onclick="verificar('${id}')" title="Recalcula o SHA-256 e compara com o MANIFESTO do repositório">Verificar autenticidade</button>
+    </div>
+  </div>
+  <div class="dbody">
+    <div id="verif"></div>
+    ${avisoTexto}
+    ${r.partes&&r.partes.length?`<h3 class="sec">Partes</h3><div class="partes">${r.partes.map(p=>`<b>${esc(p.polo)}</b><span>${esc(p.nome)}</span>`).join('')}</div>`:''}
+    ${x.t==='A'&&ementaLimpa?`<h3 class="sec">Ementa</h3><div class="ementa-box">${realcar(esc(ementaLimpa),c)}</div>`:''}
+    ${(r.resultado_colegiado||r.dispositivo)?`<h3 class="sec">${x.t==='A'?'Resultado':'Dispositivo'}</h3><div class="ementa-box" style="background:var(--green-soft);border-color:rgba(47,117,82,.3)">${realcar(esc(r.resultado_colegiado||r.dispositivo),c)}</div>`:''}
+    ${r.inteiro_teor?`<h3 class="sec">Inteiro teor <span class="meta" style="font:400 11px Inter;letter-spacing:0;text-transform:none">${r.inteiro_teor.length.toLocaleString('pt-BR')} caracteres</span></h3><div class="texto" id="itxt">${realcar(esc(r.inteiro_teor),c)}</div>`:''}
+    <h3 class="sec">Rastreabilidade</h3>
+    <div class="hash">SHA-256 do inteiro teor: ${esc(r.sha256_inteiro_teor||'— (sem inteiro teor)')}${r.sha256_ementa?`<br>SHA-256 da ementa: ${esc(r.sha256_ementa)}`:''}<br>Arquivo: dados/${x.t==='A'?'acordaos':'monocraticas'}/${x.y}.json.gz · posição na lista da base: ${r.seq}</div>
+    <p class="ajuda">Texto reproduzido da base pública de jurisprudência do TRF3, sem alteração de conteúdo (apenas espaços normalizados). A versão oficial é o documento assinado no PJe e a publicação no diário; para citação em peças, confira pelos links acima.</p>
+  </div>`;
+  D.scrollTop=0;
+  const mk=D.querySelector('#itxt mark'); if(mk) setTimeout(()=>mk.scrollIntoView({block:'center'}),60);
+}
+function fechar(){selId=null;$('main').classList.add('sem-detalhe');document.querySelectorAll('#res li.sel').forEach(l=>l.classList.remove('sel'));salvarHash()}
+function limparEmenta(e){if(!e)return '';const m=e.match(/^\s*E\s?M\s?E\s?N\s?T\s?A\s*$/im);return (m?e.slice(m.index+m[0].length):e).trim()}
+function registro(id){const x=POR_ID.get(id);return SHARDS.get((x.t==='A'?'acordaos/':'monocraticas/')+x.y)?.get(id)}
+
+function citacao(r){
+  const x=POR_ID.get(r.id);
+  const rel=/JUIZ/i.test(r.relator||'')&&/CONVOCAD/i.test(r.relator||'')?'Rel. Juiz Conv. CARLOS MUTA':(r.atuacao_muta&&r.atuacao_muta!=='relator'?'Rel. p/ acórdão Des. Fed. CARLOS MUTA':'Rel. Des. Fed. CARLOS MUTA');
+  const v=(r.publicacao_veiculo||'').trim(), d=r.data_publicacao||'';
+  let pub;
+  if(/intima/i.test(v)) pub=`intimação via sistema em ${d}`;
+  else if(v) pub=`${v.replace(/\s*Judicial\s*\d*/i,'').replace(/^e\s*-\s*/,'e-').trim()} ${d}`.trim();
+  else pub=`${x.t==='A'?'julgado em':'decidido em'} ${r.data_julgamento||r.data_decisao}`;
+  const cab=`${r.classe_sigla||''} ${r.numero_processo}, ${rel}, ${x.t==='M'?'decisão monocrática, ':''}${pub}`;
+  const em=x.t==='A'?limparEmenta(r.ementa).replace(/\s*\n\s*/g,' ').trim():'';
+  return em?`${cab}: "${em}"`:cab;
+}
+async function copiarCitacao(id){const r=registro(id); if(r) copiarTexto(citacao(r),'Citação copiada.')}
+function copiar(id,campo){const r=registro(id); if(!r)return; copiarTexto(campo==='ementa'?limparEmenta(r.ementa):r[campo],campo==='ementa'?'Ementa copiada.':'Inteiro teor copiado.')}
+async function copiarTexto(t,msg){try{await navigator.clipboard.writeText(t);toast(msg)}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast(msg)}}
+
+/* ---------- verificação SHA-256 contra o MANIFESTO ---------- */
+let MANIF=null;
+async function sha256(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function verificar(id){
+  const r=registro(id), V=$('verif'); if(!r||!V) return;
+  V.innerHTML='<div class="aviso">Verificando…</div>';
+  try{
+    if(!MANIF){
+      if(LOCAL.size&&LOCAL.has('../MANIFESTO.json')) MANIF=JSON.parse(await LOCAL.get('../MANIFESTO.json').text());
+      else {const u=baseDados().replace(/dados\/$/,'MANIFESTO.json'); const resp=await fetch(u); if(!resp.ok) throw new Error('MANIFESTO indisponível ('+resp.status+')'); MANIF=await resp.json()}
+      MANIF._por=new Map(MANIF.registros.map(e=>[e.id,e]));
+    }
+    const ref=MANIF._por.get(id); if(!ref) throw new Error('registro ausente do MANIFESTO');
+    const hIt=r.inteiro_teor?await sha256(r.inteiro_teor):null, hEm=r.ementa?await sha256(r.ementa):null;
+    const okIt=hIt===ref.sha256_inteiro_teor, okEm=ref.sha256_ementa===undefined||hEm===ref.sha256_ementa;
+    V.innerHTML=okIt&&okEm
+      ?`<div class="aviso ok"><b>Íntegro.</b> O texto exibido corresponde, byte a byte, ao registrado no MANIFESTO do repositório (gerado em ${esc((MANIF.gerado_em||'').slice(0,10))}). Isso atesta que não houve alteração desde a extração; a conformidade com o original assinado deve ser conferida no PJe.</div>`
+      :`<div class="aviso err"><b>Divergência.</b> O hash recalculado não confere com o MANIFESTO (${okIt?'ementa':'inteiro teor'}). Não utilize este texto sem conferir no PJe.</div>`;
+  }catch(e){V.innerHTML=`<div class="aviso err">Não foi possível verificar: ${esc(e.message)}</div>`}
+}
+
+/* ---------- exportação ---------- */
+function exportar(fmt){
+  if(!filtrados.length){toast('Nada a exportar.');return}
+  const cols=['id','tipo','numero_processo','classe_sigla','classe','orgao_julgador','data','data_publicacao','veiculo','atuacao','conteudo_texto','resultado_ou_dispositivo','ementa_previa'];
+  const rows=filtrados.map(x=>[x.id,x.t==='A'?'acórdão':'monocrática',x.n,x.c,x.cl,x.o,x.d,x.p,x.v,x.a,x.k,x.r,x.e]);
+  let blob,nome=`acervo_muta_recorte_${new Date().toISOString().slice(0,10)}`;
+  if(fmt==='json') blob=new Blob([JSON.stringify(rows.map(r=>Object.fromEntries(cols.map((c,i)=>[c,r[i]??null]))),null,1)],{type:'application/json'}),nome+='.json';
+  else blob=new Blob(['\ufeff'+[cols,...rows].map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(';')).join('\r\n')],{type:'text/csv'}),nome+='.csv';
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nome;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+}
+
+/* ---------- diálogos ---------- */
+const dlg=$('dlg');
+function abrirDlg(t,b,f){$('dlgT').textContent=t;$('dlgB').innerHTML=b;$('dlgF').innerHTML=f||'<button class="btn" onclick="dlg.close()">Fechar</button>';dlg.showModal()}
+function abrirSobre(){
+  const cA=IDX.filter(x=>x.t==='A'), k=t=>cA.filter(x=>x.k===t).length;
+  abrirDlg('Fonte, autenticidade e verificação',`
+  <p><b>Fonte.</b> Base pública de jurisprudência do TRF3 (<a href="https://web.trf3.jus.br/jurisprudencia/" target="_blank" rel="noopener">web.trf3.jus.br/jurisprudencia</a>), coleções <i>Monocráticas</i> (relator: CARLOS MUTA) e <i>TRF3/Acórdãos</i> (relator ou relator para o acórdão: CARLOS MUTA).</p>
+  <table class="st"><tr><th>Conjunto</th><th>Registros</th></tr>
+  <tr><td>Decisões monocráticas (inteiro teor)</td><td>${IDX.filter(x=>x.t==='M').length.toLocaleString('pt-BR')}</td></tr>
+  <tr><td>Acórdãos com relatório, voto e acórdão</td><td>${k('integral').toLocaleString('pt-BR')}</td></tr>
+  <tr><td>Acórdãos só com ementa + parágrafo do acórdão</td><td>${k('apenas_acordao').toLocaleString('pt-BR')}</td></tr>
+  <tr><td>Acórdãos só com ementa</td><td>${k('apenas_ementa').toLocaleString('pt-BR')}</td></tr>
+  <tr><td>Acórdãos da base não coletados (c. 1999–2001)</td><td>162</td></tr></table>
+  <p><b>O que é fonte e o que é derivado.</b> Inteiro teor, ementa, número, classe, relator, órgão, datas e links são reproduzidos da base, sem alteração de conteúdo. Prévia, resultado, dispositivo, partes, classificação do texto e órgão normalizado são extraídos automaticamente e servem para filtrar — não para citar.</p>
+  <p><b>Autenticidade.</b> Cada registro tem hash SHA-256 do inteiro teor (e da ementa) no <code>MANIFESTO.json</code> do repositório; o botão <i>Verificar autenticidade</i> recalcula o hash no seu navegador e compara. Isso prova integridade desde a extração. A base de jurisprudência não é a publicação oficial: o texto autêntico é o documento assinado no PJe e a publicação no diário.</p>
+  <p class="meta">Repositório: <a href="https://github.com/${REPO.dono}/${REPO.repo}" target="_blank" rel="noopener">github.com/${REPO.dono}/${REPO.repo}</a></p>`);
+}
+function abrirConfig(){
+  abrirDlg('Fonte dos dados',`
+  <p>Por padrão o painel lê a pasta <code>dados/</code> do repositório no GitHub. Você pode apontar para outro endereço (fork, espelho) ou abrir uma cópia local do repositório, para uso sem internet.</p>
+  <span class="lbl">Endereço da pasta dados/</span>
+  <input class="inp" id="cfgBase" value="${esc(baseDados())}">
+  <p class="ajuda">Atual: ${LOCAL.size?'<b>pasta local</b> ('+LOCAL.size+' arquivos)':esc(baseDados())}</p>
+  <hr class="sep">
+  <button class="btn" onclick="$('pastaLocal').click()">Abrir pasta local do repositório…</button>
+  <p class="ajuda">Selecione a pasta <code>trf3-muta-jurisprudencia</code> (clonada ou baixada do GitHub).</p>`,
+  `<button class="btn" onclick="LS.set('acv_base','');location.reload()">Restaurar padrão</button><button class="btn pri" onclick="LS.set('acv_base',$('cfgBase').value.trim());location.reload()">Salvar e recarregar</button>`);
+}
+$('pastaLocal').addEventListener('change',async e=>{
+  LOCAL.clear();
+  for(const f of e.target.files){const p=f.webkitRelativePath.split('/');const i=p.indexOf('dados'); if(i>=0) LOCAL.set(p.slice(i+1).join('/'),f); else if(p.at(-1)==='MANIFESTO.json') LOCAL.set('../MANIFESTO.json',f); else if(p.at(-2)==='modelos') LOCAL.set('../modelos/'+p.at(-1),f)}
+  if(!LOCAL.has('indice.json.gz')){toast('Pasta sem dados/indice.json.gz — selecione a raiz do repositório.',6000);LOCAL.clear();return}
+  dlg.close(); SHARDS.clear(); MANIF=null; hitsIntegral=null; await iniciar();
+});
+
+/* ---------- utilidades ---------- */
+let tt;function toast(m,ms=2600){const t=$('toast');t.innerHTML=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),ms)}
+function alternarTema(){const n=document.documentElement.getAttribute('data-tema')==='noturno'?'':'noturno';if(n)document.documentElement.setAttribute('data-tema',n);else document.documentElement.removeAttribute('data-tema');LS.set('acv_tema',n)}
+$('fTipo').addEventListener('click',e=>{const c=e.target.closest('.chip');if(c)setTipo(c.dataset.v)});
+function setTipo(t){tipo=t;$('fTipo').querySelectorAll('.chip').forEach(b=>b.classList.toggle('on',b.dataset.v===t));
+  $('grpConteudo').style.display=$('grpAtuacao').style.display=t==='M'?'none':'';
+  if(t==='M'){F.conteudo=F.atuacao='';marcarChips()} preencherSelects(); hitsIntegral=null; aplicar()}
+function marcarChips(){[['fConteudo','conteudo'],['fAtuacao','atuacao']].forEach(([el,k])=>$(el).querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.v===F[k])))}
+[['fConteudo','conteudo'],['fAtuacao','atuacao']].forEach(([el,k])=>$(el).addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;F[k]=c.dataset.v;marcarChips();hitsIntegral=null;aplicar()}));
+function preencherSelects(){
+  const base=IDX.filter(x=>tipo==='*'||x.t===tipo), cnt=(f)=>base.reduce((m,x)=>{const k=f(x);m[k]=(m[k]||0)+1;return m},{});
+  const cl=cnt(x=>x.c), og=cnt(x=>x.o||'(não informado)'), nomes={}; base.forEach(x=>nomes[x.c]=x.cl);
+  $('fClasse').innerHTML='<option value="">Todas</option>'+Object.entries(cl).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<option value="${esc(k)}">${esc(k)} — ${esc(nomes[k]||'')} (${v.toLocaleString('pt-BR')})</option>`).join('');
+  $('fOrgao').innerHTML='<option value="">Todos</option>'+Object.entries(og).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<option value="${esc(k)}">${esc(k)} (${v.toLocaleString('pt-BR')})</option>`).join('');
+  if(F.classe&&!cl[F.classe])F.classe=''; if(F.orgao&&!og[F.orgao])F.orgao='';
+  $('fClasse').value=F.classe; $('fOrgao').value=F.orgao;
+}
+function limparFiltros(){Object.assign(F,{classe:'',orgao:'',ano1:'',ano2:'',conteudo:'',atuacao:'',ordem:'recente'});$('q').value='';hitsIntegral=null;['fClasse','fOrgao','fAno1','fAno2'].forEach(i=>$(i).value='');$('fOrdem').value='recente';marcarChips();aplicar()}
+[['fClasse','classe'],['fOrgao','orgao'],['fAno1','ano1'],['fAno2','ano2'],['fOrdem','ordem']].forEach(([el,k])=>$(el).addEventListener('change',e=>{F[k]=e.target.value;if(k!=='ordem')hitsIntegral=null;aplicar()}));
+let deb;$('q').addEventListener('input',()=>{if(document.querySelector('input[name=modo]:checked').value==='indice'){clearTimeout(deb);deb=setTimeout(()=>{hitsIntegral=null;aplicar()},180)}});
+$('q').addEventListener('keydown',e=>{if(e.key==='Enter')buscar()});
+document.querySelectorAll('input[name=modo]').forEach(r=>r.addEventListener('change',()=>{if(r.value==='indice'&&r.checked){hitsIntegral=null;aplicar()}}));
+document.addEventListener('keydown',e=>{
+  if(e.altKey&&['1','2','3'].includes(e.key)){e.preventDefault();setModulo(['juris','acervo','modelos'][+e.key-1]);return}
+  const q={juris:'q',modelos:'mq',acervo:'aq'}[MODULO];
+  if(e.key==='/'&&document.activeElement!==$(q)&&!dlg.open&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();$(q).focus()}
+  if(e.key==='Escape'&&!dlg.open){if(MODULO==='juris'&&selId)fechar();else if(MODULO!=='juris')fecharLateral(MODULO)}
+});
+
+/* =====================================================================
+   NAVEGAÇÃO ENTRE MÓDULOS
+   ===================================================================== */
+let MODULO='juris';
+function setModulo(m){
+  MODULO=m;
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.toggle('active',b.dataset.mod===m));
+  document.querySelectorAll('main.modulo').forEach(el=>el.hidden=el.dataset.mod!==m);
+  if(m==='modelos') abrirModelos();
+  if(m==='juris') salvarHash();
+}
+function fecharLateral(m){const el=m==='modelos'?$('mMod'):$('mAc');el.classList.add('sem-detalhe');el.querySelectorAll('li.sel').forEach(l=>l.classList.remove('sel'))}
+function irParaDecisao(id){setModulo('juris');if(!POR_ID.has(id))return;if(!filtrados.some(x=>x.id===id)){setTipo(POR_ID.get(id).t)}abrir(id)}
+function chipsGrupo(el,cb){$(el).addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;$(el).querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c));cb(c.dataset.v)})}
+const cpRender=s=>esc(s).replace(/\[[^\]\n]{1,80}\]/g,m=>`<span class="cp">${m}</span>`);
+function tokens(s){return [...new Set(semAcento(s||'').replace(/\(.*?\)/g,' ').split(/[^a-z0-9,%]+/).filter(w=>(w.length>=4&&!STOPB.has(w))||/\d+,\d+/.test(w)).map(w=>w.length>8?w.slice(0,7):w))]}
+const RXT=new Map();
+function rxTok(t){if(!RXT.has(t)){const e=t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');RXT.set(t,new RegExp('(?:^|[^a-z0-9])'+e+(t.length>=7?'':'s?(?![a-z0-9])')))}return RXT.get(t)}
+const STOPB=new Set('para pela pelo pelos pelas como sobre entre demais outros outras afins geral especial tipo acao acoes processo processual civil federal direito pedido regime lei/ art artigo inclusao concessao revisao'.split(' '));
+
+/* =====================================================================
+   MÓDULO MODELOS
+   ===================================================================== */
+let MOD_IDF=null, MODS=null, MOD_POR=new Map(), modF={fase:'TRMS',tipo:'',esp:'',res:'',min:20}, modFilt=[], modSel=null;
+async function carregarModelos(){
+  if(MODS) return MODS;
+  const j=await lerGz('../modelos/modelos.json.gz');
+  MODS=j.modelos; MODS.forEach(m=>{MOD_POR.set(m.id,m); m._txt=semAcento([m.nome,m.tema,(m.palavras_chave||[]).join(' '),m.abertura,(m.ementa_modelo||'').slice(0,700),m.modelo.replace(/\[[^\]]*\]/g,' ').slice(0,6000)].join(' '))});
+  $('ctMod').textContent=MODS.length.toLocaleString('pt-BR');
+  return MODS;
+}
+async function abrirModelos(){
+  if(!MODS){$('mResumo').textContent='carregando modelos…';try{await carregarModelos()}catch(e){$('mResumo').textContent='Falha ao carregar modelos: '+e.message;return}preencherModSelects()}
+  aplicarModelos();
+}
+function preencherModSelects(){
+  const base=MODS.filter(m=>(!modF.fase||m.fase===modF.fase)&&(!modF.tipo||m.tipo===modF.tipo));
+  const cnt=k=>base.reduce((o,m)=>(o[m[k]]=(o[m[k]]||0)+1,o),{});
+  const op=(o,v)=>Object.entries(o).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`<option value="${esc(k)}"${k===v?' selected':''}>${esc(k)} (${n})</option>`).join('');
+  $('mfEsp').innerHTML='<option value="">Todas</option>'+op(cnt('especie'),modF.esp);
+  $('mfRes').innerHTML='<option value="">Todos</option>'+op(cnt('resultado'),modF.res);
+}
+function aplicarModelos(){
+  if(!MODS) return;
+  const c=parseConsulta($('mq').value.trim());
+  modFilt=MODS.filter(m=>(!modF.fase||m.fase===modF.fase)&&(!modF.tipo||m.tipo===modF.tipo)&&(!modF.esp||m.especie===modF.esp)&&(!modF.res||m.resultado===modF.res)&&m.frequencia>=modF.min&&(c.vazia||casa(m._txt+' '+semAcento(m.modelo.slice(0,4000)),c)))
+    .sort((a,b)=>b.frequencia-a.frequencia);
+  const tot=modFilt.reduce((s,m)=>s+m.frequencia,0);
+  $('mResumo').innerHTML=`<b>${modFilt.length}</b> modelo${modFilt.length===1?'':'s'}`;
+  const ap=MIN_PROC&&AC.get(MIN_PROC);
+  if(ap){const sug=new Set((ap._mods||[]).map(m=>m.id));modFilt.sort((a,b)=>sug.has(b.id)-sug.has(a.id))}
+  $('mResumo2').innerHTML=ap?`<span class="ponte a" onclick="setModulo('acervo');abrirProcesso('${ap.processo}')">II · ${esc(ap.processo)}</span> sugeridos primeiro`:`cobrem ${tot.toLocaleString('pt-BR')} decisões do acervo`;
+  $('mRes').innerHTML=modFilt.slice(0,400).map(m=>`<li class="proc${m.id===modSel?' sel':''}" data-id="${m.id}"><div class="crow">
+    <div class="c0"><span class="tp ${m.tipo==='acórdão'?'A':'M'}" title="${esc(m.tipo)}">${m.tipo==='acórdão'?'A':'M'}</span></div>
+    <div class="c1"><span class="num" style="font-family:Figtree,Inter,sans-serif;font-weight:800">${m.frequencia} decisões</span><span class="sub">${esc(m.especie)}</span></div>
+    <div class="c2 csep"><span class="ass" title="${esc(m.nome)}">${esc(m.tema||(m.palavras_chave||[]).join(' · ')||m.especie)}</span>
+      <div class="ctags"><span class="ct2 org ${m.fase==='TRMS'?'oms':m.fase==='3T'?'o3':'o1'}">${{TRMS:'TRMS','1T':'1ª T','3T':'3ª T'}[m.fase]}</span><span class="ct2 res">${esc(m.resultado)}</span><span class="ct2">${esc(m.periodo[0].slice(0,4))}–${esc(m.periodo[1].slice(0,4))}</span><span class="ct2 dash">${m.blocos_fixos} blocos fixos</span></div></div>
+    <div class="c3 csep"><button class="ib" data-act="copiar" title="Copiar o modelo">${ICO.doc}</button></div>
+  </div></li>`).join('')||'<div class="vazio">Nenhum modelo no recorte. Reduza o “uso mínimo” ou mude a fase.</div>';
+}
+$('mRes').addEventListener('click',e=>{const li=e.target.closest('li[data-id]');if(!li)return;const m=MOD_POR.get(li.dataset.id);
+  if(e.target.closest('[data-act=copiar]')){copiarTexto(m.modelo,'Modelo copiado.');return}abrirModelo(m.id)});
+function abrirModelo(id){
+  const m=MOD_POR.get(id); modSel=id; $('mMod').classList.remove('sem-detalhe');
+  $('mRes').querySelectorAll('li').forEach(l=>l.classList.toggle('sel',l.dataset.id===id));
+  const fonte=POR_ID.get(m.fonte_modelo);
+  $('mDet').innerHTML=`<div class="dhead">
+    <div class="dtit"><span class="tag ${m.tipo==='acórdão'?'A':'M'}">${m.tipo==='acórdão'?'Modelo de acórdão':'Modelo de monocrática'}</span><span class="proc">${esc(m.id)}</span><button class="dx" onclick="fecharLateral('modelos')">×</button></div>
+    <div style="font-weight:700;margin:8px 0 2px">${esc(m.nome)}</div>
+    <div class="dmeta"><div><span>Fase</span>${esc(m.fase_nome)}</div><div><span>Uso no acervo</span>${m.frequencia} decisões · ${esc(fmtData(m.periodo[0]))} a ${esc(fmtData(m.periodo[1]))}</div>
+      <div><span>Classes</span>${esc(Object.entries(m.classes).map(([k,v])=>k+' '+v).join(', '))}</div><div><span>Texto-base</span><a href="#" onclick="irParaDecisao('${m.fonte_modelo}');return false">${esc(m.processo_modelo)}</a></div></div>
+    <div class="dacts"><button class="btn sm pri" onclick="copiarTexto(MOD_POR.get('${id}').modelo,'Modelo copiado.')">Copiar modelo</button>
+      ${m.ementa_modelo?`<button class="btn sm" onclick="copiarTexto(MOD_POR.get('${id}').ementa_modelo,'Ementa-modelo copiada.')">Copiar ementa-modelo</button>`:''}</div></div>
+  <div class="dbody">
+    <div class="aviso">O texto fixo foi transcrito da decisão <b>${esc(m.processo_modelo)}</b>${fonte?` (${fonte.t==='A'?'julgada':'decidida'} em ${fmtData(fonte.d)})`:''}. Os trechos <span class="cp" style="background:var(--amber-soft);padding:0 3px;border-radius:3px">[entre colchetes]</span> são próprios de cada caso. Confira teses e modulações vigentes.</div>
+    ${m.abertura?`<h3 class="sec">Abertura típica</h3><div class="ementa-box">${cpRender(m.abertura)}</div>`:''}
+    ${m.ementa_modelo?`<h3 class="sec">Ementa-modelo</h3><div class="ementa-box">${cpRender(m.ementa_modelo)}</div>`:''}
+    <h3 class="sec">Gerar minuta</h3>${geradorHTML(m)}
+    <h3 class="sec">Modelo (texto-base)</h3><div class="modelo-txt">${cpRender(m.modelo)}</div>
+    <h3 class="sec">Decisões que seguem o modelo</h3>
+    <div class="sim-list">${m.exemplos.map(i=>{const x=POR_ID.get(i);return x?`<div class="sim" onclick="irParaDecisao('${i}')"><div class="h"><span class="tp ${x.t}" style="min-width:20px;height:20px;font-size:10.5px">${x.t}</span><span class="num">${esc(x.n)}</span><span class="ct2">${esc(x.c)}</span><span class="meta">${fmtData(x.d)}</span></div>${esc((x.e||'').slice(0,220))}</div>`:''}).join('')}</div>
+  </div>`;
+  $('mDet').scrollTop=0;
+  atualizarMinuta();
+}
+chipsGrupo('mfFase',v=>{modF.fase=v;modF.esp=modF.res='';preencherModSelects();aplicarModelos()});
+chipsGrupo('mfTipo',v=>{modF.tipo=v;modF.esp=modF.res='';preencherModSelects();aplicarModelos()});
+$('mfEsp').onchange=e=>{modF.esp=e.target.value;aplicarModelos()};
+$('mfRes').onchange=e=>{modF.res=e.target.value;aplicarModelos()};
+$('mfMin').onchange=e=>{modF.min=+e.target.value;aplicarModelos()};
+let mdeb;$('mq').addEventListener('input',()=>{clearTimeout(mdeb);mdeb=setTimeout(aplicarModelos,180)});
+
+/* =====================================================================
+   MÓDULO ACERVO — leitura local das planilhas do PJe e cruzamento
+   ===================================================================== */
+const AC=new Map(); // processo -> registro consolidado
+let acFilt=[], acSel=null, acF={sit:'ativos',banco:'',tarefa:'',assunto:'',classe:'',ordem:'tarefa'};
+const ACFONTES=[];
+const SIMCACHE=new Map();
+let IDXN=null; // textos normalizados do índice (criado sob demanda)
+const NUMRX=/\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}/;
+function normNum(v){const s=String(v||'').replace(/\D/g,'');return s.length===20?`${s.slice(0,7)}-${s.slice(7,9)}.${s.slice(9,13)}.${s.slice(13,14)}.${s.slice(14,16)}.${s.slice(16)}`:(String(v||'').match(NUMRX)||[''])[0]}
+function dataBR(v){if(v==null||v==='')return '';if(v instanceof Date)return v.toISOString().slice(0,10);const s=String(v);let m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);if(m)return `${m[1]}-${m[2]}-${m[3]}`;m=s.match(/^(\d{2})\/(\d{2})\/(\d{4})/);if(m)return `${m[3]}-${m[2]}-${m[1]}`;if(/^\d{5}(\.\d+)?$/.test(s)){const d=new Date(Math.round((+s-25569)*864e5));return d.toISOString().slice(0,10)}return s.slice(0,10)}
+const COLS={processo:['processo','numeroprocesso','número do processo','numero do processo'],classe:['classe_judicial','classe','classejudicial'],assunto:['assunto_judicial','assunto_principal','assuntoprincipal','assunto'],
+  tarefa:['tarefa_atual','nometarefa','tarefa'],entradaTarefa:['data_entrada_tarefa','datachegada','data de entrada na tarefa'],prioridade:['prioridade'],etiquetas:['etiquetas','tagsprocessolist'],
+  distribuicao:['data_distribuição','data_distribuicao','data distribuição'],indicador:['indicador'],fase:['fase'],complemento:['complemento'],ultimaMov:['última_movimentação','ultima_movimentacao'],dataUltMov:['data_última_movimentação','data_ultima_movimentacao'],
+  tempo:['tempo_de_tramitação','tempo_de_tramitacao'],conclusao:['data_conclusão','data_conclusao'],sigilo:['nível_sigilo','nivel_sigilo','sigiloso'],assuntos:['assuntos_do_processo']};
+function lerTabela(rows,nome){
+  const lc=r=>r.map(c=>semAcento(String(c??'')).trim());
+  const hi=rows.findIndex(r=>lc(r).some(c=>COLS.processo.map(semAcento).includes(c)));
+  if(hi<0) return 0;
+  const H=lc(rows[hi]); const idx={}; for(const [k,al] of Object.entries(COLS)){const i=H.findIndex(h=>al.map(semAcento).includes(h));if(i>=0)idx[k]=i}
+  let n=0;
+  for(const r of rows.slice(hi+1)){
+    const num=normNum(r[idx.processo]); if(!num) continue; n++;
+    const a=AC.get(num)||{processo:num,tarefas:[],etiquetas:new Set(),fontes:new Set()};
+    const g=k=>idx[k]!=null?r[idx[k]]:undefined;
+    for(const k of ['classe','assunto','prioridade','indicador','fase','complemento','ultimaMov','tempo','sigilo','assuntos']){const v=g(k);if(v!=null&&v!==''&&!a[k])a[k]=String(v).trim()}
+    for(const k of ['distribuicao','conclusao','dataUltMov']){const v=g(k);if(v&&!a[k])a[k]=dataBR(v)}
+    const t=g('tarefa'); if(t){const e=dataBR(g('entradaTarefa'));if(!a.tarefas.some(x=>x.t===t))a.tarefas.push({t:String(t).trim(),e})}
+    const et=g('etiquetas'); if(et) String(et).split(/\s*,\s*/).filter(Boolean).forEach(x=>a.etiquetas.add(x.trim()));
+    a.fontes.add(nome); AC.set(num,a);
+  }
+  return n;
+}
+async function xlsxLib(){
+  if(window.XLSX) return window.XLSX;
+  await new Promise((ok,err)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';s.onload=ok;s.onerror=()=>err(new Error('não foi possível carregar o leitor de .xlsx (sem internet?) — exporte em .csv'));document.head.appendChild(s)});
+  return window.XLSX;
+}
+function csvRows(t){const sep=(t.split('\n')[0].match(/;/g)||[]).length>(t.split('\n')[0].match(/,/g)||[]).length?';':',';const out=[];let row=[],cur='',q=false;
+  for(let i=0;i<t.length;i++){const ch=t[i];if(q){if(ch==='"'){if(t[i+1]==='"'){cur+='"';i++}else q=false}else cur+=ch}else if(ch==='"')q=true;else if(ch===sep){row.push(cur);cur=''}else if(ch==='\n'){row.push(cur.replace(/\r$/,''));out.push(row);row=[];cur=''}else cur+=ch}
+  if(cur||row.length){row.push(cur);out.push(row)}return out}
+async function importarArquivos(files){
+  const bar=$('acProg'); bar.classList.add('on');
+  for(const f of files){
+    try{
+      let rows;
+      if(/\.csv$/i.test(f.name)) rows=csvRows(await f.text());
+      else{const X=await xlsxLib();const wb=X.read(await f.arrayBuffer(),{type:'array',cellDates:true});rows=X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,raw:false,dateNF:'yyyy-mm-dd'})}
+      const n=lerTabela(rows,f.name);
+      ACFONTES.push({nome:f.name,linhas:n});
+      if(!n) toast(`${esc(f.name)}: coluna de número do processo não encontrada.`,6000);
+    }catch(e){toast(`Falha ao ler ${esc(f.name)}: ${esc(e.message)}`,7000)}
+  }
+  bar.classList.remove('on');
+  $('acFontes').innerHTML=ACFONTES.map(f=>`· ${esc(f.nome)} — ${f.linhas.toLocaleString('pt-BR')} linhas`).join('<br>');
+  SIMCACHE.clear(); prepararAcervo();
+}
+function baixado(a){return a.tarefas.length&&a.tarefas.every(t=>/baixad|arquiv|remetid/i.test(t.t))}
+function tarefaAtual(a){const t=[...a.tarefas].filter(t=>!/baixad|arquiv/i.test(t.t)).sort((x,y)=>(y.e||'').localeCompare(x.e||''))[0]||a.tarefas[0];return t||{t:a.fase||a.indicador||'—',e:''}}
+function diasDesde(d){if(!d)return null;const ms=Date.now()-new Date(d+'T12:00:00').getTime();return Math.max(0,Math.round(ms/864e5))}
+function prepararAcervo(){
+  for(const a of AC.values()){a.proprias=(IDX_POR_NUM.get(a.processo)||[]);a._t=tarefaAtual(a);a._dias=diasDesde(a._t.e);a._txt=semAcento([a.processo,a.classe,a.assunto,a._t.t,[...a.etiquetas].join(' '),a.fase,a.complemento].join(' '))}
+  const ativos=[...AC.values()].filter(a=>!baixado(a)).length;
+  $('ctAc').textContent=AC.size?ativos.toLocaleString('pt-BR')+' em tramitação':'importar planilhas';
+  const base=[...AC.values()].filter(a=>acF.sit==='ativos'?!baixado(a):acF.sit==='baixados'?baixado(a):true);
+  const cnt=f=>base.reduce((o,a)=>{const k=f(a);if(k)o[k]=(o[k]||0)+1;return o},{});
+  const op=(o,v)=>Object.entries(o).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`<option value="${esc(k)}"${k===v?' selected':''}>${esc(k)} (${n})</option>`).join('');
+  $('afTarefa').innerHTML='<option value="">Todas</option>'+op(cnt(a=>a._t.t),acF.tarefa);
+  $('afAssunto').innerHTML='<option value="">Todos</option>'+op(cnt(a=>a.assunto),acF.assunto);
+  $('afClasse').innerHTML='<option value="">Todas</option>'+op(cnt(a=>a.classe),acF.classe);
+  aplicarAcervo();
+}
+function aplicarAcervo(){
+  if(!AC.size) return;
+  const c=parseConsulta($('aq').value.trim());
+  acFilt=[...AC.values()].filter(a=>(acF.sit==='ativos'?!baixado(a):acF.sit==='baixados'?baixado(a):true)&&(!acF.tarefa||a._t.t===acF.tarefa)&&(!acF.assunto||a.assunto===acF.assunto)&&(!acF.classe||a.classe===acF.classe)
+    &&(acF.banco!=='proprio'||a.proprias.length)&&(acF.banco!=='sim'||similares(a).length)&&(c.vazia||casa(a._txt,c)));
+  const o=acF.ordem;
+  acFilt.sort(o==='dist'?(x,y)=>(x.distribuicao||'9').localeCompare(y.distribuicao||'9'):o==='assunto'?(x,y)=>(x.assunto||'').localeCompare(y.assunto||''):o==='processo'?(x,y)=>x.processo.localeCompare(y.processo):(x,y)=>(y._dias??-1)-(x._dias??-1));
+  const pro=acFilt.filter(a=>a.proprias.length).length;
+  $('aResumo').innerHTML=`<b>${acFilt.length.toLocaleString('pt-BR')}</b> processo${acFilt.length===1?'':'s'}`;
+  $('aResumo2').textContent=`${pro.toLocaleString('pt-BR')} já com decisão do gabinete no banco`;
+  acMostrados=0; $('aRes').innerHTML=''; renderAcMais();
+}
+let acMostrados=0;
+function renderAcMais(){
+  const fim=Math.min(acFilt.length,acMostrados+150); let h='';
+  for(let i=acMostrados;i<fim;i++){const a=acFilt[i];
+    h+=`<li class="proc${a.processo===acSel?' sel':''}" data-p="${a.processo}"><div class="crow">
+      <div class="c0"><span class="tp ${a.proprias.length?'A':'M'}" title="${a.proprias.length?a.proprias.length+' decisão(ões) do gabinete neste processo':'sem decisão no banco'}" style="${a.proprias.length?'':'background:var(--c-chip);color:var(--c-mut2)'}">${a.proprias.length||'–'}</span></div>
+      <div class="c1"><span class="num">${esc(a.processo)}</span><span class="sub" title="${esc(a.classe||'')}">${esc(a.classe||'classe n/i')}</span></div>
+      <div class="c2 csep"><span class="ass" title="${esc(a.assunto||'')}">${esc(a.assunto||'(assunto não informado)')}</span>
+        <div class="ctags"><span class="ct2" title="Tarefa atual">${esc(a._t.t.slice(0,48))}</span>${a._dias!=null?`<span class="ct2${a._dias>100?' dash':''}" style="${a._dias>100?'color:var(--c-s4);box-shadow:inset 0 0 0 1px var(--c-s4b)':''}" title="Dias na tarefa">${a._dias} d</span>`:''}${/sim/i.test(a.prioridade||'')?'<span class="ct2" style="background:var(--c-warnbg);color:var(--c-warn)">prioridade</span>':''}${/segredo|sigil/i.test(a.sigilo||'')?'<span class="ct2" style="background:var(--c-s4b);color:var(--c-s4)">sigilo</span>':''}${[...a.etiquetas].slice(0,3).map(e=>`<span class="ct2 dash">${esc(e.slice(0,28))}</span>`).join('')}</div></div>
+      <div class="c3 csep"><span class="dt" title="Distribuição">${a.distribuicao?fmtData(a.distribuicao):''}</span></div>
+    </div></li>`}
+  $('aRes').querySelector('.mais')?.remove();
+  $('aRes').insertAdjacentHTML('beforeend',h+(fim<acFilt.length?`<div class="mais"><button class="btn sm" onclick="renderAcMais()">Mostrar mais</button></div>`:''));
+  acMostrados=fim;
+}
+$('aRes').addEventListener('scroll',e=>{const u=e.target;if(u.scrollTop+u.clientHeight>u.scrollHeight-300&&acMostrados<acFilt.length)renderAcMais()});
+$('aRes').addEventListener('click',e=>{const li=e.target.closest('li[data-p]');if(li)abrirProcesso(li.dataset.p)});
+
+const FAM={'APELACAO CIVEL':['ApCiv','Ap','ApelRemNec','ApReeNec'],'APELACAO / REMESSA NECESSARIA':['ApCiv','Ap','ApelRemNec','ApReeNec','RemNecCiv'],'AGRAVO DE INSTRUMENTO':['AI'],'REMESSA NECESSARIA CIVEL':['RemNecCiv','ReeNec','ApelRemNec'],'CONFLITO DE COMPETENCIA CIVEL':['CCCiv','CC']};
+function similares(a,lim=8){
+  const chave=(a.assunto||'')+'|'+(a.classe||'');
+  if(SIMCACHE.has(chave)) return SIMCACHE.get(chave).filter(x=>x.n!==a.processo).slice(0,lim);
+  const tk=tokens(a.assunto); if(!tk.length||(tk.length===1&&tk[0].length<7)){SIMCACHE.set(chave,[]);return []}
+  if(!IDXN) IDXN=IDX.map(x=>semAcento((x.e||'')+' '+(x.r||'')+' '+(x.cl||'')));
+  const fam=FAM[semAcento(a.classe||'').toUpperCase()];
+  const req=tk.length<=2?tk.length:Math.ceil(tk.length*0.6);
+  const out=[];
+  for(let i=0;i<IDX.length;i++){
+    const x=IDX[i]; if(fam&&!fam.includes(x.c)) continue;
+    let s=0; for(const t of tk) if(rxTok(t).test(IDXN[i])) s++;
+    if(s>=req) out.push({x,s:s/tk.length});
+  }
+  out.sort((p,q)=>q.s-p.s||((q.x.y>='2025')-(p.x.y>='2025'))||((q.x.k==='integral')-(p.x.k==='integral'))||(q.x.d||'').localeCompare(p.x.d||''));
+  const r=out.slice(0,40).map(o=>({...o.x,score:o.s}));
+  SIMCACHE.set(chave,r); return r.filter(x=>x.n!==a.processo).slice(0,lim);
+}
+function modelosPara(a,lim=4){
+  if(!MODS) return [];
+  const tk=tokens(a.assunto), fam=semAcento(a.classe||'');
+  const esp=/agravo/.test(fam)?'Agravo de instrumento':/remessa necessaria civel/.test(fam)?'Remessa necessária':/apelacao/.test(fam)?'Apelação':/conflito/.test(fam)?'Conflito de competência':'';
+  if(!tk.length||(tk.length===1&&tk[0].length<7)) return []; // uma palavra curta (ex.: “Seguro”) é genérica demais
+  if(!MOD_IDF){MOD_IDF=new Map();}
+  const w=t=>{if(!MOD_IDF.has(t)){const df=MODS.reduce((n,m)=>n+(rxTok(t).test(m._txt)?1:0),0);MOD_IDF.set(t,Math.log((MODS.length+1)/(df+1)))}return MOD_IDF.get(t)};
+  const tot=tk.reduce((s,t)=>s+w(t),0)||1;
+  if(tot<3.2) return []; // assunto genérico demais para sugerir com segurança
+  const bonus={TRMS:.2,'1T':.05,'3T':0};
+  return MODS.filter(m=>m.frequencia>=5&&(!esp||m.especie===esp))
+    .map(m=>{let s=0;for(const t of tk)if(rxTok(t).test(m._txt))s+=w(t);return {m,s:s/tot}})
+    .filter(o=>o.s>=0.6).sort((p,q)=>(q.s+bonus[q.m.fase])-(p.s+bonus[p.m.fase])||q.m.frequencia-p.m.frequencia).slice(0,lim).map(o=>o.m);
+}
+function simHTML(x,extra){return `<div class="sim" onclick="irParaDecisao('${x.id}')"><div class="h"><span class="tp ${x.t}" style="min-width:20px;height:20px;font-size:10.5px">${x.t}</span><span class="num">${esc(x.n)}</span><span class="ct2">${esc(x.c||'')}</span><span class="ct2 org ${classeOrgao(x.o)}">${esc(siglaOrgao(x.o))}</span><span class="meta">${fmtData(x.d)}</span>${extra||''}</div>${esc((x.e||'').slice(0,240))}${x.r?`<div style="color:var(--c-ok);font-weight:600;margin-top:3px">${esc(x.r.slice(0,160))}</div>`:''}</div>`}
+async function abrirProcesso(num){
+  const a=AC.get(num); if(!a) return; acSel=num; $('mAc').classList.remove('sem-detalhe');
+  $('aRes').querySelectorAll('li').forEach(l=>l.classList.toggle('sel',l.dataset.p===num));
+  try{await carregarModelos()}catch(e){}
+  const sims=similares(a), mods=modelosPara(a);
+  a._sims=sims; a._mods=mods;
+  $('aDet').innerHTML=`<div class="dhead">
+    <div class="dtit"><span class="tag">Processo do acervo</span><span class="proc">${esc(a.processo)}</span><button class="dx" onclick="fecharLateral('acervo')">×</button></div>
+    <div class="dmeta">
+      <div><span>Classe</span>${esc(a.classe||'—')}</div><div><span>Assunto</span>${esc(a.assunto||'—')}</div>
+      <div><span>Tarefa atual</span>${esc(a._t.t)}${a._dias!=null?` · há ${a._dias} dias`:''}</div><div><span>Distribuição</span>${esc(a.distribuicao?fmtData(a.distribuicao):'—')}</div>
+      ${a.indicador?`<div><span>Indicador</span>${esc(a.indicador)}${a.fase?' · '+esc(a.fase):''}</div>`:''}${a.conclusao?`<div><span>Conclusão</span>${esc(fmtData(a.conclusao))}</div>`:''}
+      ${a.sigilo?`<div><span>Sigilo</span>${esc(a.sigilo)}</div>`:''}${a.etiquetas.size?`<div style="grid-column:1/-1"><span>Etiquetas</span>${esc([...a.etiquetas].join(' · '))}</div>`:''}
+    </div>
+    <div class="dacts"><button class="btn sm pri" onclick="levarParaMinuta('${num}')" title="Abre o modelo sugerido na faceta Minutas, já vinculado a este processo e com os precedentes similares à mão">III · Gerar minuta</button>
+      <a class="btn sm" href="https://pje2g.trf3.jus.br/pje/ConsultaPublica/listView.seam?numProcesso=${num.replace(/\D/g,'')}" target="_blank" rel="noopener">Consulta pública PJe</a></div>
+  </div>
+  <div class="dbody">
+    <div class="kpis"><div class="kpi"><b>${a.proprias.length}</b><span>decisões do gabinete neste processo</span></div><div class="kpi"><b>${sims.length}</b><span>casos similares no banco</span></div><div class="kpi"><b>${mods.length}</b><span>modelos sugeridos</span></div></div>
+    ${a.proprias.length?`<h3 class="sec">Decisões já proferidas neste processo</h3><div class="sim-list">${a.proprias.map(x=>simHTML(x,'<span class="sc">mesmo processo</span>')).join('')}</div>`:''}
+    <h3 class="sec">Casos similares do acervo jurisprudencial</h3>
+    ${sims.length?`<div class="sim-list">${sims.map(x=>simHTML(x,`<span class="sc">${Math.round(x.score*100)}% do assunto</span>`)).join('')}</div><p class="ajuda">Semelhança pelo assunto CNJ (${esc(tokens(a.assunto).join(', '))}) na ementa e no resultado, mesma família de classe; prioriza a Turma Regional, texto integral e julgados recentes.</p>`:`<p class="ajuda">Nenhum similar pelo assunto “${esc(a.assunto||'')}”. Experimente buscar termos do caso na aba Jurisprudência.</p>`}
+    <h3 class="sec">Modelos sugeridos</h3>
+    ${mods.length?`<div class="sim-list">${mods.map(m=>`<div class="sim" onclick="setModulo('modelos');abrirModelo('${m.id}')"><div class="h"><span class="tp ${m.tipo==='acórdão'?'A':'M'}" style="min-width:20px;height:20px;font-size:10.5px">${m.tipo==='acórdão'?'A':'M'}</span><b>${esc(m.especie)} · ${esc(m.resultado)}</b><span class="ct2 org ${m.fase==='TRMS'?'oms':m.fase==='3T'?'o3':'o1'}">${{TRMS:'TRMS','1T':'1ª T','3T':'3ª T'}[m.fase]}</span><span class="sc">${m.frequencia} usos</span></div>${esc(m.tema||(m.palavras_chave||[]).join(' · '))}</div>`).join('')}</div>`:'<p class="ajuda">Nenhum modelo com assunto correspondente (assuntos muito genéricos não geram sugestão).</p>'}${mods.length?'<p class="ajuda">Sugestão automática pelo assunto CNJ e pela classe, priorizando a fase atual (TRMS) — confira a pertinência antes de usar.</p>':''}
+  </div>`;
+  $('aDet').scrollTop=0;
+}
+/* =====================================================================
+   GERADOR DE MINUTAS — modelo + processo vinculado do acervo + precedentes
+   ===================================================================== */
+let MIN_PROC=null; // processo do acervo vinculado à minuta
+const RX_CAMPO=/\[[^\]\n]{1,80}\]/g;
+function camposDoModelo(m){
+  const out=[];let k=0;
+  m.modelo.replace(RX_CAMPO,(t,pos)=>{const antes=m.modelo.slice(Math.max(0,pos-70),pos).replace(/\s+/g,' ').trim();out.push({k:k++,t,antes,pos});return t});
+  return out;
+}
+function valorInicial(c,m){
+  const a=MIN_PROC&&AC.get(MIN_PROC);
+  if(c.t==='[nº do processo]'&&a) return a.processo;
+  return '';
+}
+function geradorHTML(m){
+  const cs=camposDoModelo(m), a=MIN_PROC&&AC.get(MIN_PROC), fonte=POR_ID.get(m.fonte_modelo);
+  const sims=a?(a._sims||similares(a)).slice(0,6):[];
+  const linhas=cs.map(c=>{
+    const longo=/trecho|complementar|dispositivo|citação/.test(c.t);
+    const dica=c.t==='[dispositivo]'&&fonte&&fonte.r?`Dispositivo da decisão-base: ${fonte.r}`:(c.antes?'…'+c.antes:'');
+    const v=esc(valorInicial(c,m));
+    return `<label for="gc${c.k}" title="${esc(dica)}">${esc(c.t.replace(/[\[\]]/g,''))}</label>${longo?`<textarea id="gc${c.k}" data-k="${c.k}" placeholder="${esc(dica)}">${v}</textarea>`:`<input id="gc${c.k}" data-k="${c.k}" value="${v}" placeholder="${esc(dica)}">`}`;
+  }).join('');
+  return `<div class="gerador" id="gerador" data-m="${m.id}">
+    <div class="lote">Processo</div>
+    <div class="gl"><label>Vinculado</label><div>${a?`<span class="ponte a" onclick="setModulo('acervo');abrirProcesso('${a.processo}')">II · ${esc(a.processo)}</span> <span class="meta">${esc(a.classe||'')} · ${esc(a.assunto||'')}</span>`:`<span class="meta">Nenhum — abra um processo na faceta <b>II · Acervo</b> e use “Gerar minuta”, ou preencha os campos abaixo.</span>`}</div></div>
+    ${cs.length?`<div class="lote">Campos do modelo (${cs.length})</div><div class="gl">${linhas}</div>`:'<p class="ajuda">Este modelo não tem campos variáveis.</p>'}
+    ${sims.length?`<div class="lote">Precedentes do gabinete para citar · faceta I</div><div style="display:flex;flex-wrap:wrap;gap:6px">${sims.map(x=>`<span class="ponte j" onclick="inserirCitacao('${x.id}')" title="Inserir citação no campo selecionado (ou ao final)">+ ${esc(x.c)} ${esc(x.n)}</span>`).join('')}</div>`:''}
+    <div class="lote">Minuta</div>
+    <div class="modelo-txt" id="minPrev" style="background:var(--panel2);border:1px solid var(--line2);border-radius:8px;padding:14px 16px;max-height:420px;overflow:auto"></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+      <button class="btn sm pri" onclick="copiarTexto(textoMinuta(),'Minuta copiada.')">Copiar minuta</button>
+      <button class="btn sm" onclick="baixarMinuta()">Baixar .doc</button>
+      <span class="meta" id="minPend" style="align-self:center"></span>
+    </div>
+  </div>`;
+}
+let campoAtivo=null;
+document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.dataset.k!=null)campoAtivo=e.target});
+document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador'))atualizarMinuta()});
+function textoMinuta(marcar){
+  const g=$('gerador'); if(!g) return ''; const m=MOD_POR.get(g.dataset.m); let k=0;
+  return m.modelo.replace(RX_CAMPO,t=>{const el=$('gc'+(k++));const v=el&&el.value.trim();return v?(marcar?'\u0001'+v+'\u0002':v):(marcar?'\u0003'+t+'\u0004':t)});
+}
+function atualizarMinuta(){
+  const p=$('minPrev'); if(!p) return; const t=textoMinuta(true);
+  p.innerHTML=esc(t).replace(/\u0001([\s\S]*?)\u0002/g,'<span style="background:var(--f-acervo-s);border-radius:3px">$1</span>').replace(/\u0003([\s\S]*?)\u0004/g,'<span class="cp">$1</span>');
+  const pend=(t.match(/\u0003/g)||[]).length; $('minPend').textContent=pend?`${pend} campo(s) a preencher`:'todos os campos preenchidos';
+}
+async function inserirCitacao(id){
+  const x=POR_ID.get(id); try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o precedente.');return}
+  const cit=citacao(registro(id));
+  let el=campoAtivo&&document.body.contains(campoAtivo)?campoAtivo:[...document.querySelectorAll('#gerador [data-k]')].find(e=>/citação|trecho/.test(e.previousElementSibling?.textContent||'')&&!e.value);
+  if(!el){copiarTexto(cit,'Citação copiada (nenhum campo livre).');return}
+  el.value=(el.value?el.value+'\n\n':'')+cit; atualizarMinuta(); toast('Citação inserida.');
+}
+function baixarMinuta(){
+  const g=$('gerador'); const m=MOD_POR.get(g.dataset.m); const proc=MIN_PROC||'minuta';
+  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:12pt;line-height:1.5}p{text-align:justify;margin:0 0 10pt;text-indent:2cm}p.c{text-align:center;text-indent:0;font-weight:bold}</style></head><body>${textoMinuta().split(/\n{2,}/).map(par=>`<p${/^(DECISÃO|RELATÓRIO|VOTO|EMENTA|ACÓRDÃO|DECIDO\.?|É O RELATÓRIO\.?)$/i.test(par.trim())?' class="c"':''}>${esc(par.trim()).replace(/\n/g,'<br>')}</p>`).join('')}</body></html>`;
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+html],{type:'application/msword'}));a.download=`minuta_${proc.replace(/\D/g,'')||m.id}.doc`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+}
+async function levarParaMinuta(num){
+  const a=AC.get(num); if(!a) return; MIN_PROC=num;
+  await carregarModelos(); if(!a._mods) a._mods=modelosPara(a);
+  setModulo('modelos');
+  const mod=a._mods[0];
+  if(mod){modF.fase=mod.fase;$('mfFase').querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.v===mod.fase));modF.min=5;$('mfMin').value='5';preencherModSelects();aplicarModelos();abrirModelo(mod.id);toast(`Modelo sugerido para ${esc(num)} aberto na faceta III.`)}
+  else toast('Nenhum modelo sugerido pelo assunto — escolha um na lista.');
+}
+function limparAcervo(){AC.clear();ACFONTES.length=0;SIMCACHE.clear();acFilt=[];$('aRes').innerHTML='<div class="vazio">Acervo descartado.</div>';$('aResumo').textContent='Nenhum acervo importado.';$('aResumo2').textContent='';$('acFontes').innerHTML='';$('ctAc').textContent='importar planilhas';MIN_PROC=null;fecharLateral('acervo')}
+const drop=$('acDrop');
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('on')}));
+['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('on')}));
+drop.addEventListener('drop',e=>{setModulo('acervo');importarArquivos([...e.dataTransfer.files])});
+$('mAc').addEventListener('dragover',e=>e.preventDefault());
+$('mAc').addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('on');importarArquivos([...e.dataTransfer.files])});
+$('acArq').addEventListener('change',e=>{importarArquivos([...e.target.files]);e.target.value=''});
+chipsGrupo('afSit',v=>{acF.sit=v;prepararAcervo()});
+chipsGrupo('afBanco',v=>{acF.banco=v;aplicarAcervo()});
+[['afTarefa','tarefa'],['afAssunto','assunto'],['afClasse','classe'],['afOrdem','ordem']].forEach(([el,k])=>$(el).onchange=e=>{acF[k]=e.target.value;aplicarAcervo()});
+let adeb;$('aq').addEventListener('input',()=>{clearTimeout(adeb);adeb=setTimeout(aplicarAcervo,180)});
+$('btnFiltrosMob').onclick=()=>$('filtros').classList.toggle('aberto');
+if(matchMedia('(max-width:720px)').matches)$('btnFiltrosMob').style.display='grid';
+
+function salvarHash(){
+  const p=new URLSearchParams(); if(tipo!=='A')p.set('t',tipo); const q=$('q').value.trim(); if(q)p.set('q',q);
+  Object.entries(F).forEach(([k,v])=>{if(v&&!(k==='ordem'&&v==='recente'))p.set(k,v)}); if(selId)p.set('id',selId);
+  history.replaceState(null,'','#'+p.toString());
+}
+function lerHash(){
+  const p=new URLSearchParams(location.hash.slice(1)); if(p.get('t'))tipo=p.get('t');
+  Object.keys(F).forEach(k=>{if(p.get(k))F[k]=p.get(k)}); if(p.get('q'))$('q').value=p.get('q'); return p.get('id');
+}
+
+/* ---------- início ---------- */
+async function iniciar(){
+  $('carregando').style.display='grid'; $('stDot').className=''; $('stTxt').textContent='carregando índice…';
+  try{
+    IDX=await lerGz('indice.json.gz',(n,t)=>{$('carregandoMsg').textContent=`baixando o índice · ${(n/1048576).toFixed(1)} MB${t?' de '+(t/1048576).toFixed(1)+' MB':''}`});
+  }catch(e){
+    $('carregandoMsg').innerHTML=`Não foi possível ler o índice (${esc(e.message)}).<br><br><button class="btn" onclick="abrirConfig()">Configurar fonte / abrir pasta local</button>`;
+    $('stDot').className='err'; $('stTxt').textContent='sem acesso ao acervo'; return;
+  }
+  POR_ID=new Map(IDX.map(x=>[x.id,x]));
+  IDX_POR_NUM=new Map(); IDX.forEach(x=>{if(!IDX_POR_NUM.has(x.n))IDX_POR_NUM.set(x.n,[]);IDX_POR_NUM.get(x.n).push(x)}); IDX_POR_NUM.forEach(v=>v.sort((a,b)=>(b.d||'').localeCompare(a.d||'')));
+  const nA=IDX.filter(x=>x.t==='A').length,nM=IDX.length-nA;
+  $('ctA').textContent=nA.toLocaleString('pt-BR');$('ctM').textContent=nM.toLocaleString('pt-BR');$('ctT').textContent=IDX.length.toLocaleString('pt-BR');
+  const anos=[...new Set(IDX.map(x=>x.y))].sort();
+  $('fAno1').innerHTML='<option value="">desde</option>'+anos.map(a=>`<option>${a}</option>`).join('');
+  $('fAno2').innerHTML='<option value="">até</option>'+anos.map(a=>`<option>${a}</option>`).join('');
+  $('stDot').className='ok'; $('stTxt').textContent=`${nomeFonte()} · ${IDX.length.toLocaleString('pt-BR')} registros`;
+  const idHash=lerHash();
+  setTipo(tipo); ['fAno1','fAno2','fOrdem'].forEach(i=>$(i).value=F[{fAno1:'ano1',fAno2:'ano2',fOrdem:'ordem'}[i]]||(i==='fOrdem'?'recente':'')); marcarChips(); aplicar();
+  $('carregando').style.display='none';
+  if(idHash&&POR_ID.has(idHash)) abrir(idHash);
+}
+iniciar();
+</script>
+</body>
+</html>
