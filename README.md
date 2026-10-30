@@ -1,0 +1,67 @@
+# Acervo jurisprudencial — Des. Fed. Carlos Muta (TRF3)
+
+Decisões monocráticas e acórdãos em que o Desembargador Federal **Luís Carlos Hiroki Muta** figura como relator (ou relator para o acórdão), extraídos da **base pública de jurisprudência do TRF3** e organizados para consulta, pesquisa e verificação de integridade.
+
+**Painel de consulta:** [`consulta/index.html`](consulta/index.html). Abra o arquivo no navegador; ele lê os dados diretamente deste repositório. Também funciona com uma cópia local (⚙ › *Abrir pasta local*).
+
+## Conteúdo
+
+| Conjunto | Registros | Período | Texto |
+|---|---:|---|---|
+| Decisões monocráticas | 7.157 | 05/2016 – 10/2026 | inteiro teor em todas |
+| Acórdãos — integral | 12.694 | 2016 – 2026 | relatório, voto e acórdão |
+| Acórdãos — ementa + acórdão | 11.751 | 1999 – 2017 | ementa e parágrafo do acórdão (a base não oferece relatório/voto) |
+| Acórdãos — só ementa | 1.605 | 1999 – 2011 | apenas ementa |
+| **Total** | **33.207** | | |
+
+Faltam **162 acórdãos** da base (os mais antigos, c. 1999–2001, em regra só com ementa): o servidor do TRF3 recusou as últimas requisições da coleta. A lacuna está registrada no `MANIFESTO.json`.
+
+Critérios de busca na base: Monocráticas, `relator: CARLOS MUTA`; Acórdãos, `relator | relator para o acórdão: CARLOS MUTA`. Coleta em 30/10/2026.
+
+## Estrutura
+
+```
+consulta/index.html          painel de consulta (HTML único, sem dependências)
+dados/indice.json.gz         índice compacto (metadados, prévia, resultado) — 33.207 linhas
+dados/acordaos/AAAA.json.gz      acórdãos por ano de julgamento
+dados/monocraticas/AAAA.json.gz  monocráticas por ano da decisão
+MANIFESTO.json               hashes SHA-256 de cada arquivo e de cada registro + contagens
+SHA256SUMS                   hashes dos arquivos (formato `sha256sum -c`)
+scripts/organizar.py         gera dados/, MANIFESTO e SHA256SUMS a partir dos JSON exportados
+```
+
+Os arquivos são JSON compactados com gzip (`zcat dados/acordaos/2021.json.gz | jq '.registros[0]'`).
+
+## Campos
+
+**Comuns:** `id` (`A…` acórdão, `M…` monocrática), `seq` (posição na lista da base), `numero_processo`, `classe_sigla`, `classe`, `relator`, `orgao_julgador`, `publicacao_veiculo`, `data_publicacao`, `inteiro_teor`, `link_pje`, `link_impressao`, `sha256_inteiro_teor`, `conteudo_texto`.
+
+**Acórdãos:** `data_julgamento(_iso)`, `ementa`, `sha256_ementa`, `numero_classe_legado`, `publicacao_complemento`, `relator_no_documento`, `partes`, `resultado_colegiado`, `atuacao_muta`, `possui_inteiro_teor`, `link_pdf`, `link_integra_externa`.
+
+**Monocráticas:** `data_decisao(_iso)`, `dispositivo`, `orgao_julgador_fonte`, `caracteres`.
+
+### Fonte × derivado
+
+- **Reproduzido da base, sem alteração de conteúdo** (apenas espaços e quebras de linha repetidos normalizados): inteiro teor, ementa, número, classe, relator, órgão julgador dos acórdãos, datas, veículo de publicação e links.
+- **Extraído automaticamente** (útil para filtrar, nunca para citar): `dispositivo`, `resultado_colegiado`, `partes`, `atuacao_muta`, `conteudo_texto`, `orgao_julgador` das monocráticas (só quando consta do cabeçalho do documento) e os campos de prévia do índice.
+
+## Autenticidade e verificação
+
+A base de jurisprudência é um serviço de consulta, **não a publicação oficial**. O texto autêntico é o documento assinado no PJe e a publicação no DJEN/e-DJF3/DJU. A base já não traz formatação (negritos, tabelas) nem assinatura, e eventuais falhas dela estão reproduzidas aqui.
+
+O que este repositório garante é **integridade e rastreabilidade desde a extração**:
+
+1. `MANIFESTO.json` traz o SHA-256 do inteiro teor e da ementa de cada registro e de cada arquivo, além dos hashes dos arquivos exportados originalmente.
+2. `sha256sum -c SHA256SUMS` confere todos os arquivos de `dados/`.
+3. No painel, **Verificar autenticidade** recalcula no navegador o hash do texto exibido e o compara com o manifesto.
+4. Cada registro mantém os links para o PJe, para a versão de impressão do TRF3 e, nos acórdãos antigos, para a íntegra no site anterior.
+5. O histórico do Git registra qualquer alteração posterior.
+
+## Reprocessar
+
+```bash
+python3 scripts/organizar.py muta_monocraticas_TRF3.json muta_acordaos_TRF3_*.json
+sha256sum -c SHA256SUMS
+```
+
+O `.gz` é gerado com `mtime=0`; portanto a mesma entrada produz os mesmos bytes.
