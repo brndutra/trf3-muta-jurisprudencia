@@ -5,7 +5,7 @@ Decisões monocráticas e acórdãos em que o Desembargador Federal **Luís Carl
 **Central Paradigmas · Acervo · Minutas:** **https://brndutra.github.io/trf3-muta-jurisprudencia/central/**
 - **I · Paradigmas**: pesquisa, leitura, citação e verificação das 33.207 decisões do gabinete.
 - **II · Acervo**: importa os relatórios do PJe/BI (só no navegador, nada é enviado) e cruza cada processo com o banco: paradigmas próprios (decisões do gabinete no próprio processo), paradigmas similares e modelos sugeridos.
-- **III · Minutas**: 752 modelos extraídos do acervo (`modelos/`), em modo **Padrão** (modelo com campos) ou **Matriz** (blocos fixos e opcionais do grupo, com o percentual de uso); relatório estruturado (Forma A/B e espécies próprias); **editor** da minuta; **painel de diretrizes** com indicadores de correção. O painel usa o *Padrão Muta* (regras de redação, normas, diretrizes e roteiros do gabinete), que **não é publicado** neste repositório: é carregado pelo usuário a partir do arquivo `padrao_muta.json` e fica guardado apenas no navegador.
+- **III · Minutas**: 752 modelos extraídos do acervo (`modelos/`), em modo **Texto-modelo** (a decisão-base da matéria, com campos) ou **Matriz** (modelo-matriz do *tipo de julgamento* — espécie × resultado —, com fórmulas fixas, versões alternativas escolhidas conforme a situação do caso e trechos opcionais; o conteúdo da matéria entra na fundamentação a partir dos blocos do modelo aberto); relatório estruturado (Forma A/B e espécies próprias); **editor** da minuta; **painel de diretrizes** com indicadores de correção. O painel usa o *Padrão Muta* (regras de redação, normas, diretrizes e roteiros do gabinete), que **não é publicado** neste repositório: é carregado pelo usuário a partir do arquivo `padrao_muta.json` e fica guardado apenas no navegador.
 
 **Painel de consulta (somente jurisprudência):** https://brndutra.github.io/trf3-muta-jurisprudencia/consulta/
 
@@ -38,6 +38,9 @@ scripts/organizar.py         gera dados/, MANIFESTO e SHA256SUMS a partir dos JS
 scripts/modelos.py           extrai os modelos (arquétipos) de monocráticas e acórdãos → modelos/
 central/index.html           central tripartite: Paradigmas · Acervo · Minutas
 modelos/modelos.json(.gz)    752 modelos por fase do gabinete, com texto-base rastreável e blocos da matriz
+scripts/matrizes.py          extrai os modelos-matriz por tipo de julgamento → modelos/matrizes*.json
+modelos/matrizes.json(.gz)   20 modelos-matriz (fase TRMS): posições, parágrafos-fórmula, versões e situação
+modelos/matrizes_gabA.json   os mesmos, no formato “Modelo-matriz” do gerador (esqueletoModelo/paragrafosModelo)
 ```
 
 Os arquivos são JSON compactados com gzip (`zcat dados/acordaos/2021.json.gz | jq '.registros[0]'`).
@@ -79,3 +82,12 @@ O `.gz` é gerado com `mtime=0`; portanto a mesma entrada produz os mesmos bytes
 ## Modelos
 
 `scripts/modelos.py` identifica, em cada fase do gabinete (3ª Turma 2020–23, 1ª Turma 2023–24, Turma Regional de MS 2026), os parágrafos repetidos literalmente em várias decisões e agrupa as decisões que compartilham o mesmo conjunto desses blocos. Para cada grupo com 5 ou mais decisões, o modelo reproduz a decisão mais típica (`fonte_modelo`), mantendo o texto fixo — inclusive precedentes citados com suas datas — e trocando por `[campos]` apenas o que varia entre os casos (`[trecho próprio do caso]`, `ID [nº]`, `[dispositivo]` etc.). Nenhum trecho é redigido pelo algoritmo.
+
+## Modelos-matriz por tipo de julgamento
+
+`scripts/matrizes.py` agrupa as decisões da Turma Regional de MS (2026) por **tipo de julgamento** — pronunciamento (voto/monocrática) × espécie × resultado — e, em cada tipo com 12 ou mais decisões, distribui os parágrafos pelas posições do voto (admissibilidade, preliminares, controvérsia, fundamentação, fatos, provas, aplicação, conclusão, efeitos, honorários, complemento, dispositivo, fecho). Um parágrafo entra na matriz quando é **fórmula do tipo**, e não da matéria: aparece em ao menos 10% das decisões do tipo e em 3 ou mais matérias; transcrições de lei e exposições temáticas ficam para o modelo da matéria.
+
+- **Fixo**: presente em metade ou mais das decisões do tipo. **Opcional**: entre 10% e 50%, pode ser omitido.
+- **Versões**: redações alternativas do mesmo ponto (variações só de grafia são fundidas). Cada versão traz a **situação** que a distingue — recorrente (autor, autora, ré/INSS, União), gratuidade, Súmula 111, correção de ofício, retorno à origem — e a Central sugere a versão conforme o relatório preenchido.
+- **Fórmula + complemento**: quando a cauda do parágrafo varia caso a caso, guarda-se o trecho fixo seguido de `{{complemento conforme o caso}}`.
+- Nada é redigido pelo algoritmo: todo texto é transcrição de decisões do gabinete, com o percentual de uso no tipo.

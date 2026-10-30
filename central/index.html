@@ -330,6 +330,25 @@ textarea.editor:focus{border-color:color-mix(in srgb,var(--f-minuta) 60%,transpa
 .mx-b:not(:has(input:checked)){opacity:.72}
 .mx-free{display:block;padding:8px 10px;border-top:1px solid var(--line)}
 .mx-free span{display:block;font:700 11px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut);margin-bottom:4px}
+.mx-cab{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.mx-sit{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 10px;margin-bottom:8px;border:1px solid color-mix(in srgb,var(--f-minuta) 45%,transparent);border-left:4px solid var(--f-minuta);border-radius:10px;background:var(--f-minuta-s)}
+.mx-sit b{font:700 12.5px Figtree,Inter,system-ui,sans-serif}
+.mx-sit .btn{margin-left:auto}
+.mx-pt{padding:7px 10px;border-top:1px solid var(--line);font:500 12.5px/1.45 Figtree,Inter,system-ui,sans-serif}
+.mx-pt.off .mx-t{display:none}
+.mx-pt-h{display:flex;gap:8px;align-items:baseline}
+.mx-pt.fx .mx-pt-h .mx-u{color:var(--f-acervo)}
+.mx-pt .mx-t{color:var(--text);margin-top:4px;-webkit-line-clamp:4}
+.mxv-l{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.mxv{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line2);border-radius:999px;padding:2px 9px 2px 6px;cursor:pointer;background:var(--panel);font:600 11.5px Figtree,Inter,system-ui,sans-serif;color:var(--c-ink2);max-width:100%}
+.mxv input{width:auto!important;margin:0}
+.mxv.on{border-color:var(--f-minuta);background:var(--f-minuta-s);color:var(--text)}
+.mxv.omit{border-style:dashed}
+.mxv-t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px}
+.mxv .mx-u{padding:0}
+.mx-mat{border-top:1px dashed var(--line2);background:color-mix(in srgb,var(--f-juris) 5%,transparent)}
+.mx-mat>.mx-h{background:transparent;color:var(--f-juris)}
+details.mx-sec>summary{cursor:pointer;list-style:none}
 /* painel de diretrizes — escuro, como no gerador */
 .dz{position:sticky;top:0;align-self:start;height:calc(100vh - 72px);display:flex;flex-direction:column;background:#2e3137;color:#c9cdd3;border-left:1px solid #3f434b;font:500 12.5px/1.5 Figtree,Inter,system-ui,sans-serif}
 .dz-head{padding:14px 16px 0;border-bottom:1px solid #3f434b}
@@ -1067,6 +1086,7 @@ async function carregarModelos(){
   return MODS;
 }
 async function abrirModelos(){
+  carregarMatrizes();
   if(!MODS){$('mResumo').textContent='carregando modelos…';try{await carregarModelos()}catch(e){$('mResumo').textContent='Falha ao carregar modelos: '+e.message;return}preencherModSelects()}
   aplicarModelos();
 }
@@ -1437,7 +1457,6 @@ async function abrirProcesso(num){
    ===================================================================== */
 let MIN_PROC=null;            // processo do acervo vinculado à minuta
 let MIN_MODO='padrao';        // 'padrao' | 'matriz'
-let MX=null;                  // estado da matriz: blocos selecionados e textos livres
 let ED_DIRTY=false;           // o editor foi alterado à mão
 let DIR=null, REGRAS=null, DZ_TAB='correcao', ROT_SEL='mestre';
 const RX_CAMPO=/\[[^\]\n]{1,80}\]/g;
@@ -1467,12 +1486,12 @@ function abrirModelo(id){
   const m=MOD_POR.get(id); modSel=id; $('mMod').classList.remove('sem-detalhe');
   $('mRes').querySelectorAll('li').forEach(l=>l.classList.toggle('sel',l.dataset.id===id));
   const fonte=POR_ID.get(m.fonte_modelo);
-  MX={sel:new Set((m.blocos||[]).map((b,i)=>b.fixo?i:-1).filter(i=>i>=0)),analise:'',disp:''};
+  MXT=null;
   ED_DIRTY=false;
   $('mDet').innerHTML=`<div class="dhead">
     <div class="dtit"><span class="tag ${m.tipo==='acórdão'?'A':'M'}">${m.tipo==='acórdão'?'Modelo de acórdão':'Modelo de monocrática'}</span><span class="proc">${esc(m.id)}</span>
-      <div class="acs-mode" id="minModo" style="margin-left:10px" title="Padrão: o modelo com campos a preencher · Matriz: blocos fixos e opcionais do grupo, selecionáveis">
-        <button data-m="padrao" class="${MIN_MODO==='padrao'?'on':''}">PADRÃO</button><button data-m="matriz" class="${MIN_MODO==='matriz'?'on':''}">MATRIZ</button></div>
+      <div class="acs-mode" id="minModo" style="margin-left:10px" title="Texto-modelo: a decisão-base da matéria com campos a preencher · Matriz: esqueleto do tipo de julgamento, com versões alternativas e trechos opcionais conforme a situação">
+        <button data-m="padrao" class="${MIN_MODO==='padrao'?'on':''}">TEXTO-MODELO</button><button data-m="matriz" class="${MIN_MODO==='matriz'?'on':''}">MATRIZ</button></div>
       <button class="dx" onclick="fecharLateral('modelos')">×</button></div>
     <div style="font-weight:700;margin:6px 0 2px">${esc(m.nome)}</div>
     <div class="meta">${esc(m.fase_nome)} · ${m.frequencia} decisões (${esc(fmtData(m.periodo[0]))} a ${esc(fmtData(m.periodo[1]))}) · texto-base <a href="#" onclick="irParaDecisao('${m.fonte_modelo}');return false">${esc(m.processo_modelo)}</a>${fonte?` (${fmtData(fonte.d)})`:''}</div>
@@ -1481,7 +1500,7 @@ function abrirModelo(id){
     <div class="min-main" id="gerador" data-m="${m.id}">
       ${vinculoHTML()}
       <details class="min-blk" open><summary>Relatório · dados do processo</summary>${relatorioHTML(m,MIN_PROC&&AC.get(MIN_PROC))}</details>
-      <details class="min-blk" open id="minCamposD"><summary id="minCamposS">${MIN_MODO==='padrao'?'Campos do modelo':'Matriz · blocos do grupo'}</summary><div id="minCampos">${MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m)}</div></details>
+      <details class="min-blk" open id="minCamposD"><summary id="minCamposS">${MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento'}</summary><div id="minCampos">${MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m)}</div></details>
       ${paradigmasCitarHTML()}
       <div class="lote">Minuta · editor <span class="meta" id="edEstado" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div>
       <div class="edbar">
@@ -1502,7 +1521,7 @@ function abrirModelo(id){
       <div class="dz-body" id="dzBody"><p class="dz-muted">Carregando o Padrão Muta…</p></div></aside>
   </div>`;
   $('mDet').scrollTop=0;
-  $('minModo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MIN_MODO=b.dataset.m;$('minModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('minCampos').innerHTML=MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m);$('minCamposS').textContent=MIN_MODO==='padrao'?'Campos do modelo':'Matriz · blocos do grupo';$('minCamposD').open=true;atualizarMinuta()});
+  $('minModo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MIN_MODO=b.dataset.m;$('minModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('minCampos').innerHTML=MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m);$('minCamposS').textContent=MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento';$('minCamposD').open=true;atualizarMinuta()});
   $('dzTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;DZ_TAB=b.dataset.t;$('dzTabs').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));renderDZ()});
   $('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor();agendarLint()});
   atualizarMinuta();
@@ -1553,35 +1572,153 @@ function textoPadrao(m){
   return out.replace(/\n{3,}/g,'\n\n').trim();
 }
 
-/* ---------- modo MATRIZ: blocos fixos e opcionais do grupo ---------- */
-const SEC_ROT={relatorio:'Relatório',fundamentacao:'Fundamentação',dispositivo:'Dispositivo',ementa:'Ementa',acordao:'Acórdão'};
-function matrizHTML(m){
-  const B=m.blocos||[]; if(!B.length) return '<p class="ajuda">Este modelo não tem blocos para a matriz.</p>';
-  const fonte=POR_ID.get(m.fonte_modelo);
-  const secs=['relatorio','fundamentacao','dispositivo','ementa','acordao'].filter(s=>B.some(b=>b.secao===s)||s==='fundamentacao'||s==='dispositivo');
-  return `<div class="lote">Matriz · ${B.length} blocos do grupo (${B.filter(b=>b.fixo).length} fixos, ${B.filter(b=>!b.fixo).length} opcionais)</div>
-  <p class="ajuda" style="margin-top:-4px">Fixos: presentes em ao menos metade das ${m.frequencia} decisões do grupo (já marcados). Opcionais: em 15% a 50% — marque os que se aplicam ao caso. O percentual é o uso no grupo.</p>
-  ${secs.map(s=>{const L=B.map((b,i)=>({b,i})).filter(o=>o.b.secao===s);
-    return `<div class="mx-sec"><div class="mx-h">${SEC_ROT[s]} <span class="meta">${L.filter(o=>MX.sel.has(o.i)).length}/${L.length}</span>${s==='relatorio'?'<span class="meta" id="mxRelNota"></span>':''}</div>
-      ${L.map(o=>`<label class="mx-b${o.b.fixo?' fx':''}"><input type="checkbox" data-mx="${o.i}"${MX.sel.has(o.i)?' checked':''}><span class="mx-u" title="uso no grupo">${Math.round(o.b.uso*100)}%</span><span class="mx-t">${cpRender(o.b.texto)}</span></label>`).join('')}
-      ${s==='fundamentacao'?`<label class="mx-free"><span>Análise do caso concreto</span><textarea data-mxf="analise" placeholder="R01 · abrir pelo caso concreto: “Na espécie, …” — fatos com a fonte (ID), valoração da prova e subsunção">${esc(MX.analise)}</textarea></label>`:''}
-      ${s==='dispositivo'?`<label class="mx-free"><span>Dispositivo (se nenhum bloco acima)</span><textarea data-mxf="disp" placeholder="${esc(fonte&&fonte.r?'Na decisão-base: '+fonte.r:'Ante o exposto, …')}">${esc(MX.disp)}</textarea></label>`:''}
-    </div>`}).join('')}`;
+/* ---------- modo MATRIZ: modelo-matriz do tipo de julgamento ----------
+   Esqueleto por posição (admissibilidade → fecho), com parágrafos-fórmula em versões
+   alternativas (rádio) e opcionais (omitir), escolhidos conforme a situação do caso.
+   O conteúdo da matéria entra na fundamentação jurídica a partir dos blocos do modelo aberto. */
+let MATRIZES=null, MXT=null;
+async function carregarMatrizes(){
+  if(MATRIZES) return MATRIZES;
+  try{MATRIZES=(await lerGz('../modelos/matrizes.json.gz')).matrizes}catch(e){MATRIZES=[]}
+  return MATRIZES;
 }
-document.addEventListener('change',e=>{const i=e.target.dataset&&e.target.dataset.mx;if(i==null||!MX)return;e.target.checked?MX.sel.add(+i):MX.sel.delete(+i);const sec=e.target.closest('.mx-sec');if(sec){const n=sec.querySelectorAll('input[data-mx]:checked').length,t=sec.querySelectorAll('input[data-mx]').length;sec.querySelector('.mx-h .meta').textContent=`${n}/${t}`}atualizarMinuta()});
-document.addEventListener('input',e=>{const f=e.target.dataset&&e.target.dataset.mxf;if(f&&MX){MX[f]=e.target.value;atualizarMinuta()}});
+const SEC_ROT={relatorio:'Relatório',fundamentacao:'Fundamentação',dispositivo:'Dispositivo',ementa:'Ementa',acordao:'Acórdão'};
+const chv=s=>String(s||'').replace(/\{\{\s*([^}]+?)\s*\}\}/g,'[$1]');   // {{campo}} → [campo], como os demais campos
+function matrizPara(m){
+  if(!MATRIZES||!MATRIZES.length) return null;
+  const L=MATRIZES.filter(x=>x.tipo===m.tipo);
+  return L.find(x=>x.especie===m.especie&&x.resultado===m.resultado)
+      || L.find(x=>x.especie===m.especie)
+      || L.find(x=>x.resultado===m.resultado)
+      || L[0] || null;
+}
+/* situação do caso, lida do relatório e do acervo */
+function situacaoCaso(){
+  const rec=(vRel('rRec')||'')+' '+((MIN_PROC&&AC.get(MIN_PROC)||{}).poloAtivo||'');
+  const r=vRel('rRec').toLowerCase(), S={};
+  if(/\ba autora\b|^autora|\bda autora\b/.test(r)) S.parte='autora';
+  else if(/\bo autor\b|^autor\b|\bdo autor\b/.test(r)) S.parte='autor';
+  else if(/uni[ãa]o|fazenda nacional/.test(r)) S.parte='União';
+  else if(/\binss\b|autarquia|\bré\b|\bo réu\b|\ba ré\b/.test(r)) S.parte='ré';
+  else if(/impetrante/.test(r)) S.parte='impetrante';
+  else if(/embargante/.test(r)) S.parte='embargante';
+  const hon=(vRel('rHon')+' '+vRel('rDec')).toLowerCase();
+  if(/gratuidade|suspensa a exigibilidade|98, § ?3/.test(hon)&&S.parte!=='ré'&&S.parte!=='União') S.gratuidade='sim';
+  if(/inss|autarquia/.test(r)||/inss/i.test(rec)) S.sumula111='sim';
+  return S;
+}
+function sitRotulo(S){const p=[];if(S.parte)p.push('recorrente: '+S.parte);if(S.gratuidade)p.push('gratuidade');if(S.sumula111)p.push('Súmula 111');return p.join(' · ')}
+function escoreVersao(v,S){
+  const t=v.situacao||{};let s=v.uso||0;
+  if(t.parte) s+= S.parte?(t.parte===S.parte?3:-3):0;
+  if(S.gratuidade&&t.gratuidade) s+=1.5; if(!S.gratuidade&&t.gratuidade&&S.parte==='ré') s-=1;
+  if(S.sumula111&&t.sumula111) s+=1.5;
+  return s;
+}
+/* lista plana de pontos de variação: {k, sec, pos, slot} */
+function pontosMatriz(X){
+  const P=[];
+  X.posicoes.forEach(p=>p.slots.forEach((s,i)=>P.push({k:p.id+':'+i,sec:'voto',pos:p.id,s})));
+  (X.ementa||[]).forEach((s,i)=>P.push({k:'em:'+i,sec:'ementa',s}));
+  (X.acordao||[]).forEach((s,i)=>P.push({k:'ac:'+i,sec:'acordao',s}));
+  return P;
+}
+function sugerirMatriz(forcar){
+  if(!MXT||!MXT.X) return;
+  const S=situacaoCaso(); MXT.sit=S;
+  for(const p of pontosMatriz(MXT.X)){
+    if(!forcar&&MXT.toque.has(p.k)) continue;
+    const vs=p.s.versoes; if(!vs.length) continue;
+    let melhor=0,bs=-1e9; vs.forEach((v,i)=>{const e=escoreVersao(v,S);if(e>bs){bs=e;melhor=i}});
+    // opcional: fica de fora salvo uso alto ou situação que o reclame
+    const casaSit=Object.keys(S).length&&vs[melhor].situacao&&vs[melhor].situacao.parte&&vs[melhor].situacao.parte===S.parte;
+    MXT.esc[p.k]=(!p.s.opcional||p.s.uso>=.5||casaSit)?melhor:-1;
+  }
+}
+function novaMatriz(m,X){
+  MXT={X,m:m.id,esc:{},toque:new Set(),livre:{},mat:new Set(X.especie!==m.especie?[]:(m.blocos||[]).map((b,i)=>b.fixo&&b.secao==='fundamentacao'?i:-1).filter(i=>i>=0)),sit:{}};
+  sugerirMatriz(true);
+}
+function matrizHTML(m){
+  if(!MATRIZES){carregarMatrizes().then(()=>{if(MIN_MODO==='matriz'&&$('minCampos')){$('minCampos').innerHTML=matrizHTML(m);atualizarMinuta()}});return '<p class="ajuda">Carregando os modelos-matriz…</p>'}
+  if(!MXT||MXT.m!==m.id||!MXT.X){const X=matrizPara(m);if(!X)return '<p class="ajuda">Não há modelo-matriz para este tipo de julgamento (são gerados para tipos com ao menos 12 decisões na fase TRMS).</p>';novaMatriz(m,X)}
+  const X=MXT.X, mono=X.tipo!=='acórdão';
+  const opts=MATRIZES.filter(x=>x.tipo===X.tipo).map(x=>`<option value="${x.id}"${x.id===X.id?' selected':''}>${esc(x.especie)} · ${esc(x.resultado)} (${x.decisoes})</option>`).join('');
+  const verRow=(p)=>{const vs=p.s.versoes, cur=MXT.esc[p.k];
+    const radios=vs.map((v,i)=>`<label class="mxv${cur===i?' on':''}" title="${esc(v.texto)}"><input type="radio" name="mxr-${p.k}" data-mxk="${p.k}" value="${i}"${cur===i?' checked':''}><span class="mxv-t">${esc(v.titulo||'padrão')}</span><span class="mx-u">${Math.round((v.uso||0)*100)}%</span></label>`).join('');
+    const omit=p.s.opcional?`<label class="mxv omit${cur===-1?' on':''}"><input type="radio" name="mxr-${p.k}" data-mxk="${p.k}" value="-1"${cur===-1?' checked':''}><span class="mxv-t">omitir</span></label>`:'';
+    const txt=cur>=0?vs[cur].texto:'';
+    return `<div class="mx-pt${p.s.opcional?'':' fx'}${cur===-1?' off':''}" data-pt="${p.k}">
+      <div class="mx-pt-h"><span class="mx-u" title="presença no tipo de julgamento">${Math.round(p.s.uso*100)}%</span><span class="meta">${p.s.opcional?'opcional':'fixo'}${vs.length>1?` · ${vs.length} versões`:''}</span></div>
+      ${(vs.length>1||p.s.opcional)?`<div class="mxv-l">${radios}${omit}</div>`:''}
+      ${txt?`<div class="mx-t">${cpRender(chv(txt))}</div>`:''}</div>`};
+  const P=pontosMatriz(X), B=m.blocos||[];
+  const matBlocos=()=>{const L=B.map((b,i)=>({b,i})).filter(o=>o.b.secao==='fundamentacao');if(!L.length)return '';
+    return `<div class="mx-mat"><div class="mx-h">Conteúdo da matéria · modelo ${esc(m.processo_modelo||m.id)} <span class="meta">${L.filter(o=>MXT.mat.has(o.i)).length}/${L.length}</span></div>
+      ${L.map(o=>`<label class="mx-b${o.b.fixo?' fx':''}"><input type="checkbox" data-mxm="${o.i}"${MXT.mat.has(o.i)?' checked':''}><span class="mx-u" title="uso no grupo da matéria">${Math.round(o.b.uso*100)}%</span><span class="mx-t">${cpRender(o.b.texto)}</span></label>`).join('')}</div>`};
+  const posHTML=X.posicoes.map(p=>{
+    const pts=P.filter(x=>x.pos===p.id), livre=MXT.livre[p.id]||'';
+    const ehMat=p.id==='jurid'||(mono&&p.id==='fund');
+    return `<div class="mx-sec"><div class="mx-h">${esc(p.titulo)}${p.base?'':'<span class="meta"> · só fórmulas</span>'}</div>
+      ${pts.map(verRow).join('')}
+      ${ehMat?matBlocos():''}
+      ${p.base!==null&&p.base!==''||!pts.length?`<label class="mx-free"><span>${p.base?'Texto do caso':'Texto livre'}</span><textarea data-mxl="${p.id}" placeholder="${esc(chv(p.base||'opcional'))}">${esc(livre)}</textarea></label>`:''}
+    </div>`}).join('');
+  const extra=(nome,sec)=>{const L=P.filter(x=>x.sec===sec);return L.length?`<details class="mx-sec"><summary class="mx-h">${nome} <span class="meta">${L.length} pontos</span></summary>${L.map(verRow).join('')}</details>`:''};
+  return `<div class="mx-cab">
+      <label class="meta">Tipo de julgamento</label><select id="mxTipo" class="inp" style="height:30px;max-width:340px">${opts}</select>
+      <span class="meta">${X.decisoes} decisões · ${X.materias} matérias · ${esc(fmtData(X.periodo[0]))} a ${esc(fmtData(X.periodo[1]))}</span></div>
+    <div class="mx-sit" id="mxSit"><span class="pe-ey">Situação</span><b id="mxSitT">${esc(sitRotulo(MXT.sit)||'não identificada — preencha o recorrente no relatório')}</b>
+      <button class="btn sm" onclick="sugerirMatriz(true);$('minCampos').innerHTML=matrizHTML(MOD_POR.get($('gerador').dataset.m));atualizarMinuta()" title="Reaplica as versões sugeridas pela situação (desfaz escolhas manuais)">↺ aplicar situação</button></div>
+    <p class="ajuda">Fixos: fórmulas presentes em metade ou mais das decisões do tipo. Opcionais: entre 10% e 50%. Onde há versões, a sugerida segue a situação (recorrente, gratuidade, Súmula 111); escolha outra ou omita. Campos <b>[ ]</b> e textos do caso ficam para você.</p>
+    ${posHTML}${mono?'':extra('Ementa','ementa')+extra('Acórdão','acordao')}`;
+}
+document.addEventListener('change',e=>{
+  const t=e.target; if(!MXT) return;
+  if(t.id==='mxTipo'){const m=MOD_POR.get($('gerador').dataset.m), X=MATRIZES.find(x=>x.id===t.value);novaMatriz(m,X);
+    const ev=ESP_REL[X.especie];if(ev&&$('rEsp')&&$('rEsp').value!==ev&&(X.especie==='Embargos de declaração'||$('rEsp').value==='ed')){$('rEsp').value=ev}$('minCampos').innerHTML=matrizHTML(m);atualizarMinuta();return}
+  if(t.dataset.mxk!=null){MXT.esc[t.dataset.mxk]=+t.value;MXT.toque.add(t.dataset.mxk);const m=MOD_POR.get($('gerador').dataset.m);const y=$('mDet').scrollTop;$('minCampos').innerHTML=matrizHTML(m);$('mDet').scrollTop=y;atualizarMinuta();return}
+  if(t.dataset.mxm!=null){t.checked?MXT.mat.add(+t.dataset.mxm):MXT.mat.delete(+t.dataset.mxm);atualizarMinuta();return}
+  if(t.dataset&&t.dataset.relf!=null&&MIN_MODO==='matriz'){const ant=sitRotulo(MXT.sit);sugerirMatriz(false);if(sitRotulo(MXT.sit)!==ant){const m=MOD_POR.get($('gerador').dataset.m);const y=$('mDet').scrollTop;$('minCampos').innerHTML=matrizHTML(m);$('mDet').scrollTop=y;atualizarMinuta()}}
+});
+document.addEventListener('input',e=>{const f=e.target.dataset&&e.target.dataset.mxl;if(f&&MXT){MXT.livre[f]=e.target.value;atualizarMinuta()}});
+/* ementa no formato da Recomendação CNJ 154/2024: as fórmulas escolhidas entram nas razões de decidir
+   e no dispositivo; títulos e numeração são refeitos aqui */
+function ementaMatriz(X,esco){
+  const L=(X.ementa||[]).map((s,i)=>({o:s.ordem||0,t:esco('em:'+i,s)})).filter(x=>x.t).sort((a,b)=>a.o-b.o).map(x=>x.t.replace(/^\s*\d+\.\s*/,''));
+  if(!L.length) return [];
+  const cab=L.find(t=>/^DIREITO\b/.test(t)), refs=L.filter(t=>/^(Dispositivos|Jurisprud[êe]ncia) relevantes? citad/.test(t));
+  const disp=L.filter(t=>t.length<320&&/^(Embargos|Apela[çc][ãa]o|Remessa|Agravo|Recurso|Pedido)[^.]{0,90}(rejeitad|desprovid|provid|acolhid|conhecid|prejudicad|homologad)/i.test(t));
+  const raz=L.filter(t=>t!==cab&&!refs.includes(t)&&!disp.includes(t)&&!/^[IVX]+\.\s/.test(t));
+  let n=0; const N=t=>`${++n}. ${t}`;
+  return [cab||'[RAMO DO DIREITO]. [CLASSE]. [TEMA]. [RESULTADO].',
+    'I. Caso em exame', N('[caso em exame: recurso, decisão recorrida e pedido]'),
+    'II. Questão em discussão', N('[questão em discussão]'),
+    'III. Razões de decidir', ...(raz.length?raz:['[razões de decidir]']).map(N),
+    'IV. Dispositivo'+(disp.length?'':' e tese'), ...(disp.length?disp:['[dispositivo]']).map(N),
+    ...refs];
+}
 function textoMatriz(m){
-  const B=m.blocos||[], S=sec=>B.map((b,i)=>({b,i})).filter(o=>o.b.secao===sec&&MX.sel.has(o.i)).map(o=>o.b.texto);
-  const mono=m.tipo!=='acórdão', P=[];
+  if(!MXT||!MXT.X) return '[modelo-matriz não carregado]';
+  const X=MXT.X, mono=X.tipo!=='acórdão', P=[], B=m.blocos||[];
+  const esco=(k,s)=>{const i=MXT.esc[k];return i!=null&&i>=0&&s.versoes[i]?chv(s.versoes[i].texto):''};
+  const DEPOIS=new Set(['concl','honor','disp','fecho']);
   P.push(mono?'DECISÃO':'RELATÓRIO');
-  const rel=relAtivo()?montarRelatorio():S('relatorio').join('\n\n');
-  P.push(rel||'[relatório]');
-  P.push('É o relatório.'); P.push(mono?'DECIDO.':'VOTO');
-  P.push(...S('fundamentacao'));
-  P.push(MX.analise.trim()||'[análise do caso concreto]');
-  const d=S('dispositivo'); if(d.length) P.push(...d); else P.push(MX.disp.trim()||'[dispositivo]');
-  if(!mono){const e=S('ementa');if(e.length)P.push('EMENTA',...e);const a=S('acordao');if(a.length)P.push('ACÓRDÃO',...a)}
-  return P.join('\n\n');
+  P.push(relAtivo()?montarRelatorio():'[relatório]');
+  if(!mono){P.push('É o relatório.');P.push('VOTO')}
+  for(const p of X.posicoes){
+    const fs=p.slots.map((s,i)=>esco(p.id+':'+i,s)).filter(Boolean);
+    const ehMat=p.id==='jurid'||(mono&&p.id==='fund');
+    const mat=ehMat?B.map((b,i)=>({b,i})).filter(o=>o.b.secao==='fundamentacao'&&MXT.mat.has(o.i)).map(o=>o.b.texto):[];
+    const liv=(MXT.livre[p.id]||'').trim();
+    const temFixo=p.slots.some((s,i)=>!s.opcional&&esco(p.id+':'+i,s));
+    const caso=liv||(p.base&&!temFixo&&!mat.length?chv(p.base):'');
+    if(DEPOIS.has(p.id)) P.push(...mat,caso,...fs); else P.push(...fs,...mat,caso);
+  }
+  if(!mono){P.push('É como voto.');
+    const em=ementaMatriz(X,esco); if(em.length) P.push('EMENTA',...em);
+    const ac=(X.acordao||[]).map((s,i)=>esco('ac:'+i,s)).filter(Boolean); if(ac.length) P.push('ACÓRDÃO',...ac);}
+  return P.filter(x=>x&&x.trim()).join('\n\n').replace(/\n{3,}/g,'\n\n');
 }
 
 /* ---------- Relatório · dados do processo (diretrizes do relatório do gabinete) ---------- */
@@ -1684,14 +1821,14 @@ function atualizarMinuta(){
 function regerar(){if(ED_DIRTY&&!confirm('Substituir o texto editado à mão pelo texto recomposto do formulário?'))return;ED_DIRTY=false;atualizarMinuta()}
 let campoAtivo=null;
 document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('#gerador')&&(e.target.dataset.k!=null||e.target.id==='minEd'||e.target.dataset.mxf))campoAtivo=e.target});
-document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.id!=='minEd'&&!e.target.dataset.mxf)atualizarMinuta()});
+document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.id!=='minEd'&&!e.target.dataset.mxl)atualizarMinuta()});
 document.addEventListener('change',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.tagName==='SELECT')atualizarMinuta()});
 async function inserirCitacao(id){
   const x=POR_ID.get(id); try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o paradigma.');return}
   const cit=citacao(registro(id)), el=campoAtivo&&document.body.contains(campoAtivo)?campoAtivo:$('minEd');
   if(!el){copiarTexto(cit,'Citação copiada.');return}
   if(el.id==='minEd'){const i=el.selectionStart??el.value.length;el.value=el.value.slice(0,i)+(i&&el.value[i-1]!=='\n'?'\n\n':'')+cit+'\n\n'+el.value.slice(i);ED_DIRTY=true;estadoEditor();agendarLint()}
-  else{el.value=(el.value?el.value+'\n\n':'')+cit;if(el.dataset.mxf)MX[el.dataset.mxf]=el.value;atualizarMinuta()}
+  else{el.value=(el.value?el.value+'\n\n':'')+cit;if(el.dataset.mxl&&MXT)MXT.livre[el.dataset.mxl]=el.value;atualizarMinuta()}
   toast('Citação inserida.');
 }
 function baixarMinuta(){
