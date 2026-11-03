@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Central Paradigmas · Acervo · Minutas — Gabinete CMT · TRF3</title>
+<title>Central Precedentes · Modelos — Gabinete CMT · TRF3</title>
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
@@ -194,7 +194,7 @@ main:not(.sem-detalhe) .crow{grid-template-columns:62px minmax(140px,190px) minm
 main:not(.sem-detalhe) .c3 .dt{display:none}
 main:not(.sem-detalhe) .cbody{grid-template-columns:1fr}
 main.modulo[hidden]{display:none!important}
-/* ===== tripartição: três facetas distintas e encadeadas ===== */
+/* ===== duas facetas distintas e encadeadas ===== */
 :root{--f-juris:#5b8fd6;--f-juris-s:rgba(91,143,214,.16);--f-acervo:#4fb38a;--f-acervo-s:rgba(79,179,138,.16);--f-minuta:#d8a846;--f-minuta-s:rgba(216,168,70,.16)}
 .facetas{display:flex;align-items:center;gap:6px;margin-left:8px}
 .faceta{display:flex;align-items:center;gap:10px;height:44px;padding:0 14px 0 8px;border-radius:10px;border:1px solid var(--h-line2);background:var(--h-field);color:#c9cdd3;cursor:pointer;position:relative;transition:all .15s;text-align:left}
@@ -210,7 +210,6 @@ main.modulo[hidden]{display:none!important}
 .fluxo svg{width:16px;height:16px}
 main.modulo{border-top:3px solid var(--fc-main,var(--f-juris))}
 main.modulo[data-mod="juris"]{--fc-main:var(--f-juris)}
-main.modulo[data-mod="acervo"]{--fc-main:var(--f-acervo)}
 main.modulo[data-mod="modelos"]{--fc-main:var(--f-minuta)}
 main.modulo .lbar{position:relative}
 .fac-tit{display:flex;align-items:center;gap:8px;font:800 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--fc-main);margin:0 0 2px}
@@ -218,7 +217,6 @@ main.modulo .lbar{position:relative}
 .fac-tit span{color:var(--faint);letter-spacing:.04em;text-transform:none;font-weight:600}
 .ponte{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;font:700 11px Inter,system-ui,sans-serif;cursor:pointer;border:1px solid;white-space:nowrap}
 .ponte.j{color:var(--f-juris);border-color:color-mix(in srgb,var(--f-juris) 45%,transparent);background:var(--f-juris-s)}
-.ponte.a{color:var(--f-acervo);border-color:color-mix(in srgb,var(--f-acervo) 45%,transparent);background:var(--f-acervo-s)}
 .ponte.m{color:#a87b1c;border-color:color-mix(in srgb,var(--f-minuta) 55%,transparent);background:var(--f-minuta-s)}
 html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
 .gerador{background:var(--c-panel);border-radius:12px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--f-minuta) 40%,transparent)}
@@ -452,18 +450,14 @@ html[data-tema="noturno"] .pe-ey{color:var(--f-minuta)}
   </div>
   <nav class="facetas" role="tablist" aria-label="Facetas da central">
     <button class="faceta mtab active" data-mod="juris" style="--fc:var(--f-juris);--fcs:var(--f-juris-s)" onclick="setModulo('juris')" title="Alt+1" role="tab">
-      <span class="fn">I</span><span class="ft"><b>Paradigmas</b><small><span id="ctT">—</span> decisões do gabinete</small></span></button>
+      <span class="fn">I</span><span class="ft"><b>Precedentes</b><small><span id="ctT">—</span> decisões do gabinete</small></span></button>
     <span class="fluxo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    <button class="faceta mtab" data-mod="acervo" style="--fc:var(--f-acervo);--fcs:var(--f-acervo-s)" onclick="setModulo('acervo')" title="Alt+2" role="tab">
-      <span class="fn">II</span><span class="ft"><b>Acervo</b><small><span id="ctAc">importar planilhas</span></small></span></button>
-    <span class="fluxo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    <button class="faceta mtab" data-mod="modelos" style="--fc:var(--f-minuta);--fcs:var(--f-minuta-s)" onclick="setModulo('modelos')" title="Alt+3" role="tab">
-      <span class="fn">III</span><span class="ft"><b>Minutas</b><small><span id="ctMod">—</span> modelos extraídos</small></span></button>
+    <button class="faceta mtab" data-mod="modelos" style="--fc:var(--f-minuta);--fcs:var(--f-minuta-s)" onclick="setModulo('modelos')" title="Alt+2" role="tab">
+      <span class="fn">II</span><span class="ft"><b>Modelos</b><small><span id="ctMod">—</span> extraídos das decisões</small></span></button>
   </nav>
   <div class="spacer"></div>
-  <button class="emmin-pill" id="emMinPill" hidden onclick="irParaMinuta()"><span class="em-i">✎</span><span class="em-t"><small>EM MINUTA</small><b id="emMinNum"></b></span><span class="em-m" id="emMinMod"></span></button>
   <div class="status"><i id="stDot"></i><span id="stTxt">carregando índice…</span></div>
-  <button class="icobtn" onclick="abrirSobre()" title="Fonte, autenticidade e verificação" aria-label="Sobre o acervo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></button>
+  <button class="icobtn" onclick="abrirSobre()" title="Fonte, autenticidade e verificação" aria-label="Sobre o banco"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></button>
   <button class="icobtn" onclick="alternarTema()" title="Tema claro/noturno" aria-label="Alternar tema"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
   <button class="icobtn" onclick="abrirConfig()" title="Fonte dos dados" aria-label="Configurações"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
 </nav>
@@ -488,6 +482,10 @@ html[data-tema="noturno"] .pe-ey{color:var(--f-minuta)}
     </div>
     <div class="grp">
       <span class="lbl">Período (ano)</span>
+      <div class="seg" id="fPeriodo" style="margin-bottom:6px">
+        <span class="chip on" data-v="recentes" title="Padrão: últimos 5 anos — busca integral mais rápida">Mais recentes <b id="ctRec" class="meta"></b></span>
+        <span class="chip" data-v="todo" title="Todo o banco — a busca integral baixa todos os anos">Todo o período</span>
+      </div>
       <div class="row2"><select class="inp" id="fAno1"></select><select class="inp" id="fAno2"></select></div>
     </div>
     <div class="grp" id="grpConteudo">
@@ -528,7 +526,7 @@ html[data-tema="noturno"] .pe-ey{color:var(--f-minuta)}
 
   <section class="lista">
     <div class="lbar">
-      <div class="fac-tit"><i>I</i>Paradigmas <span>· decisões do gabinete no GitHub — pesquise, leia, cite</span></div>
+      <div class="fac-tit"><i>I</i>Precedentes <span>· decisões do gabinete no GitHub — pesquise, leia, cite</span></div>
       <div class="qwrap">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input class="inp" id="q" placeholder='Buscar — ex.: "perda superveniente" gratuidade -penal   ( / )' autocomplete="off" spellcheck="false">
@@ -573,7 +571,7 @@ html[data-tema="noturno"] .pe-ey{color:var(--f-minuta)}
   </aside>
   <section class="lista">
     <div class="lbar">
-      <div class="fac-tit"><i>III</i>Minutas <span>· modelos extraídos do acervo — escolha, preencha, gere</span></div>
+      <div class="fac-tit"><i>II</i>Modelos <span>· extraídos das decisões do gabinete — escolha, preencha, gere</span></div>
       <div class="qwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input class="inp" id="mq" placeholder='Buscar modelos — ex.: deserção, "perda superveniente", BPC' autocomplete="off" spellcheck="false"></div>
       <div class="resumo"><span id="mResumo">—</span><span class="meta" id="mResumo2"></span></div>
@@ -583,77 +581,7 @@ html[data-tema="noturno"] .pe-ey{color:var(--f-minuta)}
   <section class="detalhe" id="mDet"></section>
 </main>
 
-<!-- ===================== MÓDULO ACERVO ===================== -->
-<main class="sem-detalhe modulo" id="mAc" data-mod="acervo" hidden>
-  <aside class="filtros">
-    <div class="grp"><span class="lbl">Relatórios do PJe</span>
-      <div class="drop" id="acDrop">
-        <b>Arraste aqui as planilhas</b><br>ou <a href="#" onclick="$('acArq').click();return false">escolha os arquivos</a>
-        <div class="ajuda" style="margin-top:6px">Relação do Acervo (ID 44/278), BI de tramitação (data_56) e sigilo (data_57) — .xlsx ou .csv; podem ser combinados.</div>
-      </div>
-      <input type="file" id="acArq" accept=".xlsx,.xls,.csv" multiple hidden>
-      <div id="acFontes" class="ajuda"></div>
-    </div>
-    <div class="grp"><span class="lbl">Situação</span>
-      <div class="seg" id="afSit">
-        <span class="chip on" data-v="ativos">Em tramitação</span>
-        <span class="chip" data-v="">Todos</span>
-        <span class="chip" data-v="baixados">Baixados/arquivados</span>
-      </div></div>
-    <div class="grp"><span class="lbl">Cruzamento com os paradigmas</span>
-      <div class="seg" id="afBanco">
-        <span class="chip on" data-v="">Qualquer</span>
-        <span class="chip" data-v="proprio" title="O próprio processo já tem decisão do gabinete entre os paradigmas">Com paradigma próprio</span>
-        <span class="chip" data-v="sim" title="Há paradigmas similares">Com paradigmas similares</span>
-      </div></div>
-    <div class="grp"><span class="lbl">Tarefa atual</span><select class="inp" id="afTarefa"><option value="">Todas</option></select></div>
-    <div class="grp"><span class="lbl">Assunto</span><select class="inp" id="afAssunto"><option value="">Todos</option></select></div>
-    <div class="grp"><span class="lbl">Classe</span><select class="inp" id="afClasse"><option value="">Todas</option></select></div>
-    <div class="grp"><span class="lbl">Ordenar</span>
-      <select class="inp" id="afOrdem"><option value="tarefa">Há mais tempo na tarefa</option><option value="dist">Distribuição mais antiga</option><option value="assunto">Assunto</option><option value="processo">Número</option></select></div>
-    <hr class="sep">
-    <p class="ajuda"><b>Privacidade.</b> As planilhas são lidas só neste navegador e ficam apenas na memória desta aba: nada é enviado ao GitHub nem gravado. Ao fechar a aba, é preciso importar de novo.</p>
-    <button class="btn sm" onclick="limparAcervo()">Descartar acervo importado</button>
-  </aside>
-  <section class="lista">
-    <div class="lbar">
-      <div class="fac-tit"><i>II</i>Acervo <span>· seus processos do PJe — só neste navegador, cruzados com os paradigmas</span></div>
-      <div class="acs-box">
-        <div class="acs-mode" id="acsMode"><button data-m="text" class="on">TEXTO</button><button data-m="batch">LOTE</button></div>
-        <input id="aq" placeholder="Buscar no acervo… (Enter inclui o termo como critério)" autocomplete="off" spellcheck="false">
-        <textarea id="aLote" rows="1" placeholder="Colar processos em lote — um por linha, vírgula ou ;" hidden></textarea>
-        <button class="acs-inc" id="acsInc" title="Incluir como critério">+ INCLUIR</button><button class="acs-app" id="acsApp" hidden>APLICAR</button>
-      </div>
-      <div id="acsChips" class="acs-chips"></div>
-      <details class="acs-build" id="acsBuild"><summary><span>CONSTRUTOR DE CRITÉRIOS</span><em>coluna · operador · valores existentes · trechos livres · OU/E</em></summary>
-        <div class="acs-cols">
-          <div class="acs-c1">
-            <label><span>COLUNA</span><select id="acsCol"></select></label>
-            <label><span>OPERADOR</span><select id="acsOp"><option value="contains">contém</option><option value="equals">é igual a</option><option value="notempty">não vazio</option><option value="empty">vazio</option></select></label>
-            <label><span>LÓGICA DO BLOCO</span><select id="acsComb"><option value="any">QUALQUER (OU)</option><option value="all">TODOS (E)</option></select></label>
-          </div>
-          <div class="acs-c2"><span class="acs-k">VALORES EXISTENTES · MÚLTIPLOS</span><input id="acsVq" type="search" placeholder="Buscar nos valores…"><div class="acs-vals" id="acsVals"></div></div>
-          <div class="acs-c3"><span class="acs-k">TRECHOS LIVRES · MÚLTIPLOS</span><textarea id="acsTre" placeholder="Um por linha, vírgula ou ;"></textarea>
-            <button class="acs-app" id="acsAdd" style="margin-top:6px">ADICIONAR CRITÉRIO</button></div>
-        </div>
-      </details>
-      <div class="acs-viewbar">
-        <div class="acs-mode" id="acsView"><button data-v="painel" class="on">PAINEL</button><button data-v="planilha">PLANILHA</button></div>
-        <button class="btn sm" onclick="copiarNumeros()" title="Copiar os números dos processos filtrados">⧉ Copiar números</button>
-        <button class="btn sm" onclick="exportarAcervo()" title="Exportar o recorte em .csv">Exportar .csv</button>
-        <details class="acs-colsd" id="acsColsD" hidden><summary class="btn sm">Colunas ▾</summary><div class="acs-colsl" id="acsColsL"></div></details>
-      </div>
-      <div class="prog" id="acProg"><i></i></div>
-      <div class="resumo"><span id="aResumo">Nenhum acervo importado.</span><span class="meta" id="aResumo2"></span></div>
-      <details class="st" id="acStatsD" open><summary>ESTATÍSTICAS DO RECORTE <em>clique numa barra para filtrar</em></summary><div id="acStats"></div></details>
-    </div>
-    <div class="sh-wrap" id="aSheet" hidden></div>
-    <ul class="res" id="aRes"><div class="vazio">Importe o relatório <b>Relação do Acervo dos Gabinetes</b> do PJe (e, se quiser, as planilhas do BI) para ver, em cada processo, as decisões do gabinete já proferidas nele, os paradigmas similares e os modelos aplicáveis.</div></ul>
-  </section>
-  <section class="detalhe" id="aDet"></section>
-</main>
-
-<div class="carregando" id="carregando"><div class="cx"><b>Abrindo o acervo…</b><span id="carregandoMsg">carregando o índice de 33 mil decisões</span></div></div>
+<div class="carregando" id="carregando"><div class="cx"><b>Abrindo o banco…</b><span id="carregandoMsg">carregando o índice de 33 mil decisões</span></div></div>
 
 <dialog id="dlg"><div class="dlg-h"><span id="dlgT"></span><button class="dx" onclick="dlg.close()" aria-label="Fechar">×</button></div><div class="dlg-b" id="dlgB"></div><div class="dlg-f" id="dlgF"></div></dialog>
 <div class="toast" id="toast"></div>
@@ -662,7 +590,7 @@ html[data-tema="noturno"] .pe-ey{color:var(--f-minuta)}
 <script>
 'use strict';
 /* =====================================================================
-   ACERVO CARLOS MUTA — painel de consulta
+   BANCO DE JURISPRUDÊNCIA CARLOS MUTA — painel de consulta
    Fonte canônica: github.com/brndutra/trf3-muta-jurisprudencia (pasta dados/)
    O painel lê o índice compacto e, sob demanda, os arquivos anuais com o
    inteiro teor. Nada é gravado fora do navegador.
@@ -737,6 +665,10 @@ function trecho(texto,c,larg=160){
 
 /* ---------- filtros ---------- */
 const F={classe:'',orgao:'',ano1:'',ano2:'',conteudo:'',atuacao:'',ordem:'recente'};
+/* período padrão: julgados mais recentes (últimos 5 anos do banco) */
+let ANO_REC='';
+function marcarPeriodo(){const v=F.ano1===ANO_REC&&!F.ano2?'recentes':(!F.ano1&&!F.ano2?'todo':'');$('fPeriodo').querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.v===v))}
+function setPeriodo(v){F.ano1=v==='recentes'?ANO_REC:'';F.ano2='';$('fAno1').value=F.ano1;$('fAno2').value='';hitsIntegral=null;marcarPeriodo();aplicar()}
 function passaFiltros(x){
   if(tipo!=='*'&&x.t!==tipo) return false;
   if(F.classe&&x.c!==F.classe) return false;
@@ -830,7 +762,7 @@ $('res').addEventListener('click',e=>{
 $('res').addEventListener('scroll',e=>{const u=e.target; if(u.scrollTop+u.clientHeight>u.scrollHeight-300&&mostrados<filtrados.length) renderMais()});
 
 function modoAtual(){return document.querySelector('input[name=modo]:checked').value}
-function nomeFonte(){if(LOCAL.size)return 'pasta local';const b=baseDados();return /raw\.githubusercontent\.com|github\.io/.test(b)?'acervo do GitHub':new URL(b).host}
+function nomeFonte(){if(LOCAL.size)return 'pasta local';const b=baseDados();return /raw\.githubusercontent\.com|github\.io/.test(b)?'banco do GitHub':new URL(b).host}
 function fmtData(d){return d?d.split('-').reverse().join('/'):'—'}
 
 function histograma(){
@@ -840,7 +772,7 @@ function histograma(){
   for(let a=a0;a<=a1;a++){const v=cont[a]||0;h+=`<div title="${a}: ${v.toLocaleString('pt-BR')}" style="flex:1;min-width:2px;background:var(--accent);opacity:${v?.75:.12};height:${v?Math.max(3,v/mx*100):3}%;border-radius:2px 2px 0 0;cursor:pointer" onclick="filtrarAno('${a}')"></div>`}
   $('histo').innerHTML=h; $('histoLeg').innerHTML=`<span>${a0}</span><span>${a1}</span>`;
 }
-function filtrarAno(a){F.ano1=F.ano2=a;$('fAno1').value=a;$('fAno2').value=a;hitsIntegral=null;aplicar()}
+function filtrarAno(a){F.ano1=F.ano2=a;$('fAno1').value=a;$('fAno2').value=a;hitsIntegral=null;marcarPeriodo();aplicar()}
 
 /* ---------- busca no texto integral ---------- */
 function arquivosDoRecorte(){
@@ -875,10 +807,10 @@ async function buscar(){
       await new Promise(r=>setTimeout(r));
     }
     hitsIntegral={q,m,anos:arqs.length}; aplicar();
-  }catch(e){toast('Falha ao ler o acervo: '+e.message,7000)}
+  }catch(e){toast('Falha ao ler o banco: '+e.message,7000)}
   finally{buscando=false;$('btnBuscar').disabled=false;setTimeout(()=>{$('prog').classList.remove('on');bar.style.width=0},400)}
 }
-function confirmarGrande(n){return confirm(`A busca integral vai baixar ${n} arquivos anuais (até ~90 MB no acervo completo). Restrinja o período ou a classe para acelerar.\n\nContinuar?`)}
+function confirmarGrande(n){return confirm(`A busca integral vai baixar ${n} arquivos anuais (até ~90 MB no banco completo). Restrinja o período ou a classe para acelerar.\n\nContinuar?`)}
 
 /* ---------- detalhe ---------- */
 async function abrir(id){
@@ -910,7 +842,7 @@ async function abrir(id){
     </div>
     <div class="dacts">
       <button class="btn sm pri" onclick="copiarCitacao('${id}')" title="Formato usado nos votos do gabinete">Copiar citação</button>
-      <button class="ponte m" onclick="if($('gerador')){inserirCitacao('${id}');setModulo('modelos')}else toast('Abra um modelo na faceta III · Minutas para citar este paradigma.')" title="Insere a citação deste paradigma no campo selecionado da minuta em elaboração">III · Citar na minuta</button>
+      <button class="ponte m" onclick="if($('gerador')){inserirCitacao('${id}');setModulo('modelos')}else toast('Abra um modelo na faceta II · Modelos para citar este precedente.')" title="Insere a citação deste precedente no campo selecionado da minuta em elaboração">II · Citar na minuta</button>
       ${x.t==='A'&&r.ementa?`<button class="btn sm" onclick="copiar('${id}','ementa')">Copiar ementa</button>`:''}
       ${r.inteiro_teor?`<button class="btn sm" onclick="copiar('${id}','inteiro_teor')">Copiar inteiro teor</button>`:''}
       ${r.link_pje?`<a class="btn sm" href="${esc(r.link_pje)}" target="_blank" rel="noopener">PJe</a>`:''}
@@ -980,7 +912,7 @@ function exportar(fmt){
   if(!filtrados.length){toast('Nada a exportar.');return}
   const cols=['id','tipo','numero_processo','classe_sigla','classe','orgao_julgador','data','data_publicacao','veiculo','atuacao','conteudo_texto','resultado_ou_dispositivo','ementa_previa'];
   const rows=filtrados.map(x=>[x.id,x.t==='A'?'acórdão':'monocrática',x.n,x.c,x.cl,x.o,x.d,x.p,x.v,x.a,x.k,x.r,x.e]);
-  let blob,nome=`acervo_muta_recorte_${new Date().toISOString().slice(0,10)}`;
+  let blob,nome=`precedentes_muta_recorte_${new Date().toISOString().slice(0,10)}`;
   if(fmt==='json') blob=new Blob([JSON.stringify(rows.map(r=>Object.fromEntries(cols.map((c,i)=>[c,r[i]??null]))),null,1)],{type:'application/json'}),nome+='.json';
   else blob=new Blob(['\ufeff'+[cols,...rows].map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(';')).join('\r\n')],{type:'text/csv'}),nome+='.csv';
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nome;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
@@ -1038,14 +970,15 @@ function preencherSelects(){
   if(F.classe&&!cl[F.classe])F.classe=''; if(F.orgao&&!og[F.orgao])F.orgao='';
   $('fClasse').value=F.classe; $('fOrgao').value=F.orgao;
 }
-function limparFiltros(){Object.assign(F,{classe:'',orgao:'',ano1:'',ano2:'',conteudo:'',atuacao:'',ordem:'recente'});$('q').value='';hitsIntegral=null;['fClasse','fOrgao','fAno1','fAno2'].forEach(i=>$(i).value='');$('fOrdem').value='recente';marcarChips();aplicar()}
-[['fClasse','classe'],['fOrgao','orgao'],['fAno1','ano1'],['fAno2','ano2'],['fOrdem','ordem']].forEach(([el,k])=>$(el).addEventListener('change',e=>{F[k]=e.target.value;if(k!=='ordem')hitsIntegral=null;aplicar()}));
+function limparFiltros(){Object.assign(F,{classe:'',orgao:'',ano1:ANO_REC,ano2:'',conteudo:'',atuacao:'',ordem:'recente'});$('q').value='';hitsIntegral=null;['fClasse','fOrgao','fAno2'].forEach(i=>$(i).value='');$('fAno1').value=ANO_REC;$('fOrdem').value='recente';marcarChips();marcarPeriodo();aplicar()}
+$('fPeriodo').addEventListener('click',e=>{const c=e.target.closest('.chip');if(c)setPeriodo(c.dataset.v)});
+[['fClasse','classe'],['fOrgao','orgao'],['fAno1','ano1'],['fAno2','ano2'],['fOrdem','ordem']].forEach(([el,k])=>$(el).addEventListener('change',e=>{F[k]=e.target.value;if(k!=='ordem')hitsIntegral=null;if(k==='ano1'||k==='ano2')marcarPeriodo();aplicar()}));
 let deb;$('q').addEventListener('input',()=>{if(document.querySelector('input[name=modo]:checked').value==='indice'){clearTimeout(deb);deb=setTimeout(()=>{hitsIntegral=null;aplicar()},180)}});
 $('q').addEventListener('keydown',e=>{if(e.key==='Enter')buscar()});
 document.querySelectorAll('input[name=modo]').forEach(r=>r.addEventListener('change',()=>{if(r.value==='indice'&&r.checked){hitsIntegral=null;aplicar()}}));
 document.addEventListener('keydown',e=>{
-  if(e.altKey&&['1','2','3'].includes(e.key)){e.preventDefault();setModulo(['juris','acervo','modelos'][+e.key-1]);return}
-  const q={juris:'q',modelos:'mq',acervo:'aq'}[MODULO];
+  if(e.altKey&&['1','2'].includes(e.key)){e.preventDefault();setModulo(['juris','modelos'][+e.key-1]);return}
+  const q={juris:'q',modelos:'mq'}[MODULO];
   if(e.key==='/'&&document.activeElement!==$(q)&&!dlg.open&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();$(q).focus()}
   if(e.key==='Escape'&&!dlg.open){if(MODULO==='juris'&&selId)fechar();else if(MODULO!=='juris')fecharLateral(MODULO)}
 });
@@ -1061,7 +994,7 @@ function setModulo(m){
   if(m==='modelos') abrirModelos();
   if(m==='juris') salvarHash();
 }
-function fecharLateral(m){const el=m==='modelos'?$('mMod'):$('mAc');el.classList.add('sem-detalhe');el.querySelectorAll('li.sel').forEach(l=>l.classList.remove('sel'))}
+function fecharLateral(m){const el=$('mMod');el.classList.add('sem-detalhe');el.querySelectorAll('li.sel').forEach(l=>l.classList.remove('sel'))}
 function irParaDecisao(id){setModulo('juris');if(!POR_ID.has(id))return;if(!filtrados.some(x=>x.id===id)){setTipo(POR_ID.get(id).t)}abrir(id)}
 function chipsGrupo(el,cb){$(el).addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;$(el).querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c));cb(c.dataset.v)})}
 const cpRender=s=>esc(s).replace(/\[[^\]\n]{1,80}\]/g,m=>`<span class="cp">${m}</span>`);
@@ -1104,9 +1037,7 @@ function aplicarModelos(){
     .sort((a,b)=>b.frequencia-a.frequencia);
   const tot=modFilt.reduce((s,m)=>s+m.frequencia,0);
   $('mResumo').innerHTML=`<b>${modFilt.length}</b> modelo${modFilt.length===1?'':'s'}`;
-  const ap=MIN_PROC&&AC.get(MIN_PROC);
-  if(ap){const sug=new Set((ap._mods||[]).map(m=>m.id));modFilt.sort((a,b)=>sug.has(b.id)-sug.has(a.id))}
-  $('mResumo2').innerHTML=ap?`<span class="ponte a" onclick="setModulo('acervo');abrirProcesso('${ap.processo}')">II · ${esc(ap.processo)}</span> sugeridos primeiro`:`cobrem ${tot.toLocaleString('pt-BR')} decisões do acervo`;
+  $('mResumo2').innerHTML=`cobrem ${tot.toLocaleString('pt-BR')} decisões do banco`;
   $('mRes').innerHTML=modFilt.slice(0,400).map(m=>`<li class="proc${m.id===modSel?' sel':''}" data-id="${m.id}"><div class="crow">
     <div class="c0"><span class="tp ${m.tipo==='acórdão'?'A':'M'}" title="${esc(m.tipo)}">${m.tipo==='acórdão'?'A':'M'}</span></div>
     <div class="c1"><span class="num" style="font-family:Figtree,Inter,sans-serif;font-weight:800">${m.frequencia} decisões</span><span class="sub">${esc(m.especie)}</span></div>
@@ -1125,337 +1056,12 @@ $('mfMin').onchange=e=>{modF.min=+e.target.value;aplicarModelos()};
 let mdeb;$('mq').addEventListener('input',()=>{clearTimeout(mdeb);mdeb=setTimeout(aplicarModelos,180)});
 
 /* =====================================================================
-   MÓDULO ACERVO — leitura local das planilhas do PJe e cruzamento
-   ===================================================================== */
-const AC=new Map(); // processo -> registro consolidado
-let acFilt=[], acSel=null, acF={sit:'ativos',banco:'',tarefa:'',assunto:'',classe:'',ordem:'tarefa'};
-const ACFONTES=[];
-const SIMCACHE=new Map();
-let IDXN=null; // textos normalizados do índice (criado sob demanda)
-const NUMRX=/\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}/;
-function normNum(v){const s=String(v||'').replace(/\D/g,'');return s.length===20?`${s.slice(0,7)}-${s.slice(7,9)}.${s.slice(9,13)}.${s.slice(13,14)}.${s.slice(14,16)}.${s.slice(16)}`:(String(v||'').match(NUMRX)||[''])[0]}
-function dataBR(v){if(v==null||v==='')return '';if(v instanceof Date)return v.toISOString().slice(0,10);const s=String(v);let m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);if(m)return `${m[1]}-${m[2]}-${m[3]}`;m=s.match(/^(\d{2})\/(\d{2})\/(\d{4})/);if(m)return `${m[3]}-${m[2]}-${m[1]}`;if(/^\d{5}(\.\d+)?$/.test(s)){const d=new Date(Math.round((+s-25569)*864e5));return d.toISOString().slice(0,10)}return s.slice(0,10)}
-const COLS={processo:['processo','numeroprocesso','número do processo','numero do processo'],classe:['classe_judicial','classe','classejudicial'],assunto:['assunto_judicial','assunto_principal','assuntoprincipal','assunto'],
-  tarefa:['tarefa_atual','nometarefa','tarefa'],entradaTarefa:['data_entrada_tarefa','datachegada','data de entrada na tarefa'],prioridade:['prioridade'],etiquetas:['etiquetas','tagsprocessolist'],
-  distribuicao:['data_distribuição','data_distribuicao','data distribuição'],indicador:['indicador'],fase:['fase'],complemento:['complemento'],ultimaMov:['última_movimentação','ultima_movimentacao'],dataUltMov:['data_última_movimentação','data_ultima_movimentacao'],
-  tempo:['tempo_de_tramitação','tempo_de_tramitacao'],conclusao:['data_conclusão','data_conclusao'],poloAtivo:['polo_ativo','poloativo','polo ativo'],sigilo:['nível_sigilo','nivel_sigilo','sigiloso'],assuntos:['assuntos_do_processo']};
-function lerTabela(rows,nome){
-  const lc=r=>r.map(c=>semAcento(String(c??'')).trim());
-  const hi=rows.findIndex(r=>lc(r).some(c=>COLS.processo.map(semAcento).includes(c)));
-  if(hi<0) return 0;
-  const H=lc(rows[hi]); const idx={}; for(const [k,al] of Object.entries(COLS)){const i=H.findIndex(h=>al.map(semAcento).includes(h));if(i>=0)idx[k]=i}
-  let n=0;
-  for(const r of rows.slice(hi+1)){
-    const num=normNum(r[idx.processo]); if(!num) continue; n++;
-    const a=AC.get(num)||{processo:num,tarefas:[],etiquetas:new Set(),fontes:new Set()};
-    const g=k=>idx[k]!=null?r[idx[k]]:undefined;
-    for(const k of ['classe','assunto','prioridade','indicador','fase','complemento','ultimaMov','tempo','sigilo','assuntos','poloAtivo']){const v=g(k);if(v!=null&&v!==''&&!a[k])a[k]=String(v).trim()}
-    for(const k of ['distribuicao','conclusao','dataUltMov']){const v=g(k);if(v&&!a[k])a[k]=dataBR(v)}
-    const t=g('tarefa'); if(t){const e=dataBR(g('entradaTarefa'));if(!a.tarefas.some(x=>x.t===t))a.tarefas.push({t:String(t).trim(),e})}
-    const et=g('etiquetas'); if(et) String(et).split(/\s*,\s*/).filter(Boolean).forEach(x=>a.etiquetas.add(x.trim()));
-    a.fontes.add(nome); AC.set(num,a);
-  }
-  return n;
-}
-async function xlsxLib(){
-  if(window.XLSX) return window.XLSX;
-  await new Promise((ok,err)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';s.onload=ok;s.onerror=()=>err(new Error('não foi possível carregar o leitor de .xlsx (sem internet?) — exporte em .csv'));document.head.appendChild(s)});
-  return window.XLSX;
-}
-function csvRows(t){const sep=(t.split('\n')[0].match(/;/g)||[]).length>(t.split('\n')[0].match(/,/g)||[]).length?';':',';const out=[];let row=[],cur='',q=false;
-  for(let i=0;i<t.length;i++){const ch=t[i];if(q){if(ch==='"'){if(t[i+1]==='"'){cur+='"';i++}else q=false}else cur+=ch}else if(ch==='"')q=true;else if(ch===sep){row.push(cur);cur=''}else if(ch==='\n'){row.push(cur.replace(/\r$/,''));out.push(row);row=[];cur=''}else cur+=ch}
-  if(cur||row.length){row.push(cur);out.push(row)}return out}
-async function importarArquivos(files){
-  const bar=$('acProg'); bar.classList.add('on');
-  for(const f of files){
-    try{
-      let rows;
-      if(/\.csv$/i.test(f.name)) rows=csvRows(await f.text());
-      else{const X=await xlsxLib();const wb=X.read(await f.arrayBuffer(),{type:'array',cellDates:true});rows=X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,raw:false,dateNF:'yyyy-mm-dd'})}
-      const n=lerTabela(rows,f.name);
-      ACFONTES.push({nome:f.name,linhas:n});
-      if(!n) toast(`${esc(f.name)}: coluna de número do processo não encontrada.`,6000);
-    }catch(e){toast(`Falha ao ler ${esc(f.name)}: ${esc(e.message)}`,7000)}
-  }
-  bar.classList.remove('on');
-  $('acFontes').innerHTML=ACFONTES.map(f=>`· ${esc(f.nome)} — ${f.linhas.toLocaleString('pt-BR')} linhas`).join('<br>');
-  SIMCACHE.clear(); prepararAcervo();
-}
-function baixado(a){return a.tarefas.length&&a.tarefas.every(t=>/baixad|arquiv|remetid/i.test(t.t))}
-function tarefaAtual(a){const t=[...a.tarefas].filter(t=>!/baixad|arquiv/i.test(t.t)).sort((x,y)=>(y.e||'').localeCompare(x.e||''))[0]||a.tarefas[0];return t||{t:a.fase||a.indicador||'—',e:''}}
-function diasDesde(d){if(!d)return null;const ms=Date.now()-new Date(d+'T12:00:00').getTime();return Math.max(0,Math.round(ms/864e5))}
-function prepararAcervo(){
-  for(const a of AC.values()){a.proprias=(IDX_POR_NUM.get(a.processo)||[]);a._t=tarefaAtual(a);a._dias=diasDesde(a._t.e);a._txt=semAcento([a.processo,a.classe,a.assunto,a._t.t,[...a.etiquetas].join(' '),a.fase,a.complemento].join(' '))}
-  const ativos=[...AC.values()].filter(a=>!baixado(a)).length;
-  $('ctAc').textContent=AC.size?ativos.toLocaleString('pt-BR')+' em tramitação':'importar planilhas';
-  const base=[...AC.values()].filter(a=>acF.sit==='ativos'?!baixado(a):acF.sit==='baixados'?baixado(a):true);
-  const cnt=f=>base.reduce((o,a)=>{const k=f(a);if(k)o[k]=(o[k]||0)+1;return o},{});
-  const op=(o,v)=>Object.entries(o).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`<option value="${esc(k)}"${k===v?' selected':''}>${esc(k)} (${n})</option>`).join('');
-  $('afTarefa').innerHTML='<option value="">Todas</option>'+op(cnt(a=>a._t.t),acF.tarefa);
-  $('afAssunto').innerHTML='<option value="">Todos</option>'+op(cnt(a=>a.assunto),acF.assunto);
-  $('afClasse').innerHTML='<option value="">Todas</option>'+op(cnt(a=>a.classe),acF.classe);
-  aplicarAcervo();
-}
-function aplicarAcervo(){
-  if(!AC.size) return;
-  const c=parseConsulta($('aq').value.trim());
-  acFilt=[...AC.values()].filter(a=>(acF.sit==='ativos'?!baixado(a):acF.sit==='baixados'?baixado(a):true)&&(!acF.tarefa||a._t.t===acF.tarefa)&&(!acF.assunto||a.assunto===acF.assunto)&&(!acF.classe||a.classe===acF.classe)
-    &&(acF.banco!=='proprio'||a.proprias.length)&&(acF.banco!=='sim'||similares(a).length)&&(c.vazia||casa(a._txt,c))&&passaACS(a));
-  const o=acF.ordem;
-  acFilt.sort(o==='dist'?(x,y)=>(x.distribuicao||'9').localeCompare(y.distribuicao||'9'):o==='assunto'?(x,y)=>(x.assunto||'').localeCompare(y.assunto||''):o==='processo'?(x,y)=>x.processo.localeCompare(y.processo):(x,y)=>(y._dias??-1)-(x._dias??-1));
-  const pro=acFilt.filter(a=>a.proprias.length).length;
-  $('aResumo').innerHTML=`<b>${acFilt.length.toLocaleString('pt-BR')}</b> processo${acFilt.length===1?'':'s'}`;
-  $('aResumo2').textContent=`${pro.toLocaleString('pt-BR')} com paradigma próprio (decisão do gabinete no processo)`;
-  acMostrados=0; $('aRes').innerHTML=''; renderAcMais(); renderStatsAcervo(); renderChips(); if(ACS.view==='planilha') renderSheet(); if($('acsBuild').open) renderVals();
-}
-let acMostrados=0;
-/* ---------- card do processo (modelo “Card do processo funcional” do gabinete) ---------- */
-const AC_ABERTOS=new Set();
-const ICO_MIN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
-function poloLimpo(a){return a.poloAtivo&&!/^#+$/.test(a.poloAtivo.trim())?a.poloAtivo:''}
-function cardAcervo(a){
-  const ab=AC_ABERTOS.has(a.processo), em=a.processo===MIN_PROC, np=a.proprias.length, polo=poloLimpo(a);
-  const tag=(t,st,ti)=>`<span class="ct2"${st?` style="${st}"`:''}${ti?` title="${esc(ti)}"`:''}>${t}</span>`;
-  const tags=[em?'<span class="ct2 emmin" title="Processo em minuta na faceta III">✎ em minuta</span>':'',
-    tag(esc(a._t.t.slice(0,46)),'', 'Tarefa atual'),
-    a._dias!=null?tag(a._dias+' d',a._dias>100?'color:var(--c-s4);background:var(--c-s4b)':'','Dias na tarefa'):'',
-    /sim/i.test(a.prioridade||'')?tag('prioridade','background:var(--c-warnbg);color:var(--c-warn)'):'',
-    /segredo|sigil/i.test(a.sigilo||'')?tag('sigilo','background:var(--c-s4b);color:var(--c-s4)'):'',
-    /sobrest/i.test(a.indicador||'')?tag('sobrestado','background:var(--c-s2b);color:var(--c-s2)',[a.fase,a.complemento].filter(Boolean).join(' · ')):'',
-    ...[...a.etiquetas].slice(0,2).map(e=>`<span class="ct2 dash" title="Etiqueta">${esc(e.slice(0,26))}</span>`)].join('');
-  return `<li class="proc${a.processo===acSel?' sel':''}${ab?' open':''}${em?' emmin':''}" data-p="${a.processo}">
-  <div class="crow">
-    <div class="c0"><button class="chev" data-act="toggle" aria-expanded="${ab}" title="Expandir / recolher">${ICO.chev}</button><span class="tp ${np?'A':'M'}" title="${np?np+' paradigma(s) próprio(s): decisão(ões) do gabinete neste processo':'sem paradigma próprio'}" style="${np?'':'background:var(--c-chip);color:var(--c-mut2)'}">${np||'–'}</span></div>
-    <div class="c1"><span class="num">${esc(a.processo)}</span><span class="sub" title="${esc(polo||a.classe||'')}">${esc(polo||a.classe||'classe n/i')}</span></div>
-    <div class="c2 csep"><span class="ass" title="${esc(a.assunto||'')}">${esc(a.assunto||'(assunto não informado)')}</span><div class="ctags">${tags}</div></div>
-    <div class="c3 csep"><span class="dt" title="Distribuição">${a.distribuicao?fmtData(a.distribuicao):''}</span><button class="ib" data-act="minuta" title="III · Gerar minuta deste processo">${ICO_MIN}</button><button class="ib" data-act="abrir" title="Abrir a ficha">${ICO.doc}</button></div>
-  </div>
-  ${ab?cardCorpo(a):''}</li>`;
-}
-function cardCorpo(a){
-  const pr=(l,v)=>v?`<div class="pr"><span class="pl">${l}</span><span class="pv">${v}</span></div>`:'';
-  const outras=a.tarefas.filter(t=>t.t!==a._t.t).map(t=>esc(t.t)).join(' · ');
-  const props=a.proprias.slice(0,3).map(x=>`<div class="pr" style="cursor:pointer" onclick="irParaDecisao('${x.id}')"><span class="pl">${x.t==='A'?'Acórdão':'Monocrática'}</span><span class="pv"><span class="ponte j" style="height:20px">I · ${esc(x.c)} ${fmtData(x.d)}</span> ${esc((x.r||x.e||'').slice(0,110))}</span></div>`).join('');
-  return `<div class="cbody cbody3">
-    <div class="pnl"><div class="lb">Processo</div>${pr('Classe',esc(a.classe||'—'))}${pr('Assunto',esc(a.assunto||'—'))}${pr('Polo ativo',esc(poloLimpo(a)))}${pr('Distribuição',a.distribuicao?fmtData(a.distribuicao):'')}${pr('Prioridade',esc(a.prioridade||''))}${pr('Sigilo',esc(a.sigilo||''))}</div>
-    <div class="pnl"><div class="lb">Tramitação</div>${pr('Tarefa',esc(a._t.t))}${pr('Na tarefa',a._dias!=null?a._dias+' dias':'')}${pr('Indicador',esc(a.indicador||''))}${pr('Fase',esc([a.fase,a.complemento].filter(Boolean).join(' · ')))}${pr('Conclusão',a.conclusao?fmtData(a.conclusao):'')}${pr('Outras tarefas',outras)}${pr('Etiquetas',esc([...a.etiquetas].join(' · ')))}</div>
-    <div class="pnl"><div class="lb">Paradigmas próprios<span class="hint">${a.proprias.length}</span></div>${props||'<p class="meta" style="margin:4px 0">Nenhuma decisão do gabinete neste processo.</p>'}</div>
-    <div class="cfoot"><button class="mini" data-act="abrir">${ICO.doc}II · Ficha completa</button><button class="mini pri" data-act="minuta">${ICO_MIN}III · Gerar minuta</button></div>
-  </div>`;
-}
-function renderAcMais(){
-  const fim=Math.min(acFilt.length,acMostrados+150); let h='';
-  for(let i=acMostrados;i<fim;i++) h+=cardAcervo(acFilt[i]);
-  $('aRes').querySelector('.mais')?.remove();
-  $('aRes').insertAdjacentHTML('beforeend',h+(fim<acFilt.length?`<div class="mais"><button class="btn sm" onclick="renderAcMais()">Mostrar mais</button></div>`:''));
-  acMostrados=fim;
-}
-$('aRes').addEventListener('scroll',e=>{const u=e.target;if(u.scrollTop+u.clientHeight>u.scrollHeight-300&&acMostrados<acFilt.length)renderAcMais()});
-$('aRes').addEventListener('click',e=>{
-  const li=e.target.closest('li[data-p]'); if(!li) return; const num=li.dataset.p, act=e.target.closest('[data-act]')?.dataset.act||'abrir';
-  if(act==='toggle'){e.stopPropagation();AC_ABERTOS.has(num)?AC_ABERTOS.delete(num):AC_ABERTOS.add(num);li.outerHTML=cardAcervo(AC.get(num));return}
-  if(act==='minuta'){e.stopPropagation();levarParaMinuta(num);return}
-  abrirProcesso(num);
-});
-
-/* ---------- estatísticas do recorte filtrado ---------- */
-function renderStatsAcervo(){
-  const L=acFilt, n=L.length, el=$('acStats'); if(!el) return;
-  if(!AC.size){el.innerHTML='';return}
-  const pct=x=>n?Math.round(x/n*100)+'%':'—';
-  const comP=L.filter(a=>a.proprias.length).length, pri=L.filter(a=>/sim/i.test(a.prioridade||'')).length, sig=L.filter(a=>/segredo|sigil/i.test(a.sigilo||'')).length;
-  const sob=L.filter(a=>/sobrest/i.test(a.indicador||'')).length;
-  const dias=L.map(a=>a._dias).filter(d=>d!=null).sort((x,y)=>x-y), med=dias.length?dias[Math.floor(dias.length/2)]:null, mais100=dias.filter(d=>d>100).length;
-  const dist=L.map(a=>a.distribuicao).filter(Boolean).sort();
-  const top=(f,k=6)=>{const c=new Map();for(const a of L){const v=f(a);if(v)c.set(v,(c.get(v)||0)+1)}return [...c].sort((x,y)=>y[1]-x[1]).slice(0,k)};
-  const barras=(tit,campo,rows)=>{const mx=rows[0]?rows[0][1]:1;return `<div class="st-col"><div class="st-t">${tit}</div>${rows.map(([v,q])=>`<button class="st-bar" data-f="${campo}" data-v="${esc(v)}" title="${esc(v)} — filtrar"><span class="st-l">${esc(v)}</span><span class="st-q">${q.toLocaleString('pt-BR')}</span><i style="width:${Math.max(4,q/mx*100)}%"></i></button>`).join('')||'<span class="meta">—</span>'}</div>`};
-  el.innerHTML=`<div class="st-kpis">
-    <div class="st-k"><b>${n.toLocaleString('pt-BR')}</b><span>processos no recorte</span></div>
-    <div class="st-k a"><b>${comP.toLocaleString('pt-BR')} <small>${pct(comP)}</small></b><span>com paradigma próprio</span></div>
-    <div class="st-k"><b>${med!=null?med+' d':'—'}</b><span>mediana na tarefa</span></div>
-    <div class="st-k r"><b>${mais100.toLocaleString('pt-BR')} <small>${pct(mais100)}</small></b><span>há mais de 100 dias</span></div>
-    <div class="st-k w"><b>${pri.toLocaleString('pt-BR')}</b><span>prioridade</span></div>
-    <div class="st-k p"><b>${sig.toLocaleString('pt-BR')}</b><span>sigilo</span></div>
-    <div class="st-k v"><b>${sob.toLocaleString('pt-BR')}</b><span>sobrestados</span></div>
-    <div class="st-k"><b>${dist.length?fmtData(dist[0]).slice(3):'—'}</b><span>distribuição mais antiga</span></div>
-  </div>
-  <div class="st-cols">${barras('Tarefa atual','tarefa',top(a=>a._t.t))}${barras('Assunto','assunto',top(a=>a.assunto))}${barras('Classe','classe',top(a=>a.classe,4))}</div>`;
-}
-document.addEventListener('click',e=>{const b=e.target.closest('.st-bar');if(!b)return;const f=b.dataset.f,v=b.dataset.v;acF[f]=acF[f]===v?'':v;const sel={tarefa:'afTarefa',assunto:'afAssunto',classe:'afClasse'}[f];if($(sel))$(sel).value=acF[f];aplicarAcervo()});
-
-/* ---------- indicador do processo em minuta ---------- */
-function atualizarEmMinuta(){
-  const p=$('emMinPill'); if(!p) return;
-  const g=$('gerador'), m=g&&MOD_POR.get(g.dataset.m);
-  p.hidden=!MIN_PROC&&!m;
-  $('emMinNum').textContent=MIN_PROC||'sem processo vinculado';
-  $('emMinMod').textContent=m?m.id:'';
-  p.title=MIN_PROC?`Processo em minuta: ${MIN_PROC}${m?' · modelo '+m.id:''} — clique para voltar à minuta`:'Minuta sem processo vinculado';
-  document.querySelectorAll('#aRes li.proc').forEach(li=>{const em=li.dataset.p===MIN_PROC;if(em!==li.classList.contains('emmin'))li.outerHTML=cardAcervo(AC.get(li.dataset.p))});
-}
-function irParaMinuta(){setModulo('modelos');const g=$('gerador');if(!g&&MIN_PROC)levarParaMinuta(MIN_PROC)}
-
-/* =====================================================================
-   PREENCHIMENTO AUTOMÁTICO a partir do acervo
-   Fontes: planilhas do PJe/BI (número, classe, assunto, etiquetas, polo ativo,
-   prioridade, sigilo, fase) e paradigmas próprios (decisões do gabinete no
-   mesmo processo: partes, sentença e ID, recorrente e ID, alegações,
-   contrarrazões, parecer, ementa do acórdão). Nada é inventado: o que não
-   consta das fontes fica em branco ou marcado [VALIDAR].
-   ===================================================================== */
-const RXA={
-  rel:/(?:^|\n)\s*(?:RELAT[ÓO]RIO|D\s?E\s?C\s?I\s?S\s?[ÃA]\s?O|Vistos\.?)\s*\n([\s\S]*?)\n\s*(?:É o relatório\.?|DECIDO\.?|V\s?O\s?T\s?O)\s*\n/i,
-  sent:/(?:A |à )sentença\s*\(IDs?\s*([^)]+)\)\s*(?:que,?\s*)?(?:em ([^,]{5,120}),\s*)?((?:julgou|extinguiu|denegou|concedeu|homologou|indeferiu|deferiu|rejeitou|acolheu|reconheceu|declarou)[^.]*(?:\.\d[^.]*)*)\./,
-  ctxB:/Trata-se de (?:apelação|remessa necessária|recurso)[^.]{0,60}?em ação (?:de|ordinária de) ([^.]{5,150})\./,
-  rec:/(?:Apelou|Agravou)\s+((?:o|a|os|as)\s+[^(,.;]{2,80}?)\s*\(IDs?\s*([^)]+)\)/,
-  aleg:/alegando,\s*em\s*(?:suma|síntese)(?:,\s*que)?:?\s*([^\n]+)/,
-  contraNao:/Não houve contrarrazões|Sem contrarrazões|Não houve contraminuta|Sem contraminuta/,
-  contraSim:/Houve (?:contrarrazões|contraminuta)\s*\(IDs?\s*([^)]+)\)/,
-  mpf:/Procuradoria Regional da República (?:opinou|manifestou-se)\s+pel[oa]s?\s+([^(]{3,140}?)\s*\(IDs?\s*([^)]+)\)/
-};
-function extrairRelatorio(txt){
-  const o={}, m=RXA.rel.exec(txt||''), rel=m?m[1]:(txt||'').slice(0,6000);
-  let x;
-  if((x=RXA.sent.exec(rel))) o.sent={id:x[1].trim(),ctx:x[2]||'',res:x[3].trim()};
-  if((x=RXA.ctxB.exec(rel))) o.ctx='ação de '+x[1].trim();
-  if((x=RXA.rec.exec(rel))) o.rec={nome:x[1].trim(),id:x[2].trim()};
-  if((x=RXA.aleg.exec(rel))){const it=x[1].split(/;\s*(?:e\s+)?\(\d+\)\s*|^\(\d+\)\s*/).map(s=>s.trim().replace(/^[,;:\s]+|[;.\s]+$/g,'')).filter(Boolean);if(it.length&&!/pelo que requere/i.test(it[0].slice(0,20)))o.aleg=it}
-  if(RXA.contraNao.test(rel)) o.contra={tipo:'nao'}; else if((x=RXA.contraSim.exec(rel))) o.contra={tipo:'sim',id:x[1].trim()};
-  if((x=RXA.mpf.exec(rel))) o.mpf={txt:x[1].trim(),id:x[2].trim()};
-  return o;
-}
-const ENTES=[[/INSTITUTO NACIONAL DO SEGURO SOCIAL|\bINSS\b/i,'o INSS'],[/^UNI[ÃA]O(\s+FEDERAL)?\b|FAZENDA NACIONAL/i,'a União'],[/CAIXA ECON[ÔO]MICA FEDERAL|^CEF\b/i,'a Caixa Econômica Federal'],
-  [/BANCO CENTRAL/i,'o Banco Central do Brasil'],[/MINIST[ÉE]RIO P[ÚU]BLICO FEDERAL/i,'o Ministério Público Federal'],[/FUNDA[ÇC][ÃA]O NACIONAL DOS POVOS IND[ÍI]GENAS|\bFUNAI\b/i,'a Fundação Nacional dos Povos Indígenas'],
-  [/AG[ÊE]NCIA NACIONAL/i,null],[/^CONSELHO REGIONAL/i,null],[/UNIVERSIDADE FEDERAL/i,null]];
-function tituloCaso(s){const min=new Set(['de','da','do','das','dos','e','em']);return s.toLowerCase().replace(/(^|\s)(\S)/g,(m,a,c)=>a+c.toUpperCase()).replace(/\b(De|Da|Do|Das|Dos|E|Em)\b/g,w=>min.has(w.toLowerCase())?w.toLowerCase():w)}
-function designar(nome,polo){
-  const n=String(nome||'').replace(/\s+-\s+[A-Z]{2,}$/,'').trim(); if(!n) return '';
-  for(const [re,d] of ENTES) if(re.test(n)) return d||((/^(AG[ÊE]NCIA|UNIVERSIDADE|FUNDA)/i.test(n)?'a ':'o ')+tituloCaso(n));
-  if(/ LTDA|S\.?\/?A\.?$| EIRELI| ME$| EPP$/i.test(n)) return 'a '+tituloCaso(n);
-  return `[VALIDAR: ${/apelad|agravad|r[ée]u|impetrad/i.test(polo||'')?'o réu / a ré':'o autor / a autora'} — ${tituloCaso(n)}]`;
-}
-function espDaClasse(c){c=semAcento(c||'');if(/remessa necessaria civel/.test(c))return 'rn';if(/apelacao \/ remessa|apelacao\/remessa/.test(c))return 'rnap';if(/agravo de instrumento/.test(c))return 'ai';if(/agravo interno/.test(c))return 'agint';if(/embargos de declaracao/.test(c))return 'ed';if(/apelacao/.test(c))return 'ap';return ''}
-function setAuto(id,val,fonte,forcar){
-  const el=$(id); if(!el||val==null||val==='') return false;
-  if(!forcar&&el.value&&!el.dataset.auto) return false; // não sobrescreve o que o usuário digitou
-  el.value=val; el.dataset.auto=fonte; el.classList.add('auto'); el.title='Preenchido automaticamente — '+fonte; return true;
-}
-document.addEventListener('input',e=>{const el=e.target;if(el.dataset&&el.dataset.auto&&e.isTrusted){delete el.dataset.auto;el.classList.remove('auto');el.title=''}},true);
-async function autopreencher(silencioso){
-  const a=MIN_PROC&&AC.get(MIN_PROC), box=$('autoBox'); if(!a||!$('rEsp')){if(box)box.innerHTML='';return}
-  const F=[], AV=[], pje='planilha do PJe';
-  const reg=(campo,ok,fonte)=>{if(ok)F.push([campo,fonte])};
-  // 1) planilhas do acervo
-  document.querySelectorAll('#gerador [data-k]').forEach(el=>{const lb=el.previousElementSibling?.textContent||'';if(/nº do processo/.test(lb))reg('nº do processo',setAuto(el.id,a.processo,pje),pje)});
-  const espP=espDaClasse(a.classe), etqED=[...a.etiquetas].some(t=>/embargos? de declara|\bED\b/i.test(t));
-  // 2) paradigmas próprios (mesmo processo)
-  let r=null, ac=null;
-  for(const x of a.proprias){try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){continue}const rr=registro(x.id);if(!rr)continue;if(!r&&rr.inteiro_teor)r=rr;if(!ac&&x.t==='A'&&rr.conteudo_texto==='integral')ac=rr;if(r&&ac)break}
-  const esp=etqED&&ac?'ed':espP;
-  if(esp) reg('espécie',setAuto('rEsp',esp,etqED&&ac?'etiqueta do PJe + acórdão anterior':pje,true),etqED&&ac?'etiqueta + acórdão':pje);
-  const fonteP=r?`paradigma próprio ${r.id} (${r.classe_sigla} ${fmtData(r.data_julgamento_iso||r.data_decisao_iso)})`:'';
-  if(esp==='ed'&&ac){
-    const em=(ac.ementa||'').replace(/^[\s\S]*?^\s*E\s?M\s?E\s?N\s?T\s?A\s*$/im,'').trim();
-    reg('ementa embargada',setAuto('rEmenta',em,`acórdão ${ac.id} (${fmtData(ac.data_julgamento_iso)})`),'acórdão anterior');
-  }else if(r){
-    const x=extrairRelatorio(r.inteiro_teor);
-    if(x.sent){reg('ID da sentença',setAuto('rDecId',x.sent.id,fonteP),fonteP);reg('resultado da sentença',setAuto('rDec',x.sent.res,fonteP),fonteP);if(x.sent.ctx)reg('contexto',setAuto('rCtx',x.sent.ctx,fonteP),fonteP)}
-    if(x.ctx) reg('contexto',setAuto('rCtx',x.ctx,fonteP),fonteP);
-    if(x.rec){reg('recorrente',setAuto('rRec',x.rec.nome,fonteP),fonteP);reg('ID do recurso',setAuto('rRecId',x.rec.id,fonteP),fonteP)}
-    if(x.aleg) reg('alegações',setAuto('rAleg',x.aleg.join('\n'),fonteP),fonteP);
-    if(x.contra){reg('contrarrazões',setAuto('rContra',x.contra.tipo,fonteP,true),fonteP);if(x.contra.id)reg('ID das contrarrazões',setAuto('rContraId',x.contra.id,fonteP),fonteP)}
-    if(x.mpf){const k=/desprov/i.test(x.mpf.txt)?'desp':/provimento/i.test(x.mpf.txt)?'prov':/prossegu/i.test(x.mpf.txt)?'pross':/desnecess|interven/i.test(x.mpf.txt)?'desn':'';if(k){reg('parecer',setAuto('rMpf',k,fonteP,true),fonteP);reg('ID do parecer',setAuto('rMpfId',x.mpf.id,fonteP),fonteP)}}
-    if(!x.rec&&r.partes&&r.partes.length){const ap=r.partes.find(p=>/APELANTE|AGRAVANTE|EMBARGANTE|RECORRENTE/i.test(p.polo));if(ap)reg('recorrente (pelas partes)',setAuto('rRec',designar(ap.nome,ap.polo),fonteP),fonteP)}
-  }
-  if(!$('rCtx').value&&a.assunto) reg('contexto (assunto)',setAuto('rCtx',`[VALIDAR: ação de origem — assunto PJe: ${a.assunto}]`,pje),pje);
-  if(!$('rRec').value&&poloLimpo(a)) reg('recorrente (polo ativo)',setAuto('rRec',designar(poloLimpo(a),'autor'),'polo ativo (BI)'),'polo ativo (BI)');
-  // 3) avisos do acervo
-  if(/segredo|sigil/i.test(a.sigilo||'')) AV.push('processo em <b>segredo de justiça</b>: não identificar as partes na minuta pública');
-  if(/sim/i.test(a.prioridade||'')) AV.push('tramitação <b>prioritária</b>');
-  if(/sobrest/i.test(a.indicador||'')) AV.push(`<b>sobrestado</b>${a.fase?': '+esc(a.fase):''}${a.complemento?' · '+esc(a.complemento):''} — confira se cabe exame ou manutenção da suspensão`);
-  if([...a.etiquetas].some(t=>/aguardando parecer/i.test(t))) AV.push('etiqueta <b>aguardando parecer</b>: manifestação ministerial possivelmente pendente');
-  if(etqED&&!ac) AV.push('etiqueta indica <b>embargos de declaração</b>, mas o acórdão embargado não está no banco de paradigmas');
-  if(!a.proprias.length) AV.push('sem paradigma próprio: só os dados da planilha foram usados; sentença, recorrente e alegações dependem dos autos');
-  atualizarMinuta();
-  if(box){
-    const porF={};F.forEach(([c,f])=>(porF[f]=porF[f]||[]).push(c));
-    box.innerHTML=`<div class="auto-h">⤓ Preenchido com o acervo · <b>${F.length}</b> campo(s)</div>
-      ${Object.entries(porF).map(([f,cs])=>`<div class="auto-l"><span class="auto-f">${esc(f)}</span> ${esc(cs.join(', '))}</div>`).join('')||'<div class="auto-l">Nenhum dado aproveitável nas fontes.</div>'}
-      ${AV.map(v=>`<div class="auto-av">⚠ ${v}</div>`).join('')}
-      <div class="auto-l meta">Campos com contorno verde vieram das fontes indicadas; confira nos autos. Ao editar, a marca some.</div>`;
-  }
-  if(!silencioso) toast(`${F.length} campo(s) preenchido(s) com o acervo.`);
-}
-
-
-const FAM={'APELACAO CIVEL':['ApCiv','Ap','ApelRemNec','ApReeNec'],'APELACAO / REMESSA NECESSARIA':['ApCiv','Ap','ApelRemNec','ApReeNec','RemNecCiv'],'AGRAVO DE INSTRUMENTO':['AI'],'REMESSA NECESSARIA CIVEL':['RemNecCiv','ReeNec','ApelRemNec'],'CONFLITO DE COMPETENCIA CIVEL':['CCCiv','CC']};
-function similares(a,lim=8){
-  const chave=(a.assunto||'')+'|'+(a.classe||'');
-  if(SIMCACHE.has(chave)) return SIMCACHE.get(chave).filter(x=>x.n!==a.processo).slice(0,lim);
-  const tk=tokens(a.assunto); if(generico(tk,a.assunto)){SIMCACHE.set(chave,[]);return []}
-  if(!IDXN) IDXN=IDX.map(x=>semAcento((x.e||'')+' '+(x.r||'')+' '+(x.cl||'')));
-  const fam=FAM[semAcento(a.classe||'').toUpperCase()];
-  const req=tk.length<=2?tk.length:Math.ceil(tk.length*0.6);
-  const out=[];
-  for(let i=0;i<IDX.length;i++){
-    const x=IDX[i]; if(fam&&!fam.includes(x.c)) continue;
-    let s=0; for(const t of tk) if(rxTok(t).test(IDXN[i])) s++;
-    if(s>=req) out.push({x,s:s/tk.length});
-  }
-  out.sort((p,q)=>q.s-p.s||((q.x.y>='2025')-(p.x.y>='2025'))||((q.x.k==='integral')-(p.x.k==='integral'))||(q.x.d||'').localeCompare(p.x.d||''));
-  const r=out.slice(0,40).map(o=>({...o.x,score:o.s}));
-  SIMCACHE.set(chave,r); return r.filter(x=>x.n!==a.processo).slice(0,lim);
-}
-function modelosPara(a,lim=4){
-  if(!MODS) return [];
-  const tk=tokens(a.assunto), fam=semAcento(a.classe||'');
-  const esp=/agravo/.test(fam)?'Agravo de instrumento':/remessa necessaria civel/.test(fam)?'Remessa necessária':/apelacao/.test(fam)?'Apelação':/conflito/.test(fam)?'Conflito de competência':'';
-  if(generico(tk,a.assunto)) return []; // uma palavra curta comum (ex.: “Seguro”) é genérica demais; siglas (FIES, PIS) não
-  if(!MOD_IDF){MOD_IDF=new Map();}
-  const w=t=>{if(!MOD_IDF.has(t)){const df=MODS.reduce((n,m)=>n+(rxTok(t).test(m._txt)?1:0),0);MOD_IDF.set(t,Math.log((MODS.length+1)/(df+1)))}return MOD_IDF.get(t)};
-  const tot=tk.reduce((s,t)=>s+w(t),0)||1;
-  if(tot<3.2) return []; // assunto genérico demais para sugerir com segurança
-  const bonus={TRMS:.2,'1T':.05,'3T':0};
-  return MODS.filter(m=>m.frequencia>=5&&(!esp||m.especie===esp))
-    .map(m=>{let s=0;for(const t of tk)if(rxTok(t).test(m._txt))s+=w(t);return {m,s:s/tot}})
-    .filter(o=>o.s>=0.6).sort((p,q)=>(q.s+bonus[q.m.fase])-(p.s+bonus[p.m.fase])||q.m.frequencia-p.m.frequencia).slice(0,lim).map(o=>o.m);
-}
-function simHTML(x,extra){return `<div class="sim" onclick="irParaDecisao('${x.id}')"><div class="h"><span class="tp ${x.t}" style="min-width:20px;height:20px;font-size:10.5px">${x.t}</span><span class="num">${esc(x.n)}</span><span class="ct2">${esc(x.c||'')}</span><span class="ct2 org ${classeOrgao(x.o)}">${esc(siglaOrgao(x.o))}</span><span class="meta">${fmtData(x.d)}</span>${extra||''}</div>${esc((x.e||'').slice(0,240))}${x.r?`<div style="color:var(--c-ok);font-weight:600;margin-top:3px">${esc(x.r.slice(0,160))}</div>`:''}</div>`}
-async function abrirProcesso(num){
-  const a=AC.get(num); if(!a) return; acSel=num; $('mAc').classList.remove('sem-detalhe');
-  $('aRes').querySelectorAll('li').forEach(l=>l.classList.toggle('sel',l.dataset.p===num));
-  try{await carregarModelos()}catch(e){}
-  const sims=similares(a), mods=modelosPara(a);
-  a._sims=sims; a._mods=mods;
-  $('aDet').innerHTML=`<div class="dhead">
-    <div class="dtit"><span class="tag">Processo do acervo</span><span class="proc">${esc(a.processo)}</span><button class="dx" onclick="fecharLateral('acervo')">×</button></div>
-    <div class="dmeta">
-      <div><span>Classe</span>${esc(a.classe||'—')}</div><div><span>Assunto</span>${esc(a.assunto||'—')}</div>
-      <div><span>Tarefa atual</span>${esc(a._t.t)}${a._dias!=null?` · há ${a._dias} dias`:''}</div><div><span>Distribuição</span>${esc(a.distribuicao?fmtData(a.distribuicao):'—')}</div>
-      ${a.indicador?`<div><span>Indicador</span>${esc(a.indicador)}${a.fase?' · '+esc(a.fase):''}</div>`:''}${a.conclusao?`<div><span>Conclusão</span>${esc(fmtData(a.conclusao))}</div>`:''}
-      ${a.sigilo?`<div><span>Sigilo</span>${esc(a.sigilo)}</div>`:''}${a.etiquetas.size?`<div style="grid-column:1/-1"><span>Etiquetas</span>${esc([...a.etiquetas].join(' · '))}</div>`:''}
-    </div>
-    <div class="dacts"><button class="btn sm pri" onclick="levarParaMinuta('${num}')" title="Abre o modelo sugerido na faceta Minutas, já vinculado a este processo e com os paradigmas similares à mão">III · Gerar minuta</button>
-      <a class="btn sm" href="https://pje2g.trf3.jus.br/pje/ConsultaPublica/listView.seam?numProcesso=${num.replace(/\D/g,'')}" target="_blank" rel="noopener">Consulta pública PJe</a></div>
-  </div>
-  <div class="dbody">
-    <div class="kpis"><div class="kpi"><b>${a.proprias.length}</b><span>paradigmas próprios (neste processo)</span></div><div class="kpi"><b>${sims.length}</b><span>paradigmas similares</span></div><div class="kpi"><b>${mods.length}</b><span>modelos sugeridos</span></div></div>
-    ${a.proprias.length?`<h3 class="sec">Paradigmas próprios — decisões já proferidas neste processo</h3><div class="sim-list">${a.proprias.map(x=>simHTML(x,'<span class="sc">mesmo processo</span>')).join('')}</div>`:''}
-    <h3 class="sec">Paradigmas similares</h3>
-    ${sims.length?`<div class="sim-list">${sims.map(x=>simHTML(x,`<span class="sc">${Math.round(x.score*100)}% do assunto</span>`)).join('')}</div><p class="ajuda">Semelhança pelo assunto CNJ (${esc(tokens(a.assunto).join(', '))}) na ementa e no resultado, mesma família de classe; prioriza a Turma Regional, texto integral e julgados recentes.</p>`:`<p class="ajuda">Nenhum paradigma similar pelo assunto “${esc(a.assunto||'')}”. Experimente buscar termos do caso na faceta I · Paradigmas.</p>`}
-    <h3 class="sec">Modelos sugeridos</h3>
-    ${mods.length?`<div class="sim-list">${mods.map(m=>`<div class="sim" onclick="setModulo('modelos');abrirModelo('${m.id}')"><div class="h"><span class="tp ${m.tipo==='acórdão'?'A':'M'}" style="min-width:20px;height:20px;font-size:10.5px">${m.tipo==='acórdão'?'A':'M'}</span><b>${esc(m.especie)} · ${esc(m.resultado)}</b><span class="ct2 org ${m.fase==='TRMS'?'oms':m.fase==='3T'?'o3':'o1'}">${{TRMS:'TRMS','1T':'1ª T','3T':'3ª T'}[m.fase]}</span><span class="sc">${m.frequencia} usos</span></div>${esc(m.tema||(m.palavras_chave||[]).join(' · '))}</div>`).join('')}</div>`:'<p class="ajuda">Nenhum modelo com assunto correspondente (assuntos muito genéricos não geram sugestão).</p>'}${mods.length?'<p class="ajuda">Sugestão automática pelo assunto CNJ e pela classe, priorizando a fase atual (TRMS) — confira a pertinência antes de usar.</p>':''}
-  </div>`;
-  $('aDet').scrollTop=0;
-}
-/* =====================================================================
    GERADOR DE MINUTAS — relatório estruturado · modelo padrão ou matriz ·
    editor · painel de diretrizes com indicadores de correção
-   Fontes: modelos extraídos do acervo (modelos/) e Padrão Muta do gerador
+   Fontes: modelos extraídos do banco (modelos/) e Padrão Muta do gerador
    do gabinete (diretrizes/padrao_muta.json: redação, normas, diretrizes,
    roteiros).
    ===================================================================== */
-let MIN_PROC=null;            // processo do acervo vinculado à minuta
 let MIN_MODO='padrao';        // 'padrao' | 'matriz'
 let ED_DIRTY=false;           // o editor foi alterado à mão
 let DIR=null, REGRAS=null, DZ_TAB='correcao', ROT_SEL='mestre';
@@ -1498,10 +1104,8 @@ function abrirModelo(id){
   </div>
   <div class="min-grid">
     <div class="min-main" id="gerador" data-m="${m.id}">
-      ${vinculoHTML()}
-      <details class="min-blk" open><summary>Relatório · dados do processo</summary>${relatorioHTML(m,MIN_PROC&&AC.get(MIN_PROC))}</details>
+      <details class="min-blk" open><summary>Relatório · dados do processo</summary>${relatorioHTML(m,null)}</details>
       <details class="min-blk" open id="minCamposD"><summary id="minCamposS">${MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento'}</summary><div id="minCampos">${MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m)}</div></details>
-      ${paradigmasCitarHTML()}
       <div class="lote">Minuta · editor <span class="meta" id="edEstado" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div>
       <div class="edbar">
         <button class="btn sm" onclick="regerar()" title="Recompõe o texto a partir do formulário e do modelo">↻ Regerar</button>
@@ -1525,34 +1129,18 @@ function abrirModelo(id){
   $('dzTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;DZ_TAB=b.dataset.t;$('dzTabs').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));renderDZ()});
   $('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor();agendarLint()});
   atualizarMinuta();
-  atualizarEmMinuta();
-  if(MIN_PROC) autopreencher(true);
   carregarDiretrizes().then(()=>{renderDZ();lint()});
-}
-function vinculoHTML(){
-  const a=MIN_PROC&&AC.get(MIN_PROC);
-  return `<div class="proc-em">
-    <div class="pe-l"><span class="pe-ey">Processo em minuta</span>${a?`<b class="pe-n">${esc(a.processo)}</b><span class="meta">${esc(a.classe||'')} · ${esc(a.assunto||'')}${a._t?` · ${esc(a._t.t)}`:''}</span>`:`<b class="pe-n" style="color:var(--muted)">nenhum processo vinculado</b>`}</div>
-    <div class="pe-r">${AC.size?`<input id="vincNum" list="vincLista" placeholder="vincular nº do acervo…" value=""><datalist id="vincLista">${[...AC.values()].filter(x=>!baixado(x)).slice(0,4000).map(x=>`<option value="${x.processo}">${esc((x.assunto||'').slice(0,60))}</option>`).join('')}</datalist>`:'<span class="meta">importe o acervo (II) para vincular</span>'}
-      ${a?`<button class="btn sm" onclick="autopreencher()" title="Preenche os campos com as planilhas do PJe e as decisões do gabinete neste processo">⤓ Preencher com o acervo</button><span class="ponte a" onclick="setModulo('acervo');abrirProcesso('${a.processo}')">II · ficha</span>`:''}</div>
-  </div><div id="autoBox" class="auto-box"></div>`;
-}
-document.addEventListener('change',e=>{if(e.target.id!=='vincNum')return;const n=normNum(e.target.value);if(!AC.has(n)){toast('Número não encontrado no acervo importado.');return}
-  MIN_PROC=n;const g=$('gerador');if(g){const m=MOD_POR.get(g.dataset.m);abrirModelo(m.id)}atualizarEmMinuta()});
-function paradigmasCitarHTML(){
-  const a=MIN_PROC&&AC.get(MIN_PROC); const sims=a?(a._sims||similares(a)).slice(0,6):[];
-  return sims.length?`<div class="lote">Paradigmas para citar · faceta I</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">${sims.map(x=>`<span class="ponte j" onclick="inserirCitacao('${x.id}')" title="Insere a citação no ponto do cursor no editor (ou no campo selecionado)">+ ${esc(x.c)} ${esc(x.n)}</span>`).join('')}</div>`:'';
 }
 
 /* ---------- modo PADRÃO: campos do modelo ---------- */
 function camposDoModelo(m){const out=[];let k=0;m.modelo.replace(RX_CAMPO,(t,pos)=>{const antes=m.modelo.slice(Math.max(0,pos-70),pos).replace(/\s+/g,' ').trim();out.push({k:k++,t,antes,pos});return t});return out}
 function camposHTML(m){
-  const cs=camposDoModelo(m), fonte=POR_ID.get(m.fonte_modelo), reg=regiaoRelatorio(m), a=MIN_PROC&&AC.get(MIN_PROC);
+  const cs=camposDoModelo(m), fonte=POR_ID.get(m.fonte_modelo), reg=regiaoRelatorio(m);
   if(!cs.length) return '<p class="ajuda">Este modelo não tem campos variáveis.</p>';
   return `<div class="lote">Campos do modelo (${cs.length})<span class="meta" id="relNota" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div><div class="gl">${cs.map(c=>{
     const longo=/trecho|complementar|dispositivo|citação/.test(c.t), noRel=reg&&c.pos>=reg.rs&&c.pos<reg.re;
     const dica=c.t==='[dispositivo]'&&fonte&&fonte.r?`Dispositivo da decisão-base: ${fonte.r}`:(c.antes?'…'+c.antes:'');
-    const v=c.t==='[nº do processo]'&&a?esc(a.processo):'';
+    const v='';
     const at=`id="gc${c.k}" data-k="${c.k}" ${noRel?'data-rel="1"':''} placeholder="${esc(dica)}"`;
     return `<label for="gc${c.k}" title="${esc(dica)}" ${noRel?'data-rel="1"':''}>${esc(c.t.replace(/[\[\]]/g,''))}${noRel?' <small>(relatório)</small>':''}</label>${longo?`<textarea ${at}>${v}</textarea>`:`<input ${at} value="${v}">`}`}).join('')}</div>`;
 }
@@ -1592,9 +1180,9 @@ function matrizPara(m){
       || L.find(x=>x.resultado===m.resultado)
       || L[0] || null;
 }
-/* situação do caso, lida do relatório e do acervo */
+/* situação do caso, lida do relatório */
 function situacaoCaso(){
-  const rec=(vRel('rRec')||'')+' '+((MIN_PROC&&AC.get(MIN_PROC)||{}).poloAtivo||'');
+  const rec=vRel('rRec')||'';
   const r=vRel('rRec').toLowerCase(), S={};
   if(/\ba autora\b|^autora|\bda autora\b/.test(r)) S.parte='autora';
   else if(/\bo autor\b|^autor\b|\bdo autor\b/.test(r)) S.parte='autor';
@@ -1824,7 +1412,7 @@ document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('#
 document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.id!=='minEd'&&!e.target.dataset.mxl)atualizarMinuta()});
 document.addEventListener('change',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.tagName==='SELECT')atualizarMinuta()});
 async function inserirCitacao(id){
-  const x=POR_ID.get(id); try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o paradigma.');return}
+  const x=POR_ID.get(id); try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o precedente.');return}
   const cit=citacao(registro(id)), el=campoAtivo&&document.body.contains(campoAtivo)?campoAtivo:$('minEd');
   if(!el){copiarTexto(cit,'Citação copiada.');return}
   if(el.id==='minEd'){const i=el.selectionStart??el.value.length;el.value=el.value.slice(0,i)+(i&&el.value[i-1]!=='\n'?'\n\n':'')+cit+'\n\n'+el.value.slice(i);ED_DIRTY=true;estadoEditor();agendarLint()}
@@ -1832,23 +1420,9 @@ async function inserirCitacao(id){
   toast('Citação inserida.');
 }
 function baixarMinuta(){
-  const g=$('gerador'); const m=MOD_POR.get(g.dataset.m); const proc=MIN_PROC||'minuta';
+  const g=$('gerador'); const m=MOD_POR.get(g.dataset.m); 
   const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:12pt;line-height:1.5}p{text-align:justify;margin:0 0 10pt;text-indent:2cm}p.c{text-align:center;text-indent:0;font-weight:bold}</style></head><body>${textoMinuta().split(/\n{2,}/).map(par=>`<p${/^(DECISÃO|RELATÓRIO|VOTO|EMENTA|ACÓRDÃO|DECIDO\.?|É O RELATÓRIO\.?)$/i.test(par.trim())?' class="c"':''}>${esc(par.trim()).replace(/\n/g,'<br>')}</p>`).join('')}</body></html>`;
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+html],{type:'application/msword'}));a.download=`minuta_${proc.replace(/\D/g,'')||m.id}.doc`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
-}
-async function levarParaMinuta(num){
-  const a=AC.get(num); if(!a) return; MIN_PROC=num;
-  await carregarModelos(); if(!a._mods) a._mods=modelosPara(a);
-  setModulo('modelos');
-  // fase de embargos de declaração (etiqueta do PJe + acórdão anterior no banco): modelo de ED da fase atual
-  const ed=[...a.etiquetas].some(t=>/embargos? de declara|\bED\b/i.test(t))&&a.proprias.some(x=>x.t==='A');
-  let mod=a._mods[0];
-  if(ed){const tk=tokens(a.assunto);const cand=MODS.filter(m=>m.especie==='Embargos de declaração'&&m.tipo==='acórdão'&&m.frequencia>=5)
-    .map(m=>({m,s:tk.filter(t=>rxTok(t).test(m._txt)).length+({TRMS:3,'1T':1,'3T':0}[m.fase])+Math.log10(m.frequencia)})).sort((x,y)=>y.s-x.s);
-    if(cand.length) mod=cand[0].m}
-  if(mod){modF.fase=mod.fase;$('mfFase').querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.v===mod.fase));modF.min=5;$('mfMin').value='5';preencherModSelects();aplicarModelos();abrirModelo(mod.id);toast(`Modelo sugerido para ${esc(num)} aberto na faceta III.`)}
-  else toast('Nenhum modelo sugerido pelo assunto — escolha um na lista.');
-  atualizarEmMinuta();
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+html],{type:'application/msword'}));a.download=`minuta_${m.id}.doc`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
 }
 
 /* =====================================================================
@@ -1970,118 +1544,12 @@ function renderDZ(){
   }
 }
 
-function limparAcervo(){ACS.termos=[];ACS.lote=[];ACS.crit=[];ACS.colf={};$('aSheet').innerHTML='';AC.clear();ACFONTES.length=0;SIMCACHE.clear();acFilt=[];$('aRes').innerHTML='<div class="vazio">Acervo descartado.</div>';$('aResumo').textContent='Nenhum acervo importado.';$('aResumo2').textContent='';$('acFontes').innerHTML='';$('ctAc').textContent='importar planilhas';MIN_PROC=null;atualizarEmMinuta();$('acStats').innerHTML='';fecharLateral('acervo')}
-const drop=$('acDrop');
-['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('on')}));
-['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('on')}));
-drop.addEventListener('drop',e=>{setModulo('acervo');importarArquivos([...e.dataTransfer.files])});
-$('mAc').addEventListener('dragover',e=>e.preventDefault());
-$('mAc').addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('on');importarArquivos([...e.dataTransfer.files])});
-$('acArq').addEventListener('change',e=>{importarArquivos([...e.target.files]);e.target.value=''});
-chipsGrupo('afSit',v=>{acF.sit=v;prepararAcervo()});
-chipsGrupo('afBanco',v=>{acF.banco=v;aplicarAcervo()});
-[['afTarefa','tarefa'],['afAssunto','assunto'],['afClasse','classe'],['afOrdem','ordem']].forEach(([el,k])=>$(el).onchange=e=>{acF[k]=e.target.value;aplicarAcervo()});
-let adeb;$('aq').addEventListener('input',()=>{clearTimeout(adeb);adeb=setTimeout(aplicarAcervo,180)});
-
-/* ---------- Busca · Filtro · Seleção (padrão da Central de Comando) ---------- */
-const ACS={mode:'text',termos:[],lote:[],crit:[],view:'painel',sort:{c:null,d:1},colf:{},vsel:new Set(),
-  cols:new Set(['Processo','Classe','Assunto','Tarefa atual','Dias na tarefa','Etiquetas','Paradigmas próprios','Distribuição'])};
-const ACOLS={
-  'Processo':a=>a.processo,'Classe':a=>a.classe||'','Assunto':a=>a.assunto||'','Tarefa atual':a=>a._t.t||'','Dias na tarefa':a=>a._dias,
-  'Etiquetas':a=>[...a.etiquetas],'Prioridade':a=>a.prioridade||'','Sigilo':a=>a.sigilo||'','Indicador':a=>a.indicador||'','Fase':a=>a.fase||'',
-  'Complemento':a=>a.complemento||'','Polo ativo':a=>a.poloAtivo||'','Distribuição':a=>a.distribuicao||'','Conclusão':a=>a.conclusao||'',
-  'Última movimentação':a=>a.ultimaMov||'','Paradigmas próprios':a=>a.proprias.length||'','Todas as tarefas':a=>a.tarefas.map(t=>t.t)};
-const NUMCOL=new Set(['Dias na tarefa','Paradigmas próprios']);
-const canon=v=>semAcento(String(v??'')).trim();
-function valoresDe(a,col){const v=ACOLS[col](a);return Array.isArray(v)?v:[v]}
-function testaCrit(a,k){
-  const vs=valoresDe(a,k.col).map(canon).filter(x=>x!==''&&x!=='null');
-  if(k.op==='empty') return !vs.length;
-  if(k.op==='notempty') return vs.length>0;
-  const alvos=[...k.vals.map(x=>({t:canon(x),eq:true})),...k.tre.map(x=>({t:canon(x),eq:k.op==='equals'}))];
-  if(!alvos.length) return true;
-  const ok=x=>x.eq?vs.some(v=>v===x.t):vs.some(v=>v.includes(x.t));
-  return k.comb==='all'?alvos.every(ok):alvos.some(ok);
-}
-function passaACS(a){
-  if(ACS.lote.length&&!ACS.loteSet.has(a.processo)) return false;
-  for(const t of ACS.termos) if(!casa(a._txt,parseConsulta(t))) return false;
-  for(const k of ACS.crit) if(!testaCrit(a,k)) return false;
-  return true;
-}
-function renderChips(){
-  const ch=[...ACS.termos.map((t,i)=>`<button class="acs-chip" data-x="t${i}" title="Remover">texto: ${esc(t)} ×</button>`),
-    ...(ACS.lote.length?[`<button class="acs-chip lote" data-x="lote" title="Remover lote">LOTE ${ACS.lote.length} processos${ACS.loteFora?` · ${ACS.loteFora} fora do acervo`:''} ×</button>`]:[]),
-    ...ACS.crit.map((k,i)=>`<button class="acs-chip" data-x="c${i}" title="Remover">${esc(k.col)} · ${{contains:'contém',equals:'é igual a',notempty:'não vazio',empty:'vazio'}[k.op]}${k.vals.length+k.tre.length?` · ${k.comb==='all'?'todos':'qualquer'}: ${esc([...k.vals,...k.tre].slice(0,3).join(' | '))}${k.vals.length+k.tre.length>3?'…':''}`:''} ×</button>`)];
-  $('acsChips').innerHTML=ch.length?ch.join('')+'<button class="acs-chip clr" data-x="all">limpar critérios</button>':'';
-}
-$('acsChips').addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(!b)return;const x=b.dataset.x;
-  if(x==='all'){ACS.termos=[];ACS.lote=[];ACS.crit=[]}else if(x==='lote')ACS.lote=[];else if(x[0]==='t')ACS.termos.splice(+x.slice(1),1);else ACS.crit.splice(+x.slice(1),1);aplicarAcervo()});
-$('acsMode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ACS.mode=b.dataset.m;$('acsMode').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
-  const lote=ACS.mode==='batch';$('aq').hidden=lote;$('aLote').hidden=!lote;$('acsApp').hidden=!lote;(lote?$('aLote'):$('aq')).focus()});
-function incluirTexto(){const v=$('aq').value.trim();if(!v)return;ACS.termos.push(v);$('aq').value='';aplicarAcervo()}
-function aplicarLote(){const nums=[...new Set(($('aLote').value.match(/\d{7}-?\d{2}\.?\d{4}\.?\d\.?\d{2}\.?\d{4}|\d{20}/g)||[]).map(normNum).filter(Boolean))];
-  if(!nums.length){toast('Nenhum número de processo reconhecido no lote.');return}
-  ACS.lote=[...new Set([...ACS.lote,...nums])];ACS.loteSet=new Set(ACS.lote);ACS.loteFora=ACS.lote.filter(n=>!AC.has(n)).length;$('aLote').value='';aplicarAcervo();
-  if(ACS.loteFora) toast(`${ACS.loteFora} processo(s) do lote não estão no acervo importado.`,5000)}
-$('aq').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();incluirTexto()}});
-$('acsInc').onclick=()=>ACS.mode==='batch'?aplicarLote():incluirTexto();
-$('acsApp').onclick=aplicarLote;
-/* construtor */
-$('acsCol').innerHTML=Object.keys(ACOLS).map(c=>`<option>${esc(c)}</option>`).join('');
-$('acsCol').value='Tarefa atual';
-function renderVals(){
-  const col=$('acsCol').value, q=canon($('acsVq').value), cnt=new Map();
-  for(const a of acFilt) for(const v of valoresDe(a,col)){if(v===''||v==null)continue;const k=String(v);cnt.set(k,(cnt.get(k)||0)+1)}
-  const vis=[...cnt].filter(([v])=>!q||canon(v).includes(q)).sort((x,y)=>y[1]-x[1]).slice(0,300);
-  $('acsVals').innerHTML=vis.map(([v,n])=>`<label><input type="checkbox" data-v="${esc(v)}"${ACS.vsel.has(v)?' checked':''}><span title="${esc(v)}">${esc(v)}</span><b>${n.toLocaleString('pt-BR')}</b></label>`).join('')||'<span class="meta" style="padding:4px">Nenhum valor nesta coluna no recorte atual.</span>';
-}
-$('acsBuild').addEventListener('toggle',()=>{if($('acsBuild').open)renderVals()});
-$('acsCol').onchange=()=>{ACS.vsel.clear();renderVals()};
-$('acsVq').addEventListener('input',renderVals);
-$('acsVals').addEventListener('change',e=>{const v=e.target.dataset.v;if(v==null)return;e.target.checked?ACS.vsel.add(v):ACS.vsel.delete(v)});
-$('acsAdd').onclick=()=>{
-  const k={col:$('acsCol').value,op:$('acsOp').value,comb:$('acsComb').value,vals:[...ACS.vsel],tre:$('acsTre').value.split(/[\n;,]+/).map(x=>x.trim()).filter(Boolean)};
-  if((k.op==='contains'||k.op==='equals')&&!k.vals.length&&!k.tre.length){toast('Marque valores existentes ou escreva trechos livres.');return}
-  ACS.crit.push(k);ACS.vsel.clear();$('acsTre').value='';aplicarAcervo();toast('Critério adicionado.')};
-/* painel | planilha */
-$('acsView').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ACS.view=b.dataset.v;$('acsView').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
-  const pl=ACS.view==='planilha';$('aSheet').hidden=!pl;$('aRes').hidden=pl;$('acsColsD').hidden=!pl;if(pl){renderColsL();renderSheet()}});
-function renderColsL(){$('acsColsL').innerHTML=Object.keys(ACOLS).map(c=>`<label><input type="checkbox" data-c="${esc(c)}"${ACS.cols.has(c)?' checked':''}> ${esc(c)}</label>`).join('')}
-$('acsColsL').addEventListener('change',e=>{const c=e.target.dataset.c;if(!c)return;e.target.checked?ACS.cols.add(c):ACS.cols.delete(c);renderSheet()});
-let shLim=300;
-function celula(a,c){const v=ACOLS[c](a);if(Array.isArray(v))return v.join(', ');if(v==null)return '';if(/Distribuição|Conclusão/.test(c)&&v)return fmtData(v);return String(v)}
-function linhasSheet(){
-  const cols=Object.keys(ACOLS).filter(c=>ACS.cols.has(c));
-  let L=acFilt.filter(a=>cols.every(c=>!ACS.colf[c]||canon(celula(a,c)).includes(canon(ACS.colf[c]))));
-  const {c,d}=ACS.sort;
-  if(c){L=[...L].sort((x,y)=>{const a1=ACOLS[c](x),b1=ACOLS[c](y);if(NUMCOL.has(c))return d*(((a1===''||a1==null)?-1:+a1)-((b1===''||b1==null)?-1:+b1));return d*String(Array.isArray(a1)?a1.join(','):a1??'').localeCompare(String(Array.isArray(b1)?b1.join(','):b1??''),'pt-BR')})}
-  return {cols,L};
-}
-function renderSheet(){
-  if(!AC.size){$('aSheet').innerHTML='<div class="vazio">Importe o acervo para ver a planilha.</div>';return}
-  const {cols,L}=linhasSheet(), foco=document.activeElement&&document.activeElement.dataset.f, pos=foco?document.activeElement.selectionStart:0;
-  $('aSheet').innerHTML=`<table class="sh-t"><thead><tr>${cols.map(c=>`<th data-s="${esc(c)}" class="${ACS.sort.c===c?(ACS.sort.d>0?'asc':'desc'):''}${NUMCOL.has(c)?' r':''}">${esc(c)}</th>`).join('')}</tr>
-    <tr class="shf">${cols.map(c=>`<th><input data-f="${esc(c)}" value="${esc(ACS.colf[c]||'')}" placeholder="filtrar"></th>`).join('')}</tr></thead>
-    <tbody>${L.slice(0,shLim).map(a=>`<tr data-p="${a.processo}" class="${a.processo===acSel?'sel':''}">${cols.map(c=>`<td class="${c==='Processo'?'mono':''}${NUMCOL.has(c)?' r':''}" title="${esc(celula(a,c))}">${esc(celula(a,c))}</td>`).join('')}</tr>`).join('')}</tbody></table>
-    <div class="sh-more">${L.length.toLocaleString('pt-BR')} linha(s)${L.length>shLim?` · exibindo ${shLim} <button class="btn sm" onclick="shLim+=500;renderSheet()">mostrar mais</button>`:''}</div>`;
-  if(foco){const el=$('aSheet').querySelector(`input[data-f="${CSS.escape(foco)}"]`);if(el){el.focus();el.setSelectionRange(pos,pos)}}
-}
-$('aSheet').addEventListener('click',e=>{const th=e.target.closest('th[data-s]');if(th){const c=th.dataset.s;ACS.sort=ACS.sort.c===c?{c,d:-ACS.sort.d}:{c,d:1};renderSheet();return}
-  const tr=e.target.closest('tr[data-p]');if(tr){abrirProcesso(tr.dataset.p);$('aSheet').querySelectorAll('tr.sel').forEach(x=>x.classList.remove('sel'));tr.classList.add('sel')}});
-let shdeb;$('aSheet').addEventListener('input',e=>{const c=e.target.dataset.f;if(c==null)return;ACS.colf[c]=e.target.value;clearTimeout(shdeb);shdeb=setTimeout(renderSheet,200)});
-function recorteAtual(){return ACS.view==='planilha'?linhasSheet().L:acFilt}
-function copiarNumeros(){const L=recorteAtual();if(!L.length){toast('Nada a copiar.');return}copiarTexto(L.map(a=>a.processo).join('\n'),`${L.length.toLocaleString('pt-BR')} número(s) copiado(s).`)}
-function exportarAcervo(){const L=recorteAtual();if(!L.length){toast('Nada a exportar.');return}
-  const cols=ACS.view==='planilha'?Object.keys(ACOLS).filter(c=>ACS.cols.has(c)):Object.keys(ACOLS);
-  const csv='﻿'+[cols,...L.map(a=>cols.map(c=>celula(a,c)))].map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(';')).join('\r\n');
-  const el=document.createElement('a');el.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));el.download=`acervo_recorte_${new Date().toISOString().slice(0,10)}.csv`;el.click();setTimeout(()=>URL.revokeObjectURL(el.href),5000)}
 $('btnFiltrosMob').onclick=()=>$('filtros').classList.toggle('aberto');
 if(matchMedia('(max-width:720px)').matches)$('btnFiltrosMob').style.display='grid';
 
 function salvarHash(){
   const p=new URLSearchParams(); if(tipo!=='A')p.set('t',tipo); const q=$('q').value.trim(); if(q)p.set('q',q);
-  Object.entries(F).forEach(([k,v])=>{if(v&&!(k==='ordem'&&v==='recente'))p.set(k,v)}); if(selId)p.set('id',selId);
+  Object.entries(F).forEach(([k,v])=>{if(v&&!(k==='ordem'&&v==='recente'))p.set(k,v)}); if(!F.ano1&&!F.ano2)p.set('per','todo'); if(selId)p.set('id',selId);
   history.replaceState(null,'','#'+p.toString());
 }
 function lerHash(){
@@ -2096,7 +1564,7 @@ async function iniciar(){
     IDX=await lerGz('indice.json.gz',(n,t)=>{$('carregandoMsg').textContent=`baixando o índice · ${(n/1048576).toFixed(1)} MB${t?' de '+(t/1048576).toFixed(1)+' MB':''}`});
   }catch(e){
     $('carregandoMsg').innerHTML=`Não foi possível ler o índice (${esc(e.message)}).<br><br><button class="btn" onclick="abrirConfig()">Configurar fonte / abrir pasta local</button>`;
-    $('stDot').className='err'; $('stTxt').textContent='sem acesso ao acervo'; return;
+    $('stDot').className='err'; $('stTxt').textContent='sem acesso ao banco'; return;
   }
   POR_ID=new Map(IDX.map(x=>[x.id,x]));
   IDX_POR_NUM=new Map(); IDX.forEach(x=>{if(!IDX_POR_NUM.has(x.n))IDX_POR_NUM.set(x.n,[]);IDX_POR_NUM.get(x.n).push(x)}); IDX_POR_NUM.forEach(v=>v.sort((a,b)=>(b.d||'').localeCompare(a.d||'')));
@@ -2105,8 +1573,13 @@ async function iniciar(){
   const anos=[...new Set(IDX.map(x=>x.y))].sort();
   $('fAno1').innerHTML='<option value="">desde</option>'+anos.map(a=>`<option>${a}</option>`).join('');
   $('fAno2').innerHTML='<option value="">até</option>'+anos.map(a=>`<option>${a}</option>`).join('');
+  ANO_REC=anos.length?anos[Math.max(0,anos.length-5)]:'';
+  $('fPeriodo').querySelector('[data-v=recentes]').title=`Padrão: ${ANO_REC}–${anos[anos.length-1]} — busca integral mais rápida`;
+  $('ctRec').textContent=ANO_REC?`${ANO_REC}–${anos[anos.length-1]}`:'';
   $('stDot').className='ok'; $('stTxt').textContent=`${nomeFonte()} · ${IDX.length.toLocaleString('pt-BR')} registros`;
   const idHash=lerHash();
+  if(!/(?:^|[#&])(ano1|ano2|per)=/.test(location.hash)) F.ano1=ANO_REC; // padrão: mais recentes
+  marcarPeriodo();
   setTipo(tipo); ['fAno1','fAno2','fOrdem'].forEach(i=>$(i).value=F[{fAno1:'ano1',fAno2:'ano2',fOrdem:'ordem'}[i]]||(i==='fOrdem'?'recente':'')); marcarChips(); aplicar();
   $('carregando').style.display='none';
   if(idHash&&POR_ID.has(idHash)) abrir(idHash);
