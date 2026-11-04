@@ -82,6 +82,7 @@ html.modo-arvore #mMod:not(.sem-detalhe)>aside.arvcol{display:block}
 html[data-tema="noturno"] .arv-tree .n .ct.cm{color:var(--f-minuta)}
 main[data-mod="juris"] .arv-tree .n .ct.cm,main[data-mod="modelos"] .arv-tree .n .ct.cp{opacity:.6}
 .arv-tree .l0{font-weight:700;margin-top:3px}.arv-tree .l1{padding-left:28px}.arv-tree .l2{padding-left:44px;color:var(--muted)}.arv-tree .l2.sel{color:var(--text)}
+.arv-tree .l3{padding-left:61px;font-size:11.5px}.arv-tree .l4{padding-left:80px;font-size:11px;color:var(--muted)}
 .arv-tree .bar{height:3px;background:var(--line);border-radius:2px;margin:-1px 16px 2px 32px;overflow:hidden}
 .arv-tree .bar i{display:block;height:100%;background:var(--f-acervo);opacity:.6}
 .arv-chip{display:inline-flex;gap:6px;align-items:center;margin-right:8px}
@@ -658,6 +659,8 @@ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-breadcrumb{min-height:36px;
 html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-viewport{flex:1 1 auto;min-height:250px;height:auto!important;border-radius:0}
 html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-node{border-radius:12px;box-shadow:0 3px 13px rgba(21,36,55,.07)}
 html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-node.root{box-shadow:0 7px 22px rgba(39,115,95,.13)}
+.cmt-mind-node .cmt-mind-evidence{font:500 9px/1.35 Figtree,Inter,system-ui,sans-serif;color:var(--muted);border-top:1px dashed var(--line2);padding-top:5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cmt-mind-node:has(.cmt-mind-evidence){width:250px}
 html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-float{display:none!important}
 html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs{
   position:absolute;right:12px;bottom:12px;z-index:7;width:min(430px,calc(100% - 24px));
@@ -752,7 +755,7 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
      <div class="arv-viz-width"><label for="arvLargurajuris">Largura</label><input id="arvLargurajuris" type="range" min="45" max="100" value="100" aria-label="Largura do mapa em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
    </div>
    <div class="arv-esquema" data-arv-esquema="juris" tabindex="0" aria-label="Mapa mental jurídico com ramificações orgânicas"></div>
-   <p class="arv-esq-guide">Clique nos <strong>nós</strong> para expandir ou recolher ramificações. Arraste o mapa e use zoom/ajustar. Os registros correspondentes aparecem no próprio painel.</p>
+   <p class="arv-esq-guide">Após <strong>Tema</strong>, expanda <strong>Monocrática ou Acórdão → Resultado/Dispositivo</strong>. Os resultados são extraídos do índice e devem ser conferidos no documento oficial.</p>
    <div class="arv-bt"><button class="btn sm" onclick="arvExpandir(true)">Expandir</button><button class="btn sm" onclick="arvExpandir(false)">Recolher</button><button class="btn sm" onclick="alternarModoArvore(false)" title="Desligar o modo árvore (Alt+3)">Sair do modo</button></div>
     <div class="arv-tree"></div>
     <hr class="sep"><details class="arv-fontes"><summary>Fonte, período e critérios da classificação</summary><p class="ajuda">A classificação temática é automática e sujeita à revisão jurídica.</p><p class="ajuda arv-crit"></p></details>
@@ -2040,6 +2043,42 @@ document.addEventListener('click',e=>{
    ===================================================================== */
 let ASS=null, ASS_P=null, MODO_ARV=false;
 const ARV={no:[null,null,null],abertos:new Set(),baseP:[],baseM:[]};
+/* RAMIFICAÇÃO JURISPRUDENCIAL · v5
+   Área > Subárea > Tema > Natureza da decisão > Resultado/Dispositivo > Decisão.
+   O campo r vem de dados/indice.json.gz (dispositivo / resultado_colegiado
+   extraído automaticamente); uma categoria não substitui o texto oficial. */
+let ARV_JURIS_EXTRA=[];
+function cmtJurisNatureza(r){return r.t==='M'?'Decisão monocrática':r.t==='A'?'Acórdão':'Natureza não identificada'}
+function cmtJurisResultado(r){
+  const original=String(r.r||'').replace(/\s+/g,' ').trim();
+  if(!original)return 'Resultado não identificado no índice';
+  const s=semAcento(original).toLowerCase();
+  const hit=re=>re.test(s);
+  // Evita presumir resultado único quando o extrato contém comandos diferentes.
+  const contra=hit(/neg(?:ou|o|a|ar|aram|ado)\s+(?:-?lhe\s+)?provimento|desprov(?:e|eu|ido|imento)|improv(?:imento|ido)/);
+  const favor=hit(/(?:deu|deram|dou|dar|dado|concedeu|provi(?:do|mento))\s+(?:-?lhe\s+)?(?:parcial\s+)?provimento|\bprovido\b/);
+  if(hit(/parcial\s+(?:provimento|procedencia)|provimento\s+parcial|(?:provimento|procedencia|provido)\s+em\s+parte|parcialmente\s+(?:provido|acolhido|procedente)/))return 'Provimento ou acolhimento parcial';
+  if(hit(/nao\s+(?:conhec|conhecimento|admit|receb)|deix(?:ou|aram)\s+de\s+conhec|inadmissib/))return 'Não conhecimento / inadmissibilidade';
+  if(hit(/prejudicad|perda\s+(?:superveniente\s+)?(?:de\s+)?objeto/))return 'Prejudicado / perda de objeto';
+  if(contra&&favor)return 'Resultados distintos — conferir dispositivo';
+  if(hit(/(?:rejeit|nao\s+acolh|desacolh)\w*\s+(?:os\s+)?embargos/))return 'Rejeição de embargos';
+  if(hit(/(?:acolh|provi)\w*\s+(?:os\s+)?embargos/))return 'Acolhimento de embargos';
+  if(hit(/homolog(?:ou|ar|ado|a)/))return 'Homologação';
+  if(hit(/(?:extingu|extincao)\w*\s+.*sem\s+resolucao/))return 'Extinção sem resolução do mérito';
+  if(hit(/(?:neg(?:a|ou|o|ar|ado)|nao\s+admit(?:o|e|iu))\s+seguimento/))return 'Negativa de seguimento';
+  if(contra||hit(/nao\s+(?:deu|deram|dou)\s+provimento/))return 'Desprovimento';
+  if(favor)return 'Provimento';
+  if(hit(/improcedent|julgo\s+improcedente|julgou\s+improcedente/))return 'Improcedência';
+  if(hit(/procedent|julgo\s+procedente|julgou\s+procedente/))return 'Procedência';
+  if(hit(/(?:defer|conced)\w*\s+(?:a\s+)?(?:liminar|tutela|seguranca)/))return 'Deferimento / concessão';
+  if(hit(/(?:indefer|deneg)\w*\s+(?:a\s+)?(?:liminar|tutela|seguranca)/))return 'Indeferimento / denegação';
+  return 'Outro resultado — conferir dispositivo';
+}
+function cmtJurisCaminho(r){
+  const tema=assDe(r.id)||['Área não classificada','Subárea não classificada','Tema não classificado'];
+  return [...tema,cmtJurisNatureza(r),cmtJurisResultado(r)];
+}
+
 async function carregarAssuntos(){
   if(ASS) return ASS;
   if(!ASS_P) ASS_P=(async()=>{
@@ -2072,11 +2111,12 @@ async function alternarModoArvore(forcar){
   if(MODS) aplicarModelos(); aplicar(); if(ligar&&MODS)arv7Render(); if(ligar)arvEsquemaAgendar();
 }
 function arvSel(no){
+  if(ARV.no.some((v,i)=>v!==no[i]))ARV_JURIS_EXTRA=[];
   ARV.no=no; if(no[0])ARV.abertos.add(no[0]); if(no[1])ARV.abertos.add(no[0]+'|'+no[1]);
   if(MODULO==='juris'&&selId)fechar();
   if(MODS) aplicarModelos(); aplicar();
 }
-function irParaTema(k){ARV.no=[k[0],k[1],k[2]];ARV.abertos.add(k[0]);ARV.abertos.add(k[0]+'|'+k[1]);
+function irParaTema(k){ARV_JURIS_EXTRA=[];ARV.no=[k[0],k[1],k[2]];ARV.abertos.add(k[0]);ARV.abertos.add(k[0]+'|'+k[1]);
   document.querySelectorAll('.arv-q').forEach(i=>i.value='');
   if(MODO_ARV){if(MODS)aplicarModelos();aplicar()}else alternarModoArvore(true)}
 function ponteAssunto(id){const k=assDe(id);if(!k)return '';
@@ -2086,8 +2126,16 @@ function arvExpandir(sim){ARV.abertos.clear();if(sim&&ASS)ASS.tax.forEach(k=>{AR
 /* contagens: P = precedentes do recorte da faceta I (sem o nó); M = modelos do recorte da faceta II (sem o nó) */
 function arvRender(){
   if(!MODO_ARV||!ASS) return;
-  const T={},add=(id,c)=>{const k=assDe(id);if(!k)return;const[a,s,t]=k;const A=T[a]??={P:0,M:0,s:{}};A[c]++;const S=A.s[s]??={P:0,M:0,t:{}};S[c]++;const X=S.t[t]??={P:0,M:0};X[c]++};
-  ARV.baseP.forEach(x=>add(x.id,'P')); ARV.baseM.forEach(m=>add(m.id,'M'));
+  const T={},add=(rec,c)=>{const id=rec.id,k=assDe(id);if(!k)return;const[a,s,t]=k;const A=T[a]??={P:0,M:0,s:{}};A[c]++;const S=A.s[s]??={P:0,M:0,t:{}};S[c]++;const X=S.t[t]??={P:0,M:0,nat:{}};X[c]++;
+   if(c==='P'){
+     if(rec){
+       const nat=cmtJurisNatureza(rec),res=cmtJurisResultado(rec);
+       const N=X.nat[nat]??={P:0,res:{}};N.P++;
+       const R=N.res[res]??={P:0};R.P++;
+     }
+   }
+ };
+  ARV.baseP.forEach(x=>add(x,'P')); ARV.baseM.forEach(m=>add(m,'M'));
   const pri=MODULO==='modelos'?'M':'P';
   const ord=o=>Object.entries(o).sort((x,y)=>(y[1][pri]-x[1][pri])||(y[1].P+y[1].M-x[1].P-x[1].M));
   const ct=o=>`<span class="ct cp" title="precedentes no recorte da faceta I">${o.P.toLocaleString('pt-BR')}</span><span class="ct cm" title="modelos no recorte da faceta II">${MODS?o.M:'…'}</span>`;
@@ -2109,7 +2157,19 @@ function arvRender(){
         h+=`<div class="n l1 ${sel([a,s,null])?'sel':''}" data-k='${esc(JSON.stringify([a,s,null]))}' data-tg="${esc(kS)}"><span class="tw">${abS?'▾':'▸'}</span><span class="nm">${esc(s)}</span>${ct(S)}</div>`;
         if(!abS)continue;
         for(const[t,X]of ord(S.t)){if(!ok(a)&&!ok(s)&&!ok(t))continue;
-          h+=`<div class="n l2 ${sel([a,s,t])?'sel':''}" data-k='${esc(JSON.stringify([a,s,t]))}'><span class="tw"></span><span class="nm">${esc(t)}</span>${ct(X)}</div>`}
+          const kt=a+'|'+s+'|'+t,expanded=ARV.abertos.has(kt);
+          h+=`<div class="n l2 ${sel([a,s,t])?'sel':''}" data-k='${esc(JSON.stringify([a,s,t]))}' data-tg="${esc(kt)}"><span class="tw">${expanded?'▾':'▸'}</span><span class="nm">${esc(t)}</span>${ct(X)}</div>`;
+          if(expanded){
+            for(const[nat,N]of Object.entries(X.nat).sort((a,b)=>b[1].P-a[1].P)){
+              const kn=kt+'|'+nat,op=ARV.abertos.has(kn),natsel=sel([a,s,t])&&ARV_JURIS_EXTRA[0]===nat;
+              h+=`<div class="n l3 ${natsel?'sel':''}" data-k='${esc(JSON.stringify([a,s,t]))}' data-ext='${esc(JSON.stringify([nat]))}' data-tg="${esc(kn)}"><span class="tw">${op?'▾':'▸'}</span><span class="nm">${esc(nat)}</span><span class="ct cp">${N.P.toLocaleString('pt-BR')}</span></div>`;
+              if(op)for(const[res,R]of Object.entries(N.res).sort((a,b)=>b[1].P-a[1].P)){
+                const chosen=natsel&&ARV_JURIS_EXTRA[1]===res;
+                h+=`<div class="n l4 ${chosen?'sel':''}" data-k='${esc(JSON.stringify([a,s,t]))}' data-ext='${esc(JSON.stringify([nat,res]))}'><span class="tw"></span><span class="nm">${esc(res)}</span><span class="ct cp">${R.P.toLocaleString('pt-BR')}</span></div>`;
+              }
+            }
+          }
+        }
       }
     }
     box.innerHTML=h;
@@ -2127,9 +2187,16 @@ function arvChip(fac){
 document.addEventListener('click',e=>{
   const n=e.target.closest('.arv-tree .n'); if(!n) return;
   const k=JSON.parse(n.dataset.k),tg=n.dataset.tg;
+  if(n.dataset.ext){
+    const ext=JSON.parse(n.dataset.ext);
+    arvSel(k);ARV_JURIS_EXTRA=ext;
+    if(tg)ARV.abertos.add(tg);
+    if(ext[0])ARV.abertos.add(k.join('|'));
+    arvRender();arvEsquemaAgendar();return;
+  }
   if(tg&&e.target.closest('.tw')){ARV.abertos.has(tg)?ARV.abertos.delete(tg):ARV.abertos.add(tg);arvRender();return}
   if(tg&&k[0]===ARV.no[0]&&k[1]===ARV.no[1]&&k[2]===ARV.no[2]){ARV.abertos.has(tg)?ARV.abertos.delete(tg):ARV.abertos.add(tg);arvRender();return}
-  arvSel(k);
+  ARV_JURIS_EXTRA=[];arvSel(k);
 });
 
 /* ========= DIAGRAMA DE RAMOS, COLUNAS E CORRESPONDÊNCIAS ========= */
@@ -2190,8 +2257,8 @@ function arvEsqCorrespondentes(records,mode,path,access){
   const info=mode==='modelos'?CMT_ARV7.info(r):null;
   const extras=mode==='modelos'
    ?`${r.especie||'Classe não indicada'} · ${r.resultado||'Resultado não identificado'} · ${r.tipo==='acórdão'?'Voto':'Monocrática'} · ${r.fase||'fase não indicada'} · frequência ${Number(r.frequencia||0)}`
-   :`${r.t==='A'?'Acórdão':'Monocrática'} · ${r.d||r.y||'Data não indicada'}`;
-  const evidence=mode==='modelos'?`Fonte ${r.fonte_modelo||'não identificada'} · ${info.evidencias.join(' / ')||'classificação pendente'}`:'Classificação do índice temático automático — verificar na fonte';
+   :`${cmtJurisNatureza(r)} · ${cmtJurisResultado(r)} · ${r.d||r.y||'Data não indicada'}`;
+  const evidence=mode==='modelos'?`Fonte ${r.fonte_modelo||'não identificada'} · ${info.evidencias.join(' / ')||'classificação pendente'}`:`Dispositivo/resultado extraído automaticamente: ${String(r.r||'não disponível no índice').slice(0,180)} — conferir na fonte oficial`;
   return `<button type="button" data-schem-leaf="${esc(r.id)}" title="Abrir ${esc(r.id)}"><strong>${esc(r.id)} · ${esc(name.slice(0,105))}</strong><span class="meta">${esc(extras)}</span><span class="sample">${esc(evidence)}</span></button>`;
  }).join('');
  return `<section class="arv-esq-compare" aria-label="Registros correspondentes ao caminho selecionado"><div class="arv-esq-compare-head"><b>${count.toLocaleString('pt-BR')} ${mode==='modelos'?'modelos correspondentes':'precedentes correspondentes'}</b><small>${path.length?'Dentro do caminho escolhido':'Total do recorte'} · selecione um cartão para abrir o registro</small></div><div class="arv-esq-preview">${cards||'<div class="arv-esq-no-data">Nenhuma correspondência com os filtros atuais.</div>'}</div>${count>limit?`<button type="button" class="more" data-schem-more="${mode}">Mostrar mais correspondentes (${Math.min(20,count-limit)})</button>`:''}</section>`;
@@ -2220,7 +2287,7 @@ const CMT_MIND_INST=new WeakMap();
 const CMT_MIND_OPEN={modelos:new Set(['modelos:root']),juris:new Set(['juris:root'])};
 const CMT_MIND_MORE={modelos:new Map(),juris:new Map()};
 const CMT_MIND_PAL=['#b38727','#257c9b','#499270','#8e70be','#c47448','#5284c6','#aa5d84','#638990','#3e968e','#9779b0','#a1874e','#4c8e68'];
-const CMT_MIND_LEVELS={modelos:['Assunto','Classe / espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado','Modelo'],juris:['Área jurídica','Subárea','Tema','Decisão']};
+const CMT_MIND_LEVELS={modelos:['Assunto','Classe / espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado','Modelo'],juris:['Área jurídica','Subárea','Tema','Monocrática ou Acórdão','Resultado / dispositivo','Decisão']};
 const CMT_MIND_ALL=new WeakMap();
 function cmtMindText(v){return String(v==null?'':v)}
 function cmtMindCount(n){return Number(n||0).toLocaleString('pt-BR')}
@@ -2229,14 +2296,14 @@ function cmtMindKey(mode,path){return mode+':'+JSON.stringify(path)}
 function cmtMindSource(mode,box){
  const q=arvEsqNorm(box.closest('.arvcol')?.querySelector('.arv-q')?.value?.trim());
  const source=mode==='modelos'?(MODS||[]):(ARV.baseP?.length?ARV.baseP:(typeof IDX!=='undefined'?IDX:[]));
- const access=mode==='modelos'?arv7Path:(r=>assDe(r.id)||['Não classificado','Subárea a identificar','Tema a identificar']);
+ const access=mode==='modelos'?arv7Path:cmtJurisCaminho;
  const records=source.filter(r=>{
   if(mode==='modelos'&&ARV_QUALIDADE==='revisar'&&!CMT_ARV7.info(r).revisar)return false;
   if(!q)return true;
   const fields=[...access(r),r.id,mode==='modelos'?r.nome:r.n,mode==='modelos'?r.tema:'',mode==='modelos'?CMT_ARV7.info(r).alternativos.join(' '):''];
   return arvEsqNorm(fields.join(' ')).includes(q);
  });
- const path=mode==='modelos'?(ARV7_ESCOLHA||[]):ARV.no.filter(Boolean);
+ const path=mode==='modelos'?(ARV7_ESCOLHA||[]):[...ARV.no.filter(Boolean),...(ARV.no[2]?ARV_JURIS_EXTRA:[])];
  return {records,access,path,q};
 }
 function cmtMindBuild(mode,records,access){
@@ -2292,8 +2359,10 @@ function cmtMindNodeContent(n,mode,sel){
  const has=n.kind==='root'||n.children.size>0;
  const title=n.kind==='root'?'Acervo / entrada do mapa':n.kind==='more'?'Exibir ramificações adicionais':n.kind==='leaf'?'Abrir registro original':`${level} · ${n.count} correspondências`;
  const tags=n.kind==='more'?'':`<span class="pill">${cmtMindCount(n.count)} ${mode==='modelos'?'modelo'+(n.count!==1?'s':''):'decis'+(n.count!==1?'ões':'ão')}</span>${mode==='modelos'&&n.freq?`<span class="pill" title="Soma das frequências dos modelos; decisões podem se repetir">Σ ${cmtMindCount(n.freq)}</span>`:''}${mode==='modelos'&&n.revisar?`<span class="pill warn" title="Classificações automáticas que requerem revisão">${n.revisar} a revisar</span>`:''}`;
- const leafTag=n.kind==='leaf'?`<span class="tiny-id">${esc(n.record?.id||'')}</span>`:'';
- return {title,active,ancestor,has,markup:`<span class="kicker">${esc(level)}</span><span class="label">${esc(n.label.slice(0,n.kind==='leaf'?114:135))}${leafTag}</span>${tags?`<span class="facts">${tags}</span>`:''}${has&&n.kind!=='more'?`<span class="branch-mark" aria-hidden="true">${CMT_MIND_OPEN[mode].has(n.id)?'−':'+'}</span>`:''}`};
+  const leafTag=n.kind==='leaf'?`<span class="tiny-id">${esc(n.record?.id||'')}</span>`:'';
+  const evidencia=mode==='juris'&&n.depth===4&&n.kind==='branch'&&n.sample?.r
+    ?`<span class="cmt-mind-evidence" title="Trecho extraído automaticamente do índice; confira o documento oficial">Exemplo no índice: ${esc(String(n.sample.r).replace(/\s+/g,' ').slice(0,115))}</span>`:'';
+ return {title,active,ancestor,has,markup:`<span class="kicker">${esc(level)}</span><span class="label">${esc(n.label.slice(0,n.kind==='leaf'?114:135))}${leafTag}</span>${evidencia}${tags?`<span class="facts">${tags}</span>`:''}${has&&n.kind!=='more'?`<span class="branch-mark" aria-hidden="true">${CMT_MIND_OPEN[mode].has(n.id)?'−':'+'}</span>`:''}`};
 }
 function cmtMindEnsure(box,mode){
  let s=CMT_MIND_INST.get(box);
@@ -2339,8 +2408,11 @@ function cmtMindAct(s,action){
 function cmtMindSelect(s,path,anchor){
  if(s.mode==='modelos'&&!$('mMod').classList.contains('sem-detalhe'))fecharLateral('modelos');
  if(s.mode==='modelos'){ARV7_ESCOLHA=path.length?path:null;arv7AplicarTodos()}
- else{arvSel([path[0]||null,path[1]||null,path[2]||null])}
+ else{arvSel([path[0]||null,path[1]||null,path[2]||null]);ARV_JURIS_EXTRA=path.slice(3,5);
+    if(path.length>=3){const kt=path.slice(0,3).join('|');ARV.abertos.add(kt);if(path[3])ARV.abertos.add(kt+'|'+path[3])}
+  }
  s.selected=path;
+ if(s.records&&s.access)cmtMindResults(s,s.records,s.access,path);
  cmtMindLayout(s,anchor||s.tree?.nodes.get(cmtMindKey(s.mode,path))||s.tree?.root);
 }
 function cmtMindResults(s,records,access,path){
@@ -2348,7 +2420,7 @@ function cmtMindResults(s,records,access,path){
  const count=records.reduce((n,r)=>n+(path.every((p,i)=>access(r)[i]===p)?1:0),0);
  const summary=s.box.querySelector('[data-mind-summary]');if(summary)summary.textContent=`${cmtMindCount(count)} ${s.mode==='modelos'?'modelos':'precedentes'} correspondentes · abrir registros`;
  b.innerHTML=arvEsqCorrespondentes(records,s.mode,path,access);
- const q=s.box.querySelector('[data-mind-caption]');if(q)q.textContent=`${cmtMindCount(records.length)} registros no recorte · ${s.mode==='modelos'?'7 níveis de classificação':'3 níveis temáticos'}`;
+ const q=s.box.querySelector('[data-mind-caption]');if(q)q.textContent=`${cmtMindCount(records.length)} registros no recorte · ${s.mode==='modelos'?'7 níveis de classificação':'Tema → natureza → resultado · campos derivados do índice'}`;
  const float=s.box.querySelector('[data-mind-hint]');if(float)float.innerHTML=`<strong>${cmtMindCount(count)} correspondências</strong><div>${path.length?esc(path[path.length-1].slice(0,70)):'Selecione qualquer ramo para filtrar'} · Zoom e arraste disponíveis</div>`;
  const bc=s.box.querySelector('[data-mind-breadcrumb]');if(bc)bc.innerHTML=`<button type="button" data-mind-crumb="0">Acervo</button>`+path.map((p,i)=>`<span class="sep">›</span><button title="${esc(p)}" type="button" data-mind-crumb="${i+1}">${esc(p)}</button>`).join('');
 }
