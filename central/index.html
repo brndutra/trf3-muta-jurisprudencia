@@ -336,7 +336,7 @@ html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
 .min-blk>summary::-webkit-details-marker{display:none}
 .min-blk>summary::before{content:"▸ ";color:var(--muted)}.min-blk[open]>summary::before{content:"▾ "}
 .min-blk .lote{margin-top:4px}
-.min-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0;align-items:start;min-height:calc(100% - 90px)}
+.min-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-items:start;min-height:calc(100% - 90px)}
 .min-main{padding:12px 18px 40px;min-width:0}
 .min-main .gl{display:grid;grid-template-columns:170px 1fr;gap:6px 10px;align-items:start;margin-bottom:10px}
 .min-main .gl>label{font:600 11.5px Figtree,Inter,system-ui,sans-serif;color:var(--c-mut);padding-top:7px}
@@ -380,51 +380,7 @@ textarea.editor:focus{border-color:color-mix(in srgb,var(--f-minuta) 60%,transpa
 .mx-mat{border-top:1px dashed var(--line2);background:color-mix(in srgb,var(--f-juris) 5%,transparent)}
 .mx-mat>.mx-h{background:transparent;color:var(--f-juris)}
 details.mx-sec>summary{cursor:pointer;list-style:none}
-/* painel de diretrizes — escuro, como no gerador */
-.dz{position:sticky;top:0;align-self:start;height:calc(100vh - 72px);display:flex;flex-direction:column;background:#2e3137;color:#c9cdd3;border-left:1px solid #3f434b;font:500 12.5px/1.5 Figtree,Inter,system-ui,sans-serif}
-.dz-head{padding:14px 16px 0;border-bottom:1px solid #3f434b}
-.dz-ey{font:800 10px Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#d8a846}
-.dz-head h3{margin:3px 0 0;font:800 15px Figtree,Inter,system-ui,sans-serif;color:#e9ebee}
-.dz-tabs{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:10px}
-.dz-tabs button{background:transparent;border:0;border-bottom:2px solid transparent;padding:6px 1px 8px;font:800 10px/1.2 Figtree,Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#9aa0a9;cursor:pointer;position:relative}
-.dz-tabs button:hover{color:#e9ebee}
-.dz-tabs button.active{color:#d8a846;border-bottom-color:#d8a846}
-.dz-tabs button[data-n]:not([data-n=""])::after{content:attr(data-n);position:absolute;top:-2px;right:-12px;min-width:15px;height:15px;border-radius:8px;background:#d0473a;color:#fff;font:800 9px/15px Figtree,sans-serif;text-align:center;padding:0 3px}
-.dz-body{flex:1;overflow:auto;padding:12px 16px 24px}
-.dz-muted{color:#9aa0a9;font-size:11.5px}
-.dz-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
-.dz-kpis .k{background:#23262b;border:1px solid #3f434b;border-radius:9px;padding:7px 9px}
-.dz-kpis .k b{display:block;font:800 19px/1.1 Figtree,sans-serif;color:#e9ebee}
-.dz-kpis .k span{font:700 10px Figtree,sans-serif;color:#9aa0a9;text-transform:uppercase;letter-spacing:.06em}
-.dz-kpis .k:first-child{grid-column:span 1}
-.dz-kpis .ok b{color:#7cc19c}.dz-kpis .md b{color:#e3c47c}.dz-kpis .bad b{color:#ef8a8a}
-.dz-kpis .cor{box-shadow:inset 3px 0 0 #e06666}.dz-kpis .ale{box-shadow:inset 3px 0 0 #d8a846}.dz-kpis .pend{box-shadow:inset 3px 0 0 #9aa0a9}.dz-kpis .sug{box-shadow:inset 3px 0 0 #8fb3e6}
-.dz-btn{width:100%;margin:0 0 10px;height:30px;border:0;border-radius:8px;background:#d8a846;color:#1d2024;font:800 11.5px Figtree,sans-serif;cursor:pointer}
-.dz-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.dz-list li{background:#23262b;border:1px solid #3f434b;border-left:3px solid #9aa0a9;border-radius:8px;padding:7px 9px;color:#d5d9de}
-.dz-list li.s-cor{border-left-color:#e06666}.dz-list li.s-ale,.dz-list li.s-est{border-left-color:#d8a846}.dz-list li.s-sug{border-left-color:#8fb3e6}.dz-list li.s-ok{border-left-color:#7cc19c}
-.dz-li-h{display:flex;justify-content:space-between;gap:6px;margin-bottom:2px}
-.dz-sev{font:800 9.5px Figtree,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#e9ebee}
-.dz-src{font-size:10px;color:#7f858e}
-.dz-list q{display:block;margin-top:3px;font:12px ui-monospace,Menlo,Consolas,monospace;color:#e3c47c;quotes:"«" "»"}
-.dz-to{font-size:11.5px;color:#7cc19c}
-.dz-acts{display:flex;gap:4px;margin-top:5px}
-.dz-acts button{border:1px solid #4a4f58;background:transparent;color:#c9cdd3;border-radius:6px;padding:2px 8px;font:700 10.5px Figtree,sans-serif;cursor:pointer}
-.dz-acts button:hover{border-color:#d8a846;color:#d8a846}
-.dz .rdoc h3{margin:16px 0 6px;font:800 10px Figtree,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#d8a846}
-.dz .rdoc p,.dz .rdoc li{color:#c9cdd3}
-.dz .rdoc ul,.dz .rdoc ol{padding-left:18px}
-.dz .rdoc code,.dz-rot code{font:11.5px ui-monospace,Menlo,Consolas,monospace;background:rgba(216,168,70,.12);color:#e3c47c;border-radius:4px;padding:0 4px}
-.dz .rdoc table{width:100%;border-collapse:collapse;font-size:11.5px;margin:4px 0 8px}
-.dz .rdoc td,.dz .rdoc th{border-bottom:1px solid #3f434b;padding:5px 4px;vertical-align:top;text-align:left}
-.dz-rg{background:#23262b;border:1px solid #3f434b;border-radius:8px;padding:7px 9px;margin-bottom:6px}
-.dz-rg b{color:#e9ebee;display:block}.dz-rg .pf{color:#9fd3b6;margin-top:3px}.dz-rg .ev{color:#ef9a9a;margin-top:2px}
-.dz-sel{width:100%;height:32px;border:1px solid #4a4f58;border-radius:7px;background:#23262b;color:#e9ebee;padding:0 8px;margin-bottom:8px}
-.dz-rot{padding-left:18px;margin:6px 0}
-.dz-rot li{margin-bottom:10px}.dz-rot b{color:#e9ebee;display:block}.dz-rot small{display:block;color:#7f858e}
-.dz-pos{display:inline-block;font:800 9.5px Figtree,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#d8a846;margin-bottom:2px}
-@media(max-width:1300px){.min-grid{grid-template-columns:1fr}.dz{position:static;height:auto;max-height:70vh}}
-
+/* Painel de diretrizes: extraído para /central/apoio/ */
 /* ===== Acervo: card funcional, estatísticas, processo em minuta, preenchimento automático ===== */
 .cbody3{grid-template-columns:repeat(3,minmax(0,1fr))}
 main:not(.sem-detalhe) .cbody3{grid-template-columns:1fr}
@@ -1144,36 +1100,21 @@ let mdeb;$('mq').addEventListener('input',()=>{clearTimeout(mdeb);mdeb=setTimeou
 
 /* =====================================================================
    GERADOR DE MINUTAS — relatório estruturado · modelo padrão ou matriz ·
-   editor · painel de diretrizes com indicadores de correção
-   Fontes: modelos extraídos do banco (modelos/) e Padrão Muta do gerador
-   do gabinete (diretrizes/padrao_muta.json: redação, normas, diretrizes,
-   roteiros).
+   editor de modelos · painel de apoio independente em /central/apoio/.
+   Fonte exclusiva dos modelos: modelos/modelos.json.gz.
    ===================================================================== */
 let MIN_MODO='padrao';        // 'padrao' | 'matriz'
 let ED_DIRTY=false;           // o editor foi alterado à mão
-let DIR=null, REGRAS=null, DZ_TAB='correcao', ROT_SEL='mestre';
+// Padrão Muta e diretrizes: módulo independente em /central/apoio/.
 const RX_CAMPO=/\[[^\]\n]{1,80}\]/g;
-const escRx=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-
-/* O Padrão Muta (diretrizes internas do gabinete) não é publicado no repositório:
-   é lido de uma pasta local, de um arquivo carregado pelo usuário (guardado só neste
-   navegador) ou, se o gabinete decidir publicá-lo, de diretrizes/ no repositório. */
-async function carregarDiretrizes(){
-  if(DIR&&!DIR.erro) return DIR;
-  const salvo=LS.get('acv_padrao_muta');
-  if(salvo){try{DIR=JSON.parse(salvo);prepararRegras();return DIR}catch(e){}}
-  try{DIR=await lerGz('../diretrizes/padrao_muta.json');prepararRegras()}
-  catch(e){DIR={erro:'nao_carregado'}}
-  return DIR;
+function abrirApoioMinuta(){
+  const texto=document.getElementById('minEd')?.value||'';
+  try{sessionStorage.setItem('cmt_apoio_minuta_transfer',texto)}catch(e){}
+  const w=window.open('./apoio/','cmt-apoio-minuta');
+  if(!w){toast('O navegador bloqueou a abertura do painel. Permita pop-ups para este domínio.');return}
+  const origin=location.origin;
+  [500,1300,2800].forEach(ms=>setTimeout(()=>{try{if(!w.closed)w.postMessage({type:'cmt-apoio-minuta',texto},origin)}catch(e){}},ms));
 }
-function carregarPadraoArquivo(inp){
-  const f=inp.files&&inp.files[0]; if(!f) return;
-  f.text().then(t=>{const d=JSON.parse(t);if(!d.redacao||!d.redacao.registros)throw new Error('arquivo sem o banco de redação');
-    DIR=d;prepararRegras();try{localStorage.setItem('acv_padrao_muta',t)}catch(e){}renderDZ();lint();toast('Padrão Muta carregado e guardado neste navegador.')})
-   .catch(e=>toast('Arquivo inválido: '+esc(e.message),6000));
-}
-function esquecerPadrao(){try{localStorage.removeItem('acv_padrao_muta')}catch(e){}DIR=null;REGRAS=null;LINT=[];renderDZ();toast('Padrão Muta removido deste navegador.')}
-
 /* ---------- abertura do modelo ---------- */
 function abrirModelo(id){
   const m=MOD_POR.get(id); modSel=id; $('mMod').classList.remove('sem-detalhe');
@@ -1198,6 +1139,7 @@ function abrirModelo(id){
         <button class="btn sm" onclick="regerar()" title="Recompõe o texto a partir do formulário e do modelo">↻ Regerar</button>
         <button class="btn sm pri" onclick="copiarTexto($('minEd').value,'Minuta copiada.')">Copiar</button>
         <button class="btn sm" onclick="baixarMinuta()">Baixar .doc</button>
+        <button class="btn sm" onclick="abrirApoioMinuta()" title="Abrir o painel independente para conferir e revisar a minuta">Diretrizes · consulta e apoio ↗</button>
         <span class="meta" id="edConta" style="margin-left:auto"></span>
       </div>
       <textarea id="minEd" class="editor" spellcheck="true"></textarea>
@@ -1207,16 +1149,11 @@ function abrirModelo(id){
       <details class="min-ref"><summary>Decisões que seguem o modelo (${m.exemplos.length})</summary>
         <div class="sim-list" style="margin-top:8px">${m.exemplos.map(i=>{const x=POR_ID.get(i);return x?`<div class="sim" onclick="irParaDecisao('${i}')"><div class="h"><span class="tp ${x.t}" style="min-width:20px;height:20px;font-size:10.5px">${x.t}</span><span class="num">${esc(x.n)}</span><span class="ct2">${esc(x.c)}</span><span class="meta">${fmtData(x.d)}</span></div>${esc((x.e||'').slice(0,220))}</div>`:''}).join('')}</div></details>
     </div>
-    <aside class="dz" id="dz"><div class="dz-head"><span class="dz-ey">Minuta · consulta e apoio</span><h3>Diretrizes</h3>
-      <nav class="dz-tabs" id="dzTabs">${[['correcao','Correção'],['relatorio','Relatório'],['gerais','Gerais'],['minuta','Minuta'],['vocab','Vocabulário'],['roteiros','Roteiros']].map(([k,t])=>`<button data-t="${k}" class="${DZ_TAB===k?'active':''}">${t}</button>`).join('')}</nav></div>
-      <div class="dz-body" id="dzBody"><p class="dz-muted">Carregando o Padrão Muta…</p></div></aside>
   </div>`;
   $('mDet').scrollTop=0;
   $('minModo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MIN_MODO=b.dataset.m;$('minModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('minCampos').innerHTML=MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m);$('minCamposS').textContent=MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento';$('minCamposD').open=true;atualizarMinuta()});
-  $('dzTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;DZ_TAB=b.dataset.t;$('dzTabs').querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));renderDZ()});
-  $('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor();agendarLint()});
+  $('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor()});
   atualizarMinuta();
-  carregarDiretrizes().then(()=>{renderDZ();lint()});
 }
 
 /* ---------- modo PADRÃO: campos do modelo ---------- */
@@ -1491,7 +1428,7 @@ function atualizarMinuta(){
   const nt=$('relNota'); if(nt) nt.textContent=on?' · campos do relatório do modelo substituídos pelo relatório montado':'';
   const mx=$('mxRelNota'); if(mx) mx.textContent=on?' · substituído pelo relatório montado':'';
   if(!ED_DIRTY) ed.value=gerarTexto();
-  estadoEditor(); agendarLint();
+  estadoEditor();
 }
 function regerar(){if(ED_DIRTY&&!confirm('Substituir o texto editado à mão pelo texto recomposto do formulário?'))return;ED_DIRTY=false;atualizarMinuta()}
 let campoAtivo=null;
@@ -1502,7 +1439,7 @@ async function inserirCitacao(id){
   const x=POR_ID.get(id); try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o precedente.');return}
   const cit=citacao(registro(id)), el=campoAtivo&&document.body.contains(campoAtivo)?campoAtivo:$('minEd');
   if(!el){copiarTexto(cit,'Citação copiada.');return}
-  if(el.id==='minEd'){const i=el.selectionStart??el.value.length;el.value=el.value.slice(0,i)+(i&&el.value[i-1]!=='\n'?'\n\n':'')+cit+'\n\n'+el.value.slice(i);ED_DIRTY=true;estadoEditor();agendarLint()}
+  if(el.id==='minEd'){const i=el.selectionStart??el.value.length;el.value=el.value.slice(0,i)+(i&&el.value[i-1]!=='\n'?'\n\n':'')+cit+'\n\n'+el.value.slice(i);ED_DIRTY=true;estadoEditor()}
   else{el.value=(el.value?el.value+'\n\n':'')+cit;if(el.dataset.mxl&&MXT)MXT.livre[el.dataset.mxl]=el.value;atualizarMinuta()}
   toast('Citação inserida.');
 }
@@ -1512,124 +1449,7 @@ function baixarMinuta(){
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+html],{type:'application/msword'}));a.download=`minuta_${m.id}.doc`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
 }
 
-/* =====================================================================
-   PAINEL DE DIRETRIZES · indicadores de correção (Padrão Muta)
-   ===================================================================== */
-function prepararRegras(){
-  REGRAS={cor:[],ale:[],pref:[]};
-  if(!DIR||!DIR.redacao) return;
-  const fl=(f,g)=>{f=f||'';return g&&!f.includes('g')?f+'g':f};
-  for(const r of DIR.redacao.registros){try{
-    if(r.tipo==='correcao') REGRAS.cor.push({re:new RegExp(r.padrao,fl(r.flags,1)),sub:r.substituir,msg:r.motivo,artigo:r.artigo,id:r.id});
-    else if(r.tipo==='alerta') REGRAS.ale.push({re:new RegExp(r.padrao,fl(r.flags,1)),msg:r.mensagem,escopo:r.escopo,id:r.id});
-    else if(r.tipo==='preferencia'&&!r.regra&&r.evitar&&r.preferir&&r.evitar.split(/\s+/).length<=4&&!/[…,(;]|salvo|exce|corpo/i.test(r.evitar))
-      REGRAS.pref.push({re:new RegExp('(?<![\\wÀ-ÿ])'+escRx(r.evitar)+'(?![\\wÀ-ÿ])','g'),sub:r.preferir,msg:`preferir “${r.preferir}” a “${r.evitar}”`,id:r.id});
-  }catch(e){}}
-}
-const SEV={cor:['Correção',5],ale:['Alerta',3],est:['Estrutura',4],sug:['Sugestão',1],pend:['Pendência',4]};
-function achados(t){
-  const A=[]; if(!REGRAS) return A;
-  const add=(sev,re,msg,sub,fonte,extra)=>{re.lastIndex=0;let m,n=0;while((m=re.exec(t))&&n<60){A.push({sev,i:m.index,len:m[0].length,trecho:m[0],msg,sub:typeof sub==='function'?sub(m):sub,fonte,...(extra||{})});n++;if(!re.global)break;if(m[0]==='')re.lastIndex++}};
-  for(const r of REGRAS.cor) add('cor',r.re,r.msg,r.sub,'Redação · correção',{artigo:r.artigo});
-  for(const r of REGRAS.ale) add('ale',r.re,r.msg+(r.escopo?` (${r.escopo})`:''),null,'Redação · alerta');
-  for(const r of REGRAS.pref) add('sug',r.re,r.msg,r.sub,'Redação · preferência');
-  add('pend',/\[[^\]\n]{1,80}\]/g,'campo a preencher',null,'Modelo');
-  add('cor',/\b(Lei(?: Complementar)?|Decreto(?:-Lei)?|Medida Provisória)\s+n[º°o.]\s*(?=\d)/g,'normas sem “nº” (nome canônico, ex.: “Lei 8.213/1991”)',m=>m[1]+' ','Normas');
-  add('cor',/\b(Lei(?: Complementar)?|Decreto(?:-Lei)?)\s+(\d{1,2}\.?\d{3})\/(\d{2})(?!\d)/g,'ano da norma com quatro dígitos',m=>`${m[1]} ${m[2]}/${+m[3]<=40?'20':'19'}${m[3]}`,'Normas');
-  add('sug',/alegando, em síntese/g,'razões: base “alegando, em suma” (diretrizes do relatório)','alegando, em suma','Diretrizes · Relatório');
-  add('sug',/O Ministério Público Federal (opinou|manifestou-se)/g,'no Tribunal, identificar a unidade: “A Procuradoria Regional da República” (I.2.2.2)',m=>`A Procuradoria Regional da República ${m[1]}`,'Diretrizes · Relatório');
-  add('sug',/Trata-se de apelação interposta em ação de/g,'Forma B de abertura é excepcional; o padrão é a Forma A: “Trata-se de apelação à sentença (ID …) que …”',null,'Diretrizes · Relatório');
-  add('sug',/\bId\.?\s*(?=\d)|\bID:\s*(?=\d)|\bID nº\s*/g,'referência documental no formato “(ID …)”','ID ','Diretrizes · Relatório');
-  add('cor',/[^\S\n]{2,}/g,'espaços duplicados',' ','Formatação');
-  // estrutura
-  if(/^\s*(RELATÓRIO|DECISÃO)\s*$/im.test(t)&&!/É o relatório\./i.test(t)) A.push({sev:'est',i:0,len:0,trecho:'',msg:'fecho padrão do relatório ausente: “É o relatório.”',fonte:'Diretrizes · Relatório'});
-  if(/^\s*DECISÃO\s*$/im.test(t)&&!/^\s*DECIDO\.?\s*$/im.test(t)) A.push({sev:'est',i:0,len:0,trecho:'',msg:'monocrática: “DECIDO.” após o relatório (R04)',fonte:'Diretrizes · Minuta'});
-  // enumeração: último item introduzido por “e”
-  const reEn=/\((\d+)\)[^()\n]*?(?=;\s*\((\d+)\)|$)/g;
-  t.split('\n').reduce((pos,par)=>{const it=[...par.matchAll(/;\s*(e\s+)?\((\d+)\)/g)];if(it.length){const u=it[it.length-1];if(!u[1])A.push({sev:'ale',i:pos+u.index,len:u[0].length,trecho:u[0],msg:'enumeração: o último item é introduzido por “e” — “(1) …; (2) …; e (3) …”',sub:u[0].replace(/;\s*\(/,'; e ('),fonte:'Diretrizes · Relatório'})}return pos+par.length+1},0);
-  // siglas de tribunais no corpo (fora de citações)
-  t.split('\n').reduce((pos,par)=>{if(!/Rel\.|DJe|DJEN|Tema\s|Súmula/.test(par))for(const m of par.matchAll(/(?<![\/\wÀ-ÿ])(STF|STJ)(?![\/\wÀ-ÿ])/g))A.push({sev:'sug',i:pos+m.index,len:3,trecho:m[0],msg:`no corpo do voto, por extenso: “${m[0]==='STF'?'Supremo Tribunal Federal':'Superior Tribunal de Justiça'}”`,sub:m[0]==='STF'?'Supremo Tribunal Federal':'Superior Tribunal de Justiça',fonte:'Redação · preferência'});return pos+par.length+1},0);
-  // remove sobreposições (mantém o mais grave)
-  A.sort((a,b)=>a.i-b.i||SEV[b.sev][1]-SEV[a.sev][1]);
-  const out=[];
-  for(const x of A){
-    const y=x.len&&x.sev!=='pend'&&out.find(y=>y.len&&y.sev!=='pend'&&y.i<=x.i&&x.i<y.i+y.len);
-    if(!y){out.push(x);continue}
-    // sobreposição: prevalece o mais grave; aproveita-se a correção do outro quando cobre o mesmo trecho
-    if(y.sub==null&&x.sub!=null&&x.i===y.i&&x.len===y.len){y.sub=x.sub;y.fonte+=' · '+x.fonte}
-  }
-  return out;
-}
-function aplicarFix(t,x){
-  let antes=t.slice(0,x.i), dep=t.slice(x.i+x.len);
-  if(x.artigo==='masc>fem') antes=antes.replace(/\b(o|do|no|ao|pelo)(\s+)$/i,(m,a,s)=>({o:'a',do:'da',no:'na',ao:'à',pelo:'pela'}[a.toLowerCase()]||a)+s);
-  if(x.artigo==='fem>masc') antes=antes.replace(/\b(a|da|na|à|pela)(\s+)$/i,(m,a,s)=>({a:'o',da:'do',na:'no','à':'ao',pela:'pelo'}[a.toLowerCase()]||a)+s);
-  let sub=x.sub; if(typeof sub==='string'&&/\$\d/.test(sub)){const re=new RegExp((REGRAS.cor.find(r=>r.msg===x.msg)||{}).re?.source||escRx(x.trecho),'i');sub=x.trecho.replace(re,sub)}
-  return antes+sub+dep;
-}
-let LINT=[], lintT=null;
-function agendarLint(){clearTimeout(lintT);lintT=setTimeout(lint,350)}
-function lint(){
-  const ed=$('minEd'); if(!ed||!REGRAS){LINT=[];return}
-  LINT=achados(ed.value);
-  if(DZ_TAB==='correcao') renderDZ();
-  const n=LINT.filter(x=>x.sev!=='sug').length; const b=$('dzTabs')&&$('dzTabs').querySelector('[data-t=correcao]'); if(b) b.dataset.n=n||'';
-}
-function irPara(i,len){const ed=$('minEd');ed.focus();ed.setSelectionRange(i,i+len);const linhas=ed.value.slice(0,i).split('\n').length;ed.scrollTop=Math.max(0,(linhas-4)*22)}
-function corrigir(k){const x=LINT[k];if(!x||x.sub==null)return;const ed=$('minEd');ed.value=aplicarFix(ed.value,x);ED_DIRTY=true;estadoEditor();lint()}
-function corrigirTodas(){
-  const ed=$('minEd');let t=ed.value,n=0;
-  for(let passo=0;passo<4;passo++){ // várias passadas: correções sobrepostas (ex.: “Lei nº 8.213/91”) se resolvem em sequência
-    const F=achados(t).filter(x=>x.sub!=null&&x.len).sort((a,b)=>b.i-a.i); if(!F.length)break;
-    let ult=Infinity; for(const x of F){if(x.i+x.len>ult)continue;t=aplicarFix(t,x);ult=x.i;n++}
-  }
-  ed.value=t;ED_DIRTY=true;estadoEditor();lint();toast(`${n} correção(ões) aplicada(s).`)}
-function renderDZ(){
-  const B=$('dzBody'); if(!B) return;
-  if(!DIR||DIR.erro){B.innerHTML=`<p style="color:#e9ebee;font-weight:700;margin:4px 0 6px">Carregue o Padrão Muta</p>
-    <p class="dz-muted">As diretrizes, as regras de redação (correções, alertas, preferências), as normas e os roteiros são material interno do gabinete e não ficam no repositório público. Carregue o arquivo <code>padrao_muta.json</code> uma vez: ele fica guardado só neste navegador.</p>
-    <label class="dz-btn" style="display:grid;place-items:center;cursor:pointer">Escolher padrao_muta.json<input type="file" accept=".json,application/json" hidden onchange="carregarPadraoArquivo(this)"></label>
-    <p class="dz-muted">Sem ele, o editor, os modelos e o relatório funcionam normalmente; só o painel de diretrizes e os indicadores ficam indisponíveis.</p>`;return}
-  if(DZ_TAB==='correcao'){
-    const c=s=>LINT.filter(x=>x.sev===s).length, pen=LINT.filter(x=>x.sev!=='pend').reduce((s,x)=>s+SEV[x.sev][1],0), conf=Math.max(0,100-pen);
-    const fix=LINT.filter(x=>x.sub!=null&&x.len).length;
-    B.innerHTML=`<div class="dz-kpis">
-      <div class="k ${conf>=85?'ok':conf>=60?'md':'bad'}" title="Padrão Muta: 100 menos 5 por correção, 4 por falha de estrutura, 3 por alerta e 1 por sugestão. Campos a preencher contam à parte."><b>${conf}%</b><span>conformidade</span></div>
-      <div class="k cor"><b>${c('cor')}</b><span>correções</span></div><div class="k ale"><b>${c('ale')+c('est')}</b><span>alertas</span></div>
-      <div class="k pend"><b>${c('pend')}</b><span>pendências</span></div><div class="k sug"><b>${c('sug')}</b><span>sugestões</span></div></div>
-      ${fix?`<button class="dz-btn" onclick="corrigirTodas()">Corrigir automaticamente (${fix})</button>`:''}
-      <ul class="dz-list">${LINT.slice(0,200).map((x,k)=>`<li class="s-${x.sev}"><div class="dz-li-h"><span class="dz-sev">${SEV[x.sev][0]}</span><span class="dz-src">${esc(x.fonte||'')}</span></div>
-        <div>${esc(x.msg)}</div>${x.trecho?`<q>${esc(x.trecho.slice(0,80))}</q>`:''}${x.sub!=null&&x.len?` <span class="dz-to">→ ${esc(String(x.sub).slice(0,60))}</span>`:''}
-        <div class="dz-acts">${x.len?`<button onclick="irPara(${x.i},${x.len})">ir</button>`:''}${x.sub!=null&&x.len?`<button onclick="corrigir(${k})">corrigir</button>`:''}</div></li>`).join('')||'<li class="s-ok">Nenhuma inconformidade encontrada pelas regras do Padrão Muta.</li>'}</ul>
-      <p class="dz-muted">Verificação automática por ${REGRAS.cor.length} correções, ${REGRAS.ale.length} alertas e ${REGRAS.pref.length} preferências do banco de redação, mais as regras estruturais das diretrizes do relatório. Não substitui a revisão. <a href="#" style="color:#9aa0a9" onclick="esquecerPadrao();return false">Remover o Padrão Muta deste navegador</a></p>`;
-    return;
-  }
-  if(DZ_TAB==='relatorio'||DZ_TAB==='gerais'){B.innerHTML=`<div class="rdoc">${DIR.diretrizes_html[DZ_TAB]||''}</div>`;return}
-  if(DZ_TAB==='minuta'){
-    const R=DIR.redacao.registros.filter(r=>r.regra), G=[...new Set(R.map(r=>r.grupo))];
-    B.innerHTML=`<div class="rdoc"><p class="dz-muted">Diretrizes de minuta no padrão Carlos Muta (R01–R30).</p>${G.map(g=>`<h3>${esc(g)}</h3>${R.filter(r=>r.grupo===g).map(r=>`<div class="dz-rg"><b>${esc(r.regra)} · ${esc(r.titulo)}</b>${r.preferir?`<div class="pf">✓ ${esc(r.preferir)}</div>`:''}${r.evitar?`<div class="ev">✗ ${esc(r.evitar)}</div>`:''}</div>`).join('')}`).join('')}</div>`;
-    return;
-  }
-  if(DZ_TAB==='vocab'){
-    const R=DIR.redacao.registros, sec=(t,rows)=>rows.length?`<h3>${t}</h3><table>${rows.join('')}</table>`:'';
-    B.innerHTML=`<div class="rdoc">${sec('Conectivos',R.filter(r=>r.tipo==='conectivo').map(r=>`<tr><td><code>${esc(r.expressao)}</code></td><td>${esc(r.funcao||'')}</td></tr>`))}
-      ${sec('Verbos',R.filter(r=>r.tipo==='verbo').map(r=>`<tr><td><code>${esc(r.construcao)}</code></td><td>${esc(r.emprego||'')}</td></tr>`))}
-      ${sec('Preferir × evitar',R.filter(r=>r.tipo==='preferencia'&&!r.regra).map(r=>`<tr><td>✓ ${esc(r.preferir)}</td><td>✗ ${esc(r.evitar||'')}</td></tr>`))}
-      ${sec('Normas — nome canônico',DIR.normas.registros.filter(n=>n.seletor).map(n=>`<tr><td><code>${esc(n.nome)}</code></td><td>${esc(n.prosa||'')} · rodapé ${esc(n.sigla||'')}</td></tr>`))}</div>`;
-    return;
-  }
-  if(DZ_TAB==='roteiros'){
-    const RT=DIR.roteiros, todos=[RT.MESTRE,...RT.ESP,...RT.ASS,...RT.TRV], POS=Object.fromEntries(RT.POS);
-    const r=todos.find(x=>x.id===ROT_SEL)||RT.MESTRE;
-    B.innerHTML=`<select class="dz-sel" onchange="ROT_SEL=this.value;renderDZ()">
-      <option value="mestre"${ROT_SEL==='mestre'?' selected':''}>Roteiro-mestre</option>
-      <optgroup label="Espécies">${RT.ESP.map(x=>`<option value="${x.id}"${ROT_SEL===x.id?' selected':''}>${esc(x.t)}</option>`).join('')}</optgroup>
-      ${RT.GRP.map(g=>`<optgroup label="${esc(g.t)}">${RT.ASS.filter(x=>x.g===g.id).map(x=>`<option value="${x.id}"${ROT_SEL===x.id?' selected':''}>${esc(x.t)}</option>`).join('')}</optgroup>`).join('')}
-      <optgroup label="Transversais">${RT.TRV.map(x=>`<option value="${x.id}"${ROT_SEL===x.id?' selected':''}>${esc(x.t)}</option>`).join('')}</optgroup></select>
-      <p class="dz-muted">${esc(r.s||'')}</p>
-      <ol class="dz-rot">${r.steps.map(s=>`<li><span class="dz-pos">${esc(POS[s[0]]||s[0])}</span><b>${esc(s[1])}</b><div>${esc(s[2]||'')}</div>${s[4]?`<code>${esc(s[4])}</code>`:''}${s[5]?`<small>${esc(s[5])}</small>`:''}</li>`).join('')}</ol>`;
-  }
-}
+/* Auditoria de texto, léxico, roteiros e regras foram movidos para o painel Apoio. */
 
 /* Árvore jurídica do catálogo de modelos. Apenas classifica para navegação;
    os textos e IDs são lidos exclusivamente de modelos/modelos.json.gz. */
