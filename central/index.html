@@ -455,6 +455,60 @@ html.modo-arvore #mMod .arv-modelos-7{display:block}
 .arv7-leaf:hover,.arv7-leaf.on{border-color:var(--f-acervo);background:var(--f-acervo-s)}
 @media(max-width:1250px){html.modo-arvore #mMod:not(.sem-detalhe){grid-template-columns:260px minmax(0,1fr)}html.modo-arvore #mMod:not(.sem-detalhe)>section.lista{display:none}html.modo-arvore #mMod.sem-detalhe{grid-template-columns:300px minmax(0,1fr) 0}html.modo-arvore #mMod.sem-detalhe>aside.filtros{display:none}}
 
+
+/* ========= ÁRVORE ESQUEMÁTICA · painel expansível ========= */
+html.modo-arvore main.modulo{grid-template-columns:minmax(320px,var(--cmt-arv-largura,58vw)) minmax(0,1fr)!important}
+html.modo-arvore main.modulo[hidden]{display:none!important}
+html.modo-arvore main.modulo>aside.filtros{display:none!important}
+html.modo-arvore main.modulo>aside.arvcol{min-width:0;min-height:0;position:relative;padding:14px 16px 18px;overflow-y:auto;overflow-x:hidden}
+html.modo-arvore main.modulo.sem-detalhe>section.detalhe{display:none!important}
+html.modo-arvore main.modulo:not(.sem-detalhe)>section.lista{display:none!important}
+html.modo-arvore main.modulo:not(.sem-detalhe)>section.detalhe{display:block!important;position:static!important;min-width:0;overflow:auto}
+html.modo-arvore.arv-max main.modulo{grid-template-columns:minmax(0,1fr) 0!important}
+html.modo-arvore.arv-max main.modulo>section.lista,html.modo-arvore.arv-max main.modulo>section.detalhe{display:none!important}
+html.modo-arvore main.modulo>section.lista{min-width:0}
+.arv-viz-controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px;margin:9px 0 12px;padding:7px;border:1px solid var(--line2);background:var(--panel2);border-radius:11px}
+.arv-viz-switch,.arv-viz-width{display:flex;align-items:center;gap:5px}
+.arv-viz-switch button,.arv-viz-width button{height:29px;border:1px solid transparent;border-radius:7px;background:transparent;color:var(--muted);font:750 11px/1 Figtree,Inter,system-ui,sans-serif;cursor:pointer;padding:0 9px}
+.arv-viz-switch button[aria-pressed="true"]{border-color:var(--f-acervo);background:var(--f-acervo-s);color:var(--text)}
+.arv-viz-switch button:hover,.arv-viz-width button:hover{border-color:var(--line2);color:var(--text)}
+.arv-viz-width label{font-size:10px;color:var(--muted);font-weight:700}
+.arv-viz-width input{width:clamp(72px,9vw,145px);accent-color:var(--f-acervo);cursor:ew-resize}
+.arv-viz-width button[aria-pressed="true"]{background:var(--f-acervo-s);border-color:var(--f-acervo)}
+html.arv-diagrama .arvcol .arv-tree,html.arv-diagrama .arvcol .arv-modelos-7{display:none!important}
+html.arv-diagrama .arvcol .arv-bt{display:none}
+html.modo-arvore:not(.arv-diagrama) .arv-esquema{display:none}
+.arv-esquema{border:1px solid var(--line2);background:linear-gradient(0deg,transparent 23px,var(--line) 24px,transparent 25px),linear-gradient(90deg,transparent 23px,var(--line) 24px,transparent 25px),var(--panel2);background-size:24px 24px;border-radius:12px;min-height:290px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-behavior:smooth}
+.arv-esquema:focus-visible{outline:2px solid var(--f-acervo);outline-offset:3px}
+.arv-esq-head{position:sticky;left:0;z-index:2;display:flex;gap:10px;align-items:center;justify-content:space-between;width:max-content;min-width:100%;border-bottom:1px solid var(--line2);background:var(--panel);padding:9px 12px}
+.arv-esq-head b{font:800 11px Figtree,system-ui,sans-serif}.arv-esq-head small{color:var(--muted);font:500 10px Figtree,system-ui,sans-serif}
+.arv-esq-head button{font:700 10px Figtree,sans-serif;cursor:pointer;padding:4px 8px;border:1px solid var(--line2);background:var(--panel2);color:var(--text);border-radius:6px}
+.arv-esq-cols{display:flex;align-items:flex-start;min-width:max-content;padding:15px 18px 26px;gap:37px}
+.arv-esq-col{position:relative;flex:0 0 210px;min-width:0;animation:arv-entrar .22s ease-out both}
+.arv-esq-col::before{content:"";position:absolute;left:-26px;top:40px;height:calc(100% - 50px);width:1px;background:var(--f-acervo);opacity:.28}
+.arv-esq-col:first-child::before{display:none}
+.arv-esq-col:not(:first-child)::after{content:"";position:absolute;left:-37px;top:62px;width:36px;height:2px;background:var(--f-acervo);opacity:.55}
+.arv-esq-title{display:flex;gap:9px;align-items:center;min-height:38px;margin-bottom:9px;padding:0 2px;border-bottom:1px solid var(--line2)}
+.arv-esq-step{width:24px;height:24px;border-radius:7px;background:var(--f-acervo-s);color:var(--f-acervo);display:grid;place-items:center;font:800 10px Inter,system-ui,sans-serif}
+.arv-esq-title strong{font-size:11px;color:var(--text)}.arv-esq-title small{margin-left:auto;font-size:10px;color:var(--muted)}
+.arv-esq-scroll{max-height:min(64vh,660px);min-height:80px;overflow-y:auto;overflow-x:visible;padding:0 4px 7px 2px;scrollbar-width:thin}
+.arv-esq-node{position:relative;width:100%;display:flex;flex-direction:column;gap:5px;text-align:left;margin:0 0 7px;padding:10px 11px;border:1px solid var(--line2);border-radius:10px;background:var(--panel);box-shadow:0 2px 4px rgba(0,0,0,.03);color:var(--text);cursor:pointer;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease}
+.arv-esq-node::before{content:"";position:absolute;top:50%;left:-9px;width:8px;height:1px;background:var(--f-acervo);opacity:.42}
+.arv-esq-col:first-child .arv-esq-node::before{display:none}
+.arv-esq-node:hover{border-color:var(--f-acervo);transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,.09)}
+.arv-esq-node.on{background:var(--f-acervo-s);border-color:var(--f-acervo);box-shadow:inset 3px 0 0 var(--f-acervo)}
+.arv-esq-node.on::after{content:"";position:absolute;top:50%;right:-20px;width:19px;height:2px;background:var(--f-acervo)}
+.arv-esq-node .nm{font:750 11.5px/1.35 Figtree,Inter,system-ui,sans-serif;overflow-wrap:anywhere}
+.arv-esq-node .smallrow{display:flex;align-items:center;justify-content:space-between;gap:6px;font:600 10px Figtree,sans-serif;color:var(--muted)}
+.arv-esq-node .smallrow b{font-variant-numeric:tabular-nums;color:var(--f-acervo)}
+.arv-esq-node .smallrow i{font-size:11px;font-style:normal;opacity:.7}
+.arv-esq-empty{padding:20px;border:1px dashed var(--line2);border-radius:8px;color:var(--muted);font-size:12px;background:var(--panel)}
+.arv-esq-guide{font-size:11px;color:var(--muted);margin:9px 2px;line-height:1.45}
+.arv-esq-guide strong{color:var(--text)}
+@keyframes arv-entrar{from{opacity:0;transform:translateX(9px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:850px){html.modo-arvore main.modulo{grid-template-columns:minmax(0,1fr)!important}html.modo-arvore main.modulo>section.lista,html.modo-arvore main.modulo>section.detalhe{display:none!important}.arv-viz-width input{width:80px}.arv-esq-col{flex-basis:190px}}
+@media(prefers-reduced-motion:reduce){.arv-esq-col{animation:none}.arv-esq-node,.arv-esquema{transition:none;scroll-behavior:auto}}
+
 </style>
 </head>
 <body>
@@ -485,7 +539,13 @@ html.modo-arvore #mMod .arv-modelos-7{display:block}
   <aside class="arvcol" aria-label="Árvore de assuntos">
     <div class="arv-h"><span class="lbl">▤ Árvore de assuntos</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
     <input class="inp arv-q" placeholder="Filtrar áreas e temas…" autocomplete="off" spellcheck="false">
-    <div class="arv-bt"><button class="btn sm" onclick="arvExpandir(true)">Expandir</button><button class="btn sm" onclick="arvExpandir(false)">Recolher</button><button class="btn sm" onclick="alternarModoArvore(false)" title="Desligar o modo árvore (Alt+3)">Sair do modo</button></div>
+    <div class="arv-viz-controls" data-arv-controles="juris" aria-label="Visualização da árvore">
+     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Diagrama</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
+     <div class="arv-viz-width"><label for="arvLargurajuris">Largura</label><input id="arvLargurajuris" type="range" min="35" max="92" value="58" aria-label="Largura da árvore em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
+   </div>
+   <div class="arv-esquema" data-arv-esquema="juris" tabindex="0" aria-label="Diagrama de correspondências por níveis"></div>
+   <p class="arv-esq-guide">Selecione um <strong>nó</strong> para mostrar seus desdobramentos à direita. Role horizontalmente para percorrer os níveis. A seleção filtra os registros correspondentes.</p>
+   <div class="arv-bt"><button class="btn sm" onclick="arvExpandir(true)">Expandir</button><button class="btn sm" onclick="arvExpandir(false)">Recolher</button><button class="btn sm" onclick="alternarModoArvore(false)" title="Desligar o modo árvore (Alt+3)">Sair do modo</button></div>
     <div class="arv-tree"></div>
     <hr class="sep"><details class="arv-fontes"><summary>Fonte, período e critérios da classificação</summary><p class="ajuda">A classificação temática é automática e sujeita à revisão jurídica.</p><p class="ajuda arv-crit"></p></details>
   </aside>
@@ -576,7 +636,13 @@ html.modo-arvore #mMod .arv-modelos-7{display:block}
   <aside class="arvcol" aria-label="Árvore de assuntos">
     <div class="arv-h"><span class="lbl">▤ Árvore de assuntos</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
     <input class="inp arv-q" placeholder="Filtrar áreas e temas…" autocomplete="off" spellcheck="false">
-    <div class="arv-bt"><button class="btn sm" onclick="arvExpandir(true)">Expandir</button><button class="btn sm" onclick="arvExpandir(false)">Recolher</button><button class="btn sm" onclick="alternarModoArvore(false)" title="Desligar o modo árvore (Alt+3)">Sair do modo</button></div>
+    <div class="arv-viz-controls" data-arv-controles="modelos" aria-label="Visualização da árvore">
+     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Diagrama</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
+     <div class="arv-viz-width"><label for="arvLarguramodelos">Largura</label><input id="arvLarguramodelos" type="range" min="35" max="92" value="58" aria-label="Largura da árvore em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
+   </div>
+   <div class="arv-esquema" data-arv-esquema="modelos" tabindex="0" aria-label="Diagrama de correspondências por níveis"></div>
+   <p class="arv-esq-guide">Selecione um <strong>nó</strong> para mostrar seus desdobramentos à direita. Role horizontalmente para percorrer os níveis. A seleção filtra os registros correspondentes.</p>
+   <div class="arv-bt"><button class="btn sm" onclick="arvExpandir(true)">Expandir</button><button class="btn sm" onclick="arvExpandir(false)">Recolher</button><button class="btn sm" onclick="alternarModoArvore(false)" title="Desligar o modo árvore (Alt+3)">Sair do modo</button></div>
     <div class="arv7-top"><b>752 modelos · hierarquia jurídica</b><button class="btn sm" id="arv7Reset" type="button" onclick="arv7Limpar()">Limpar recorte</button></div>
     <p class="ajuda arv7-note">Assunto → Classe/espécie → Tipo de julgamento → Subassunto → Questão → Especificidades → Resultado → Modelo. Classificação inferida; não é assunto CNJ oficial.</p>
     <div class="arv-modelos-7" id="arvModelos7" role="tree" aria-label="Modelos em sete níveis"></div>
@@ -1630,6 +1696,7 @@ function arv7Render(){
   box.innerHTML=walk(root)||'<p class="ajuda">Nenhum modelo corresponde à busca da árvore.</p>';
   const count=document.querySelector('#mMod .arv7-top b');if(count)count.textContent=`${models.length} modelos · hierarquia jurídica`;
   const note=document.querySelector('#mMod .arv7-note');if(note)note.textContent=(ARV7_ESCOLHA?`Recorte: ${ARV7_ESCOLHA.join(' › ')}. `:'')+'Classificação temática inferida e revisável; os modelos e IDs originais não são alterados.';
+  arvEsquemaAgendar();
 }
 document.addEventListener('click',e=>{
   const leaf=e.target.closest('[data-arv7-leaf]');if(leaf){if(!MODO_ARV)return;
@@ -1680,7 +1747,7 @@ async function alternarModoArvore(forcar){
   $('btnModoArvTab').setAttribute('aria-pressed',String(ligar));
   LS.set('acv_modo_arv',ligar?'1':'');
   if(ligar&&!MODS) carregarModelos().then(()=>{aplicarModelos();aplicar()}).catch(()=>{});
-  if(MODS) aplicarModelos(); aplicar(); if(ligar&&MODS)arv7Render();
+  if(MODS) aplicarModelos(); aplicar(); if(ligar&&MODS)arv7Render(); if(ligar)arvEsquemaAgendar();
 }
 function arvSel(no){
   ARV.no=no; if(no[0])ARV.abertos.add(no[0]); if(no[1])ARV.abertos.add(no[0]+'|'+no[1]);
@@ -1725,6 +1792,7 @@ function arvRender(){
     }
     box.innerHTML=h;
   });
+  arvEsquemaAgendar();
 }
 /* faixa de ligação mostrada no resumo de cada faceta quando há nó selecionado */
 function arvChip(fac){
@@ -1741,6 +1809,73 @@ document.addEventListener('click',e=>{
   if(tg&&k[0]===ARV.no[0]&&k[1]===ARV.no[1]&&k[2]===ARV.no[2]){ARV.abertos.has(tg)?ARV.abertos.delete(tg):ARV.abertos.add(tg);arvRender();return}
   arvSel(k);
 });
+
+/* ========= DIAGRAMA DE RAMOS, COLUNAS E CORRESPONDÊNCIAS ========= */
+let ARV_VISTA=LS.get('acv_arv_vista')==='lista'?'lista':'diagrama';
+let ARV_LARGURA=Math.max(35,Math.min(92,Number(LS.get('acv_arv_largura'))||58));
+let ARV_MAX=false,ARV_SCHED=0;
+function arvAplicarLayout(){
+ document.documentElement.classList.toggle('arv-diagrama',ARV_VISTA==='diagrama');
+ document.documentElement.classList.toggle('arv-max',ARV_MAX);
+ document.documentElement.style.setProperty('--cmt-arv-largura',ARV_LARGURA+'vw');
+ document.querySelectorAll('[data-arv-vista]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.arvVista===ARV_VISTA)));
+ document.querySelectorAll('.arv-viz-width input').forEach(e=>{e.value=ARV_LARGURA;e.disabled=ARV_MAX});
+ document.querySelectorAll('.arv-full-btn').forEach(b=>{b.setAttribute('aria-pressed',String(ARV_MAX));b.textContent=ARV_MAX?'↙ Restaurar':'⤢ Expandir'});
+}
+function arvEscolherVista(v){if(!['lista','diagrama'].includes(v))return;ARV_VISTA=v;LS.set('acv_arv_vista',v);arvAplicarLayout();arvEsquemaAgendar()}
+function arvLargura(n){ARV_LARGURA=Math.max(35,Math.min(92,n));LS.set('acv_arv_largura',String(ARV_LARGURA));if(ARV_MAX)ARV_MAX=false;arvAplicarLayout()}
+function arvAlternarMax(){ARV_MAX=!ARV_MAX;arvAplicarLayout()}
+function arvEsquemaAgendar(){if(!MODO_ARV||ARV_SCHED)return;ARV_SCHED=requestAnimationFrame(()=>{ARV_SCHED=0;arvEsquemaRender()})}
+function arvEsqNorm(s){return semAcento(String(s||''))}
+function arvEsqOpcoes(records,level,prefix,access){const result=new Map();for(const rec of records){const path=access(rec);if(prefix.some((v,i)=>path[i]!==v))continue;const label=path[level];if(!label)continue;let a=result.get(label);if(!a)result.set(label,a={nome:label,n:0,ids:[]});a.n++;a.ids.push(rec)}return [...result.values()].sort((a,b)=>b.n-a.n||a.nome.localeCompare(b.nome,'pt-BR'))}
+function arvEsqCol(titulo,level,rows,prefix,mode,isLeaves){
+ const selected=mode==='modelos'?ARV7_ESCOLHA||[]:ARV.no.filter(Boolean);
+ const cards=rows.slice(0,isLeaves?100:220).map(o=>{
+  const isOn=!isLeaves&&selected[level]===o.nome;
+  const dat=isLeaves?`data-schem-leaf="${esc(o.id)}"`:`data-schem-n="${esc(o.nome)}"`;
+  return `<button type="button" class="arv-esq-node${isOn?' on':''}" ${dat} data-schem-lv="${level}" title="${esc(o.nome)}" aria-pressed="${isOn}"><span class="nm">${esc(o.nome)}</span><span class="smallrow"><span>${isLeaves?'Modelo original':esc(titulo)}</span><b>${isLeaves?'Abrir texto':o.n.toLocaleString('pt-BR')+' registro'+(o.n===1?'':'s')}</b>${isLeaves?'':'<i>›</i>'}</span></button>`}).join('');
+ const note=rows.length>100&&isLeaves?`<div class="arv-esq-empty">Exibidos os 100 primeiros modelos deste ramo. Refine os níveis ou a busca.</div>`:rows.length>220?`<div class="arv-esq-empty">Exibidos 220 ramos. Utilize a busca para localizar os demais.</div>`:'';
+ return `<section class="arv-esq-col" data-schem-level="${level}" aria-label="Nível ${level+1}: ${esc(titulo)}"><div class="arv-esq-title"><span class="arv-esq-step">${String(level+1).padStart(2,'0')}</span><strong>${esc(titulo)}</strong><small>${rows.length} opções</small></div><div class="arv-esq-scroll">${cards||'<div class="arv-esq-empty">Nenhuma correspondência neste nível.</div>'}${note}</div></section>`;
+}
+function arvEsqPintar(container,mode,records,path,access,titulos){
+ const search=arvEsqNorm(container.closest('.arvcol').querySelector('.arv-q')?.value.trim());
+ const found=search?records.filter(r=>arvEsqNorm(access(r).join(' ')+' '+(r.nome||'')+' '+(r.id||'')).includes(search)):records;
+ let cols='';const final=Math.min(path.length,titulos.length);
+ for(let level=0;level<=final;level++){
+  if(level===titulos.length){
+   const matches=found.filter(r=>path.every((v,i)=>access(r)[i]===v));
+   const leaf=matches.map(r=>({nome:(r.nome||r.n||r.id||'Registro')+' · '+r.id,id:r.id}));
+   cols+=arvEsqCol('Registros correspondentes',level,leaf,path,mode,true);break;
+  }
+  cols+=arvEsqCol(titulos[level],level,arvEsqOpcoes(found,level,path.slice(0,level),access),path,mode,false);
+ }
+ const desc=mode==='modelos'?'modelos únicos, por ID':'precedentes do recorte';
+ container.innerHTML=`<div class="arv-esq-head"><div><b>Mapa de correspondências</b> <small>· ${found.length.toLocaleString('pt-BR')} ${desc}</small></div><button type="button" data-schem-reset="1" title="Voltar ao primeiro nível">↶ Raiz</button></div><div class="arv-esq-cols" role="group" aria-label="Ramos da árvore">${cols}</div>`;
+}
+function arvEsquemaRender(){if(!MODO_ARV||ARV_VISTA!=='diagrama')return;
+ const modbox=document.querySelector('[data-arv-esquema="modelos"]');
+ if(MODS&&modbox){const q=arvEsqNorm(modbox.closest('.arvcol').querySelector('.arv-q')?.value.trim());const mods=q?MODS.filter(m=>arvEsqNorm(arv7Path(m).join(' ')+' '+m.nome+' '+m.id).includes(q)):MODS;
+  arvEsqPintar(modbox,'modelos',mods,ARV7_ESCOLHA||[],arv7Path,CMT_ARV7.titulos)}
+ const jurbox=document.querySelector('[data-arv-esquema="juris"]');
+ if(jurbox&&ASS&&typeof IDX!=='undefined'&&IDX){const base=ARV.baseP.length?ARV.baseP:IDX;arvEsqPintar(jurbox,'juris',base,ARV.no.filter(Boolean),r=>assDe(r.id)||['Não classificado','Outros','Outros temas'],['Área jurídica','Subárea','Tema']);}
+}
+document.addEventListener('click',e=>{
+ const el=e.target.closest('[data-arv-esquema]');if(!el||!MODO_ARV)return;
+ const mode=el.dataset.arvEsquema;
+ if(e.target.closest('[data-schem-reset]')){mode==='modelos'?arv7Limpar():arvSel([null,null,null]);arvEsquemaAgendar();return}
+ const leaf=e.target.closest('[data-schem-leaf]');if(leaf){const id=leaf.dataset.schemLeaf;
+  if(mode==='modelos'){const model=MOD_POR.get(id);if(model){ARV7_ESCOLHA=arv7Path(model);arv7AplicarTodos();abrirModelo(id)}}
+  else irParaDecisao(id);arvEsquemaAgendar();return}
+ const node=e.target.closest('[data-schem-n]');if(!node)return;
+ const level=Number(node.dataset.schemLv),name=node.dataset.schemN;
+ if(mode==='modelos'){const old=ARV7_ESCOLHA||[];ARV7_ESCOLHA=old[level]===name&&old.length===level+1?old.slice(0,level):[...old.slice(0,level),name];arv7AplicarTodos()}
+ else{const old=ARV.no.filter(Boolean);const selected=old[level]===name&&old.length===level+1?old.slice(0,level):[...old.slice(0,level),name];arvSel([selected[0]||null,selected[1]||null,selected[2]||null]);}
+ arvEsquemaAgendar();
+ // O novo ramo é mostrado à direita sem alterar a posição da leitura existente.
+ requestAnimationFrame(()=>{const c=el.querySelector('.arv-esq-cols');if(c&&c.scrollWidth<0)c.scrollIntoView();const lanes=el.querySelectorAll('.arv-esq-col');const last=lanes[lanes.length-1];if(last&&last.offsetLeft>el.scrollLeft+el.clientWidth-180)el.scrollTo({left:last.offsetLeft-130,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
+});
+arvAplicarLayout();
+
 let arvDeb;document.addEventListener('input',e=>{if(!e.target.classList.contains('arv-q'))return;const v=e.target.value;document.querySelectorAll('.arv-q').forEach(i=>{if(i!==e.target)i.value=v});clearTimeout(arvDeb);arvDeb=setTimeout(()=>{arvRender();arv7Render()},150)});
 let ARV_HASH=false;
 $('btnFiltrosMob').onclick=()=>$('filtros').classList.toggle('aberto');
