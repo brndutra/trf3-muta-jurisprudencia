@@ -604,6 +604,119 @@ html.modo-arvore.arv-diagrama .arv-esquema{display:flex;flex-direction:column;ov
 @media(max-width:950px){html.modo-arvore.arv-diagrama main.modulo{grid-template-columns:minmax(0,1fr)!important}html.modo-arvore.arv-diagrama main.modulo>section.detalhe,html.modo-arvore.arv-diagrama main.modulo>section.lista{display:none!important}.cmt-mind-node{width:204px}.cmt-mind-viewport{height:clamp(430px,64vh,790px)}}
 @media(prefers-reduced-motion:reduce){.cmt-mind-node{transition:none!important}.cmt-mind-stage{transition:none!important}}
 
+
+/* =====================================================================
+   CMT · MODO MAPA V4 — visualização dedicada, sem colunas fantasmas
+   O mapa é o espaço de trabalho; os filtros/listas antigos só existem no
+   modo Lista, e os detalhes abrem em gaveta própria.
+   ===================================================================== */
+html.modo-arvore.arv-diagrama main.modulo{position:relative;display:block!important;min-width:0;min-height:0;height:100%;overflow:hidden;background:var(--bg)}
+html.modo-arvore.arv-diagrama main.modulo[hidden]{display:none!important}
+html.modo-arvore.arv-diagrama main.modulo>aside.filtros,
+html.modo-arvore.arv-diagrama main.modulo>section.lista{display:none!important}
+html.modo-arvore.arv-diagrama main.modulo>aside.arvcol{
+  display:grid!important;grid-template-columns:minmax(230px,1fr) auto;
+  grid-template-rows:auto auto minmax(0,1fr);column-gap:12px;row-gap:9px;
+  width:100%;height:100%;min-width:0;overflow:hidden;
+  padding:13px 18px 15px!important;border-right:0;box-shadow:none;background:var(--bg)
+}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-h{grid-column:1/-1;grid-row:1;align-self:center;margin:0;min-height:20px}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-h .lbl{font:800 11px/1.3 Figtree,Inter,system-ui,sans-serif;letter-spacing:.09em;color:var(--f-acervo)}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-leg{color:var(--muted);font-size:10px}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-q{grid-column:1;grid-row:2;width:100%;height:39px;font-size:12px;background:var(--panel2)}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-viz-controls{
+  grid-column:2;grid-row:2;align-self:center;display:flex;justify-content:flex-end;
+  margin:0;padding:4px 7px;gap:9px;min-height:39px;max-width:none;background:var(--panel2);
+  border:1px solid var(--line2);border-radius:9px;flex-wrap:nowrap
+}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-viz-switch,
+html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-viz-width{flex-wrap:nowrap;white-space:nowrap}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-viz-width input{width:100px}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-viz-width label{display:none}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-esquema{
+  grid-column:1/-1;grid-row:3;position:relative;display:flex!important;flex-direction:column;
+  align-self:stretch;justify-self:center;width:var(--cmt-arv-largura,100%);max-width:100%;
+  height:100%;min-height:0!important;overflow:hidden;padding:0;
+  border-radius:13px;border:1px solid var(--line2);background:var(--panel2);
+  box-shadow:0 3px 16px rgba(20,35,50,.045);transition:width .18s ease
+}
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-bt,
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-tree,
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv7-top,
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv7-note,
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-modelos-7,
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-esq-guide,
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-fontes,
+html.modo-arvore.arv-diagrama main.modulo>.arvcol>hr.sep{display:none!important}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-toolbar{min-height:50px;padding:9px 13px;gap:9px;background:var(--panel)}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-title b{font-size:13px;letter-spacing:-.01em}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-title small{font-size:10px}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-buttons{gap:5px}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-buttons button{font-size:10px;min-height:31px;border-radius:7px}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-buttons button[data-mind-action="matches"]{background:var(--f-acervo-s);border-color:color-mix(in srgb,var(--f-acervo) 48%,var(--line2));font-weight:850}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-breadcrumb{min-height:36px;padding:6px 12px}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-viewport{flex:1 1 auto;min-height:250px;height:auto!important;border-radius:0}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-node{border-radius:12px;box-shadow:0 3px 13px rgba(21,36,55,.07)}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-node.root{box-shadow:0 7px 22px rgba(39,115,95,.13)}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-float{display:none!important}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs{
+  position:absolute;right:12px;bottom:12px;z-index:7;width:min(430px,calc(100% - 24px));
+  max-height:min(46vh,430px);padding:0 11px;background:var(--panel);
+  border:1px solid var(--line2);border-radius:12px;box-shadow:0 8px 30px rgba(20,35,55,.14);
+  overflow:hidden
+}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs summary{padding:11px 2px;line-height:1.4}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs details[open]{max-height:min(46vh,430px);display:flex;flex-direction:column}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs [data-mind-results]{overflow:auto;min-height:0;padding-bottom:10px}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs .arv-esq-preview{grid-template-columns:1fr 1fr;gap:7px}
+html.modo-arvore.arv-diagrama .arv-esquema:has(.cmt-mind-refs details[open]) .cmt-mind-float{display:none}
+html.modo-arvore.arv-diagrama main.modulo>section.detalhe{
+  display:block!important;position:absolute!important;right:0;top:0;bottom:0;z-index:16;
+  height:100%;width:min(490px,45vw);max-width:100%;overflow:auto;
+  background:var(--panel2);border-left:1px solid var(--line2);box-shadow:-14px 0 38px rgba(15,30,45,.17)
+}
+html.modo-arvore.arv-diagrama main.modulo.sem-detalhe>section.detalhe{display:none!important}
+html.modo-arvore.arv-diagrama main.modulo>section.detalhe .dhead{padding:13px 18px}
+html.modo-arvore.arv-diagrama main.modulo>section.detalhe .dbody{padding:15px 20px 40px}
+html.modo-arvore.arv-diagrama.arv-max main.modulo>.arvcol>.arv-esquema{
+  position:fixed;inset:0;z-index:21;width:100%!important;height:100dvh!important;max-width:none;border-radius:0;border:0
+}
+html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!important}
+@media(max-width:1080px){
+  html.modo-arvore.arv-diagrama main.modulo>.arvcol{grid-template-columns:1fr;grid-template-rows:auto auto auto minmax(0,1fr);padding:10px!important;gap:7px}
+  html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-h{grid-column:1;grid-row:1}
+  html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-q{grid-column:1;grid-row:2}
+  html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-viz-controls{grid-column:1;grid-row:3;justify-self:stretch;justify-content:space-between}
+  html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-esquema{grid-column:1;grid-row:4}
+}
+@media(max-width:620px){
+ html.modo-arvore.arv-diagrama main.modulo>.arvcol{padding:7px!important}
+ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-toolbar{flex-direction:column;align-items:stretch;padding:7px 9px}
+ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-buttons{justify-content:space-between}
+ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-buttons button{padding:0 6px;font-size:9px}
+ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-title small{display:none}
+ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs .arv-esq-preview{grid-template-columns:1fr}
+ html.modo-arvore.arv-diagrama main.modulo>section.detalhe{width:100%;max-width:100%;z-index:18}
+ html.modo-arvore.arv-diagrama main.modulo>.arvcol .arv-viz-width input{width:66px}
+ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-float{display:none}
+}
+
+
+@media(max-width:720px){
+ html.modo-arvore.arv-diagrama nav.appbar{flex-wrap:wrap;align-items:center;gap:7px;padding:7px 10px}
+ html.modo-arvore.arv-diagrama nav.appbar .brand{flex:1 1 auto;min-width:135px}
+ html.modo-arvore.arv-diagrama nav.appbar .brand-t{font-size:19px}
+ html.modo-arvore.arv-diagrama nav.appbar .facetas{order:10;flex:1 1 100%;min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:thin}
+ html.modo-arvore.arv-diagrama nav.appbar .facetas .faceta{min-width:110px;padding:6px 7px}
+ html.modo-arvore.arv-diagrama nav.appbar .facetas .ft small{font-size:9px}
+ html.modo-arvore.arv-diagrama nav.appbar .status,html.modo-arvore.arv-diagrama nav.appbar .spacer{display:none}
+ html.modo-arvore.arv-diagrama nav.appbar>.icobtn:not(#btnFiltrosMob){display:none}
+ html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-viz-controls{flex-wrap:wrap!important;gap:4px}
+ html.modo-arvore.arv-diagrama main.modulo>.arvcol>.arv-viz-controls .arv-viz-width{margin-left:auto}
+ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-buttons button[data-mind-action="home"],
+ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-buttons button[data-mind-action="first"]{display:none}
+ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-title{flex-basis:auto}
+}
 </style>
 </head>
 <body>
@@ -632,11 +745,11 @@ html.modo-arvore.arv-diagrama .arv-esquema{display:flex;flex-direction:column;ov
 
 <main class="sem-detalhe modulo" id="main" data-mod="juris">
   <aside class="arvcol" aria-label="Árvore de assuntos">
-    <div class="arv-h"><span class="lbl">▤ Árvore de assuntos</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
+    <div class="arv-h"><span class="lbl">◈ Explorador de assuntos e correspondências</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
     <input class="inp arv-q" placeholder="Filtrar áreas e temas…" autocomplete="off" spellcheck="false">
     <div class="arv-viz-controls" data-arv-controles="juris" aria-label="Visualização da árvore">
      <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Mapa mental</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
-     <div class="arv-viz-width"><label for="arvLargurajuris">Largura</label><input id="arvLargurajuris" type="range" min="35" max="92" value="78" aria-label="Largura da árvore em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
+     <div class="arv-viz-width"><label for="arvLargurajuris">Largura</label><input id="arvLargurajuris" type="range" min="45" max="100" value="100" aria-label="Largura do mapa em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
    </div>
    <div class="arv-esquema" data-arv-esquema="juris" tabindex="0" aria-label="Mapa mental jurídico com ramificações orgânicas"></div>
    <p class="arv-esq-guide">Clique nos <strong>nós</strong> para expandir ou recolher ramificações. Arraste o mapa e use zoom/ajustar. Os registros correspondentes aparecem no próprio painel.</p>
@@ -729,11 +842,11 @@ html.modo-arvore.arv-diagrama .arv-esquema{display:flex;flex-direction:column;ov
 <!-- ===================== MÓDULO MODELOS ===================== -->
 <main class="sem-detalhe modulo" id="mMod" data-mod="modelos" hidden>
   <aside class="arvcol" aria-label="Árvore de assuntos">
-    <div class="arv-h"><span class="lbl">▤ Árvore de assuntos</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
+    <div class="arv-h"><span class="lbl">◈ Explorador de assuntos e correspondências</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
     <input class="inp arv-q" placeholder="Filtrar áreas e temas…" autocomplete="off" spellcheck="false">
     <div class="arv-viz-controls" data-arv-controles="modelos" aria-label="Visualização da árvore">
      <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Mapa mental</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
-     <div class="arv-viz-width"><label for="arvLarguramodelos">Largura</label><input id="arvLarguramodelos" type="range" min="35" max="92" value="78" aria-label="Largura da árvore em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
+     <div class="arv-viz-width"><label for="arvLarguramodelos">Largura</label><input id="arvLarguramodelos" type="range" min="45" max="100" value="100" aria-label="Largura do mapa em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
    </div>
    <div class="arv-esquema" data-arv-esquema="modelos" tabindex="0" aria-label="Mapa mental jurídico com ramificações orgânicas"></div>
    <p class="arv-esq-guide">Clique nos <strong>nós</strong> para expandir ou recolher ramificações. Arraste o mapa e use zoom/ajustar. Os registros correspondentes aparecem no próprio painel.</p>
@@ -1883,6 +1996,7 @@ function arv7AplicarTodos(){
 }
 function arv7Render(){
   const box=$('arvModelos7');if(!box||!MODO_ARV||!MODS)return;
+  if(ARV_VISTA==='diagrama'){box.replaceChildren();const c=document.querySelector('#mMod .arv7-top b');if(c)c.textContent=MODS.length+' modelos disponíveis';arvEsquemaAgendar();return;}
   const q=semAcento((document.querySelector('#mMod .arv-q')?.value||'').trim());
   // Sempre permite localizar todos os registros do catálogo, independentemente do recorte operacional.
   const models=q?MODS.filter(m=>semAcento(arv7Path(m).join(' ')+' '+(m.nome||'')+' '+m.id).includes(q)):MODS;
@@ -2020,19 +2134,20 @@ document.addEventListener('click',e=>{
 
 /* ========= DIAGRAMA DE RAMOS, COLUNAS E CORRESPONDÊNCIAS ========= */
 let ARV_VISTA=LS.get('acv_arv_vista')==='lista'?'lista':'diagrama';
-let ARV_LARGURA=Math.max(35,Math.min(92,Number(LS.get('acv_arv_largura'))||78));
+let ARV_LARGURA=Math.max(45,Math.min(100,Number(LS.get('acv_arv_largura_v4'))||100));
 let ARV_MAX=false,ARV_SCHED=0;
 function arvAplicarLayout(){
  document.documentElement.classList.toggle('arv-diagrama',ARV_VISTA==='diagrama');
  document.documentElement.classList.toggle('arv-max',ARV_MAX);
- document.documentElement.style.setProperty('--cmt-arv-largura',ARV_LARGURA+'vw');
+ document.documentElement.style.setProperty('--cmt-arv-largura',ARV_LARGURA+'%');
  document.querySelectorAll('[data-arv-vista]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.arvVista===ARV_VISTA)));
  document.querySelectorAll('.arv-viz-width input').forEach(e=>{e.value=ARV_LARGURA;e.disabled=ARV_MAX});
  document.querySelectorAll('.arv-full-btn').forEach(b=>{b.setAttribute('aria-pressed',String(ARV_MAX));b.textContent=ARV_MAX?'↙ Restaurar':'⤢ Expandir'});
+ document.querySelectorAll('[data-mind-action="max"]').forEach(b=>{b.textContent=ARV_MAX?'↙ Restaurar':'⛶ Tela inteira';b.setAttribute('aria-pressed',String(ARV_MAX))});
 }
-function arvEscolherVista(v){if(!['lista','diagrama'].includes(v))return;ARV_VISTA=v;LS.set('acv_arv_vista',v);arvAplicarLayout();arvEsquemaAgendar()}
-function arvLargura(n){ARV_LARGURA=Math.max(35,Math.min(92,n));LS.set('acv_arv_largura',String(ARV_LARGURA));if(ARV_MAX)ARV_MAX=false;arvAplicarLayout()}
-function arvAlternarMax(){ARV_MAX=!ARV_MAX;arvAplicarLayout()}
+function arvEscolherVista(v){if(!['lista','diagrama'].includes(v))return;ARV_VISTA=v;LS.set('acv_arv_vista',v);arvAplicarLayout();if(v==='lista'){arvRender();arv7Render()}else arvEsquemaAgendar()}
+function arvLargura(n){ARV_LARGURA=Math.max(45,Math.min(100,n));LS.set('acv_arv_largura_v4',String(ARV_LARGURA));if(ARV_MAX)ARV_MAX=false;arvAplicarLayout()}
+function arvAlternarMax(){ARV_MAX=!ARV_MAX;arvAplicarLayout();requestAnimationFrame(()=>{const b=document.querySelector('[data-arv-esquema="'+(MODULO==='modelos'?'modelos':'juris')+'"]');const x=b&&CMT_MIND_INST.get(b);if(x)cmtMindFit(x)})}
 function arvEsquemaAgendar(){if(!MODO_ARV||ARV_SCHED)return;ARV_SCHED=requestAnimationFrame(()=>{ARV_SCHED=0;arvEsquemaRender()})}
 function arvEsqNorm(s){return semAcento(String(s||''))}
 
@@ -2183,7 +2298,7 @@ function cmtMindNodeContent(n,mode,sel){
 function cmtMindEnsure(box,mode){
  let s=CMT_MIND_INST.get(box);
  if(s&&s.mode===mode)return s;
- box.innerHTML=`<div class="cmt-mind-toolbar"><div class="cmt-mind-title"><b>Mapa de ramificações jurídicas</b><small data-mind-caption>Selecione um ramo para localizar os correspondentes</small></div><div class="cmt-mind-buttons" role="group" aria-label="Controles do mapa"><button type="button" data-mind-action="home" title="Voltar à raiz">↶ Raiz</button><button type="button" data-mind-action="close" title="Recolher todos os ramos">⊟ Recolher</button><button type="button" data-mind-action="first" title="Exibir dois níveis">⊞ Abrir nível</button><button type="button" data-mind-action="out" aria-label="Reduzir zoom">−</button><span class="cmt-mind-num" data-mind-percent>100%</span><button type="button" data-mind-action="in" aria-label="Aumentar zoom">+</button><button type="button" data-mind-action="fit" title="Ajustar mapa à área disponível">⤢ Ajustar</button></div></div><div class="cmt-mind-breadcrumb" data-mind-breadcrumb aria-label="Caminho atual"></div><div class="cmt-mind-viewport" tabindex="0" role="region" aria-label="Mapa mental interativo: arraste para mover, utilize os botões para zoom"><div class="cmt-mind-stage"><svg class="cmt-mind-edges" xmlns="http://www.w3.org/2000/svg"></svg></div><div class="cmt-mind-float" data-mind-hint>Arraste para mover · roda para aproximar · clique nos ramos</div></div><div class="cmt-mind-refs"><details open><summary data-mind-summary>Registros correspondentes</summary><div data-mind-results></div></details></div>`;
+ box.innerHTML=`<div class="cmt-mind-toolbar"><div class="cmt-mind-title"><b>Explorador de correspondências jurídicas</b><small data-mind-caption>Selecione um ramo para localizar os correspondentes</small></div><div class="cmt-mind-buttons" role="group" aria-label="Controles do mapa"><button type="button" data-mind-action="home" title="Voltar à raiz">↶ Raiz</button><button type="button" data-mind-action="close" title="Recolher todos os ramos">⊟ Recolher</button><button type="button" data-mind-action="first" title="Exibir dois níveis">⊞ Abrir principais</button><button type="button" data-mind-action="out" aria-label="Reduzir zoom">−</button><span class="cmt-mind-num" data-mind-percent>100%</span><button type="button" data-mind-action="in" aria-label="Aumentar zoom">+</button><button type="button" data-mind-action="fit" title="Ajustar mapa à área disponível">⤢ Ajustar</button><button type="button" data-mind-action="matches" title="Ver modelos ou precedentes deste ramo">☷ Correspondências</button><button type="button" data-mind-action="max" title="Expandir ou restaurar o mapa">⛶ Tela inteira</button></div></div><div class="cmt-mind-breadcrumb" data-mind-breadcrumb aria-label="Caminho atual"></div><div class="cmt-mind-viewport" tabindex="0" role="region" aria-label="Mapa mental interativo: arraste para mover, utilize os botões para zoom"><div class="cmt-mind-stage"><svg class="cmt-mind-edges" xmlns="http://www.w3.org/2000/svg"></svg></div><div class="cmt-mind-float" data-mind-hint>Arraste para mover · roda para aproximar · clique nos ramos</div></div><div class="cmt-mind-refs"><details><summary data-mind-summary>Registros correspondentes</summary><div data-mind-results></div></details></div>`;
  s={mode,box,viewport:box.querySelector('.cmt-mind-viewport'),stage:box.querySelector('.cmt-mind-stage'),svg:box.querySelector('.cmt-mind-edges'),nodes:new Map(),elements:new Map(),cam:{x:24,y:24,k:.88},didFit:false,signature:'',animation:0,oldPositions:new Map(),drag:null,contentW:500,contentH:500};
  CMT_MIND_INST.set(box,s);
  s.viewport.addEventListener('wheel',e=>{e.preventDefault();const r=s.viewport.getBoundingClientRect();cmtMindZoom(s,s.cam.k*(e.deltaY<0?1.105:.905),e.clientX-r.left,e.clientY-r.top)},{passive:false});
@@ -2191,9 +2306,9 @@ function cmtMindEnsure(box,mode){
  s.viewport.addEventListener('pointermove',e=>{if(!s.drag||s.drag.id!==e.pointerId)return;s.cam.x=s.drag.x+e.clientX-s.drag.sx;s.cam.y=s.drag.y+e.clientY-s.drag.sy;cmtMindApplyCam(s)});
  const stop=e=>{if(s.drag&&s.drag.id===e.pointerId)s.drag=null;s.viewport.classList.remove('grabbing')};
  s.viewport.addEventListener('pointerup',stop);s.viewport.addEventListener('pointercancel',stop);
- s.viewport.addEventListener('keydown',e=>{let act=null;if(e.key==='+'||e.key==='=')act='in';if(e.key==='-')act='out';if(e.key==='0')act='fit';if(act){e.preventDefault();cmtMindAct(s,act)}});
+ s.viewport.addEventListener('keydown',e=>{let act=null;if(e.key==='+'||e.key==='=')act='in';if(e.key==='-')act='out';if(e.key==='0')act='fit';const arrows={ArrowLeft:[95,0],ArrowRight:[-95,0],ArrowUp:[0,85],ArrowDown:[0,-85]};if(arrows[e.key]){e.preventDefault();s.cam.x+=arrows[e.key][0];s.cam.y+=arrows[e.key][1];cmtMindApplyCam(s);return}if(act){e.preventDefault();cmtMindAct(s,act)}});
  s.box.addEventListener('click',e=>{
-  const action=e.target.closest('[data-mind-action]');if(action){cmtMindAct(s,action.dataset.mindAction);return}
+  const action=e.target.closest('[data-mind-action]');if(action){e.preventDefault();cmtMindAct(s,action.dataset.mindAction);return}
   const crumb=e.target.closest('[data-mind-crumb]');if(crumb){const depth=+crumb.dataset.mindCrumb;const path=(s.selected||[]).slice(0,depth);cmtMindSelect(s,path);return}
   const btn=e.target.closest('[data-mind-node]');if(!btn)return;
   const n=s.nodes.get(btn.dataset.mindNode)||s.dynamicNodes?.get(btn.dataset.mindNode);if(!n)return;
@@ -2211,15 +2326,18 @@ function cmtMindEnsure(box,mode){
 }
 function cmtMindApplyCam(s){s.stage.style.transform=`translate(${s.cam.x}px,${s.cam.y}px) scale(${s.cam.k})`;const el=s.box.querySelector('[data-mind-percent]');if(el)el.textContent=Math.round(s.cam.k*100)+'%'}
 function cmtMindZoom(s,k,px=s.viewport.clientWidth/2,py=s.viewport.clientHeight/2){k=Math.max(.22,Math.min(2.25,k));const old=s.cam.k;s.cam.x=px-(px-s.cam.x)*(k/old);s.cam.y=py-(py-s.cam.y)*(k/old);s.cam.k=k;cmtMindApplyCam(s)}
-function cmtMindFit(s,initial=false){const w=s.viewport.clientWidth,h=s.viewport.clientHeight;if(w<1||h<1)return;const optimal=Math.min(1.2,(w-60)/Math.max(s.contentW,1),(h-66)/Math.max(s.contentH,1));const k=initial?Math.max(.53,Math.min(1.05,optimal)):Math.max(.22,optimal);s.cam.k=k;s.cam.x=Math.max(20,(w-s.contentW*k)/2);s.cam.y=(h-s.contentH*k)/2;cmtMindApplyCam(s)}
+function cmtMindFit(s,initial=false){const w=s.viewport.clientWidth,h=s.viewport.clientHeight;if(w<1||h<1)return;const optimal=Math.min(1.2,(w-60)/Math.max(s.contentW,1),(h-66)/Math.max(s.contentH,1));const k=initial?Math.max(.24,Math.min(1.06,optimal)):Math.max(.20,optimal);s.cam.k=k;s.cam.x=Math.max(20,(w-s.contentW*k)/2);s.cam.y=Math.max(10,(h-s.contentH*k)/2);cmtMindApplyCam(s)}
 function cmtMindAct(s,action){
  const mode=s.mode;const open=CMT_MIND_OPEN[mode];
  if(action==='in'||action==='out'){cmtMindZoom(s,s.cam.k*(action==='in'?1.2:1/1.2));return}
  if(action==='fit'){cmtMindFit(s);return}
+ if(action==='matches'){const d=s.box.querySelector('.cmt-mind-refs details');if(d)d.open=!d.open;return}
+ if(action==='max'){arvAlternarMax();return}
  if(action==='close'||action==='home'){open.clear();open.add(mode+':root');CMT_MIND_MORE[mode].clear();if(action==='home'){cmtMindSelect(s,[],s.tree?.root);return}cmtMindLayout(s,s.tree?.root);return}
  if(action==='first'&&s.tree){open.add(mode+':root');s.tree.root.sorted.slice(0,12).forEach(n=>open.add(n.id));cmtMindLayout(s,s.tree.root);return}
 }
 function cmtMindSelect(s,path,anchor){
+ if(s.mode==='modelos'&&!$('mMod').classList.contains('sem-detalhe'))fecharLateral('modelos');
  if(s.mode==='modelos'){ARV7_ESCOLHA=path.length?path:null;arv7AplicarTodos()}
  else{arvSel([path[0]||null,path[1]||null,path[2]||null])}
  s.selected=path;
@@ -2255,6 +2373,7 @@ function cmtMindLayout(s,anchor){
  s.stage.style.width=s.contentW+'px';s.stage.style.height=s.contentH+'px';
  s.svg.setAttribute('width',String(s.contentW));s.svg.setAttribute('height',String(s.contentH));
  if(oldAnchor&&anchor?.pos){s.cam.x+=(oldAnchor.x-anchor.pos.x)*s.cam.k;s.cam.y+=(oldAnchor.y-anchor.pos.y)*s.cam.k;cmtMindApplyCam(s)}
+ if(anchor?.pos&&anchor.drawChildren?.length){const child=anchor.drawChildren[0];if(child.pos){const right=(child.pos.x+child.w)*s.cam.k+s.cam.x;const vw=s.viewport.clientWidth;if(right>vw-36)s.cam.x-=Math.min(Math.max(0,right-vw+36),Math.max(0,(child.pos.x-anchor.pos.x-35)*s.cam.k));cmtMindApplyCam(s)}}
  const before=s.oldPositions;const after=new Map(nodes.map(n=>[n.id,{x:n.pos.x,y:n.pos.y,w:n.w,h:n.h}]));
  // Posições CSS interpoladas; conectores SVG seguem o mesmo movimento por quadro.
  requestAnimationFrame(()=>{for(const n of nodes){const el=s.elements.get(n.id);if(!el)continue;el.style.left=n.pos.x+'px';el.style.top=n.pos.y+'px';el.classList.remove('is-new')}});
@@ -2278,7 +2397,7 @@ function cmtMindRender(box,mode){
  const src=cmtMindSource(mode,box);const s=cmtMindEnsure(box,mode);
  const first=src.records[0]?.id||'',last=src.records[src.records.length-1]?.id||'';
  const signature=mode+'|'+src.records.length+'|'+first+'|'+last+'|'+src.q+'|'+(mode==='modelos'?ARV_QUALIDADE:'');
- if(signature!==s.signature){s.signature=signature;s.tree=cmtMindBuild(mode,src.records,src.access);s.didFit=false;s.oldPositions.clear();s.elements.forEach(el=>el.remove());s.elements.clear();}
+ if(signature!==s.signature){s.signature=signature;s.tree=cmtMindBuild(mode,src.records,src.access);s.nodes=s.tree.nodes;s.didFit=false;s.oldPositions.clear();s.elements.forEach(el=>el.remove());s.elements.clear();}
  s.records=src.records;s.access=src.access;s.selected=src.path.slice();
  cmtMindLayout(s,s.tree.nodes.get(cmtMindKey(mode,s.selected))||s.tree.root);
  cmtMindResults(s,src.records,src.access,src.path);
