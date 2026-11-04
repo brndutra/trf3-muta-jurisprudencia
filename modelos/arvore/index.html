@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modelos Muta · Árvore temática + Consulta Git</title>
+<style>
+:root{--navy:#193753;--navy2:#244d6d;--deep:#102b3a;--ink:#1e3143;--mut:#65798c;--line:#dae3eb;--pale:#eef3f7;--bg:#edf1f5;--white:#fff;--green:#23724f;--warn:#95611b;--gold:#d69b42}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);font:13px/1.45 'Segoe UI',Inter,system-ui,sans-serif;color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #5797c7;outline-offset:2px}
+header.top{background:var(--navy);color:white;padding:19px max(20px,calc((100vw - 1750px)/2));display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:3px solid #acc4d7}.brand{display:flex;align-items:center;gap:13px}.logo{width:43px;height:43px;display:grid;place-items:center;border-radius:11px;background:#ffffff17;border:1px solid #ffffff30;font-weight:850;letter-spacing:-1.5px;font-size:17px}.brand h1{margin:0;font-size:18px;font-weight:800;letter-spacing:-.025em}.brand p{margin:3px 0 0;color:#c6d7e4;font-size:11px}.top .sp{flex:1}.topactions{display:flex;flex-wrap:wrap;gap:6px}.btn{border:1px solid var(--line);background:#fff;border-radius:8px;color:#2c4b65;font-weight:700;padding:8px 12px;min-height:34px}.btn:hover{background:#eaf3fa}.btn.primary{background:#d4e6f2;color:#193c59;border-color:#d4e6f2}.btn.dark{background:var(--navy);color:#fff;border-color:var(--navy)}.top .btn{background:#ffffff17;color:#fff;border-color:#ffffff37}.top .btn:hover{background:#ffffff30}.top .btn.primary{background:#d5e7f2;color:#193753}
+.shell{max-width:1810px;margin:auto;padding:16px 18px 32px}.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-bottom:13px}.stat{background:#fff;border:1px solid var(--line);padding:11px 14px;border-radius:11px}.stat .k{font-size:10px;color:#708397;font-weight:800;text-transform:uppercase;letter-spacing:.07em}.stat .v{font-size:22px;line-height:1.3;color:var(--navy);font-weight:850;margin-top:4px}.stat .mini{font-size:10px;color:var(--mut)}.stat.amber .v{color:var(--warn)}
+.toolbar{background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px;margin:0 0 13px;display:grid;grid-template-columns:minmax(180px,2.3fr) repeat(4,minmax(120px,1fr));gap:9px}.field{display:flex;flex-direction:column;gap:4px;min-width:0}.field label{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#71859a}.field input,.field select{height:34px;border:1px solid #d8e1e9;border-radius:7px;background:#f8fafc;padding:0 9px;min-width:0;width:100%;color:#2c4359}.grid{display:grid;grid-template-columns:minmax(305px,410px) minmax(360px,1fr);gap:13px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;min-width:0}.pane-title{display:flex;align-items:center;gap:9px;background:#f8fafc;border-bottom:1px solid var(--line);padding:10px 13px}.pane-title b{color:var(--navy);font-size:12px}.pane-title span{margin-left:auto;font-size:10px;font-weight:650;color:var(--mut)}.tree-scroll{height:calc(100vh - 320px);min-height:400px;overflow:auto;padding:7px 8px 12px}.tree-node{margin:2px 0}.tree-node>summary{list-style:none;display:flex;align-items:center;gap:5px;border-radius:7px;padding:8px 7px;cursor:pointer;font-weight:760;color:#314d64}.tree-node>summary:hover{background:#f1f5f9}.tree-node>summary::-webkit-details-marker{display:none}.tree-node>summary::before{content:'›';font-weight:900;font-size:16px;line-height:10px;transform:rotate(0);transition:transform .1s;color:#899eb0;width:12px;text-align:center}.tree-node[open]>summary::before{transform:rotate(90deg)}.tree-node.lv1>summary{background:#eaf1f7;color:var(--navy);margin-top:6px;font-size:11.5px}.tree-node.lv2{margin-left:9px}.tree-node.lv2>summary{font-weight:750;font-size:11.5px}.tree-node.lv3{margin-left:12px}.tree-node.lv3>summary{font-size:11px;font-weight:670}.tree-node.lv4{margin-left:13px}.tree-node.lv4>summary{font-size:10.8px;color:#5a7288}.count{margin-left:auto;flex:none;min-width:23px;text-align:center;background:#e7edf2;color:#526b80;padding:2px 6px;border-radius:99px;font:800 10px system-ui}.tree-node.lv1 .count{background:#dcebf5;color:#24557c}.leaf{margin:2px 0 2px 25px;width:calc(100% - 25px);border:1px solid transparent;border-radius:7px;background:transparent;text-align:left;color:#3b536a;padding:7px;display:flex;gap:8px;align-items:flex-start}.leaf:hover{background:#f1f5f9}.leaf.active{background:#e7f1fa;border-color:#adc7dd}.leaf>i{font-style:normal;font:700 9px/1.45 ui-monospace,monospace;color:#7190a9;white-space:nowrap}.leaf>span{min-width:0;font-size:10.5px;overflow-wrap:anywhere}.leaf small{display:block;color:#8a9aaa;font-size:9.3px;margin-top:3px}
+.body-panel{min-height:540px}.empty{margin:15px;padding:28px 18px;border:1px dashed #cbd8e3;border-radius:10px;text-align:center;color:#698096;background:#f8fafc}.empty strong{display:block;font-size:13px;color:#3f5870;margin-bottom:7px}.message{background:#fff6e7;color:#7e4b1a;border:1px solid #e7cb9d;border-radius:9px;padding:12px 14px;margin-bottom:13px;display:none}.message.show{display:block}.detail{padding:14px 17px 21px}.detail-head{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}.detail h2{font-size:16px;line-height:1.4;letter-spacing:-.02em;color:var(--navy);margin:4px 0 6px}.idtag{font:700 10px/1.3 ui-monospace,monospace;padding:4px 7px;background:#edf3f8;border-radius:5px;color:#2b5b7b}.pills{display:flex;gap:5px;flex-wrap:wrap;margin:9px 0}.pill{border-radius:99px;padding:4px 8px;background:#eef3f7;color:#496780;font:750 10px system-ui}.pill.ok{background:#e9f5ee;color:#30754d}.pill.warn{background:#fff4df;color:#8f671c}.pane-section{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}.pane-section h3{font-size:10px;color:#56728a;text-transform:uppercase;letter-spacing:.1em;margin:0 0 8px;font-weight:850}.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.fact{background:#f5f8fa;border-radius:7px;padding:8px 9px;min-width:0}.fact label{font-size:9px;color:#7b8fa0;text-transform:uppercase;font-weight:750;letter-spacing:.04em;display:block}.fact b{font-size:11px;display:block;margin-top:3px;color:#324e66;overflow-wrap:anywhere}.theme{font-size:12px;line-height:1.6;color:#435b71;background:#f6f9fb;border-left:3px solid #b2c9dc;padding:10px;border-radius:4px;white-space:pre-wrap}.code-copy{display:flex;justify-content:space-between;align-items:center;gap:9px;margin:10px 0 7px}.code-copy b{font-size:11px;color:#315773}.textmodel{max-height:500px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #dce5ec;border-radius:9px;padding:16px 18px;background:#fafbfd;color:#2b4053;font:13px/1.72 Georgia,serif}.block-list{display:grid;gap:6px}.block-it{padding:8px;background:#f6f9fb;border:1px solid #e1e9ef;border-radius:7px}.block-it b{font-size:10px;color:#315b7a}.block-it p{white-space:pre-wrap;margin:4px 0;font:11px/1.5 Georgia,serif}.inline-edit{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin-top:8px}.inline-edit select,.inline-edit input{height:34px;border:1px solid var(--line);border-radius:7px;padding:0 8px;background:#fff;min-width:0;width:100%}.fine{font-size:10px;color:#7c8fa0;line-height:1.55;margin:5px 0}.footer{font-size:10px;color:#8393a2;padding:17px 3px}.spinner{height:12px;width:12px;border:2px solid #c8dce9;border-top-color:#295e81;border-radius:50%;display:inline-block;animation:spin 1s linear infinite;vertical-align:middle;margin-right:4px}@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:1120px){.toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}.stats{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:minmax(290px,360px) minmax(0,1fr)}}@media(max-width:760px){.shell{padding:9px}.top{padding:13px!important}.stats{grid-template-columns:repeat(2,1fr)}.toolbar{grid-template-columns:1fr 1fr}.toolbar .field:first-child{grid-column:1/-1}.grid{grid-template-columns:1fr}.tree-scroll{height:380px;min-height:250px}.facts{grid-template-columns:1fr 1fr}.inline-edit{grid-template-columns:1fr}.topactions .btn{font-size:11px}}
+
+.ranking-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin:0 0 13px}.ranking-head{display:flex;align-items:start;justify-content:space-between;gap:14px;flex-wrap:wrap}.ranking-head h2{font-size:15px;color:var(--navy);margin:0 0 5px}.ranking-head p{font-size:11px;color:var(--mut);margin:0 0 12px;max-width:720px}.ranking-actions{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--mut)}.ranking-actions select,.ranking-actions button{border:1px solid var(--line);background:#f7f9fb;color:var(--navy);padding:7px 9px;border-radius:7px;font-size:11px}.ranking-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px}.ranking-row{display:grid;grid-template-columns:26px minmax(0,1fr) 65px;gap:9px;align-items:center;border:1px solid #e7edf1;background:#fbfcfd;border-radius:8px;padding:8px;text-align:left;color:var(--ink)}.ranking-row:hover{background:#eef5fa;border-color:#b5cfdf}.ranking-no{font:800 10px ui-monospace,monospace;color:#71879b}.ranking-info{min-width:0}.ranking-info strong{display:block;font-size:11.5px;color:#254d6d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ranking-info small{display:block;color:var(--mut);font-size:9.5px;margin:2px 0 5px}.ranking-track{height:5px;background:#e9eff3;border-radius:10px;overflow:hidden}.ranking-track i{height:100%;display:block;background:#3b779d;border-radius:10px}.ranking-value{text-align:right;font:800 18px system-ui;color:var(--navy)}.ranking-value small{display:block;font:600 9px system-ui;color:var(--mut)}.ranking-foot{font-size:10px;color:var(--mut);margin-top:10px}.ranking-row.active{border-color:#6898b7;background:#edf6fa}@media(max-width:740px){.ranking-list{grid-template-columns:1fr}}
+
+/* Navegação integrada Git / árvore */
+.workspace-nav{max-width:1810px;margin:12px auto 0;padding:0 18px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.workspace-nav button,.workspace-nav a{border:1px solid #cddbe6;background:#fff;color:#33556e;border-radius:9px;padding:9px 13px;font-size:12px;font-weight:800;text-decoration:none}
+.workspace-nav button[aria-selected=true]{background:#193753;color:white;border-color:#193753}
+.workspace-nav .info{margin-left:auto;color:#697f91;font-size:10px}
+.git-panel{max-width:1810px;margin:13px auto;padding:0 18px 30px;display:none}
+.git-panel.active{display:block}
+.git-panel .gitbar{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:12px 15px;background:#fff;border:1px solid var(--line);border-radius:10px 10px 0 0;flex-wrap:wrap}
+.git-panel iframe{width:100%;height:min(79vh,1000px);min-height:530px;border:1px solid var(--line);border-top:0;background:#fff;border-radius:0 0 10px 10px}
+.git-panel a{font-size:11px;font-weight:750;color:#21577f}
+.cmt-path{display:flex;gap:4px;flex-wrap:wrap;margin:6px 0 12px}
+.cmt-path span{background:#eef3f7;color:#3f5c73;border-radius:5px;padding:4px 6px;font-size:10px;font-weight:680;max-width:100%}
+.cmt-path span:after{content:' ›';margin-left:7px;color:#8fa6b7}.cmt-path span:last-child:after{content:''}
+.facets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:10px 0}
+.facets .fact{border:1px solid #dde8ef}
+.edit-facets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.edit-facets label{display:flex;flex-direction:column;gap:3px;color:#607c91;font-size:10px;font-weight:700}
+.edit-facets input,.edit-facets select{padding:7px;border:1px solid var(--line);border-radius:6px;min-width:0;width:100%;font-size:11px}
+.edit-facets button{align-self:end}
+.tree-node.lv5,.tree-node.lv6,.tree-node.lv7{margin-left:10px}
+.tree-node.lv5>summary,.tree-node.lv6>summary,.tree-node.lv7>summary{font-size:10.4px;font-weight:620;color:#5d7287;padding:6px 7px}
+.tree-node.lv7>summary{color:#3a5b74;font-weight:770}
+.tree-node.lv1>summary{justify-content:flex-start}
+.tree-node.lv1 .area-label{margin-left:5px;font-size:9px;color:#7391a7;font-weight:560;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tree-scroll{height:calc(100vh - 312px);min-height:470px}
+#workShell[hidden]{display:none!important}
+@media(max-width:760px){.workspace-nav{padding:0 9px}.workspace-nav .info{display:none}.edit-facets,.facets{grid-template-columns:1fr}.git-panel{padding:0 9px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand"><div class="logo">CM</div><div><h1>Árvore de Modelos <span style="opacity:.75;font-weight:500">· Jurisprudência Muta</span></h1><p>Assunto → Classe/Espécie → Julgamento → Subassunto → Questão → Especificidades → Resultado · Fonte: GitHub</p></div></div><div class="sp"></div><div class="topactions"><button class="btn" id="reload">↻ Atualizar do Git</button><button class="btn" id="exportCsv" disabled>CSV</button><button class="btn" id="exportIdx" disabled>Índice JSON</button><button class="btn primary" id="exportAll" disabled>Árvore completa JSON</button></div></header>
+<nav class="workspace-nav" aria-label="Áreas da consulta">
+<button id="showTree" aria-selected="true">Árvore de modelos e ranking</button>
+<button id="showGit" aria-selected="false">Consulta Git · Jurisprudência</button>
+<a href="https://brndutra.github.io/trf3-muta-jurisprudencia/central/" target="_blank" rel="noopener noreferrer">Abrir Central do Git ↗</a>
+<a href="https://brndutra.github.io/trf3-muta-jurisprudencia/consulta/" target="_blank" rel="noopener noreferrer">Consulta de decisões ↗</a>
+<span class="info">Somente o GitHub fornece o conteúdo dos modelos</span>
+</nav>
+<section class="git-panel" id="gitPanel" aria-label="Consulta Git integrada"><div class="gitbar"><div><strong>Central do repositório · Paradigmas / Acervo / Minutas</strong><div class="fine">Consulta original em painel integrado; se a página externa bloquear incorporação, use o link ao lado.</div></div><a href="https://brndutra.github.io/trf3-muta-jurisprudencia/central/" target="_blank" rel="noopener noreferrer">Abrir em nova guia ↗</a></div><iframe id="gitFrame" title="Central de consulta de jurisprudência Carlos Muta" loading="lazy" referrerpolicy="no-referrer"></iframe></section>
+<div class="shell" id="workShell">
+  <div class="stats"><div class="stat"><div class="k">Modelos catalogados</div><div class="v" id="st-total">—</div><div class="mini">IDs canônicos preservados</div></div><div class="stat"><div class="k">Assuntos consolidados</div><div class="v" id="st-sub">—</div><div class="mini">Grupos jurídicos da árvore</div></div><div class="stat"><div class="k">Acórdãos / votos</div><div class="v" id="st-votos">—</div><div class="mini">Pronunciamento colegiado</div></div><div class="stat"><div class="k">Monocráticas</div><div class="v" id="st-mono">—</div><div class="mini">Decisões singulares</div></div><div class="stat amber"><div class="k">Exigem revisão temática</div><div class="v" id="st-revisao">—</div><div class="mini">Classificação conservadora</div></div></div>
+  <section id="ranking-panel" class="ranking-panel"><div class="ranking-head"><div><h2>1ª etapa · Assuntos com maior incidência</h2><p>Contagem de <strong>modelos</strong> por tema inferido; não de processos. Clique para filtrar a árvore. Classificações marcadas para revisão não são presumidas.</p></div><div class="ranking-actions"><label for="ranking-limit">Exibir</label><select id="ranking-limit"><option value="10">10 primeiros</option><option value="20" selected>20 primeiros</option><option value="50">50 primeiros</option><option value="999">Todos</option></select><button id="ranking-reset">Limpar seleção</button></div></div><div id="ranking-list" class="ranking-list"><div class="empty">Aguardando leitura do catálogo Git…</div></div><div id="ranking-foot" class="ranking-foot">Fonte exclusiva: modelos/modelos.json · Número de modelos por assunto · Agrupamento temático inferido para auditoria.</div></section>
+  <div id="msg" class="message" role="status"></div>
+  <div class="toolbar"><div class="field"><label for="q">Buscar por matéria, processo, ID, texto ou palavra-chave</label><input id="q" autocomplete="off" placeholder="Ex.: aposentadoria rural, PIS/COFINS, MOD-TRMS..."/></div><div class="field"><label for="phase">Fase do gabinete</label><select id="phase"><option value="">Todas as fases</option><option value="TRMS">Turma Regional de MS</option><option value="1T">1ª Turma</option><option value="3T">3ª Turma</option></select></div><div class="field"><label for="kind">Tipo de documento</label><select id="kind"><option value="">Votos e decisões</option><option value="acórdão">Acórdão / voto</option><option value="monocrática">Monocrática</option></select></div><div class="field"><label for="res">Resultado</label><select id="res"><option value="">Todos os resultados</option></select></div><div class="field"><label for="quality">Classificação temática</label><select id="quality"><option value="">Todas</option><option value="alta">Identificação específica</option><option value="media">Identificação contextual</option><option value="revisar">Exige revisão</option></select></div></div>
+  <div class="grid">
+    <div class="panel"><div class="pane-title"><b>Árvore temática · sete níveis até o modelo</b><span id="viewCount">Carregando...</span></div><div class="tree-scroll" id="tree"><div class="empty"><span class="spinner"></span> Lendo catálogo do Git...</div></div><div style="padding:9px 12px;border-top:1px solid var(--line);display:flex;gap:5px;flex-wrap:wrap"><button class="btn" id="expand">Expandir</button><button class="btn" id="collapse">Recolher</button><button class="btn" id="clear">Limpar filtros</button></div></div>
+    <div class="panel body-panel"><div class="pane-title"><b>Registro canônico / auditoria</b><span id="sourceLabel">Repositório GitHub</span></div><div id="detail"><div class="empty"><strong>Selecione um modelo na árvore</strong>Classificação na ordem: assunto, espécie, julgamento, subassunto, questão, especificidade e resultado. A seleção exibe o texto original, os metadados e os blocos do modelo, sem os reescrever.</div></div></div>
+  </div>
+  <div class="footer">Fonte exclusiva: <a href="https://github.com/brndutra/trf3-muta-jurisprudencia/blob/main/modelos/modelos.json" target="_blank" rel="noopener noreferrer">brndutra/trf3-muta-jurisprudencia / modelos/modelos.json</a>. Índice temático derivado somente em memória; não altera o repositório e não usa localStorage. As classificações são sugestões para revisão humana, não equivalem ao campo oficial de assunto do PJe.</div>
+</div>
+<script>
+'use strict';
+const REPO='https://raw.githubusercontent.com/brndutra/trf3-muta-jurisprudencia/main/modelos/modelos.json';
+const AREA_ORDER=['Previdenciário e assistencial','Tributário e fiscal','Administrativo e serviço público','Civil, imobiliário e consumidor','Processual civil','Constitucional e outros ramos','Assunto a classificar'];
+const STATE={raw:[],records:[],chosen:null,expanded:false,loadError:null};
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
+const cleanTitle=x=>String(x||'').trim().replace(/^\s*(direito|processual)\s+/i,'');
+// Classificação temática determinística; nunca altera os dados canônicos nem gera conteúdo jurídico.
+function classify(m){
+ const theme=String(m.tema||'');
+ const evidence=[theme,m.abertura,m.ementa_modelo].filter(Boolean).join(' · ');
+ const k=(m.palavras_chave||[]).join(' ');
+ // Contexto preferencial: tema/abertura/ementa. A fundamentação integral só pode auxiliar como contexto, não como fonte de novo modelo.
+ const head=normalize(evidence.slice(0,1500));
+ const short=normalize((evidence+' '+k).slice(0,2400));
+ const extra=normalize(String(m.modelo||'').slice(0,1450));
+ const t=short || extra;
+ function yes(re,from=t){return re.test(from)}
+ function out(area,assunto,qualidade='alta'){return {area,assunto,qualidade,temaOriginal:theme}}
+ const PRE='Previdenciário e assistencial',TAX='Tributário e fiscal',ADM='Administrativo e serviço público',CIV='Civil, imobiliário e consumidor',PROC='Processual civil',OUT='Constitucional e outros ramos';
+ // Marcadores específicos de matéria têm precedência sobre questões meramente processuais.
+ if(yes(/\b(aposentadoria por idade hibrida|aposentadoria hibrida|idade hibrida)\b/))return out(PRE,'Aposentadoria por idade híbrida');
+ if(yes(/\b(aposentadoria por idade rural|idade rural|segurad[oa] especial rural|labor rural|atividade rural)\b/))return out(PRE,'Aposentadoria por idade rural');
+ if(yes(/\b(aposentadoria por idade urbana|idade urbana)\b/))return out(PRE,'Aposentadoria por idade urbana');
+ if(yes(/\b(aposentadoria por tempo de contribuicao|aposentadoria especial|tempo especial|atividade especial|tempo de contribuicao|conversao de tempo especial|agentes nocivos)\b/))return out(PRE,'Tempo de contribuição e atividade especial');
+ if(yes(/\b(aposentadoria por invalidez|auxilio.doenca|incapacidade laboral|beneficio por incapacidade|incapacidade permanente|incapacidade temporaria|pericia medica previdenciaria)\b/))return out(PRE,'Benefícios por incapacidade');
+ if(yes(/\b(bpc\b|loas\b|beneficio de prestacao continuada|beneficio assistencial|impedimento de longo prazo)\b/))return out(PRE,'Benefício assistencial (BPC/LOAS)');
+ if(yes(/\b(pensao por morte|dependencia previdenciaria|qualidade de dependente)\b/))return out(PRE,'Pensão por morte');
+ if(yes(/\b(salario.maternidade|auxilio.reclusao|auxilio.acidente|beneficio acidentario|salario.familia)\b/)&&!yes(/\b(contribuicao patronal|tribut|custeio|folha de salario|incidencia)\b/))return out(PRE,'Outros benefícios previdenciários');
+ if(yes(/\b(revisao de beneficio|renda mensal inicial|revisao da rmi|revisao da vida toda|reajuste de beneficio|fator previdenciario)\b/))return out(PRE,'Revisão, cálculo e manutenção de benefícios');
+ // Tributos e contribuições.
+ if(yes(/\b(pis\b|cofins\b|pasep\b|contribuicao ao pis|faturamento|nao cumulatividade|monofasia)\b/) && (yes(/\b(pis|cofins|pasep|base de calculo|monofasia)\b/)))return out(TAX,'PIS/PASEP e COFINS');
+ if(yes(/\b(irpj\b|csll\b|imposto de renda da pessoa juridica|lucro presumido|lucro real|contribuicao social sobre o lucro)\b/))return out(TAX,'IRPJ e CSLL');
+ if(yes(/\b(sat\/rat|rat\/sat|sest|senat|salario.educacao|fnde\b|sistema s|sebrae|contribuic[a-z]+ a terceiros|terceiras entidades|contribuicao previdenciaria patronal|contribuicoes previdenciarias patronais|folha de salarios|contribuicao ao inss)\b/))return out(TAX,'Contribuições sociais, folha e terceiros');
+ if(yes(/\b(icms\b|issqn\b|iss\b|ipi\b|icms.st\b)\b/))return out(TAX,'ICMS, ISS e IPI');
+ if(yes(/\b(execucao fiscal|excecao de pre.executividade|divida ativa|certidao de divida ativa|redirecionamento da execucao|penhora fiscal|embargos a execucao fiscal|lei de execucoes fiscais|ajuizamento de execucoes fiscais)\b/))return out(TAX,'Execução fiscal e dívida ativa');
+ if(yes(/\b(compensacao tributaria|repeticao do indebito tributario|indebito fiscal|credito tributario|compensacao de tributos|tributo indevido|ressarcimento tributario)\b/))return out(TAX,'Compensação, restituição e crédito tributário');
+ if(yes(/\b(imposto de importacao|aduaneir|importacao|exportacao|siscomex|despacho aduaneiro|pena de perdimento)\b/))return out(TAX,'Aduaneiro e comércio exterior');
+ if(yes(/\b(simples nacional|lucro arbitrado|itbi\b|iof\b|iptu\b|taxa de fiscalizacao|taxa de utilizacao)\b/))return out(TAX,'Regimes de tributação e tributos diversos');
+ // Direito civil e consumo: contratos/financiamento não confundidos com direito processual.
+ if(yes(/\b(minha casa minha vida|vicios construtivos|vicio construtivo|atraso na entrega de imovel|financiamento imobiliario|sistema financeiro da habitacao|sfh\b|adjudicacao compulsoria|alienacao fiduciaria de imovel)\b/))return out(CIV,'Habitação, imóveis e financiamento');
+ if(yes(/\b(contrato bancario|instituicao financeira|cartao de credito|credito consignado|capitalizacao de juros|financiamento bancario|emprestimo bancario|banco do brasil|cef\b)\b/))return out(CIV,'Contratos bancários e serviços financeiros');
+ if(yes(/\b(dano moral|danos morais|danos materiais|responsabilidade civil|indenizacao por dano|fraude bancaria|defeito do servico|relacao de consumo|codigo de defesa do consumidor|direito do consumidor)\b/))return out(CIV,'Responsabilidade civil, indenização e consumo');
+ // Regime de servidor / Administração.
+ if(yes(/\b(servidor publico|servidora publica|aposentadoria de servidor|pensao estatutaria|gratificacao de desempenho|remuneracao de servidor|carreira federal|licenca premio)\b/))return out(ADM,'Servidor público e regime estatutário');
+ if(yes(/\b(concurso publico|nomeacao|posse em cargo|candidato aprovado|certame|processo seletivo)\b/))return out(ADM,'Concurso público e provimento de cargos');
+ if(yes(/\b(militar|reintegracao militar|licenciamento militar|forcas armadas|exercito brasileiro)\b/))return out(ADM,'Militares e reintegração');
+ if(yes(/\b(conselho profissional|conselhos profissionais|oab\b|crea\b|crm\b|cro\b|anuidade de conselho|exercicio profissional|registro profissional)\b/))return out(ADM,'Conselhos e exercício profissional');
+ if(yes(/\b(fies\b|enade\b|ensino superior|universidade federal|revalida\b|diploma|residencia medica|financiamento estudantil)\b/))return out(ADM,'Educação superior, FIES e diplomas');
+ if(yes(/\b(licitacao|contrato administrativo|pregao|empresa publica|concessao administrativa|improbidade administrativa)\b/))return out(ADM,'Contratos e responsabilidade administrativa');
+ if(yes(/\b(processo administrativo|prazo administrativo|procedimento administrativo|demora administrativa|administracao publica|autoridade coatora)\b/)&&!yes(/\b(irpj|csll|pis|cofins|tribut|previdenci|inss|bpc|loas)\b/))return out(ADM,'Procedimentos e atos administrativos');
+ // Processual / comum.
+ if(yes(/\b(desercao|intempestividade|preparo recursal|nao conhecimento|inovacao recursal|dialeticidade|cabimento de agravo|taxatividade mitigada|pressupostos recursais)\b/))return out(PROC,'Admissibilidade e pressupostos recursais','media');
+ if(yes(/\b(embargos de declaracao|omissao|obscuridade|contradicao|erro material|prequestionamento|vicios do acordao)\b/) && m.especie==='Embargos de declaração')return out(PROC,'Vícios do julgado e embargos de declaração','media');
+ if(yes(/\b(tutela provisoria|tutela de urgencia|tutela antecipada|efeito suspensivo|liminar|periculum|probabilidade do direito)\b/))return out(PROC,'Tutelas provisórias e efeitos recursais','media');
+ if(yes(/\b(cumprimento de sentenca|execucao de sentenca|titulo judicial|execucao individual|liquidacao de sentenca|acao coletiva|sentenca coletiva)\b/))return out(PROC,'Cumprimento de sentença e títulos judiciais','media');
+ if(yes(/\b(competencia absoluta|competencia da justica federal|competencia do juizado|conflito de competencia|incompetencia|valor da causa)\b/))return out(PROC,'Competência e jurisdição','media');
+ if(yes(/\b(honorarios recursais|honorarios sucumbenciais|honorarios advocaticios|sucumbencia|gratuidade de justica|custas processuais|distribuicao por equidade)\b/))return out(PROC,'Honorários, custas e sucumbência','media');
+ if(yes(/\b(prescricao|decadencia|prazo processual|prazo recursal|perda superveniente do objeto|superveniencia de sentenca)\b/))return out(PROC,'Prazos, prescrição e fatos supervenientes','media');
+ if(yes(/\b(mandado de seguranca|acao rescisoria|acao civil publica|procedimento comum|litigancia de ma.fe)\b/))return out(PROC,'Procedimentos e ações especiais','media');
+ // Família temática pelo texto disponível, sem inferir a partir das fórmulas universais dos modelos.
+ if(yes(/\b(previdenciari|beneficio previdenciario|segurado especial|segurado do inss)\b/))return out(PRE,'Outros assuntos previdenciários','media');
+ if(yes(/\b(tributari|fiscal|imposto|tributo|contribuicao social|contribuicao previdenciaria)\b/))return out(TAX,'Outros assuntos tributários','media');
+ if(yes(/\b(administrativ|autarquia|federal|poder publico|interesse publico)\b/,head))return out(ADM,'Outros assuntos administrativos','media');
+ if(yes(/\b(civil|contrato|obrigacao|imovel|consumo)\b/,head))return out(CIV,'Outros assuntos cíveis','media');
+ if(yes(/\b(processo|recursal|recurso|sentenca|acordao|embargos)\b/,head))return out(PROC,'Outros assuntos processuais','media');
+ if(yes(/\b(constitucional|eleitor|eleicao|ambiental|direitos fundamentais)\b/))return out(OUT,'Outros assuntos constitucionais e especiais','media');
+ return out('Assunto a classificar','Sem elementos temáticos suficientes','revisar');
+}
+// Facetas derivadas exclusivamente de metadados e texto do próprio modelo Git.
+// Valores não identificados permanecem explícitos; não são apresentados como assunto CNJ oficial.
+const EMPTY_SUB='Subassunto não discriminado',EMPTY_ISSUE='Questão jurídica a identificar',EMPTY_SPEC='Sem especificidade identificada';
+function inferFacets(m,assunto){
+ const source=normalize([m.tema,m.nome,m.palavras_chave?.join(' '),m.abertura,m.ementa_modelo].filter(Boolean).join(' ').slice(0,5000));
+ const head=normalize([m.tema,m.ementa_modelo].filter(Boolean).join(' ').slice(0,2400));
+ const has=(re)=>re.test(source);
+ let sub=EMPTY_SUB,issue=EMPTY_ISSUE,spec=EMPTY_SPEC;
+ const rulesSub=[
+  [/segurad[oa] especial|economia familiar|regime de economia familiar/,'Segurado especial / economia familiar'],
+  [/empregad[oa] rural|trabalhador rural empregado|assalariad[oa] rural/,'Empregado rural'],
+  [/boia.fri[ao]|diarista rural|trabalhador volante/,'Boia-fria / diarista rural'],
+  [/idade hibrida|labor urbano e rural/,'Períodos rurais e urbanos'],
+  [/tempo especial|atividade especial|agentes nocivos|ppp\b|ltcat/,'Atividade especial e agentes nocivos'],
+  [/incapacidade permanente|aposentadoria por invalidez/,'Incapacidade permanente'],
+  [/incapacidade temporaria|auxilio.doenca/,'Incapacidade temporária'],
+  [/deficiencia|impedimento de longo prazo/,'Pessoa com deficiência'],
+  [/miserabilidade|vulnerabilidade social|renda familiar|criterio economico/,'Vulnerabilidade socioeconômica'],
+  [/segurado falecido|qualidade de dependente|uniao estavel/,'Dependência e qualidade de segurado'],
+  [/monofas|substituicao tributaria/,'Regime monofásico / substituição tributária'],
+  [/exclusao do icms|inclusao do icms|exclusao do iss|inclusao do iss/,'Exclusão de tributos de bases de cálculo'],
+  [/lucro presumido/,'Regime do lucro presumido'],
+  [/compensacao tributaria/,'Compensação tributária'],
+  [/redirecionamento|responsabilidade de socios/,'Redirecionamento da execução'],
+  [/nomeacao|cadastro de reserva|pretericao/,'Nomeação / preterição de candidato'],
+  [/reintegracao|licenciamento militar/,'Reintegração / licenciamento militar'],
+  [/embargos de declaracao|omissao|contradicao|obscuridade|erro material/,'Vícios do pronunciamento judicial'],
+  [/honorarios sucumbenciais|honorarios recursais/,'Honorários de sucumbência'],
+  [/efetivacao de tutela|tutela de urgencia|efeito suspensivo/,'Tutelas e efeitos processuais']
+ ];
+ for(const [re,val] of rulesSub){if(has(re)){sub=val;break}}
+ const issues=[
+  [/prescricao|decadencia/,'Prescrição / decadência'],
+  [/termo inicial|data de inicio|\bdib\b|\bder\b/,'Termo inicial e efeitos temporais'],
+  [/qualidade de segurado|qualidade de dependente/,'Comprovação da qualidade de segurado ou dependente'],
+  [/carencia|tempo de contribuicao/,'Cumprimento de carência / tempo exigido'],
+  [/prova material|inicio de prova|prova testemunhal|comprovacao do labor/,'Suficiência e valoração da prova'],
+  [/revisao|renda mensal inicial|calculo do beneficio/,'Revisão e cálculo do benefício'],
+  [/base de calculo|inclusao de|exclusao de/,'Composição da base de cálculo'],
+  [/compensacao|repeticao de indebito|restituicao/,'Compensação ou restituição do indébito'],
+  [/dialeticidade|inovacao recursal|intempestividade|nao conhecimento|desercao/,'Admissibilidade recursal'],
+  [/omissao|contradicao|obscuridade|erro material/,'Existência de vício sanável no julgado'],
+  [/competencia|incompetencia/,'Competência jurisdicional'],
+  [/responsabilidade civil|danos morais|dano material/,'Responsabilidade e dever de indenizar'],
+  [/honorarios|sucumbencia/,'Fixação / majoração de honorários'],
+  [/probabilidade do direito|perigo de dano|tutela de urgencia/,'Requisitos da tutela provisória'],
+  [/legalidade|constitucionalidade/,'Legalidade ou constitucionalidade do ato'],
+ ];
+ for(const [re,val] of issues){if(has(re)){issue=val;break}}
+ const specs=[
+  [/documento[s]? em nome de terceiro|documentacao de terceiro|prova em nome do conjuge/,'Documentos em nome de terceiro'],
+  [/cnis\b|cadastro nacional de informacoes sociais/,'Extrato CNIS'],
+  [/ctps\b|carteira de trabalho/,'Registros em CTPS'],
+  [/laudo pericial|pericia medica|laudo judicial/,'Laudo pericial'],
+  [/prova oral|testemunha[s]?|depoimentos/,'Prova testemunhal'],
+  [/trabalhador boia.fria|boia.fria/,'Trabalho boia-fria'],
+  [/indigena|funai/,'Segurado indígena'],
+  [/coisa julgada|titulo executivo judicial/,'Coisa julgada / título judicial'],
+  [/modulacao|efeitos prospectivos/,'Modulação de efeitos'],
+  [/gratuidade da justica|justica gratuita/,'Gratuidade da justiça'],
+  [/tutela antecipada|liminar/,'Tutela provisória / liminar'],
+  [/cerceamento de defesa|indeferimento de prova/,'Cerceamento da prova'],
+  [/prescricao quinquenal/,'Prescrição quinquenal'],
+  [/sumula 111|honorarios recursais|artigo 85/,'Regras de honorários'],
+  [/comprovacao exclusivamente testemunhal/,'Prova exclusivamente testemunhal']
+ ];
+ for(const [re,val] of specs){if(has(re)){spec=val;break}}
+ // Evidência do campo tema é preferida; se só se encontrou termo em nome/abertura, sinalizar revisão.
+ return {subassunto:sub,questao:issue,especificidade:spec,origemFacetas:head?'tema/ementa/nome/palavras-chave':'metadados e abertura'};
+}
+function judgmentType(m){return m.tipo==='monocrática'?'Decisão monocrática':m.tipo==='acórdão'?'Voto colegiado':'Pronunciamento não discriminado'}
+function treePath(r){const m=r.orig;return [r.assunto,m.especie||'Espécie não identificada',judgmentType(m),r.subassunto,r.questao,r.especificidade,m.resultado||'Resultado não identificado']}
+function hydrate(m){const classification=classify(m);const facets=inferFacets(m,classification.assunto);return {...classification,...facets,orig:m,id:String(m.id||''),query:normalize([m.id,m.nome,m.tema,m.palavras_chave?.join(' '),m.fonte_modelo,m.processo_modelo,m.ementa_modelo?.slice(0,1200),m.abertura,classification.assunto,...Object.values(facets)].filter(Boolean).join(' '))}}
+function filtered(){const q=normalize($('q').value),phase=$('phase').value,kind=$('kind').value,res=$('res').value,quality=$('quality').value;return STATE.records.filter(x=>(!q||x.query.includes(q)||normalize(treePath(x).join(' ')).includes(q))&&(!phase||x.orig.fase===phase)&&(!kind||x.orig.tipo===kind)&&(!res||x.orig.resultado===res)&&(!quality||x.qualidade===quality));}
+function buildTree(records,full=false){const root=new Map();for(const r of records){const path=treePath(r);let node=root;for(const part of path){if(!node.has(part))node.set(part,new Map());node=node.get(part)}if(!node.has('__ids'))node.set('__ids',[]);node.get('__ids').push(full?{...r.orig,classificacao_inferida:{ramo:r.area,assunto:r.assunto,subassunto:r.subassunto,questao:r.questao,especificidade:r.especificidade,qualidade:r.qualidade}}:r.id)}return root}
+const sumMap=m=>Array.from(m.entries()).reduce((n,[k,x])=>n+(k==='__ids'?x.length:sumMap(x)),0);
+const TREE_CAPTIONS=['Assunto','Classe / espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado'];
+function renderTree(){
+ const rows=filtered(),root=buildTree(rows),q=normalize($('q').value);$('viewCount').textContent=rows.length+' modelos · '+root.size+' assuntos';
+ if(!rows.length){$('tree').innerHTML='<div class="empty"><strong>Nenhum modelo corresponde aos filtros.</strong>Os filtros não alteram o catálogo original.</div>';return;}
+ const byId=new Map(rows.map(r=>[r.id,r]));
+ // Maior incidência no nível 1; os níveis seguintes são apresentados alfabeticamente.
+ function rec(map,level){let html='';const entries=[...map.entries()].filter(([key])=>key!=='__ids').sort((a,b)=>level===0?sumMap(b[1])-sumMap(a[1])||a[0].localeCompare(b[0],'pt-BR'):a[0].localeCompare(b[0],'pt-BR'));
+ for(const [name,child] of entries){const amount=sumMap(child);const open=(STATE.expanded||(q&&level<3)||(level===0&&entries.length===1))?' open':'';
+ let areaTag='';if(level===0){const first=rows.find(r=>r.assunto===name);if(first)areaTag='<small class="area-label" title="Ramo temático inferido">'+esc(first.area)+'</small>'}
+ html+='<details class="tree-node lv'+Math.min(level+1,7)+'"'+open+'><summary title="'+TREE_CAPTIONS[level]+'">'+esc(name)+areaTag+'<span class="count">'+amount+'</span></summary>';
+ if(level===6){for(const id of child.get('__ids')||[]){const r=byId.get(id);if(!r)continue;html+='<button class="leaf '+(STATE.chosen===id?'active':'')+'" data-record="'+esc(id)+'"><i>'+esc(id)+'</i><span>'+esc(r.orig.nome||r.orig.tema||'Modelo do gabinete')+'<small>'+esc(r.orig.fase)+' · '+esc(r.orig.frequencia||0)+' decisões · fonte '+esc(r.orig.fonte_modelo||'não indicada')+'</small></span></button>'}}
+ else html+=rec(child,level+1);
+ html+='</details>';
+ }return html;}
+ $('tree').innerHTML=rec(root,0);
+}
+function showDetail(id){STATE.chosen=id;const r=STATE.records.find(x=>x.id===id);if(!r)return;$('tree').querySelectorAll('.leaf.active').forEach(x=>x.classList.remove('active'));const leaf=Array.from($('tree').querySelectorAll('[data-record]')).find(x=>x.dataset.record===id);if(leaf)leaf.classList.add('active');const m=r.orig;const qlabel=r.qualidade==='alta'?'Identificação específica':r.qualidade==='media'?'Classificação contextual':'Revisão necessária';const cls=Object.entries(m.classes||{}).map(([c,n])=>`${c} (${n})`).join(' · ');const blocks=Array.isArray(m.blocos)?m.blocos:[];let html='<div class="detail"><div class="detail-head"><span class="idtag">'+esc(id)+'</span><div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap"><button class="btn" id="copyModel">Copiar texto</button><button class="btn" id="jsonOne">JSON do modelo</button></div></div><h2>'+esc(m.nome||`${m.especie} · ${m.resultado}`)+'</h2><div class="pills"><span class="pill">'+esc(r.area)+'</span><span class="pill">'+esc(r.assunto)+'</span><span class="pill '+(r.qualidade==='revisar'?'warn':'ok')+'">'+qlabel+'</span></div><div class="pane-section"><h3>Classificação na árvore · inferida e revisável</h3><div class="cmt-path">'+treePath(r).map(x=>'<span>'+esc(x)+'</span>').join('')+'</div><p class="fine">Assunto CNJ oficial não consta dos metadados deste catálogo. Subassunto, questão e especificidade são sugestões produzidas do próprio modelo, não classificações oficiais; ausências permanecem explícitas.</p></div><div class="facts">'+[
+ ['Espécie',m.especie],['Julgamento',judgmentType(m)],['Resultado',m.resultado],['Fase',m.fase_nome||m.fase],['Decisões no grupo',m.frequencia],['Fonte da minuta',m.fonte_modelo],['Processo de origem',m.processo_modelo],['Classes de origem',cls],['Período',(m.periodo||[]).join(' a ')],['Blocos agrupados',blocks.length]
+ ].map(([lab,val])=>'<div class="fact"><label>'+esc(lab)+'</label><b>'+esc(val||'—')+'</b></div>').join('')+'</div><div class="pane-section"><h3>Tema no catálogo original</h3><div class="theme">'+esc(m.tema||'Sem campo tema no catálogo. A classificação foi inferida de abertura e palavras-chave; confira a fundamentação.')+'</div><p class="fine">Palavras-chave: '+esc((m.palavras_chave||[]).join(', ')||'não informadas')+'</p></div><div class="pane-section"><h3>Corrigir somente a posição do modelo na árvore</h3><p class="fine">Reclassificação em memória, exportável. Não modifica a redação, o ID nem o registro Git.</p><div class="edit-facets"><label>Ramo<select id="editArea">'+AREA_ORDER.map(a=>'<option '+(a===r.area?'selected':'')+'>'+esc(a)+'</option>').join('')+'</select></label>'+[['Assunto','editSubject',r.assunto],['Subassunto','editSub',r.subassunto],['Questão jurídica','editIssue',r.questao],['Especificidade','editSpec',r.especificidade]].map(([lab,id,val])=>'<label>'+lab+'<input id="'+id+'" value="'+esc(val)+'"/></label>').join('')+'<button class="btn dark" id="saveClass">Aplicar classificação</button></div></div><div class="pane-section"><h3>Rastreabilidade no Git</h3><p class="fine">ID do modelo: '+esc(m.id)+' · Decisão-fonte: '+esc(m.fonte_modelo||'não informada')+' · Processo: '+esc(m.processo_modelo||'não informado')+'</p><div style="display:flex;gap:12px;flex-wrap:wrap"><a target="_blank" rel="noopener noreferrer" href="https://brndutra.github.io/trf3-muta-jurisprudencia/consulta/#id='+encodeURIComponent(m.fonte_modelo||'')+'">Abrir decisão-fonte na consulta Git ↗</a><a target="_blank" rel="noopener noreferrer" href="https://brndutra.github.io/trf3-muta-jurisprudencia/central/">Abrir Central de Minutas ↗</a></div></div><div class="pane-section"><div class="code-copy"><h3 style="margin:0">Texto-modelo original</h3><a href="https://github.com/brndutra/trf3-muta-jurisprudencia/blob/main/modelos/modelos.json" target="_blank" rel="noopener" style="font-size:10px">Fonte Git</a></div><div class="textmodel">'+esc(m.modelo||'Sem texto-modelo informado')+'</div></div>';
+ if(m.ementa_modelo)html+='<div class="pane-section"><h3>Ementa de referência</h3><div class="textmodel" style="max-height:250px">'+esc(m.ementa_modelo)+'</div></div>';
+ if(blocks.length)html+='<div class="pane-section"><h3>Blocos rastreáveis · '+blocks.length+'</h3><div class="block-list">'+blocks.slice(0,25).map(b=>'<div class="block-it"><b>'+esc(b.fixo?'Fixo':'Opcional')+' · Frequência '+Math.round((b.uso||0)*100)+'% · '+esc(b.secao||'')+'</b><p>'+esc(b.texto||'')+'</p></div>').join('')+'</div>'+(blocks.length>25?'<p class="fine">Outros blocos constam do JSON completo do registro.</p>':'')+'</div>';
+ html+='</div>';$('detail').innerHTML=html;
+ $('copyModel').onclick=()=>copyText(m.modelo||'');$('jsonOne').onclick=()=>download(id+'.json',JSON.stringify({...m,assunto_inferido:r.assunto,ramo_inferido:r.area,qualidade_classificacao:r.qualidade},null,2),'application/json');$('saveClass').onclick=()=>{let a=$('editArea').value,s=$('editSubject').value.trim();if(!s)return alert('Informe o assunto.');r.area=a;r.assunto=s;r.subassunto=$('editSub').value.trim()||EMPTY_SUB;r.questao=$('editIssue').value.trim()||EMPTY_ISSUE;r.especificidade=$('editSpec').value.trim()||EMPTY_SPEC;r.qualidade='media';r.query=normalize([r.query,r.area,r.assunto,r.subassunto,r.questao,r.especificidade].join(' '));renderTree();renderRanking();setStats();showDetail(id);};
+}
+async function copyText(s){try{await navigator.clipboard.writeText(s);alert('Texto copiado.')}catch(e){const t=document.createElement('textarea');t.value=s;document.body.append(t);t.select();document.execCommand('copy');t.remove();alert('Texto copiado.')}}
+function download(name,text,kind){const blob=new Blob([text],{type:kind+';charset=utf-8'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000)}
+function asTree(full){const src=buildTree(STATE.records,full);function into(m){const o={};for(const [k,v] of [...m.entries()].filter(([k])=>k!=='__ids').sort(([a],[b])=>a.localeCompare(b,'pt-BR')))o[k]=into(v);if(m.has('__ids'))return m.get('__ids');return o}return {schema:'cmt.arvore-modelos.v2',fonte:REPO,regra:'assunto > classe-especie > tipo-julgamento > subassunto > questao-juridica > especificidades > resultado > modelo',total:STATE.records.length,nota:'Classificações inferidas e revisáveis; não equivalem a assunto CNJ oficial. IDs e redações originais preservados.',arvore:into(src)}}
+function exportCsv(){const h=['id','ramo','assunto','classe_especie','tipo_julgamento','subassunto','questao','especificidade','resultado','confianca','fase','frequencia','fonte_modelo','processo_modelo','tema_original'];const val=x=>'"'+String(x??'').replace(/"/g,'""')+'"';let out='\ufeff'+h.map(val).join(';')+'\n';for(const r of STATE.records){const m=r.orig;out+=[m.id,r.area,r.assunto,m.especie,judgmentType(m),r.subassunto,r.questao,r.especificidade,m.resultado,r.qualidade,m.fase,m.frequencia,m.fonte_modelo,m.processo_modelo,m.tema].map(val).join(';')+'\n'}download('Modelos_CMT_Arvore_Hierarquica.csv',out,'text/csv')}
+function renderRanking(){const el=$('ranking-list');const rows=STATE.records;if(!rows.length){el.innerHTML='<div class="empty">Catálogo indisponível. Não há dados para calcular a incidência.</div>';return;}const counts=new Map();for(const r of rows){const key=r.area+'\u0000'+r.assunto;const prev=counts.get(key)||{area:r.area,assunto:r.assunto,n:0,revisar:0};prev.n++;if(r.qualidade==='revisar')prev.revisar++;counts.set(key,prev)}const sorted=[...counts.values()].sort((a,b)=>b.n-a.n||a.assunto.localeCompare(b.assunto,'pt-BR'));const limit=Number($('ranking-limit').value)||20,max=sorted[0]?.n||1;el.innerHTML=sorted.slice(0,limit).map((x,i)=>'<button class="ranking-row" data-rank-sub="'+esc(x.assunto)+'" data-rank-area="'+esc(x.area)+'" title="Filtrar: '+esc(x.area)+' / '+esc(x.assunto)+'"><span class="ranking-no">'+String(i+1).padStart(2,'0')+'</span><span class="ranking-info"><strong>'+esc(x.assunto)+'</strong><small>'+esc(x.area)+(x.revisar?' · '+x.revisar+' a revisar':'')+'</small><span class="ranking-track"><i style="width:'+Math.round(100*x.n/max)+'%"></i></span></span><span class="ranking-value">'+x.n+'<small>modelo'+(x.n===1?'':'s')+'</small></span></button>').join('');$('ranking-foot').textContent=rows.length+' modelos · '+sorted.length+' assuntos inferidos · contagem de registros, sem multiplicar pela frequência das decisões.';}
+$('ranking-list').addEventListener('click',e=>{const b=e.target.closest('[data-rank-sub]');if(!b)return;for(const id of ['phase','kind','res','quality'])$(id).value='';$('q').value=b.dataset.rankSub;renderTree();document.querySelector('.grid')?.scrollIntoView({behavior:'smooth',block:'start'});});$('ranking-limit').onchange=renderRanking;$('ranking-reset').onclick=()=>{$('q').value='';renderTree();};
+function setStats(){const r=STATE.records;$('st-total').textContent=r.length||'—';$('st-sub').textContent=new Set(r.map(x=>x.area+'|'+x.assunto)).size||'—';$('st-votos').textContent=r.filter(x=>x.orig.tipo==='acórdão').length||'—';$('st-mono').textContent=r.filter(x=>x.orig.tipo==='monocrática').length||'—';$('st-revisao').textContent=r.filter(x=>x.qualidade==='revisar').length||'0'}
+function msg(text=''){const box=$('msg');box.textContent=text;box.classList.toggle('show',!!text)}
+async function load(force=false){msg();$('tree').innerHTML='<div class="empty"><span class="spinner"></span> Lendo o catálogo original GitHub...</div>';$('viewCount').textContent='Sincronizando';for(const id of ['exportIdx','exportAll','exportCsv'])$(id).disabled=true;try{let data;const suffix=force?'?at='+Date.now():'';if('DecompressionStream' in window){try{let req=await fetch(REPO+'.gz'+suffix,{cache:'no-store'});if(!req.ok)throw Error('HTTP '+req.status);const res=req.body.pipeThrough(new DecompressionStream('gzip'));data=JSON.parse(await new Response(res).text())}catch(e){console.warn('GZIP indisponível; lendo a mesma fonte Git sem compressão.',e)}}if(!data){const req=await fetch(REPO+suffix,{cache:'no-store'});if(!req.ok)throw Error('HTTP '+req.status);data=await req.json()}if(!Array.isArray(data.modelos))throw Error('O catálogo não apresenta um array modelos.');const rows=data.modelos;if(!Number.isFinite(rows.length)||!rows.length)throw Error('Catálogo vazio.');const seen=new Set();for(const m of rows){if(!m.id||seen.has(m.id))throw Error('ID ausente ou duplicado: '+String(m.id));seen.add(m.id)}STATE.raw=rows;STATE.records=rows.map(hydrate);STATE.chosen=null;STATE.expanded=false;STATE.loadError=null;setStats();renderRanking();let results=[...new Set(rows.map(x=>x.resultado))].sort((a,b)=>a.localeCompare(b,'pt-BR'));$('res').innerHTML='<option value="">Todos os resultados</option>'+results.map(s=>'<option>'+esc(s)+'</option>').join('');$('viewCount').textContent=rows.length+' registros';$('sourceLabel').textContent='GitHub · '+rows.length+' modelos';for(const id of ['exportIdx','exportAll','exportCsv'])$(id).disabled=false;renderTree();$('detail').innerHTML='<div class="empty"><strong>Árvore carregada: '+rows.length+' modelos</strong>Abra um assunto para navegar pelos sete níveis até o resultado. Clique em um modelo para visualizar o texto e sua decisão de origem.</div>';
+ if(rows.length!==752)msg('Atenção: o catálogo Git atualmente possui '+rows.length+' registros (a versão examinada tinha 752). A árvore reflete a versão recebida, sem inventar registros.');
+ }catch(e){STATE.raw=[];STATE.records=[];STATE.loadError=String(e);setStats();renderRanking();$('viewCount').textContent='Indisponível';$('tree').innerHTML='<div class="empty"><strong>Catálogo Git indisponível.</strong>Nenhuma fonte alternativa será utilizada. Confira a conexão e clique em “Atualizar do Git”.<p class="fine">'+esc(String(e.message||e))+'</p></div>';msg('Não foi possível obter modelos/modelos.json do GitHub. O banco permanece vazio.');}}
+$('tree').addEventListener('click',e=>{const l=e.target.closest('[data-record]');if(l)showDetail(l.dataset.record)});
+let deb;for(const id of ['q','phase','kind','res','quality'])$(id).addEventListener(id==='q'?'input':'change',()=>{clearTimeout(deb);deb=setTimeout(renderTree,130)});
+$('expand').onclick=()=>{STATE.expanded=true;$('tree').querySelectorAll('details').forEach(x=>x.open=true)};
+$('collapse').onclick=()=>{STATE.expanded=false;$('tree').querySelectorAll('details').forEach(x=>x.open=false)};
+$('clear').onclick=()=>{for(const id of ['q','phase','kind','res','quality'])$(id).value='';renderTree()};
+$('reload').onclick=()=>load(true);
+$('exportCsv').onclick=exportCsv;
+$('exportIdx').onclick=()=>download('Modelos_CMT_752_Indice_Tematico.json',JSON.stringify(asTree(false),null,2),'application/json');
+$('exportAll').onclick=()=>download('Modelos_CMT_752_Arvore_Completa.json',JSON.stringify(asTree(true)),'application/json');
+$('showTree').onclick=()=>{ $('showTree').setAttribute('aria-selected','true');$('showGit').setAttribute('aria-selected','false');$('workShell').hidden=false;$('gitPanel').classList.remove('active');};
+$('showGit').onclick=()=>{ $('showTree').setAttribute('aria-selected','false');$('showGit').setAttribute('aria-selected','true');$('workShell').hidden=true;$('gitPanel').classList.add('active');const fr=$('gitFrame');if(!fr.src)fr.src='https://brndutra.github.io/trf3-muta-jurisprudencia/central/';};
+load();
+</script>
+</body></html>
