@@ -543,6 +543,67 @@ html.modo-arvore:not(.arv-diagrama) .arv-esquema{display:none}
 .arv-esq-no-data{color:var(--muted);font-size:11px;border:1px dashed var(--line2);padding:9px;border-radius:7px;margin-top:8px}
 @media(max-width:850px){.arv-esq-col{flex-basis:226px}.arv-esq-compare{padding:9px}.arv-esq-preview{grid-template-columns:1fr}}
 
+/* MODO ÁRVORE · MAPA MENTAL ORGÂNICO (Gabinete CMT)
+   Mantém os dados exclusivamente no catálogo Git; visualização sem persistir classificações. */
+html.modo-arvore.arv-diagrama main.modulo>aside.arvcol{padding:12px 16px 18px}
+html.modo-arvore.arv-diagrama main.modulo{grid-template-columns:minmax(365px,var(--cmt-arv-largura,78vw)) minmax(0,1fr)!important}
+html.modo-arvore.arv-diagrama.arv-max main.modulo{grid-template-columns:minmax(0,1fr) 0!important}
+html.modo-arvore.arv-diagrama .arvcol .arv-esq-guide{font-size:10px;line-height:1.4}
+html.modo-arvore.arv-diagrama .arv-esquema{display:flex;flex-direction:column;overflow:hidden;min-height:490px;border:1px solid var(--line2);background:var(--panel2);border-radius:14px;box-shadow:0 5px 18px rgba(0,0,0,.035)}
+.cmt-mind-toolbar{padding:9px 10px;background:var(--panel);border-bottom:1px solid var(--line2);display:flex;gap:7px;flex-wrap:wrap;align-items:center;justify-content:space-between;position:relative;z-index:3}
+.cmt-mind-title{display:flex;flex-direction:column;gap:2px;min-width:125px;flex:1}
+.cmt-mind-title b{font:800 12px/1.25 Figtree,Inter,system-ui,sans-serif;color:var(--text)}
+.cmt-mind-title small{font:500 10px/1.3 Figtree,Inter,system-ui,sans-serif;color:var(--muted)}
+.cmt-mind-buttons{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.cmt-mind-buttons button,.cmt-mind-chip{height:29px;display:inline-flex;align-items:center;gap:5px;justify-content:center;padding:0 9px;cursor:pointer;font:750 10px/1 Figtree,Inter,system-ui,sans-serif;border:1px solid var(--line2);border-radius:7px;background:var(--panel2);color:var(--text);white-space:nowrap}
+.cmt-mind-buttons button:hover,.cmt-mind-chip:hover{border-color:var(--f-acervo);background:var(--f-acervo-s)}
+.cmt-mind-buttons .cmt-mind-num{font:750 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;min-width:40px;text-align:center;color:var(--muted)}
+.cmt-mind-breadcrumb{display:flex;align-items:center;gap:4px;padding:6px 12px;background:var(--panel);overflow-x:auto;scrollbar-width:thin;border-bottom:1px solid var(--line2);white-space:nowrap}
+.cmt-mind-breadcrumb button{max-width:230px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:3px 7px;border-radius:6px;border:1px solid transparent;background:transparent;cursor:pointer;color:var(--muted);font:700 10px/1.25 Figtree,Inter,system-ui,sans-serif}
+.cmt-mind-breadcrumb button:last-of-type{border-color:var(--line2);background:var(--field);color:var(--text)}
+.cmt-mind-breadcrumb button:hover{border-color:var(--f-acervo);color:var(--text)}
+.cmt-mind-breadcrumb .sep{color:var(--muted);opacity:.6;font-size:11px}
+.cmt-mind-viewport{position:relative;display:block;flex:none;height:clamp(430px,65vh,870px);overflow:hidden;overscroll-behavior:contain;touch-action:none;cursor:grab;outline:none;background:radial-gradient(circle at center,color-mix(in srgb,var(--line2) 62%,transparent) 0.8px,transparent 1px) 0 0/22px 22px,var(--panel2)}
+.cmt-mind-viewport:focus-visible{box-shadow:inset 0 0 0 2px var(--f-acervo)}
+.cmt-mind-viewport.grabbing{cursor:grabbing}
+.cmt-mind-stage{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;min-height:30px;min-width:30px;pointer-events:none}
+.cmt-mind-edges{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:1}
+.cmt-mind-edges path{fill:none;stroke-width:2.6;stroke-linecap:round;opacity:.73}
+.cmt-mind-edges path.selected{stroke-width:4;opacity:1}
+.cmt-mind-node{position:absolute;z-index:2;display:flex;flex-direction:column;gap:6px;width:212px;min-height:66px;padding:10px 11px 11px;background:var(--panel);border:1px solid var(--line2);border-left:4px solid var(--mind-color,#7a9a9d);border-radius:11px;box-shadow:0 2px 8px rgba(0,0,0,.065);color:var(--text);cursor:pointer;pointer-events:auto;text-align:left;white-space:normal;font:500 11px/1.35 Figtree,Inter,system-ui,sans-serif;transition:left .34s cubic-bezier(.2,.75,.2,1),top .34s cubic-bezier(.2,.75,.2,1),opacity .25s,box-shadow .19s,background .2s,border-color .2s;transform:translateZ(0)}
+.cmt-mind-node:hover{border-color:var(--mind-color);box-shadow:0 6px 23px rgba(0,0,0,.14)}
+.cmt-mind-node.is-active{border-color:var(--mind-color);background:color-mix(in srgb,var(--mind-color) 10%,var(--panel));box-shadow:0 0 0 2px color-mix(in srgb,var(--mind-color) 20%,transparent),0 6px 20px rgba(0,0,0,.09)}
+.cmt-mind-node.is-ancestor{background:color-mix(in srgb,var(--mind-color) 4%,var(--panel));border-color:color-mix(in srgb,var(--mind-color) 46%,var(--line2))}
+.cmt-mind-node.is-new{opacity:0}
+.cmt-mind-node.root{width:240px;min-height:91px;border-radius:14px;background:linear-gradient(125deg,color-mix(in srgb,var(--f-acervo) 24%,var(--panel)),var(--panel));border:1px solid var(--f-acervo);border-left:5px solid var(--f-acervo)}
+.cmt-mind-node.leaf{width:218px;border-left-color:var(--mind-color)}
+.cmt-mind-node.more{width:170px;min-height:48px;border-style:dashed;align-items:center;justify-content:center;opacity:.9}
+.cmt-mind-node .kicker{font:800 9px/1.25 Figtree,Inter,system-ui,sans-serif;letter-spacing:.075em;text-transform:uppercase;color:var(--mind-color,var(--f-acervo))}
+.cmt-mind-node .label{font:750 11.5px/1.33 Figtree,Inter,system-ui,sans-serif;overflow-wrap:anywhere;color:var(--text)}
+.cmt-mind-node.root .label{font-size:14px}
+.cmt-mind-node .facts{display:flex;align-items:center;gap:5px;flex-wrap:wrap;font:650 9px/1.3 Figtree,Inter,system-ui,sans-serif;color:var(--muted)}
+.cmt-mind-node .facts .pill{background:var(--field);padding:2px 5px;border-radius:4px}
+.cmt-mind-node .facts .warn{background:rgba(226,166,85,.14);color:#b47524}
+.cmt-mind-node .branch-mark{position:absolute;right:8px;top:8px;width:20px;height:20px;display:grid;place-items:center;border:1px solid var(--line2);background:var(--panel2);border-radius:6px;font-size:12px;color:var(--muted);font-weight:700}
+.cmt-mind-node:hover .branch-mark{border-color:var(--mind-color);color:var(--text)}
+.cmt-mind-node .label{padding-right:8px}
+.cmt-mind-node:not(.root):has(.branch-mark) .label{padding-right:15px}
+.cmt-mind-node .label .tiny-id{display:block;font:650 9px/1.25 ui-monospace,Consolas,monospace;color:var(--muted);margin-top:2px}
+.cmt-mind-float{position:absolute;right:12px;bottom:12px;z-index:5;min-width:180px;max-width:min(260px,44%);padding:9px 11px;border:1px solid var(--line2);border-radius:10px;background:color-mix(in srgb,var(--panel) 92%,transparent);box-shadow:0 6px 20px rgba(0,0,0,.07);backdrop-filter:blur(5px);color:var(--muted);font:600 10px/1.4 Figtree,system-ui,sans-serif;pointer-events:none}
+.cmt-mind-float strong{color:var(--text);font-weight:800}
+.cmt-mind-refs{background:var(--panel);border-top:1px solid var(--line2);padding:0 11px 11px}
+.cmt-mind-refs details{max-width:100%}
+.cmt-mind-refs summary{cursor:pointer;padding:10px 0;font:800 11px Figtree,Inter,system-ui,sans-serif;color:var(--text);list-style:none}
+.cmt-mind-refs summary::-webkit-details-marker{display:none}
+.cmt-mind-refs summary::before{content:'▸';margin-right:7px;color:var(--f-acervo)}
+.cmt-mind-refs details[open] summary::before{content:'▾'}
+.cmt-mind-refs .arv-esq-compare{margin:0;padding:8px;background:var(--panel2)}
+.cmt-mind-refs .arv-esq-compare-head{line-height:1.45}
+.cmt-mind-legend{color:var(--muted);font:500 10px/1.5 Figtree,Inter,sans-serif;margin:7px 4px 0}
+.cmt-mind-legend b{color:var(--text)}
+@media(max-width:950px){html.modo-arvore.arv-diagrama main.modulo{grid-template-columns:minmax(0,1fr)!important}html.modo-arvore.arv-diagrama main.modulo>section.detalhe,html.modo-arvore.arv-diagrama main.modulo>section.lista{display:none!important}.cmt-mind-node{width:204px}.cmt-mind-viewport{height:clamp(430px,64vh,790px)}}
+@media(prefers-reduced-motion:reduce){.cmt-mind-node{transition:none!important}.cmt-mind-stage{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -574,11 +635,11 @@ html.modo-arvore:not(.arv-diagrama) .arv-esquema{display:none}
     <div class="arv-h"><span class="lbl">▤ Árvore de assuntos</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
     <input class="inp arv-q" placeholder="Filtrar áreas e temas…" autocomplete="off" spellcheck="false">
     <div class="arv-viz-controls" data-arv-controles="juris" aria-label="Visualização da árvore">
-     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Diagrama</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
-     <div class="arv-viz-width"><label for="arvLargurajuris">Largura</label><input id="arvLargurajuris" type="range" min="35" max="92" value="58" aria-label="Largura da árvore em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
+     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Mapa mental</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
+     <div class="arv-viz-width"><label for="arvLargurajuris">Largura</label><input id="arvLargurajuris" type="range" min="35" max="92" value="78" aria-label="Largura da árvore em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
    </div>
-   <div class="arv-esquema" data-arv-esquema="juris" tabindex="0" aria-label="Diagrama de correspondências por níveis"></div>
-   <p class="arv-esq-guide">Selecione um <strong>nó</strong> para mostrar seus desdobramentos à direita. Role horizontalmente para percorrer os níveis. A seleção filtra os registros correspondentes.</p>
+   <div class="arv-esquema" data-arv-esquema="juris" tabindex="0" aria-label="Mapa mental jurídico com ramificações orgânicas"></div>
+   <p class="arv-esq-guide">Clique nos <strong>nós</strong> para expandir ou recolher ramificações. Arraste o mapa e use zoom/ajustar. Os registros correspondentes aparecem no próprio painel.</p>
    <div class="arv-bt"><button class="btn sm" onclick="arvExpandir(true)">Expandir</button><button class="btn sm" onclick="arvExpandir(false)">Recolher</button><button class="btn sm" onclick="alternarModoArvore(false)" title="Desligar o modo árvore (Alt+3)">Sair do modo</button></div>
     <div class="arv-tree"></div>
     <hr class="sep"><details class="arv-fontes"><summary>Fonte, período e critérios da classificação</summary><p class="ajuda">A classificação temática é automática e sujeita à revisão jurídica.</p><p class="ajuda arv-crit"></p></details>
@@ -671,11 +732,11 @@ html.modo-arvore:not(.arv-diagrama) .arv-esquema{display:none}
     <div class="arv-h"><span class="lbl">▤ Árvore de assuntos</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
     <input class="inp arv-q" placeholder="Filtrar áreas e temas…" autocomplete="off" spellcheck="false">
     <div class="arv-viz-controls" data-arv-controles="modelos" aria-label="Visualização da árvore">
-     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Diagrama</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
-     <div class="arv-viz-width"><label for="arvLarguramodelos">Largura</label><input id="arvLarguramodelos" type="range" min="35" max="92" value="58" aria-label="Largura da árvore em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
+     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Mapa mental</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
+     <div class="arv-viz-width"><label for="arvLarguramodelos">Largura</label><input id="arvLarguramodelos" type="range" min="35" max="92" value="78" aria-label="Largura da árvore em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
    </div>
-   <div class="arv-esquema" data-arv-esquema="modelos" tabindex="0" aria-label="Diagrama de correspondências por níveis"></div>
-   <p class="arv-esq-guide">Selecione um <strong>nó</strong> para mostrar seus desdobramentos à direita. Role horizontalmente para percorrer os níveis. A seleção filtra os registros correspondentes.</p>
+   <div class="arv-esquema" data-arv-esquema="modelos" tabindex="0" aria-label="Mapa mental jurídico com ramificações orgânicas"></div>
+   <p class="arv-esq-guide">Clique nos <strong>nós</strong> para expandir ou recolher ramificações. Arraste o mapa e use zoom/ajustar. Os registros correspondentes aparecem no próprio painel.</p>
    <div class="arv-bt"><button class="btn sm" onclick="arvExpandir(true)">Expandir</button><button class="btn sm" onclick="arvExpandir(false)">Recolher</button><button class="btn sm" onclick="alternarModoArvore(false)" title="Desligar o modo árvore (Alt+3)">Sair do modo</button></div>
     <div class="arv7-top"><b>752 modelos · hierarquia jurídica</b><button class="btn sm" id="arv7Reset" type="button" onclick="arv7Limpar()">Limpar recorte</button></div>
     <p class="ajuda arv7-note">Assunto → Classe/espécie → Tipo de julgamento → Subassunto → Questão → Especificidades → Resultado → Modelo. Classificação inferida; não é assunto CNJ oficial.</p>
@@ -1959,7 +2020,7 @@ document.addEventListener('click',e=>{
 
 /* ========= DIAGRAMA DE RAMOS, COLUNAS E CORRESPONDÊNCIAS ========= */
 let ARV_VISTA=LS.get('acv_arv_vista')==='lista'?'lista':'diagrama';
-let ARV_LARGURA=Math.max(35,Math.min(92,Number(LS.get('acv_arv_largura'))||58));
+let ARV_LARGURA=Math.max(35,Math.min(92,Number(LS.get('acv_arv_largura'))||78));
 let ARV_MAX=false,ARV_SCHED=0;
 function arvAplicarLayout(){
  document.documentElement.classList.toggle('arv-diagrama',ARV_VISTA==='diagrama');
@@ -2039,12 +2100,198 @@ function arvEsqPintar(container,mode,records,path,access,titulos){
  const notice=mode==='modelos'?'* Σ frequências = soma de ocorrências por modelo, sem deduplicar decisões. Tema, questão e especificidade são inferidos do texto, não do assunto CNJ oficial.':'Classificação de precedentes extraída automaticamente do índice temático; alguns ramos podem conter decisões fora do assunto indicado. Confira a ementa e o inteiro teor.';
  container.innerHTML=`<div class="arv-esq-head"><div><b>Mapa jurídico de correspondências</b> <small>· ${filtered.length.toLocaleString('pt-BR')} ${desc}</small></div><button type="button" data-schem-reset="1" title="Voltar ao primeiro nível">↶ Raiz</button></div><div class="arv-esq-toolbar">${qfilter}<span class="arv-esq-disclaimer">A seleção filtra os registros sem alterar sua classificação na fonte</span></div>${bc}<div class="arv-esq-cols" role="group" aria-label="Ramos jurídicos por níveis">${cols}</div>${arvEsqCorrespondentes(filtered,mode,path,access)}<p class="arv-esq-disclaimer">${notice}</p>`;
 }
-function arvEsquemaRender(){if(!MODO_ARV||ARV_VISTA!=='diagrama')return;
- const modbox=document.querySelector('[data-arv-esquema="modelos"]');
- if(MODS&&modbox){const q=arvEsqNorm(modbox.closest('.arvcol').querySelector('.arv-q')?.value.trim());const mods=q?MODS.filter(m=>arvEsqNorm(arv7Path(m).join(' ')+' '+m.nome+' '+m.id+' '+CMT_ARV7.info(m).alternativos.join(' ')).includes(q)):MODS;
-  arvEsqPintar(modbox,'modelos',mods,ARV7_ESCOLHA||[],arv7Path,CMT_ARV7.titulos)}
- const jurbox=document.querySelector('[data-arv-esquema="juris"]');
- if(jurbox&&ASS&&typeof IDX!=='undefined'&&IDX){const base=ARV.baseP.length?ARV.baseP:IDX;arvEsqPintar(jurbox,'juris',base,ARV.no.filter(Boolean),r=>assDe(r.id)||['Não classificado','Outros','Outros temas'],['Área jurídica','Subárea','Tema']);}
+/* Árvore visual · mapas mentais de correspondências. Os registros continuam no Git. */
+const CMT_MIND_INST=new WeakMap();
+const CMT_MIND_OPEN={modelos:new Set(['modelos:root']),juris:new Set(['juris:root'])};
+const CMT_MIND_MORE={modelos:new Map(),juris:new Map()};
+const CMT_MIND_PAL=['#b38727','#257c9b','#499270','#8e70be','#c47448','#5284c6','#aa5d84','#638990','#3e968e','#9779b0','#a1874e','#4c8e68'];
+const CMT_MIND_LEVELS={modelos:['Assunto','Classe / espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado','Modelo'],juris:['Área jurídica','Subárea','Tema','Decisão']};
+const CMT_MIND_ALL=new WeakMap();
+function cmtMindText(v){return String(v==null?'':v)}
+function cmtMindCount(n){return Number(n||0).toLocaleString('pt-BR')}
+function cmtMindHue(idx){return CMT_MIND_PAL[idx%CMT_MIND_PAL.length]}
+function cmtMindKey(mode,path){return mode+':'+JSON.stringify(path)}
+function cmtMindSource(mode,box){
+ const q=arvEsqNorm(box.closest('.arvcol')?.querySelector('.arv-q')?.value?.trim());
+ const source=mode==='modelos'?(MODS||[]):(ARV.baseP?.length?ARV.baseP:(typeof IDX!=='undefined'?IDX:[]));
+ const access=mode==='modelos'?arv7Path:(r=>assDe(r.id)||['Não classificado','Subárea a identificar','Tema a identificar']);
+ const records=source.filter(r=>{
+  if(mode==='modelos'&&ARV_QUALIDADE==='revisar'&&!CMT_ARV7.info(r).revisar)return false;
+  if(!q)return true;
+  const fields=[...access(r),r.id,mode==='modelos'?r.nome:r.n,mode==='modelos'?r.tema:'',mode==='modelos'?CMT_ARV7.info(r).alternativos.join(' '):''];
+  return arvEsqNorm(fields.join(' ')).includes(q);
+ });
+ const path=mode==='modelos'?(ARV7_ESCOLHA||[]):ARV.no.filter(Boolean);
+ return {records,access,path,q};
+}
+function cmtMindBuild(mode,records,access){
+ const titles=CMT_MIND_LEVELS[mode];
+ const root={id:mode+':root',label:mode==='modelos'?'MODELOS DO GABINETE':'PRECEDENTES DO GABINETE',depth:-1,path:[],children:new Map(),count:0,freq:0,revisar:0,divergencias:0,kind:'root',color:'var(--f-acervo)',sample:null};
+ const nodes=new Map([[root.id,root]]);
+ for(const r of records){
+  const freq=mode==='modelos'?Number(r.frequencia||0):0;
+  const info=mode==='modelos'?CMT_ARV7.info(r):null;
+  const review=info?.revisar?1:0,conflict=info?.alertas?.length?1:0;
+  const add=n=>{n.count++;n.freq+=freq;n.revisar+=review;n.divergencias+=conflict;if(!n.sample||freq>Number(n.sample.frequencia||0))n.sample=r};
+  let node=root;add(node);
+  let path=[];
+  const parts=access(r).slice(0,titles.length-1);
+  for(let i=0;i<parts.length;i++){
+   const label=String(parts[i]||'Não identificado');path.push(label);
+   const id=cmtMindKey(mode,path);
+   let child=node.children.get(label);
+   if(!child){child={id,label,depth:i,path:path.slice(),children:new Map(),count:0,freq:0,revisar:0,divergencias:0,parent:node,kind:'branch',color:i===0?cmtMindHue(node.children.size):(node.color||cmtMindHue(0)),sample:null};node.children.set(label,child);nodes.set(id,child)}
+   add(child);node=child;
+  }
+  const id=mode+':leaf:'+r.id;
+  const label=mode==='modelos'?(String(r.tema||r.nome||r.abertura||'Modelo sem tema').trim()):String(r.n||r.id);
+  const leaf={id,label,depth:parts.length,path:path.slice(),parent:node,children:new Map(),count:1,freq,revisar:review,divergencias:conflict,kind:'leaf',color:node.color,record:r,sample:r};
+  node.children.set(id,leaf);nodes.set(id,leaf);
+ }
+ const sort=n=>{n.sorted=[...n.children.values()].sort((a,b)=>b.count-a.count||a.label.localeCompare(b.label,'pt-BR'));n.sorted.forEach(sort)};
+ sort(root);
+ return {root,nodes};
+}
+function cmtMindVisible(root,mode){
+ const open=CMT_MIND_OPEN[mode],more=CMT_MIND_MORE[mode],out=[];
+ const walk=n=>{
+  out.push(n);n.drawChildren=[];
+  if(n.kind==='leaf'||n.kind==='more'||(n!==root&&!open.has(n.id)))return;
+  const all=n.sorted||[];
+  const max=more.get(n.id)||(n===root?18:13);
+  const chosen=all.slice(0,max);
+  n.drawChildren=chosen.slice();
+  if(all.length>max){
+   const rem=all.length-max;
+   n.drawChildren.push({id:n.id+'#more',label:`Mais ${cmtMindCount(rem)} ramificações`,depth:n.depth+1,path:n.path.slice(),kind:'more',parent:n,count:rem,freq:0,revisar:0,divergencias:0,color:n.color,children:new Map(),drawChildren:[]});
+  }
+  n.drawChildren.forEach(walk);
+ };
+ walk(root);
+ return out;
+}
+function cmtMindNodeContent(n,mode,sel){
+ const level=n.depth<0?'Acervo':CMT_MIND_LEVELS[mode][n.depth]||'Registro';
+ const active=n.kind!=='more'&&n.path.length===sel.length&&n.path.every((p,i)=>p===sel[i]);
+ const ancestor=n.kind!=='more'&&n.path.length<sel.length&&n.path.every((p,i)=>p===sel[i]);
+ const has=n.kind==='root'||n.children.size>0;
+ const title=n.kind==='root'?'Acervo / entrada do mapa':n.kind==='more'?'Exibir ramificações adicionais':n.kind==='leaf'?'Abrir registro original':`${level} · ${n.count} correspondências`;
+ const tags=n.kind==='more'?'':`<span class="pill">${cmtMindCount(n.count)} ${mode==='modelos'?'modelo'+(n.count!==1?'s':''):'decis'+(n.count!==1?'ões':'ão')}</span>${mode==='modelos'&&n.freq?`<span class="pill" title="Soma das frequências dos modelos; decisões podem se repetir">Σ ${cmtMindCount(n.freq)}</span>`:''}${mode==='modelos'&&n.revisar?`<span class="pill warn" title="Classificações automáticas que requerem revisão">${n.revisar} a revisar</span>`:''}`;
+ const leafTag=n.kind==='leaf'?`<span class="tiny-id">${esc(n.record?.id||'')}</span>`:'';
+ return {title,active,ancestor,has,markup:`<span class="kicker">${esc(level)}</span><span class="label">${esc(n.label.slice(0,n.kind==='leaf'?114:135))}${leafTag}</span>${tags?`<span class="facts">${tags}</span>`:''}${has&&n.kind!=='more'?`<span class="branch-mark" aria-hidden="true">${CMT_MIND_OPEN[mode].has(n.id)?'−':'+'}</span>`:''}`};
+}
+function cmtMindEnsure(box,mode){
+ let s=CMT_MIND_INST.get(box);
+ if(s&&s.mode===mode)return s;
+ box.innerHTML=`<div class="cmt-mind-toolbar"><div class="cmt-mind-title"><b>Mapa de ramificações jurídicas</b><small data-mind-caption>Selecione um ramo para localizar os correspondentes</small></div><div class="cmt-mind-buttons" role="group" aria-label="Controles do mapa"><button type="button" data-mind-action="home" title="Voltar à raiz">↶ Raiz</button><button type="button" data-mind-action="close" title="Recolher todos os ramos">⊟ Recolher</button><button type="button" data-mind-action="first" title="Exibir dois níveis">⊞ Abrir nível</button><button type="button" data-mind-action="out" aria-label="Reduzir zoom">−</button><span class="cmt-mind-num" data-mind-percent>100%</span><button type="button" data-mind-action="in" aria-label="Aumentar zoom">+</button><button type="button" data-mind-action="fit" title="Ajustar mapa à área disponível">⤢ Ajustar</button></div></div><div class="cmt-mind-breadcrumb" data-mind-breadcrumb aria-label="Caminho atual"></div><div class="cmt-mind-viewport" tabindex="0" role="region" aria-label="Mapa mental interativo: arraste para mover, utilize os botões para zoom"><div class="cmt-mind-stage"><svg class="cmt-mind-edges" xmlns="http://www.w3.org/2000/svg"></svg></div><div class="cmt-mind-float" data-mind-hint>Arraste para mover · roda para aproximar · clique nos ramos</div></div><div class="cmt-mind-refs"><details open><summary data-mind-summary>Registros correspondentes</summary><div data-mind-results></div></details></div>`;
+ s={mode,box,viewport:box.querySelector('.cmt-mind-viewport'),stage:box.querySelector('.cmt-mind-stage'),svg:box.querySelector('.cmt-mind-edges'),nodes:new Map(),elements:new Map(),cam:{x:24,y:24,k:.88},didFit:false,signature:'',animation:0,oldPositions:new Map(),drag:null,contentW:500,contentH:500};
+ CMT_MIND_INST.set(box,s);
+ s.viewport.addEventListener('wheel',e=>{e.preventDefault();const r=s.viewport.getBoundingClientRect();cmtMindZoom(s,s.cam.k*(e.deltaY<0?1.105:.905),e.clientX-r.left,e.clientY-r.top)},{passive:false});
+ s.viewport.addEventListener('pointerdown',e=>{if(e.button!==0&&e.pointerType==='mouse')return;if(e.target.closest('.cmt-mind-node'))return;s.drag={sx:e.clientX,sy:e.clientY,x:s.cam.x,y:s.cam.y,id:e.pointerId};s.viewport.setPointerCapture(e.pointerId);s.viewport.classList.add('grabbing')});
+ s.viewport.addEventListener('pointermove',e=>{if(!s.drag||s.drag.id!==e.pointerId)return;s.cam.x=s.drag.x+e.clientX-s.drag.sx;s.cam.y=s.drag.y+e.clientY-s.drag.sy;cmtMindApplyCam(s)});
+ const stop=e=>{if(s.drag&&s.drag.id===e.pointerId)s.drag=null;s.viewport.classList.remove('grabbing')};
+ s.viewport.addEventListener('pointerup',stop);s.viewport.addEventListener('pointercancel',stop);
+ s.viewport.addEventListener('keydown',e=>{let act=null;if(e.key==='+'||e.key==='=')act='in';if(e.key==='-')act='out';if(e.key==='0')act='fit';if(act){e.preventDefault();cmtMindAct(s,act)}});
+ s.box.addEventListener('click',e=>{
+  const action=e.target.closest('[data-mind-action]');if(action){cmtMindAct(s,action.dataset.mindAction);return}
+  const crumb=e.target.closest('[data-mind-crumb]');if(crumb){const depth=+crumb.dataset.mindCrumb;const path=(s.selected||[]).slice(0,depth);cmtMindSelect(s,path);return}
+  const btn=e.target.closest('[data-mind-node]');if(!btn)return;
+  const n=s.nodes.get(btn.dataset.mindNode)||s.dynamicNodes?.get(btn.dataset.mindNode);if(!n)return;
+  if(n.kind==='more'){CMT_MIND_MORE[mode].set(n.parent.id,(CMT_MIND_MORE[mode].get(n.parent.id)||(n.parent.kind==='root'?18:13))+13);cmtMindLayout(s,n.parent);return}
+  if(n.kind==='leaf'){
+   if(ARV_MAX){ARV_MAX=false;arvAplicarLayout()}
+   if(mode==='modelos'){ARV7_ESCOLHA=n.path.slice();arv7AplicarTodos();abrirModelo(n.record.id)}else irParaDecisao(n.record.id);
+   return;
+  }
+  const isOpen=CMT_MIND_OPEN[mode].has(n.id);
+  if(n!==s.tree?.root){if(isOpen)CMT_MIND_OPEN[mode].delete(n.id);else CMT_MIND_OPEN[mode].add(n.id)}
+  cmtMindSelect(s,n.path.slice(),n);
+ });
+ return s;
+}
+function cmtMindApplyCam(s){s.stage.style.transform=`translate(${s.cam.x}px,${s.cam.y}px) scale(${s.cam.k})`;const el=s.box.querySelector('[data-mind-percent]');if(el)el.textContent=Math.round(s.cam.k*100)+'%'}
+function cmtMindZoom(s,k,px=s.viewport.clientWidth/2,py=s.viewport.clientHeight/2){k=Math.max(.22,Math.min(2.25,k));const old=s.cam.k;s.cam.x=px-(px-s.cam.x)*(k/old);s.cam.y=py-(py-s.cam.y)*(k/old);s.cam.k=k;cmtMindApplyCam(s)}
+function cmtMindFit(s,initial=false){const w=s.viewport.clientWidth,h=s.viewport.clientHeight;if(w<1||h<1)return;const optimal=Math.min(1.2,(w-60)/Math.max(s.contentW,1),(h-66)/Math.max(s.contentH,1));const k=initial?Math.max(.53,Math.min(1.05,optimal)):Math.max(.22,optimal);s.cam.k=k;s.cam.x=Math.max(20,(w-s.contentW*k)/2);s.cam.y=(h-s.contentH*k)/2;cmtMindApplyCam(s)}
+function cmtMindAct(s,action){
+ const mode=s.mode;const open=CMT_MIND_OPEN[mode];
+ if(action==='in'||action==='out'){cmtMindZoom(s,s.cam.k*(action==='in'?1.2:1/1.2));return}
+ if(action==='fit'){cmtMindFit(s);return}
+ if(action==='close'||action==='home'){open.clear();open.add(mode+':root');CMT_MIND_MORE[mode].clear();if(action==='home'){cmtMindSelect(s,[],s.tree?.root);return}cmtMindLayout(s,s.tree?.root);return}
+ if(action==='first'&&s.tree){open.add(mode+':root');s.tree.root.sorted.slice(0,12).forEach(n=>open.add(n.id));cmtMindLayout(s,s.tree.root);return}
+}
+function cmtMindSelect(s,path,anchor){
+ if(s.mode==='modelos'){ARV7_ESCOLHA=path.length?path:null;arv7AplicarTodos()}
+ else{arvSel([path[0]||null,path[1]||null,path[2]||null])}
+ s.selected=path;
+ cmtMindLayout(s,anchor||s.tree?.nodes.get(cmtMindKey(s.mode,path))||s.tree?.root);
+}
+function cmtMindResults(s,records,access,path){
+ const b=s.box.querySelector('[data-mind-results]');if(!b)return;
+ const count=records.reduce((n,r)=>n+(path.every((p,i)=>access(r)[i]===p)?1:0),0);
+ const summary=s.box.querySelector('[data-mind-summary]');if(summary)summary.textContent=`${cmtMindCount(count)} ${s.mode==='modelos'?'modelos':'precedentes'} correspondentes · abrir registros`;
+ b.innerHTML=arvEsqCorrespondentes(records,s.mode,path,access);
+ const q=s.box.querySelector('[data-mind-caption]');if(q)q.textContent=`${cmtMindCount(records.length)} registros no recorte · ${s.mode==='modelos'?'7 níveis de classificação':'3 níveis temáticos'}`;
+ const float=s.box.querySelector('[data-mind-hint]');if(float)float.innerHTML=`<strong>${cmtMindCount(count)} correspondências</strong><div>${path.length?esc(path[path.length-1].slice(0,70)):'Selecione qualquer ramo para filtrar'} · Zoom e arraste disponíveis</div>`;
+ const bc=s.box.querySelector('[data-mind-breadcrumb]');if(bc)bc.innerHTML=`<button type="button" data-mind-crumb="0">Acervo</button>`+path.map((p,i)=>`<span class="sep">›</span><button title="${esc(p)}" type="button" data-mind-crumb="${i+1}">${esc(p)}</button>`).join('');
+}
+function cmtMindEdge(p,c){const x1=p.x+p.w,y1=p.y+p.h/2,x2=c.x,y2=c.y+c.h/2,mx=(x1+x2)/2;return `M${x1.toFixed(1)} ${y1.toFixed(1)} C${mx.toFixed(1)} ${y1.toFixed(1)} ${mx.toFixed(1)} ${y2.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`}
+function cmtMindLayout(s,anchor){
+ if(!s.tree)return;
+ const oldAnchor=anchor&&s.oldPositions.get(anchor.id);const nodes=cmtMindVisible(s.tree.root,s.mode),visible=new Map(nodes.map(n=>[n.id,n]));
+ s.dynamicNodes=new Map(nodes.filter(n=>n.kind==='more').map(n=>[n.id,n]));
+ for(const[id,el]of s.elements){if(!visible.has(id)){el.remove();s.elements.delete(id)}}
+ // mede os nós reais após renderizar o conteúdo, mas antes de calcular as posições
+ const selected=s.selected||[];
+ for(const n of nodes){let el=s.elements.get(n.id);if(!el){el=document.createElement('button');el.type='button';el.className='cmt-mind-node '+n.kind+' is-new';el.dataset.mindNode=n.id;const p=s.oldPositions.get(n.parent?.id);el.style.left=(p?.x||30)+'px';el.style.top=(p?.y||50)+'px';s.stage.appendChild(el);s.elements.set(n.id,el)}
+  const meta=cmtMindNodeContent(n,s.mode,selected);el.innerHTML=meta.markup;el.setAttribute('aria-label',meta.title+' · '+n.label);el.setAttribute('aria-expanded',n.kind==='leaf'||n.kind==='more'?'false':String(CMT_MIND_OPEN[s.mode].has(n.id)));el.classList.toggle('is-active',meta.active);el.classList.toggle('is-ancestor',meta.ancestor);el.style.setProperty('--mind-color',n.color);n.w=el.offsetWidth||212;n.h=el.offsetHeight||78;
+ }
+ const colW=[];const collect=(n,d)=>{colW[d]=Math.max(colW[d]||0,n.w);n.drawChildren.forEach(c=>collect(c,d+1))};collect(s.tree.root,0);
+ const colX=[36];for(let i=1;i<colW.length;i++)colX[i]=colX[i-1]+colW[i-1]+75;
+ const VG=13;
+ const size=n=>{const kids=n.drawChildren||[];n.subtreeH=kids.length?Math.max(n.h,kids.reduce((sum,c)=>sum+size(c),0)+VG*(kids.length-1)):n.h;return n.subtreeH};size(s.tree.root);
+ const place=(n,d,top)=>{n.pos={x:colX[d],y:top+(n.subtreeH-n.h)/2+24};const kids=n.drawChildren||[];if(kids.length){const h=kids.reduce((sum,c)=>sum+c.subtreeH,0)+VG*(kids.length-1);let y=top+(n.subtreeH-h)/2;kids.forEach(c=>{place(c,d+1,y);y+=c.subtreeH+VG})}};place(s.tree.root,0,0);
+ s.contentW=colX[colX.length-1]+colW[colW.length-1]+45;
+ s.contentH=s.tree.root.subtreeH+55;
+ s.stage.style.width=s.contentW+'px';s.stage.style.height=s.contentH+'px';
+ s.svg.setAttribute('width',String(s.contentW));s.svg.setAttribute('height',String(s.contentH));
+ if(oldAnchor&&anchor?.pos){s.cam.x+=(oldAnchor.x-anchor.pos.x)*s.cam.k;s.cam.y+=(oldAnchor.y-anchor.pos.y)*s.cam.k;cmtMindApplyCam(s)}
+ const before=s.oldPositions;const after=new Map(nodes.map(n=>[n.id,{x:n.pos.x,y:n.pos.y,w:n.w,h:n.h}]));
+ // Posições CSS interpoladas; conectores SVG seguem o mesmo movimento por quadro.
+ requestAnimationFrame(()=>{for(const n of nodes){const el=s.elements.get(n.id);if(!el)continue;el.style.left=n.pos.x+'px';el.style.top=n.pos.y+'px';el.classList.remove('is-new')}});
+ const pairs=[];
+ for(const n of nodes){for(const c of n.drawChildren||[]){pairs.push({p:n,c,color:c.color,active:selected.length>=c.path.length&&c.path.every((v,i)=>selected[i]===v)})}}
+ const paths=pairs.map(o=>{const el=document.createElementNS('http://www.w3.org/2000/svg','path');el.setAttribute('stroke',o.color||'#8a969b');if(o.active)el.classList.add('selected');s.svg.appendChild(el);return el});
+ // Remove conectores de desenhos anteriores, mas preserva os recém-criados.
+ Array.from(s.svg.querySelectorAll('path')).forEach(el=>{if(!paths.includes(el))el.remove()});
+ cancelAnimationFrame(s.animation);
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const duration=reduced||pairs.length>210?0:340,start=performance.now();
+ const interpolate=(n,t)=>{const a=before.get(n.id)||before.get(n.parent?.id)||after.get(n.id),b=after.get(n.id);if(!a||!b)return b;return {x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t,w:b.w,h:b.h}};
+ const draw=now=>{const t=duration?Math.min(1,(now-start)/duration):1,e=1-Math.pow(1-t,3);
+  pairs.forEach((pair,i)=>{const a=interpolate(pair.p,e),b=interpolate(pair.c,e);if(a&&b)paths[i].setAttribute('d',cmtMindEdge(a,b))});
+  if(t<1)s.animation=requestAnimationFrame(draw)};
+ s.animation=requestAnimationFrame(draw);
+ s.oldPositions=after;
+ if(!s.didFit){s.didFit=true;requestAnimationFrame(()=>cmtMindFit(s,true))}else cmtMindApplyCam(s);
+}
+function cmtMindRender(box,mode){
+ const src=cmtMindSource(mode,box);const s=cmtMindEnsure(box,mode);
+ const first=src.records[0]?.id||'',last=src.records[src.records.length-1]?.id||'';
+ const signature=mode+'|'+src.records.length+'|'+first+'|'+last+'|'+src.q+'|'+(mode==='modelos'?ARV_QUALIDADE:'');
+ if(signature!==s.signature){s.signature=signature;s.tree=cmtMindBuild(mode,src.records,src.access);s.didFit=false;s.oldPositions.clear();s.elements.forEach(el=>el.remove());s.elements.clear();}
+ s.records=src.records;s.access=src.access;s.selected=src.path.slice();
+ cmtMindLayout(s,s.tree.nodes.get(cmtMindKey(mode,s.selected))||s.tree.root);
+ cmtMindResults(s,src.records,src.access,src.path);
+}
+
+function arvEsquemaRender(){
+ if(!MODO_ARV||ARV_VISTA!=='diagrama')return;
+ const mode=MODULO==='modelos'?'modelos':'juris';
+ const box=document.querySelector('[data-arv-esquema="'+mode+'"]');
+ if(!box)return;
+ if(mode==='modelos'&&!MODS)return;
+ if(mode==='juris'&&(!ASS||typeof IDX==='undefined'||!IDX))return;
+ cmtMindRender(box,mode);
 }
 document.addEventListener('click',e=>{
  const el=e.target.closest('[data-arv-esquema]');if(!el||!MODO_ARV)return;
@@ -2069,7 +2316,7 @@ document.addEventListener('click',e=>{
 arvAplicarLayout();
 document.addEventListener('change',e=>{if(!e.target.matches('[data-arv-evid-filter]'))return;ARV_QUALIDADE=e.target.value==='revisar'?'revisar':'todas';ARV_CORRESP_LIMITE=8;arvEsquemaAgendar()});
 
-let arvDeb;document.addEventListener('input',e=>{if(!e.target.classList.contains('arv-q'))return;const v=e.target.value;document.querySelectorAll('.arv-q').forEach(i=>{if(i!==e.target)i.value=v});clearTimeout(arvDeb);arvDeb=setTimeout(()=>{arvRender();arv7Render()},150)});
+let arvDeb;document.addEventListener('input',e=>{if(!e.target.classList.contains('arv-q'))return;const v=e.target.value;document.querySelectorAll('.arv-q').forEach(i=>{if(i!==e.target)i.value=v});clearTimeout(arvDeb);arvDeb=setTimeout(()=>{arvRender();arv7Render();arvEsquemaAgendar()},150)});
 let ARV_HASH=false;
 $('btnFiltrosMob').onclick=()=>$('filtros').classList.toggle('aberto');
 if(matchMedia('(max-width:720px)').matches)$('btnFiltrosMob').style.display='grid';
