@@ -509,6 +509,40 @@ html.modo-arvore:not(.arv-diagrama) .arv-esquema{display:none}
 @media(max-width:850px){html.modo-arvore main.modulo{grid-template-columns:minmax(0,1fr)!important}html.modo-arvore main.modulo>section.lista,html.modo-arvore main.modulo>section.detalhe{display:none!important}.arv-viz-width input{width:80px}.arv-esq-col{flex-basis:190px}}
 @media(prefers-reduced-motion:reduce){.arv-esq-col{animation:none}.arv-esq-node,.arv-esquema{transition:none;scroll-behavior:auto}}
 
+
+/* ===== ÁRVORE INFORMATIVA: correspondências, evidências e rastreabilidade ===== */
+.arv-esq-col{flex-basis:264px}
+.arv-esq-cols{gap:43px}
+.arv-esq-node{gap:7px;padding:11px 12px}
+.arv-esq-node .nm{font-size:12px;line-height:1.38}
+.arv-esq-node .smallrow{font-size:10px;justify-content:flex-start;flex-wrap:wrap}
+.arv-esq-node .smallrow b{font-size:11px}
+.arv-esq-badges{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.arv-esq-badge{font:750 9px/1.35 Figtree,Inter,system-ui,sans-serif;border-radius:5px;border:1px solid var(--line2);color:var(--muted);padding:2px 5px;background:var(--field)}
+.arv-esq-badge.warn{color:#aa6122;background:rgba(227,155,74,.11);border-color:rgba(204,140,57,.3)}
+.arv-esq-badge.good{color:#28765d;background:rgba(92,169,135,.11);border-color:rgba(84,158,120,.32)}
+.arv-esq-node .arv-esq-example{color:var(--muted);font-size:10px;line-height:1.43;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.arv-esq-toolbar{border:1px solid var(--line2);border-radius:9px;padding:8px 10px;margin:10px 0;background:var(--panel);display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.arv-esq-toolbar label{font-size:10px;font-weight:750;color:var(--muted)}
+.arv-esq-toolbar select{border:1px solid var(--line2);background:var(--field);color:var(--text);padding:4px 7px;border-radius:6px;font-size:11px;max-width:205px}
+.arv-esq-path{display:flex;gap:5px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.arv-esq-path button{border:1px solid var(--line2);border-radius:6px;background:var(--panel2);color:var(--text);font:650 10px/1.35 Figtree,system-ui,sans-serif;padding:4px 8px;cursor:pointer;max-width:260px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.arv-esq-path button:hover{border-color:var(--f-acervo)}
+.arv-esq-path .sep{color:var(--muted);font-size:9px}
+.arv-esq-compare{margin:12px 1px 2px;background:var(--panel);border:1px solid var(--line2);border-radius:11px;padding:12px}
+.arv-esq-compare-head{display:flex;align-items:center;gap:8px;justify-content:space-between;flex-wrap:wrap}
+.arv-esq-compare-head b{font-size:12px}.arv-esq-compare-head small{font-size:10px;color:var(--muted)}
+.arv-esq-preview{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:7px;margin-top:9px}
+.arv-esq-preview button{text-align:left;display:flex;flex-direction:column;gap:5px;cursor:pointer;border:1px solid var(--line2);border-radius:8px;background:var(--panel2);color:var(--text);padding:10px}
+.arv-esq-preview button:hover{border-color:var(--f-acervo);background:var(--f-acervo-s)}
+.arv-esq-preview strong{font-size:11px;overflow-wrap:anywhere}
+.arv-esq-preview .meta{font-size:10px;line-height:1.4;color:var(--muted)}
+.arv-esq-preview .sample{font-size:10px;color:var(--muted);line-height:1.4;max-height:42px;overflow:hidden}
+.arv-esq-compare .more{color:var(--f-acervo);border:1px solid var(--line2);background:var(--panel2);padding:6px 9px;border-radius:6px;margin-top:9px;font:750 10px Figtree,sans-serif;cursor:pointer}
+.arv-esq-disclaimer{color:var(--muted);font-size:10px;line-height:1.45;margin:7px 2px 0}
+.arv-esq-no-data{color:var(--muted);font-size:11px;border:1px dashed var(--line2);padding:9px;border-radius:7px;margin-top:8px}
+@media(max-width:850px){.arv-esq-col{flex-basis:226px}.arv-esq-compare{padding:9px}.arv-esq-preview{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -1145,7 +1179,7 @@ function aplicarModelos(){
   ARV.baseM=preM; modFilt=(noAtivo()?preM.filter(m=>casaNo(m.id)):preM).filter(m=>!MODO_ARV||arv7Casa(m));
   const tot=modFilt.reduce((s,m)=>s+m.frequencia,0);
   $('mResumo').innerHTML=`<b>${modFilt.length}</b> modelo${modFilt.length===1?'':'s'}`;
-  $('mResumo2').innerHTML=arvChip('modelos')+`cobrem ${tot.toLocaleString('pt-BR')} decisões do banco`;
+  $('mResumo2').innerHTML=arvChip('modelos')+`Σ ${tot.toLocaleString('pt-BR')} frequências (soma; decisões podem se repetir)`;
   arvRender();arv7Render();
   $('mRes').innerHTML=modFilt.slice(0,400).map(m=>`<li class="proc${m.id===modSel?' sel':''}" data-id="${m.id}"><div class="crow">
     <div class="c0"><span class="tp ${m.tipo==='acórdão'?'A':'M'}" title="${esc(m.tipo)}">${m.tipo==='acórdão'?'A':'M'}</span></div>
@@ -1661,6 +1695,119 @@ function hydrate(m){const classification=classify(m);const facets=inferFacets(m,
 
 return {path(model){return treePath(hydrate(model))},metadata(model){let r=hydrate(model);return {area:r.area,assunto:r.assunto,qualidade:r.qualidade}},titulos:['Assunto','Classe/espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado']};
 })();
+
+/* REFINAMENTO DAS FACETAS · NÃO MODIFICA OS 752 MODELOS DA FONTE GIT */
+const CMT_ARV7_BASEPATH=CMT_ARV7.path.bind(CMT_ARV7);
+const CMT_ARV7_BASEMETA=CMT_ARV7.metadata.bind(CMT_ARV7);
+const CMT_ARV7_MEMO=new Map();
+const CMT_FAC_NORM=v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
+const CMT_SEM_SUB='Subassunto a identificar',CMT_SEM_QUESTAO='Questão jurídica a identificar',CMT_SEM_ESP='Especificidade a conferir';
+const CMT_FAC_RULES={
+ sub:[
+  ['Segurado especial / economia familiar',/\b(segurado especial|economia familiar|regime de economia familiar)\b/,/Previdenciário/],
+  ['Carência e período de atividade rural',/\b(carencia|periodo de carencia|prova da atividade rural|labor rural)\b/,/Previdenciário/],
+  ['Trabalho rural assalariado',/\b(empregado rural|assalariado rural|trabalhador rural empregado)\b/,/Previdenciário/],
+  ['Trabalho rural boia-fria',/\b(boia.fria|trabalhador volante|diarista rural)\b/,/Previdenciário/],
+  ['Tempo rural e urbano híbrido',/\b(idade hibrida|tempo rural e urbano|periodos urbanos e rurais)\b/,/Previdenciário/],
+  ['Reconhecimento de atividade especial',/\b(atividade especial|tempo especial|exposicao a agentes nocivos|agentes nocivos)\b/,/Previdenciário/],
+  ['Incapacidade temporária',/\b(auxilio.doenca|incapacidade temporaria|beneficio por incapacidade temporaria)\b/,/Previdenciário/],
+  ['Incapacidade permanente',/\b(aposentadoria por invalidez|incapacidade permanente|aposentadoria por incapacidade permanente)\b/,/Previdenciário/],
+  ['BPC por deficiência',/\b(bpc.{0,45}deficiencia|impedimento de longo prazo|beneficio assistencial.{0,35}deficiencia)\b/,/Previdenciário/],
+  ['BPC por idade',/\b(bpc.{0,45}idoso|beneficio assistencial.{0,35}idoso)\b/,/Previdenciário/],
+  ['Dependência previdenciária',/\b(uniao estavel|dependencia previdenciaria|qualidade de dependente)\b/,/Previdenciário/],
+  ['ICMS na base do PIS/COFINS',/\b(icms.{0,65}(base|pis|cofins)|exclusao do icms|tema 69)\b/,/Tributário/],
+  ['ISS na base do PIS/COFINS',/\b(iss.{0,65}(base|pis|cofins)|exclusao do iss)\b/,/Tributário/],
+  ['ICMS-ST / substituição tributária',/\b(icms.st|substituicao tributaria|monofasico|monofasia)\b/,/Tributário/],
+  ['Compensação tributária',/\b(compensacao tributaria|compensacao de credito tributario|repeticao de indebito)\b/,/Tributário/],
+  ['Execução fiscal / CDA',/\b(execucao fiscal|certidao de divida ativa|cda\b|excecao de pre.executividade)\b/,/Tributário/],
+  ['Admissibilidade de recurso',/\b(dialeticidade|inovacao recursal|intempestividade|desercao|pressupostos recursais|inadmissibilidade)\b/,/Processual/],
+  ['Vícios e integração do julgado',/\b(embargos de declaracao|erro material|obscuridade|contradicao|omissao|prequestionamento)\b/,/Processual/],
+  ['Tutela provisória',/\b(tutela provisoria|tutela de urgencia|efeito suspensivo|tutela antecipada)\b/,/Processual/],
+  ['Cálculo da sucumbência',/\b(honorarios advocaticios|sucumbencia recursal|majoracao de honorarios)\b/,/Processual/],
+  ['Concurso e nomeação',/\b(concurso publico|nomeacao|posse em cargo|pretericao de candidato)\b/,/Administrativo/],
+  ['Licenciamento / reintegração militar',/\b(licenciamento militar|reintegracao militar|forcas armadas)\b/,/Administrativo/],
+  ['Responsabilidade civil e reparação',/\b(dano moral|danos morais|responsabilidade civil|indenizacao por dano)\b/,/Civil/],
+  ['Financiamento imobiliário',/\b(financiamento imobiliario|sistema financeiro da habitacao|sfh\b|alienacao fiduciaria)\b/,/Civil/],
+ ],
+ questao:[
+  ['Existência de requisitos legais para concessão',/\b(requisitos.{0,25}(concessao|beneficio)|preenchimento dos requisitos|requisitos legais)\b/],
+  ['Suficiência do início de prova material',/\b(inicio de prova material|prova exclusivamente testemunhal|prova material insuficiente|comprovacao do labor rural)\b/],
+  ['Valoração da prova pericial',/\b(conclusao pericial|laudo pericial|pericia judicial|incapacidade laborativa)\b/],
+  ['Qualidade de segurado ou dependente',/\b(qualidade de segurado|qualidade de dependente|perda da qualidade de segurado)\b/],
+  ['Carência / tempo de contribuição',/\b(carencia|tempo de contribuicao|periodo de carencia)\b/],
+  ['Termo inicial / data de início do benefício',/\b(termo inicial|data de inicio|\bdib\b|\bder\b|reafirmacao da der)\b/],
+  ['Prescrição ou decadência',/\b(prescricao|decadencia|quinquenal)\b/],
+  ['Limites da coisa julgada',/\b(coisa julgada|limites do titulo executivo|cumprimento de sentenca)\b/],
+  ['Devolução de valores recebidos por tutela revogada',/\b(restituicao de valores recebidos|devolucao de valores recebidos|tema 692|tutela.{0,50}revogada)\b/],
+  ['Composição da base de cálculo tributária',/\b(base de calculo|exclusao do icms|exclusao do iss|inclusao do icms)\b/],
+  ['Restituição / compensação de indébito',/\b(indebito tributario|repeticao do indebito|compensacao tributaria|credito tributario)\b/],
+  ['Legitimidade e responsabilidade tributária',/\b(legitimidade ativa|responsabilidade tributaria|redirecionamento da execucao)\b/],
+  ['Admissibilidade recursal',/\b(dialeticidade|intempestividade|inovacao recursal|desercao|pressupostos de admissibilidade)\b/],
+  ['Omissão / contradição / obscuridade do acórdão',/\b(omissao|obscuridade|contradicao|erro material|prequestionamento)\b/],
+  ['Competência jurisdicional',/\b(competencia jurisdicional|incompetencia|conflito de competencia|competencia delegada)\b/],
+  ['Concessão de tutela de urgência',/\b(probabilidade do direito|perigo de dano|tutela de urgencia|efeito suspensivo)\b/],
+  ['Majoração ou inversão da sucumbência',/\b(honorarios recursais|inversao da sucumbencia|majoracao de honorarios|artigo 85)\b/],
+  ['Legalidade do ato administrativo',/\b(legalidade do ato|ato administrativo|nulidade de ato|processo administrativo disciplinar)\b/],
+ ],
+ especificidade:[
+  ['Documentos em nome de terceiro',/\b(documento.{0,16}nome de terceiro|documentacao de terceiro|prova em nome do conjuge)\b/],
+  ['Prova testemunhal',/\b(prova testemunhal|testemunhas|prova oral|depoimentos)\b/],
+  ['Laudo médico-pericial',/\b(laudo medico|laudo pericial|pericia medica|laudo judicial)\b/],
+  ['CNIS / vínculos previdenciários',/\b(cnis|cadastro nacional de informacoes sociais|registro de vinculos)\b/],
+  ['CTPS e registros laborais',/\b(ctps|carteira de trabalho|anotacoes na ctps)\b/],
+  ['Trabalho boia-fria',/\b(boia.fria|trabalhador volante|diarista rural)\b/],
+  ['Documentação indígena / FUNAI',/\b(indigena|funai)\b/],
+  ['Modulação de efeitos',/\b(modulacao|efeitos prospectivos|modulacao temporal)\b/],
+  ['Gratuidade da justiça',/\b(gratuidade|justica gratuita)\b/],
+  ['Fato superveniente',/\b(fato superveniente|perda superveniente|revogacao de tutela)\b/],
+  ['Prova nova ou perícia complementar',/\b(pericia complementar|prova superveniente|prova nova|esclarecimentos periciais)\b/],
+  ['Preliminar processual',/\b(preliminar de|nulidade processual|cerceamento de defesa)\b/],
+  ['Prescrição quinquenal',/\b(prescricao quinquenal)\b/],
+ ]
+};
+function cmtEscolherFaceta(rules,m,kind,area){
+ const src=[['tema',String(m.tema||''),7],['ementa do modelo',String(m.ementa_modelo||'').slice(0,520),3.5],['palavras-chave',(m.palavras_chave||[]).slice(0,10).join(' '),1.4],['abertura',String(m.abertura||'').slice(0,300),3]];
+ let hits=[];
+ for(const [name,re,allowed] of rules){if(allowed&&!allowed.test(area||''))continue;
+  let score=0,provas=[];
+  for(const [campo,raw,peso] of src){const txt=CMT_FAC_NORM(raw);const match=txt.match(re);if(!match)continue;score+=peso;provas.push({campo,trecho:match[0],peso})}
+  if(score>=3)hits.push({name,score,provas});
+ }
+ hits.sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name,'pt-BR'));
+ return {melhor:hits[0]||null,alternativos:hits.slice(1,5)};
+}
+function cmtRefinarModelo(m){
+ const key=String(m.id||'');if(CMT_ARV7_MEMO.has(key))return CMT_ARV7_MEMO.get(key);
+ const origem=CMT_ARV7_BASEPATH(m),base=CMT_ARV7_BASEMETA(m),path=[...origem];
+ const tema=String(m.tema||''),ementa=String(m.ementa_modelo||''),abertura=String(m.abertura||'');
+ // Monocráticas sem tema e sem evidência jurídica suficiente não recebem um assunto apenas por fórmula recursal genérica.
+ if(!tema&&!ementa&&!/\b(pensao|aposentadoria|incapacidade|segurado|beneficio assistencial|pis|cofins|tributo|execucao fiscal|concurso publico|militar|responsabilidade civil|gratuidade|competencia)\b/.test(CMT_FAC_NORM(abertura)))path[0]='Assunto a classificar';
+ const sub=cmtEscolherFaceta(CMT_FAC_RULES.sub,m,'sub',base.area);
+ const q=cmtEscolherFaceta(CMT_FAC_RULES.questao,m,'questao',base.area);
+ const spec=cmtEscolherFaceta(CMT_FAC_RULES.especificidade,m,'especificidade',base.area);
+ path[3]=sub.melhor?.name||CMT_SEM_SUB;
+ path[4]=q.melhor?.name||CMT_SEM_QUESTAO;
+ path[5]=spec.melhor?.name||CMT_SEM_ESP;
+ const pref=CMT_FAC_NORM(ementa).slice(0,165);
+ const areasExplicitadas=[];
+ if(/direito previdenciario|direito assistencial/.test(pref))areasExplicitadas.push('Previdenciário');
+ if(/direito tributario/.test(pref))areasExplicitadas.push('Tributário');
+ if(/direito administrativo/.test(pref))areasExplicitadas.push('Administrativo');
+ if(/direito civil|direito do consumidor/.test(pref))areasExplicitadas.push('Civil');
+ if(/direito processual civil/.test(pref))areasExplicitadas.push('Processual');
+ const conflito=areasExplicitadas.length>0&&!areasExplicitadas.some(d=>(base.area||'').includes(d));
+ const alertas=conflito?['Cabeçalho da ementa menciona ramo diverso do assunto inferido — verificar decisão-fonte']:[];
+ const misses=[path[0]==='Assunto a classificar'||conflito,!sub.melhor,!q.melhor,!spec.melhor];
+ // Facetas são inferidas por indícios do texto; jamais equivalem a classificação processual oficial.
+ const evidencias=[...new Set([...(sub.melhor?.provas||[]),...(q.melhor?.provas||[]),...(spec.melhor?.provas||[])].map(x=>x.campo))];
+ const rel=[...new Set([...sub.alternativos,...q.alternativos,...spec.alternativos].map(x=>x.name))].slice(0,5);
+ const info={path,area:base.area,alertas,qualidade:misses[0]||misses[1]&&misses[2]?'revisar':misses[1]||misses[2]?'parcial':'indicativa',revisar:misses[0]||misses[1]||misses[2],lacunas:misses.filter(Boolean).length,evidencias,alternativos:rel,provas:{sub:sub.melhor?.provas||[],questao:q.melhor?.provas||[],especificidade:spec.melhor?.provas||[]},temaFonte:tema.slice(0,200),ementaFonte:ementa.slice(0,250),fonteId:String(m.fonte_modelo||''),classes:m.classes||{}};
+ CMT_ARV7_MEMO.set(key,info);return info;
+}
+CMT_ARV7.info=cmtRefinarModelo;
+CMT_ARV7.path=m=>cmtRefinarModelo(m).path;
+CMT_ARV7.metadata=m=>{const f=cmtRefinarModelo(m);return {area:f.area,assunto:f.path[0],qualidade:f.qualidade,proveniencia:f.evidencias}};
+
 let ARV7_ESCOLHA=null;
 const ARV7_ABERTOS=new Set();
 const ARV7_CAMINHOS=new Map();
@@ -1695,7 +1842,7 @@ function arv7Render(){
   };
   box.innerHTML=walk(root)||'<p class="ajuda">Nenhum modelo corresponde à busca da árvore.</p>';
   const count=document.querySelector('#mMod .arv7-top b');if(count)count.textContent=`${models.length} modelos · hierarquia jurídica`;
-  const note=document.querySelector('#mMod .arv7-note');if(note)note.textContent=(ARV7_ESCOLHA?`Recorte: ${ARV7_ESCOLHA.join(' › ')}. `:'')+'Classificação temática inferida e revisável; os modelos e IDs originais não são alterados.';
+  const note=document.querySelector('#mMod .arv7-note');if(note)note.textContent=(ARV7_ESCOLHA?`Recorte: ${ARV7_ESCOLHA.join(' › ')}. `:'')+'Subassunto, questão e especificidades derivados de indícios do modelo; lacunas marcadas para revisão. IDs e textos intactos.';
   arvEsquemaAgendar();
 }
 document.addEventListener('click',e=>{
@@ -1827,34 +1974,74 @@ function arvLargura(n){ARV_LARGURA=Math.max(35,Math.min(92,n));LS.set('acv_arv_l
 function arvAlternarMax(){ARV_MAX=!ARV_MAX;arvAplicarLayout()}
 function arvEsquemaAgendar(){if(!MODO_ARV||ARV_SCHED)return;ARV_SCHED=requestAnimationFrame(()=>{ARV_SCHED=0;arvEsquemaRender()})}
 function arvEsqNorm(s){return semAcento(String(s||''))}
-function arvEsqOpcoes(records,level,prefix,access){const result=new Map();for(const rec of records){const path=access(rec);if(prefix.some((v,i)=>path[i]!==v))continue;const label=path[level];if(!label)continue;let a=result.get(label);if(!a)result.set(label,a={nome:label,n:0,ids:[]});a.n++;a.ids.push(rec)}return [...result.values()].sort((a,b)=>b.n-a.n||a.nome.localeCompare(b.nome,'pt-BR'))}
-function arvEsqCol(titulo,level,rows,prefix,mode,isLeaves){
+
+/* AGRUPAMENTOS INFORMADOS: contagens únicas, soma não deduplicada das frequências e grau de evidência. */
+let ARV_QUALIDADE='todas',ARV_CORRESP_LIMITE=8;
+function arvEsqOpcoes(records,level,prefix,access,mode){
+ const result=new Map();
+ for(const rec of records){const path=access(rec);if(prefix.some((v,i)=>path[i]!==v))continue;
+  const label=path[level];if(!label)continue;
+  let a=result.get(label);if(!a)result.set(label,a={nome:label,n:0,ids:[],frequencia:0,revisar:0,divergencias:0,anos:[],tipos:new Set()});
+  a.n++;a.ids.push(rec);
+  if(mode==='modelos') {a.frequencia+=Number(rec.frequencia||0);if(CMT_ARV7.info(rec).revisar)a.revisar++;if(CMT_ARV7.info(rec).alertas.length)a.divergencias++;
+    a.tipos.add(rec.especie||'Espécie não indicada')}
+  else {a.tipos.add(rec.t==='A'?'Acórdão':'Decisão monocrática');if(rec.y)a.anos.push(rec.y)}
+ }
+ return [...result.values()].sort((a,b)=>b.n-a.n||a.nome.localeCompare(b.nome,'pt-BR'));
+}
+function arvEsqCol(titulo,level,rows,mode,isLeaves){
  const selected=mode==='modelos'?ARV7_ESCOLHA||[]:ARV.no.filter(Boolean);
  const cards=rows.slice(0,isLeaves?100:220).map(o=>{
-  const isOn=!isLeaves&&selected[level]===o.nome;
+  const on=!isLeaves&&selected[level]===o.nome;
   const dat=isLeaves?`data-schem-leaf="${esc(o.id)}"`:`data-schem-n="${esc(o.nome)}"`;
-  return `<button type="button" class="arv-esq-node${isOn?' on':''}" ${dat} data-schem-lv="${level}" title="${esc(o.nome)}" aria-pressed="${isOn}"><span class="nm">${esc(o.nome)}</span><span class="smallrow"><span>${isLeaves?'Modelo original':esc(titulo)}</span><b>${isLeaves?'Abrir texto':o.n.toLocaleString('pt-BR')+' registro'+(o.n===1?'':'s')}</b>${isLeaves?'':'<i>›</i>'}</span></button>`}).join('');
- const note=rows.length>100&&isLeaves?`<div class="arv-esq-empty">Exibidos os 100 primeiros modelos deste ramo. Refine os níveis ou a busca.</div>`:rows.length>220?`<div class="arv-esq-empty">Exibidos 220 ramos. Utilize a busca para localizar os demais.</div>`:'';
+  const details=isLeaves
+   ?`<span class="arv-esq-badge">${esc(o.especie||o.tipo||'registro')}</span>${o.resultado?`<span class="arv-esq-badge">${esc(o.resultado)}</span>`:''}`
+   :`<span class="arv-esq-badge">${o.n.toLocaleString('pt-BR')} ${mode==='modelos'?'modelos':'precedentes'}</span>${mode==='modelos'?`<span class="arv-esq-badge" title="Soma das frequências dos modelos; as decisões-fonte podem se repetir entre modelos">Σ ${o.frequencia.toLocaleString('pt-BR')} decisões*</span>`:`<span class="arv-esq-badge">${esc([...o.tipos].join(' · '))}</span>`}${mode==='modelos'&&o.revisar?`<span class="arv-esq-badge warn">${o.revisar} a revisar</span>`:''}${mode==='modelos'&&o.divergencias?`<span class=\"arv-esq-badge warn\">${o.divergencias} divergência(s)</span>`:''}`;
+  const sample=!isLeaves&&mode==='modelos'&&o.ids.length?o.ids.slice().sort((a,b)=>(b.frequencia||0)-(a.frequencia||0))[0]:null;
+  const hint=sample?`Ex. ${sample.id} · ${sample.fase||'fase não indicada'} · ${String(sample.tema||sample.abertura||sample.nome||'').slice(0,115)}`:isLeaves?(o.amostra||''):'';
+  const title=isLeaves?o.nome: o.nome+` · ${o.n} ${mode==='modelos'?'modelos':'precedentes'}${mode==='modelos'?` · Σ ${o.frequencia} decisões (não deduplicadas)`:''}`;
+  return `<button type="button" class="arv-esq-node${on?' on':''}" ${dat} data-schem-lv="${level}" title="${esc(title)}" aria-pressed="${on}"><span class="nm">${esc(o.nome)}</span><span class="arv-esq-badges">${details}</span>${hint?`<span class="arv-esq-example">${esc(hint)}</span>`:''}<span class="smallrow">${isLeaves?'Abrir registro e fonte':'Selecionar ramo e ver correspondências'} ${isLeaves?'↗':'›'}</span></button>`;
+ }).join('');
+ const note=rows.length>100&&isLeaves?`<div class="arv-esq-empty">Mostrados os primeiros 100 registros. Use a busca ou a lista de correspondências para os demais.</div>`:rows.length>220?`<div class="arv-esq-empty">Mostrados 220 ramos. Utilize a busca para localizar os demais.</div>`:'';
  return `<section class="arv-esq-col" data-schem-level="${level}" aria-label="Nível ${level+1}: ${esc(titulo)}"><div class="arv-esq-title"><span class="arv-esq-step">${String(level+1).padStart(2,'0')}</span><strong>${esc(titulo)}</strong><small>${rows.length} opções</small></div><div class="arv-esq-scroll">${cards||'<div class="arv-esq-empty">Nenhuma correspondência neste nível.</div>'}${note}</div></section>`;
+}
+function arvEsqCorrespondentes(records,mode,path,access){
+ const matches=records.filter(r=>path.every((v,i)=>access(r)[i]===v));
+ const ranked=matches.slice().sort((a,b)=>mode==='modelos'?(b.frequencia||0)-(a.frequencia||0):String(b.d||'').localeCompare(String(a.d||'')));
+ const count=ranked.length;const limit=ARV_CORRESP_LIMITE;
+ const cards=ranked.slice(0,limit).map(r=>{
+  const name=mode==='modelos'?String(r.tema||r.nome||r.abertura||'Sem tema explícito'):String(r.n||r.id);
+  const info=mode==='modelos'?CMT_ARV7.info(r):null;
+  const extras=mode==='modelos'
+   ?`${r.especie||'Classe não indicada'} · ${r.resultado||'Resultado não identificado'} · ${r.tipo==='acórdão'?'Voto':'Monocrática'} · ${r.fase||'fase não indicada'} · frequência ${Number(r.frequencia||0)}`
+   :`${r.t==='A'?'Acórdão':'Monocrática'} · ${r.d||r.y||'Data não indicada'}`;
+  const evidence=mode==='modelos'?`Fonte ${r.fonte_modelo||'não identificada'} · ${info.evidencias.join(' / ')||'classificação pendente'}`:'Classificação do índice temático automático — verificar na fonte';
+  return `<button type="button" data-schem-leaf="${esc(r.id)}" title="Abrir ${esc(r.id)}"><strong>${esc(r.id)} · ${esc(name.slice(0,105))}</strong><span class="meta">${esc(extras)}</span><span class="sample">${esc(evidence)}</span></button>`;
+ }).join('');
+ return `<section class="arv-esq-compare" aria-label="Registros correspondentes ao caminho selecionado"><div class="arv-esq-compare-head"><b>${count.toLocaleString('pt-BR')} ${mode==='modelos'?'modelos correspondentes':'precedentes correspondentes'}</b><small>${path.length?'Dentro do caminho escolhido':'Total do recorte'} · selecione um cartão para abrir o registro</small></div><div class="arv-esq-preview">${cards||'<div class="arv-esq-no-data">Nenhuma correspondência com os filtros atuais.</div>'}</div>${count>limit?`<button type="button" class="more" data-schem-more="${mode}">Mostrar mais correspondentes (${Math.min(20,count-limit)})</button>`:''}</section>`;
 }
 function arvEsqPintar(container,mode,records,path,access,titulos){
  const search=arvEsqNorm(container.closest('.arvcol').querySelector('.arv-q')?.value.trim());
- const found=search?records.filter(r=>arvEsqNorm(access(r).join(' ')+' '+(r.nome||'')+' '+(r.id||'')).includes(search)):records;
+ const found=search?records.filter(r=>arvEsqNorm(access(r).join(' ')+' '+(r.nome||'')+' '+(r.id||'')+' '+(r.tema||'')+' '+(mode==='modelos'?CMT_ARV7.info(r).alternativos.join(' '):'')).includes(search)):records;
+ const filtered=mode==='modelos'&&ARV_QUALIDADE==='revisar'?found.filter(r=>CMT_ARV7.info(r).revisar):found;
  let cols='';const final=Math.min(path.length,titulos.length);
  for(let level=0;level<=final;level++){
   if(level===titulos.length){
-   const matches=found.filter(r=>path.every((v,i)=>access(r)[i]===v));
-   const leaf=matches.map(r=>({nome:(r.nome||r.n||r.id||'Registro')+' · '+r.id,id:r.id}));
-   cols+=arvEsqCol('Registros correspondentes',level,leaf,path,mode,true);break;
+   const matches=filtered.filter(r=>path.every((v,i)=>access(r)[i]===v));
+   const leaf=matches.map(r=>({nome:(r.nome||r.n||r.id||'Registro')+' · '+r.id,id:r.id,especie:r.especie,resultado:r.resultado,amostra:String(r.tema||'').slice(0,90)}));
+   cols+=arvEsqCol('Registros correspondentes',level,leaf,mode,true);break;
   }
-  cols+=arvEsqCol(titulos[level],level,arvEsqOpcoes(found,level,path.slice(0,level),access),path,mode,false);
+  cols+=arvEsqCol(titulos[level],level,arvEsqOpcoes(filtered,level,path.slice(0,level),access,mode),mode,false);
  }
- const desc=mode==='modelos'?'modelos únicos, por ID':'precedentes do recorte';
- container.innerHTML=`<div class="arv-esq-head"><div><b>Mapa de correspondências</b> <small>· ${found.length.toLocaleString('pt-BR')} ${desc}</small></div><button type="button" data-schem-reset="1" title="Voltar ao primeiro nível">↶ Raiz</button></div><div class="arv-esq-cols" role="group" aria-label="Ramos da árvore">${cols}</div>`;
+ const bc='<div class="arv-esq-path"><button type="button" data-schem-back="0">Raiz</button>'+path.map((p,i)=>`<span class="sep">›</span><button type="button" data-schem-back="${i+1}" title="Voltar ao nível ${i+1}">${esc(p)}</button>`).join('')+'</div>';
+ const qfilter=mode==='modelos'?`<label for="arvEvidFiltro">Qualidade temática</label><select id="arvEvidFiltro" data-arv-evid-filter><option value="todas"${ARV_QUALIDADE==='todas'?' selected':''}>Todos os modelos</option><option value="revisar"${ARV_QUALIDADE==='revisar'?' selected':''}>Somente a revisar</option></select>`:'';
+ const desc=mode==='modelos'?'modelos únicos por ID':'precedentes do índice';
+ const notice=mode==='modelos'?'* Σ frequências = soma de ocorrências por modelo, sem deduplicar decisões. Tema, questão e especificidade são inferidos do texto, não do assunto CNJ oficial.':'Classificação de precedentes extraída automaticamente do índice temático; alguns ramos podem conter decisões fora do assunto indicado. Confira a ementa e o inteiro teor.';
+ container.innerHTML=`<div class="arv-esq-head"><div><b>Mapa jurídico de correspondências</b> <small>· ${filtered.length.toLocaleString('pt-BR')} ${desc}</small></div><button type="button" data-schem-reset="1" title="Voltar ao primeiro nível">↶ Raiz</button></div><div class="arv-esq-toolbar">${qfilter}<span class="arv-esq-disclaimer">A seleção filtra os registros sem alterar sua classificação na fonte</span></div>${bc}<div class="arv-esq-cols" role="group" aria-label="Ramos jurídicos por níveis">${cols}</div>${arvEsqCorrespondentes(filtered,mode,path,access)}<p class="arv-esq-disclaimer">${notice}</p>`;
 }
 function arvEsquemaRender(){if(!MODO_ARV||ARV_VISTA!=='diagrama')return;
  const modbox=document.querySelector('[data-arv-esquema="modelos"]');
- if(MODS&&modbox){const q=arvEsqNorm(modbox.closest('.arvcol').querySelector('.arv-q')?.value.trim());const mods=q?MODS.filter(m=>arvEsqNorm(arv7Path(m).join(' ')+' '+m.nome+' '+m.id).includes(q)):MODS;
+ if(MODS&&modbox){const q=arvEsqNorm(modbox.closest('.arvcol').querySelector('.arv-q')?.value.trim());const mods=q?MODS.filter(m=>arvEsqNorm(arv7Path(m).join(' ')+' '+m.nome+' '+m.id+' '+CMT_ARV7.info(m).alternativos.join(' ')).includes(q)):MODS;
   arvEsqPintar(modbox,'modelos',mods,ARV7_ESCOLHA||[],arv7Path,CMT_ARV7.titulos)}
  const jurbox=document.querySelector('[data-arv-esquema="juris"]');
  if(jurbox&&ASS&&typeof IDX!=='undefined'&&IDX){const base=ARV.baseP.length?ARV.baseP:IDX;arvEsqPintar(jurbox,'juris',base,ARV.no.filter(Boolean),r=>assDe(r.id)||['Não classificado','Outros','Outros temas'],['Área jurídica','Subárea','Tema']);}
@@ -1862,7 +2049,12 @@ function arvEsquemaRender(){if(!MODO_ARV||ARV_VISTA!=='diagrama')return;
 document.addEventListener('click',e=>{
  const el=e.target.closest('[data-arv-esquema]');if(!el||!MODO_ARV)return;
  const mode=el.dataset.arvEsquema;
- if(e.target.closest('[data-schem-reset]')){mode==='modelos'?arv7Limpar():arvSel([null,null,null]);arvEsquemaAgendar();return}
+  const more=e.target.closest('[data-schem-more]');if(more){ARV_CORRESP_LIMITE=Math.min(50,ARV_CORRESP_LIMITE+20);arvEsquemaAgendar();return}
+  const back=e.target.closest('[data-schem-back]');if(back){const n=+back.dataset.schemBack;
+   if(mode==='modelos'){ARV7_ESCOLHA=(ARV7_ESCOLHA||[]).slice(0,n)||[];arv7AplicarTodos()}
+   else{const old=ARV.no.filter(Boolean).slice(0,n);arvSel([old[0]||null,old[1]||null,old[2]||null])}
+   arvEsquemaAgendar();return}
+  if(e.target.closest('[data-schem-reset]')){mode==='modelos'?arv7Limpar():arvSel([null,null,null]);arvEsquemaAgendar();return}
  const leaf=e.target.closest('[data-schem-leaf]');if(leaf){const id=leaf.dataset.schemLeaf;
   if(mode==='modelos'){const model=MOD_POR.get(id);if(model){ARV7_ESCOLHA=arv7Path(model);arv7AplicarTodos();abrirModelo(id)}}
   else irParaDecisao(id);arvEsquemaAgendar();return}
@@ -1875,6 +2067,7 @@ document.addEventListener('click',e=>{
  requestAnimationFrame(()=>{const c=el.querySelector('.arv-esq-cols');if(c&&c.scrollWidth<0)c.scrollIntoView();const lanes=el.querySelectorAll('.arv-esq-col');const last=lanes[lanes.length-1];if(last&&last.offsetLeft>el.scrollLeft+el.clientWidth-180)el.scrollTo({left:last.offsetLeft-130,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});
 });
 arvAplicarLayout();
+document.addEventListener('change',e=>{if(!e.target.matches('[data-arv-evid-filter]'))return;ARV_QUALIDADE=e.target.value==='revisar'?'revisar':'todas';ARV_CORRESP_LIMITE=8;arvEsquemaAgendar()});
 
 let arvDeb;document.addEventListener('input',e=>{if(!e.target.classList.contains('arv-q'))return;const v=e.target.value;document.querySelectorAll('.arv-q').forEach(i=>{if(i!==e.target)i.value=v});clearTimeout(arvDeb);arvDeb=setTimeout(()=>{arvRender();arv7Render()},150)});
 let ARV_HASH=false;
