@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Central Precedentes · Modelos (modo árvore) — Gabinete CMT · TRF3</title>
+<title>Central Precedentes · Modelos — Gabinete CMT · TRF3</title>
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
@@ -345,6 +345,22 @@ html[data-tema="noturno"] .ponte.m{color:var(--f-minuta)}
 .min-main textarea{min-height:54px;resize:vertical;line-height:1.4}
 .min-main .lote{font:800 10px Figtree,Inter,system-ui,sans-serif;color:var(--f-minuta);text-transform:uppercase;letter-spacing:.1em;margin:14px 0 8px;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
 .min-main.rel-on [data-rel]{display:none}
+.min-main:not(.rel-on) #relNota{display:none}
+.fac-tit:has(.vista-mod){flex-wrap:wrap;row-gap:6px}
+.arv-h .arv-voltar{margin-left:auto;font-size:10.5px}
+.vista-mod{display:inline-flex;flex:none;margin-left:10px;border:1px solid var(--line2);border-radius:7px;overflow:hidden;vertical-align:middle}
+.vista-mod button{border:0;background:var(--panel2);color:var(--muted);font:700 10.5px Inter,system-ui,sans-serif;padding:4px 9px;cursor:pointer}
+.vista-mod button[aria-pressed="true"]{background:var(--f-minuta-s,var(--panel));color:var(--text);box-shadow:inset 0 -2px 0 var(--f-minuta)}
+.rel-fonte{display:flex;flex-direction:column;gap:4px;margin:2px 0 8px;font-size:12px}
+.rel-fonte label{display:flex!important;align-items:baseline;gap:7px;cursor:pointer;grid-column:auto}
+.rel-fonte input{width:auto!important;height:auto;margin:0;flex:none}
+.rel-fonte small{color:var(--muted)}
+.gc{display:flex;flex-direction:column;gap:3px;min-width:0}
+.gc-ctx{font-size:10.5px;color:var(--muted);line-height:1.35;overflow-wrap:anywhere}
+.gc [data-st="ok"]{border-color:#2e9d5b}.gc [data-st="erro"]{border-color:#c0392b;background:color-mix(in srgb,#c0392b 7%,transparent)}
+#camposProg .erro,.pend .erro{color:#c0392b}
+.pend{font-size:11px;color:#b9770e;cursor:pointer;border:1px solid currentColor;border-radius:6px;padding:2px 7px;background:transparent}
+.pend.zero{color:#2e9d5b;cursor:default}
 .edbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:6px;border:1px solid var(--line2);border-bottom:0;border-radius:9px 9px 0 0;background:var(--panel2);position:sticky;top:0;z-index:3}
 textarea.editor{display:block;width:100%;min-height:62vh;border:1px solid var(--line2);border-radius:0 0 9px 9px;background:var(--panel2);padding:22px 30px;font:15.5px/1.65 var(--serif)!important;color:var(--text);resize:vertical;text-align:justify;outline:none;box-shadow:inset 3px 0 0 var(--f-minuta)}
 textarea.editor:focus{border-color:color-mix(in srgb,var(--f-minuta) 60%,transparent)}
@@ -536,7 +552,7 @@ html.modo-arvore:not(.arv-diagrama) .arv-esquema{display:none}
 .arv-esq-preview{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:7px;margin-top:9px}
 .arv-esq-preview button{text-align:left;display:flex;flex-direction:column;gap:5px;cursor:pointer;border:1px solid var(--line2);border-radius:8px;background:var(--panel2);color:var(--text);padding:10px}
 .arv-esq-preview button:hover{border-color:var(--f-acervo);background:var(--f-acervo-s)}
-.arv-esq-preview strong{font-size:11px;overflow-wrap:anywhere}
+.arv-esq-preview strong{font-size:11px;overflow-wrap:break-word}
 .arv-esq-preview .meta{font-size:10px;line-height:1.4;color:var(--muted)}
 .arv-esq-preview .sample{font-size:10px;color:var(--muted);line-height:1.4;max-height:42px;overflow:hidden}
 .arv-esq-compare .more{color:var(--f-acervo);border:1px solid var(--line2);background:var(--panel2);padding:6px 9px;border-radius:6px;margin-top:9px;font:750 10px Figtree,sans-serif;cursor:pointer}
@@ -671,7 +687,10 @@ html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs{
 html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs summary{padding:11px 2px;line-height:1.4}
 html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs details[open]{max-height:min(46vh,430px);display:flex;flex-direction:column}
 html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs [data-mind-results]{overflow:auto;min-height:0;padding-bottom:10px}
-html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs .arv-esq-preview{grid-template-columns:1fr 1fr;gap:7px}
+html.modo-arvore.arv-diagrama .arv-esquema .cmt-mind-refs .arv-esq-preview{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:7px}
+.cmt-mind-refs .arv-esq-compare-head b{display:none}
+.arv-esq-preview .cid{font:700 10px ui-monospace,Consolas,monospace;color:var(--f-acervo);letter-spacing:.02em}
+.arv-esq-preview strong{font-size:12px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 html.modo-arvore.arv-diagrama .arv-esquema:has(.cmt-mind-refs details[open]) .cmt-mind-float{display:none}
 html.modo-arvore.arv-diagrama main.modulo>section.detalhe{
   display:block!important;position:absolute!important;right:0;top:0;bottom:0;z-index:16;
@@ -736,8 +755,6 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
     <span class="fluxo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     <button class="faceta mtab" data-mod="modelos" style="--fc:var(--f-minuta);--fcs:var(--f-minuta-s)" onclick="setModulo('modelos')" title="Alt+2" role="tab">
       <span class="fn">II</span><span class="ft"><b>Modelos</b><small><span id="ctMod">—</span> extraídos das decisões</small></span></button>
-    <button class="faceta modo-arv-tab" type="button" id="btnModoArvTab" onclick="alternarModoArvore()" style="--fc:var(--f-acervo);--fcs:var(--f-acervo-s)" title="Ativar/desativar a consulta em árvore nesta Central · Alt+3" aria-pressed="false">
-      <span class="fn">III</span><span class="ft"><b>Árvore</b><small>Modo de consulta integrado</small></span></button>
   </nav>
   <div class="spacer"></div>
   <div class="status"><i id="stDot"></i><span id="stTxt">carregando índice…</span></div>
@@ -751,7 +768,7 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
     <div class="arv-h"><span class="lbl">◈ Explorador de assuntos e correspondências</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
     <input class="inp arv-q" placeholder="Filtrar áreas e temas…" autocomplete="off" spellcheck="false">
     <div class="arv-viz-controls" data-arv-controles="juris" aria-label="Visualização da árvore">
-     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Mapa mental</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
+     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Mapa mental</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')" title="A mesma árvore, em tópicos recuados">☰ Tópicos</button></div>
      <div class="arv-viz-width"><label for="arvLargurajuris">Largura</label><input id="arvLargurajuris" type="range" min="45" max="100" value="100" aria-label="Largura do mapa em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
    </div>
    <div class="arv-esquema" data-arv-esquema="juris" tabindex="0" aria-label="Mapa mental jurídico com ramificações orgânicas"></div>
@@ -845,10 +862,10 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
 <!-- ===================== MÓDULO MODELOS ===================== -->
 <main class="sem-detalhe modulo" id="mMod" data-mod="modelos" hidden>
   <aside class="arvcol" aria-label="Árvore de assuntos">
-    <div class="arv-h"><span class="lbl">◈ Explorador de assuntos e correspondências</span><span class="arv-leg"><i class="cp"></i>precedentes <i class="cm"></i>modelos</span></div>
+    <div class="arv-h"><span class="lbl">◈ Modelos por assunto</span><button type="button" class="btn sm arv-voltar" onclick="alternarModoArvore(false)" title="Voltar à lista de modelos (Alt+3)">☷ Voltar à lista de modelos</button></div>
     <input class="inp arv-q" placeholder="Filtrar áreas e temas…" autocomplete="off" spellcheck="false">
     <div class="arv-viz-controls" data-arv-controles="modelos" aria-label="Visualização da árvore">
-     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Mapa mental</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')">☷ Lista</button></div>
+     <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Mapa mental</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')" title="A mesma árvore, em tópicos recuados">☰ Tópicos</button></div>
      <div class="arv-viz-width"><label for="arvLarguramodelos">Largura</label><input id="arvLarguramodelos" type="range" min="45" max="100" value="100" aria-label="Largura do mapa em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
    </div>
    <div class="arv-esquema" data-arv-esquema="modelos" tabindex="0" aria-label="Mapa mental jurídico com ramificações orgânicas"></div>
@@ -883,7 +900,8 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
   </aside>
   <section class="lista">
     <div class="lbar">
-      <div class="fac-tit"><i>II</i>Modelos <span>· extraídos das decisões do gabinete — escolha, preencha, gere</span></div>
+      <div class="fac-tit"><i>II</i>Modelos <span>· extraídos das decisões do gabinete — escolha, preencha, gere</span>
+        <div class="vista-mod" role="group" aria-label="Exibição dos modelos"><button type="button" id="btnVistaLista" aria-pressed="true" onclick="alternarModoArvore(false)" title="Lista de modelos com filtros">☷ Lista</button><button type="button" id="btnModoArvTab" aria-pressed="false" onclick="alternarModoArvore(true)" title="Modelos organizados por assunto (Alt+3)">◇ Árvore</button></div></div>
       <div class="qwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input class="inp" id="mq" placeholder='Buscar modelos — ex.: deserção, "perda superveniente", BPC' autocomplete="off" spellcheck="false"></div>
       <div class="resumo"><span id="mResumo">—</span><span class="meta" id="mResumo2"></span></div>
@@ -1306,6 +1324,7 @@ document.addEventListener('keydown',e=>{
 let MODULO='juris';
 function setModulo(m){
   MODULO=m;
+  if(m!=='modelos'&&MODO_ARV) alternarModoArvore(false);
   document.querySelectorAll('.mtab').forEach(b=>b.classList.toggle('active',b.dataset.mod===m));
   document.querySelectorAll('main.modulo').forEach(el=>el.hidden=el.dataset.mod!==m);
   if(m==='modelos') abrirModelos();
@@ -1398,7 +1417,7 @@ function abrirModelo(id){
   $('mRes').querySelectorAll('li').forEach(l=>l.classList.toggle('sel',l.dataset.id===id));
   const fonte=POR_ID.get(m.fonte_modelo);
   MXT=null;
-  ED_DIRTY=false;
+  ED_DIRTY=false; ED_HIST=[];
   $('mDet').innerHTML=`<div class="dhead">
     <div class="dtit"><span class="tag ${m.tipo==='acórdão'?'A':'M'}">${m.tipo==='acórdão'?'Modelo de acórdão':'Modelo de monocrática'}</span><span class="proc">${esc(m.id)}</span>
       <div class="acs-mode" id="minModo" style="margin-left:10px" title="Texto-modelo: a decisão-base da matéria com campos a preencher · Matriz: esqueleto do tipo de julgamento, com versões alternativas e trechos opcionais conforme a situação">
@@ -1409,13 +1428,23 @@ function abrirModelo(id){
   </div>
   <div class="min-grid">
     <div class="min-main" id="gerador" data-m="${m.id}">
-      <details class="min-blk" open><summary>Relatório · dados do processo</summary>${relatorioHTML(m,null)}</details>
+      <details class="min-blk" open id="relBlk"><summary>Relatório</summary>
+        <div class="rel-fonte" role="radiogroup" aria-label="Origem do relatório">
+          <label><input type="radio" name="relFonte" value="modelo" checked> do modelo-base <small>(preencha os campos marcados “relatório” abaixo)</small></label>
+          <label><input type="radio" name="relFonte" value="montar"> montar pelas diretrizes <small>(formulário; substitui o relatório do modelo)</small></label>
+        </div>
+        <div id="relForm" hidden>${relatorioHTML(m,null)}</div></details>
       <details class="min-blk" open id="minCamposD"><summary id="minCamposS">${MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento'}</summary><div id="minCampos">${MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m)}</div></details>
       <div class="lote">Minuta · editor <span class="meta" id="edEstado" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div>
       <div class="edbar">
-        <button class="btn sm" onclick="regerar()" title="Recompõe o texto a partir do formulário e do modelo">↻ Regerar</button>
-        <button class="btn sm pri" onclick="copiarTexto($('minEd').value,'Minuta copiada.')">Copiar</button>
-        <button class="btn sm" onclick="baixarMinuta()">Baixar .doc</button>
+        <label class="meta" for="regSec" style="text-transform:none">Recompor</label>
+        <select id="regSec" class="inp" style="height:28px;width:auto" title="Recompõe só a parte escolhida a partir do formulário; o restante do texto editado à mão é mantido">
+          <option value="rel">relatório</option><option value="fund">fundamentação/voto</option><option value="ementa">ementa</option><option value="acordao">acórdão</option><option value="tudo">texto inteiro</option></select>
+        <button class="btn sm" id="btnRecompor" onclick="regerar($('regSec').value)">↻ Recompor</button>
+        <button class="btn sm" id="btnDesfazer" onclick="desfazerMinuta()" disabled title="Volta ao texto anterior à última recomposição">↶ Desfazer</button>
+        <button type="button" class="pend" id="edPend" onclick="irProximoCampo()" title="Ir ao próximo [campo] pendente no editor"></button>
+        <button class="btn sm pri" onclick="if(conferirPendencias('copiar'))copiarTexto($('minEd').value,'Minuta copiada.')">Copiar</button>
+        <button class="btn sm" onclick="if(conferirPendencias('baixar'))baixarMinuta()">Baixar .doc</button>
         <button class="btn sm" onclick="abrirApoioMinuta()" title="Abrir o painel independente para conferir e revisar a minuta">Diretrizes · consulta e apoio ↗</button>
         <span class="meta" id="edConta" style="margin-left:auto"></span>
       </div>
@@ -1428,22 +1457,43 @@ function abrirModelo(id){
     </div>
   </div>`;
   $('mDet').scrollTop=0;
-  $('minModo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MIN_MODO=b.dataset.m;$('minModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('minCampos').innerHTML=MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m);$('minCamposS').textContent=MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento';$('minCamposD').open=true;atualizarMinuta()});
+  $('minModo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MIN_MODO=b.dataset.m;$('minModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('minCampos').innerHTML=MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m);$('minCamposS').textContent=MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento';if(MIN_MODO==='matriz'){const r=document.querySelector('input[name="relFonte"][value="montar"]');if(r&&!r.checked){r.checked=true;$('relForm').hidden=false}}$('minCamposD').open=true;atualizarMinuta()});
   $('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor()});
+  if(MIN_MODO==='matriz'){const r=document.querySelector('input[name="relFonte"][value="montar"]');if(r){r.checked=true;$('relForm').hidden=false}}
   atualizarMinuta();
 }
 
 /* ---------- modo PADRÃO: campos do modelo ---------- */
-function camposDoModelo(m){const out=[];let k=0;m.modelo.replace(RX_CAMPO,(t,pos)=>{const antes=m.modelo.slice(Math.max(0,pos-70),pos).replace(/\s+/g,' ').trim();out.push({k:k++,t,antes,pos});return t});return out}
+function secaoNoModelo(m,pos){
+  const t=m.modelo.slice(0,pos);let sec=m.tipo==='monocrática'?'relatório':'relatório';
+  const M=[[/^(É O RELAT[ÓO]RIO\.?|DECIDO\.?|V\s?O\s?T\s?O)\s*$/gim,'fundamentação'],[/^(Ante o exposto|Em face do exposto|Diante do exposto|Pelo exposto)/gim,'dispositivo'],[/^E\s?M\s?E\s?N\s?T\s?A\s*$/gim,'ementa'],[/^AC[ÓO]RD[ÃA]O\s*$/gim,'acórdão']];
+  let best=-1;for(const[rx,n]of M){let x;rx.lastIndex=0;while((x=rx.exec(t)))if(x.index>best){best=x.index;sec=n}}
+  return sec}
+const CAMPO_TIPO={'[data]':{rot:'Data',ph:'DD/MM/AAAA',rx:/^\d{2}\/\d{2}\/\d{4}$/},'[nº]':{rot:'Número / ID',ph:'só números',rx:/^[\d.,\/\s-]+(?:,?\s*f\.\s*[\d\/-]+)?$/},
+  '[nº do processo]':{rot:'Nº do processo',ph:'0000000-00.0000.4.03.0000',rx:/^\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}$/},'[valor]':{rot:'Valor',ph:'1.234,56',rx:/^[\d.]+,\d{2}$/},
+  '[trecho próprio do caso]':{rot:'Trecho do caso'},'[complementar conforme o caso]':{rot:'Complemento do caso'},'[citação de precedente]':{rot:'Precedente (com fonte)'},'[dispositivo]':{rot:'Dispositivo'}};
+function camposDoModelo(m){const out=[];let k=0;m.modelo.replace(RX_CAMPO,(t,pos)=>{
+  const antes=m.modelo.slice(Math.max(0,pos-80),pos).replace(/\s+/g,' ').trim(), depois=m.modelo.slice(pos+t.length,pos+t.length+80).replace(/\s+/g,' ').trim();
+  out.push({k:k++,t,antes,depois,pos,sec:secaoNoModelo(m,pos)});return t});return out}
+function validarCampo(el){
+  const t=el.dataset.t, v=el.value.trim(), T=CAMPO_TIPO[t]; let st='vazio';
+  if(v){st=T&&T.rx&&!T.rx.test(v)?'erro':(/\[[^\]]*\]/.test(v)?'erro':'ok')}
+  el.dataset.st=st; el.title=st==='erro'?(T&&T.ph?`Formato esperado: ${T.ph}`:'Retire os colchetes ou complete o trecho'):'';
+  return st}
+function progressoCampos(){const on=relAtivo(), L=[...document.querySelectorAll('#minCampos [data-k]')].filter(e=>!(on&&e.dataset.rel));
+  const ok=L.filter(e=>validarCampo(e)==='ok').length, er=L.filter(e=>e.dataset.st==='erro').length;
+  const el=$('camposProg'); if(el) el.innerHTML=`${ok}/${L.length} preenchidos${er?` · <b class="erro">${er} com formato inválido</b>`:''}`}
 function camposHTML(m){
   const cs=camposDoModelo(m), fonte=POR_ID.get(m.fonte_modelo), reg=regiaoRelatorio(m);
   if(!cs.length) return '<p class="ajuda">Este modelo não tem campos variáveis.</p>';
-  return `<div class="lote">Campos do modelo (${cs.length})<span class="meta" id="relNota" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div><div class="gl">${cs.map(c=>{
-    const longo=/trecho|complementar|dispositivo|citação/.test(c.t), noRel=reg&&c.pos>=reg.rs&&c.pos<reg.re;
-    const dica=c.t==='[dispositivo]'&&fonte&&fonte.r?`Dispositivo da decisão-base: ${fonte.r}`:(c.antes?'…'+c.antes:'');
-    const v='';
-    const at=`id="gc${c.k}" data-k="${c.k}" ${noRel?'data-rel="1"':''} placeholder="${esc(dica)}"`;
-    return `<label for="gc${c.k}" title="${esc(dica)}" ${noRel?'data-rel="1"':''}>${esc(c.t.replace(/[\[\]]/g,''))}${noRel?' <small>(relatório)</small>':''}</label>${longo?`<textarea ${at}>${v}</textarea>`:`<input ${at} value="${v}">`}`}).join('')}</div>`;
+  return `<div class="lote">Campos do modelo (${cs.length})<span class="meta" id="camposProg" style="text-transform:none;letter-spacing:0;font-weight:500"></span><span class="meta" id="relNota" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div>
+  <p class="ajuda" style="margin:0 0 6px">Cada campo mostra onde entra no texto (antes ▸ campo ◂ depois). Campo vazio continua entre colchetes na minuta e bloqueia Copiar/Baixar até ser preenchido ou confirmado.</p><div class="gl">${cs.map(c=>{
+    const T=CAMPO_TIPO[c.t]||{rot:c.t.replace(/[\[\]]/g,'')}, longo=!T.rx, noRel=reg&&c.pos>=reg.rs&&c.pos<reg.re;
+    const sec=noRel?'relatório':c.sec;
+    const ctx=`…${c.antes.slice(-60)} ▸ ◂ ${c.depois.slice(0,50)}…`;
+    const ph=c.t==='[dispositivo]'&&fonte&&fonte.r?`Dispositivo da decisão-base: ${fonte.r}`:(T.ph||'');
+    const at=`id="gc${c.k}" data-k="${c.k}" data-t="${esc(c.t)}" data-st="vazio" ${noRel?'data-rel="1"':''} placeholder="${esc(ph)}"`;
+    return `<label for="gc${c.k}" ${noRel?'data-rel="1"':''}>${esc(T.rot)} <small>(${esc(sec)})</small></label><div class="gc" ${noRel?'data-rel="1"':''}><div class="gc-ctx">${esc(ctx)}</div>${longo?`<textarea ${at}></textarea>`:`<input ${at}>`}</div>`}).join('')}</div>`;
 }
 function partesModelo(m){const P=[];let last=0,k=0;m.modelo.replace(RX_CAMPO,(t,pos)=>{if(pos>last)P.push({a:last,b:pos});P.push({a:pos,b:pos+t.length,k:k++,t});last=pos+t.length;return t});if(last<m.modelo.length)P.push({a:last,b:m.modelo.length});return P}
 function textoPadrao(m){
@@ -1623,7 +1673,7 @@ function relatorioHTML(m,a){
   const esp=ESP_REL[m.especie]||(m.tipo==='monocrática'?'ap':'ap');
   const R=(id,rot,ph,ta)=>`<label for="${id}">${rot}</label>${ta?`<textarea id="${id}" data-relf placeholder="${esc(ph)}"></textarea>`:`<input id="${id}" data-relf placeholder="${esc(ph)}">`}`;
   const S=(id,rot,ops,dica)=>`<label for="${id}">${rot}</label><select id="${id}" data-relf class="inp" style="height:32px" ${dica?`title="${esc(dica)}"`:''}>${ops.map(o=>Array.isArray(o)?`<option value="${esc(o[0])}">${esc(o[1])}</option>`:`<option>${esc(o)}</option>`).join('')}</select>`;
-  return `<p class="ajuda" style="margin:2px 0 8px">Fórmulas das diretrizes do relatório do gabinete (aba <b>Relatório</b> do painel). Preenchido, substitui o relatório do modelo.</p>
+  return `<p class="ajuda" style="margin:2px 0 8px">Fórmulas das diretrizes do relatório do gabinete. Campos vazios ficam como <code>[campo]</code> na minuta.</p>
   <div class="gl">
     <label>Espécie</label><select id="rEsp" data-relf class="inp" style="height:32px">${[['ap','Apelação'],['dap','Dupla apelação'],['rnap','Remessa necessária e apelação'],['rn','Remessa necessária'],['ai','Agravo de instrumento'],['agint','Agravo interno'],['ed','Embargos de declaração']].map(([v,t])=>`<option value="${v}"${v===esp?' selected':''}>${t}</option>`).join('')}</select>
     ${S('rForma','Forma da abertura',[['A','Forma A — parágrafo único (padrão)'],['B','Forma B — “interposta em ação de…” (excepcional)']],'Diretrizes: a Forma A é o padrão em todas as matérias; a Forma B é opção manual.')}
@@ -1645,7 +1695,8 @@ function relatorioHTML(m,a){
   </div>`;
 }
 const vRel=id=>{const el=$(id);return el?el.value.trim():''};
-function relAtivo(){return ['rCtx','rDec','rRec','rAleg','rOutros','rDecId','rEmenta'].some(i=>vRel(i))}
+function relAtivo(){const r=document.querySelector('input[name="relFonte"]:checked');return !!r&&r.value==='montar'}
+document.addEventListener('change',e=>{if(e.target.name!=='relFonte')return;const f=$('relForm');if(f)f.hidden=e.target.value!=='montar';atualizarMinuta()});
 function enumerar(itens){
   if(!itens.length) return '';
   if(itens.length===1) return itens[0];
@@ -1697,8 +1748,27 @@ function estadoEditor(){
   const ed=$('minEd'); if(!ed) return;
   const t=ed.value, pal=(t.match(/\S+/g)||[]).length;
   $('edConta').textContent=`${pal.toLocaleString('pt-BR')} palavras · ${t.length.toLocaleString('pt-BR')} caracteres`;
-  $('edEstado').textContent=ED_DIRTY?'· editado à mão — mudanças no formulário não sobrescrevem; use ↻ Regerar':'· acompanha o formulário';
+  $('edEstado').textContent=ED_DIRTY?'· editado à mão — o formulário não sobrescreve; use ↻ Recompor na parte desejada':'· acompanha o formulário';
+  const pd=pendenciasMinuta(t), b=$('edPend');
+  if(b){b.classList.toggle('zero',!pd.length);b.innerHTML=pd.length?`⚠ ${pd.length} campo${pd.length>1?'s':''} pendente${pd.length>1?'s':''}`:'✓ sem campos pendentes'}
+  progressoCampos();
 }
+function pendenciasMinuta(t){return [...String(t||'').matchAll(/\[[^\]\n]{1,80}\]/g)].filter(x=>!/^\[(sic|\.\.\.|…)\]$/i.test(x[0]))}
+function irProximoCampo(){const ed=$('minEd');if(!ed)return;const pd=pendenciasMinuta(ed.value);if(!pd.length)return;
+  const de=ed.selectionEnd||0, x=pd.find(p=>p.index>=de)||pd[0];ed.focus();ed.setSelectionRange(x.index,x.index+x[0].length);
+  const linhas=ed.value.slice(0,x.index).split('\n').length;ed.scrollTop=Math.max(0,(linhas-3)*18)}
+function conferirPendencias(acao){const pd=pendenciasMinuta(textoMinuta());if(!pd.length)return true;
+  const lista=[...new Set(pd.map(x=>x[0]))].slice(0,8).join('\n• ');
+  return confirm(`A minuta ainda tem ${pd.length} campo(s) entre colchetes:\n• ${lista}\n\n${acao==='copiar'?'Copiar':'Baixar'} assim mesmo?`)}
+/* recomposição por seção: só a parte escolhida é substituída pelo texto gerado do formulário */
+function cortesMinuta(t){
+  const pos=rx=>{const m=t.match(rx);return m?m.index:-1};
+  const L=t.length, em=pos(/^E\s?M\s?E\s?N\s?T\s?A\s*$/im), ac=pos(/^AC[ÓO]RD[ÃA]O\s*$/im);
+  let fr=pos(/^(É O RELAT[ÓO]RIO\.?|DECIDO\.?)\s*$/im); if(fr<0)fr=pos(/^V\s?O\s?T\s?O\s*$/im);
+  const fimFund=[em,ac,L].filter(x=>x>=0&&x>fr).sort((a,b)=>a-b)[0]??L;
+  return {rel:fr>=0?[0,fr]:null, fund:fr>=0?[fr,fimFund]:null, ementa:em>=0?[em,ac>em?ac:L]:null, acordao:ac>=0?[ac,L]:null}}
+let ED_HIST=[];
+function desfazerMinuta(){const ed=$('minEd');if(!ed||!ED_HIST.length)return;ed.value=ED_HIST.pop();ED_DIRTY=true;$('btnDesfazer').disabled=!ED_HIST.length;estadoEditor();toast('Texto anterior restaurado.')}
 function atualizarMinuta(){
   const ed=$('minEd'); if(!ed) return;
   const on=relAtivo(); const g=$('gerador'); g.classList.toggle('rel-on',on);
@@ -1707,7 +1777,18 @@ function atualizarMinuta(){
   if(!ED_DIRTY) ed.value=gerarTexto();
   estadoEditor();
 }
-function regerar(){if(ED_DIRTY&&!confirm('Substituir o texto editado à mão pelo texto recomposto do formulário?'))return;ED_DIRTY=false;atualizarMinuta()}
+function regerar(sec='tudo'){
+  const ed=$('minEd'); if(!ed) return; const atual=ed.value, novo=gerarTexto();
+  let res;
+  if(sec==='tudo'||!ED_DIRTY){res=novo}
+  else{const a=cortesMinuta(atual)[sec], n=cortesMinuta(novo)[sec];
+    if(!n){toast('O modelo não tem esta parte.');return}
+    if(!a){toast('Não encontrei esta parte no texto editado (o título da seção foi alterado?). Use “texto inteiro”.',6000);return}
+    res=atual.slice(0,a[0])+novo.slice(n[0],n[1]).replace(/\s+$/,'')+'\n\n'+atual.slice(a[1]).replace(/^\s+/,'');}
+  if(res===atual){toast('Nada a recompor: o texto já corresponde ao formulário.');return}
+  ED_HIST.push(atual); if(ED_HIST.length>20)ED_HIST.shift(); $('btnDesfazer').disabled=false;
+  ed.value=res.replace(/\n{3,}/g,'\n\n').trim(); ED_DIRTY=sec!=='tudo'; estadoEditor();
+  toast(sec==='tudo'?'Texto inteiro recomposto. ↶ Desfazer disponível.':'Parte recomposta; o restante foi mantido. ↶ Desfazer disponível.')}
 let campoAtivo=null;
 document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('#gerador')&&(e.target.dataset.k!=null||e.target.id==='minEd'||e.target.dataset.mxf))campoAtivo=e.target});
 document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.id!=='minEd'&&!e.target.dataset.mxl)atualizarMinuta()});
@@ -2087,7 +2168,7 @@ async function carregarAssuntos(){
     const m=ASS.meta;
     const fonte=`<b>Fonte.</b> ${esc(m.fonte.repositorio.replace('https://github.com/',''))} · <code>${esc(m.fonte.branch)}</code> · commit <code>${esc(String(m.fonte.commit).slice(0,10))}</code>. Precedentes: ${ASS.r.size.toLocaleString('pt-BR')} decisões relevantes de ${m.periodo.map(fmtData).join(' a ')}; modelos: ${ASS.m.size}.<br><br><b>Critérios.</b> ${ASS.criterios.map(esc).join(' ')}`;
     document.querySelectorAll('.arv-crit').forEach(el=>el.innerHTML=fonte);
-    $('btnModoArvTab').title=`Modo árvore: organiza ${ASS.r.size.toLocaleString('pt-BR')} precedentes e ${ASS.m.size} modelos por área › subárea › tema (Alt+3)`;
+    if($('btnModoArvTab'))$('btnModoArvTab').title=`Árvore: organiza ${ASS.r.size.toLocaleString('pt-BR')} precedentes e ${ASS.m.size} modelos por área › subárea › tema (Alt+3)`;
     return ASS;
   })().catch(e=>{ASS_P=null;throw e});
   return ASS_P;
@@ -2099,13 +2180,15 @@ function noRotulo(no=ARV.no){return no.filter(Boolean).join(' › ')||'Todos os 
 
 async function alternarModoArvore(forcar){
   const ligar=forcar??!MODO_ARV;
+  if(ligar&&MODULO!=='modelos') setModulo('modelos'); // a árvore é modo de exibição da faceta II
+  if(ligar&&$('mMod')) fecharLateral('modelos');
   if(ligar){
     try{await carregarAssuntos()}catch(e){
       toast(`Modo árvore indisponível: não foi possível ler <code>assuntos/arvore.json</code> em ${esc(nomeFonte())} (${esc(e.message)}). Verifique o arquivo <code>assuntos/arvore.json</code> ou abra a pasta local do repositório (⚙).`,9000);return}
   }
   MODO_ARV=ligar;
   document.documentElement.classList.toggle('modo-arvore',ligar);
-  $('btnModoArvTab').setAttribute('aria-pressed',String(ligar));
+  $('btnModoArvTab').setAttribute('aria-pressed',String(ligar)); if($('btnVistaLista'))$('btnVistaLista').setAttribute('aria-pressed',String(!ligar));
   LS.set('acv_modo_arv',ligar?'1':'');
   if(ligar&&!MODS) carregarModelos().then(()=>{aplicarModelos();aplicar()}).catch(()=>{});
   if(MODS) aplicarModelos(); aplicar(); if(ligar&&MODS)arv7Render(); if(ligar)arvEsquemaAgendar();
@@ -2120,7 +2203,7 @@ function irParaTema(k){ARV_JURIS_EXTRA=[];ARV.no=[k[0],k[1],k[2]];ARV.abertos.ad
   document.querySelectorAll('.arv-q').forEach(i=>i.value='');
   if(MODO_ARV){if(MODS)aplicarModelos();aplicar()}else alternarModoArvore(true)}
 function ponteAssunto(id){const k=assDe(id);if(!k)return '';
-  return `<button class="ponte a" onclick='irParaTema(${esc(JSON.stringify(k))})' title="Modo árvore: ${esc(k.join(' › '))}">▤ ${esc(k[2])}</button>`}
+  return `<button class="ponte a" onclick='irParaTema(${esc(JSON.stringify(k))})' title="Ver modelos deste assunto (árvore): ${esc(k.join(' › '))}">▤ ${esc(k[2])}</button>`}
 function arvExpandir(sim){ARV.abertos.clear();if(sim&&ASS)ASS.tax.forEach(k=>{ARV.abertos.add(k[0]);ARV.abertos.add(k[0]+'|'+k[1])});arvRender()}
 
 /* contagens: P = precedentes do recorte da faceta I (sem o nó); M = modelos do recorte da faceta II (sem o nó) */
@@ -2253,15 +2336,16 @@ function arvEsqCorrespondentes(records,mode,path,access){
  const ranked=matches.slice().sort((a,b)=>mode==='modelos'?(b.frequencia||0)-(a.frequencia||0):String(b.d||'').localeCompare(String(a.d||'')));
  const count=ranked.length;const limit=ARV_CORRESP_LIMITE;
  const cards=ranked.slice(0,limit).map(r=>{
-  const name=mode==='modelos'?String(r.tema||r.nome||r.abertura||'Sem tema explícito'):String(r.n||r.id);
+  const name0=mode==='modelos'?String(r.tema||r.nome||r.abertura||'Sem tema explícito'):String(r.n||r.id);
+  const name=name0.length>140?name0.slice(0,140).replace(/\s+\S*$/,'')+'…':name0;
   const info=mode==='modelos'?CMT_ARV7.info(r):null;
   const extras=mode==='modelos'
    ?`${r.especie||'Classe não indicada'} · ${r.resultado||'Resultado não identificado'} · ${r.tipo==='acórdão'?'Voto':'Monocrática'} · ${r.fase||'fase não indicada'} · frequência ${Number(r.frequencia||0)}`
    :`${cmtJurisNatureza(r)} · ${cmtJurisResultado(r)} · ${r.d||r.y||'Data não indicada'}`;
   const evidence=mode==='modelos'?`Fonte ${r.fonte_modelo||'não identificada'} · ${info.evidencias.join(' / ')||'classificação pendente'}`:`Dispositivo/resultado extraído automaticamente: ${String(r.r||'não disponível no índice').slice(0,180)} — conferir na fonte oficial`;
-  return `<button type="button" data-schem-leaf="${esc(r.id)}" title="Abrir ${esc(r.id)}"><strong>${esc(r.id)} · ${esc(name.slice(0,105))}</strong><span class="meta">${esc(extras)}</span><span class="sample">${esc(evidence)}</span></button>`;
+  return `<button type="button" data-schem-leaf="${esc(r.id)}" title="Abrir ${esc(r.id)}"><code class="cid">${esc(r.id)}</code><strong title="${esc(name0)}">${esc(name)}</strong><span class="meta">${esc(extras)}</span><span class="sample">${esc(evidence)}</span></button>`;
  }).join('');
- return `<section class="arv-esq-compare" aria-label="Registros correspondentes ao caminho selecionado"><div class="arv-esq-compare-head"><b>${count.toLocaleString('pt-BR')} ${mode==='modelos'?'modelos correspondentes':'precedentes correspondentes'}</b><small>${path.length?'Dentro do caminho escolhido':'Total do recorte'} · selecione um cartão para abrir o registro</small></div><div class="arv-esq-preview">${cards||'<div class="arv-esq-no-data">Nenhuma correspondência com os filtros atuais.</div>'}</div>${count>limit?`<button type="button" class="more" data-schem-more="${mode}">Mostrar mais correspondentes (${Math.min(20,count-limit)})</button>`:''}</section>`;
+ return `<section class="arv-esq-compare" aria-label="Registros correspondentes ao caminho selecionado"><div class="arv-esq-compare-head"><b>${count.toLocaleString('pt-BR')} ${mode==='modelos'?(count===1?'modelo correspondente':'modelos correspondentes'):(count===1?'precedente correspondente':'precedentes correspondentes')}</b><small>${path.length?'Dentro do caminho escolhido':'Total do recorte'} · selecione um cartão para abrir o registro</small></div><div class="arv-esq-preview">${cards||'<div class="arv-esq-no-data">Nenhuma correspondência com os filtros atuais.</div>'}</div>${count>limit?`<button type="button" class="more" data-schem-more="${mode}">Mostrar mais correspondentes (${Math.min(20,count-limit)})</button>`:''}</section>`;
 }
 function arvEsqPintar(container,mode,records,path,access,titulos){
  const search=arvEsqNorm(container.closest('.arvcol').querySelector('.arv-q')?.value.trim());
@@ -2418,7 +2502,7 @@ function cmtMindSelect(s,path,anchor){
 function cmtMindResults(s,records,access,path){
  const b=s.box.querySelector('[data-mind-results]');if(!b)return;
  const count=records.reduce((n,r)=>n+(path.every((p,i)=>access(r)[i]===p)?1:0),0);
- const summary=s.box.querySelector('[data-mind-summary]');if(summary)summary.textContent=`${cmtMindCount(count)} ${s.mode==='modelos'?'modelos':'precedentes'} correspondentes · abrir registros`;
+ const summary=s.box.querySelector('[data-mind-summary]');if(summary)summary.textContent=`${cmtMindCount(count)} ${s.mode==='modelos'?(count===1?'modelo correspondente':'modelos correspondentes'):(count===1?'precedente correspondente':'precedentes correspondentes')} · abrir registros`;
  b.innerHTML=arvEsqCorrespondentes(records,s.mode,path,access);
  const q=s.box.querySelector('[data-mind-caption]');if(q)q.textContent=`${cmtMindCount(records.length)} registros no recorte · ${s.mode==='modelos'?'7 níveis de classificação':'Tema → natureza → resultado · campos derivados do índice'}`;
  const float=s.box.querySelector('[data-mind-hint]');if(float)float.innerHTML=`<strong>${cmtMindCount(count)} correspondências</strong><div>${path.length?esc(path[path.length-1].slice(0,70)):'Selecione qualquer ramo para filtrar'} · Zoom e arraste disponíveis</div>`;
@@ -2549,7 +2633,7 @@ async function iniciar(){
   marcarPeriodo();
   setTipo(tipo); ['fAno1','fAno2','fOrdem'].forEach(i=>$(i).value=F[{fAno1:'ano1',fAno2:'ano2',fOrdem:'ordem'}[i]]||(i==='fOrdem'?'recente':'')); marcarChips(); aplicar();
   $('carregando').style.display='none';
-  if(ARV_HASH||LS.get('acv_modo_arv')) await alternarModoArvore(true);
+  if(ARV_HASH) await alternarModoArvore(true);
   if(idHash&&POR_ID.has(idHash)) abrir(idHash);
 }
 iniciar();
