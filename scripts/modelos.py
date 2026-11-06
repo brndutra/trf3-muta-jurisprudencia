@@ -15,7 +15,8 @@ Método
 
 Nada é inventado: todo texto fixo do modelo é transcrito de decisão real do acervo,
 cujo id fica registrado em `fonte_modelo`.
-Uso: python3 scripts/modelos.py   (gera modelos/modelos.json e modelos/MODELOS.md)
+Uso: python3 scripts/modelos.py             (gera modelos/modelos.json e .json.gz)
+     python3 scripts/modelos.py --depurar  (só remove blocos duplicados dos modelos existentes)
 """
 import collections, glob, gzip, json, math, os, re
 
@@ -241,8 +242,58 @@ def matriz(membros, pars, blocos, literal, nucleo):
         texto = lit if k >= max(2, sum(var.values()) * 0.6) else campos(lit)
         out.append({'texto': texto, 'uso': round(c / n, 2), 'fixo': c >= n * 0.5 or b in nucleo,
                     'secao': sec[b].most_common(1)[0][0], 'ordem': round(sum(pos[b]) / len(pos[b]), 3)})
-    out.sort(key=lambda x: ({'relatorio': 0, 'fundamentacao': 1, 'dispositivo': 2, 'ementa': 3, 'acordao': 4}[x['secao']], x['ordem']))
-    return out[:60]
+    return depurar_blocos(out)[:60]
+
+
+ORD_SEC = {'relatorio': 0, 'fundamentacao': 1, 'dispositivo': 2, 'ementa': 3, 'acordao': 4}
+RE_CAMPO_TXT = re.compile(r'\[[^\]]*\]')
+
+
+def _assinatura(t):
+    s = RE_CAMPO_TXT.sub(' ', t.lower())
+    return set(re.findall(r'[a-zà-ÿ0-9]{3,}', s))
+
+
+def depurar_blocos(bl, limiar=0.85):
+    """Remove blocos repetidos (mesmo texto ou variantes quase idênticas na mesma seção),
+    mantendo o de maior uso; ordena por seção e posição média."""
+    bl = sorted(bl, key=lambda x: (-x['uso'], -len(x['texto'])))
+    fica = []
+    for b in bl:
+        sb = _assinatura(b['texto'])
+        dup = next((f for f in fica if f['secao'] == b['secao'] and
+                    (f['texto'] == b['texto'] or jacc(sb, f['_a']) >= limiar or
+                     (len(sb) >= 8 and len(sb & f['_a']) >= 0.9 * min(len(sb), len(f['_a']))
+                      and b['texto'][:60] == f['texto'][:60]))), None)
+        if dup:
+            dup['fixo'] = dup['fixo'] or b['fixo']
+            continue
+        b = dict(b); b['_a'] = sb
+        fica.append(b)
+    for f in fica:
+        f.pop('_a', None)
+    fica.sort(key=lambda x: (ORD_SEC.get(x['secao'], 9), x['ordem']))
+    return fica
+
+
+def reaplicar_depuracao():
+    """Aplica depurar_blocos aos modelos já publicados, sem refazer os agrupamentos (ids preservados)."""
+    caminho = os.path.join(RAIZ, 'modelos', 'modelos.json')
+    dados = json.load(open(caminho, encoding='utf-8'))
+    antes = sum(len(m['blocos']) for m in dados['modelos'])
+    for m in dados['modelos']:
+        m['blocos'] = depurar_blocos(m['blocos'])
+    depois = sum(len(m['blocos']) for m in dados['modelos'])
+    gravar(dados)
+    print(f'blocos: {antes} -> {depois} ({antes - depois} duplicados removidos)')
+
+
+def gravar(dados):
+    with open(os.path.join(RAIZ, 'modelos', 'modelos.json'), 'w', encoding='utf-8') as f:
+        json.dump(dados, f, ensure_ascii=False, indent=1)
+    with open(os.path.join(RAIZ, 'modelos', 'modelos.json.gz'), 'wb') as raw, \
+            gzip.GzipFile(fileobj=raw, mode='wb', compresslevel=9, mtime=0) as gz:
+        gz.write(json.dumps(dados, ensure_ascii=False, separators=(',', ':')).encode('utf-8'))
 
 
 def montar(r, nucleo_norm, prefixos, literais=None):
@@ -372,4 +423,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import sys
+    if '--depurar' in sys.argv:   # só remove blocos duplicados dos modelos já gerados
+        reaplicar_depuracao()
+    else:
+        main()
