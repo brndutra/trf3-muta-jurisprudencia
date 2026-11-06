@@ -2425,6 +2425,9 @@ function cmtMindVisible(root,mode){
   if(n.kind==='leaf'||n.kind==='more'||(n!==root&&!open.has(n.id)))return;
   const all=n.sorted||[];
   const max=more.get(n.id)||(n===root?18:13);
+  // área aberta: o mapa mostra só ela (as demais voltam ao fechar ou em ↶ Raiz)
+  const foco=n===root?all.filter(c=>open.has(c.id)):[];
+  if(foco.length){n.drawChildren=foco.slice();n.drawChildren.forEach(walk);return}
   const chosen=all.slice(0,max);
   n.drawChildren=chosen.slice();
   if(all.length>max){
@@ -2462,7 +2465,7 @@ function cmtMindEnsure(box,mode){
  s.viewport.addEventListener('keydown',e=>{let act=null;if(e.key==='+'||e.key==='=')act='in';if(e.key==='-')act='out';if(e.key==='0')act='fit';const arrows={ArrowLeft:[95,0],ArrowRight:[-95,0],ArrowUp:[0,85],ArrowDown:[0,-85]};if(arrows[e.key]){e.preventDefault();s.cam.x+=arrows[e.key][0];s.cam.y+=arrows[e.key][1];cmtMindApplyCam(s);return}if(act){e.preventDefault();cmtMindAct(s,act)}});
  s.box.addEventListener('click',e=>{
   const action=e.target.closest('[data-mind-action]');if(action){e.preventDefault();cmtMindAct(s,action.dataset.mindAction);return}
-  const crumb=e.target.closest('[data-mind-crumb]');if(crumb){const depth=+crumb.dataset.mindCrumb;const path=(s.selected||[]).slice(0,depth);cmtMindSelect(s,path);return}
+  const crumb=e.target.closest('[data-mind-crumb]');if(crumb){const depth=+crumb.dataset.mindCrumb;if(depth===0){cmtMindAct(s,'home');return}const path=(s.selected||[]).slice(0,depth);cmtMindSelect(s,path);return}
   const btn=e.target.closest('[data-mind-node]');if(!btn)return;
   const n=s.nodes.get(btn.dataset.mindNode)||s.dynamicNodes?.get(btn.dataset.mindNode);if(!n)return;
   if(n.kind==='more'){CMT_MIND_MORE[mode].set(n.parent.id,(CMT_MIND_MORE[mode].get(n.parent.id)||(n.parent.kind==='root'?18:13))+13);cmtMindLayout(s,n.parent);return}
@@ -2527,6 +2530,15 @@ function cmtMindLayout(s,anchor){
  const place=(n,d,top)=>{n.pos={x:colX[d],y:top+(n.subtreeH-n.h)/2+24};const kids=n.drawChildren||[];if(kids.length){const h=kids.reduce((sum,c)=>sum+c.subtreeH,0)+VG*(kids.length-1);let y=top+(n.subtreeH-h)/2;kids.forEach(c=>{place(c,d+1,y);y+=c.subtreeH+VG})}};place(s.tree.root,0,0);
  s.contentW=colX[colX.length-1]+colW[colW.length-1]+45;
  s.contentH=s.tree.root.subtreeH+55;
+ // visão inicial (nenhuma área aberta): áreas em grade, para abrir com zoom legível
+ const areas=s.tree.root.drawChildren||[];
+ if(areas.length>4&&areas.every(c=>!(c.drawChildren||[]).length)){
+  const vw=Math.max(400,s.viewport.clientWidth-60),cw=Math.max(...areas.map(c=>c.w))+28,ch=Math.max(...areas.map(c=>c.h))+18;
+  const cols=Math.max(1,Math.min(areas.length,Math.floor(vw/cw)));
+  areas.forEach((c,i)=>{c.pos={x:36+(i%cols)*cw,y:24+Math.floor(i/cols)*ch}});
+  s.contentW=36+cols*cw+20;s.contentH=24+Math.ceil(areas.length/cols)*ch+30;s.didFit=false;
+ }else if(s.gridView){s.didFit=false}
+ s.gridView=areas.length>4&&areas.every(c=>!(c.drawChildren||[]).length);
  s.stage.style.width=s.contentW+'px';s.stage.style.height=s.contentH+'px';
  s.svg.setAttribute('width',String(s.contentW));s.svg.setAttribute('height',String(s.contentH));
  if(oldAnchor&&anchor?.pos){s.cam.x+=(oldAnchor.x-anchor.pos.x)*s.cam.k;s.cam.y+=(oldAnchor.y-anchor.pos.y)*s.cam.k;cmtMindApplyCam(s)}
