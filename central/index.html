@@ -446,6 +446,29 @@ html[data-tema="noturno"] .pe-ey{color:var(--f-minuta)}
 @media(max-width:720px){main,main.sem-detalhe{grid-template-columns:1fr}aside.filtros{display:none}aside.filtros.aberto{display:block;position:fixed;inset:56px 0 0 0;z-index:21}.status{display:none}.brand-ey{display:none}}
 @media print{nav.appbar,aside.filtros,section.lista,.dacts,.dx{display:none!important}main{display:block}section.detalhe{display:block!important}}
 
+
+/* Tópicos (#mMod): mesmo cabeçalho do mapa mental; muda só o conteúdo do espaço principal */
+html.modo-arvore:not(.arv-diagrama) #mMod{display:block!important;height:100%;overflow:hidden}
+html.modo-arvore:not(.arv-diagrama) #mMod>aside.filtros,html.modo-arvore:not(.arv-diagrama) #mMod>section.lista,html.modo-arvore:not(.arv-diagrama) #mMod>section.detalhe{display:none!important}
+html.modo-arvore:not(.arv-diagrama) #mMod>aside.arvcol{display:grid!important;grid-template-columns:minmax(230px,1fr) auto;grid-template-rows:auto auto minmax(0,1fr) auto;column-gap:12px;row-gap:9px;width:100%;height:100%;overflow:hidden;padding:13px 18px 15px!important;border-right:0;box-shadow:none;background:var(--bg)}
+html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol .arv-h{grid-column:1/-1;grid-row:1;margin:0;min-height:20px}
+html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol .arv-h .lbl{font:800 11px/1.3 Figtree,Inter,system-ui,sans-serif;letter-spacing:.09em;color:var(--f-acervo)}
+html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol>.arv-q{grid-column:1;grid-row:2;width:100%;height:39px;font-size:12px;background:var(--panel2)}
+html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol>.arv-viz-controls{grid-column:2;grid-row:2;align-self:center;display:flex;justify-content:flex-end;margin:0;padding:4px 7px;gap:9px;min-height:39px;background:var(--panel2);border:1px solid var(--line2);border-radius:9px;flex-wrap:nowrap}
+html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol .arv-viz-width input{width:100px}
+html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol .arv-viz-width label{display:none}
+html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol>.arv-esquema,html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol>.arv-esq-guide,html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol>.arv-bt,html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol>.arv-tree,html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol>hr.sep{display:none!important}
+html.modo-arvore:not(.arv-diagrama) #mMod .arv7-painel{grid-column:1/-1;grid-row:3;justify-self:center;width:var(--cmt-arv-largura,100%);max-width:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden;border-radius:13px;border:1px solid var(--line2);background:var(--panel2);box-shadow:0 3px 16px rgba(20,35,50,.045)}
+html.modo-arvore:not(.arv-diagrama) #mMod .arv7-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0;min-height:50px;padding:9px 13px;background:var(--panel);border-bottom:1px solid var(--line2);flex-wrap:nowrap}
+html.modo-arvore:not(.arv-diagrama) #mMod .arv7-top .cmt-mind-title{min-width:0}
+html.modo-arvore:not(.arv-diagrama) #mMod .arv7-top .cmt-mind-title small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.arv7-acoes{flex:none;flex-wrap:nowrap!important}
+html.modo-arvore:not(.arv-diagrama) #mMod .arv7-top .cmt-mind-title b{font-size:13px;letter-spacing:-.01em}
+.arv7-acoes{display:flex;gap:5px;flex-wrap:wrap}.arv7-acoes .btn{font-size:10px;min-height:31px;border-radius:7px}
+html.modo-arvore:not(.arv-diagrama) #mMod .arv7-note{margin:8px 14px 0!important;font-size:10.5px}
+html.modo-arvore:not(.arv-diagrama) #mMod .arv-modelos-7{margin:4px 0 0;padding:4px 14px 14px;overflow:auto;min-height:0;flex:1}
+html.modo-arvore:not(.arv-diagrama) #mMod>.arvcol>.arv-fontes{grid-column:1/-1;grid-row:4;margin:0}
+html.modo-arvore.arv-diagrama #mMod .arv7-painel{display:none!important}
 /* Consulta em árvore integrada à Central, sem navegação externa */
 #btnModoArvTab[aria-pressed="true"]{background:var(--f-acervo-s);border-color:var(--f-acervo);box-shadow:inset 0 -3px 0 var(--f-acervo);color:#fff}
 #btnModoArvTab[aria-pressed="true"] .fn{background:var(--f-acervo);color:#122825}
@@ -862,7 +885,7 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
 <!-- ===================== MÓDULO MODELOS ===================== -->
 <main class="sem-detalhe modulo" id="mMod" data-mod="modelos" hidden>
   <aside class="arvcol" aria-label="Árvore de assuntos">
-    <div class="arv-h"><span class="lbl">◈ Modelos por assunto</span><button type="button" class="btn sm arv-voltar" onclick="alternarModoArvore(false)" title="Voltar à lista de modelos (Alt+3)">☷ Voltar à lista de modelos</button></div>
+    <div class="arv-h"><span class="lbl">◈ Modelos por ramo do direito e assunto</span><button type="button" class="btn sm arv-voltar" onclick="alternarModoArvore(false)" title="Voltar à lista de modelos (Alt+3)">☷ Voltar à lista de modelos</button></div>
     <input class="inp arv-q" placeholder="Filtrar áreas e temas…" autocomplete="off" spellcheck="false">
     <div class="arv-viz-controls" data-arv-controles="modelos" aria-label="Visualização da árvore">
      <div class="arv-viz-switch" role="group" aria-label="Formato"><button type="button" data-arv-vista="diagrama" aria-pressed="true" onclick="arvEscolherVista('diagrama')">◇ Mapa mental</button><button type="button" data-arv-vista="lista" aria-pressed="false" onclick="arvEscolherVista('lista')" title="A mesma árvore, em tópicos recuados">☰ Tópicos</button></div>
@@ -871,9 +894,12 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
    <div class="arv-esquema" data-arv-esquema="modelos" tabindex="0" aria-label="Mapa mental jurídico com ramificações orgânicas"></div>
    <p class="arv-esq-guide">Clique nos <strong>nós</strong> para expandir ou recolher ramificações. Arraste o mapa e use zoom/ajustar. Os registros correspondentes aparecem no próprio painel.</p>
    <div class="arv-bt"><button class="btn sm" onclick="arvExpandir(true)">Expandir</button><button class="btn sm" onclick="arvExpandir(false)">Recolher</button><button class="btn sm" onclick="alternarModoArvore(false)" title="Desligar o modo árvore (Alt+3)">Sair do modo</button></div>
-    <div class="arv7-top"><b>752 modelos · hierarquia jurídica</b><button class="btn sm" id="arv7Reset" type="button" onclick="arv7Limpar()">Limpar recorte</button></div>
-    <p class="ajuda arv7-note">Assunto → Classe/espécie → Tipo de julgamento → Subassunto → Questão → Especificidades → Resultado → Modelo. Classificação inferida; não é assunto CNJ oficial.</p>
-    <div class="arv-modelos-7" id="arvModelos7" role="tree" aria-label="Modelos em sete níveis"></div>
+    <div class="arv7-painel">
+      <div class="arv7-top"><div class="cmt-mind-title"><b>Tópicos por ramo do direito</b><small class="arv7-cont">752 modelos · ramo › assunto › classe › tipo › subassunto › questão › especificidade › resultado › modelo</small></div>
+        <div class="arv7-acoes"><button class="btn sm" type="button" onclick="arv7Abrir(true)" title="Abrir os ramos do direito e seus assuntos">⊞ Abrir principais</button><button class="btn sm" type="button" onclick="arv7Abrir(false)" title="Fechar todos os ramos">⊟ Recolher</button><button class="btn sm" id="arv7Reset" type="button" onclick="arv7Limpar()" title="Desfazer o recorte escolhido">↶ Limpar recorte</button></div></div>
+      <p class="ajuda arv7-note">Clique num ramo para abrir; clique num modelo para abrir a ficha. Classificação inferida do texto do modelo, não é assunto CNJ oficial.</p>
+      <div class="arv-modelos-7" id="arvModelos7" role="tree" aria-label="Modelos por ramo do direito e assunto"></div>
+    </div>
     <hr class="sep"><details class="arv-fontes"><summary>Fonte, período e critérios da classificação</summary><p class="ajuda">A classificação temática é automática e sujeita à revisão jurídica.</p><p class="ajuda arv-crit"></p></details>
   </aside>
   <aside class="filtros">
@@ -1951,7 +1977,7 @@ function judgmentType(m){return m.tipo==='monocrática'?'Decisão monocrática':
 function treePath(r){const m=r.orig;return [r.assunto,m.especie||'Espécie não identificada',judgmentType(m),r.subassunto,r.questao,r.especificidade,m.resultado||'Resultado não identificado']}
 function hydrate(m){const classification=classify(m);const facets=inferFacets(m,classification.assunto);return {...classification,...facets,orig:m,id:String(m.id||''),query:normalize([m.id,m.nome,m.tema,m.palavras_chave?.join(' '),m.fonte_modelo,m.processo_modelo,m.ementa_modelo?.slice(0,1200),m.abertura,classification.assunto,...Object.values(facets)].filter(Boolean).join(' '))}}
 
-return {path(model){return treePath(hydrate(model))},metadata(model){let r=hydrate(model);return {area:r.area,assunto:r.assunto,qualidade:r.qualidade}},titulos:['Assunto','Classe/espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado']};
+return {path(model){return treePath(hydrate(model))},metadata(model){let r=hydrate(model);return {area:r.area,assunto:r.assunto,qualidade:r.qualidade}},titulos:['Ramo do direito','Assunto','Classe/espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado']};
 })();
 
 /* REFINAMENTO DAS FACETAS · NÃO MODIFICA OS 752 MODELOS DA FONTE GIT */
@@ -2063,7 +2089,9 @@ function cmtRefinarModelo(m){
  CMT_ARV7_MEMO.set(key,info);return info;
 }
 CMT_ARV7.info=cmtRefinarModelo;
-CMT_ARV7.path=m=>cmtRefinarModelo(m).path;
+const RAMO_ROT={'Previdenciário e assistencial':'Direito previdenciário e assistencial','Tributário e fiscal':'Direito tributário e financeiro','Administrativo e serviço público':'Direito administrativo','Civil, imobiliário e consumidor':'Direito civil e do consumidor','Processual civil':'Direito processual civil','Constitucional e outros ramos':'Direito constitucional e outros ramos'};
+// 1º nível: ramo do direito (área da classificação); depois assunto › classe › … › modelo
+CMT_ARV7.path=m=>{const f=cmtRefinarModelo(m);const ramo=f.path[0]==='Assunto a classificar'||!f.area||f.area==='Assunto a classificar'?'Ramo a classificar':(RAMO_ROT[f.area]||f.area);return [ramo,...f.path]};
 CMT_ARV7.metadata=m=>{const f=cmtRefinarModelo(m);return {area:f.area,assunto:f.path[0],qualidade:f.qualidade,proveniencia:f.evidencias}};
 
 let ARV7_ESCOLHA=null;
@@ -2071,6 +2099,7 @@ const ARV7_ABERTOS=new Set();
 const ARV7_CAMINHOS=new Map();
 function arv7Path(m){if(!ARV7_CAMINHOS.has(m.id))ARV7_CAMINHOS.set(m.id,CMT_ARV7.path(m));return ARV7_CAMINHOS.get(m.id)}
 function arv7Casa(m,path=ARV7_ESCOLHA){if(!path?.length)return true;const k=arv7Path(m);return path.every((p,i)=>k[i]===p)}
+function arv7Abrir(sim){document.querySelectorAll('#arvModelos7 details.arv7-n').forEach(d=>{d.open=sim&&+d.dataset.lv<=0})}
 function arv7Limpar(){ARV7_ESCOLHA=null;ARV.no=[null,null,null];arv7AplicarTodos();}
 function arv7AplicarTodos(){
   modF={fase:'',tipo:'',esp:'',res:'',min:0};
@@ -2080,7 +2109,7 @@ function arv7AplicarTodos(){
 }
 function arv7Render(){
   const box=$('arvModelos7');if(!box||!MODO_ARV||!MODS)return;
-  if(ARV_VISTA==='diagrama'){box.replaceChildren();const c=document.querySelector('#mMod .arv7-top b');if(c)c.textContent=MODS.length+' modelos disponíveis';arvEsquemaAgendar();return;}
+  if(ARV_VISTA==='diagrama'){box.replaceChildren();arvEsquemaAgendar();return;}
   const q=semAcento((document.querySelector('#mMod .arv-q')?.value||'').trim());
   // Sempre permite localizar todos os registros do catálogo, independentemente do recorte operacional.
   const models=q?MODS.filter(m=>semAcento(arv7Path(m).join(' ')+' '+(m.nome||'')+' '+m.id).includes(q)):MODS;
@@ -2100,7 +2129,7 @@ function arv7Render(){
     }return out;
   };
   box.innerHTML=walk(root)||'<p class="ajuda">Nenhum modelo corresponde à busca da árvore.</p>';
-  const count=document.querySelector('#mMod .arv7-top b');if(count)count.textContent=`${models.length} modelos · hierarquia jurídica`;
+  const count=document.querySelector('#mMod .arv7-cont');if(count)count.textContent=`${models.length} modelos · ramo › assunto › classe › tipo › subassunto › questão › especificidade › resultado › modelo`;
   const note=document.querySelector('#mMod .arv7-note');if(note)note.textContent=(ARV7_ESCOLHA?`Recorte: ${ARV7_ESCOLHA.join(' › ')}. `:'')+'Subassunto, questão e especificidades derivados de indícios do modelo; lacunas marcadas para revisão. IDs e textos intactos.';
   arvEsquemaAgendar();
 }
@@ -2371,7 +2400,7 @@ const CMT_MIND_INST=new WeakMap();
 const CMT_MIND_OPEN={modelos:new Set(['modelos:root']),juris:new Set(['juris:root'])};
 const CMT_MIND_MORE={modelos:new Map(),juris:new Map()};
 const CMT_MIND_PAL=['#b38727','#257c9b','#499270','#8e70be','#c47448','#5284c6','#aa5d84','#638990','#3e968e','#9779b0','#a1874e','#4c8e68'];
-const CMT_MIND_LEVELS={modelos:['Assunto','Classe / espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado','Modelo'],juris:['Área jurídica','Subárea','Tema','Monocrática ou Acórdão','Resultado / dispositivo','Decisão']};
+const CMT_MIND_LEVELS={modelos:['Ramo do direito','Assunto','Classe / espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado','Modelo'],juris:['Área jurídica','Subárea','Tema','Monocrática ou Acórdão','Resultado / dispositivo','Decisão']};
 const CMT_MIND_ALL=new WeakMap();
 function cmtMindText(v){return String(v==null?'':v)}
 function cmtMindCount(n){return Number(n||0).toLocaleString('pt-BR')}
@@ -2454,7 +2483,7 @@ function cmtMindNodeContent(n,mode,sel){
 function cmtMindEnsure(box,mode){
  let s=CMT_MIND_INST.get(box);
  if(s&&s.mode===mode)return s;
- box.innerHTML=`<div class="cmt-mind-toolbar"><div class="cmt-mind-title"><b>Explorador de correspondências jurídicas</b><small data-mind-caption>Selecione um ramo para localizar os correspondentes</small></div><div class="cmt-mind-buttons" role="group" aria-label="Controles do mapa"><button type="button" data-mind-action="home" title="Voltar à raiz">↶ Raiz</button><button type="button" data-mind-action="close" title="Recolher todos os ramos">⊟ Recolher</button><button type="button" data-mind-action="first" title="Exibir dois níveis">⊞ Abrir principais</button><button type="button" data-mind-action="out" aria-label="Reduzir zoom">−</button><span class="cmt-mind-num" data-mind-percent>100%</span><button type="button" data-mind-action="in" aria-label="Aumentar zoom">+</button><button type="button" data-mind-action="fit" title="Ajustar mapa à área disponível">⤢ Ajustar</button><button type="button" data-mind-action="matches" title="Ver modelos ou precedentes deste ramo">☷ Correspondências</button><button type="button" data-mind-action="max" title="Expandir ou restaurar o mapa">⛶ Tela inteira</button></div></div><div class="cmt-mind-breadcrumb" data-mind-breadcrumb aria-label="Caminho atual"></div><div class="cmt-mind-viewport" tabindex="0" role="region" aria-label="Mapa mental interativo: arraste para mover, utilize os botões para zoom"><div class="cmt-mind-stage"><svg class="cmt-mind-edges" xmlns="http://www.w3.org/2000/svg"></svg></div><div class="cmt-mind-float" data-mind-hint>Arraste para mover · roda para aproximar · clique nos ramos</div></div><div class="cmt-mind-refs"><details><summary data-mind-summary>Registros correspondentes</summary><div data-mind-results></div></details></div>`;
+ box.innerHTML=`<div class="cmt-mind-toolbar"><div class="cmt-mind-title"><b>${mode==='modelos'?'Mapa mental por ramo do direito':'Explorador de correspondências jurídicas'}</b><small data-mind-caption>Selecione um ramo para localizar os correspondentes</small></div><div class="cmt-mind-buttons" role="group" aria-label="Controles do mapa"><button type="button" data-mind-action="home" title="Voltar à raiz">↶ Raiz</button><button type="button" data-mind-action="close" title="Recolher todos os ramos">⊟ Recolher</button><button type="button" data-mind-action="first" title="Exibir dois níveis">⊞ Abrir principais</button><button type="button" data-mind-action="out" aria-label="Reduzir zoom">−</button><span class="cmt-mind-num" data-mind-percent>100%</span><button type="button" data-mind-action="in" aria-label="Aumentar zoom">+</button><button type="button" data-mind-action="fit" title="Ajustar mapa à área disponível">⤢ Ajustar</button><button type="button" data-mind-action="matches" title="Ver modelos ou precedentes deste ramo">☷ Correspondências</button><button type="button" data-mind-action="max" title="Expandir ou restaurar o mapa">⛶ Tela inteira</button></div></div><div class="cmt-mind-breadcrumb" data-mind-breadcrumb aria-label="Caminho atual"></div><div class="cmt-mind-viewport" tabindex="0" role="region" aria-label="Mapa mental interativo: arraste para mover, utilize os botões para zoom"><div class="cmt-mind-stage"><svg class="cmt-mind-edges" xmlns="http://www.w3.org/2000/svg"></svg></div><div class="cmt-mind-float" data-mind-hint>Arraste para mover · roda para aproximar · clique nos ramos</div></div><div class="cmt-mind-refs"><details><summary data-mind-summary>Registros correspondentes</summary><div data-mind-results></div></details></div>`;
  s={mode,box,viewport:box.querySelector('.cmt-mind-viewport'),stage:box.querySelector('.cmt-mind-stage'),svg:box.querySelector('.cmt-mind-edges'),nodes:new Map(),elements:new Map(),cam:{x:24,y:24,k:.88},didFit:false,signature:'',animation:0,oldPositions:new Map(),drag:null,contentW:500,contentH:500};
  CMT_MIND_INST.set(box,s);
  s.viewport.addEventListener('wheel',e=>{e.preventDefault();const r=s.viewport.getBoundingClientRect();cmtMindZoom(s,s.cam.k*(e.deltaY<0?1.105:.905),e.clientX-r.left,e.clientY-r.top)},{passive:false});
@@ -2507,7 +2536,7 @@ function cmtMindResults(s,records,access,path){
  const count=records.reduce((n,r)=>n+(path.every((p,i)=>access(r)[i]===p)?1:0),0);
  const summary=s.box.querySelector('[data-mind-summary]');if(summary)summary.textContent=`${cmtMindCount(count)} ${s.mode==='modelos'?(count===1?'modelo correspondente':'modelos correspondentes'):(count===1?'precedente correspondente':'precedentes correspondentes')} · abrir registros`;
  b.innerHTML=arvEsqCorrespondentes(records,s.mode,path,access);
- const q=s.box.querySelector('[data-mind-caption]');if(q)q.textContent=`${cmtMindCount(records.length)} registros no recorte · ${s.mode==='modelos'?'7 níveis de classificação':'Tema → natureza → resultado · campos derivados do índice'}`;
+ const q=s.box.querySelector('[data-mind-caption]');if(q)q.textContent=`${cmtMindCount(records.length)} registros no recorte · ${s.mode==='modelos'?'ramo do direito › assunto › … › modelo':'Tema → natureza → resultado · campos derivados do índice'}`;
  const float=s.box.querySelector('[data-mind-hint]');if(float)float.innerHTML=`<strong>${cmtMindCount(count)} correspondências</strong><div>${path.length?esc(path[path.length-1].slice(0,70)):'Selecione qualquer ramo para filtrar'} · Zoom e arraste disponíveis</div>`;
  const bc=s.box.querySelector('[data-mind-breadcrumb]');if(bc)bc.innerHTML=`<button type="button" data-mind-crumb="0">Acervo</button>`+path.map((p,i)=>`<span class="sep">›</span><button title="${esc(p)}" type="button" data-mind-crumb="${i+1}">${esc(p)}</button>`).join('');
 }
