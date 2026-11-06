@@ -2518,9 +2518,10 @@ function cmtMindLayout(s,anchor){
  const selected=s.selected||[];
  for(const n of nodes){let el=s.elements.get(n.id);if(!el){el=document.createElement('button');el.type='button';el.className='cmt-mind-node '+n.kind+' is-new';el.dataset.mindNode=n.id;const p=s.oldPositions.get(n.parent?.id);el.style.left=(p?.x||30)+'px';el.style.top=(p?.y||50)+'px';s.stage.appendChild(el);s.elements.set(n.id,el)}
   const meta=cmtMindNodeContent(n,s.mode,selected);el.innerHTML=meta.markup;el.setAttribute('aria-label',meta.title+' · '+n.label);el.setAttribute('aria-expanded',n.kind==='leaf'||n.kind==='more'?'false':String(CMT_MIND_OPEN[s.mode].has(n.id)));el.classList.toggle('is-active',meta.active);el.classList.toggle('is-ancestor',meta.ancestor);el.style.setProperty('--mind-color',n.color);n.w=el.offsetWidth||212;n.h=el.offsetHeight||78;
+  if(n.kind==='root'){el.style.display='none';n.w=0;n.h=0} // sem card inicial: o mapa começa nos assuntos
  }
  const colW=[];const collect=(n,d)=>{colW[d]=Math.max(colW[d]||0,n.w);n.drawChildren.forEach(c=>collect(c,d+1))};collect(s.tree.root,0);
- const colX=[36];for(let i=1;i<colW.length;i++)colX[i]=colX[i-1]+colW[i-1]+75;
+ const colX=[36];for(let i=1;i<colW.length;i++)colX[i]=colX[i-1]+colW[i-1]+(i===1?0:75);
  const VG=13;
  const size=n=>{const kids=n.drawChildren||[];n.subtreeH=kids.length?Math.max(n.h,kids.reduce((sum,c)=>sum+size(c),0)+VG*(kids.length-1)):n.h;return n.subtreeH};size(s.tree.root);
  const place=(n,d,top)=>{n.pos={x:colX[d],y:top+(n.subtreeH-n.h)/2+24};const kids=n.drawChildren||[];if(kids.length){const h=kids.reduce((sum,c)=>sum+c.subtreeH,0)+VG*(kids.length-1);let y=top+(n.subtreeH-h)/2;kids.forEach(c=>{place(c,d+1,y);y+=c.subtreeH+VG})}};place(s.tree.root,0,0);
@@ -2534,7 +2535,7 @@ function cmtMindLayout(s,anchor){
  // Posições CSS interpoladas; conectores SVG seguem o mesmo movimento por quadro.
  requestAnimationFrame(()=>{for(const n of nodes){const el=s.elements.get(n.id);if(!el)continue;el.style.left=n.pos.x+'px';el.style.top=n.pos.y+'px';el.classList.remove('is-new')}});
  const pairs=[];
- for(const n of nodes){for(const c of n.drawChildren||[]){pairs.push({p:n,c,color:c.color,active:selected.length>=c.path.length&&c.path.every((v,i)=>selected[i]===v)})}}
+ for(const n of nodes){if(n.kind==='root')continue;for(const c of n.drawChildren||[]){pairs.push({p:n,c,color:c.color,active:selected.length>=c.path.length&&c.path.every((v,i)=>selected[i]===v)})}}
  const paths=pairs.map(o=>{const el=document.createElementNS('http://www.w3.org/2000/svg','path');el.setAttribute('stroke',o.color||'#8a969b');if(o.active)el.classList.add('selected');s.svg.appendChild(el);return el});
  // Remove conectores de desenhos anteriores, mas preserva os recém-criados.
  Array.from(s.svg.querySelectorAll('path')).forEach(el=>{if(!paths.includes(el))el.remove()});
