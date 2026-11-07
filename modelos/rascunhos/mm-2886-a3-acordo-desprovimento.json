@@ -1,0 +1,291 @@
+{
+  "schema": "gabA.modelo-matriz",
+  "schema_versao": 1,
+  "id": "mm-2886-a3-acordo-desprovimento",
+  "nome": "28,86% · A3 — só acordo administrativo · apelação desprovida",
+  "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+  "tipo": "acórdão",
+  "especie": "Apelação",
+  "resultado": "desprovimento",
+  "status": "rascunho",
+  "verificado_em": "",
+  "paradigma": "5006719-90.2024.4.03.6000 (sessão de 05/10/2026)",
+  "fonte": "Inteiro teor do acórdão A00130 no banco (dados/acordaos/2026.json.gz)",
+  "descricao": "Sentença afastou a limitação territorial (Tema 1.075/STF) e extinguiu o cumprimento por acordo administrativo, provado pelas fichas SIAPE; exequente apela.",
+  "caso_do_modelo": true,
+  "ementa_cabecalho": "",
+  "ementa_cabecalho_fim": "",
+  "opcoes": [
+    {
+      "id": "gratuidade",
+      "rotulo": "exequente com gratuidade de justiça",
+      "situacao": "gratuidade"
+    }
+  ],
+  "blocos": [
+    {
+      "id": "ementa-base",
+      "grupo": "Ementa",
+      "titulo": "Cabeçalho e caso em exame",
+      "modo": "fixo",
+      "ementa": [
+        {
+          "pos": "cabecalho",
+          "texto": "DIREITO PROCESSUAL CIVIL E ADMINISTRATIVO. CUMPRIMENTO INDIVIDUAL DE SENTENÇA COLETIVA. VANTAGEM DE 28.86%. AÇÃO CIVIL PÚBLICA. ACORDO INDIVIDUAL OU TRANSAÇÃO ADMINISTRATIVA. TEMAS 550 E 1.102/STJ. PAGAMENTO ADMINISTRATIVO. DESPROVIMENTO. HONORÁRIOS RECURSAIS."
+        },
+        {
+          "pos": "caso",
+          "texto": "Em cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000 para incorporação, a partir de janeiro de 1993, do reajuste de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas, a sentença, ora apelada, extinguiu o processo, sem resolução do mérito, em razão de acordo sobre as diferenças pleiteadas."
+        },
+        {
+          "pos": "questao",
+          "texto": "A controvérsia envolve discutir, como centralidade decisória a repercutir em pontos secundários veiculados, o efeito de acordo individual ou transação administrativa sobre a pretensão de cumprimento individual de sentença coletiva proferida na ACP 0005019-15.1997.4.03.6000, que trata da incorporação, a partir de janeiro de 1993, do reajuste de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas."
+        }
+      ]
+    },
+    {
+      "id": "controversia",
+      "grupo": "Controvérsia",
+      "titulo": "Delimitação da controvérsia",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "contro",
+          "texto": "Senhores Desembargadores, a sentença decretou extinto cumprimento de sentença, por ter havido acordo administrativo, não restando título judicial a executar."
+        }
+      ]
+    },
+    {
+      "id": "fund-acordo",
+      "grupo": "Acordo",
+      "titulo": "Regime do acordo e da transação (MP 1.704/1998 a 2.169-43/2001; Temas 550 e 1.102/STJ)",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "jurid",
+          "texto": "Um breve retrospecto é exigido para a compreensão da controvérsia, pois o reajuste de 28,86% foi objeto da MP 1.704, de 30/06/1998, cujo artigo 6º previu acordo individual para pagamento em até sete anos a partir de 1999, abrangendo os valores de 01/01/1993 a 30/06/1998, prevendo o artigo 7º que, para servidores em litígio judicial, seria possível transação administrativa, até 30/12/1998, desde que homologada no juízo competente. O prazo para transação administrativa foi prorrogado para até 19/02/1999 (a partir da MP 1.775-6/1998) e, depois, até 19/05/1999 (MP 1.812-9/1999), prazo este que foi mantido até a MP 2.169-43, de 24/08/2001, a última editada."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Observa-se, porém, que, a partir da MP 1.962-33, de 21/12/2000, foi previsto no § 2º do artigo 7º que \"Para efeito da homologação prevista no caput, a falta do instrumento da transação, por eventual extravio, será suprida pela apresentação de documento expedido pelo Sistema Integrado de Administração de Recursos Humanos - SIAPE, que comprove a celebração da avença\"."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Percebe-se, assim, que, desde que autorizada a incorporação e pagamento de atrasados do reajuste de 28,86%, foi permitido acordo individual para servidores sem litígio judicial e transação administrativa para servidores em litígio judicial desde que com homologação judicial do instrumento de transação ou, na sua falta, com apresentação de documento do SIAPE, comprovando a avença."
+        },
+        {
+          "pos": "jurid",
+          "texto": "A propósito, eis a redação da MP 2.169-43, de 24/08/2001, última editada e fruto de longa cadeia de reedições originada na MP 1.704/1998:"
+        },
+        {
+          "pos": "jurid",
+          "texto": "“Art. 6º Os valores devidos em decorrência do disposto nos arts. 1º ao 5º, correspondentes ao período compreendido entre 1º de janeiro de 1993 e 30 de junho de 1998, serão pagos, a partir de 1999, em até sete anos, nos meses de maio e dezembro, mediante acordo firmado individualmente pelo servidor até 19 de maio de 1999."
+        },
+        {
+          "pos": "jurid",
+          "texto": "[...]"
+        },
+        {
+          "pos": "jurid",
+          "texto": "Art. 7º Ao servidor que se encontre em litígio judicial visando ao pagamento da vantagem de que tratam os arts. 1º ao 6º, é facultado receber os valores devidos até 30 de junho de 1998, pela via administrativa, firmando transação, até 19 de maio de 1999, a ser homologada no juízo competente."
+        },
+        {
+          "pos": "jurid",
+          "texto": "§ 1º Para efeito do cumprimento do disposto nesta Medida Provisória, a Advocacia-Geral da União e as Procuradorias Jurídicas das autarquias e fundações públicas federais ficam autorizadas a celebrar transação nos processos movidos contra a União ou suas entidades que tenham o mesmo objeto do Mandado de Segurança referenciado no art. 1º."
+        },
+        {
+          "pos": "jurid",
+          "texto": "§ 2º Para efeito da homologação prevista no caput, a falta do instrumento da transação, por eventual extravio, será suprida pela apresentação de documento expedido pelo Sistema Integrado de Administração de Recursos Humanos - SIAPE, que comprove a celebração da avença.”"
+        },
+        {
+          "pos": "jurid",
+          "texto": "Como se observa a legislação cuida de duas situações distintas: a do servidor sem litígio judicial e sujeito a acordo individual, e a do servidor com litígio judicial e sujeito à transação com posterior homologação judicial."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Para o primeiro grupo de servidores, que não ajuizou ação individual nem foi beneficiado por ação coletiva, e que formulou acordo individual até 19/05/1999, a Corte Superior, no julgamento do Tema 550, referente ao REsp 1.318.315, assentou o seguinte entendimento:"
+        },
+        {
+          "pos": "jurid",
+          "texto": "“É despicienda a homologação judicial do termo de transação extrajudicial, posto que inviável a execução de tal providência, diante da inexistência, à época da celebração do acordo, de demanda judicial entre as partes transigentes”."
+        },
+        {
+          "pos": "jurid",
+          "texto": "No tocante ao segundo grupo, em que se pretende aplicação do paradigma firmado no julgamento do Tema 1.102, atinente ao REsp 1.925.194, as teses jurídicas aprovadas foram assim redigidas:"
+        },
+        {
+          "pos": "jurid",
+          "texto": "“I) É possível a comprovação de transação administrativa, relativa ao pagamento da vantagem de 28,86%, por meio de fichas financeiras ou documento expedido pelo Sistema Integrado de Administração de Recursos Humanos - SIAPE, conforme art. 7º, § 2º, da MP 1.962-33/2000, reproduzida na vigente MP 2.169-43/2001, apenas em relação a acordos firmados posteriormente à sua vigência."
+        },
+        {
+          "pos": "jurid",
+          "texto": "II) Quando não for localizado o instrumento de transação devidamente homologado, e buscando impedir o enriquecimento ilícito, os valores recebidos administrativamente, a título de 28,86%, demonstrados por meio dos documentos expedidos pelo SIAPE, devem ser deduzidos da quantia apurada, com as atualizações pertinentes”."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Como evidenciado, o Tema 1.102/STJ insere-se no contexto normativo da série de medidas provisórias, desde a MP 1.704, de 30/06/1998, até a MP 2.169-43, de 24/08/2001, prevendo, para servidores em litígio judicial, possibilidade de transação até19/05/1999para quitação administrativa de diferenças, relativas à vantagem de 28,86%, mediante posterior homologação judicial do instrumento de transação ou com base em documentos expedidos pelo SIAPE, validando-se a comprovação da avença por meio de fichas financeiras do SIAPE a partir de 21/12/2000 com fundamento no § 2º do artigo 7º da MP 1.962-33/2000."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Note-se que o artigo 7º da série de medidas provisórias editadas alude à exigência de transação até 19/05/1999 com posterior homologação (\"a ser homologada\") no juízo competente, instituindo, assim, duas fases distintas para servidores em litígio judicial: a fase de transação administrativa até 19/05/1999 e a fase de homologação judicial, que pode ocorrer a qualquer tempo, inclusive sob a vigência da MP 2.169-43, de 24/08/2001."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Havendo homologação judicial, o processo é extinto com resolução do mérito (artigo 487, III, b, CPC), vinculando ambas as partes - tanto a administração como o servidor - aos termos da transação e, portanto, havendo coisa julgada, esta apenas pode ser desconstituída por ação rescisória ajuizada a tempo e modo. Logo, ainda que a homologação judicial tenha sido anterior à vigência da MP 2.169-43, de 24/08/2001, eventual falta de juntada ou comprovação do termo de transação não desconstituiria a sentença homologatória e, tampouco, a coisa julgada, não desobrigando a administração de cumprir os termos da avença homologada, de que derivavam os pagamentos feitos e cobertos, à míngua de prova em contrário, pela presunção de legitimidade e veracidade dos atos administrativos praticados."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Na controvérsia suscitada entre a aplicação dos dois regimes previstos na legislação e jurisprudência, a pretensão é dirigida à hipótese de servidor em litígio judicial com a administração acerca da vantagem de 28,86% (artigo 7º das medidas provisórias e Tema 1.102/STJ), porém tal fato, constitutivo do direito alegado, demanda prova, da qual não se desincumbiu a parte exequente."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "Sobre a incorporação da vantagem de 28,86%, previram a MP 1.704, de 30/06/1998, e as sucessivamente editadas até a MP 2.169-43, de 24/08/2001, a possibilidade de pagamento administrativo para satisfação do direito mediante acordo individual (artigo 6º) ou transação administrativa sujeita à homologação judicial no caso de servidores em litígio judicial (artigo 7º), até o prazo de 19/02/1999, prorrogado para 19/05/1999. O acordo individual, destinada aos servidores sem prévia ação judicial, prescinde de homologação judicial (Tema 550/STJ) e a transação administrativa, para os que têm ação judicial proposta, exige, a partir da MP 1.962-33, de 21/12/2000, a homologação judicial da transação, suprindo-se a falta do instrumento, em caso de extravio, por fichas financeiras expedidas pelo SIAPE (Tema 1.102/STJ)."
+        }
+      ]
+    },
+    {
+      "id": "acordo-fichas",
+      "grupo": "Acordo",
+      "titulo": "Fichas financeiras do SIAPE no caso concreto",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "provas",
+          "texto": "Na espécie, a existência de fichas financeiras com registro de pagamento de diferenças decorrentes da vantagem de 28,86% - rubrica \"VANTAGEM ADMINIST. 28.86%-ATIV\" (ID {{ID das fichas financeiras}}), faz presumir, em favor da Administração Pública, que houve composição administrativa regular entre as partes, sendo ônus do administrado demonstrar a eventual ilegalidade da conduta administrativa, o que não se verificou."
+        },
+        {
+          "pos": "provas",
+          "texto": "Não se podendo presumir ilegalidade nem que pagamentos administrativos tenham sido realizados por mera liberdade da administração, privilegiando interesses privados em detrimento do interesse público, fato grave que pode gerar responsabilidade não apenas administrativa como criminal, o que resta a considerar, na espécie, é que a prova produzida ampara a conclusão no sentido de que a parte exequente aderiu à composição administrativa para satisfação do direito, obstando, consequentemente, o exercício da pretensão deduzida no cumprimento individual da sentença coletiva, a que se refere a ação civil pública ajuizada pelo Ministério Público Federal."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "O pagamento de parcelas devidas referentes à vantagem em discussão (\"VANTAGEM ADMINIST. 28.86%-ATIV\"), conforme demonstrado pelas fichas financeiras juntadas, não pode ser presumido como realizado sem cumprimento regular da legislação, seja quanto ao acordo individual, seja quanto à transação administrativa homologada judicialmente, não se podendo, portanto, imputar ilegalidade à administração sem prova específica e concreta, ônus processual que decorre da presunção de legitimidade e veracidade, que milita em favor dos atos administrativos."
+        }
+      ]
+    },
+    {
+      "id": "acordo-siape",
+      "grupo": "Acordo",
+      "titulo": "Prova do acordo pelas fichas do SIAPE",
+      "modo": "opcional",
+      "padrao": true,
+      "voto": [
+        {
+          "pos": "jurid",
+          "texto": "Em se tratando de parte que não provou ter previamente ajuizado ação sobre a matéria - fato passível de elucidação por mera certidão de distribuição e/ou certidão de objeto e pé -, o registro de pagamentos de parcelas da vantagem específica nas fichas financeiras emitidas pelo SIAPE comprova, suficientemente, a existência de acordo individual, a impedir a pretensão de nova cobrança em sede de cumprimento individual de sentença coletiva."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "Em se tratando, como evidenciado, de parte que não provou ter previamente ajuizado ação sobre a matéria - fato passível de elucidação por mera certidão de distribuição e/ou certidão de objeto e pé -, o registro de pagamentos de parcelas da vantagem específica nas fichas financeiras emitidas pelo SIAPE comprova, suficientemente, a existência de acordo individual, a impedir a pretensão de nova cobrança em sede de cumprimento individual de sentença coletiva."
+        }
+      ]
+    },
+    {
+      "id": "acordo-via",
+      "grupo": "Acordo",
+      "titulo": "Via processual inadequada e renúncia às diferenças",
+      "modo": "opcional",
+      "padrao": true,
+      "voto": [
+        {
+          "pos": "jurid",
+          "texto": "Mesmo quando não se esteja a impugnar existência ou validade do acordo individual ou transação administrativa com homologação judicial, mas a veicular apenas pretensão de menor alcance - como revisão dos respectivos termos, por serem os da ação coletiva, mais favoráveis, ou cobrança de valores inadimplidos do próprio acordo ou transação -, a via processual adequada não é a do cumprimento individual de sentença coletiva, pois a pretensão, acerca do pagamento de diferenças da vantagem de 28,86%, já foi exercida administrativamente."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Superada que fosse a restrição da via, a jurisprudência da Corte é firme em reconhecer, contra pretensões como tais, que, “ao celebrar o acordo, o demandante expressamente anuiu com os valores então apresentados, considerando a conveniência de recebê-los pela via administrativa, sem a necessidade de instaurar demanda judicial e suportar os encargos dela decorrentes” (ApCiv 5008922-59.2023.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, DJEN de 05/11/2025); e que \"A aceitação dos valores pagos administrativamente, sem litígio judicial concomitante, implica renúncia ao direito de pleitear as diferenças em juízo\" (ApCiv 5008102-06.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, DJEN de 15/04/2026)."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "Ainda que se tratasse de diferenças não reconhecidas ou pagas na via administrativa, não se autoriza ajuizar cumprimento individual de sentença coletiva para reabrir objeto e pretensão exauridos com a adesão a acordo administrativo, em conformidade com a jurisprudência da Corte."
+        }
+      ]
+    },
+    {
+      "id": "concl-origem",
+      "grupo": "Conclusão",
+      "titulo": "Solução da origem correta",
+      "modo": "alternativa",
+      "alt": "conclusao",
+      "padrao": true,
+      "voto": [
+        {
+          "pos": "concl",
+          "texto": "Afigura-se, pois, correta a solução dada na origem."
+        }
+      ]
+    },
+    {
+      "id": "concl-transacionado",
+      "grupo": "Conclusão",
+      "titulo": "Legitimidade sem título para o valor transacionado",
+      "modo": "alternativa",
+      "alt": "conclusao",
+      "voto": [
+        {
+          "pos": "concl",
+          "texto": "Em suma, embora a parte exequente seja legitimada, não se autoriza, em razão do acordo administrativo firmado, a pretensão de promover cumprimento individual da sentença coletiva referente ao mesmo valor transacionado administrativamente."
+        }
+      ]
+    },
+    {
+      "id": "honorarios",
+      "grupo": "Honorários",
+      "titulo": "Honorários recursais (1%)",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "honor",
+          "texto": "Pela sucumbência recursal, a parte exequente deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, à sucumbência fixada na sentença pelo decaimento na instância de origem[?gratuidade:, observada a gratuidade de justiça concedida (artigo 98, § 3º, do CPC)]."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "Pela sucumbência recursal, a parte exequente deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, à sucumbência fixada na sentença pelo decaimento na instância de origem[?gratuidade:, observada a gratuidade de justiça concedida (artigo 98, § 3º, do CPC)]."
+        }
+      ],
+      "nota": "Cláusula da gratuidade acrescentada como condicional (não consta do paradigma)."
+    },
+    {
+      "id": "dispositivo",
+      "grupo": "Dispositivo",
+      "titulo": "Dispositivo",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "disp",
+          "texto": "Ante o exposto, nego provimento à apelação."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "dispositivo",
+          "texto": "Apelação desprovida."
+        },
+        {
+          "pos": "dispositivos",
+          "texto": "MP 1.704/1998, artigos 6º e 7º; MP 1.775-6/1998; MP 1.812-9/1999; MP 1.962-33/2000, artigo 7º, § 2º; MP 2.163-43/2001, artigos 6º e 7º; CPC, artigos 487, III, b, 331, §§ 2º e 3º, 85, §§ 2º e 3º, e 98, § 3º"
+        },
+        {
+          "pos": "jurisprudencia",
+          "texto": "STJ, Temas 550 e 1.102; TRF3, ApCiv 5008922-59.2023.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, DJEN de 05/11/2025; e ApCiv 5008102-06.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, DJEN de 15/04/2026."
+        }
+      ],
+      "acordao": [
+        {
+          "pos": "texto",
+          "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, negou provimento à apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+        }
+      ]
+    }
+  ]
+}

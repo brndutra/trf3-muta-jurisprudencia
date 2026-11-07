@@ -1,0 +1,259 @@
+{
+  "schema": "gabA.modelo-matriz",
+  "schema_versao": 1,
+  "id": "mm-2886-a7-ilegitimidade-uniao-bacen-desprovimento",
+  "nome": "28,86% · A7 — ilegitimidade passiva da União e do BACEN · apelações desprovidas",
+  "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+  "tipo": "acórdão",
+  "especie": "Apelação",
+  "resultado": "desprovimento",
+  "status": "rascunho",
+  "verificado_em": "",
+  "paradigma": "5007534-87.2024.4.03.6000 (sessão de 05/10/2026)",
+  "fonte": "Inteiro teor do acórdão A00137 no banco (dados/acordaos/2026.json.gz)",
+  "descricao": "Sentença indeferiu a inicial ou extinguiu o cumprimento por ilegitimidade passiva da União e do BACEN; exequente apela. Se o BACEN também apela da gratuidade, marcar os blocos de gratuidade e honorários.",
+  "caso_do_modelo": true,
+  "ementa_cabecalho": "",
+  "ementa_cabecalho_fim": "",
+  "opcoes": [],
+  "blocos": [
+    {
+      "id": "ementa-base",
+      "grupo": "Ementa",
+      "titulo": "Cabeçalho e caso em exame",
+      "modo": "fixo",
+      "ementa": [
+        {
+          "pos": "cabecalho",
+          "texto": "DIREITO PROCESSUAL CIVIL. APELAÇÕES. CUMPRIMENTO DE SENTENÇA. AÇÃO CIVIL PÚBLICA. REAJUSTE DE 28,86%. ILEGITIMIDADE PASSIVA DO BANCO CENTRAL DO BRASIL E DA UNIÃO. COISA JULGADA COLETIVA. LIMITES SUBJETIVOS.[?gratuidade-revisao: GRATUIDADE DA JUSTIÇA. CRITÉRIOS OBJETIVOS DE RENDA.][?honor-sucumbencia: HONORÁRIOS ADVOCATÍCIOS SUCUMBENCIAIS. FIXAÇÃO EM GRAU RECURSAL.] APELAÇÕES DESPROVIDAS."
+        },
+        {
+          "pos": "caso",
+          "texto": "Apelações interpostas contra sentença integrada por embargos de declaração que, em cumprimento de sentença fundado na Ação Civil Pública 0005019-15.1997.4.03.6000 relativo ao reajuste de 28,86%, extinguiu o processo sem resolução do mérito por ilegitimidade passiva da União e do BACEN, deferiu a gratuidade da justiça e não fixou honorários advocatícios. A parte exequente sustentou a legitimidade passiva de ambas as rés e a eficácia erga omnes do título coletivo.[?gratuidade-revisao: O BACEN requereu revogação da gratuidade da justiça com base em parâmetros objetivos de renda e a fixação de honorários advocatícios sucumbenciais.]"
+        }
+      ]
+    },
+    {
+      "id": "controversia",
+      "grupo": "Controvérsia",
+      "titulo": "Delimitação da controvérsia",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "contro",
+          "texto": "Senhores Desembargadores, discute-se, no caso, a legitimidade passiva da União e do BACEN para figurar no polo passivo de cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000, ajuizada pelo Ministério Público Federal contra União “e suas administrações indiretas”, bem como a concessão da gratuidade de justiça."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "questao",
+          "texto": "se a União e o BACEN possuem legitimidade passiva no cumprimento de sentença individual derivado da ACP 0005019-15.1997.4.03.6000"
+        }
+      ]
+    },
+    {
+      "id": "fund-legitimidade",
+      "grupo": "Fundamentação",
+      "titulo": "BACEN e União não integraram a ACP",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "jurid",
+          "texto": "Registre-se, de logo, que a ACP 0005019-15.1997.4.03.6000 foi ajuizada pelo Ministério Público Federal contra União “e suas administrações indiretas”, tendo o parquet apresentado relações dos órgãos da União e entidades da administração pública indireta abrangidos pela demanda."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Em nenhum momento o BACEN figurou em tais relações."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Não obstante, após exclusão de determinados réus, o feito teve regular tramitação apenas contra as seguintes pessoas jurídicas, que foram citadas e apresentaram defesa: 1) União; 2) IBAMA; 3) INCRA; 4) INSS; 5) DNER; 6) UFMS; 7) FNS; 8) IBGE; e 9) FUNAI."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Logo, o Banco Central não participou da lide originária, sequer tendo sido citado ou intimado."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Nem se alegue eventual inexistência de limitação expressa na inicial ou no respectivo título executivo judicial, ou ainda que, apenas por integrar a Administração Pública Indireta, a coisa julgada atingiria o BACEN pelo efeito erga omnes da sentença coletiva, sob pena de violação à isonomia ou aos artigos 103, §§ 3º e 4º, e 104, CDC, pois é inequívoco que na relação de entidades apresentadas pelo Ministério Público Federal o próprio autor da ACP 0005019-15.1997.4.03.6000 consignou expressamente que são tais pessoas jurídicas “que deverão integrar a lide” e que, portanto, sujeitam-se ao título judicial."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Enfim, não tendo o BACEN figurado na inicial da ação, nem nas listagens juntadas pelo Ministério Público Federal e sequer participado, a qualquer momento e a qualquer título, da ação originária para exercer direito de defesa e recurso, os efeitos da coisa julgada na ACP 0005019-15.1997.4.03.6000, que tampouco fizerem referência ao ente autárquico dotado de personalidade jurídica própria e distinta de todos os demais, não podem atingir o respectivo patrimônio jurídico."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Assim, afigura-se flagrante a ilegitimidade passiva do BACEN para o presente cumprimento de sentença."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Quanto à União, não existe legitimidade passiva para integrar a lide, pois a relação funcional da parte exequente, no período do reajuste discutido, era somente e exclusivamente com o BACEN, inexistindo responsabilidade solidária ou subsidiária do ente político, dada a autonomia e personalidade jurídica própria das autarquias no plano da Administração Pública."
+        },
+        {
+          "pos": "jurid",
+          "texto": "O fato de o BACEN integrar a Administração Pública Federal Indireta não torna a União interessada nem parte legítima para as demandas propostas contra as entidades autárquicas federais, por vínculos ou relações jurídicas próprias firmadas com base na personalidade jurídica própria e na respectiva autonomia administrativa, financeira e orçamentária."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Portanto, inexiste título executivo judicial formado na ACP 0005019-15.1997.4.03.6000 que ampare a pretensão da parte exequente, na linha de farta jurisprudência da Corte: ApCiv 5006908-68.2024.4.03.6000, Rel. Des. Fed. AUDREY GASPARINI, Intimação via sistema 31/03/2026; ApCiv 5007711-51.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, Intimação via sistema 20/02/2026; ApCiv 5007786-90.2024.4.03.6000, Rel. Des. Fed. ANTONIO MORIMOTO, Intimação via sistema 02/12/2025; ApCiv 5006653-13.2024.4.03.6000, Rel. Des. Fed. COTRIM GUIMARÃES, Intimação via sistema 18/11/2025; e ApCiv 5006785-70.2024.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, Intimação via sistema 04/11/2025."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Mantém-se, pois, a sentença de extinção do feito, sem resolução do mérito, em conformidade com a fundamentação exposta."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "Não constando o BACEN como parte demandada na ação civil pública, cuja sentença transitou em julgado, constituindo o título executivo condenatório, cujo cumprimento se pretende, e sendo a parte exequente vinculada funcionalmente a tal autarquia e não à União, a decretação da ilegitimidade passiva de tais entidades é condizente com a coisa julgada, não sendo possível inovar ou alterar os termos da condenação somente na fase processual de cumprimento."
+        }
+      ]
+    },
+    {
+      "id": "gratuidade-revisao",
+      "grupo": "Gratuidade",
+      "titulo": "Apelação do BACEN contra a gratuidade (Tema 1.178/STJ e ADC 80)",
+      "modo": "opcional",
+      "padrao": true,
+      "voto": [
+        {
+          "pos": "concl",
+          "texto": "Com efeito, discute-se, sob prisma objetivo, a invalidade da presunção de hipossuficiência declarada pela pessoa natural, alegando-se que a parte exequente percebe remuneração mensal superior a parâmetros objetivos indicados, o que afastaria o cabimento do benefício."
+        },
+        {
+          "pos": "concl",
+          "texto": "Sucede, porém, que, na atualidade, prevalece o entendimento do Tema 1.178/STJ que, além de procedimento específico, não permite, de qualquer modo, seja adotado critério estritamente objetivo para indeferimento da gratuidade judiciária."
+        },
+        {
+          "pos": "concl",
+          "texto": "A propósito, eis o teor das teses aprovadas:"
+        },
+        {
+          "pos": "concl",
+          "texto": "\"i) É vedado o uso de critérios objetivos para o indeferimento imediato da gratuidade judiciária requerida por pessoa natural."
+        },
+        {
+          "pos": "concl",
+          "texto": "ii) Verificada a existência nos autos de elementos aptos a afastar a presunção de hipossuficiência econômica da pessoa natural, o juiz deverá determinar ao requerente a comprovação de sua condição, indicando de modo preciso as razões que justificam tal afastamento, nos termos do art. 99, § 2º, do CPC."
+        },
+        {
+          "pos": "concl",
+          "texto": "iii) Cumprida a diligência, a adoção de parâmetros objetivos pelo magistrado pode ser realizada em caráter meramente suplementar e desde que não sirva como fundamento exclusivo para o indeferimento do pedido de gratuidade.\""
+        },
+        {
+          "pos": "concl",
+          "texto": "Perceba-se que a jurisprudência tematizada exige que parâmetros objetivos sejam adotados apenas em caráter suplementar, não podendo servir de fundamento exclusivo para o indeferimento do benefício."
+        },
+        {
+          "pos": "concl",
+          "texto": "No caso concreto, veiculou-se apenas critério objetivo para revisão da concessão à parte exequente do benefício da gratuidade judiciária, razão pela qual não se autoriza o acolhimento da pretensão."
+        },
+        {
+          "pos": "concl",
+          "texto": "Embora no julgamento da ADC 80, Rel. p/ acórdão Min. GILMAR MENDES, na sessão de 03/09/2026, a Suprema Corte tenha fixado novos parâmetros para aferição da gratuidade judiciária, limitando a presunção relativa de hipossuficiência a percepção de salário igual ou inferior a R$ 5.000,00, conforme teto da tabela do imposto de renda, permitindo que, mesmo nestes casos, possa ser indeferida gratuidade judiciária no caso de apurado patrimônio ou renda familiar incompatível com tal presunção, aplicado o princípio da razoabilidade, é certo que tal interpretação conforme à Constituição restou modulada para \"que produza efeitos ex nunc, a contar da publicação da ata de julgamento de mérito, sendo aplicável, portanto, somente aos processos ajuizados a partir de tal marco\", razão pela qual, no caso concreto, deve prevalecer o que decorre da jurisprudência tematizada da Corte Superior."
+        }
+      ],
+      "relatorio": [
+        {
+          "pos": "apos_recurso",
+          "texto": "[?gratuidade-revisao:Apelou também a parte exequente (ID {{ID}}), alegando, em suma, que: (1) União e BACEN são partes legítimas para figurar no polo passivo da ação; (2) a União integrou o polo passivo da ação que gerou o título judicial em execução; (3) conquanto autarquia federal de natureza especial com autonomia, o BACEN recebe recursos financeiros da União para custeio de despesas obrigatórias, relacionadas a pessoal, encargos sociais e benefícios; (4) o BACEN integra a Administração Pública Indireta, vinculando-se ao Ministério da Economia e desempenhando poder de polícia da União no setor financeiro; (5) o título executivo judicial abrange servidores ativos, inativos e pensionistas do quadro de pessoal da União (Administração Direta e Indireta), com efeito erga omnes, sem restrição (Tema 1.075/STF e Tema 480/STJ); (6) mesmo que não tenha figurado no polo passivo da ação civil pública, a coisa julgada atinge o Banco Central, pois integra a Administração Pública Indireta; e (7) não houve limitação expressa a determinados servidores ou órgãos da Administração Pública Indireta e entender o contrário implica violação à isonomia e ao princípio do máximo benefício da tutela jurisdicional coletiva (artigos 5º, CF e 103, §§ 3º e 4º, e 104, CDC).]"
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "questao",
+          "texto": "se a remuneração da parte exequente e parâmetros objetivos de renda autorizam a revogação da gratuidade da justiça"
+        },
+        {
+          "pos": "razoes",
+          "texto": "No tocante à gratuidade judiciária, concedida na origem, não pode ser revogada sem garantir prévio contraditório e, menos ainda, com base em critério exclusivamente objetivo, a teor do que dispõe o julgamento repetitivo do Tema 1.178/STJ, cuja eficácia prevalece, no caso concreto, diante da modulação da interpretação conforme atribuída pela Suprema Corte no julgamento da ADC 80."
+        }
+      ],
+      "nota": "No paradigma, o BACEN é o primeiro apelante e a parte exequente apela em seguida (relatório). No formulário, informe o BACEN como recorrente."
+    },
+    {
+      "id": "honor-sucumbencia",
+      "grupo": "Honorários",
+      "titulo": "Honorários sucumbenciais fixados em grau recursal (artigo 331 do CPC)",
+      "modo": "opcional",
+      "padrao": true,
+      "voto": [
+        {
+          "pos": "aplic",
+          "texto": "Quanto à sucumbência, verifica-se que, no regime do artigo 331 do Código de Processo Civil, se houver reforma da sentença de indeferimento da inicial ou extinção sem resolução do mérito antes da citação da parte ré, para determinar a retomada do curso do processo na origem, a condenação em honorários advocatícios, ainda que citada a parte demandada para oferecer contrarrazões (artigo 331, § 1º, CPC), é fixada ao final do feito após citada a parte requerida para contestar com prazo contado da intimação do retorno dos autos (artigo 331, § 2º, CPC)."
+        },
+        {
+          "pos": "aplic",
+          "texto": "Em caso contrário, se mantida a sentença com desprovimento da apelação, a parte apelante sucumbe em face da parte apelada, que tenha ofertado contrarrazões, assim autorizando, à luz do princípio da causalidade e responsabilidade processual, a condenação da sucumbente em honorários advocatícios em cenário distinto, portanto, daquele em que baseada a sentença para deixar de condenar a parte exequente em tal verba sucumbencial por inexistente, à época, a triangulação da relação processual até então."
+        },
+        {
+          "pos": "aplic",
+          "texto": "Logo, cabível, no caso concreto, a imposição de condenação sucumbencial à parte exequente, cujo apelo foi desprovido, tratando-se não de honorários recursais, mas honorários pela sucumbência na relação processual de origem, ainda que resolvida em sede recursal."
+        },
+        {
+          "pos": "aplic",
+          "texto": "Considerando os critérios da legislação processual, arbitra-se, em face da sucumbência da parte exequente, honorários advocatícios calculados sobre o valor atualizado da causa com aplicação do percentual mínimo da faixa de enquadramento para o caso concreto, considerados os incisos do § 3º do artigo 85, CPC, rateados os valores entre as partes requeridas, que ofertaram contrarrazões à apelação interposta."
+        },
+        {
+          "pos": "aplic",
+          "texto": "A execução da condenação fica suspensa diante do requerimento de justiça gratuita, nos termos do artigo 98, § 3º, do CPC[?gratuidade-revisao:, rejeitando-se a pretensão deduzida pelo BACEN, em contrarrazões, de indeferimento do benefício]."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "questao",
+          "texto": "se a manutenção da sentença extintiva, após a apresentação de contrarrazões, autoriza o arbitramento de honorários advocatícios sucumbenciais em desfavor da parte exequente"
+        },
+        {
+          "pos": "razoes",
+          "texto": "Desprovido o recurso e mantida a sentença de extinção do processo sem resolução do mérito, a parte demandada, que ofereceu contrarrazões ao recurso, tem direito, à luz dos princípios da causalidade e responsabilidade processual, a honorários advocatícios pela sucumbência da parte exequente e apelante, arbitrando-se a condenação no percentual mínimo sobre o valor atualizado da causa, em conformidade com as faixas previstas nos incisos do § 3º do artigo 85 do Código de Processo Civil, com suspensão da respectiva exigibilidade, nos termos do artigo 98, § 3º, da legislação processual."
+        }
+      ]
+    },
+    {
+      "id": "conclusao",
+      "grupo": "Conclusão",
+      "titulo": "Conclusão",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "concl",
+          "texto": "[?honor-sucumbencia:Em suma, confirma-se a sentença, fixando-se os honorários advocatícios com suspensão da respectiva exigibilidade nos termos do artigo 98, § 3º, CPC.]"
+        }
+      ]
+    },
+    {
+      "id": "dispositivo",
+      "grupo": "Dispositivo",
+      "titulo": "Dispositivo",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "disp",
+          "texto": "Ante o exposto, nego provimento [?gratuidade-revisao:às apelações][?!gratuidade-revisao:à apelação], conforme explicitado."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "dispositivo",
+          "texto": "[?gratuidade-revisao:Apelações desprovidas][?!gratuidade-revisao:Apelação desprovida]."
+        },
+        {
+          "pos": "dispositivos",
+          "texto": "CF/1988, art. 5º; Leis nº 8.622/1993 e nº 8.627/1993; CPC, arts. 85, § 3º, 98, §§ 2º e 3º, 99, caput e §§ 2º e 3º, 331, §§ 1º e 2º, e 1.015, V; CLT, art. 790, § 3º; CDC, arts. 103, §§ 3º e 4º, e 104."
+        },
+        {
+          "pos": "jurisprudencia",
+          "texto": "STF, ADC 80, Rel. p/ acórdão Min. GILMAR MENDES, j. 03/09/2026; Tema 1.178/STJ; Tema 1.075/STF; Tema 480/STJ; ApCiv 5006908-68.2024.4.03.6000, Rel. Des. Fed. AUDREY GASPARINI, intimação via sistema 31.03.2026; ApCiv 5007711-51.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, intimação via sistema 20.02.2026; ApCiv 5007786-90.2024.4.03.6000, Rel. Des. Fed. ANTONIO MORIMOTO, intimação via sistema 02.12.2025; ApCiv 5006653-13.2024.4.03.6000, Rel. Des. Fed. COTRIM GUIMARÃES, intimação via sistema 18.11.2025; ApCiv 5006785-70.2024.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, intimação via sistema 04.11.2025."
+        }
+      ],
+      "acordao": [
+        {
+          "pos": "texto",
+          "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, negou provimento à apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+        }
+      ]
+    }
+  ],
+  "nota": "[VALIDAR] No paradigma (duas apelações), o dispositivo do voto diz “nego provimento à apelação”, e a ementa, “Apelações desprovidas”; o modelo usa o plural quando há apelação do BACEN. Ordem das razões da ementa difere do paradigma (legitimidade, gratuidade, honorários) para manter a ordem das questões."
+}

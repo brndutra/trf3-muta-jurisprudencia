@@ -1,0 +1,185 @@
+{
+  "schema": "gabA.modelo-matriz",
+  "schema_versao": 1,
+  "id": "mm-2886-a6-razoes-dissociadas-nao-conhecimento",
+  "nome": "28,86% · A6 — razões dissociadas · apelação não conhecida",
+  "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+  "tipo": "acórdão",
+  "especie": "Apelação",
+  "resultado": "não conhecimento",
+  "status": "rascunho",
+  "verificado_em": "",
+  "paradigma": "5006685-18.2024.4.03.6000 (sessão de 05/10/2026)",
+  "fonte": "Inteiro teor do acórdão A00132 no banco (dados/acordaos/2026.json.gz)",
+  "descricao": "A apelação ataca fundamento que a sentença não adotou (sentença por acordo e apelação só territorial, ou o inverso) ou transcreve trecho de sentença estranha aos autos. Pode ser julgado por decisão monocrática.",
+  "caso_do_modelo": true,
+  "ementa_cabecalho": "",
+  "ementa_cabecalho_fim": "",
+  "opcoes": [
+    {
+      "id": "gratuidade",
+      "rotulo": "exequente com gratuidade de justiça",
+      "situacao": "gratuidade"
+    }
+  ],
+  "blocos": [
+    {
+      "id": "ementa-base",
+      "grupo": "Ementa",
+      "titulo": "Cabeçalho e caso em exame",
+      "modo": "fixo",
+      "ementa": [
+        {
+          "pos": "cabecalho",
+          "texto": "DIREITO PROCESSUAL CIVIL. APELAÇÃO. CUMPRIMENTO INDIVIDUAL DE SENTENÇA COLETIVA. REAJUSTE DE 28,86%. ACORDO ADMINISTRATIVO. RAZÕES DISSOCIADAS. FALTA DE DIALETICIDADE RECURSAL. NÃO CONHECIMENTO."
+        },
+        {
+          "pos": "caso",
+          "texto": "Em cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000, para incorporação a partir de janeiro de 1993 do reajuste de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas, houve extinção do processo, sem resolução do mérito, por falta de título executivo que ampare a pretensão, em razão da realização de acordo administrativo, fixada verba honorária de {{percentual}} sobre {{base de cálculo}}, suspensa a exigibilidade nos termos do artigo 98, § 3º, do CPC. A apelante {{síntese das razões — ex.: sustentou a inexistência de limitação territorial dos efeitos da ação civil pública e invocou o julgamento do Tema 1.075/STF}}."
+        },
+        {
+          "pos": "questao",
+          "texto": "A questão em discussão consiste em verificar se a apelação deve ser conhecida quando as razões recursais não impugnam o fundamento efetivamente adotado na sentença, vertendo razões dissociadas em descumprimento ao princípio da dialeticidade recursal."
+        }
+      ]
+    },
+    {
+      "id": "sentenca",
+      "grupo": "Sentença",
+      "titulo": "Fundamento da sentença e transcrição",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "contro",
+          "texto": "Senhores Desembargadores, o Juízo de origem extinguiu o cumprimento de sentença, sem resolução do mérito, nos termos do artigo 485, inciso VI, do Código de Processo Civil, por {{fundamento da sentença — ex.: reconhecer a ausência de título executivo em virtude da realização de acordo administrativo e do recebimento, pela via administrativa, das diferenças relativas ao reajuste de 28,86%}} (ID {{ID da sentença}})."
+        },
+        {
+          "pos": "contro",
+          "texto": "No ponto, consignou a sentença (ID {{ID da sentença}}):"
+        },
+        {
+          "pos": "contro",
+          "texto": "{{transcrição dos trechos determinantes da sentença}}"
+        }
+      ]
+    },
+    {
+      "id": "razoes",
+      "grupo": "Razões",
+      "titulo": "Razões recursais dissociadas",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "aplic",
+          "texto": "A apelante, contudo, desenvolveu argumentação em torno da controvérsia sobre {{tema das razões — ex.: o alcance territorial da ação civil pública, defendendo que o título coletivo teria eficácia nacional, que não haveria limitação aos servidores residentes ou lotados em Mato Grosso do Sul e que seria inaplicável a restrição territorial fundada no art. 16 da Lei nº 7.347/1985}} (ID {{ID}}). Atribuiu à sentença fundamento diverso do efetivamente adotado, reproduzindo passagem e trechos de provimento estranhos a estes autos."
+        }
+      ]
+    },
+    {
+      "id": "transcricao-estranha",
+      "grupo": "Razões",
+      "titulo": "Transcrição de sentença estranha aos autos",
+      "modo": "opcional",
+      "padrao": true,
+      "voto": [
+        {
+          "pos": "aplic",
+          "texto": "Para tanto, reproduziu, como trecho do pronunciamento recorrido, passagem que não consta da sentença proferida nos autos (ID {{ID}}):"
+        },
+        {
+          "pos": "aplic",
+          "texto": "{{trecho estranho reproduzido nas razões}}"
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "A transcrição, nas razões recursais, de dispositivo de sentença estranho ao processo reforça a ausência de correlação entre o recurso e a decisão impugnada, aprofundando o vício de conteúdo da apelação para viabilizar o enfrentamento da matéria decidida na sentença."
+        }
+      ]
+    },
+    {
+      "id": "fundamento-nao-impugnado",
+      "grupo": "Razões",
+      "titulo": "Fundamento determinante não impugnado",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "aplic",
+          "texto": "Verifica-se, assim, que a apelante não impugnou o fundamento determinante da sentença, consistente {{no fundamento determinante}}. As alegações acerca da abrangência territorial da sentença coletiva e da aplicação do Tema 1.075/STF versam sobre questão diversa e não infirmam a conclusão que motivou a extinção do cumprimento de sentença."
+        }
+      ],
+      "nota": "[VALIDAR] No paradigma este parágrafo cita “ilegitimidade passiva da FUNASA por falta de vinculação ao título executivo”, divergente do fundamento descrito no 1º parágrafo (acordo administrativo)."
+    },
+    {
+      "id": "dialeticidade",
+      "grupo": "Fundamentação",
+      "titulo": "Dialeticidade recursal (artigo 1.010, III, do CPC)",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "concl",
+          "texto": "Nos termos do artigo 1.010, III, do CPC, incumbe ao apelante deduzir razões de fato e de direito que sustentem o pedido de reforma ou anulação, mediante impugnação específica e pertinente dos fundamentos da sentença. A apresentação de razões dissociadas do pronunciamento recorrido viola o princípio da dialeticidade, pois impede o cotejo entre o que foi decidido e os fundamentos invocados para sua revisão, impondo o não conhecimento do recurso."
+        },
+        {
+          "pos": "concl",
+          "texto": "Nesse sentido:"
+        },
+        {
+          "pos": "concl",
+          "texto": "AgInt no AREsp 3.144.390, Rel. Min. TEODORO SILVA SANTOS, DJEN 11/06/2026: \"PROCESSUAL CIVIL E DIREITO ADMINISTRATIVO. AGRAVO INTERNO NO AGRAVO EM RECURSO ESPECIAL. PENSÃO POR MORTE DE MILITAR. EXTINÇÃO DO BENEFÍCIO EM RAZÃO DE NOVA UNIÃO ESTÁVEL. JUÍZO DE ADMISSIBILIDADE. FUNDAMENTOS: ÓBICE DAS SÚMULAS N. 7 DO STJ E 280 DO STF E AUSÊNCIA DE COTEJO ANALÍTICO. AUSÊNCIA DE IMPUGNAÇÃO CONCRETA. INCIDÊNCIA DA SÚMULA N. 182 DO STJ. AGRAVO INTERNO DESPROVIDO. 1. Na origem: ação de concessão de pensão por morte ajuizada pela Agravante em face do Instituto de Previdência dos Servidores Militares do Estado de Minas Gerais - IPSM. O pleito foi julgado improcedente. 2. O Tribunal de origem negou provimento à apelação da Autora. 3. A Corte a quo não admitiu o apelo nobre, por incidir o recurso no óbice das Súmulas n. 280 do STF e 7 do STJ e por ausência do devido cotejo analítico entre os acórdãos tidos por divergentes. 4. Nesta Corte, decisão da lavra da Presidência, que não conheceu do agravo em recurso especial. 5. No caso, para infirmar, de modo adequado, o fundamento autônomo de ausência de cotejo analítico, no tocante à alegação de dissídio jurisprudencial, a comprovação exige o atendimento dos requisitos previstos no art. 1.029, § 1º, do Código de Processo Civil e no art. 255, § 1º, do Regimento Interno do Superior Tribunal de Justiça, consistentes em: apresentação de cópia, certidão ou citação de repositório oficial/credenciado do acórdão paradigma, com indicação da fonte, e realização de cotejo analítico entre o acórdão recorrido e o paradigma, demonstrando circunstâncias fáticas e jurídicas idênticas ou semelhantes. 6. A dialeticidade recursal é um princípio fundamental para se conhecer do recurso, a partir do qual se entende que o agravante deve atacar concretamente os argumentos da decisão agravada, e não somente manifestar a vontade de recorrer, ou aduzir razões genéricas, como fez a parte Agravante no caso em exame. 7. Não tendo a parte Agravante logrado êxito em infirmar os fundamentos que nortearam a decisão ora agravada, impõe-se a sua manutenção, em todos os seus termos. 8. Agravo interno desprovido.\""
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "Veiculadas razões dissociadas do fundamento adotado na sentença, a apelação não cumpre o requisito da dialeticidade recursal, violando o artigo 1.010, II e III, do Código de Processo Civil, segundo o qual o recurso deve deve expor os fatos e o direito e indicar as razões do pedido de reforma, estabelecendo correlação lógica entre a impugnação recursal e os fundamentos da sentença, que permita a compreensão da controvérsia e a solução específica e pertinente ao caso concreto."
+        }
+      ]
+    },
+    {
+      "id": "honorarios",
+      "grupo": "Honorários",
+      "titulo": "Honorários recursais (1%)",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "honor",
+          "texto": "Pela sucumbência recursal, a parte exequente deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, à sucumbência fixada na sentença pelo decaimento na instância de origem[?gratuidade:, suspensa a exigibilidade pela gratuidade judiciária]."
+        }
+      ]
+    },
+    {
+      "id": "dispositivo",
+      "grupo": "Dispositivo",
+      "titulo": "Dispositivo",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "disp",
+          "texto": "Ante o exposto, não conheço da apelação."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "dispositivo",
+          "texto": "Apelação não conhecida, honorários recursais em acréscimo ao fixado na origem."
+        },
+        {
+          "pos": "dispositivos",
+          "texto": "Código de Processo Civil, artigos 1.010, incisos II e III; 932, inciso III; 485, inciso VI; 85, §§ 2º a 6º e 11; e 98, § 3º. Lei 7.347/1985, artigo 16. Leis 8.622/1993 e 8.627/1993."
+        },
+        {
+          "pos": "jurisprudencia",
+          "texto": "Supremo Tribunal Federal, RE 1.101.937, Tema 1.075."
+        }
+      ],
+      "acordao": [
+        {
+          "pos": "texto",
+          "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, não conheceu da apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+        }
+      ]
+    }
+  ]
+}

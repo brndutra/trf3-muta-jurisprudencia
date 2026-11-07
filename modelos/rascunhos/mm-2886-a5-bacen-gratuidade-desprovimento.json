@@ -1,0 +1,170 @@
+{
+  "schema": "gabA.modelo-matriz",
+  "schema_versao": 1,
+  "id": "mm-2886-a5-bacen-gratuidade-desprovimento",
+  "nome": "28,86% · A5 — BACEN apela só da gratuidade · apelação desprovida",
+  "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+  "tipo": "acórdão",
+  "especie": "Apelação",
+  "resultado": "desprovimento",
+  "status": "rascunho",
+  "verificado_em": "",
+  "paradigma": "5006182-94.2024.4.03.6000 (sessão de 05/10/2026)",
+  "fonte": "Inteiro teor do acórdão A00142 no banco (dados/acordaos/2026.json.gz)",
+  "descricao": "Sentença extinguiu por ilegitimidade passiva da União e do BACEN e manteve a gratuidade do exequente; só o BACEN apela, contra a gratuidade.",
+  "caso_do_modelo": true,
+  "ementa_cabecalho": "",
+  "ementa_cabecalho_fim": "",
+  "opcoes": [],
+  "blocos": [
+    {
+      "id": "ementa-base",
+      "grupo": "Ementa",
+      "titulo": "Cabeçalho e caso em exame",
+      "modo": "fixo",
+      "ementa": [
+        {
+          "pos": "cabecalho",
+          "texto": "DIREITO PROCESSUAL CIVIL. APELAÇÃO. CUMPRIMENTO INDIVIDUAL DE SENTENÇA COLETIVA. GRATUIDADE DA JUSTIÇA. DECLARAÇÃO DE HIPOSSUFICIÊNCIA. REVISÃO BASEADA EM CRITÉRIO ESTRITAMENTE OBJETIVO. TEMA 1.178/STJ. DESPROVIMENTO."
+        },
+        {
+          "pos": "caso",
+          "texto": "Apelação interposta contra sentença que, ao extinguir cumprimento de sentença sem resolução do mérito por ilegitimidade passiva da União e do BACEN, deferiu à parte exequente benefícios da gratuidade da justiça. A autarquia sustentou que a remuneração básica bruta mensal da parte exequente, superior a vinte mil reais, afasta a presunção de hipossuficiência econômica exigida para a concessão do benefício."
+        },
+        {
+          "pos": "questao",
+          "texto": "A questão em discussão consiste em definir se a remuneração auferida pela parte exequente autoriza a manutenção da gratuidade da justiça."
+        }
+      ]
+    },
+    {
+      "id": "controversia",
+      "grupo": "Controvérsia",
+      "titulo": "Delimitação e cabimento da discussão na apelação",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "contro",
+          "texto": "Senhores Desembargadores, a controvérsia envolve exclusivamente a questão da assistência judiciária gratuita concedida à parte exequente."
+        },
+        {
+          "pos": "contro",
+          "texto": "Concedida a gratuidade judiciária (ID {{ID}}), houve impugnação a tal decisão na resposta do BACEN ao cumprimento de sentença (ID {{ID}}), que foi replicada pela parte exequente (ID {{ID}}), sobrevindo a sentença, que manteve a concessão (ID {{ID}}), donde a apelação."
+        },
+        {
+          "pos": "contro",
+          "texto": "Considerando que a matéria não é passível de agravo de instrumento, cabível apenas no caso de \"rejeição do pedido de gratuidade da justiça ou acolhimento do pedido de sua revogação\" (artigo 1.015, V, CPC), resta viável a discussão na sede recursal eleita."
+        },
+        {
+          "pos": "contro",
+          "texto": "Todavia, a pretensão deduzida na apelação não pode ser acolhida."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "A concessão do benefício de gratuidade de justiça foi impugnada pela autarquia na primeira oportunidade de manifestação nos autos e, tendo sido mantida em sentença, resta autorizada a renovação da discussão em sede de apelação."
+        }
+      ]
+    },
+    {
+      "id": "fund-gratuidade",
+      "grupo": "Gratuidade",
+      "titulo": "Tema 1.178/STJ — vedação de critério objetivo",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "jurid",
+          "texto": "Com efeito, discute-se, sob prisma objetivo, a invalidade da presunção de hipossuficiência declarada pela pessoa natural, alegando-se na apelação que a parte exequente percebe remuneração mensal superior a parâmetros objetivos indicados, o que afastaria o cabimento do benefício."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Sucede, porém, que, na atualidade, prevalece o entendimento do Tema 1.178/STJ que, além de procedimento específico, não permite, de qualquer modo, seja adotado critério estritamente objetivo para indeferimento da gratuidade judiciária."
+        },
+        {
+          "pos": "jurid",
+          "texto": "A propósito, eis o teor das teses aprovadas:"
+        },
+        {
+          "pos": "jurid",
+          "texto": "\"i) É vedado o uso de critérios objetivos para o indeferimento imediato da gratuidade judiciária requerida por pessoa natural."
+        },
+        {
+          "pos": "jurid",
+          "texto": "ii) Verificada a existência nos autos de elementos aptos a afastar a presunção de hipossuficiência econômica da pessoa natural, o juiz deverá determinar ao requerente a comprovação de sua condição, indicando de modo preciso as razões que justificam tal afastamento, nos termos do art. 99, § 2º, do CPC."
+        },
+        {
+          "pos": "jurid",
+          "texto": "iii) Cumprida a diligência, a adoção de parâmetros objetivos pelo magistrado pode ser realizada em caráter meramente suplementar e desde que não sirva como fundamento exclusivo para o indeferimento do pedido de gratuidade.\""
+        }
+      ]
+    },
+    {
+      "id": "aplicacao",
+      "grupo": "Aplicação",
+      "titulo": "Caso concreto e modulação da ADC 80",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "aplic",
+          "texto": "Perceba-se que a jurisprudência tematizada exige que parâmetros objetivos sejam adotados apenas em caráter suplementar, não podendo servir de fundamento exclusivo para o indeferimento do benefício."
+        },
+        {
+          "pos": "aplic",
+          "texto": "No caso concreto, veiculou-se apenas critério objetivo para revisão da concessão à parte exequente do benefício da gratuidade judiciária, razão pela qual não se autoriza o acolhimento da pretensão."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "No tocante à gratuidade judiciária, concedida na origem, não pode ser revogada sem garantir prévio contraditório e, menos ainda, com base em critério exclusivamente objetivo, a teor do que dispõe o julgamento repetitivo do Tema 1.178/STJ, cuja eficácia prevalece, no caso concreto, diante da modulação da interpretação conforme atribuída pela Suprema Corte no julgamento da ADC 80."
+        }
+      ]
+    },
+    {
+      "id": "honor-bacen",
+      "grupo": "Honorários",
+      "titulo": "Pedido de honorários do BACEN (sentença não os fixou)",
+      "modo": "opcional",
+      "voto": [
+        {
+          "pos": "honor",
+          "texto": "{{exame do pedido de honorários advocatícios formulado pelo BACEN}}"
+        }
+      ],
+      "nota": "Hipótese indicada nos pressupostos do modelo (“submeter ao relator”); não há texto no paradigma."
+    },
+    {
+      "id": "dispositivo",
+      "grupo": "Dispositivo",
+      "titulo": "Dispositivo",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "disp",
+          "texto": "Embora no julgamento da ADC 80, Rel. p/ acórdão Min. GILMAR MENDES, na sessão de 03/09/2026, a Suprema Corte tenha fixado novos parâmetros para aferição da gratuidade judiciária, limitando a presunção relativa de hipossuficiência a percepção de salário igual ou inferior a R$ 5.000,00, conforme teto da tabela do imposto de renda, permitindo que, mesmo nestes casos, possa ser indeferida gratuidade judiciária no caso de apurado patrimônio ou renda familiar incompatível com tal presunção, aplicado o princípio da razoabilidade, é certo que tal interpretação conforme à Constituição restou modulada para \"que produza efeitos ex nunc, a contar da publicação da ata de julgamento de mérito, sendo aplicável, portanto, somente aos processos ajuizados a partir de tal marco\", razão pela qual, no caso concreto, deve prevalecer o que decorre da jurisprudência tematizada da Corte Superior."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "dispositivo",
+          "texto": "Apelação desprovida."
+        },
+        {
+          "pos": "dispositivos",
+          "texto": "CPC, arts. 98, § 3º, e 99, caput e § 3º."
+        },
+        {
+          "pos": "jurisprudencia",
+          "texto": "STF, ADC 80, Rel. p/ acórdão Min. GILMAR MENDES, j. 03/09/2026; STJ: Tema 1.178."
+        }
+      ],
+      "acordao": [
+        {
+          "pos": "texto",
+          "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, negou provimento à apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+        }
+      ]
+    }
+  ]
+}

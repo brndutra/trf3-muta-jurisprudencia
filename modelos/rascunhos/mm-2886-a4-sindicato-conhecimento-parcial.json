@@ -1,0 +1,216 @@
+{
+  "schema": "gabA.modelo-matriz",
+  "schema_versao": 1,
+  "id": "mm-2886-a4-sindicato-conhecimento-parcial",
+  "nome": "28,86% · A4 — categoria com ação coletiva de sindicato · conhecimento parcial e desprovimento",
+  "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+  "tipo": "acórdão",
+  "especie": "Apelação",
+  "resultado": "conhecimento parcial e desprovimento",
+  "status": "rascunho",
+  "verificado_em": "",
+  "paradigma": "5006675-71.2024.4.03.6000 (sessão de 05/10/2026)",
+  "fonte": "Inteiro teor do acórdão A00131 no banco (dados/acordaos/2026.json.gz)",
+  "descricao": "Exequente pertence a categoria cujo sindicato ajuizou ação coletiva com o mesmo objeto antes da ACP; a coisa julgada da ACP o exclui. Não se aplica à execução coletiva promovida pelo sindicato.",
+  "caso_do_modelo": true,
+  "ementa_cabecalho": "",
+  "ementa_cabecalho_fim": "",
+  "opcoes": [
+    {
+      "id": "gratuidade",
+      "rotulo": "exequente com gratuidade de justiça",
+      "situacao": "gratuidade"
+    }
+  ],
+  "blocos": [
+    {
+      "id": "ementa-base",
+      "grupo": "Ementa",
+      "titulo": "Cabeçalho e caso em exame",
+      "modo": "fixo",
+      "ementa": [
+        {
+          "pos": "cabecalho",
+          "texto": "DIREITO PROCESSUAL CIVIL. ADMINISTRATIVO. APELAÇÃO. RAZÕES EM PARTE DISSOCIADAS. CUMPRIMENTO DE SENTENÇA. AÇÃO CIVIL PÚBLICA. EXTINÇÃO DO PROCESSO SEM EXAME DE MÉRITO. EFEITOS DA COISA JULGADA. ILEGITIMIDADE ATIVA. PRETENSÃO ABRANGIDA POR AÇÃO COLETIVA DISTINTA. EXCLUSÃO EXPRESSA. SENTENÇA CONFIRMADA. HONORÁRIOS RECURSAIS."
+        },
+        {
+          "pos": "caso",
+          "texto": "Em cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000 para incorporação a partir de janeiro de 1993 de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas, extinguiu o processo, nos termos dos artigos 924, III, e 485, VI, Código de Processo Civil, por ser a parte exequente integrante de categoria profissional contemplada por outra ação coletiva com objeto idêntico e ajuizada anteriormente, e por falta de título executivo que ampare a pretensão, por ter firmado acordo administrativo, fixada verba honorária de {{percentual}} sobre {{base de cálculo}}, suspensa a exigibilidade nos termos do artigo 98, § 3º, do CPC."
+        },
+        {
+          "pos": "questao",
+          "texto": "Definir o alcance da coisa julgada na ACP 0005019-15.1997.4.03.6000 para exame da legitimidade ativa para o cumprimento de sentença, considerada a propositura de ação coletiva anterior pelo {{SIGLA_DO_SINDICATO}} com o mesmo objeto, representando a categoria funcional da parte exequente."
+        }
+      ]
+    },
+    {
+      "id": "conhecimento-parcial",
+      "grupo": "Admissibilidade",
+      "titulo": "Conhecimento parcial — razões em parte dissociadas",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "admiss",
+          "texto": "Senhores Desembargadores, conheço em parte da apelação, pois não se tratou na sentença da questão da ilegitimidade ativa, por não possuir a parte exequente vínculo com os limites territoriais de competência do órgão prolator da condenação e, por outro lado, embora haja dois fundamentos, somente tendo sido um deles impugnado, o que poderia resultar em fundamentação suficiente para a confirmação da sentença, adentra-se, de qualquer modo, no exame da questão remanescente suscitada."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "Não se conhece da apelação, no que veiculadas razões dissociadas do julgamento, referente a fundamento de extinção do processo sem resolução do mérito, que não foi tratado na sentença."
+        }
+      ]
+    },
+    {
+      "id": "controversia",
+      "grupo": "Controvérsia",
+      "titulo": "Exclusões da coisa julgada e ação do sindicato",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "contro",
+          "texto": "O caso é peculiar, pois a abrangência com que tem sido tratado o alcance da ACP 0005019-15.1997.4.03.6000, ajuizada pelo Ministério Público Federal, é excepcionada, pela própria coisa julgada, nas seguintes hipóteses: (1) se comprovado o recebimento do reajuste na época; (2) se pertencer à categoria cujo sindicato ajuizou ação com idêntica finalidade, salvo se demonstrado que não foi contemplado com a ação do sindicato; (3) se tiver ajuizado ação individual ou por meio de sindicato com igual objeto; e (4) se firmado acordo para recebimento das diferenças do reajuste discutido."
+        },
+        {
+          "pos": "contro",
+          "texto": "Na espécie, o lastro probatório dos autos demonstra que o {{NOME_DO_SINDICATO}} ({{SIGLA_DO_SINDICATO}}), por meio da Ação {{NUMERO_DA_ACAO_COLETIVA_DO_SINDICATO}}, pleiteou e garantiu, em nome de seus substituídos, o pagamento das diferenças de remuneração relativas ao percentual de 28,86%, a partir de 1º de janeiro de 1993, com a incorporação do citado percentual à remuneração dos substituídos."
+        }
+      ]
+    },
+    {
+      "id": "fund-litispendencia",
+      "grupo": "Fundamentação",
+      "titulo": "Litispendência e limites subjetivos da coisa julgada",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "jurid",
+          "texto": "A jurisprudência é consolidada no sentido de que não há litispendência entre execução individual e execução promovida na ação coletiva desde que fundadas no mesmo título judicial, pois o cumprimento coletivo de sentença não impede a execução individual."
+        },
+        {
+          "pos": "jurid",
+          "texto": "Neste sentido:"
+        },
+        {
+          "pos": "jurid",
+          "texto": "ApCiv 5001464-12.2024.4.03.6111, Rel. Des. Fed. JOSE CARLOS FRANCISCO, DJEN 15/04/2026: \"DIREITO PROCESSUAL CIVIL. EMBARGOS DE DECLARAÇÃO. EXECUÇÃO INDIVIDUAL DE SENTENÇA PROFERIDA EM AÇÃO CIVIL PÚBLICA. ACP Nº 0005019-15.1997.4.03.6000. LITISPENDÊNCIA. PRESCRIÇÃO. PROTESTO INTERRUPTIVO. LEGITIMIDADE DO MINISTÉRIO PÚBLICO FEDERAL. TEMA 1.033/STJ. ACOLHIMENTO PARCIAL SEM EFEITOS INFRINGENTES. I. CASO EM EXAME 1. Embargos de declaração opostos pelo INSS em face de acórdão que, em execução individual fundada na ACP nº 0005019-15.1997.4.03.6000, afastou alegações de ilegitimidade ativa, litispendência e prescrição. A autarquia sustenta omissões quanto à abrangência territorial da ACP e à legitimidade ativa da exequente; à existência de litispendência/coisa julgada em relação às ações nº 0027907-71.1994.4.03.6100 e nº 0067032-51.2014.4.01.3400; à prescrição e à impossibilidade de interrupção por protesto; e à afetação do Tema 1.033/STJ. II. QUESTÃO EM DISCUSSÃO 2. Há quatro questões em discussão: (i) definir se o acórdão incorreu em omissão quanto à abrangência da ACP nº 0005019-15.1997.4.03.6000 e à legitimidade ativa; (ii) estabelecer se há litispendência em razão das ações nº 0027907-71.1994.4.03.6100 e nº 0067032-51.2014.4.01.3400; (iii) determinar se a pretensão executiva está prescrita e se houve válida interrupção do prazo prescricional; (iv) verificar se a afetação do Tema 1.033/STJ impede o julgamento do feito. III. RAZÕES DE DECIDIR 3. O acórdão enfrenta expressamente a abrangência territorial da ACP e a legitimidade ativa, inexistindo omissão, sendo incabível a rediscussão do mérito por meio de embargos de declaração, nos termos do art. 1.022 do CPC/2015. 4. Não há litispendência entre execução coletiva promovida por sindicato e execução individual fundada no mesmo título judicial, pois o cumprimento coletivo de sentença não impede o ajuizamento de execução individual pelo beneficiário, conforme jurisprudência consolidada do STJ. 5. Afasta-se a litispendência em relação à ação nº 0067032-51.2014.4.01.3400, diante da exclusão da exequente daqueles autos. 6. A interrupção da prescrição somente pode ocorrer uma vez, nos termos do art. 202 do Código Civil, reiniciando-se a contagem a partir do ato interruptivo. 7. Reconhece-se a legitimidade do Ministério Público Federal para propor medida cautelar de protesto com vistas à interrupção do prazo prescricional em favor dos beneficiários da ação civil pública, conforme precedentes do STJ, inclusive no âmbito do Tema 1.033. 8. A suspensão determinada na afetação do Tema 1.033/STJ alcança apenas recursos especiais e agravos em recurso especial em trâmite na segunda instância ou no STJ, não impedindo o julgamento do presente feito. 9. Considerado o protesto interruptivo promovido no âmbito da ACP nº 0005019-15.1997.4.03.6000, o prazo prescricional foi validamente prorrogado, afastando-se a alegação de prescrição da execução individual. IV. DISPOSITIVO E TESE 10. Embargos de declaração parcialmente acolhidos, sem efeitos infringentes. Tese de julgamento: \"1. Não há litispendência entre execução coletiva promovida por substituto processual e execução individual ajuizada pelo beneficiário com base no mesmo título judicial. 2. O Ministério Público Federal possui legitimidade para ajuizar medida cautelar de protesto com o objetivo de interromper a prescrição para a execução individual de sentença coletiva. 3. A interrupção da prescrição, nos termos do art. 202 do Código Civil, ocorre uma única vez e reinicia a contagem do prazo a partir do ato interruptivo. 4. A afetação de recurso repetitivo no STJ não impede o julgamento do feito na origem quando a suspensão se limita a recursos especiais e agravos em recurso especial\". Dispositivos relevantes citados: CPC/2015, arts. 1.022 e 1.025; CC, art. 202. Jurisprudência relevante citada: STJ, REsp nº 1.762.498/RJ, Rel. Min. Herman Benjamin, Segunda Turma, j. 25.9.2018, DJe 11.3.2019; STJ, AgInt no REsp nº 1.710.202/DF, Rel. Min. Moura Ribeiro, Terceira Turma, j. 19.8.2019, DJe 21.8.2019; STJ, AgInt no AREsp nº 1.340.673/MS, Rel. Min. Marco Aurélio Bellizze, Terceira Turma, j. 10.6.2019, DJe 13.6.2019; STJ, AgInt no AREsp nº 1.316.210/MS, Rel. Min. Raul Araújo, Quarta Turma, j. 28.5.2019, DJe 13.6.2019.”"
+        },
+        {
+          "pos": "jurid",
+          "texto": "Tratando de ação coletiva, decidiu o Superior Tribunal de Justiça que a identidade de partes, para efeito de litispendência, deve observar os beneficiários da sentença coletiva:"
+        },
+        {
+          "pos": "jurid",
+          "texto": "REsp 2.018.707, Rel. Min. MOURA RIBEIRO, DJEN 9/2/2025: \"CONSUMIDOR E PROCESSUAL CIVIL. RECURSO ESPECIAL. AÇÃO CIVIL PÚBLICA. FORNECIMENTO DE MODENS DE INTERNET SEM SOLICITAÇÃO PRÉVIA E COBRANÇA PELA PRESTAÇÃO DOS SERVIÇOS CORRELATOS. NEGATIVA DE PRESTAÇÃO JURISDICIONAL NÃO VERIFICADA. LITISPENÊNCIA. SÚMULA Nº 7 DO STJ. DANOS MORAIS COLETIVOS. OFENSA A DIREITOS FUNDAMENTAIS DA SOCIEDADE NÃO VERIFICADOS. RECURSO ESPECIAL PARCIALMENTE CONHECIDO E, NESSA EXTENSÃO, PROVIDO. 1. Não há como cogitar negativa de prestação jurisdicional quanto à alegação de litispendência e de ausência dos pressupostos configuradores do dano moral coletivo, porque o Tribunal estadual se manifestou de forma expressa sobre esses temas. 2. A Quarta Turma desta Corte Superior já se manifestou no sentido de que, tratando-se de ações coletivas, a identidade de partes, para efeito de litispendência, deve observar os beneficiários da sentença coletiva (REsp n. 1.726.147/SP, relator Ministro ANTONIO CARLOS FERREIRA, Quarta Turma, julgado em 14/5/2019, DJe de 21/5/2019). 3. O TJMG não esclareceu, porém, se a ação civil pública em relação à qual se alega litispendência teria por objetivo tutelar os mesmos consumidores contemplados na presente ação coletiva, de modo que o exame dessa questão esbarra na Súmula nº 7 do STJ. 4. Na linha dos precedentes desta Corte, os danos morais coletivos de que trata o CDC somente estarão configurados quando houver ofensa a valores fundamentais da sociedade, e não quando verificada ofensa a qualquer direito consumerista, sob pena de banalização do instituto. 5. O envio de produtos e o fornecimento de serviços não solicitados previamente constitui prática abusiva vedada pelo CDC, mas não enseja condenação por danos morais coletivos. 6. Recurso especial parcialmente conhecido e, nessa extensão, provido.\""
+        },
+        {
+          "pos": "jurid",
+          "texto": "Igualmente, deve a execução de sentenças coletivas atentar-se aos limites objetivos e subjetivos do que decidido na coisa julgada."
+        },
+        {
+          "pos": "jurid",
+          "texto": "A propósito:"
+        },
+        {
+          "pos": "jurid",
+          "texto": "REsp 2.163.451, Rel. Min. TEODORO SILVA SANTOS, DJEN 24/4/2026: \"DIREITO PROCESSUAL CIVIL E PREVIDENCIÁRIO. RECURSO ESPECIAL. NEGATIVA DE PRESTAÇÃO JURISDICIONAL. INOCORRÊNCIA. CUMPRIMENTO DE SENTENÇA DECORRENTE DE AÇÃO CIVIL PÚBLICA. LIMITES OBJETIVOS E SUBJETIVOS DA COISA JULGADA. TEMA N. 1075 DO STF. INAPLICABILIDADE PARA AMPLIAR OS LIMITES SUBJETIVOS DA DECISÃO COLETIVA. REVISÃO DOS LIMITES SUBJETIVOS DO TÍTULO COLETIVO. IMPOSSIBILIDADE. ÓBICE DA SÚMULA N. 7 DO STJ. ACÓRDÃO RECORRIDO EM CONSONÂNCIA COM A JURISPRUDÊNCIA DO STJ. SÚMULA N. 83 DO STJ. AUSÊNCIA DE PREQUESTIONAMENTO. INCIDÊNCIA DAS SÚMULAS N. 282 E 356 DO STF. RECURSO ESPECIAL CONHECIDO EM PARTE E, NESSA EXTENSÃO, NÃO PROVIDO. 1. Na origem, o cumprimento de sentença fundado em título judicial decorrente de ação civil pública que condenou o INSS a revisar benefícios concedidos entre março/1994 e fevereiro/1997 com a inclusão do IRSM de 39,67%, julgado extinto por ilegitimidade ativa. 2. O Tribunal Regional negou provimento ao apelo interposto pela parte Exequente, ao fundamento de que o título executivo limita seus efeitos aos beneficiários vinculados à Gerência Executiva de Manaus, enquanto o benefício do apelante está vinculado a agência em Fortaleza/CE, situando-se fora dos limites objetivos e subjetivos da coisa julgada. 3. Inocorrente a alegada negativa de prestação jurisdicional, pois o Tribunal de origem enfrentou de modo suficiente e fundamentado as questões essenciais, concluindo pela ilegitimidade ativa e pela impossibilidade de ampliar os limites subjetivos da coisa julgada, mesmo após o Tema n. 1075 do Supremo Tribunal Federal. 4. A revisão, em recurso especial, dos limites subjetivos fixados no título coletivo demanda reexame do acervo fático-probatório, o que é vedado a esta Corte. Incidência da Súmula n. 7 do STJ. 5. Ainda que as sentenças coletivas produzam efeitos erga omnes, sua eficácia está adstrita aos limites objetivos e subjetivos do que foi decidido, considerada a extensão do dano e a natureza dos interesses metaindividuais. Precedentes. Óbice da Súmula n. 83 do STJ. 6. No que diz respeito à alegada ofensa aos arts. 924 e 925 do Código de Processo Civil, o acórdão recorrido, apesar da análise genérica da tese da ausência de intimação da autarquia previdenciária, concluiu que são aplicáveis as regras gerais previstas no Código de Processo Civil às execuções de sentença contra a Fazenda Pública. Contudo, a parte recorrente não suscitou a questão nos seus embargos de declaração, pelo que carece o recurso do indispensável requisito do prequestionamento. Incidência das Súmulas n. 282 e 356 do Supremo Tribunal Federal. 7. Recurso especial parcialmente conhecido e, nessa parte, não provido.\""
+        }
+      ]
+    },
+    {
+      "id": "aplicacao",
+      "grupo": "Aplicação",
+      "titulo": "Exclusão do servidor representado pelo sindicato",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "aplic",
+          "texto": "No caso, porém, não se trata de ajuizamento de ação individual em vez de adesão à ação civil pública ou à ação coletiva proposta pelo sindicato, tampouco de cumprimento de sentença individual em detrimento da execução coletiva do mesmo título judicial, hipóteses em que, como visto, não se configura litispendência."
+        },
+        {
+          "pos": "aplic",
+          "texto": "O caso revela que se trata de servidor representado pelo {{SIGLA_DO_SINDICATO}}, entidade esta que ajuizou a ação coletiva {{NUMERO_DA_ACAO_COLETIVA_DO_SINDICATO}}, em {{DATA_DE_AJUIZAMENTO_DA_ACAO_DO_SINDICATO}}, que discute a mesma pretensão objeto da ACP 0005019-15.1997.403.6000, proposta em data posterior pelo Ministério Público Federal, pretendendo-se, agora, o cumprimento não daquela decisão da categoria específica, mas a coisa julgada nesta última, de maior abrangência subjetiva em abstrato."
+        },
+        {
+          "pos": "aplic",
+          "texto": "Sucede que a própria coisa julgada já excluiu do seu alcance as situações acima declinadas, dentre as quais a de servidores representados em ações ajuizadas com o mesmo objeto, evitando-se, portanto, litispendência ou coisa julgada, além, claro, de pretensão de cumprimento do mesmo objeto em duas ações distintas com risco de duplicidade e enriquecimento sem causa."
+        },
+        {
+          "pos": "aplic",
+          "texto": "O sindicato autor da ação coletiva {{NUMERO_DA_ACAO_COLETIVA_DO_SINDICATO}} representa categoria profissional de {{CATEGORIA_PROFISSIONAL_REPRESENTADA_E_BASE_TERRITORIAL_DO_SINDICATO}}, incluindo a categoria funcional do apelante (ID {{ID_DOCUMENTO}}, f. {{FOLHA}}), resultando em situação contemplada como excluída do alcance da coisa julgada na ACP 0005019-15.1997.4.03.6000."
+        },
+        {
+          "pos": "aplic",
+          "texto": "Não se trata, portanto, de litispendência entre execução ou cumprimento individual e coletiva a partir do mesmo título judicial condenatório, mas de execução ou cumprimento individual de título judicial cuja condenação expressamente veda a sua aplicação à parte, ora exequente, por estar representada por sindicato que ajuizou ação distinta com o mesmo objeto, sendo inviável cogitar de direito subjetivo à escolha do título judicial condenatório mais favorável, quando este objetivamente proíbe a sua extensão ao caso concreto."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "razoes",
+          "texto": "A coisa julgada, firmada na ACP 0005019-15.1997.4.03.6000, excluiu de seu alcance os servidores que tenham ajuizado individualmente ou por sindicato ação que tenha por objeto a mesma pretensão deduzida, não se tratando, portanto, de título judicial passível de cumprimento em favor da parte exequente."
+        },
+        {
+          "pos": "razoes",
+          "texto": "A extinção do cumprimento não foi fundada em litispendência, mas em ilegitimidade ativa por exclusão contida na própria extensão dos beneficiários definida expressamente pela coisa julgada, sendo impertinente, pois, a alegação de que inexiste litispendência entre cumprimento individual e coletivo a partir do mesmo título executivo. Não existindo, a partir da coisa julgada na ACP 0005019-15.1997.4.03.6000, título judicial condenatório em favor da parte exequente, esta não pode pretender o seu cumprimento e, menos ainda, alegar direito subjetivo à escolha do título judicial condenatório mais favorável, quando este objetivamente proíbe a sua extensão ao caso concreto."
+        }
+      ]
+    },
+    {
+      "id": "conclusao",
+      "grupo": "Conclusão",
+      "titulo": "Conclusão",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "concl",
+          "texto": "Em suma, nada colhe a pretensão recursal deduzida."
+        }
+      ]
+    },
+    {
+      "id": "honorarios",
+      "grupo": "Honorários",
+      "titulo": "Honorários recursais (1%)",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "honor",
+          "texto": "Pela sucumbência recursal, o autor deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, à sucumbência fixada na sentença pelo decaimento na instância de origem[?gratuidade:, observada a gratuidade de justiça concedida (artigo 98, § 3º, do CPC)]."
+        }
+      ]
+    },
+    {
+      "id": "dispositivo",
+      "grupo": "Dispositivo",
+      "titulo": "Dispositivo",
+      "modo": "fixo",
+      "voto": [
+        {
+          "pos": "disp",
+          "texto": "Ante o exposto, conheço em parte da apelação e nego-lhe provimento."
+        }
+      ],
+      "ementa": [
+        {
+          "pos": "dispositivo",
+          "texto": "Apelação conhecida em parte e desprovida, honorários recursais em acréscimo ao fixado na origem."
+        },
+        {
+          "pos": "dispositivos",
+          "texto": "Leis 8.622 e 8.627/1993; CPC, 924, III, 485, VI, 85, § 11, e 98, § 3º."
+        },
+        {
+          "pos": "jurisprudencia",
+          "texto": "TRF3, ApCiv 5001464-12.2024.4.03.6111, Rel. Des. Fed. JOSE CARLOS FRANCISCO, DJEN 15/04/2026; STJ, REsp 2.018.707, Rel. Min. MOURA RIBEIRO, DJEN 9/2/2025; REsp 2.163.451, Rel. Min. TEODORO SILVA SANTOS, DJEN 24/4/2026."
+        }
+      ],
+      "acordao": [
+        {
+          "pos": "texto",
+          "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, negou provimento à apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+        }
+      ]
+    }
+  ],
+  "nota": "Voto conforme o texto parametrizado do gabinete (sindicato, ação coletiva, ID e folha como campos). Na ementa do paradigma, o dispositivo repete o número 5 (itens 5 e 5)."
+}
