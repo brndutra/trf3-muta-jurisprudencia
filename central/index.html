@@ -3838,7 +3838,7 @@ function muReceber(p,origem){
 }
 window.addEventListener('message',ev=>{
   const d=ev.data;if(!d||typeof d!=='object')return;
-  if(d.type==='cmt-minutario-processo'&&d.processo){const n=d.processo.numero||d.processo.processo||'',agora=Date.now();if(!(n&&MU_ULT.n===n&&agora-MU_ULT.t<10000))muReceber(d.processo,ev.origin);MU_ULT={n,t:agora};try{ev.source&&ev.source.postMessage({type:'cmt-minutario-recebido',numero:d.processo.numero||d.processo.processo||''},ev.origin)}catch(e){}}
+  if(d.type==='cmt-minutario-processo'&&d.processo){const n=d.processo.numero||d.processo.processo||'',agora=Date.now();if(!(n&&MU_ULT.n===n&&agora-MU_ULT.t<10000))muReceber(d.processo,ev.origin);MU_ULT={n,t:agora};try{ev.source&&ev.source.postMessage({type:'cmt-minutario-recebido',numero:d.processo.numero||d.processo.processo||''},ev.origin&&ev.origin!=='null'?ev.origin:'*')}catch(e){}}
 });
 function muEntradaLocal(){try{const s=localStorage.getItem('cmt_minutario_entrada');if(s){localStorage.removeItem('cmt_minutario_entrada');const j=JSON.parse(s);(Array.isArray(j)?j:[j]).forEach(p=>muReceber(p.processo||p,location.origin))}}catch(e){}}
 addEventListener('storage',e=>{if(e.key==='cmt_minutario_entrada'&&e.newValue)muEntradaLocal()});
