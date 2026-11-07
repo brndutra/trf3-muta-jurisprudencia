@@ -541,7 +541,10 @@ html[data-tema="noturno"] .pe-ey{color:var(--f-minuta)}
 .min-grid.side-min .min-side>*:not(.min-side-h){display:none!important}
 .min-grid.side-min .min-side-h b{display:none}
 .min-grid.side-min .min-side-h .btn{transform:rotate(180deg)}
-.min-grid.side-min .min-side-h{border:0;justify-content:center}
+.min-grid.side-min .min-side-h{border:0;justify-content:flex-start;flex-direction:column;gap:10px;padding-top:10px}
+.min-grid.side-min .min-side-h .apoio-badge{display:none}
+.min-grid.side-min .min-side{cursor:pointer}
+.min-grid.side-min .min-side-h::after{content:'PREENCHIMENTO';writing-mode:vertical-rl;transform:rotate(180deg);font:800 10px/1 Inter,system-ui,sans-serif;letter-spacing:.16em;color:var(--muted);white-space:nowrap}
 @media(max-width:1150px){.min-grid.min-main{grid-template-columns:minmax(0,1fr)}.min-side{position:static;max-height:none}.min-grid textarea.editor{min-height:55vh}}
 /* Tópicos (#mMod): mesmo cabeçalho do mapa mental; muda só o conteúdo do espaço principal */
 html.modo-arvore:not(.arv-diagrama) #mMod{display:block!important;height:100%;overflow:hidden}
@@ -1819,6 +1822,8 @@ let ED_DIRTY=false;           // o editor foi alterado à mão
 const RX_CAMPO=/\[[^\]\n]{1,80}\]/g;
 function alternarListaModelos(forcar){const el=$('mMod');const v=forcar??!el.classList.contains('lista-min');el.classList.toggle('lista-min',v);LS.set('acv_lista_min',v?'1':'')}
 function alternarPainelCampos(forcar){const g=$('gerador');if(!g)return;const v=forcar??!g.classList.contains('side-min');g.classList.toggle('side-min',v);LS.set('acv_side_min',v?'1':'')}
+/* painel recolhido: a tira inteira reabre (o ⇥ já alterna sozinho) */
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('.min-grid.side-min .min-side');if(!a||e.target.closest('.btn'))return;alternarPainelCampos(false)});
 function abrirApoioMinuta(){
   const texto=document.getElementById('minEd')?.value||'';
   try{sessionStorage.setItem('cmt_apoio_minuta_transfer',texto)}catch(e){}
