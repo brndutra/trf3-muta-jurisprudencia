@@ -37,12 +37,15 @@ SHA256SUMS                   hashes dos arquivos (formato `sha256sum -c`)
 scripts/organizar.py         gera dados/, MANIFESTO e SHA256SUMS a partir dos JSON exportados
 scripts/modelos.py           extrai os modelos (arquétipos) de monocráticas e acórdãos → modelos/
 central/index.html           central tripartite: Paradigmas · Acervo · Minutas
-modelos/modelos.json(.gz)    752 modelos por fase do gabinete, com texto-base rastreável e blocos da matriz
-scripts/matrizes.py          extrai os modelos-matriz por tipo de julgamento → modelos/matrizes*.json
-modelos/matrizes.json(.gz)   20 modelos-matriz (fase TRMS): posições, parágrafos-fórmula, versões e situação
-modelos/matrizes_gabA.json   os mesmos, no formato “Modelo-matriz” do gerador (esqueletoModelo/paragrafosModelo)
+modelos/sugestoes.json(.gz)  752 sugestões de modelo por fase do gabinete (extração automática), com texto-base rastreável
+scripts/matrizes.py          extrai a estrutura por tipo de julgamento → modelos/tipos-julgamento*.json
+modelos/tipos-julgamento.json(.gz)  20 tipos de julgamento (fase TRMS): posições, parágrafos-fórmula, versões e situação
+modelos/tipos-julgamento_gabA.json  os mesmos, no formato “Modelo-matriz” do gerador (esqueletoModelo/paragrafosModelo)
 modelos/trechos.json         trechos vinculados por matéria (voto ↔ relatório ↔ ementa), curadoria do gabinete
-modelos/curados.json         modelos-matriz verificados: blocos vinculados a voto, relatório, ementa e acórdão
+modelos/indice.json          lista dos modelos-matriz que a Central carrega (matriz e rascunhos)
+modelos/matriz/<id>.json     um arquivo por modelo-matriz verificado
+modelos/rascunhos/<id>.json  um arquivo por rascunho de modelo-matriz (em elaboração)
+modelos/modelos-matriz.json  reserva: os modelos-matriz num arquivo só, lido apenas se faltar o índice
 ```
 
 Os arquivos são JSON compactados com gzip (`zcat dados/acordaos/2021.json.gz | jq '.registros[0]'`).
@@ -106,15 +109,21 @@ O `.gz` é gerado com `mtime=0`; portanto a mesma entrada produz os mesmos bytes
 - O caso em exame da ementa passa a ser montado a partir do relatório (espécie, contexto e resultado da decisão recorrida).
 - Diferentemente dos modelos e matrizes, este arquivo não é extraído por algoritmo: é texto curado do gabinete. Primeira matéria: 28,86% (cumprimento da ACP 0005019-15.1997.4.03.6000).
 
+## Visualizações dos precedentes
+
+Na aba Precedentes, abaixo do total de resultados, a mesma página troca de forma sem perder os filtros à esquerda nem a busca: **Lista**, **Infográfico** (totais, ramos, resultados, anos, classes e órgãos), **Mapa mental**, **Tópicos** (abre já com os ramos e as subáreas), **Mosaico** (área proporcional ao número de decisões), **Matriz** (ramo × resultado), **Linha do tempo** e **Fluxo** (ramo → acórdão/monocrática → resultado). Clicar num ramo, subárea, célula ou resultado recorta a página; o recorte aparece ao lado dos botões e se desfaz no ✕. Ramo, subárea e tema vêm do índice temático; sem ele, o ramo vem do cabeçalho da ementa. O resultado é extraído automaticamente do índice e deve ser conferido no documento oficial.
+
 ## Modelos-matriz verificados × modelos sugeridos
 
-A aba Minutas (Modelos) tem dois bancos:
+A aba Minutas (Modelos) separa três listas: **✓ Matriz** (modelos-matriz verificados), **✎ Rascunhos** (modelos-matriz em elaboração — criados do zero ou convertidos de sugestões; o estado é o mesmo nos dois casos) e **Sugestões** (extração automática). Um rascunho passa a Matriz quando é marcado como verificado.
 
-- **✓ Verificados** (`modelos/curados.json`): modelos-matriz conferidos pelo gabinete. O tipo de julgamento e a matéria são fixados pelo próprio modelo; não há busca por similaridade. Cada **bloco** reúne o texto do voto e o que ele exige no relatório, na ementa e no acórdão, e é *fixo*, *opcional* ou *alternativo* (um por grupo). No preenchimento, o relatório é montado pelo formulário e os blocos/opções são marcados — as opções que seguem o relatório (ex.: gratuidade) são acesas automaticamente.
-- **Sugeridos** (`modelos/modelos.json.gz`): extração automática pela recorrência dos trechos nas decisões, como antes. Num modelo sugerido, **✎ Criar modelo-matriz verificado** gera um rascunho em Verificados (parágrafos do voto agrupados por posição, ementa distribuída por seção, acórdão), para o curador organizar em blocos.
+- **✓ Modelos-matriz** (`modelos/matriz/`, verificados; rascunhos em `modelos/rascunhos/`): modelos-matriz conferidos pelo gabinete. O tipo de julgamento e a matéria são fixados pelo próprio modelo; não há busca por similaridade. Cada **bloco** reúne o texto do voto e o que ele exige no relatório, na ementa e no acórdão, e é *fixo*, *opcional* ou *alternativo* (um por grupo). No preenchimento, o relatório é montado pelo formulário e os blocos/opções são marcados — as opções que seguem o relatório (ex.: gratuidade) são acesas automaticamente.
+- **Sugeridos** (`modelos/sugestoes.json.gz`): extração automática pela recorrência dos trechos nas decisões, como antes. Num modelo sugerido, **⇢ Converter em modelo-matriz** gera um rascunho na lista Rascunhos (parágrafos do voto agrupados por posição, ementa distribuída por seção, acórdão), para o curador organizar em blocos.
 
-**Edição.** Em um modelo verificado, **✎ Editar modelo** abre o editor: identificação, opções, blocos (título, grupo, modo, padrão, nota) e textos de cada bloco por seção e posição, com subir/descer, separar em novo bloco e excluir. As alterações ficam no navegador até **⤓ Exportar curados.json** e publicar o arquivo em `modelos/`. Sintaxe dos textos: `{{campo}}` = dado dos autos; `[?id:texto]` entra com a opção ou o bloco `id` marcado; `[?!id:texto]`, com ele desmarcado.
+**Edição.** Em um modelo-matriz, **✎ Editar modelo** abre o editor em forma de **esqueleto da minuta** — relatório (pontos que o formulário não cobre), voto (11 posições), ementa (cabeçalho, caso em exame, questão, razões, dispositivo, dispositivos e jurisprudência citados) e acórdão. Cada texto fica no lugar em que entra; “+ texto aqui…” cria o texto naquele ponto, em bloco novo ou vinculado a um bloco existente. Os textos do mesmo bloco têm a mesma cor e são destacados juntos. **⇄ alternativa** cria outra redação para o mesmo bloco (cópia de todos os seus textos, para reescrever em paralelo); as alternativas aparecem lado a lado em cada ponto e, no preenchimento, entra uma. As alterações ficam no navegador até **⤓ Exportar modelos (.zip)**: o arquivo traz a pasta `modelos/` com `indice.json`, `matriz/` e `rascunhos/` (um arquivo por modelo). Descompacte e arraste a pasta `modelos/` para a raiz do repositório (Add file › Upload files). A Central só carrega o que o índice lista; quando um rascunho é verificado, o arquivo passa de `rascunhos/` para `matriz/` — apague a cópia antiga. Sintaxe dos textos: `{{campo}}` = dado dos autos; `[?id:texto]` entra com a opção ou o bloco `id` marcado; `[?!id:texto]`, com ele desmarcado.
 
 **Prévia formatada.** O editor da minuta tem a vista *Prévia* (títulos, ementa no padrão CNJ, citações recuadas, campos grifados): clique num campo para preenchê-lo; duplo clique num parágrafo leva ao ponto correspondente na vista *Texto*.
+
+**Lote 28,86% (A1–A7).** Os sete modelos do lote 28,86% (ACP 0005019-15.1997.4.03.6000) estão em `modelos/rascunhos/` (`mm-2886-a1…a7`), montados a partir do inteiro teor dos acórdãos-paradigma da sessão de 05/10/2026: texto transcrito, dados do caso trocados por `{{campos}}`, condicionais `[?id:…]` para prescrição, herdeiros, recurso adesivo, gratuidade e honorários. Pontos a conferir estão na `nota` do modelo ou do bloco (marcados [VALIDAR]). Passam a Matriz depois de conferidos pelo gabinete.
 
 No modo Matriz dos sugeridos, o tipo de julgamento também passa a ser fixado pelo modelo (sem aproximação por outra espécie ou resultado), e as versões são marcadas a partir do relatório preenchido.
