@@ -398,7 +398,8 @@ textarea.editor:focus{border-color:color-mix(in srgb,var(--f-minuta) 60%,transpa
 #modFonte button span,.mod-fonte2 button span{opacity:.75;font-weight:600}
 .mod-fonte2{margin-left:auto!important;margin-right:6px}
 .mod-fonte2+.dx{margin-left:0}
-#mMod.fonte-cur aside.filtros>*{opacity:.35;pointer-events:none}
+#mMod.fonte-cur aside.filtros .so-sug{opacity:.35;pointer-events:none}
+#mMod.fonte-cur aside.filtros .so-sug-txt,#mMod:not(.fonte-cur) aside.filtros .so-cur{display:none}
 #mMod.fonte-cur #btnVistaLista,#mMod.fonte-cur #btnModoArvTab{display:none}
 .cur-nota{color:var(--c-ink2);font-style:italic}
 .ce{padding:10px 14px 40px}
@@ -998,7 +999,7 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
     <hr class="sep"><details class="arv-fontes"><summary>Fonte, período e critérios da classificação</summary><p class="ajuda">A classificação temática é automática e sujeita à revisão jurídica.</p><p class="ajuda arv-crit"></p></details>
   </aside>
   <aside class="filtros">
-    <div class="grp"><span class="lbl">Fase do gabinete</span>
+    <div class="grp so-sug" title="Só nas Sugestões: os modelos-matriz não são separados por fase"><span class="lbl">Fase do gabinete</span>
       <div class="seg" id="mfFase">
         <span class="chip on" data-v="TRMS" title="Turma Regional de MS · 2026 — padrão atual">TRMS 2026</span>
         <span class="chip" data-v="1T">1ª Turma 23–24</span>
@@ -1013,11 +1014,13 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
       </div></div>
     <div class="grp"><span class="lbl">Espécie</span><select class="inp" id="mfEsp"><option value="">Todas</option></select></div>
     <div class="grp"><span class="lbl">Resultado</span><select class="inp" id="mfRes"><option value="">Todos</option></select></div>
-    <div class="grp"><span class="lbl">Uso mínimo</span>
+    <div class="grp so-cur"><span class="lbl">Matéria</span><select class="inp" id="mfMat"><option value="">Todas</option></select></div>
+    <div class="grp so-sug" title="Só nas Sugestões: conta quantas decisões repetem o modelo"><span class="lbl">Uso mínimo</span>
       <select class="inp" id="mfMin"><option value="0">Todos os modelos</option><option value="5">5+ decisões</option><option value="10">10+ decisões</option><option value="20" selected>20+ decisões</option><option value="50">50+ decisões</option></select></div>
     <hr class="sep">
-    <p class="ajuda"><b>Como os modelos foram extraídos.</b> Em cada fase, os parágrafos que o gabinete repete literalmente em várias decisões foram identificados; decisões que compartilham o mesmo conjunto desses blocos formam um modelo. O texto fixo é transcrito da decisão mais típica do grupo (indicada na ficha); o que é próprio de cada caso aparece como <code>[campo]</code>.</p>
-    <p class="ajuda">Confira teses, temas e modulações vigentes antes de reutilizar um modelo antigo.</p>
+    <p class="ajuda so-cur">Nos modelos-matriz e rascunhos valem <b>Tipo</b>, <b>Espécie</b>, <b>Resultado</b> e <b>Matéria</b>. <b>Fase</b> e <b>Uso mínimo</b> são próprios das Sugestões, extraídas por recorrência.</p>
+    <p class="ajuda so-sug-txt"><b>Como os modelos foram extraídos.</b> Em cada fase, os parágrafos que o gabinete repete literalmente em várias decisões foram identificados; decisões que compartilham o mesmo conjunto desses blocos formam um modelo. O texto fixo é transcrito da decisão mais típica do grupo (indicada na ficha); o que é próprio de cada caso aparece como <code>[campo]</code>.</p>
+    <p class="ajuda so-sug-txt">Confira teses, temas e modulações vigentes antes de reutilizar um modelo antigo.</p>
   </aside>
   <section class="lista">
     <div class="lbar">
@@ -1480,9 +1483,9 @@ async function carregarModelos(){
   return MODS;
 }
 async function abrirModelos(){
-  carregarMatrizes(); carregarCurados().then(()=>{curContagem();if(fonteCur())aplicarCurados()});
+  carregarMatrizes(); carregarCurados().then(()=>{curContagem();if(fonteCur()){sincFiltros();aplicarCurados()}});
   document.querySelectorAll('[data-fonte]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fonte===MOD_FONTE)));$('mMod').classList.toggle('fonte-cur',fonteCur());modFonteRotulo();
-  if(!MODS){$('mResumo').textContent='carregando modelos…';try{await carregarModelos()}catch(e){$('mResumo').textContent='Falha ao carregar modelos: '+e.message;return}preencherModSelects()}
+  if(!MODS){$('mResumo').textContent='carregando modelos…';try{await carregarModelos()}catch(e){$('mResumo').textContent='Falha ao carregar modelos: '+e.message;return}if(!fonteCur())preencherModSelects()}
   aplicarModelos();
 }
 function preencherModSelects(){
@@ -1514,9 +1517,16 @@ function aplicarModelos(){
 $('mRes').addEventListener('click',e=>{const li=e.target.closest('li[data-id]');if(!li)return;const m=MOD_POR.get(li.dataset.id);
   if(e.target.closest('[data-act=copiar]')){copiarTexto(m.modelo,'Modelo copiado.');return}abrirModelo(m.id)});
 chipsGrupo('mfFase',v=>{modF.fase=v;modF.esp=modF.res='';preencherModSelects();aplicarModelos()});
-chipsGrupo('mfTipo',v=>{modF.tipo=v;modF.esp=modF.res='';preencherModSelects();aplicarModelos()});
-$('mfEsp').onchange=e=>{modF.esp=e.target.value;aplicarModelos()};
-$('mfRes').onchange=e=>{modF.res=e.target.value;aplicarModelos()};
+chipsGrupo('mfTipo',v=>{if(fonteCur()){CUR_F.tipo=v;CUR_F.esp=CUR_F.res=CUR_F.mat='';preencherCurSelects();aplicarCurados();return}modF.tipo=v;modF.esp=modF.res='';preencherModSelects();aplicarModelos()});
+$('mfEsp').onchange=e=>{if(fonteCur()){CUR_F.esp=e.target.value;aplicarCurados();return}modF.esp=e.target.value;aplicarModelos()};
+$('mfRes').onchange=e=>{if(fonteCur()){CUR_F.res=e.target.value;aplicarCurados();return}modF.res=e.target.value;aplicarModelos()};
+$('mfMat').onchange=e=>{CUR_F.mat=e.target.value;aplicarCurados()};
+/* os filtros do painel esquerdo seguem a lista ativa: Sugestões (modF) ou Matriz/Rascunhos (CUR_F) */
+function sincFiltros(){
+  const t=fonteCur()?CUR_F.tipo:modF.tipo;
+  $('mfTipo').querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x.dataset.v===t));
+  if(fonteCur()) preencherCurSelects(); else if(MODS) preencherModSelects();
+}
 $('mfMin').onchange=e=>{modF.min=+e.target.value;aplicarModelos()};
 let mdeb;$('mq').addEventListener('input',()=>{clearTimeout(mdeb);mdeb=setTimeout(aplicarModelos,180)});
 
@@ -1842,6 +1852,7 @@ function textoMatriz(m){
    modelos/indice.json lista o que a Central carrega. modelos/modelos-matriz.json fica só como reserva.
    Edição: no navegador (rascunho local) → Exportar (zip com a pasta modelos/) → publicar no GitHub.
    ===================================================================== */
+let CUR_F={tipo:'',esp:'',res:'',mat:''};
 let CURADOS=null, MOD_FONTE=({curados:'matriz'})[LS.get('acv_mod_fonte')]||LS.get('acv_mod_fonte')||'matriz', CUR=null, CUR_EDIT=false;
 if(!['matriz','rascunhos','sugeridos'].includes(MOD_FONTE)) MOD_FONTE='matriz';
 const fonteCur=(f=MOD_FONTE)=>f==='matriz'||f==='rascunhos';
@@ -1885,9 +1896,9 @@ function setModFonte(f){
   MOD_FONTE=f; LS.set('acv_mod_fonte',f);
   document.querySelectorAll('[data-fonte]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fonte===f)));
   $('mMod').classList.toggle('fonte-cur',fonteCur(f));
-  modFonteRotulo();
+  modFonteRotulo(); sincFiltros();
   if(fonteCur(f)&&typeof MODO_ARV!=='undefined'&&MODO_ARV) alternarModoArvore(false);
-  if(fonteCur(f)&&!CURADOS){$('mResumo').textContent='carregando modelos verificados…';carregarCurados().then(()=>{curContagem();aplicarModelos()});return}
+  if(fonteCur(f)&&!CURADOS){$('mResumo').textContent='carregando modelos verificados…';carregarCurados().then(()=>{curContagem();sincFiltros();aplicarModelos()});return}
   aplicarModelos();
 }
 function modFonteRotulo(){
@@ -1899,9 +1910,19 @@ function modFonteHTML(){
 }
 function curContagem(){const L=CURADOS?curLista():null,set=(id,v)=>document.querySelectorAll('.'+id).forEach(el=>el.textContent=v);
   set('ctMat',L?L.filter(ehVerif).length:'…');set('ctRas',L?L.filter(m=>!ehVerif(m)).length:'…');set('ctSug',MODS?MODS.length:'…')}
+function preencherCurSelects(){
+  if(!CURADOS) return;
+  const base=curLista().filter(m=>fonteDe(m)===MOD_FONTE&&(!CUR_F.tipo||(m.tipo||'acórdão')===CUR_F.tipo));
+  const cnt=k=>base.reduce((o,m)=>{const v=m[k]||'';if(v)o[v]=(o[v]||0)+1;return o},{});
+  const op=(o,v)=>Object.entries(o).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'pt')).map(([k,n])=>`<option value="${esc(k)}"${k===v?' selected':''}>${esc(k)} (${n})</option>`).join('');
+  $('mfEsp').innerHTML='<option value="">Todas</option>'+op(cnt('especie'),CUR_F.esp);
+  $('mfRes').innerHTML='<option value="">Todos</option>'+op(cnt('resultado'),CUR_F.res);
+  $('mfMat').innerHTML='<option value="">Todas</option>'+op(cnt('materia'),CUR_F.mat);
+}
 function aplicarCurados(){
   const c=parseConsulta($('mq').value.trim());
-  const L=curLista().filter(m=>fonteDe(m)===MOD_FONTE).filter(m=>c.vazia||casa(semAcento([m.nome,m.materia,m.especie,m.resultado,m.descricao,m.status].join(' ')),c));
+  const daLista=curLista().filter(m=>fonteDe(m)===MOD_FONTE);
+  const L=daLista.filter(m=>(!CUR_F.tipo||(m.tipo||'acórdão')===CUR_F.tipo)&&(!CUR_F.esp||m.especie===CUR_F.esp)&&(!CUR_F.res||m.resultado===CUR_F.res)&&(!CUR_F.mat||m.materia===CUR_F.mat)).filter(m=>c.vazia||casa(semAcento([m.nome,m.materia,m.especie,m.resultado,m.descricao,m.status].join(' ')),c));
   $('mResumo').innerHTML=MOD_FONTE==='matriz'?`<b>${L.length}</b> modelo${L.length===1?'':'s'}-matriz`:`<b>${L.length}</b> rascunho${L.length===1?'':'s'}`;
   $('mResumo2').innerHTML=`<button class="btn sm" onclick="novoCurado()">+ Novo modelo-matriz</button> <button class="btn sm" onclick="exportarCurados()" title="Baixa um .zip com a pasta modelos/ (indice.json, matriz/ e rascunhos/, um arquivo por modelo), incluídas as edições deste navegador">⤓ Exportar modelos (.zip)</button>`;
   $('mRes').innerHTML=L.map(m=>`<li class="proc${CUR&&CUR.id===m.id?' sel':''}" data-cur="${esc(m.id)}"><div class="crow">
@@ -1909,7 +1930,7 @@ function aplicarCurados(){
     <div class="c1" style="min-width:0"><span class="num" style="font-family:Figtree,Inter,sans-serif;font-weight:800;white-space:normal;line-height:1.25" title="${esc(m.nome)}">${esc(m.nome)}</span><span class="sub">${ehVerif(m)?'✓ verificado'+(m.verificado_em?' em '+esc(m.verificado_em):''):'rascunho'} · ${esc(m.especie||'')} · ${esc(m.resultado||'')}</span></div>
     <div class="c2 csep"><span class="ass" title="${esc(m.nome)}">${esc(m.nome)}</span>
       <div class="ctags"><span class="ct2 res">${esc(m.resultado||'')}</span><span class="ct2">${(m.blocos||[]).length} blocos</span>${(m.opcoes||[]).length?`<span class="ct2">${m.opcoes.length} opções</span>`:''}${m._local?`<span class="ct2 dash">${m._local==='novo'?'novo · só neste navegador':'editado · só neste navegador'}</span>`:''}</div></div>
-  </div></li>`).join('')||(MOD_FONTE==='matriz'?'<div class="vazio">Nenhum modelo-matriz verificado. Os rascunhos passam para cá ao serem marcados como verificados.</div>':'<div class="vazio">Nenhum rascunho. Crie um com “+ Novo modelo-matriz” ou, em Sugestões, abra um modelo e use “Converter em modelo-matriz”.</div>');
+  </div></li>`).join('')||(daLista.length?'<div class="vazio">Nenhum modelo no recorte. Ajuste os filtros à esquerda ou a busca.</div>':MOD_FONTE==='matriz'?'<div class="vazio">Nenhum modelo-matriz verificado. Os rascunhos passam para cá ao serem marcados como verificados.</div>':'<div class="vazio">Nenhum rascunho. Crie um com “+ Novo modelo-matriz” ou, em Sugestões, abra um modelo e use “Converter em modelo-matriz”.</div>');
 }
 $('mRes').addEventListener('click',e=>{const li=e.target.closest('li[data-cur]');if(li)abrirCurado(li.dataset.cur)});
 
