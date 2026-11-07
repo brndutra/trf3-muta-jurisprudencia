@@ -111,7 +111,7 @@ O `.gz` é gerado com `mtime=0`; portanto a mesma entrada produz os mesmos bytes
 
 ## Visualizações dos precedentes
 
-Na aba Precedentes, abaixo do total de resultados, a mesma página troca de forma sem perder os filtros à esquerda nem a busca: **Lista**, **Infográfico** (totais, ramos, resultados, anos, classes e órgãos), **Mapa mental**, **Tópicos** (abre já com os ramos e as subáreas), **Mosaico** (área proporcional ao número de decisões), **Matriz** (ramo × resultado), **Linha do tempo** e **Fluxo** (ramo → acórdão/monocrática → resultado). Clicar num ramo, subárea, célula ou resultado recorta a página; o recorte aparece ao lado dos botões e se desfaz no ✕. Ramo, subárea e tema vêm do índice temático; sem ele, o ramo vem do cabeçalho da ementa. O resultado é extraído automaticamente do índice e deve ser conferido no documento oficial.
+Na aba Precedentes, abaixo do total de resultados, a mesma página troca de forma sem perder os filtros à esquerda nem a busca: **Lista**, **Infográfico** (totais, ramos, resultados, anos, classes e órgãos), **Mapa mental**, **Tópicos** (abre já com os ramos e as subáreas), **Mosaico** (área proporcional ao número de decisões), **Matriz** (ramo × resultado), **Linha do tempo** e **Fluxo** (ramo → acórdão/monocrática → resultado). Clicar num ramo, subárea, célula ou resultado recorta a página; o recorte aparece ao lado dos botões e se desfaz no ✕. Ramo, assunto e subassunto vêm do índice temático (que os chama de área, subárea e tema); sem ele, o ramo vem do cabeçalho da ementa. O resultado é extraído automaticamente do índice e deve ser conferido no documento oficial.
 
 ## Modelos-matriz verificados × modelos sugeridos
 
