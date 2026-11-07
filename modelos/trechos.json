@@ -1,0 +1,179 @@
+{
+  "schema": "gabA.trechos",
+  "schema_versao": 1,
+  "descricao": "Trechos vinculados por matéria: cada trecho escolhido no voto leva junto o texto correspondente do relatório e da ementa. Curadoria manual do gabinete (não extraído por algoritmo). Sintaxe: {{campo}} = campo a preencher com dado dos autos; [?id:texto] = entra só se a opção ou o trecho 'id' estiver marcado; [?!id:texto] = entra só se 'id' estiver desmarcado.",
+  "posicoes_voto": {
+    "contro": "Delimitação da controvérsia",
+    "jurid": "Fundamentação jurídica",
+    "provas": "Exame fático-probatório",
+    "aplic": "Aplicação ao caso",
+    "concl": "Conclusão",
+    "honor": "Custas e honorários (substitui as fórmulas da matriz)",
+    "disp": "Dispositivo (substitui as fórmulas da matriz)"
+  },
+  "posicoes_relatorio": {
+    "apos_recurso": "parágrafo após as razões do recurso",
+    "contrarrazoes": "complemento da frase das contrarrazões",
+    "antes_mpf": "parágrafo antes da manifestação da Procuradoria"
+  },
+  "posicoes_ementa": {
+    "cabecalho": "termos acrescentados ao cabeçalho",
+    "caso": "complemento do caso em exame",
+    "questao": "questão em discussão (oração no infinitivo)",
+    "razoes": "item das razões de decidir",
+    "dispositivo": "dispositivo (substitui o da matriz)"
+  },
+  "materias": [
+    {
+      "id": "2886-acp",
+      "nome": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+      "gatilho": "28,86|0005019-15\\.1997",
+      "ementa_cabecalho": "DIREITO PROCESSUAL CIVIL. ADMINISTRATIVO. CUMPRIMENTO DE SENTENÇA. AÇÃO CIVIL PÚBLICA. REAJUSTE DE 28,86%.",
+      "opcoes": [
+        { "id": "herdeiros", "rotulo": "habilitação de herdeiros" },
+        { "id": "gratuidade", "rotulo": "exequente com gratuidade de justiça", "situacao": "gratuidade" },
+        { "id": "adesivo", "rotulo": "recurso adesivo do ente" }
+      ],
+      "trechos": [
+        {
+          "id": "contro-territorial",
+          "grupo": "Controvérsia",
+          "titulo": "Limitação territorial (provimento)",
+          "voto": [
+            { "pos": "contro", "texto": "A controvérsia envolve discutir se a sentença coletiva proferida na Ação Civil Pública 0005019-15.1997.4.03.6000, ajuizada pelo Ministério Público Federal contra União “e suas administrações indiretas”, possui abrangência nacional ou está limitada a servidores com lotação geográfica no Estado de Mato Grosso do Sul." }
+          ],
+          "ementa": [
+            { "pos": "cabecalho", "texto": "ABRANGÊNCIA NACIONAL." },
+            { "pos": "questao", "texto": "definir o alcance da coisa julgada na ACP 0005019-15.1997.4.03.6000 para exame da legitimidade ativa para o cumprimento de sentença" }
+          ]
+        },
+        {
+          "id": "contro-acordo",
+          "grupo": "Controvérsia",
+          "titulo": "Limitação territorial e acordo administrativo (desprovimento)",
+          "voto": [
+            { "pos": "contro", "texto": "A controvérsia envolve discutir a viabilidade do cumprimento individual de sentença coletiva, por não ter a parte exequente vínculo com os limites territoriais de competência do órgão prolator da condenação, e por ser atribuída a existência de acordo administrativo para pagamento da vantagem de 28,86%." }
+          ],
+          "ementa": [
+            { "pos": "cabecalho", "texto": "ACORDO ADMINISTRATIVO DE PAGAMENTO." },
+            { "pos": "questao", "texto": "definir o alcance da coisa julgada na ACP 0005019-15.1997.4.03.6000 para exame da legitimidade ativa para o cumprimento de sentença e verificar a viabilidade da pretensão face à alegação de transação extrajudicial do reajuste de 28,86%" }
+          ]
+        },
+        {
+          "id": "contro-prescricao",
+          "grupo": "Controvérsia",
+          "titulo": "Prescrição alegada em contrarrazões [e habilitação de herdeiros]",
+          "voto": [
+            { "pos": "contro", "texto": "A controvérsia envolve discutir se houve prescrição para o exercício da pretensão de cumprimento do julgado, pelo decurso do prazo quinquenal do Decreto 20.910/1932 e Súmula 150/STF[?herdeiros:, além de prescrição para habilitação de herdeiros]." }
+          ],
+          "relatorio": [
+            { "pos": "contrarrazoes", "texto": ", com alegação de prescrição da pretensão executória[?herdeiros:, inclusive para habilitação de herdeiros]" }
+          ],
+          "ementa": [
+            { "pos": "cabecalho", "texto": "PRESCRIÇÃO.[?herdeiros: HABILITAÇÃO DE HERDEIROS.]" },
+            { "pos": "questao", "texto": "verificar a viabilidade da pretensão face à alegação de prescrição[?herdeiros: e de prescrição para habilitação de herdeiros]" }
+          ],
+          "nota": "A ementa-modelo não traz a parte de herdeiros: conferir a redação no primeiro uso."
+        },
+        {
+          "id": "prescricao-origem",
+          "grupo": "Prescrição",
+          "titulo": "Prescrição alegada em contrarrazões — exame na origem",
+          "voto": [
+            { "pos": "concl", "texto": "Como questão de ordem pública, foi alegada a prescrição da pretensão de cumprimento da sentença, pois decorrido o prazo quinquenal do Decreto 20.910/1932 e Súmula 150/STF[?herdeiros:, além da prescrição para habilitação de herdeiros]." },
+            { "pos": "concl", "texto": "Embora se cuide de questão de ordem pública, a controvérsia suscitada em contrarrazões de apelação não se amolda à hipótese de resolução imediata no âmbito da Corte sem oportunidade de amplo contraditório e dilação probatória na origem, vez que a legislação admite causas interruptivas e suspensivas relativamente a cada prazo aventado, sendo ainda de particular relevância considerar que, no caso específico de cumprimento individual de coisa julgada em ação civil pública, circunstâncias próprias e individuais de cada situação não permitem elucidação e julgamento prévio, genérico e em abstrato de tal ponto controverso da causa." },
+            { "pos": "concl", "texto": "Ressalte-se que não se trata de negar o exame nesta instância da questão prejudicial de mérito, mas de constatar que circunstâncias fáticas relevantes ao cômputo da consumação ou não da prescrição exigem discussão probatória, que não foi garantida anteriormente, e cuja supressão implicaria clara violação dos princípios da ampla defesa, contraditório e devido processo legal." }
+          ],
+          "relatorio": [
+            { "pos": "contrarrazoes", "texto": ", com alegação de prescrição da pretensão executória[?herdeiros:, inclusive para habilitação de herdeiros]" }
+          ],
+          "ementa": [
+            { "pos": "cabecalho", "texto": "PRESCRIÇÃO." },
+            { "pos": "razoes", "texto": "Embora a prescrição envolva questão de ordem pública, a controvérsia suscitada em contrarrazões de apelação não se amolda à hipótese de resolução imediata no âmbito da Corte sem oportunidade de amplo contraditório e dilação probatória na origem, vez que a legislação admite causas interruptivas e suspensivas relativamente a cada prazo aventado, sendo ainda de particular relevância considerar que, no caso específico de cumprimento individual de coisa julgada em ação civil pública, circunstâncias próprias e individuais de cada situação não permitem elucidação e julgamento prévio, genérico e em abstrato de tal ponto controverso da causa." }
+          ]
+        },
+        {
+          "id": "acordo-siape",
+          "grupo": "Acordo",
+          "titulo": "Prova do acordo pelas fichas do SIAPE",
+          "voto": [
+            { "pos": "jurid", "texto": "Em se tratando de parte que não provou ter previamente ajuizado ação sobre a matéria - fato passível de elucidação por mera certidão de distribuição e/ou certidão de objeto e pé -, o registro de pagamentos de parcelas da vantagem específica nas fichas financeiras emitidas pelo SIAPE comprova, suficientemente, a existência de acordo individual, a impedir a pretensão de nova cobrança em sede de cumprimento individual de sentença coletiva." }
+          ],
+          "ementa": [
+            { "pos": "razoes", "texto": "Em se tratando, como evidenciado, de parte que não provou ter previamente ajuizado ação sobre a matéria - fato passível de elucidação por mera certidão de distribuição e/ou certidão de objeto e pé -, o registro de pagamentos de parcelas da vantagem específica nas fichas financeiras emitidas pelo SIAPE comprova, suficientemente, a existência de acordo individual, a impedir a pretensão de nova cobrança em sede de cumprimento individual de sentença coletiva." }
+          ]
+        },
+        {
+          "id": "acordo-via",
+          "grupo": "Acordo",
+          "titulo": "Via processual inadequada e renúncia às diferenças",
+          "voto": [
+            { "pos": "jurid", "texto": "Mesmo quando não se esteja a impugnar existência ou validade do acordo individual ou transação administrativa com homologação judicial, mas a veicular apenas pretensão de menor alcance - como revisão dos respectivos termos, por serem os da ação coletiva, mais favoráveis, ou cobrança de valores inadimplidos do próprio acordo ou transação -, a via processual adequada não é a do cumprimento individual de sentença coletiva, pois a pretensão, acerca do pagamento de diferenças da vantagem de 28,86%, já foi exercida administrativamente." },
+            { "pos": "jurid", "texto": "Superada que fosse a restrição da via, a jurisprudência da Corte é firme em reconhecer, contra pretensões como tais, que, “ao celebrar o acordo, o demandante expressamente anuiu com os valores então apresentados, considerando a conveniência de recebê-los pela via administrativa, sem a necessidade de instaurar demanda judicial e suportar os encargos dela decorrentes” (ApCiv 5008922-59.2023.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, DJEN de 05/11/2025); e que “A aceitação dos valores pagos administrativamente, sem litígio judicial concomitante, implica renúncia ao direito de pleitear as diferenças em juízo” (ApCiv 5008102-06.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, DJEN de 15/04/2026)." }
+          ],
+          "ementa": [
+            { "pos": "razoes", "texto": "Ainda que se tratasse de diferenças não reconhecidas ou pagas na via administrativa, não se autoriza ajuizar cumprimento individual de sentença coletiva para reabrir objeto e pretensão exauridos com a adesão a acordo administrativo, em conformidade com a jurisprudência da Corte." }
+          ]
+        },
+        {
+          "id": "acordo-fichas",
+          "grupo": "Acordo",
+          "titulo": "Fichas financeiras do SIAPE no caso concreto",
+          "voto": [
+            { "pos": "provas", "texto": "Na espécie, a existência de fichas financeiras com registro de pagamento de diferenças decorrentes da vantagem de 28,86% - rubrica “VANTAGEM ADMINIST. 28.86%-ATIV” (ID {{ID das fichas financeiras}}), faz presumir, em favor da Administração Pública, que houve composição administrativa regular entre as partes, sendo ônus do administrado demonstrar a eventual ilegalidade da conduta administrativa, o que não se verificou." },
+            { "pos": "provas", "texto": "Não se podendo presumir ilegalidade nem que pagamentos administrativos tenham sido realizados por mera liberdade da administração, privilegiando interesses privados em detrimento do interesse público, fato grave que pode gerar responsabilidade não apenas administrativa como criminal, o que resta a considerar, na espécie, é que a prova produzida ampara a conclusão no sentido de que a parte exequente aderiu à composição administrativa para satisfação do direito, obstando, consequentemente, o exercício da pretensão deduzida no cumprimento individual da sentença coletiva, a que se refere a ação civil pública ajuizada pelo Ministério Público Federal." }
+          ],
+          "ementa": [
+            { "pos": "razoes", "texto": "O pagamento de parcelas devidas referentes à vantagem em discussão (“VANTAGEM ADMINIST. 28.86%-ATIV”), conforme demonstrado pelas fichas financeiras juntadas, não pode ser presumido como realizado sem cumprimento regular da legislação, seja quanto ao acordo individual, seja quanto à transação administrativa homologada judicialmente, não se podendo, portanto, imputar ilegalidade à administração sem prova específica e concreta, ônus processual que decorre da presunção de legitimidade e veracidade, que milita em favor dos atos administrativos." }
+          ]
+        },
+        {
+          "id": "concl-transacionado",
+          "grupo": "Conclusão",
+          "titulo": "Legitimidade sem título para o valor transacionado",
+          "voto": [
+            { "pos": "concl", "texto": "Em suma, embora a parte exequente seja legitimada, não se autoriza, em razão do acordo administrativo firmado, a pretensão de promover cumprimento individual da sentença coletiva referente ao mesmo valor transacionado administrativamente." }
+          ],
+          "nota": "Na ementa, o ponto é coberto pelo item do trecho “Via processual inadequada”."
+        },
+        {
+          "id": "concl-origem",
+          "grupo": "Conclusão",
+          "titulo": "Solução da origem correta",
+          "voto": [
+            { "pos": "concl", "texto": "Afigura-se, pois, correta a solução dada na origem." }
+          ]
+        },
+        {
+          "id": "honorarios",
+          "grupo": "Honorários",
+          "titulo": "Honorários recursais (1%)",
+          "voto": [
+            { "pos": "honor", "texto": "Pela sucumbência recursal, a parte exequente deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, a ser acrescido ao fixado na origem[?gratuidade:, observada a gratuidade de justiça concedida (artigo 98, § 3º, do CPC)]." }
+          ],
+          "ementa": [
+            { "pos": "cabecalho", "texto": "HONORÁRIOS RECURSAIS." }
+          ],
+          "nota": "No relatório, a frase dos honorários da sentença deve registrar a suspensão da exigibilidade quando marcada a gratuidade."
+        },
+        {
+          "id": "dispositivo",
+          "grupo": "Dispositivo",
+          "titulo": "Desprovimento [e recurso adesivo do ente]",
+          "voto": [
+            { "pos": "disp", "texto": "Ante o exposto, nego provimento à apelação[?adesivo: da parte exequente e ao recurso adesivo {{do ente}}]." }
+          ],
+          "relatorio": [
+            { "pos": "apos_recurso", "texto": "[?adesivo:Recorreu adesivamente {{o ente}} (ID {{ID do recurso adesivo}}), alegando, em suma, {{alegações do recurso adesivo}}.]" },
+            { "pos": "antes_mpf", "texto": "[?adesivo:Houve contrarrazões ao recurso adesivo (ID {{ID das contrarrazões ao adesivo}}).]" }
+          ],
+          "ementa": [
+            { "pos": "caso", "texto": "[?adesivo:Recurso adesivo {{do ente}} {{objeto do recurso adesivo}}.]" },
+            { "pos": "dispositivo", "texto": "[?!adesivo:Apelação desprovida][?adesivo:Apelação e recurso adesivo desprovidos][?honorarios:, honorários recursais em acréscimo ao fixado na origem]." }
+          ],
+          "nota": "A fórmula do recurso adesivo no relatório ainda não consta do Padrão Muta: validar no primeiro uso."
+        }
+      ]
+    }
+  ]
+}
