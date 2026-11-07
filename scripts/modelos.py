@@ -15,7 +15,7 @@ Método
 
 Nada é inventado: todo texto fixo do modelo é transcrito de decisão real do acervo,
 cujo id fica registrado em `fonte_modelo`.
-Uso: python3 scripts/modelos.py             (gera modelos/modelos.json e .json.gz)
+Uso: python3 scripts/modelos.py             (gera modelos/sugestoes.json e .json.gz)
      python3 scripts/modelos.py --depurar  (só remove blocos duplicados dos modelos existentes)
 """
 import collections, glob, gzip, json, math, os, re
@@ -278,7 +278,7 @@ def depurar_blocos(bl, limiar=0.85):
 
 def reaplicar_depuracao():
     """Aplica depurar_blocos aos modelos já publicados, sem refazer os agrupamentos (ids preservados)."""
-    caminho = os.path.join(RAIZ, 'modelos', 'modelos.json')
+    caminho = os.path.join(RAIZ, 'modelos', 'sugestoes.json')
     dados = json.load(open(caminho, encoding='utf-8'))
     antes = sum(len(m['blocos']) for m in dados['modelos'])
     for m in dados['modelos']:
@@ -289,9 +289,9 @@ def reaplicar_depuracao():
 
 
 def gravar(dados):
-    with open(os.path.join(RAIZ, 'modelos', 'modelos.json'), 'w', encoding='utf-8') as f:
+    with open(os.path.join(RAIZ, 'modelos', 'sugestoes.json'), 'w', encoding='utf-8') as f:
         json.dump(dados, f, ensure_ascii=False, indent=1)
-    with open(os.path.join(RAIZ, 'modelos', 'modelos.json.gz'), 'wb') as raw, \
+    with open(os.path.join(RAIZ, 'modelos', 'sugestoes.json.gz'), 'wb') as raw, \
             gzip.GzipFile(fileobj=raw, mode='wb', compresslevel=9, mtime=0) as gz:
         gz.write(json.dumps(dados, ensure_ascii=False, separators=(',', ':')).encode('utf-8'))
 
@@ -406,12 +406,12 @@ def main():
         m['id'] = f"MOD-{m['fase']}-{'M' if m['tipo'] == 'monocrática' else 'A'}-{i:03d}"
         m['nome'] = ' · '.join(x for x in [m['especie'], m['resultado'], m['tema'] or ', '.join(m['palavras_chave'])] if x)
     os.makedirs(os.path.join(RAIZ, 'modelos'), exist_ok=True)
-    with open(os.path.join(RAIZ, 'modelos', 'modelos.json'), 'w', encoding='utf-8') as f:
+    with open(os.path.join(RAIZ, 'modelos', 'sugestoes.json'), 'w', encoding='utf-8') as f:
         json.dump({'gerado_por': 'scripts/modelos.py', 'parametros': {'min_bloco': MIN_BLOCO, 'min_grupo': MIN_GRUPO, 'jaccard': LIMIAR},
                    'total': len(saida), 'modelos': saida}, f, ensure_ascii=False, indent=1)
     dados = {'gerado_por': 'scripts/modelos.py', 'parametros': {'min_bloco': MIN_BLOCO, 'min_grupo': MIN_GRUPO, 'jaccard': LIMIAR},
              'total': len(saida), 'modelos': saida}
-    with open(os.path.join(RAIZ, 'modelos', 'modelos.json.gz'), 'wb') as raw, \
+    with open(os.path.join(RAIZ, 'modelos', 'sugestoes.json.gz'), 'wb') as raw, \
             gzip.GzipFile(fileobj=raw, mode='wb', compresslevel=9, mtime=0) as gz:
         gz.write(json.dumps(dados, ensure_ascii=False, separators=(',', ':')).encode('utf-8'))
     c = collections.Counter((m['fase'], m['tipo']) for m in saida)

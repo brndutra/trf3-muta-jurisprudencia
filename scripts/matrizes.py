@@ -9,8 +9,8 @@ distingue); parágrafos presentes em parte das decisões viram OPCIONAIS. O que 
 próprio da matéria ou do caso vira {{campo}}.
 
 Saídas:
-  modelos/matrizes.json(.gz)      — para a Central (faceta III, modo Matriz)
-  modelos/matrizes_gabA.json      — registros no formato Modelo-matriz do gerador
+  modelos/tipos-julgamento.json(.gz)      — para a Central (Sugestões, modo Matriz)
+  modelos/tipos-julgamento_gabA.json      — registros no formato Modelo-matriz do gerador
 Uso: python3 scripts/matrizes.py
 """
 import collections, gzip, json, os, re, sys, unicodedata
@@ -377,9 +377,9 @@ def main():
     dados = {'gerado_por': 'scripts/matrizes.py', 'fase': FASE, 'criterios': {'min_decisoes_tipo': MIN_TIPO, 'min_uso_slot': MIN_SLOT, 'min_materias': MIN_MAT},
              'total': len(saida), 'matrizes': saida}
     os.makedirs(os.path.join(RAIZ, 'modelos'), exist_ok=True)
-    with open(os.path.join(RAIZ, 'modelos', 'matrizes.json'), 'w', encoding='utf-8') as f:
+    with open(os.path.join(RAIZ, 'modelos', 'tipos-julgamento.json'), 'w', encoding='utf-8') as f:
         json.dump(dados, f, ensure_ascii=False, indent=1)
-    with open(os.path.join(RAIZ, 'modelos', 'matrizes.json.gz'), 'wb') as raw, gzip.GzipFile(fileobj=raw, mode='wb', mtime=0) as gz:
+    with open(os.path.join(RAIZ, 'modelos', 'tipos-julgamento.json.gz'), 'wb') as raw, gzip.GzipFile(fileobj=raw, mode='wb', mtime=0) as gz:
         gz.write(json.dumps(dados, ensure_ascii=False, separators=(',', ':')).encode())
     exportar_gabA(saida)
     for m in saida:
@@ -404,7 +404,7 @@ def exportar_gabA(saida):
                      'classe': m['especie'], 'resultado': m['resultado'], 'assunto': '(estrutural — qualquer matéria)',
                      'fonte': f"Extraído de {m['decisoes']} decisões da Turma Regional de MS ({m['materias']} matérias), {m['periodo'][0]} a {m['periodo'][1]}",
                      'esqueletoModelo': json.dumps(esq, ensure_ascii=False), 'paragrafosModelo': json.dumps(pars, ensure_ascii=False)})
-    with open(os.path.join(RAIZ, 'modelos', 'matrizes_gabA.json'), 'w', encoding='utf-8') as f:
+    with open(os.path.join(RAIZ, 'modelos', 'tipos-julgamento_gabA.json'), 'w', encoding='utf-8') as f:
         json.dump({'schema': 'gabA.modelos', 'schema_versao': 1, 'descricao': 'Modelos-matriz por tipo de julgamento, extraídos do acervo do gabinete (Turma Regional de MS). Identificadores MATRIZ não representam processos judiciais.',
                    'registros': regs}, f, ensure_ascii=False, indent=1)
 
