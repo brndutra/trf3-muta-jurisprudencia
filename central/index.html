@@ -382,10 +382,41 @@ textarea.editor:focus{border-color:color-mix(in srgb,var(--f-minuta) 60%,transpa
 .mx-sit{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 10px;margin-bottom:8px;border:1px solid color-mix(in srgb,var(--f-minuta) 45%,transparent);border-left:4px solid var(--f-minuta);border-radius:10px;background:var(--f-minuta-s)}
 .mx-sit b{font:700 12.5px Figtree,Inter,system-ui,sans-serif}
 .mx-sit .btn{margin-left:auto}
+.previa{min-height:calc(100vh - 250px);border:1px solid var(--line2);border-radius:0 0 9px 9px;background:var(--panel2);padding:26px 44px 40px;font:15.5px/1.65 var(--serif);color:var(--text);overflow:auto;box-shadow:inset 3px 0 0 var(--f-minuta)}
+.previa p{margin:0 0 12px;text-align:justify;text-indent:2.2em}
+.previa .pv-h{text-align:center;font:700 15px var(--serif);letter-spacing:.08em;margin:22px 0 14px}
+.previa .pv-h:first-child{margin-top:0}
+.previa .pv-cit{margin-left:4em;text-indent:0;font-size:14px}
+.previa .pv-ec{font-weight:700;text-indent:0}
+.previa .pv-et{font-weight:700;text-indent:0;margin-top:10px}
+.previa .pv-ref{text-indent:0;font-size:14px}
+.previa .pv-hr{border:0;border-top:1px solid var(--line2);width:30%;margin:14px 0 10px}
+.previa p[data-off]:hover{background:color-mix(in srgb,var(--f-minuta) 6%,transparent);cursor:text}
+.pv-f{background:rgba(255,210,0,.30);border-bottom:1px dashed #b98a00;padding:0 3px;border-radius:3px;cursor:pointer;font-style:italic}
+.pv-f:hover,.pv-f:focus{background:rgba(255,210,0,.55);outline:none}
+.pv-f input{font:inherit;font-style:normal;border:1px solid #b98a00;border-radius:3px;padding:0 4px;min-width:22ch;background:var(--panel)}
+#modFonte button span{opacity:.75;font-weight:600}
+#mMod.fonte-cur aside.filtros>*{opacity:.35;pointer-events:none}
+#mMod.fonte-cur #btnVistaLista,#mMod.fonte-cur #btnModoArvTab{display:none}
+.cur-nota{color:var(--c-ink2);font-style:italic}
+.ce{padding:10px 14px 40px}
+.ce-bar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 10px;margin-bottom:8px;background:var(--panel);border:1px solid var(--line2);border-radius:9px}
+.ce-bar .sp,.ce-bh .sp{flex:1}
+.ce-sec{border:1px solid var(--line2);border-radius:10px;background:var(--panel2);margin-bottom:10px;overflow:hidden}
+.ce-grid{display:grid;grid-template-columns:150px 1fr;gap:6px 10px;padding:10px;align-items:center}
+.ce-grid label{font:600 12px Figtree,Inter,system-ui,sans-serif;color:var(--c-ink2)}
+.ce-b{border-top:1px solid var(--line);padding:10px}
+.ce-bh,.ce-meta,.ce-o,.ce-add{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ce-meta{margin:6px 0}
+.ce-o{padding:6px 10px;border-top:1px solid var(--line)}
+.ce-add{padding:6px 10px}
+.ce-p{display:grid;grid-template-columns:1fr auto;gap:4px 6px;margin:6px 0;padding:6px;border:1px dashed var(--line2);border-radius:8px}
+.ce-p select{grid-column:1/-1}
+.ce-ta{width:100%;font:14px/1.5 var(--serif);resize:vertical}
 .tv-ops{display:flex;flex-wrap:wrap;gap:4px 14px;padding:6px 10px;border-top:1px solid var(--line);font:600 12px Figtree,Inter,system-ui,sans-serif;color:var(--c-ink2)}
 .tv-ops input{width:auto!important;margin-right:4px}
 .tv-g{font:800 9.5px Figtree,Inter,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--c-ink2);padding:6px 10px 2px;border-top:1px solid var(--line)}
-#mxTv .mx-b{grid-template-columns:18px 1fr}
+#mxTv .mx-b,#curSel .mx-b{grid-template-columns:18px 1fr}
 #mxTv .mx-b small{color:var(--c-ink2)}
 .mx-pt{padding:7px 10px;border-top:1px solid var(--line);font:500 12.5px/1.45 Figtree,Inter,system-ui,sans-serif}
 .mx-pt.off .mx-t{display:none}
@@ -960,6 +991,7 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
   <section class="lista">
     <div class="lbar">
       <div class="fac-tit"><button type="button" class="lista-tog" onclick="alternarListaModelos()" title="Recolher/expandir a lista de modelos">«</button><i>II</i>Modelos <span>· extraídos das decisões do gabinete — escolha, preencha, gere</span>
+        <div class="vista-mod" role="group" id="modFonte" aria-label="Banco de modelos"><button type="button" data-fonte="curados" aria-pressed="false" onclick="setModFonte('curados')" title="Modelos-matriz verificados pelo gabinete: blocos vinculados a voto, relatório, ementa e acórdão">✓ Verificados <span id="ctCur">…</span></button><button type="button" data-fonte="sugeridos" aria-pressed="false" onclick="setModFonte('sugeridos')" title="Modelos sugeridos pela recorrência dos trechos nas decisões">Sugeridos</button></div>
         <div class="vista-mod" role="group" aria-label="Exibição dos modelos"><button type="button" id="btnVistaLista" aria-pressed="true" onclick="alternarModoArvore(false)" title="Lista de modelos com filtros">☷ Lista</button><button type="button" id="btnModoArvTab" aria-pressed="false" onclick="alternarModoArvore(true)" title="Modelos organizados por assunto (Alt+3)">◇ Árvore</button></div></div>
       <div class="qwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input class="inp" id="mq" placeholder='Buscar modelos — ex.: deserção, "perda superveniente", BPC' autocomplete="off" spellcheck="false"></div>
@@ -1415,7 +1447,8 @@ async function carregarModelos(){
   return MODS;
 }
 async function abrirModelos(){
-  carregarMatrizes();
+  carregarMatrizes(); carregarCurados().then(()=>{curContagem();if(MOD_FONTE==='curados')aplicarCurados()});
+  document.querySelectorAll('#modFonte button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fonte===MOD_FONTE)));$('mMod').classList.toggle('fonte-cur',MOD_FONTE==='curados');modFonteRotulo();
   if(!MODS){$('mResumo').textContent='carregando modelos…';try{await carregarModelos()}catch(e){$('mResumo').textContent='Falha ao carregar modelos: '+e.message;return}preencherModSelects()}
   aplicarModelos();
 }
@@ -1427,6 +1460,7 @@ function preencherModSelects(){
   $('mfRes').innerHTML='<option value="">Todos</option>'+op(cnt('resultado'),modF.res);
 }
 function aplicarModelos(){
+  if(MOD_FONTE==='curados'){if(CURADOS)aplicarCurados();return}
   if(!MODS) return;
   const c=parseConsulta($('mq').value.trim());
   const preM=MODS.filter(m=>(!modF.fase||m.fase===modF.fase)&&(!modF.tipo||m.tipo===modF.tipo)&&(!modF.esp||m.especie===modF.esp)&&(!modF.res||m.resultado===modF.res)&&m.frequencia>=modF.min&&(c.vazia||casa(m._txt+' '+semAcento(m.modelo.slice(0,4000)),c)))
@@ -1477,12 +1511,13 @@ function abrirModelo(id){
   const m=MOD_POR.get(id); modSel=id; $('mMod').classList.remove('sem-detalhe');
   $('mRes').querySelectorAll('li').forEach(l=>l.classList.toggle('sel',l.dataset.id===id));
   const fonte=POR_ID.get(m.fonte_modelo);
-  MXT=null;
+  MXT=null; CUR=null; CUR_EDIT=false;
   ED_DIRTY=false; ED_HIST=[];
   $('mDet').innerHTML=`<div class="dhead">
     <div class="dtit"><span class="tag ${m.tipo==='acórdão'?'A':'M'}">${m.tipo==='acórdão'?'Modelo de acórdão':'Modelo de monocrática'}</span><span class="proc">${esc(m.id)}</span>
       <div class="acs-mode" id="minModo" style="margin-left:10px" title="Texto-modelo: a decisão-base da matéria com campos a preencher · Matriz: esqueleto do tipo de julgamento, com versões alternativas e trechos opcionais conforme a situação">
         <button data-m="padrao" class="${MIN_MODO==='padrao'?'on':''}">TEXTO-MODELO</button><button data-m="matriz" class="${MIN_MODO==='matriz'?'on':''}">MATRIZ</button></div>
+      <button class="btn sm" style="margin-left:8px" onclick="curDeSugerido('${m.id}')" title="Cria, em Verificados, um rascunho de modelo-matriz a partir deste modelo sugerido, para organizar em blocos vinculados">✎ Criar modelo-matriz verificado</button>
       <button class="dx" onclick="fecharLateral('modelos')">×</button></div>
     <div style="font-weight:700;margin:6px 0 2px">${esc(m.nome)}</div>
     <div class="meta">${esc(m.fase_nome)} · ${m.frequencia} decisões (${esc(fmtData(m.periodo[0]))} a ${esc(fmtData(m.periodo[1]))}) · texto-base <a href="#" onclick="irParaDecisao('${m.fonte_modelo}');return false">${esc(m.processo_modelo)}</a>${fonte?` (${fmtData(fonte.d)})`:''}</div>
@@ -1491,6 +1526,7 @@ function abrirModelo(id){
     <div class="min-ed">
       <div class="lote">Minuta · editor <span class="meta" id="edEstado" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div>
       <div class="edbar">
+        <div class="vista-mod" role="group" aria-label="Exibição da minuta" style="margin-left:0"><button type="button" data-vista="previa" onclick="vistaEditor('previa')" title="Minuta formatada; clique num campo destacado para preenchê-lo e dê duplo clique num parágrafo para editá-lo no texto">Prévia</button><button type="button" data-vista="texto" onclick="vistaEditor('texto')" title="Texto corrido, editável">Texto</button></div>
         <label class="meta" for="regSec" style="text-transform:none">Recompor</label>
         <select id="regSec" class="inp" style="height:28px;width:auto" title="Recompõe só a parte escolhida a partir do formulário; o restante do texto editado à mão é mantido">
           <option value="rel">relatório</option><option value="fund">fundamentação/voto</option><option value="ementa">ementa</option><option value="acordao">acórdão</option><option value="tudo">texto inteiro</option></select>
@@ -1502,7 +1538,7 @@ function abrirModelo(id){
         <button class="btn sm" onclick="abrirApoioMinuta()" title="Abrir o painel independente para conferir e revisar a minuta">Diretrizes · consulta e apoio ↗</button>
         <span class="meta" id="edConta" style="margin-left:auto"></span>
       </div>
-      <textarea id="minEd" class="editor" spellcheck="true"></textarea>
+      <textarea id="minEd" class="editor" spellcheck="true"></textarea><div id="minPrev" class="previa" hidden></div>
       <details class="min-ref"><summary>Modelo-base (texto transcrito de ${esc(m.processo_modelo)})</summary>
         ${m.ementa_modelo?`<h3 class="sec">Ementa-modelo</h3><div class="ementa-box">${cpRender(m.ementa_modelo)}</div>`:''}
         <div class="modelo-txt" style="margin-top:8px">${cpRender(m.modelo)}</div></details>
@@ -1524,7 +1560,7 @@ function abrirModelo(id){
   $('minModo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MIN_MODO=b.dataset.m;$('minModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('minCampos').innerHTML=MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m);$('minCamposS').textContent=MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento';if(MIN_MODO==='matriz'){const r=document.querySelector('input[name="relFonte"][value="montar"]');if(r&&!r.checked){r.checked=true;$('relForm').hidden=false}}$('minCamposD').open=true;atualizarMinuta()});
   $('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor()});
   if(MIN_MODO==='matriz'){const r=document.querySelector('input[name="relFonte"][value="montar"]');if(r){r.checked=true;$('relForm').hidden=false}}
-  atualizarMinuta();
+  atualizarMinuta(); vistaEditor(ED_VISTA);
 }
 
 /* ---------- modo PADRÃO: campos do modelo ---------- */
@@ -1590,10 +1626,7 @@ const chv=s=>String(s||'').replace(/\{\{\s*([^}]+?)\s*\}\}/g,'[$1]');   // {{cam
 function matrizPara(m){
   if(!MATRIZES||!MATRIZES.length) return null;
   const L=MATRIZES.filter(x=>x.tipo===m.tipo);
-  return L.find(x=>x.especie===m.especie&&x.resultado===m.resultado)
-      || L.find(x=>x.especie===m.especie)
-      || L.find(x=>x.resultado===m.resultado)
-      || L[0] || null;
+  return L.find(x=>x.especie===m.especie&&x.resultado===m.resultado) || null;   // o modelo fixa o tipo de julgamento: sem aproximação por outra espécie ou resultado
 }
 /* situação do caso, lida do relatório */
 function situacaoCaso(){
@@ -1646,7 +1679,7 @@ function matrizHTML(m){
   if(!MATRIZES){carregarMatrizes().then(()=>{if(MIN_MODO==='matriz'&&$('minCampos')){$('minCampos').innerHTML=matrizHTML(m);atualizarMinuta()}});return '<p class="ajuda">Carregando os modelos-matriz…</p>'}
   if(!MXT||MXT.m!==m.id||!MXT.X){const X=matrizPara(m);if(!X)return '<p class="ajuda">Não há modelo-matriz para este tipo de julgamento (são gerados para tipos com ao menos 12 decisões na fase TRMS).</p>';novaMatriz(m,X)}
   const X=MXT.X, mono=X.tipo!=='acórdão';
-  const opts=MATRIZES.filter(x=>x.tipo===X.tipo).map(x=>`<option value="${x.id}"${x.id===X.id?' selected':''}>${esc(x.especie)} · ${esc(x.resultado)} (${x.decisoes})</option>`).join('');
+  
   const verRow=(p)=>{const vs=p.s.versoes, cur=MXT.esc[p.k];
     const radios=vs.map((v,i)=>`<label class="mxv${cur===i?' on':''}" title="${esc(v.texto)}"><input type="radio" name="mxr-${p.k}" data-mxk="${p.k}" value="${i}"${cur===i?' checked':''}><span class="mxv-t">${esc(v.titulo||'padrão')}</span><span class="mx-u">${Math.round((v.uso||0)*100)}%</span></label>`).join('');
     const omit=p.s.opcional?`<label class="mxv omit${cur===-1?' on':''}"><input type="radio" name="mxr-${p.k}" data-mxk="${p.k}" value="-1"${cur===-1?' checked':''}><span class="mxv-t">omitir</span></label>`:'';
@@ -1668,13 +1701,12 @@ function matrizHTML(m){
       ${p.base!==null&&p.base!==''||!pts.length?`<label class="mx-free"><span>${p.base?'Texto do caso':'Texto livre'}</span><textarea data-mxl="${p.id}" placeholder="${esc(chv(p.base||'opcional'))}">${esc(livre)}</textarea></label>`:''}
     </div>`}).join('');
   const extra=(nome,sec)=>{const L=P.filter(x=>x.sec===sec);return L.length?`<details class="mx-sec"><summary class="mx-h">${nome} <span class="meta">${L.length} pontos</span></summary>${L.map(verRow).join('')}</details>`:''};
-  return `<div class="mx-cab">
-      <label class="meta">Tipo de julgamento</label><select id="mxTipo" class="inp" style="height:30px;max-width:340px">${opts}</select>
-      <span class="meta">${X.decisoes} decisões · ${X.materias} matérias · ${esc(fmtData(X.periodo[0]))} a ${esc(fmtData(X.periodo[1]))}</span></div>
-    <div class="mx-sit" id="mxSit"><span class="pe-ey">Situação</span><b id="mxSitT">${esc(sitRotulo(MXT.sit)||'não identificada — preencha o recorrente no relatório')}</b>
-      <button class="btn sm" onclick="sugerirMatriz(true);$('minCampos').innerHTML=matrizHTML(MOD_POR.get($('gerador').dataset.m));atualizarMinuta()" title="Reaplica as versões sugeridas pela situação (desfaz escolhas manuais)">↺ aplicar situação</button></div>
+  return `<div class="mx-cab"><span class="pe-ey">Tipo de julgamento</span><b>${esc(X.tipo)} · ${esc(X.especie)} · ${esc(X.resultado)}</b>
+      <span class="meta">fixado pelo modelo · ${X.decisoes} decisões · ${X.materias} matérias · ${esc(fmtData(X.periodo[0]))} a ${esc(fmtData(X.periodo[1]))}</span></div>
+    <div class="mx-sit" id="mxSit"><span class="pe-ey">Marcação automática</span><b id="mxSitT">${esc(sitRotulo(MXT.sit)?'pelo relatório: '+sitRotulo(MXT.sit):'preencha o relatório (recorrente, honorários) para marcar as versões')}</b>
+      <button class="btn sm" onclick="sugerirMatriz(true);$('minCampos').innerHTML=matrizHTML(MOD_POR.get($('gerador').dataset.m));atualizarMinuta()" title="Volta à marcação feita a partir do relatório (desfaz escolhas manuais)">↺ reaplicar pelo relatório</button></div>
     ${tvHTML(m)}
-    <p class="ajuda">Fixos: fórmulas presentes em metade ou mais das decisões do tipo. Opcionais: entre 10% e 50%. Onde há versões, a sugerida segue a situação (recorrente, gratuidade, Súmula 111); escolha outra ou omita. Campos <b>[ ]</b> e textos do caso ficam para você.</p>
+    <p class="ajuda">Fixos: fórmulas presentes em metade ou mais das decisões do tipo. Opcionais: entre 10% e 50%. Onde há versões, a marcada segue o relatório preenchido (recorrente, gratuidade, Súmula 111); troque ou omita se o caso pedir. Campos <b>[ ]</b> e textos do caso ficam para você.</p>
     ${posHTML}${mono?'':extra('Ementa','ementa')+extra('Acórdão','acordao')}`;
 }
 document.addEventListener('change',e=>{
@@ -1737,6 +1769,362 @@ function textoMatriz(m){
   return P.filter(x=>x&&x.trim()).join('\n\n').replace(/\n{3,}/g,'\n\n');
 }
 
+/* =====================================================================
+   MODELOS-MATRIZ VERIFICADOS (modelos/curados.json)
+   Banco curado pelo gabinete: blocos de texto que levam juntos voto, relatório, ementa e acórdão;
+   blocos fixos, opcionais e alternativos viram escolhas no preenchimento. Os "Modelos sugeridos"
+   (modelos.json.gz) continuam sendo a extração automática por recorrência.
+   Edição: no navegador (rascunho local) → Exportar curados.json → publicar em modelos/.
+   ===================================================================== */
+let CURADOS=null, MOD_FONTE=LS.get('acv_mod_fonte')||'curados', CUR=null, CUR_EDIT=false;
+const CUR_LS='acv_curados_local';
+const CUR_SEC={voto:'Voto',relatorio:'Relatório',ementa:'Ementa',acordao:'Acórdão'};
+const CUR_POS={
+  voto:[['abertura','Abertura'],['admiss','Admissibilidade'],['prelim','Preliminares'],['contro','Delimitação da controvérsia'],['jurid','Fundamentação jurídica'],['fatos','Introdução fática'],['provas','Exame fático-probatório'],['aplic','Aplicação ao caso'],['concl','Conclusão'],['honor','Custas e honorários'],['disp','Dispositivo']],
+  relatorio:[['apos_recurso','parágrafo após as razões do recurso'],['contrarrazoes','complemento da frase das contrarrazões'],['antes_mpf','parágrafo antes da Procuradoria'],['fim','parágrafo antes do fecho']],
+  ementa:[['cabecalho','cabeçalho (termos)'],['caso','caso em exame'],['questao','questão em discussão'],['razoes','razões de decidir'],['dispositivo','dispositivo'],['dispositivos','dispositivos relevantes citados'],['jurisprudencia','jurisprudência relevante citada']],
+  acordao:[['texto','texto do acórdão']]};
+const CUR_MODOS=[['fixo','fixo — sempre entra'],['opcional','opcional — marcar no preenchimento'],['alternativa','alternativa — um por grupo']];
+async function carregarCurados(){
+  if(CURADOS) return CURADOS;
+  try{const r=await fetch(new URL('../modelos/curados.json',baseDados()).href,{cache:'no-cache'});CURADOS=r.ok?((await r.json()).modelos||[]):[]}catch(e){CURADOS=[]}
+  return CURADOS;
+}
+function curLocal(){try{return JSON.parse(LS.get(CUR_LS)||'{}')||{}}catch(e){return {}}}
+function curSalvarLocal(L){LS.set(CUR_LS,JSON.stringify(L))}
+function curLista(){
+  const L=curLocal(), ed=L.modelos||{}, rem=new Set(L.removidos||[]), base=CURADOS||[];
+  const out=base.filter(m=>!rem.has(m.id)).map(m=>ed[m.id]?{...ed[m.id],_local:'editado'}:m);
+  Object.values(ed).forEach(m=>{if(!base.some(x=>x.id===m.id)&&!rem.has(m.id))out.push({...m,_local:'novo'})});
+  return out;
+}
+const curPorId=id=>curLista().find(m=>m.id===id);
+const curLimpo=m=>{const o=JSON.parse(JSON.stringify(m));delete o._local;return o};
+
+/* ---------- lista: Verificados × Sugeridos ---------- */
+function setModFonte(f){
+  MOD_FONTE=f; LS.set('acv_mod_fonte',f);
+  document.querySelectorAll('#modFonte button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fonte===f)));
+  $('mMod').classList.toggle('fonte-cur',f==='curados');
+  modFonteRotulo();
+  if(f==='curados'&&typeof MODO_ARV!=='undefined'&&MODO_ARV) alternarModoArvore(false);
+  if(f==='curados'&&!CURADOS){$('mResumo').textContent='carregando modelos verificados…';carregarCurados().then(()=>{curContagem();aplicarModelos()});return}
+  aplicarModelos();
+}
+function modFonteRotulo(){
+  const f=MOD_FONTE, sub=document.querySelector('#mMod .fac-tit>span');
+  if(sub) sub.textContent=f==='curados'?'· modelos-matriz verificados pelo gabinete — blocos vinculados a voto, relatório, ementa e acórdão':'· sugeridos pela recorrência dos trechos nas decisões — escolha, preencha, gere';
+}
+function curContagem(){const el=$('ctCur');if(el)el.textContent=CURADOS?curLista().length:'…'}
+function aplicarCurados(){
+  const c=parseConsulta($('mq').value.trim());
+  const L=curLista().filter(m=>c.vazia||casa(semAcento([m.nome,m.materia,m.especie,m.resultado,m.descricao,m.status].join(' ')),c));
+  $('mResumo').innerHTML=`<b>${L.length}</b> modelo${L.length===1?'':'s'}-matriz`;
+  $('mResumo2').innerHTML=`<button class="btn sm" onclick="novoCurado()">+ Novo modelo-matriz</button> <button class="btn sm" onclick="exportarCurados()" title="Baixa o curados.json com todos os modelos verificados, incluídas as edições deste navegador, para publicar em modelos/">⤓ Exportar curados.json</button>`;
+  $('mRes').innerHTML=L.map(m=>`<li class="proc${CUR&&CUR.id===m.id?' sel':''}" data-cur="${esc(m.id)}"><div class="crow">
+    <div class="c0"><span class="tp ${m.tipo==='monocrática'?'M':'A'}" title="${esc(m.tipo||'acórdão')}">${m.tipo==='monocrática'?'M':'A'}</span></div>
+    <div class="c1" style="min-width:0"><span class="num" style="font-family:Figtree,Inter,sans-serif;font-weight:800;white-space:normal;line-height:1.25" title="${esc(m.nome)}">${esc(m.nome)}</span><span class="sub">${m.status==='verificado'?'✓ verificado':'em curadoria'} · ${esc(m.especie||'')} · ${esc(m.resultado||'')}</span></div>
+    <div class="c2 csep"><span class="ass" title="${esc(m.nome)}">${esc(m.nome)}</span>
+      <div class="ctags"><span class="ct2 res">${esc(m.resultado||'')}</span><span class="ct2">${(m.blocos||[]).length} blocos</span>${(m.opcoes||[]).length?`<span class="ct2">${m.opcoes.length} opções</span>`:''}${m._local?`<span class="ct2 dash">${m._local==='novo'?'novo · só neste navegador':'editado · só neste navegador'}</span>`:''}</div></div>
+  </div></li>`).join('')||'<div class="vazio">Nenhum modelo-matriz verificado. Crie um com “+ Novo modelo-matriz” ou, em Sugeridos, abra um modelo e use “Criar modelo-matriz verificado”.</div>';
+}
+$('mRes').addEventListener('click',e=>{const li=e.target.closest('li[data-cur]');if(li)abrirCurado(li.dataset.cur)});
+
+/* ---------- seleção de blocos e opções ---------- */
+function curPadroes(){
+  const m=CUR.m; CUR.sel=new Set(); CUR.alt={};
+  (m.blocos||[]).forEach(b=>{
+    if(b.modo==='alternativa'){const g=b.alt||b.grupo||'alt';if(!CUR.alt[g]||b.padrao){if(CUR.alt[g]&&b.padrao)CUR.sel.delete(CUR.alt[g]);CUR.alt[g]=b.id;CUR.sel.add(b.id)}}
+    else if(b.modo!=='opcional'||b.padrao) CUR.sel.add(b.id);
+  });
+  curSituacao();
+}
+function curSituacao(){if(!CUR)return;const S=situacaoCaso();(CUR.m.opcoes||[]).forEach(o=>{if(o.situacao&&!CUR.toque.has(o.id))CUR.op[o.id]=!!S[o.situacao]})}
+const curLig=id=>!!CUR&&(!!CUR.op[id]||CUR.sel.has(id));
+const curTexto=s=>chv(String(s||'').replace(/\[\?(!?)([\w-]+):([^\]]*)\]/g,(_,neg,id,t)=>curLig(id)!==!!neg?t:''));
+function curPartes(sec,pos){
+  if(!CUR) return [];
+  const o=[]; for(const b of (CUR.m.blocos||[])) if(CUR.sel.has(b.id)) for(const p of (b[sec]||[])) if(p.pos===pos){const x=curTexto(p.texto);if(x.trim()&&!o.includes(x))o.push(x)}
+  return o;
+}
+/* fonte única das partes vinculadas: modelo verificado aberto, ou trechos vinculados do modo Matriz */
+const vincOn=()=>!!CUR||MIN_MODO==='matriz';
+const vincPartes=(sec,pos)=>CUR?curPartes(sec,pos):tvPartes(sec,pos);
+function questaoEmenta(tq){
+  if(!tq.length) return '[questão em discussão]';
+  if(tq.length===1) return /^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]/.test(tq[0])?tq[0]:`A questão em discussão consiste em ${tq[0]}.`;
+  const ord=['i','ii','iii','iv','v','vi','vii'], qtd=['','uma','duas','três','quatro','cinco','seis','sete'];
+  return `Há ${qtd[tq.length]||tq.length} questões em discussão: ${tq.map((q,i)=>`(${ord[i]||i+1}) ${q.replace(/\.$/,'')}`).map((x,i,a)=>i===a.length-1?'e '+x:x).join('; ')}.`;
+}
+function ementaCurado(){
+  const m=CUR.m, cab=[m.ementa_cabecalho,...curPartes('ementa','cabecalho'),m.ementa_cabecalho_fim].map(x=>String(x||'').trim()).filter(Boolean).join(' ')||'[CABEÇALHO DA EMENTA]';
+  const caso=[casoEmExame(),...curPartes('ementa','caso')].filter(Boolean).join(' ')||'[caso em exame: recurso, decisão recorrida e pedido]';
+  const raz=curPartes('ementa','razoes'), disp=curPartes('ementa','dispositivo'), d=curPartes('ementa','dispositivos'), j=curPartes('ementa','jurisprudencia');
+  let n=0; const N=t=>`${++n}. ${t}`;
+  return [cab,'I. Caso em exame',N(caso),'II. Questão em discussão',N(questaoEmenta(curPartes('ementa','questao'))),
+    'III. Razões de decidir',...(raz.length?raz:['[razões de decidir]']).map(N),'IV. Dispositivo',...(disp.length?disp:['[dispositivo]']).map(N),
+    ...((d.length||j.length)?['__________',...(d.length?['Dispositivos relevantes citados: '+d.join('; ')]:[]),...(j.length?['Jurisprudência relevante citada: '+j.join('; ')]:[])]:[])];
+}
+function textoCurado(){
+  if(!CUR) return '';
+  const mono=CUR.m.tipo==='monocrática', P=[mono?'DECISÃO':'RELATÓRIO', montarRelatorio()];
+  if(!mono) P.push('É o relatório.','VOTO');
+  for(const [pos] of CUR_POS.voto) P.push(...curPartes('voto',pos));
+  if(!mono){P.push('É como voto.','EMENTA',...ementaCurado());const ac=curPartes('acordao','texto');P.push('ACÓRDÃO',...(ac.length?ac:['[acórdão]']))}
+  return P.filter(x=>x&&String(x).trim()).join('\n\n').replace(/\n{3,}/g,'\n\n');
+}
+
+/* ---------- abertura: preencher × editar ---------- */
+function abrirCurado(id,editar){
+  const m=curPorId(id); if(!m){toast('Modelo não encontrado.');return}
+  CUR={id,m:curLimpo(m),sel:new Set(),op:{},toque:new Set(),alt:{},sujo:false,local:m._local||''};
+  CUR_EDIT=!!editar; MXT=null; modSel=null; ED_DIRTY=false; ED_HIST=[];
+  $('mMod').classList.remove('sem-detalhe');
+  $('mRes').querySelectorAll('li').forEach(l=>l.classList.toggle('sel',l.dataset.cur===id));
+  curPadroes(); curDesenhar();
+}
+function curCabecalho(){
+  const m=CUR.m;
+  return `<div class="dhead">
+    <div class="dtit"><span class="tag A">${m.status==='verificado'?'Modelo-matriz verificado':'Modelo-matriz em curadoria'}</span><span class="proc">${esc(m.id)}</span>
+      <div class="acs-mode" style="margin-left:10px"><button type="button" class="${CUR_EDIT?'':'on'}" onclick="curModo(false)">PREENCHER</button><button type="button" class="${CUR_EDIT?'on':''}" onclick="curModo(true)">✎ EDITAR MODELO</button></div>
+      <button class="dx" onclick="fecharLateral('modelos')">×</button></div>
+    <div style="font-weight:700;margin:6px 0 2px">${esc(m.nome)}</div>
+    <div class="meta">${esc(m.materia||'')} · ${esc(m.especie||'')} · ${esc(m.resultado||'')}${m.paradigma?` · paradigma ${esc(m.paradigma)}`:''}${m.status==='verificado'&&m.verificado_em?` · verificado em ${esc(m.verificado_em)}`:''}${CUR.local?` · <b>${CUR.local==='novo'?'novo':'editado'} só neste navegador</b> — exporte o curados.json para publicar`:''}</div>
+  </div>`;
+}
+function curModo(ed){if(CUR_EDIT&&!ed&&CUR.sujo&&!confirm('Há alterações não salvas no modelo. Voltar ao preenchimento assim mesmo? (as alterações continuam na tela até você reabrir o modelo)'))return;CUR_EDIT=ed;ED_DIRTY=false;if(!ed)curPadroes();curDesenhar()}
+function curDesenhar(){
+  $('mDet').innerHTML=curCabecalho()+(CUR_EDIT?curEditorHTML():curGeradorHTML());
+  $('mDet').scrollTop=0;
+  if(!CUR_EDIT){$('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor()});if(LS.get('acv_side_min'))alternarPainelCampos(true);atualizarMinuta();vistaEditor(ED_VISTA)}
+}
+function edbarHTML(){
+  return `<div class="edbar">
+        <div class="vista-mod" role="group" aria-label="Exibição da minuta" style="margin-left:0"><button type="button" data-vista="previa" onclick="vistaEditor('previa')" title="Minuta formatada; clique num campo destacado para preenchê-lo e dê duplo clique num parágrafo para editá-lo no texto">Prévia</button><button type="button" data-vista="texto" onclick="vistaEditor('texto')" title="Texto corrido, editável">Texto</button></div>
+        <label class="meta" for="regSec" style="text-transform:none">Recompor</label>
+        <select id="regSec" class="inp" style="height:28px;width:auto" title="Recompõe só a parte escolhida a partir do formulário; o restante do texto editado à mão é mantido">
+          <option value="rel">relatório</option><option value="fund">fundamentação/voto</option><option value="ementa">ementa</option><option value="acordao">acórdão</option><option value="tudo">texto inteiro</option></select>
+        <button class="btn sm" id="btnRecompor" onclick="regerar($('regSec').value)">↻ Recompor</button>
+        <button class="btn sm" id="btnDesfazer" onclick="desfazerMinuta()" disabled title="Volta ao texto anterior">↶ Desfazer</button>
+        <button type="button" class="pend" id="edPend" onclick="irProximoCampo()" title="Ir ao próximo [campo] pendente"></button>
+        <button class="btn sm pri" onclick="if(conferirPendencias('copiar'))copiarTexto($('minEd').value,'Minuta copiada.')">Copiar</button>
+        <button class="btn sm" onclick="if(conferirPendencias('baixar'))baixarMinuta()">Baixar .doc</button>
+        <button class="btn sm" onclick="abrirApoioMinuta()" title="Abrir o painel independente para conferir e revisar a minuta">Diretrizes · consulta e apoio ↗</button>
+        <span class="meta" id="edConta" style="margin-left:auto"></span>
+      </div>`;
+}
+function curGeradorHTML(){
+  const m=CUR.m;
+  return `<div class="min-grid min-main" id="gerador" data-cur="${esc(m.id)}">
+    <div class="min-ed">
+      <div class="lote">Minuta · editor <span class="meta" id="edEstado" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div>
+      ${edbarHTML()}
+      <textarea id="minEd" class="editor" spellcheck="true"></textarea><div id="minPrev" class="previa" hidden></div>
+      ${m.descricao?`<details class="min-ref"><summary>Hipótese de aplicação</summary><p style="margin:8px 0">${esc(m.descricao)}</p></details>`:''}
+    </div>
+    <aside class="min-side" aria-label="Preenchimento">
+      <div class="min-side-h"><b>Preenchimento</b><button type="button" class="btn sm" onclick="alternarPainelCampos()" title="Ocultar/mostrar o painel">⇥</button></div>
+      <details class="min-blk" open><summary>Relatório</summary><input type="radio" name="relFonte" value="montar" checked hidden><div id="relForm">${relatorioHTML(m,null)}</div></details>
+      <details class="min-blk" open><summary>Blocos do modelo</summary><div id="curBlocos">${curBlocosHTML()}</div></details>
+    </aside>
+  </div>`;
+}
+function curBlocosHTML(){
+  const m=CUR.m, onde=b=>Object.keys(CUR_SEC).filter(s=>(b[s]||[]).length).map(s=>CUR_SEC[s].toLowerCase()).join(' · ');
+  const ops=(m.opcoes||[]).length?`<div class="tv-ops"><span class="meta">Opções</span>${m.opcoes.map(o=>`<label><input type="checkbox" data-cuo="${esc(o.id)}"${CUR.op[o.id]?' checked':''}>${esc(o.rotulo||o.id)}</label>`).join('')}</div>`:'';
+  const grupos=[...new Set((m.blocos||[]).map(b=>b.grupo||'Blocos'))];
+  return `<p class="ajuda" style="margin:2px 0 8px">Fixos entram sempre; opcionais e alternativos são escolhidos aqui. Cada bloco leva junto o texto do relatório, da ementa e do acórdão. As opções acendem as partes condicionais em todas as seções; a gratuidade segue o relatório.</p>
+  <div class="mx-sec" id="curSel">${ops}${grupos.map(g=>`<div class="tv-g">${esc(g)}</div>`+(m.blocos||[]).filter(b=>(b.grupo||'Blocos')===g).map(b=>{
+      const ctl=b.modo==='alternativa'?`<input type="radio" name="cua-${esc(b.alt||b.grupo||'alt')}" data-cua="${esc(b.alt||b.grupo||'alt')}" value="${esc(b.id)}"${CUR.sel.has(b.id)?' checked':''}>`
+        :b.modo==='opcional'?`<input type="checkbox" data-cub="${esc(b.id)}"${CUR.sel.has(b.id)?' checked':''}>`:'<input type="checkbox" checked disabled title="bloco fixo">';
+      const v=(b.voto||[])[0];
+      return `<label class="mx-b${b.modo==='fixo'?' fx':''}">${ctl}<span class="mx-t"><b>${esc(b.titulo||b.id)}</b> <span class="meta">${b.modo==='fixo'?'fixo':b.modo==='alternativa'?'alternativa':'opcional'} · ${onde(b)}</span>${v?`<br><small>${cpRender(chv(String(v.texto).replace(/\[\?!?[\w-]+:([^\]]*)\]/g,'$1')).slice(0,170))}${String(v.texto).length>170?'…':''}</small>`:''}${b.nota?`<br><small class="cur-nota">${esc(b.nota)}</small>`:''}</span></label>`}).join('')).join('')}</div>`;
+}
+document.addEventListener('change',e=>{
+  const t=e.target; if(!CUR||CUR_EDIT||!t.dataset) return;
+  if(t.dataset.cuo!=null){CUR.op[t.dataset.cuo]=t.checked;CUR.toque.add(t.dataset.cuo);atualizarMinuta();return}
+  if(t.dataset.cub!=null){t.checked?CUR.sel.add(t.dataset.cub):CUR.sel.delete(t.dataset.cub);atualizarMinuta();return}
+  if(t.dataset.cua!=null){const g=t.dataset.cua;if(CUR.alt[g])CUR.sel.delete(CUR.alt[g]);CUR.alt[g]=t.value;CUR.sel.add(t.value);atualizarMinuta();return}
+  if(t.dataset.relf!=null){const a=JSON.stringify(CUR.op);curSituacao();if(JSON.stringify(CUR.op)!==a&&$('curBlocos')){$('curBlocos').innerHTML=curBlocosHTML();atualizarMinuta()}}
+});
+
+/* ---------- prévia formatada da minuta ---------- */
+let ED_VISTA=LS.get('acv_ed_vista')||'previa';
+const PV_TIT=/^(RELAT[ÓO]RIO|VOTO|EMENTA|AC[ÓO]RD[ÃA]O|DECIS[ÃA]O)$/;
+function vistaEditor(v){
+  ED_VISTA=v; LS.set('acv_ed_vista',v);
+  const p=$('minPrev'), ed=$('minEd'); if(!p||!ed) return;
+  p.hidden=v!=='previa'; ed.hidden=v==='previa';
+  document.querySelectorAll('[data-vista]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.vista===v)));
+  if(v==='previa') renderPrevia();
+}
+function renderPrevia(){
+  const p=$('minPrev'), ed=$('minEd'); if(!p||!ed||p.hidden) return;
+  const t=ed.value; let k=0, sec='', off=0; const H=[];
+  const marcar=s=>{let o='',last=0;s.replace(/\[[^\]\n]{1,80}\]/g,(m,pos)=>{o+=esc(s.slice(last,pos));last=pos+m.length;o+=/^\[(sic|\.\.\.|…)\]$/i.test(m)?esc(m):`<span class="pv-f" data-n="${k++}" tabindex="0" title="Clique para preencher">${esc(m.slice(1,-1))}</span>`;return m});return o+esc(s.slice(last))};
+  const partes=t.split(/(\n{2,})/);
+  for(const seg of partes){
+    const ini=off; off+=seg.length;
+    if(/^\n+$/.test(seg)||!seg.trim()) continue;
+    const x=seg.trim();
+    if(PV_TIT.test(x)){sec=x.toUpperCase();H.push(`<h4 class="pv-h">${esc(x)}</h4>`);continue}
+    if(/^_{5,}$/.test(x)){H.push('<hr class="pv-hr">');continue}
+    let c='pv-p';
+    if(/^[“"]/.test(x)) c+=' pv-cit';
+    if(sec==='EMENTA'){if(/^[IVX]+\.\s/.test(x))c+=' pv-et';else if(/^(Dispositivos|Jurisprud[êe]ncia) relevantes? citad/.test(x))c+=' pv-ref';else if(x===x.toUpperCase()&&/[A-ZÁÉÍÓÚÇ]{4}/.test(x))c+=' pv-ec';else c+=' pv-ei'}
+    if(/^(É o relatório\.|É como voto\.)$/.test(x)) c+=' pv-fecho';
+    H.push(`<p class="${c}" data-off="${ini}">${marcar(x).replace(/\n/g,'<br>')}</p>`);
+  }
+  p.innerHTML=H.join('')||'<p class="ajuda">A minuta aparece aqui.</p>';
+}
+function preencherCampoMinuta(n,v){
+  const ed=$('minEd'); const x=pendenciasMinuta(ed.value)[n]; if(!x) return;
+  ED_HIST.push(ed.value); if(ED_HIST.length>20)ED_HIST.shift();
+  ed.value=ed.value.slice(0,x.index)+v+ed.value.slice(x.index+x[0].length);
+  ED_DIRTY=true; if($('btnDesfazer'))$('btnDesfazer').disabled=false; estadoEditor();
+}
+document.addEventListener('click',e=>{
+  const f=e.target.closest&&e.target.closest('.pv-f'); if(!f||f.querySelector('input')) return;
+  const n=+f.dataset.n, rot=f.textContent; let feito=false;
+  f.innerHTML=`<input class="pv-in" placeholder="${esc(rot)}" aria-label="${esc(rot)}">`; const i=f.firstChild; i.focus();
+  const fim=ok=>{if(feito)return;feito=true;if(ok&&i.value.trim())preencherCampoMinuta(n,i.value.trim());else renderPrevia()};
+  i.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();fim(true)}else if(ev.key==='Escape'){ev.preventDefault();fim(false)}});
+  i.addEventListener('blur',()=>fim(true));
+});
+document.addEventListener('dblclick',e=>{
+  const p=e.target.closest&&e.target.closest('#minPrev p[data-off]'); if(!p||e.target.closest('.pv-f')) return;
+  const ed=$('minEd'), o=+p.dataset.off; vistaEditor('texto'); ed.focus(); ed.setSelectionRange(o,o);
+  ed.scrollTop=Math.max(0,(ed.value.slice(0,o).split('\n').length-3)*18);
+});
+
+/* ---------- modo de edição do modelo ---------- */
+const curOpcoesPos=(sel)=>Object.entries(CUR_POS).map(([s,L])=>`<optgroup label="${CUR_SEC[s]}">${L.map(([p,r])=>`<option value="${s}|${p}"${sel===s+'|'+p?' selected':''}>${CUR_SEC[s]} · ${esc(r)}</option>`).join('')}</optgroup>`).join('');
+function curEditorHTML(){
+  const m=CUR.m, I=(path,val,ph,w)=>`<input class="inp" data-ce="${path}" value="${esc(val||'')}" placeholder="${esc(ph||'')}"${w?` style="${w}"`:''}>`;
+  const T=(path,val,ph,r)=>`<textarea class="inp ce-ta" data-ce="${path}" rows="${r||3}" placeholder="${esc(ph||'')}">${esc(val||'')}</textarea>`;
+  const blocos=(m.blocos||[]).map((b,i)=>{
+    const partes=Object.keys(CUR_SEC).flatMap(s=>(b[s]||[]).map((p,j)=>({s,j,p})));
+    return `<div class="ce-b" data-bi="${i}">
+      <div class="ce-bh"><b>${i+1}.</b>${I(`blocos.${i}.titulo`,b.titulo,'título do bloco','flex:2')}${I(`blocos.${i}.grupo`,b.grupo,'grupo (ex.: Acordo)','flex:1')}
+        <select class="inp" data-ce="blocos.${i}.modo" style="width:auto">${CUR_MODOS.map(([v,r])=>`<option value="${v}"${(b.modo||'fixo')===v?' selected':''}>${r}</option>`).join('')}</select>
+        ${b.modo==='alternativa'?I(`blocos.${i}.alt`,b.alt,'grupo da alternativa','width:150px'):''}
+        ${b.modo!=='fixo'?`<label class="meta" style="white-space:nowrap"><input type="checkbox" data-ce="blocos.${i}.padrao"${b.padrao?' checked':''}> marcado por padrão</label>`:''}
+        <span class="sp"></span><button class="btn sm" data-cea="up" data-i="${i}" title="Subir">↑</button><button class="btn sm" data-cea="down" data-i="${i}" title="Descer">↓</button><button class="btn sm" data-cea="del-bloco" data-i="${i}" title="Excluir bloco">✕</button></div>
+      <div class="ce-meta"><span class="meta">id</span>${I(`blocos.${i}.id`,b.id,'identificador (usado em [?id:…])','width:220px')}<span class="meta">nota</span>${I(`blocos.${i}.nota`,b.nota,'observação para quem preenche','flex:1')}</div>
+      ${partes.map(({s,j,p})=>`<div class="ce-p"><select class="inp" data-cep="${i}|${s}|${j}" style="width:100%">${curOpcoesPos(s+'|'+p.pos)}</select>${T(`blocos.${i}.${s}.${j}.texto`,p.texto,'texto — {{campo}} para dados dos autos; [?id:texto] condicional',Math.min(10,Math.max(2,Math.ceil(String(p.texto||'').length/110))))}<span style="display:flex;flex-direction:column;gap:4px">${j>0?`<button class="btn sm" data-cea="separar" data-i="${i}" data-s="${s}" data-j="${j}" title="Separa este texto e os seguintes desta seção num novo bloco, logo abaixo">↧ novo bloco</button>`:''}<button class="btn sm" data-cea="del-parte" data-i="${i}" data-s="${s}" data-j="${j}" title="Excluir este texto">✕</button></span></div>`).join('')}
+      <div class="ce-add"><span class="meta">+ texto em</span>${Object.keys(CUR_SEC).map(s=>`<button class="btn sm" data-cea="add-parte" data-i="${i}" data-s="${s}">${CUR_SEC[s]}</button>`).join('')}</div>
+    </div>`}).join('');
+  const opcoes=(m.opcoes||[]).map((o,k)=>`<div class="ce-o">${I(`opcoes.${k}.id`,o.id,'id','width:150px')}${I(`opcoes.${k}.rotulo`,o.rotulo,'rótulo exibido','flex:1')}<select class="inp" data-ce="opcoes.${k}.situacao" style="width:auto"><option value="">marcação manual</option><option value="gratuidade"${o.situacao==='gratuidade'?' selected':''}>segue a gratuidade do relatório</option></select><button class="btn sm" data-cea="del-opcao" data-k="${k}">✕</button></div>`).join('');
+  return `<div class="ce">
+    <div class="ce-bar"><b id="ceEstado">${CUR.sujo?'alterações não salvas':'sem alterações'}</b><span class="sp"></span>
+      <button class="btn sm pri" data-cea="salvar">Salvar neste navegador</button>
+      <button class="btn sm" data-cea="verificar" title="Marca o modelo como verificado, com a data de hoje">✓ Marcar verificado</button>
+      <button class="btn sm" data-cea="duplicar">Duplicar</button>
+      <button class="btn sm" data-cea="exportar">⤓ Exportar curados.json</button>
+      ${CUR.local?'<button class="btn sm" data-cea="descartar" title="Descarta a versão deste navegador e volta à publicada">Descartar edição local</button>':''}
+      <button class="btn sm" data-cea="excluir">Excluir</button></div>
+    <p class="ajuda">As alterações ficam neste navegador até você exportar o <code>curados.json</code> e publicá-lo em <code>modelos/</code> no GitHub. Sintaxe: <code>{{campo}}</code> = dado dos autos; <code>[?id:texto]</code> entra com a opção ou o bloco <i>id</i> marcado; <code>[?!id:texto]</code>, com ele desmarcado.</p>
+    <div class="ce-sec"><div class="mx-h">Identificação</div><div class="ce-grid">
+      <label>Nome</label>${I('nome',m.nome)}
+      <label>Matéria</label>${I('materia',m.materia)}
+      <label>Tipo</label><select class="inp" data-ce="tipo">${['acórdão','monocrática'].map(v=>`<option${(m.tipo||'acórdão')===v?' selected':''}>${v}</option>`).join('')}</select>
+      <label>Espécie</label>${I('especie',m.especie,'Apelação')}
+      <label>Resultado</label>${I('resultado',m.resultado,'desprovimento')}
+      <label>Situação</label><select class="inp" data-ce="status">${['em curadoria','verificado'].map(v=>`<option${(m.status||'em curadoria')===v?' selected':''}>${v}</option>`).join('')}</select>
+      <label>Paradigma</label>${I('paradigma',m.paradigma,'processo e sessão')}
+      <label>Hipótese de aplicação</label>${T('descricao',m.descricao,'quando usar este modelo',2)}
+      <label>Cabeçalho da ementa</label>${T('ementa_cabecalho',m.ementa_cabecalho,'DIREITO … . … .',2)}
+      <label>Fim do cabeçalho</label>${I('ementa_cabecalho_fim',m.ementa_cabecalho_fim,'ex.: DESPROVIMENTO.')}
+    </div></div>
+    <div class="ce-sec"><div class="mx-h">Opções do preenchimento <span class="meta">acendem trechos condicionais em todas as seções</span></div>${opcoes||'<p class="ajuda" style="padding:6px 10px">Nenhuma opção.</p>'}<div class="ce-add"><button class="btn sm" data-cea="add-opcao">+ opção</button></div></div>
+    <div class="ce-sec"><div class="mx-h">Blocos <span class="meta">${(m.blocos||[]).length} · cada bloco leva junto voto, relatório, ementa e acórdão</span></div>${blocos}<div class="ce-add"><button class="btn sm pri" data-cea="add-bloco">+ bloco</button></div></div>
+  </div>`;
+}
+function curSet(path,v){const ks=path.split('.');let o=CUR.m;for(let i=0;i<ks.length-1;i++){const k=/^\d+$/.test(ks[i])?+ks[i]:ks[i];if(o[k]==null)o[k]=/^\d+$/.test(ks[i+1])?[]:{};o=o[k]}o[ks[ks.length-1]]=v}
+function curSujo(){CUR.sujo=true;const e=$('ceEstado');if(e)e.textContent='alterações não salvas'}
+function curRedesenharEditor(){const y=$('mDet').scrollTop;$('mDet').innerHTML=curCabecalho()+curEditorHTML();$('mDet').scrollTop=y}
+document.addEventListener('input',e=>{const t=e.target;if(!CUR||!CUR_EDIT||!t.dataset||t.dataset.ce==null||t.type==='checkbox'||t.tagName==='SELECT')return;curSet(t.dataset.ce,t.value);curSujo()});
+document.addEventListener('change',e=>{
+  const t=e.target;if(!CUR||!CUR_EDIT||!t.dataset)return;
+  if(t.dataset.ce!=null&&(t.type==='checkbox'||t.tagName==='SELECT')){curSet(t.dataset.ce,t.type==='checkbox'?t.checked:t.value);curSujo();if(/\.modo$/.test(t.dataset.ce)||t.dataset.ce==='status')curRedesenharEditor();return}
+  if(t.dataset.cep!=null){const [i,s,j]=t.dataset.cep.split('|'),[ns,np]=t.value.split('|'),b=CUR.m.blocos[+i],p=b[s].splice(+j,1)[0];p.pos=np;(b[ns]=b[ns]||[]).push(p);if(!b[s].length)delete b[s];curSujo();curRedesenharEditor()}
+});
+document.addEventListener('click',e=>{
+  const a=e.target.closest&&e.target.closest('[data-cea]');if(!a||!CUR||!CUR_EDIT)return;
+  const m=CUR.m, i=+a.dataset.i, act=a.dataset.cea; m.blocos=m.blocos||[]; m.opcoes=m.opcoes||[];
+  const ida=base=>{let id=base,n=2;while(m.blocos.some(b=>b.id===id))id=base+'-'+n++;return id};
+  switch(act){
+    case 'add-bloco':m.blocos.push({id:ida('bloco'),grupo:'',titulo:'Novo bloco',modo:'opcional',voto:[{pos:'jurid',texto:''}]});break;
+    case 'del-bloco':if(!confirm(`Excluir o bloco “${m.blocos[i].titulo||m.blocos[i].id}”?`))return;m.blocos.splice(i,1);break;
+    case 'up':if(i>0)[m.blocos[i-1],m.blocos[i]]=[m.blocos[i],m.blocos[i-1]];break;
+    case 'down':if(i<m.blocos.length-1)[m.blocos[i+1],m.blocos[i]]=[m.blocos[i],m.blocos[i+1]];break;
+    case 'add-parte':{const s=a.dataset.s;(m.blocos[i][s]=m.blocos[i][s]||[]).push({pos:CUR_POS[s][0][0],texto:''});break}
+    case 'separar':{const b=m.blocos[i],s=a.dataset.s,mov=b[s].splice(+a.dataset.j);m.blocos.splice(i+1,0,{id:ida(b.id+'-b'),grupo:b.grupo||'',titulo:'Novo bloco',modo:b.modo||'fixo',[s]:mov});break}
+    case 'del-parte':{const b=m.blocos[i],s=a.dataset.s;b[s].splice(+a.dataset.j,1);if(!b[s].length)delete b[s];break}
+    case 'add-opcao':m.opcoes.push({id:'opcao'+(m.opcoes.length+1),rotulo:''});break;
+    case 'del-opcao':m.opcoes.splice(+a.dataset.k,1);break;
+    case 'verificar':m.status='verificado';m.verificado_em=new Date().toLocaleDateString('pt-BR');break;
+    case 'salvar':{const L=curLocal();L.modelos=L.modelos||{};L.modelos[m.id]=curLimpo(m);L.removidos=(L.removidos||[]).filter(x=>x!==m.id);curSalvarLocal(L);CUR.sujo=false;CUR.local=(CURADOS||[]).some(x=>x.id===m.id)?'editado':'novo';curRedesenharEditor();curContagem();if(MOD_FONTE==='curados')aplicarCurados();toast('Modelo salvo neste navegador. Exporte o curados.json para publicar.');return}
+    case 'descartar':{if(!confirm('Descartar a versão deste navegador e voltar à publicada?'))return;const L=curLocal();if(L.modelos)delete L.modelos[m.id];curSalvarLocal(L);curContagem();aplicarCurados();if(curPorId(m.id))abrirCurado(m.id,true);else fecharLateral('modelos');return}
+    case 'excluir':{if(!confirm(`Excluir o modelo “${m.nome}”? A exclusão vale neste navegador e entra no próximo curados.json exportado.`))return;const L=curLocal();if(L.modelos)delete L.modelos[m.id];if((CURADOS||[]).some(x=>x.id===m.id))L.removidos=[...new Set([...(L.removidos||[]),m.id])];curSalvarLocal(L);CUR=null;curContagem();aplicarCurados();fecharLateral('modelos');return}
+    case 'duplicar':{const c=curLimpo(m);c.id='cur-local-'+Date.now().toString(36);c.nome=(m.nome||'Modelo')+' (cópia)';c.status='em curadoria';c.verificado_em='';const L=curLocal();L.modelos=L.modelos||{};L.modelos[c.id]=c;curSalvarLocal(L);curContagem();aplicarCurados();abrirCurado(c.id,true);toast('Cópia criada neste navegador.');return}
+    case 'exportar':exportarCurados();return;
+    default:return;
+  }
+  curSujo();curRedesenharEditor();
+});
+function exportarCurados(){
+  if(CUR&&CUR_EDIT&&CUR.sujo&&!confirm('O modelo aberto tem alterações não salvas, que não entrarão no arquivo. Exportar assim mesmo?'))return;
+  const obj={schema:'gabA.curados',schema_versao:1,descricao:'Modelos-matriz verificados pelo gabinete. Cada bloco reúne o texto do voto e o que ele exige no relatório, na ementa e no acórdão; blocos opcionais e alternativos viram escolhas no preenchimento. Sintaxe: {{campo}} = dado dos autos; [?id:texto] entra só com a opção ou o bloco \'id\' marcado; [?!id:texto], só com ele desmarcado. Curadoria manual: nada aqui é gerado por algoritmo.',modelos:curLista().map(curLimpo)};
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)+'\n'],{type:'application/json'}));a.download='curados.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+  toast('curados.json baixado. Publique em modelos/ no GitHub (Add file › Upload files) para que todos vejam.',6500);
+}
+function novoCurado(){
+  const id='cur-local-'+Date.now().toString(36);
+  const m={id,nome:'Novo modelo-matriz',materia:'',tipo:'acórdão',especie:'Apelação',resultado:'',status:'em curadoria',verificado_em:'',paradigma:'',descricao:'',ementa_cabecalho:'',ementa_cabecalho_fim:'',opcoes:[],
+    blocos:[{id:'contro',grupo:'Controvérsia',titulo:'Delimitação da controvérsia',modo:'fixo',voto:[{pos:'contro',texto:'Senhores Desembargadores, a controvérsia envolve discutir {{…}}.'}],ementa:[{pos:'questao',texto:'{{questão em discussão, no infinitivo}}'}]},
+            {id:'dispositivo',grupo:'Dispositivo',titulo:'Dispositivo',modo:'fixo',voto:[{pos:'disp',texto:'Ante o exposto, {{dispositivo}}.'}],ementa:[{pos:'dispositivo',texto:'{{Apelação desprovida.}}'}],acordao:[{pos:'texto',texto:'Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, {{resultado}}, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado.'}]}]};
+  const L=curLocal();L.modelos=L.modelos||{};L.modelos[id]=m;curSalvarLocal(L);
+  if(MOD_FONTE!=='curados')setModFonte('curados');else aplicarCurados();curContagem();abrirCurado(id,true);
+}
+/* rascunho de modelo-matriz verificado a partir de um modelo sugerido: cada parágrafo do voto vira um bloco fixo;
+   a ementa-modelo é distribuída por seção; o curador depois reagrupa, marca opcionais e vincula */
+function curDeSugerido(id){
+  const s=MOD_POR.get(id); if(!s) return;
+  const t=s.modelo, c=cortesMinuta(t), pars=x=>String(x||'').split(/\n+/).map(y=>y.trim()).filter(Boolean);
+  const voto=c.fund?pars(t.slice(c.fund[0],c.fund[1])).filter(p=>!/^(V\s?O\s?T\s?O|DECIS[ÃA]O|DECIDO\.?|É o relatório\.?|É O RELATÓRIO\.?|É como voto\.?)$/i.test(p)):pars(t);
+  const posDe=(p,k)=>/^(Ante o exposto|Em face do exposto|Diante do exposto|Pelo exposto)/i.test(p)?'disp':/sucumb[êe]ncia recursal|honor[áa]rios/i.test(p)?'honor':k===0?'contro':'jurid';
+  const ROT_POS=Object.fromEntries(CUR_POS.voto), blocos=[];
+  voto.forEach((p,k)=>{const pos=posDe(p,k),ult=blocos[blocos.length-1];
+    if(ult&&ult.voto[0].pos===pos)ult.voto.push({pos,texto:p});
+    else blocos.push({id:'b'+(blocos.length+1),grupo:ROT_POS[pos],titulo:ROT_POS[pos],modo:'fixo',voto:[{pos,texto:p}]})});
+  const em={id:'ementa-base',grupo:'Ementa',titulo:'Ementa do modelo-base (redistribuir pelos blocos)',modo:'fixo',ementa:[]};let cab='',sec='';
+  /* a base traz a ementa em linha única: quebra antes dos títulos, dos itens numerados e das referências */
+  const emTxt=String(s.ementa_modelo||(c.ementa?t.slice(c.ementa[0],c.ementa[1]):''))
+    .replace(/\s+(?=(?:I|II|III|IV)\.\s+(?:Caso em exame|Quest[ãa]o em discuss[ãa]o|Raz[õo]es de decidir|Dispositivo)\b)/gi,'\n')
+    .replace(/(Caso em exame|Quest[ãa]o em discuss[ãa]o|Raz[õo]es de decidir|Dispositivo(?! relevante)(?!s relevantes))\s+(?=\d{1,2}\.\s)/gi,'$1\n')
+    .replace(/\s+(?=\d{1,2}\.\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ])/g,'\n')
+    .replace(/\s*(?=(?:Dispositivos relevantes citados|Jurisprud[êe]ncia relevante citada)\s*:)/g,'\n');
+  pars(emTxt).forEach(p=>{
+    if(/^E\s?M\s?E\s?N\s?T\s?A$/i.test(p))return;
+    if(!cab&&!sec&&p===p.toUpperCase()&&/[A-Z]{4}/.test(p)){cab=p;return}
+    const h=p.match(/^([IVX]+)\.\s+(Caso|Quest|Raz|Disp)/i);if(h){sec=h[1];return}
+    const d=p.match(/^Dispositivos relevantes citados:\s*(.*)$/i),j=p.match(/^Jurisprud[êe]ncia relevante citada:\s*(.*)$/i);
+    if(d){em.ementa.push({pos:'dispositivos',texto:d[1]});return} if(j){em.ementa.push({pos:'jurisprudencia',texto:j[1]});return}
+    if(/^_{3,}$/.test(p))return;
+    const x=p.replace(/^\d+\.\s*/,'').replace(/\s*[-_]{3,}\s*$/,'');
+    em.ementa.push({pos:{I:'caso',II:'questao',III:'razoes',IV:'dispositivo'}[sec]||'razoes',texto:x});
+  });
+  if(em.ementa.length)blocos.push(em);
+  const ac=c.acordao?pars(t.slice(c.acordao[0],c.acordao[1])).filter(p=>!/^AC[ÓO]RD[ÃA]O$/i.test(p)):[];
+  if(ac.length)blocos.push({id:'acordao',grupo:'Acórdão',titulo:'Acórdão',modo:'fixo',acordao:ac.map(x=>({pos:'texto',texto:x}))});
+  const nid='cur-local-'+Date.now().toString(36);
+  const m={id:nid,nome:s.nome,materia:s.tema||'',tipo:s.tipo,especie:s.especie,resultado:s.resultado,status:'em curadoria',verificado_em:'',paradigma:s.processo_modelo||'',descricao:`Rascunho criado a partir do modelo sugerido ${s.id} (${s.frequencia} decisões). Reagrupe os parágrafos em blocos, marque opcionais e alternativas e vincule ementa e relatório.`,ementa_cabecalho:cab,ementa_cabecalho_fim:'',opcoes:[],blocos};
+  const L=curLocal();L.modelos=L.modelos||{};L.modelos[nid]=m;curSalvarLocal(L);
+  setModFonte('curados');abrirCurado(nid,true);toast('Rascunho criado em “Verificados”, só neste navegador. Organize os blocos e salve.',6500);
+}
+
 /* ---------- trechos vinculados (modelos/trechos.json) ----------
    Curadoria do gabinete: cada trecho escolhido no voto leva junto o texto correspondente do relatório e da ementa.
    [?id:texto] entra só com a opção/trecho 'id' marcado; [?!id:texto], só com ele desmarcado; {{campo}} vira [campo]. */
@@ -1762,7 +2150,7 @@ function tvHTML(m){
   if(!TRECHOS){carregarTrechos().then(()=>{if(MIN_MODO==='matriz'&&$('mxTv')&&MXT){$('mxTv').outerHTML=tvHTML(m);atualizarMinuta()}});return '<div id="mxTv"></div>'}
   if(!TRECHOS.length) return '<div id="mxTv"></div>';
   const tv=tvEstado(m), M=tvMat(), ROT={voto:'voto',relatorio:'relatório',ementa:'ementa'};
-  const opts=['<option value="">— nenhuma matéria —</option>',...TRECHOS.map(x=>`<option value="${esc(x.id)}"${M&&x.id===M.id?' selected':''}>${esc(x.nome)}</option>`)].join('');
+  if(!M) return '<div id="mxTv"></div>';   // matéria definida pelo modelo; sem matéria cadastrada, não há trechos
   let corpo='';
   if(M){
     const grupos=[...new Set(M.trechos.map(t=>t.grupo))];
@@ -1771,9 +2159,8 @@ function tvHTML(m){
         const onde=Object.keys(ROT).filter(s=>(t[s]||[]).length).map(s=>ROT[s]).join(' · ');
         return `<label class="mx-b"><input type="checkbox" data-tvt="${esc(t.id)}"${tv.sel.has(t.id)?' checked':''}><span class="mx-t"><b>${esc(t.titulo)}</b> <span class="meta">${onde}</span>${t.nota?`<br><small>${esc(t.nota)}</small>`:''}</span></label>`}).join('')).join('');
   }
-  return `<div class="mx-sec" id="mxTv"><div class="mx-h">Trechos vinculados <span class="meta">voto · relatório · ementa</span></div>
-    <div style="padding:6px 10px"><select id="tvMat" class="inp" style="height:28px;max-width:100%">${opts}</select>
-    <p class="ajuda" style="margin:4px 0 0">Cada trecho marcado entra no voto e leva junto o texto correspondente do relatório e da ementa. As opções acendem as partes condicionais nas três seções; a gratuidade segue o relatório.</p></div>${corpo}</div>`;
+  return `<div class="mx-sec" id="mxTv"><div class="mx-h">Trechos vinculados <span class="meta">${esc(M.nome)}</span></div>
+    <div style="padding:6px 10px"><p class="ajuda" style="margin:0">Cada trecho marcado entra no voto e leva junto o texto correspondente do relatório e da ementa. As opções acendem as partes condicionais nas três seções; a gratuidade segue o relatório.</p></div>${corpo}</div>`;
 }
 /* caso em exame da ementa a partir do relatório montado */
 function casoEmExame(){
@@ -1853,24 +2240,25 @@ function montarRelatorio(){
     P.push(`Trata-se de ${ab} ${sentenca}.${hon?' '+hon.charAt(0).toUpperCase()+hon.slice(1)+'.':''}`);
     P.push(`Apelou ${rec}${recId?ID(recId):''}, ${razoes()}${ped?', pelo que requereu '+ped:''}.`);
   }
-  const tvOn=MIN_MODO==='matriz';   // trechos vinculados do voto que repercutem no relatório
-  if(tvOn) P.push(...tvPartes('relatorio','apos_recurso'));
+  const tvOn=vincOn();   // trechos vinculados do voto (modelo verificado ou modo Matriz) que repercutem no relatório
+  if(tvOn) P.push(...vincPartes('relatorio','apos_recurso'));
   const ag=esp==='ai'||esp==='agint', ct=vRel('rContra'), [ctId,pre]=vRel('rContraId').split(';').map(x=>(x||'').trim());
-  const ctc=tvOn?tvPartes('relatorio','contrarrazoes').join(''):'';
+  const ctc=tvOn?vincPartes('relatorio','contrarrazoes').join(''):'';
   if(esp!=='rn'&&esp!=='ed'){
     if(ctc&&ct!=='sim'&&ct!=='pre') P.push(`Houve ${ag?'contraminuta':'contrarrazões'}${ID(ctId)}${ctc}.`);
     else if(ct==='nao') P.push(ag?'Não houve contraminuta.':'Não houve contrarrazões.');
     else if(ct==='sim'||ct==='pre') P.push(`Houve ${ag?'contraminuta':'contrarrazões'}${ID(ctId)}${ct==='pre'?`, com arguição preliminar de ${pre||'[preliminar]'}`:''}${ctc}.`);
   }
-  if(tvOn) P.push(...tvPartes('relatorio','antes_mpf'));
+  if(tvOn) P.push(...vincPartes('relatorio','antes_mpf'));
   const mp={desp:'opinou pelo desprovimento do recurso',prov:'opinou pelo provimento do recurso',pross:'opinou pelo prosseguimento do feito, abstendo-se de manifestação sobre o mérito',desn:'opinou pela desnecessidade de sua intervenção'}[vRel('rMpf')];
   if(mp) P.push(`A Procuradoria Regional da República ${mp}${vRel('rMpfId')?ID(vRel('rMpfId')):''}.`);
   const ou=vRel('rOutros'); if(ou) P.push(...ou.split(/\n+/).map(x=>x.trim()).filter(Boolean));
+  if(tvOn) P.push(...vincPartes('relatorio','fim'));
   return P.join('\n\n');
 }
 
 /* ---------- editor ---------- */
-function gerarTexto(){const g=$('gerador');if(!g)return '';const m=MOD_POR.get(g.dataset.m);return MIN_MODO==='matriz'?textoMatriz(m):textoPadrao(m)}
+function gerarTexto(){const g=$('gerador');if(!g)return '';if(CUR&&!CUR_EDIT)return textoCurado();const m=MOD_POR.get(g.dataset.m);return MIN_MODO==='matriz'?textoMatriz(m):textoPadrao(m)}
 function textoMinuta(){return $('minEd')?$('minEd').value:''}
 function estadoEditor(){
   const ed=$('minEd'); if(!ed) return;
@@ -1880,6 +2268,7 @@ function estadoEditor(){
   const pd=pendenciasMinuta(t), b=$('edPend');
   if(b){b.classList.toggle('zero',!pd.length);b.innerHTML=pd.length?`⚠ ${pd.length} campo${pd.length>1?'s':''} pendente${pd.length>1?'s':''}`:'✓ sem campos pendentes'}
   progressoCampos();
+  renderPrevia();
 }
 function pendenciasMinuta(t){return [...String(t||'').matchAll(/\[[^\]\n]{1,80}\]/g)].filter(x=>!/^\[(sic|\.\.\.|…)\]$/i.test(x[0]))}
 function irProximoCampo(){const ed=$('minEd');if(!ed)return;const pd=pendenciasMinuta(ed.value);if(!pd.length)return;
@@ -1919,7 +2308,7 @@ function regerar(sec='tudo'){
   toast(sec==='tudo'?'Texto inteiro recomposto. ↶ Desfazer disponível.':'Parte recomposta; o restante foi mantido. ↶ Desfazer disponível.')}
 let campoAtivo=null;
 document.addEventListener('focusin',e=>{if(e.target.closest&&e.target.closest('#gerador')&&(e.target.dataset.k!=null||e.target.id==='minEd'||e.target.dataset.mxf))campoAtivo=e.target});
-document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.id!=='minEd'&&!e.target.dataset.mxl)atualizarMinuta()});
+document.addEventListener('input',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.id!=='minEd'&&!e.target.dataset.mxl&&!e.target.classList.contains('pv-in'))atualizarMinuta()});
 document.addEventListener('change',e=>{if(e.target.closest&&e.target.closest('#gerador')&&e.target.tagName==='SELECT')atualizarMinuta()});
 async function inserirCitacao(id){
   const x=POR_ID.get(id); try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o precedente.');return}
@@ -1930,7 +2319,7 @@ async function inserirCitacao(id){
   toast('Citação inserida.');
 }
 function baixarMinuta(){
-  const g=$('gerador'); const m=MOD_POR.get(g.dataset.m); 
+  const g=$('gerador'); const m=MOD_POR.get(g.dataset.m)||{id:g.dataset.cur||'minuta'}; 
   const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:12pt;line-height:1.5}p{text-align:justify;margin:0 0 10pt;text-indent:2cm}p.c{text-align:center;text-indent:0;font-weight:bold}</style></head><body>${textoMinuta().split(/\n{2,}/).map(par=>`<p${/^(DECISÃO|RELATÓRIO|VOTO|EMENTA|ACÓRDÃO|DECIDO\.?|É O RELATÓRIO\.?)$/i.test(par.trim())?' class="c"':''}>${esc(par.trim()).replace(/\n/g,'<br>')}</p>`).join('')}</body></html>`;
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['﻿'+html],{type:'application/msword'}));a.download=`minuta_${m.id}.doc`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
 }
