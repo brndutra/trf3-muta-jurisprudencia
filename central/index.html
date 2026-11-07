@@ -395,7 +395,9 @@ textarea.editor:focus{border-color:color-mix(in srgb,var(--f-minuta) 60%,transpa
 .pv-f{background:rgba(255,210,0,.30);border-bottom:1px dashed #b98a00;padding:0 3px;border-radius:3px;cursor:pointer;font-style:italic}
 .pv-f:hover,.pv-f:focus{background:rgba(255,210,0,.55);outline:none}
 .pv-f input{font:inherit;font-style:normal;border:1px solid #b98a00;border-radius:3px;padding:0 4px;min-width:22ch;background:var(--panel)}
-#modFonte button span{opacity:.75;font-weight:600}
+#modFonte button span,.mod-fonte2 button span{opacity:.75;font-weight:600}
+.mod-fonte2{margin-left:auto!important;margin-right:6px}
+.mod-fonte2+.dx{margin-left:0}
 #mMod.fonte-cur aside.filtros>*{opacity:.35;pointer-events:none}
 #mMod.fonte-cur #btnVistaLista,#mMod.fonte-cur #btnModoArvTab{display:none}
 .cur-nota{color:var(--c-ink2);font-style:italic}
@@ -410,9 +412,38 @@ textarea.editor:focus{border-color:color-mix(in srgb,var(--f-minuta) 60%,transpa
 .ce-meta{margin:6px 0}
 .ce-o{padding:6px 10px;border-top:1px solid var(--line)}
 .ce-add{padding:6px 10px}
+.ce-lb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:7px 10px;border-top:1px solid var(--line);border-left:4px solid hsl(var(--bh) 55% 52%)}
+.ce-lb.hl{background:hsl(var(--bh) 60% 50% / .08)}
+.ce-dot{width:14px;height:14px;border-radius:50%;border:0;background:hsl(var(--bh) 55% 52%);cursor:pointer;flex:none}
+.ce-onde{font-size:11px}
+.ce-mais summary{cursor:pointer}
+.ce-esq{display:flex;flex-direction:column;gap:12px}
+.ce-parte{border:1px solid var(--line2);border-radius:10px;background:var(--panel);padding:10px 12px}
+.ce-tit{font:800 12px Figtree,Inter,system-ui,sans-serif;letter-spacing:.14em;text-align:center;margin:2px 0 8px}
+.ce-fixo{font:13.5px/1.5 var(--serif);color:var(--c-ink2);padding:4px 10px;margin:4px 0;border-left:2px dotted var(--line2)}
+.ce-slot{border:1px dashed var(--line2);border-radius:8px;padding:6px 8px;margin:6px 0;background:var(--panel2)}
+.ce-slot.vazio{opacity:.8;padding:3px 8px}
+.ce-slot.vazio .ce-slot-h .meta{display:none}
+.ce-slot .ce-slot{margin:6px 0 2px;background:var(--panel)}
+.ce-slot-h{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ce-pos{font:700 11.5px Figtree,Inter,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--f-minuta)}
+.ce-add-sel{height:26px!important;width:auto!important;font-size:12px!important;padding:0 6px!important}
+.ce-card{border:1px solid var(--line2);border-left:5px solid hsl(var(--bh) 55% 52%);border-radius:8px;background:var(--panel);padding:6px 8px;margin:6px 0}
+.ce-card.hl{box-shadow:0 0 0 2px hsl(var(--bh) 55% 52% / .55)}
+.ce-card.apaga{opacity:.45}
+.ce-ch{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:4px}
+.ce-chip{font:700 12px Figtree,Inter,system-ui,sans-serif;color:hsl(var(--bh) 55% 38%);cursor:pointer}
+.ce-mover{height:26px!important;width:auto!important;max-width:230px;font-size:11.5px!important}
+.ce-alt{border:1px solid color-mix(in srgb,var(--f-minuta) 50%,transparent);border-radius:9px;padding:6px 8px;margin:6px 0;background:color-mix(in srgb,var(--f-minuta) 6%,transparent)}
+.ce-alt-h{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ce-alt-l{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0 8px}
+.ce-sec>summary{cursor:pointer}
 .ce-p{display:grid;grid-template-columns:1fr auto;gap:4px 6px;margin:6px 0;padding:6px;border:1px dashed var(--line2);border-radius:8px}
 .ce-p select{grid-column:1/-1}
 .ce-ta{width:100%;font:14px/1.5 var(--serif);resize:vertical}
+#apoioBox iframe{display:block;width:100%;height:72vh;border:0;border-top:1px solid var(--line);background:#fff}
+#apoioBlk>summary{display:flex;align-items:center;gap:8px}
+.apoio-ext{margin-left:auto;font:600 11px Inter,system-ui,sans-serif;text-transform:none;letter-spacing:0;color:var(--f-minuta)}
 .tv-ops{display:flex;flex-wrap:wrap;gap:4px 14px;padding:6px 10px;border-top:1px solid var(--line);font:600 12px Figtree,Inter,system-ui,sans-serif;color:var(--c-ink2)}
 .tv-ops input{width:auto!important;margin-right:4px}
 .tv-g{font:800 9.5px Figtree,Inter,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--c-ink2);padding:6px 10px 2px;border-top:1px solid var(--line)}
@@ -991,7 +1022,7 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
   <section class="lista">
     <div class="lbar">
       <div class="fac-tit"><button type="button" class="lista-tog" onclick="alternarListaModelos()" title="Recolher/expandir a lista de modelos">«</button><i>II</i>Modelos <span>· extraídos das decisões do gabinete — escolha, preencha, gere</span>
-        <div class="vista-mod" role="group" id="modFonte" aria-label="Banco de modelos"><button type="button" data-fonte="curados" aria-pressed="false" onclick="setModFonte('curados')" title="Modelos-matriz verificados pelo gabinete: blocos vinculados a voto, relatório, ementa e acórdão">✓ Verificados <span id="ctCur">…</span></button><button type="button" data-fonte="sugeridos" aria-pressed="false" onclick="setModFonte('sugeridos')" title="Modelos sugeridos pela recorrência dos trechos nas decisões">Sugeridos</button></div>
+        <div class="vista-mod" role="group" id="modFonte" aria-label="Banco de modelos"><button type="button" data-fonte="matriz" aria-pressed="false" onclick="setModFonte('matriz')" title="Modelos-matriz verificados pelo gabinete: blocos vinculados a voto, relatório, ementa e acórdão">✓ Matriz <span class="ctMat">…</span></button><button type="button" data-fonte="rascunhos" aria-pressed="false" onclick="setModFonte('rascunhos')" title="Modelos-matriz em elaboração: criados do zero ou convertidos de sugestões, ainda não verificados">✎ Rascunhos <span class="ctRas">…</span></button><button type="button" data-fonte="sugeridos" aria-pressed="false" onclick="setModFonte('sugeridos')" title="Sugestões extraídas pela recorrência dos trechos nas decisões">Sugestões <span class="ctSug">…</span></button></div>
         <div class="vista-mod" role="group" aria-label="Exibição dos modelos"><button type="button" id="btnVistaLista" aria-pressed="true" onclick="alternarModoArvore(false)" title="Lista de modelos com filtros">☷ Lista</button><button type="button" id="btnModoArvTab" aria-pressed="false" onclick="alternarModoArvore(true)" title="Modelos organizados por assunto (Alt+3)">◇ Árvore</button></div></div>
       <div class="qwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input class="inp" id="mq" placeholder='Buscar modelos — ex.: deserção, "perda superveniente", BPC' autocomplete="off" spellcheck="false"></div>
@@ -1028,6 +1059,8 @@ function baseDados(){
 }
 const LOCAL=new Map(); // caminho relativo a dados/ -> File (modo pasta local)
 
+/* nome novo do arquivo, com recuo ao antigo enquanto o antigo existir no repositório */
+async function lerGzNovo(novo,antigo,onProg){try{return await lerGz(novo,onProg)}catch(e){return lerGz(antigo,onProg)}}
 async function lerGz(caminho,onProg){
   let buf;
   if(LOCAL.size){
@@ -1441,14 +1474,14 @@ const STOPB=new Set('para pela pelo pelos pelas como sobre entre demais outros o
 let MOD_IDF=null, MODS=null, MOD_POR=new Map(), modF={fase:'TRMS',tipo:'',esp:'',res:'',min:20}, modFilt=[], modSel=null;
 async function carregarModelos(){
   if(MODS) return MODS;
-  const j=await lerGz('../modelos/modelos.json.gz');
+  const j=await lerGzNovo('../modelos/sugestoes.json.gz','../modelos/modelos.json.gz');
   MODS=j.modelos; MODS.forEach(m=>{MOD_POR.set(m.id,m); m._txt=semAcento([m.nome,m.tema,(m.palavras_chave||[]).join(' '),m.abertura,(m.ementa_modelo||'').slice(0,700),m.modelo.replace(/\[[^\]]*\]/g,' ').slice(0,6000)].join(' '))});
-  $('ctMod').textContent=MODS.length.toLocaleString('pt-BR');
+  $('ctMod').textContent=MODS.length.toLocaleString('pt-BR');try{curContagem()}catch(e){}
   return MODS;
 }
 async function abrirModelos(){
-  carregarMatrizes(); carregarCurados().then(()=>{curContagem();if(MOD_FONTE==='curados')aplicarCurados()});
-  document.querySelectorAll('#modFonte button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fonte===MOD_FONTE)));$('mMod').classList.toggle('fonte-cur',MOD_FONTE==='curados');modFonteRotulo();
+  carregarMatrizes(); carregarCurados().then(()=>{curContagem();if(fonteCur())aplicarCurados()});
+  document.querySelectorAll('[data-fonte]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fonte===MOD_FONTE)));$('mMod').classList.toggle('fonte-cur',fonteCur());modFonteRotulo();
   if(!MODS){$('mResumo').textContent='carregando modelos…';try{await carregarModelos()}catch(e){$('mResumo').textContent='Falha ao carregar modelos: '+e.message;return}preencherModSelects()}
   aplicarModelos();
 }
@@ -1460,7 +1493,7 @@ function preencherModSelects(){
   $('mfRes').innerHTML='<option value="">Todos</option>'+op(cnt('resultado'),modF.res);
 }
 function aplicarModelos(){
-  if(MOD_FONTE==='curados'){if(CURADOS)aplicarCurados();return}
+  if(fonteCur()){if(CURADOS)aplicarCurados();return}
   if(!MODS) return;
   const c=parseConsulta($('mq').value.trim());
   const preM=MODS.filter(m=>(!modF.fase||m.fase===modF.fase)&&(!modF.tipo||m.tipo===modF.tipo)&&(!modF.esp||m.especie===modF.esp)&&(!modF.res||m.resultado===modF.res)&&m.frequencia>=modF.min&&(c.vazia||casa(m._txt+' '+semAcento(m.modelo.slice(0,4000)),c)))
@@ -1490,7 +1523,7 @@ let mdeb;$('mq').addEventListener('input',()=>{clearTimeout(mdeb);mdeb=setTimeou
 /* =====================================================================
    GERADOR DE MINUTAS — relatório estruturado · modelo padrão ou matriz ·
    editor de modelos · painel de apoio independente em /central/apoio/.
-   Fonte exclusiva dos modelos: modelos/modelos.json.gz.
+   Fonte exclusiva dos modelos: modelos/sugestoes.json.gz.
    ===================================================================== */
 let MIN_MODO='padrao';        // 'padrao' | 'matriz'
 let ED_DIRTY=false;           // o editor foi alterado à mão
@@ -1506,6 +1539,36 @@ function abrirApoioMinuta(){
   const origin=location.origin;
   [500,1300,2800].forEach(ms=>setTimeout(()=>{try{if(!w.closed)w.postMessage({type:'cmt-apoio-minuta',texto},origin)}catch(e){}},ms));
 }
+/* ---------- Diretrizes · consulta e apoio, como painel do Preenchimento ----------
+   O mesmo módulo de /central/apoio/, em modo embutido (?embed=1): recebe a minuta a cada alteração e devolve as
+   correções aplicadas; “página ↗” mantém a versão independente. */
+function apoioBlkHTML(){
+  return `<details class="min-blk" id="apoioBlk"${LS.get('acv_apoio_aberto')?' open':''}><summary>Diretrizes · consulta e apoio <a href="#" class="apoio-ext" onclick="event.preventDefault();event.stopPropagation();abrirApoioMinuta()" title="Abrir o painel em página própria">página ↗</a></summary><div id="apoioBox"></div></details>`;
+}
+function apoioMontar(){
+  const box=$('apoioBox'); if(!box||box.firstChild) return;
+  box.innerHTML='<iframe id="apoioFr" src="./apoio/?embed=1" title="Diretrizes · consulta e apoio"></iframe>';
+  $('apoioFr').addEventListener('load',()=>apoioEnviar(true));
+}
+let APOIO_T=null, APOIO_ULT=null;
+function apoioEnviar(ja){
+  const fr=$('apoioFr'), blk=$('apoioBlk'); if(!fr||!blk||!blk.open) return;
+  clearTimeout(APOIO_T); APOIO_T=setTimeout(()=>{const t=textoMinuta(); if(!ja&&t===APOIO_ULT)return; APOIO_ULT=t;
+    try{fr.contentWindow.postMessage({type:'cmt-apoio-minuta',texto:t},location.origin)}catch(e){}},ja?0:400);
+}
+function abrirApoioPainel(){
+  const blk=$('apoioBlk'); if(!blk) return; const g=$('gerador'); if(g&&g.classList.contains('side-min'))alternarPainelCampos(false);
+  blk.open=true; apoioMontar(); apoioEnviar(true); setTimeout(()=>blk.scrollIntoView({behavior:'smooth',block:'start'}),60);
+}
+document.addEventListener('toggle',e=>{if(e.target.id!=='apoioBlk')return;LS.set('acv_apoio_aberto',e.target.open?'1':'');if(e.target.open){apoioMontar();apoioEnviar(true)}},true);
+window.addEventListener('message',ev=>{
+  if(ev.origin!==location.origin||!ev.data) return; const ed=$('minEd'); if(!ed) return;
+  if(ev.data.type==='cmt-apoio-retorno'&&typeof ev.data.texto==='string'&&ev.data.texto!==ed.value){
+    ED_HIST.push(ed.value); if(ED_HIST.length>20)ED_HIST.shift(); ed.value=ev.data.texto; APOIO_ULT=ed.value; ED_DIRTY=true;
+    if($('btnDesfazer'))$('btnDesfazer').disabled=false; estadoEditor(); toast('Correção das diretrizes aplicada à minuta. ↶ Desfazer disponível.');
+  }
+  if(ev.data.type==='cmt-apoio-ir'){vistaEditor('texto');const i=+ev.data.i||0,n=+ev.data.len||0;ed.focus();ed.setSelectionRange(i,i+n);ed.scrollTop=Math.max(0,(ed.value.slice(0,i).split('\n').length-4)*18)}
+});
 /* ---------- abertura do modelo ---------- */
 function abrirModelo(id){
   const m=MOD_POR.get(id); modSel=id; $('mMod').classList.remove('sem-detalhe');
@@ -1517,8 +1580,8 @@ function abrirModelo(id){
     <div class="dtit"><span class="tag ${m.tipo==='acórdão'?'A':'M'}">${m.tipo==='acórdão'?'Modelo de acórdão':'Modelo de monocrática'}</span><span class="proc">${esc(m.id)}</span>
       <div class="acs-mode" id="minModo" style="margin-left:10px" title="Texto-modelo: a decisão-base da matéria com campos a preencher · Matriz: esqueleto do tipo de julgamento, com versões alternativas e trechos opcionais conforme a situação">
         <button data-m="padrao" class="${MIN_MODO==='padrao'?'on':''}">TEXTO-MODELO</button><button data-m="matriz" class="${MIN_MODO==='matriz'?'on':''}">MATRIZ</button></div>
-      <button class="btn sm" style="margin-left:8px" onclick="curDeSugerido('${m.id}')" title="Cria, em Verificados, um rascunho de modelo-matriz a partir deste modelo sugerido, para organizar em blocos vinculados">✎ Criar modelo-matriz verificado</button>
-      <button class="dx" onclick="fecharLateral('modelos')">×</button></div>
+      <button class="btn sm" style="margin-left:8px" onclick="curDeSugerido('${m.id}')" title="Converte esta sugestão em rascunho de modelo-matriz (aba Rascunhos), para organizar em blocos vinculados">⇢ Converter em modelo-matriz</button>
+      ${modFonteHTML()}<button class="dx" onclick="fecharLateral('modelos')">×</button></div>
     <div style="font-weight:700;margin:6px 0 2px">${esc(m.nome)}</div>
     <div class="meta">${esc(m.fase_nome)} · ${m.frequencia} decisões (${esc(fmtData(m.periodo[0]))} a ${esc(fmtData(m.periodo[1]))}) · texto-base <a href="#" onclick="irParaDecisao('${m.fonte_modelo}');return false">${esc(m.processo_modelo)}</a>${fonte?` (${fmtData(fonte.d)})`:''}</div>
   </div>
@@ -1535,7 +1598,7 @@ function abrirModelo(id){
         <button type="button" class="pend" id="edPend" onclick="irProximoCampo()" title="Ir ao próximo [campo] pendente no editor"></button>
         <button class="btn sm pri" onclick="if(conferirPendencias('copiar'))copiarTexto($('minEd').value,'Minuta copiada.')">Copiar</button>
         <button class="btn sm" onclick="if(conferirPendencias('baixar'))baixarMinuta()">Baixar .doc</button>
-        <button class="btn sm" onclick="abrirApoioMinuta()" title="Abrir o painel independente para conferir e revisar a minuta">Diretrizes · consulta e apoio ↗</button>
+        <button class="btn sm" onclick="abrirApoioPainel()" title="Abre, no Preenchimento, o painel de diretrizes que confere a minuta">Diretrizes · consulta e apoio</button>
         <span class="meta" id="edConta" style="margin-left:auto"></span>
       </div>
       <textarea id="minEd" class="editor" spellcheck="true"></textarea><div id="minPrev" class="previa" hidden></div>
@@ -1554,13 +1617,14 @@ function abrirModelo(id){
         </div>
         <div id="relForm" hidden>${relatorioHTML(m,null)}</div></details>
       <details class="min-blk" open id="minCamposD"><summary id="minCamposS">${MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento'}</summary><div id="minCampos">${MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m)}</div></details>
+      ${apoioBlkHTML()}
     </aside>
   </div>`;
   $('mDet').scrollTop=0; if(LS.get('acv_side_min'))alternarPainelCampos(true); if(LS.get('acv_lista_min'))alternarListaModelos(true);
   $('minModo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MIN_MODO=b.dataset.m;$('minModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('minCampos').innerHTML=MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m);$('minCamposS').textContent=MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento';if(MIN_MODO==='matriz'){const r=document.querySelector('input[name="relFonte"][value="montar"]');if(r&&!r.checked){r.checked=true;$('relForm').hidden=false}}$('minCamposD').open=true;atualizarMinuta()});
   $('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor()});
   if(MIN_MODO==='matriz'){const r=document.querySelector('input[name="relFonte"][value="montar"]');if(r){r.checked=true;$('relForm').hidden=false}}
-  atualizarMinuta(); vistaEditor(ED_VISTA);
+  atualizarMinuta(); vistaEditor(ED_VISTA); if($('apoioBlk')&&$('apoioBlk').open)apoioMontar();
 }
 
 /* ---------- modo PADRÃO: campos do modelo ---------- */
@@ -1618,7 +1682,7 @@ function textoPadrao(m){
 let MATRIZES=null, MXT=null;
 async function carregarMatrizes(){
   if(MATRIZES) return MATRIZES;
-  try{MATRIZES=(await lerGz('../modelos/matrizes.json.gz')).matrizes}catch(e){MATRIZES=[]}
+  try{MATRIZES=(await lerGzNovo('../modelos/tipos-julgamento.json.gz','../modelos/matrizes.json.gz')).matrizes}catch(e){MATRIZES=[]}
   return MATRIZES;
 }
 const SEC_ROT={relatorio:'Relatório',fundamentacao:'Fundamentação',dispositivo:'Dispositivo',ementa:'Ementa',acordao:'Acórdão'};
@@ -1770,13 +1834,19 @@ function textoMatriz(m){
 }
 
 /* =====================================================================
-   MODELOS-MATRIZ VERIFICADOS (modelos/curados.json)
+   MODELOS-MATRIZ (modelos/indice.json + modelos/matriz/*.json + modelos/rascunhos/*.json)
    Banco curado pelo gabinete: blocos de texto que levam juntos voto, relatório, ementa e acórdão;
    blocos fixos, opcionais e alternativos viram escolhas no preenchimento. Os "Modelos sugeridos"
-   (modelos.json.gz) continuam sendo a extração automática por recorrência.
-   Edição: no navegador (rascunho local) → Exportar curados.json → publicar em modelos/.
+   (sugestoes.json.gz) continuam sendo a extração automática por recorrência.
+   Um arquivo por modelo: verificados em modelos/matriz/, rascunhos em modelos/rascunhos/;
+   modelos/indice.json lista o que a Central carrega. modelos/modelos-matriz.json fica só como reserva.
+   Edição: no navegador (rascunho local) → Exportar (zip com a pasta modelos/) → publicar no GitHub.
    ===================================================================== */
-let CURADOS=null, MOD_FONTE=LS.get('acv_mod_fonte')||'curados', CUR=null, CUR_EDIT=false;
+let CURADOS=null, MOD_FONTE=({curados:'matriz'})[LS.get('acv_mod_fonte')]||LS.get('acv_mod_fonte')||'matriz', CUR=null, CUR_EDIT=false;
+if(!['matriz','rascunhos','sugeridos'].includes(MOD_FONTE)) MOD_FONTE='matriz';
+const fonteCur=(f=MOD_FONTE)=>f==='matriz'||f==='rascunhos';
+const ehVerif=m=>!!m&&m.status==='verificado';            // fora disso (inclusive o antigo “em curadoria”), é rascunho
+const fonteDe=m=>ehVerif(m)?'matriz':'rascunhos';
 const CUR_LS='acv_curados_local';
 const CUR_SEC={voto:'Voto',relatorio:'Relatório',ementa:'Ementa',acordao:'Acórdão'};
 const CUR_POS={
@@ -1787,7 +1857,16 @@ const CUR_POS={
 const CUR_MODOS=[['fixo','fixo — sempre entra'],['opcional','opcional — marcar no preenchimento'],['alternativa','alternativa — um por grupo']];
 async function carregarCurados(){
   if(CURADOS) return CURADOS;
-  try{const r=await fetch(new URL('../modelos/curados.json',baseDados()).href,{cache:'no-cache'});CURADOS=r.ok?((await r.json()).modelos||[]):[]}catch(e){CURADOS=[]}
+  const url=c=>new URL('../modelos/'+c,baseDados()).href;
+  try{
+    const r=await fetch(url('indice.json'),{cache:'no-cache'}); if(!r.ok) throw 0;
+    const ix=await r.json(), ent=[...(ix.matriz||[]),...(ix.rascunhos||[])];
+    const L=await Promise.all(ent.map(e=>fetch(url(e.arquivo),{cache:'no-cache'}).then(x=>x.ok?x.json():null).catch(()=>null)));
+    CURADOS=L.filter(Boolean).map(m=>{const o={...m};delete o.schema;delete o.schema_versao;return o});
+    const falt=ent.length-CURADOS.length; if(falt) setTimeout(()=>toast(`${falt} arquivo(s) listado(s) em modelos/indice.json não foram encontrados.`,6000),300);
+  }catch(e){
+    CURADOS=[];for(const c of ['modelos-matriz.json','curados.json']){try{const r=await fetch(url(c),{cache:'no-cache'});if(r.ok){CURADOS=(await r.json()).modelos||[];break}}catch(e2){}}
+  }
   return CURADOS;
 }
 function curLocal(){try{return JSON.parse(LS.get(CUR_LS)||'{}')||{}}catch(e){return {}}}
@@ -1804,29 +1883,33 @@ const curLimpo=m=>{const o=JSON.parse(JSON.stringify(m));delete o._local;return 
 /* ---------- lista: Verificados × Sugeridos ---------- */
 function setModFonte(f){
   MOD_FONTE=f; LS.set('acv_mod_fonte',f);
-  document.querySelectorAll('#modFonte button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fonte===f)));
-  $('mMod').classList.toggle('fonte-cur',f==='curados');
+  document.querySelectorAll('[data-fonte]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fonte===f)));
+  $('mMod').classList.toggle('fonte-cur',fonteCur(f));
   modFonteRotulo();
-  if(f==='curados'&&typeof MODO_ARV!=='undefined'&&MODO_ARV) alternarModoArvore(false);
-  if(f==='curados'&&!CURADOS){$('mResumo').textContent='carregando modelos verificados…';carregarCurados().then(()=>{curContagem();aplicarModelos()});return}
+  if(fonteCur(f)&&typeof MODO_ARV!=='undefined'&&MODO_ARV) alternarModoArvore(false);
+  if(fonteCur(f)&&!CURADOS){$('mResumo').textContent='carregando modelos verificados…';carregarCurados().then(()=>{curContagem();aplicarModelos()});return}
   aplicarModelos();
 }
 function modFonteRotulo(){
   const f=MOD_FONTE, sub=document.querySelector('#mMod .fac-tit>span');
-  if(sub) sub.textContent=f==='curados'?'· modelos-matriz verificados pelo gabinete — blocos vinculados a voto, relatório, ementa e acórdão':'· sugeridos pela recorrência dos trechos nas decisões — escolha, preencha, gere';
+  if(sub) sub.textContent={matriz:'· modelos-matriz verificados pelo gabinete — blocos vinculados a voto, relatório, ementa e acórdão',rascunhos:'· modelos-matriz em elaboração — criados do zero ou convertidos de sugestões',sugeridos:'· sugestões extraídas pela recorrência dos trechos nas decisões — preencha ou converta em modelo-matriz'}[f]||'';
 }
-function curContagem(){const el=$('ctCur');if(el)el.textContent=CURADOS?curLista().length:'…'}
+function modFonteHTML(){
+  return `<div class="vista-mod mod-fonte2" role="group" aria-label="Banco de modelos">${[['matriz','✓ Matriz','ctMat'],['rascunhos','✎ Rascunhos','ctRas'],['sugeridos','Sugestões','ctSug']].map(([f,r,c])=>`<button type="button" data-fonte="${f}" aria-pressed="${MOD_FONTE===f}" onclick="setModFonte('${f}')">${r} <span class="${c}">…</span></button>`).join('')}</div>`;
+}
+function curContagem(){const L=CURADOS?curLista():null,set=(id,v)=>document.querySelectorAll('.'+id).forEach(el=>el.textContent=v);
+  set('ctMat',L?L.filter(ehVerif).length:'…');set('ctRas',L?L.filter(m=>!ehVerif(m)).length:'…');set('ctSug',MODS?MODS.length:'…')}
 function aplicarCurados(){
   const c=parseConsulta($('mq').value.trim());
-  const L=curLista().filter(m=>c.vazia||casa(semAcento([m.nome,m.materia,m.especie,m.resultado,m.descricao,m.status].join(' ')),c));
-  $('mResumo').innerHTML=`<b>${L.length}</b> modelo${L.length===1?'':'s'}-matriz`;
-  $('mResumo2').innerHTML=`<button class="btn sm" onclick="novoCurado()">+ Novo modelo-matriz</button> <button class="btn sm" onclick="exportarCurados()" title="Baixa o curados.json com todos os modelos verificados, incluídas as edições deste navegador, para publicar em modelos/">⤓ Exportar curados.json</button>`;
+  const L=curLista().filter(m=>fonteDe(m)===MOD_FONTE).filter(m=>c.vazia||casa(semAcento([m.nome,m.materia,m.especie,m.resultado,m.descricao,m.status].join(' ')),c));
+  $('mResumo').innerHTML=MOD_FONTE==='matriz'?`<b>${L.length}</b> modelo${L.length===1?'':'s'}-matriz`:`<b>${L.length}</b> rascunho${L.length===1?'':'s'}`;
+  $('mResumo2').innerHTML=`<button class="btn sm" onclick="novoCurado()">+ Novo modelo-matriz</button> <button class="btn sm" onclick="exportarCurados()" title="Baixa um .zip com a pasta modelos/ (indice.json, matriz/ e rascunhos/, um arquivo por modelo), incluídas as edições deste navegador">⤓ Exportar modelos (.zip)</button>`;
   $('mRes').innerHTML=L.map(m=>`<li class="proc${CUR&&CUR.id===m.id?' sel':''}" data-cur="${esc(m.id)}"><div class="crow">
     <div class="c0"><span class="tp ${m.tipo==='monocrática'?'M':'A'}" title="${esc(m.tipo||'acórdão')}">${m.tipo==='monocrática'?'M':'A'}</span></div>
-    <div class="c1" style="min-width:0"><span class="num" style="font-family:Figtree,Inter,sans-serif;font-weight:800;white-space:normal;line-height:1.25" title="${esc(m.nome)}">${esc(m.nome)}</span><span class="sub">${m.status==='verificado'?'✓ verificado':'em curadoria'} · ${esc(m.especie||'')} · ${esc(m.resultado||'')}</span></div>
+    <div class="c1" style="min-width:0"><span class="num" style="font-family:Figtree,Inter,sans-serif;font-weight:800;white-space:normal;line-height:1.25" title="${esc(m.nome)}">${esc(m.nome)}</span><span class="sub">${ehVerif(m)?'✓ verificado'+(m.verificado_em?' em '+esc(m.verificado_em):''):'rascunho'} · ${esc(m.especie||'')} · ${esc(m.resultado||'')}</span></div>
     <div class="c2 csep"><span class="ass" title="${esc(m.nome)}">${esc(m.nome)}</span>
       <div class="ctags"><span class="ct2 res">${esc(m.resultado||'')}</span><span class="ct2">${(m.blocos||[]).length} blocos</span>${(m.opcoes||[]).length?`<span class="ct2">${m.opcoes.length} opções</span>`:''}${m._local?`<span class="ct2 dash">${m._local==='novo'?'novo · só neste navegador':'editado · só neste navegador'}</span>`:''}</div></div>
-  </div></li>`).join('')||'<div class="vazio">Nenhum modelo-matriz verificado. Crie um com “+ Novo modelo-matriz” ou, em Sugeridos, abra um modelo e use “Criar modelo-matriz verificado”.</div>';
+  </div></li>`).join('')||(MOD_FONTE==='matriz'?'<div class="vazio">Nenhum modelo-matriz verificado. Os rascunhos passam para cá ao serem marcados como verificados.</div>':'<div class="vazio">Nenhum rascunho. Crie um com “+ Novo modelo-matriz” ou, em Sugestões, abra um modelo e use “Converter em modelo-matriz”.</div>');
 }
 $('mRes').addEventListener('click',e=>{const li=e.target.closest('li[data-cur]');if(li)abrirCurado(li.dataset.cur)});
 
@@ -1858,7 +1941,7 @@ function questaoEmenta(tq){
 }
 function ementaCurado(){
   const m=CUR.m, cab=[m.ementa_cabecalho,...curPartes('ementa','cabecalho'),m.ementa_cabecalho_fim].map(x=>String(x||'').trim()).filter(Boolean).join(' ')||'[CABEÇALHO DA EMENTA]';
-  const caso=[casoEmExame(),...curPartes('ementa','caso')].filter(Boolean).join(' ')||'[caso em exame: recurso, decisão recorrida e pedido]';
+  const caso=[m.caso_do_modelo?'':casoEmExame(),...curPartes('ementa','caso')].filter(Boolean).join(' ')||'[caso em exame: recurso, decisão recorrida e pedido]';
   const raz=curPartes('ementa','razoes'), disp=curPartes('ementa','dispositivo'), d=curPartes('ementa','dispositivos'), j=curPartes('ementa','jurisprudencia');
   let n=0; const N=t=>`${++n}. ${t}`;
   return [cab,'I. Caso em exame',N(caso),'II. Questão em discussão',N(questaoEmenta(curPartes('ementa','questao'))),
@@ -1886,9 +1969,9 @@ function abrirCurado(id,editar){
 function curCabecalho(){
   const m=CUR.m;
   return `<div class="dhead">
-    <div class="dtit"><span class="tag A">${m.status==='verificado'?'Modelo-matriz verificado':'Modelo-matriz em curadoria'}</span><span class="proc">${esc(m.id)}</span>
+    <div class="dtit"><span class="tag A">${ehVerif(m)?'Modelo-matriz verificado':'Rascunho de modelo-matriz'}</span><span class="proc">${esc(m.id)}</span>
       <div class="acs-mode" style="margin-left:10px"><button type="button" class="${CUR_EDIT?'':'on'}" onclick="curModo(false)">PREENCHER</button><button type="button" class="${CUR_EDIT?'on':''}" onclick="curModo(true)">✎ EDITAR MODELO</button></div>
-      <button class="dx" onclick="fecharLateral('modelos')">×</button></div>
+      ${modFonteHTML()}<button class="dx" onclick="fecharLateral('modelos')">×</button></div>
     <div style="font-weight:700;margin:6px 0 2px">${esc(m.nome)}</div>
     <div class="meta">${esc(m.materia||'')} · ${esc(m.especie||'')} · ${esc(m.resultado||'')}${m.paradigma?` · paradigma ${esc(m.paradigma)}`:''}${m.status==='verificado'&&m.verificado_em?` · verificado em ${esc(m.verificado_em)}`:''}${CUR.local?` · <b>${CUR.local==='novo'?'novo':'editado'} só neste navegador</b> — exporte o curados.json para publicar`:''}</div>
   </div>`;
@@ -1897,7 +1980,7 @@ function curModo(ed){if(CUR_EDIT&&!ed&&CUR.sujo&&!confirm('Há alterações não
 function curDesenhar(){
   $('mDet').innerHTML=curCabecalho()+(CUR_EDIT?curEditorHTML():curGeradorHTML());
   $('mDet').scrollTop=0;
-  if(!CUR_EDIT){$('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor()});if(LS.get('acv_side_min'))alternarPainelCampos(true);atualizarMinuta();vistaEditor(ED_VISTA)}
+  if(!CUR_EDIT){$('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor()});if(LS.get('acv_side_min'))alternarPainelCampos(true);atualizarMinuta();vistaEditor(ED_VISTA);if($('apoioBlk')&&$('apoioBlk').open)apoioMontar()}
 }
 function edbarHTML(){
   return `<div class="edbar">
@@ -1910,7 +1993,7 @@ function edbarHTML(){
         <button type="button" class="pend" id="edPend" onclick="irProximoCampo()" title="Ir ao próximo [campo] pendente"></button>
         <button class="btn sm pri" onclick="if(conferirPendencias('copiar'))copiarTexto($('minEd').value,'Minuta copiada.')">Copiar</button>
         <button class="btn sm" onclick="if(conferirPendencias('baixar'))baixarMinuta()">Baixar .doc</button>
-        <button class="btn sm" onclick="abrirApoioMinuta()" title="Abrir o painel independente para conferir e revisar a minuta">Diretrizes · consulta e apoio ↗</button>
+        <button class="btn sm" onclick="abrirApoioPainel()" title="Abre, no Preenchimento, o painel de diretrizes que confere a minuta">Diretrizes · consulta e apoio</button>
         <span class="meta" id="edConta" style="margin-left:auto"></span>
       </div>`;
 }
@@ -1927,6 +2010,7 @@ function curGeradorHTML(){
       <div class="min-side-h"><b>Preenchimento</b><button type="button" class="btn sm" onclick="alternarPainelCampos()" title="Ocultar/mostrar o painel">⇥</button></div>
       <details class="min-blk" open><summary>Relatório</summary><input type="radio" name="relFonte" value="montar" checked hidden><div id="relForm">${relatorioHTML(m,null)}</div></details>
       <details class="min-blk" open><summary>Blocos do modelo</summary><div id="curBlocos">${curBlocosHTML()}</div></details>
+      ${apoioBlkHTML()}
     </aside>
   </div>`;
 }
@@ -2001,44 +2085,92 @@ document.addEventListener('dblclick',e=>{
 /* ---------- modo de edição do modelo ---------- */
 const curOpcoesPos=(sel)=>Object.entries(CUR_POS).map(([s,L])=>`<optgroup label="${CUR_SEC[s]}">${L.map(([p,r])=>`<option value="${s}|${p}"${sel===s+'|'+p?' selected':''}>${CUR_SEC[s]} · ${esc(r)}</option>`).join('')}</optgroup>`).join('');
 function curEditorHTML(){
-  const m=CUR.m, I=(path,val,ph,w)=>`<input class="inp" data-ce="${path}" value="${esc(val||'')}" placeholder="${esc(ph||'')}"${w?` style="${w}"`:''}>`;
+  const m=CUR.m, B=m.blocos=m.blocos||[], mono=m.tipo==='monocrática';
+  const I=(path,val,ph,w)=>`<input class="inp" data-ce="${path}" value="${esc(val||'')}" placeholder="${esc(ph||'')}"${w?` style="${w}"`:''}>`;
   const T=(path,val,ph,r)=>`<textarea class="inp ce-ta" data-ce="${path}" rows="${r||3}" placeholder="${esc(ph||'')}">${esc(val||'')}</textarea>`;
-  const blocos=(m.blocos||[]).map((b,i)=>{
-    const partes=Object.keys(CUR_SEC).flatMap(s=>(b[s]||[]).map((p,j)=>({s,j,p})));
-    return `<div class="ce-b" data-bi="${i}">
-      <div class="ce-bh"><b>${i+1}.</b>${I(`blocos.${i}.titulo`,b.titulo,'título do bloco','flex:2')}${I(`blocos.${i}.grupo`,b.grupo,'grupo (ex.: Acordo)','flex:1')}
-        <select class="inp" data-ce="blocos.${i}.modo" style="width:auto">${CUR_MODOS.map(([v,r])=>`<option value="${v}"${(b.modo||'fixo')===v?' selected':''}>${r}</option>`).join('')}</select>
-        ${b.modo==='alternativa'?I(`blocos.${i}.alt`,b.alt,'grupo da alternativa','width:150px'):''}
-        ${b.modo!=='fixo'?`<label class="meta" style="white-space:nowrap"><input type="checkbox" data-ce="blocos.${i}.padrao"${b.padrao?' checked':''}> marcado por padrão</label>`:''}
-        <span class="sp"></span><button class="btn sm" data-cea="up" data-i="${i}" title="Subir">↑</button><button class="btn sm" data-cea="down" data-i="${i}" title="Descer">↓</button><button class="btn sm" data-cea="del-bloco" data-i="${i}" title="Excluir bloco">✕</button></div>
-      <div class="ce-meta"><span class="meta">id</span>${I(`blocos.${i}.id`,b.id,'identificador (usado em [?id:…])','width:220px')}<span class="meta">nota</span>${I(`blocos.${i}.nota`,b.nota,'observação para quem preenche','flex:1')}</div>
-      ${partes.map(({s,j,p})=>`<div class="ce-p"><select class="inp" data-cep="${i}|${s}|${j}" style="width:100%">${curOpcoesPos(s+'|'+p.pos)}</select>${T(`blocos.${i}.${s}.${j}.texto`,p.texto,'texto — {{campo}} para dados dos autos; [?id:texto] condicional',Math.min(10,Math.max(2,Math.ceil(String(p.texto||'').length/110))))}<span style="display:flex;flex-direction:column;gap:4px">${j>0?`<button class="btn sm" data-cea="separar" data-i="${i}" data-s="${s}" data-j="${j}" title="Separa este texto e os seguintes desta seção num novo bloco, logo abaixo">↧ novo bloco</button>`:''}<button class="btn sm" data-cea="del-parte" data-i="${i}" data-s="${s}" data-j="${j}" title="Excluir este texto">✕</button></span></div>`).join('')}
-      <div class="ce-add"><span class="meta">+ texto em</span>${Object.keys(CUR_SEC).map(s=>`<button class="btn sm" data-cea="add-parte" data-i="${i}" data-s="${s}">${CUR_SEC[s]}</button>`).join('')}</div>
-    </div>`}).join('');
+  const cor=i=>`--bh:${(i*67+200)%360}`;
+  const modoRot=b=>b.modo==='alternativa'?'alternativa':b.modo==='opcional'?'opcional':'fixo';
+  const onde=b=>Object.keys(CUR_SEC).filter(s=>(b[s]||[]).length).map(s=>CUR_SEC[s].toLowerCase()).join(' · ')||'sem textos';
+  /* legenda: propriedades de cada bloco (os textos ficam no esqueleto) */
+  const legenda=B.map((b,i)=>`<div class="ce-lb${CUR.hl===b.id?' hl':''}" style="${cor(i)}">
+      <button class="ce-dot" data-cea="hl" data-i="${i}" title="Destacar no esqueleto todos os textos deste bloco"></button>
+      ${I(`blocos.${i}.titulo`,b.titulo,'título do bloco','flex:2;min-width:180px')}${I(`blocos.${i}.grupo`,b.grupo,'grupo','width:130px')}
+      <select class="inp" data-ce="blocos.${i}.modo" style="width:auto">${CUR_MODOS.map(([v,r])=>`<option value="${v}"${(b.modo||'fixo')===v?' selected':''}>${r}</option>`).join('')}</select>
+      ${b.modo==='alternativa'?I(`blocos.${i}.alt`,b.alt,'grupo da alternativa','width:140px'):''}
+      ${b.modo!=='fixo'?`<label class="meta" style="white-space:nowrap"><input type="checkbox" data-ce="blocos.${i}.padrao"${b.padrao?' checked':''}> padrão</label>`:''}
+      <span class="meta ce-onde">${onde(b)}</span>
+      <details class="ce-mais"><summary class="meta">id e nota</summary><div class="ce-meta">${I(`blocos.${i}.id`,b.id,'id (usado em [?id:…])','width:200px')}${I(`blocos.${i}.nota`,b.nota,'observação para quem preenche','flex:1;min-width:220px')}</div></details>
+      <button class="btn sm" data-cea="del-bloco" data-i="${i}" title="Excluir o bloco e todos os seus textos">✕</button></div>`).join('');
+  /* cartão de um texto no esqueleto */
+  const cartao=(i,s,j,p)=>{const b=B[i];return `<div class="ce-card${CUR.hl&&CUR.hl!==b.id?' apaga':''}${CUR.hl===b.id?' hl':''}" style="${cor(i)}">
+      <div class="ce-ch"><span class="ce-chip" data-cea="hl" data-i="${i}" title="Destacar o bloco">${esc(b.titulo||b.id)}</span><span class="meta">${modoRot(b)}${b.modo==='alternativa'?' · '+esc(b.alt||''):''}</span><span class="sp"></span>
+        <select class="inp ce-mover" data-cep="${i}|${s}|${j}" title="Mover este texto para outro lugar">${curOpcoesPos(s+'|'+p.pos)}</select>
+        <button class="btn sm" data-cea="part-up" data-i="${i}" data-s="${s}" data-p="${p.pos}" title="Antes, nesta posição">↑</button><button class="btn sm" data-cea="part-down" data-i="${i}" data-s="${s}" data-p="${p.pos}" title="Depois, nesta posição">↓</button>
+        ${b.modo!=='alternativa'?`<button class="btn sm" data-cea="alt-add" data-i="${i}" data-s="${s}" data-p="${p.pos}" title="Cria uma alternativa a este bloco (uma ou outra entra na minuta), já com cópia dos textos dele em todas as seções">⇄ alternativa</button>`:''}
+        <button class="btn sm" data-cea="del-parte" data-i="${i}" data-s="${s}" data-j="${j}" title="Excluir este texto">✕</button></div>
+      ${T(`blocos.${i}.${s}.${j}.texto`,p.texto,s==='ementa'&&p.pos==='questao'?'oração no infinitivo: definir… / verificar…':'texto — {{campo}} para dados dos autos; [?id:texto] condicional',Math.min(9,Math.max(2,Math.ceil(String(p.texto||'').length/120))))}
+    </div>`};
+  /* uma posição do esqueleto: textos na ordem dos blocos; alternativas do mesmo grupo juntas */
+  const slot=(s,pos,rot,dica)=>{
+    const itens=[];B.forEach((b,i)=>(b[s]||[]).forEach((p,j)=>{if(p.pos===pos)itens.push({i,j,p,b})}));
+    const feitos=new Set();let h='';
+    itens.forEach(x=>{
+      if(x.b.modo==='alternativa'){const g=x.b.alt||x.b.grupo||'alt';if(feitos.has(g))return;feitos.add(g);
+        const alt=itens.filter(y=>y.b.modo==='alternativa'&&(y.b.alt||y.b.grupo||'alt')===g);
+        h+=`<div class="ce-alt"><div class="ce-alt-h"><b>⇄ Alternativas · ${esc(g)}</b><span class="meta">entra uma no preenchimento; cada alternativa leva junto os textos dela nas outras seções</span><span class="sp"></span><button class="btn sm" data-cea="alt-novo" data-alt="${esc(g)}" data-s="${s}" data-p="${pos}">+ alternativa</button></div><div class="ce-alt-l">${alt.map(y=>cartao(y.i,s,y.j,y.p)).join('')}</div></div>`}
+      else h+=cartao(x.i,s,x.j,x.p)});
+    const add=`<select class="inp ce-add-sel" data-ces="${s}|${pos}"><option value="">+ texto aqui…</option><option value="__novo">em novo bloco</option>${B.length?`<optgroup label="em bloco existente (vincula)">${B.map((b,i)=>`<option value="${i}">${esc(b.titulo||b.id)} — ${onde(b)}</option>`).join('')}</optgroup>`:''}</select>`;
+    return `<div class="ce-slot${itens.length?'':' vazio'}"><div class="ce-slot-h"><span class="ce-pos">${esc(rot)}</span>${dica?`<span class="meta">${dica}</span>`:''}<span class="sp"></span>${add}</div>${h}</div>`};
+  const fixo=t=>`<div class="ce-fixo">${t}</div>`;
+  const P=s=>Object.fromEntries(CUR_POS[s]);
+  const rel=`<div class="ce-parte"><div class="ce-tit">${mono?'DECISÃO — relatório':'RELATÓRIO'}</div>
+      ${fixo('Trata-se de apelação à sentença (ID …) que … Condenou … <i>— montado pelo formulário</i>')}
+      ${fixo('Apelou … (ID …), alegando, em suma: (1) …; e (2) … <i>— formulário</i>')}
+      ${slot('relatorio','apos_recurso',P('relatorio').apos_recurso,'ex.: recurso adesivo')}
+      ${fixo('Houve contrarrazões (ID …)<b>⟨complemento⟩</b>. <i>— formulário</i>')}
+      ${slot('relatorio','contrarrazoes',P('relatorio').contrarrazoes,'começa com vírgula: “, com alegação de …”')}
+      ${slot('relatorio','antes_mpf',P('relatorio').antes_mpf)}
+      ${fixo('A Procuradoria Regional da República opinou … <i>— formulário</i>')}
+      ${slot('relatorio','fim',P('relatorio').fim)}
+      ${mono?'':fixo('É o relatório.')}</div>`;
+  const voto=`<div class="ce-parte"><div class="ce-tit">${mono?'Fundamentação e dispositivo':'VOTO'}</div>${CUR_POS.voto.map(([p,r])=>slot('voto',p,r,p==='disp'?'substitui o dispositivo padrão':p==='honor'?'':'')).join('')}${mono?'':fixo('É como voto.')}</div>`;
+  const ementa=mono?'':`<div class="ce-parte"><div class="ce-tit">EMENTA</div>
+      <div class="ce-slot"><div class="ce-slot-h"><span class="ce-pos">Cabeçalho</span><span class="meta">base + termos dos blocos marcados + fim</span></div>
+        ${T('ementa_cabecalho',m.ementa_cabecalho,'DIREITO … . CLASSE. TEMA. …',2)}
+        ${slot('ementa','cabecalho','termos dos blocos','um ou mais termos em maiúsculas, com ponto')}
+        ${I('ementa_cabecalho_fim',m.ementa_cabecalho_fim,'fim do cabeçalho — ex.: DESPROVIMENTO.')}</div>
+      ${fixo('<b>I. Caso em exame</b> — 1. montado pelo relatório (espécie, contexto e resultado da decisão recorrida)')}
+      ${slot('ementa','caso','I. Caso em exame · complemento','ex.: recurso adesivo')}
+      ${slot('ementa','questao','II. Questão em discussão','uma questão: “A questão em discussão consiste em …”; duas ou mais: “Há duas questões em discussão: (i) …; e (ii) …”')}
+      ${slot('ementa','razoes','III. Razões de decidir','itens numerados na ordem dos blocos')}
+      ${slot('ementa','dispositivo','IV. Dispositivo')}
+      ${fixo('__________')}
+      ${slot('ementa','dispositivos','Dispositivos relevantes citados','unidos por “; ”')}
+      ${slot('ementa','jurisprudencia','Jurisprudência relevante citada','unidos por “; ”')}</div>`;
+  const acordao=mono?'':`<div class="ce-parte"><div class="ce-tit">ACÓRDÃO</div>${slot('acordao','texto','Texto do acórdão','acompanha o dispositivo; use [?id:…] para variar')}</div>`;
   const opcoes=(m.opcoes||[]).map((o,k)=>`<div class="ce-o">${I(`opcoes.${k}.id`,o.id,'id','width:150px')}${I(`opcoes.${k}.rotulo`,o.rotulo,'rótulo exibido','flex:1')}<select class="inp" data-ce="opcoes.${k}.situacao" style="width:auto"><option value="">marcação manual</option><option value="gratuidade"${o.situacao==='gratuidade'?' selected':''}>segue a gratuidade do relatório</option></select><button class="btn sm" data-cea="del-opcao" data-k="${k}">✕</button></div>`).join('');
   return `<div class="ce">
     <div class="ce-bar"><b id="ceEstado">${CUR.sujo?'alterações não salvas':'sem alterações'}</b><span class="sp"></span>
       <button class="btn sm pri" data-cea="salvar">Salvar neste navegador</button>
       <button class="btn sm" data-cea="verificar" title="Marca o modelo como verificado, com a data de hoje">✓ Marcar verificado</button>
       <button class="btn sm" data-cea="duplicar">Duplicar</button>
-      <button class="btn sm" data-cea="exportar">⤓ Exportar curados.json</button>
+      <button class="btn sm" data-cea="exportar">⤓ Exportar modelos (.zip)</button>
       ${CUR.local?'<button class="btn sm" data-cea="descartar" title="Descarta a versão deste navegador e volta à publicada">Descartar edição local</button>':''}
       <button class="btn sm" data-cea="excluir">Excluir</button></div>
-    <p class="ajuda">As alterações ficam neste navegador até você exportar o <code>curados.json</code> e publicá-lo em <code>modelos/</code> no GitHub. Sintaxe: <code>{{campo}}</code> = dado dos autos; <code>[?id:texto]</code> entra com a opção ou o bloco <i>id</i> marcado; <code>[?!id:texto]</code>, com ele desmarcado.</p>
-    <div class="ce-sec"><div class="mx-h">Identificação</div><div class="ce-grid">
+    <p class="ajuda">O esqueleto abaixo é a própria minuta: cada texto fica no lugar em que entra. Um <b>bloco</b> reúne textos em lugares diferentes (voto, relatório, ementa, acórdão), que entram ou saem juntos; use “+ texto aqui… › em bloco existente” para vincular. <b>⇄ alternativa</b> cria outra redação para o mesmo ponto — no preenchimento, entra uma. As alterações ficam neste navegador até exportar os modelos (.zip). Sintaxe: <code>{{campo}}</code> dado dos autos; <code>[?id:texto]</code> com a opção ou o bloco <i>id</i> marcado; <code>[?!id:texto]</code> com ele desmarcado.</p>
+    <details class="ce-sec"${m.nome==='Novo modelo-matriz'?' open':''}><summary class="mx-h">Identificação <span class="meta">${esc(m.especie||'')} · ${esc(m.resultado||'')} · ${esc(m.status||'')}</span></summary><div class="ce-grid">
       <label>Nome</label>${I('nome',m.nome)}
       <label>Matéria</label>${I('materia',m.materia)}
       <label>Tipo</label><select class="inp" data-ce="tipo">${['acórdão','monocrática'].map(v=>`<option${(m.tipo||'acórdão')===v?' selected':''}>${v}</option>`).join('')}</select>
       <label>Espécie</label>${I('especie',m.especie,'Apelação')}
       <label>Resultado</label>${I('resultado',m.resultado,'desprovimento')}
-      <label>Situação</label><select class="inp" data-ce="status">${['em curadoria','verificado'].map(v=>`<option${(m.status||'em curadoria')===v?' selected':''}>${v}</option>`).join('')}</select>
+      <label>Situação</label><select class="inp" data-ce="status">${[['rascunho','rascunho'],['verificado','verificado (modelo-matriz)']].map(([v,r])=>`<option value="${v}"${(ehVerif(m)?'verificado':'rascunho')===v?' selected':''}>${r}</option>`).join('')}</select>
       <label>Paradigma</label>${I('paradigma',m.paradigma,'processo e sessão')}
       <label>Hipótese de aplicação</label>${T('descricao',m.descricao,'quando usar este modelo',2)}
-      <label>Cabeçalho da ementa</label>${T('ementa_cabecalho',m.ementa_cabecalho,'DIREITO … . … .',2)}
-      <label>Fim do cabeçalho</label>${I('ementa_cabecalho_fim',m.ementa_cabecalho_fim,'ex.: DESPROVIMENTO.')}
-    </div></div>
-    <div class="ce-sec"><div class="mx-h">Opções do preenchimento <span class="meta">acendem trechos condicionais em todas as seções</span></div>${opcoes||'<p class="ajuda" style="padding:6px 10px">Nenhuma opção.</p>'}<div class="ce-add"><button class="btn sm" data-cea="add-opcao">+ opção</button></div></div>
-    <div class="ce-sec"><div class="mx-h">Blocos <span class="meta">${(m.blocos||[]).length} · cada bloco leva junto voto, relatório, ementa e acórdão</span></div>${blocos}<div class="ce-add"><button class="btn sm pri" data-cea="add-bloco">+ bloco</button></div></div>
+    </div></details>
+    <details class="ce-sec" open><summary class="mx-h">Opções do preenchimento <span class="meta">acendem textos condicionais em todas as seções</span></summary>${opcoes||'<p class="ajuda" style="padding:6px 10px">Nenhuma opção.</p>'}<div class="ce-add"><button class="btn sm" data-cea="add-opcao">+ opção</button></div></details>
+    <details class="ce-sec" open><summary class="mx-h">Blocos <span class="meta">${B.length} · ● destaca no esqueleto</span></summary>${legenda||'<p class="ajuda" style="padding:6px 10px">Nenhum bloco. Crie com “+ texto aqui…” no esqueleto.</p>'}</details>
+    <div class="ce-esq">${rel}${voto}${ementa}${acordao}</div>
   </div>`;
 }
 function curSet(path,v){const ks=path.split('.');let o=CUR.m;for(let i=0;i<ks.length-1;i++){const k=/^\d+$/.test(ks[i])?+ks[i]:ks[i];if(o[k]==null)o[k]=/^\d+$/.test(ks[i+1])?[]:{};o=o[k]}o[ks[ks.length-1]]=v}
@@ -2048,6 +2180,10 @@ document.addEventListener('input',e=>{const t=e.target;if(!CUR||!CUR_EDIT||!t.da
 document.addEventListener('change',e=>{
   const t=e.target;if(!CUR||!CUR_EDIT||!t.dataset)return;
   if(t.dataset.ce!=null&&(t.type==='checkbox'||t.tagName==='SELECT')){curSet(t.dataset.ce,t.type==='checkbox'?t.checked:t.value);curSujo();if(/\.modo$/.test(t.dataset.ce)||t.dataset.ce==='status')curRedesenharEditor();return}
+  if(t.dataset.ces!=null&&t.value!==''){const [sec,pos]=t.dataset.ces.split('|'),B=CUR.m.blocos=CUR.m.blocos||[],v=t.value;
+    if(v==='__novo'){let id='bloco',n=2;while(B.some(b=>b.id===id))id='bloco-'+n++;B.push({id,grupo:'',titulo:'Novo bloco',modo:'fixo',[sec]:[{pos,texto:''}]})}
+    else{const b=B[+v];(b[sec]=b[sec]||[]).push({pos,texto:''})}
+    curSujo();curRedesenharEditor();return}
   if(t.dataset.cep!=null){const [i,s,j]=t.dataset.cep.split('|'),[ns,np]=t.value.split('|'),b=CUR.m.blocos[+i],p=b[s].splice(+j,1)[0];p.pos=np;(b[ns]=b[ns]||[]).push(p);if(!b[s].length)delete b[s];curSujo();curRedesenharEditor()}
 });
 document.addEventListener('click',e=>{
@@ -2060,33 +2196,74 @@ document.addEventListener('click',e=>{
     case 'up':if(i>0)[m.blocos[i-1],m.blocos[i]]=[m.blocos[i],m.blocos[i-1]];break;
     case 'down':if(i<m.blocos.length-1)[m.blocos[i+1],m.blocos[i]]=[m.blocos[i],m.blocos[i+1]];break;
     case 'add-parte':{const s=a.dataset.s;(m.blocos[i][s]=m.blocos[i][s]||[]).push({pos:CUR_POS[s][0][0],texto:''});break}
+    case 'hl':{const id=m.blocos[i].id;CUR.hl=CUR.hl===id?null:id;curRedesenharEditor();return}
+    case 'part-up':case 'part-down':{const s=a.dataset.s,p=a.dataset.p,K=m.blocos.map((b,k)=>(b[s]||[]).some(x=>x.pos===p)?k:-1).filter(k=>k>=0),x=K.indexOf(i),alvo=K[act==='part-up'?x-1:x+1];
+      if(alvo==null)return;const [b]=m.blocos.splice(i,1);const t=m.blocos.indexOf(m.blocos[alvo>i?alvo-1:alvo]);m.blocos.splice(act==='part-up'?t:t+1,0,b);
+      toast('A ordem vale para o bloco inteiro: os demais textos dele (ementa, relatório) acompanham.',3500);break}
+    case 'alt-add':{const b=m.blocos[i],s=a.dataset.s,p=a.dataset.p;if(b.modo!=='alternativa'){b.modo='alternativa';b.alt=b.alt||b.id;b.padrao=true}
+      /* a alternativa nasce como cópia de todos os textos do bloco (voto, relatório, ementa, acórdão), para ser reescrita em paralelo */
+      const nv={id:ida(b.id+'-alt'),grupo:b.grupo||'',titulo:(b.titulo||b.id)+' (alternativa)',modo:'alternativa',alt:b.alt};
+      Object.keys(CUR_SEC).forEach(k=>{if((b[k]||[]).length)nv[k]=JSON.parse(JSON.stringify(b[k]))});if(!(nv[s]||[]).some(x=>x.pos===p))(nv[s]=nv[s]||[]).push({pos:p,texto:''});
+      m.blocos.splice(i+1,0,nv);toast('Alternativa criada com cópia de todos os textos do bloco; reescreva o que muda.',4500);break}
+    case 'alt-novo':{const g=a.dataset.alt,s=a.dataset.s,p=a.dataset.p,ult=m.blocos.map((b,k)=>b.modo==='alternativa'&&(b.alt||b.grupo||'alt')===g?k:-1).filter(k=>k>=0).pop();const ref=m.blocos[ult]||{};
+      m.blocos.splice(ult+1,0,{id:ida(g+'-alt'),grupo:ref.grupo||'',titulo:'Alternativa '+(m.blocos.filter(b=>b.modo==='alternativa'&&(b.alt||b.grupo||'alt')===g).length+1),modo:'alternativa',alt:g,[s]:[{pos:p,texto:''}]});break}
     case 'separar':{const b=m.blocos[i],s=a.dataset.s,mov=b[s].splice(+a.dataset.j);m.blocos.splice(i+1,0,{id:ida(b.id+'-b'),grupo:b.grupo||'',titulo:'Novo bloco',modo:b.modo||'fixo',[s]:mov});break}
     case 'del-parte':{const b=m.blocos[i],s=a.dataset.s;b[s].splice(+a.dataset.j,1);if(!b[s].length)delete b[s];break}
     case 'add-opcao':m.opcoes.push({id:'opcao'+(m.opcoes.length+1),rotulo:''});break;
     case 'del-opcao':m.opcoes.splice(+a.dataset.k,1);break;
     case 'verificar':m.status='verificado';m.verificado_em=new Date().toLocaleDateString('pt-BR');break;
-    case 'salvar':{const L=curLocal();L.modelos=L.modelos||{};L.modelos[m.id]=curLimpo(m);L.removidos=(L.removidos||[]).filter(x=>x!==m.id);curSalvarLocal(L);CUR.sujo=false;CUR.local=(CURADOS||[]).some(x=>x.id===m.id)?'editado':'novo';curRedesenharEditor();curContagem();if(MOD_FONTE==='curados')aplicarCurados();toast('Modelo salvo neste navegador. Exporte o curados.json para publicar.');return}
+    case 'salvar':{const L=curLocal();L.modelos=L.modelos||{};L.modelos[m.id]=curLimpo(m);L.removidos=(L.removidos||[]).filter(x=>x!==m.id);curSalvarLocal(L);CUR.sujo=false;CUR.local=(CURADOS||[]).some(x=>x.id===m.id)?'editado':'novo';curRedesenharEditor();curContagem();
+      if(fonteCur()){if(fonteDe(m)!==MOD_FONTE)setModFonte(fonteDe(m));else aplicarCurados()}
+      toast(ehVerif(m)?'Modelo-matriz salvo neste navegador (em “Matriz”). Exporte os modelos (.zip) para publicar.':'Rascunho salvo neste navegador. Exporte os modelos (.zip) para publicar.');return}
     case 'descartar':{if(!confirm('Descartar a versão deste navegador e voltar à publicada?'))return;const L=curLocal();if(L.modelos)delete L.modelos[m.id];curSalvarLocal(L);curContagem();aplicarCurados();if(curPorId(m.id))abrirCurado(m.id,true);else fecharLateral('modelos');return}
-    case 'excluir':{if(!confirm(`Excluir o modelo “${m.nome}”? A exclusão vale neste navegador e entra no próximo curados.json exportado.`))return;const L=curLocal();if(L.modelos)delete L.modelos[m.id];if((CURADOS||[]).some(x=>x.id===m.id))L.removidos=[...new Set([...(L.removidos||[]),m.id])];curSalvarLocal(L);CUR=null;curContagem();aplicarCurados();fecharLateral('modelos');return}
-    case 'duplicar':{const c=curLimpo(m);c.id='cur-local-'+Date.now().toString(36);c.nome=(m.nome||'Modelo')+' (cópia)';c.status='em curadoria';c.verificado_em='';const L=curLocal();L.modelos=L.modelos||{};L.modelos[c.id]=c;curSalvarLocal(L);curContagem();aplicarCurados();abrirCurado(c.id,true);toast('Cópia criada neste navegador.');return}
+    case 'excluir':{if(!confirm(`Excluir o modelo “${m.nome}”? A exclusão vale neste navegador e sai do índice no próximo .zip exportado.`))return;const L=curLocal();if(L.modelos)delete L.modelos[m.id];if((CURADOS||[]).some(x=>x.id===m.id))L.removidos=[...new Set([...(L.removidos||[]),m.id])];curSalvarLocal(L);CUR=null;curContagem();aplicarCurados();fecharLateral('modelos');return}
+    case 'duplicar':{const c=curLimpo(m);c.id='cur-local-'+Date.now().toString(36);c.nome=(m.nome||'Modelo')+' (cópia)';c.status='rascunho';c.verificado_em='';const L=curLocal();L.modelos=L.modelos||{};L.modelos[c.id]=c;curSalvarLocal(L);curContagem();aplicarCurados();abrirCurado(c.id,true);toast('Cópia criada neste navegador.');return}
     case 'exportar':exportarCurados();return;
     default:return;
   }
   curSujo();curRedesenharEditor();
 });
+const CUR_DESCR='Modelos-matriz do gabinete. Cada bloco reúne o texto do voto e o que ele exige no relatório, na ementa e no acórdão; blocos opcionais e alternativos viram escolhas no preenchimento. Sintaxe: {{campo}} = dado dos autos; [?id:texto] entra só com a opção ou o bloco \'id\' marcado; [?!id:texto], só com ele desmarcado. Curadoria manual: nada aqui é gerado por algoritmo.';
+const CRC_T=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+function crc32(u){let c=0xFFFFFFFF;for(let i=0;i<u.length;i++)c=CRC_T[(c^u[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0}
+function zipArq(arqs){ // zip sem compressão (store), nomes em UTF-8
+  const enc=new TextEncoder(), loc=[], cen=[]; let off=0;
+  const d=new Date(), dt=((d.getFullYear()-1980)<<9)|((d.getMonth()+1)<<5)|d.getDate(), tm=(d.getHours()<<11)|(d.getMinutes()<<5)|(d.getSeconds()>>1);
+  for(const [nome,txt] of arqs){
+    const n=enc.encode(nome), dados=enc.encode(txt), crc=crc32(dados);
+    const h=new DataView(new ArrayBuffer(30));
+    [[0,0x04034b50,4],[4,20,2],[6,0x0800,2],[8,0,2],[10,tm,2],[12,dt,2],[14,crc,4],[18,dados.length,4],[22,dados.length,4],[26,n.length,2],[28,0,2]].forEach(([o,v,t])=>t===4?h.setUint32(o,v,true):h.setUint16(o,v,true));
+    const c=new DataView(new ArrayBuffer(46));
+    [[0,0x02014b50,4],[4,20,2],[6,20,2],[8,0x0800,2],[10,0,2],[12,tm,2],[14,dt,2],[16,crc,4],[20,dados.length,4],[24,dados.length,4],[28,n.length,2],[30,0,2],[32,0,2],[34,0,2],[36,0,2],[38,0,4],[42,off,4]].forEach(([o,v,t])=>t===4?c.setUint32(o,v,true):c.setUint16(o,v,true));
+    loc.push(h,n,dados); cen.push(c,n); off+=30+n.length+dados.length;
+  }
+  const tc=cen.reduce((a,x)=>a+(x.byteLength),0), e=new DataView(new ArrayBuffer(22));
+  [[0,0x06054b50,4],[4,0,2],[6,0,2],[8,arqs.length,2],[10,arqs.length,2],[12,tc,4],[16,off,4],[20,0,2]].forEach(([o,v,t])=>t===4?e.setUint32(o,v,true):e.setUint16(o,v,true));
+  return new Blob([...loc,...cen,e],{type:'application/zip'});
+}
+function curArquivos(){
+  const L=curLista().map(curLimpo), arqs=[], ix={schema:'gabA.modelos-matriz.indice',schema_versao:1,atualizado_em:new Date().toISOString().slice(0,10),descricao:CUR_DESCR,
+    organizacao:'Um arquivo por modelo: modelos/matriz/ (verificados) e modelos/rascunhos/ (em elaboração). A Central carrega só o que este índice lista. Sugestões automáticas: modelos/sugestoes.json.gz (scripts/modelos.py). Tipos de julgamento automáticos: modelos/tipos-julgamento.json.gz (scripts/matrizes.py). Reserva num arquivo só: modelos/modelos-matriz.json.',matriz:[],rascunhos:[]};
+  L.forEach(m=>{const pasta=ehVerif(m)?'matriz':'rascunhos', arquivo=`${pasta}/${m.id}.json`;
+    ix[pasta].push({id:m.id,nome:m.nome,arquivo,status:ehVerif(m)?'verificado':'rascunho'});
+    arqs.push(['modelos/'+arquivo,JSON.stringify({schema:'gabA.modelo-matriz',schema_versao:1,...m},null,2)+'\n'])});
+  ['matriz','rascunhos'].forEach(k=>ix[k].sort((a,b)=>a.nome.localeCompare(b.nome,'pt')));
+  const reserva={schema:'gabA.curados',schema_versao:1,descricao:CUR_DESCR+' Reserva: a Central lê modelos/indice.json e os arquivos de modelos/matriz/ e modelos/rascunhos/; este arquivo só é usado se o índice faltar.',modelos:L};
+  return [['modelos/indice.json',JSON.stringify(ix,null,2)+'\n'],...arqs,['modelos/modelos-matriz.json',JSON.stringify(reserva,null,2)+'\n']];
+}
 function exportarCurados(){
   if(CUR&&CUR_EDIT&&CUR.sujo&&!confirm('O modelo aberto tem alterações não salvas, que não entrarão no arquivo. Exportar assim mesmo?'))return;
-  const obj={schema:'gabA.curados',schema_versao:1,descricao:'Modelos-matriz verificados pelo gabinete. Cada bloco reúne o texto do voto e o que ele exige no relatório, na ementa e no acórdão; blocos opcionais e alternativos viram escolhas no preenchimento. Sintaxe: {{campo}} = dado dos autos; [?id:texto] entra só com a opção ou o bloco \'id\' marcado; [?!id:texto], só com ele desmarcado. Curadoria manual: nada aqui é gerado por algoritmo.',modelos:curLista().map(curLimpo)};
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)+'\n'],{type:'application/json'}));a.download='curados.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
-  toast('curados.json baixado. Publique em modelos/ no GitHub (Add file › Upload files) para que todos vejam.',6500);
+  const arqs=curArquivos();
+  const a=document.createElement('a');a.href=URL.createObjectURL(zipArq(arqs));a.download='modelos-matriz.zip';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+  toast(`modelos-matriz.zip baixado (${arqs.length-2} modelos + índice + reserva). Descompacte e arraste a pasta modelos/ para a raiz do repositório no GitHub (Add file › Upload files). Arquivo que mudou de pasta: apague a cópia antiga — a Central só lê o que o índice lista.`,9000);
 }
 function novoCurado(){
   const id='cur-local-'+Date.now().toString(36);
-  const m={id,nome:'Novo modelo-matriz',materia:'',tipo:'acórdão',especie:'Apelação',resultado:'',status:'em curadoria',verificado_em:'',paradigma:'',descricao:'',ementa_cabecalho:'',ementa_cabecalho_fim:'',opcoes:[],
+  const m={id,nome:'Novo modelo-matriz',materia:'',tipo:'acórdão',especie:'Apelação',resultado:'',status:'rascunho',verificado_em:'',paradigma:'',descricao:'',ementa_cabecalho:'',ementa_cabecalho_fim:'',opcoes:[],
     blocos:[{id:'contro',grupo:'Controvérsia',titulo:'Delimitação da controvérsia',modo:'fixo',voto:[{pos:'contro',texto:'Senhores Desembargadores, a controvérsia envolve discutir {{…}}.'}],ementa:[{pos:'questao',texto:'{{questão em discussão, no infinitivo}}'}]},
             {id:'dispositivo',grupo:'Dispositivo',titulo:'Dispositivo',modo:'fixo',voto:[{pos:'disp',texto:'Ante o exposto, {{dispositivo}}.'}],ementa:[{pos:'dispositivo',texto:'{{Apelação desprovida.}}'}],acordao:[{pos:'texto',texto:'Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, {{resultado}}, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado.'}]}]};
   const L=curLocal();L.modelos=L.modelos||{};L.modelos[id]=m;curSalvarLocal(L);
-  if(MOD_FONTE!=='curados')setModFonte('curados');else aplicarCurados();curContagem();abrirCurado(id,true);
+  if(MOD_FONTE!=='rascunhos')setModFonte('rascunhos');else aplicarCurados();curContagem();abrirCurado(id,true);
 }
 /* rascunho de modelo-matriz verificado a partir de um modelo sugerido: cada parágrafo do voto vira um bloco fixo;
    a ementa-modelo é distribuída por seção; o curador depois reagrupa, marca opcionais e vincula */
@@ -2120,9 +2297,9 @@ function curDeSugerido(id){
   const ac=c.acordao?pars(t.slice(c.acordao[0],c.acordao[1])).filter(p=>!/^AC[ÓO]RD[ÃA]O$/i.test(p)):[];
   if(ac.length)blocos.push({id:'acordao',grupo:'Acórdão',titulo:'Acórdão',modo:'fixo',acordao:ac.map(x=>({pos:'texto',texto:x}))});
   const nid='cur-local-'+Date.now().toString(36);
-  const m={id:nid,nome:s.nome,materia:s.tema||'',tipo:s.tipo,especie:s.especie,resultado:s.resultado,status:'em curadoria',verificado_em:'',paradigma:s.processo_modelo||'',descricao:`Rascunho criado a partir do modelo sugerido ${s.id} (${s.frequencia} decisões). Reagrupe os parágrafos em blocos, marque opcionais e alternativas e vincule ementa e relatório.`,ementa_cabecalho:cab,ementa_cabecalho_fim:'',opcoes:[],blocos};
+  const m={id:nid,nome:s.nome,materia:s.tema||'',tipo:s.tipo,especie:s.especie,resultado:s.resultado,status:'rascunho',verificado_em:'',paradigma:s.processo_modelo||'',descricao:`Convertido da sugestão ${s.id} (${s.frequencia} decisões). Reagrupe os parágrafos em blocos, marque opcionais e alternativas e vincule ementa e relatório.`,ementa_cabecalho:cab,ementa_cabecalho_fim:'',opcoes:[],blocos};
   const L=curLocal();L.modelos=L.modelos||{};L.modelos[nid]=m;curSalvarLocal(L);
-  setModFonte('curados');abrirCurado(nid,true);toast('Rascunho criado em “Verificados”, só neste navegador. Organize os blocos e salve.',6500);
+  setModFonte('rascunhos');curContagem();abrirCurado(nid,true);toast('Convertido em rascunho de modelo-matriz (aba “Rascunhos”, só neste navegador). Organize os blocos, salve e marque como verificado.',6500);
 }
 
 /* ---------- trechos vinculados (modelos/trechos.json) ----------
@@ -2269,6 +2446,7 @@ function estadoEditor(){
   if(b){b.classList.toggle('zero',!pd.length);b.innerHTML=pd.length?`⚠ ${pd.length} campo${pd.length>1?'s':''} pendente${pd.length>1?'s':''}`:'✓ sem campos pendentes'}
   progressoCampos();
   renderPrevia();
+  apoioEnviar();
 }
 function pendenciasMinuta(t){return [...String(t||'').matchAll(/\[[^\]\n]{1,80}\]/g)].filter(x=>!/^\[(sic|\.\.\.|…)\]$/i.test(x[0]))}
 function irProximoCampo(){const ed=$('minEd');if(!ed)return;const pd=pendenciasMinuta(ed.value);if(!pd.length)return;
@@ -2327,7 +2505,7 @@ function baixarMinuta(){
 /* Auditoria de texto, léxico, roteiros e regras foram movidos para o painel Apoio. */
 
 /* Árvore jurídica do catálogo de modelos. Apenas classifica para navegação;
-   os textos e IDs são lidos exclusivamente de modelos/modelos.json.gz. */
+   os textos e IDs são lidos exclusivamente de modelos/sugestoes.json.gz. */
 const CMT_ARV7=(()=>{
 const AREA_ORDER=['Previdenciário e assistencial','Tributário e fiscal','Administrativo e serviço público','Civil, imobiliário e consumidor','Processual civil','Constitucional e outros ramos','Assunto a classificar'];
 const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
