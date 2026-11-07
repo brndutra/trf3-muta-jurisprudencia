@@ -42,6 +42,7 @@ scripts/matrizes.py          extrai os modelos-matriz por tipo de julgamento →
 modelos/matrizes.json(.gz)   20 modelos-matriz (fase TRMS): posições, parágrafos-fórmula, versões e situação
 modelos/matrizes_gabA.json   os mesmos, no formato “Modelo-matriz” do gerador (esqueletoModelo/paragrafosModelo)
 modelos/trechos.json         trechos vinculados por matéria (voto ↔ relatório ↔ ementa), curadoria do gabinete
+modelos/curados.json         modelos-matriz verificados: blocos vinculados a voto, relatório, ementa e acórdão
 ```
 
 Os arquivos são JSON compactados com gzip (`zcat dados/acordaos/2021.json.gz | jq '.registros[0]'`).
@@ -104,3 +105,16 @@ O `.gz` é gerado com `mtime=0`; portanto a mesma entrada produz os mesmos bytes
 - `{{campo}}` = dado dos autos a preencher; aparece como `[campo]` na minuta.
 - O caso em exame da ementa passa a ser montado a partir do relatório (espécie, contexto e resultado da decisão recorrida).
 - Diferentemente dos modelos e matrizes, este arquivo não é extraído por algoritmo: é texto curado do gabinete. Primeira matéria: 28,86% (cumprimento da ACP 0005019-15.1997.4.03.6000).
+
+## Modelos-matriz verificados × modelos sugeridos
+
+A aba Minutas (Modelos) tem dois bancos:
+
+- **✓ Verificados** (`modelos/curados.json`): modelos-matriz conferidos pelo gabinete. O tipo de julgamento e a matéria são fixados pelo próprio modelo; não há busca por similaridade. Cada **bloco** reúne o texto do voto e o que ele exige no relatório, na ementa e no acórdão, e é *fixo*, *opcional* ou *alternativo* (um por grupo). No preenchimento, o relatório é montado pelo formulário e os blocos/opções são marcados — as opções que seguem o relatório (ex.: gratuidade) são acesas automaticamente.
+- **Sugeridos** (`modelos/modelos.json.gz`): extração automática pela recorrência dos trechos nas decisões, como antes. Num modelo sugerido, **✎ Criar modelo-matriz verificado** gera um rascunho em Verificados (parágrafos do voto agrupados por posição, ementa distribuída por seção, acórdão), para o curador organizar em blocos.
+
+**Edição.** Em um modelo verificado, **✎ Editar modelo** abre o editor: identificação, opções, blocos (título, grupo, modo, padrão, nota) e textos de cada bloco por seção e posição, com subir/descer, separar em novo bloco e excluir. As alterações ficam no navegador até **⤓ Exportar curados.json** e publicar o arquivo em `modelos/`. Sintaxe dos textos: `{{campo}}` = dado dos autos; `[?id:texto]` entra com a opção ou o bloco `id` marcado; `[?!id:texto]`, com ele desmarcado.
+
+**Prévia formatada.** O editor da minuta tem a vista *Prévia* (títulos, ementa no padrão CNJ, citações recuadas, campos grifados): clique num campo para preenchê-lo; duplo clique num parágrafo leva ao ponto correspondente na vista *Texto*.
+
+No modo Matriz dos sugeridos, o tipo de julgamento também passa a ser fixado pelo modelo (sem aproximação por outra espécie ou resultado), e as versões são marcadas a partir do relatório preenchido.
