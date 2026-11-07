@@ -1,0 +1,1925 @@
+{
+  "schema": "gabA.curados",
+  "schema_versao": 1,
+  "descricao": "Modelos-matriz do gabinete. Cada bloco reúne o texto do voto e o que ele exige no relatório, na ementa e no acórdão; blocos opcionais e alternativos viram escolhas no preenchimento. Sintaxe: {{campo}} = dado dos autos; [?id:texto] entra só com a opção ou o bloco 'id' marcado; [?!id:texto], só com ele desmarcado. Curadoria manual: nada aqui é gerado por algoritmo. Reserva: a Central lê modelos/indice.json e os arquivos de modelos/matriz/ e modelos/rascunhos/; este arquivo só é usado se o índice faltar.",
+  "modelos": [
+    {
+      "id": "mm-2886-a1-territorial-provimento",
+      "nome": "28,86% · A1 — limitação territorial afastada · apelação provida",
+      "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+      "tipo": "acórdão",
+      "especie": "Apelação",
+      "resultado": "provimento",
+      "status": "rascunho",
+      "verificado_em": "",
+      "paradigma": "5003797-42.2025.4.03.6000 (sessão de 05/10/2026)",
+      "fonte": "Inteiro teor do acórdão A00173 no banco (dados/acordaos/2026.json.gz)",
+      "descricao": "Sentença extinguiu o cumprimento por limitação territorial da ACP ou por ilegitimidade ativa do exequente não lotado em MS, sem reconhecer acordo administrativo; exequente apela.",
+      "caso_do_modelo": true,
+      "ementa_cabecalho": "",
+      "ementa_cabecalho_fim": "",
+      "opcoes": [
+        {
+          "id": "herdeiros",
+          "rotulo": "habilitação de herdeiros"
+        }
+      ],
+      "blocos": [
+        {
+          "id": "ementa-base",
+          "grupo": "Ementa",
+          "titulo": "Cabeçalho e caso em exame",
+          "modo": "fixo",
+          "ementa": [
+            {
+              "pos": "cabecalho",
+              "texto": "DIREITO PROCESSUAL CIVIL. ADMINISTRATIVO. CUMPRIMENTO DE SENTENÇA. AÇÃO CIVIL PÚBLICA. EXTINÇÃO DO PROCESSO SEM RESOLUÇÃO DE MÉRITO. ARTIGO 16 DA LEI 7.347/1985. COISA JULGADA. ABRANGÊNCIA NACIONAL.[?prescricao: PRESCRIÇÃO.] APELAÇÃO PROVIDA."
+            },
+            {
+              "pos": "caso",
+              "texto": "Em cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000 para incorporação a partir de janeiro de 1993 de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas, houve extinção liminar do processo, sem resolução do mérito, por não possuir a parte exequente vínculo com os limites territoriais de competência do órgão prolator da condenação."
+            },
+            {
+              "pos": "questao",
+              "texto": "Definir o alcance da coisa julgada na ACP 0005019-15.1997.4.03.6000 para exame da legitimidade ativa para o cumprimento de sentença[?prescricao: e verificar a viabilidade da pretensão face à alegação de prescrição][?herdeiros: e de prescrição para habilitação de herdeiros]."
+            }
+          ]
+        },
+        {
+          "id": "sobrestamento",
+          "grupo": "Preliminares",
+          "titulo": "Sobrestamento afastado (Tema 1.433/STJ)",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "admiss",
+              "texto": "Senhores Desembargadores, cabe observar, inicialmente, que não se cogita de sobrestamento do feito, por afetação do Tema 1.433/STJ, pois tal providência somente foi determinada em relação aos casos de recurso especial ou agravo em recurso especial em tramitação na Vice-Presidência da Corte ou no próprio Superior Tribunal de Justiça (ProAfR no REsp 2.234.888, Rel. Min. AFRÂNIO VILELA, j. em 05/05/2026), não obstando, portanto, o julgamento do presente recurso."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Cabe observar, inicialmente, que não se cogita de sobrestamento do feito, por afetação do Tema 1.433/STJ, pois tal providência somente foi determinada em relação aos casos de recurso especial ou agravo em recurso especial em tramitação na Vice-Presidência da Corte ou no próprio Superior Tribunal de Justiça (ProAfR no REsp 2.234.888, Rel. Min. AFRÂNIO VILELA, j. em 05/05/2026), não obstando, portanto, o julgamento do presente recurso. Sobre a preliminar de ilegitimidade ativa, alegada em contrarrazões, diz com o próprio objeto do recurso interposto, adiante apreciado."
+            }
+          ]
+        },
+        {
+          "id": "prelim-ilegitimidade",
+          "grupo": "Preliminares",
+          "titulo": "Preliminar de ilegitimidade ativa em contrarrazões",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "prelim",
+              "texto": "Sobre a preliminar de ilegitimidade ativa, alegada em contrarrazões, diz com o próprio objeto do recurso interposto, adiante apreciado."
+            }
+          ],
+          "relatorio": [
+            {
+              "pos": "contrarrazoes",
+              "texto": ", com preliminar de ilegitimidade ativa"
+            }
+          ]
+        },
+        {
+          "id": "controversia",
+          "grupo": "Controvérsia",
+          "titulo": "Delimitação da controvérsia",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "contro",
+              "texto": "[?!prescricao:A controvérsia envolve discutir se a sentença coletiva proferida na Ação Civil Pública 0005019-15.1997.4.03.6000, ajuizada pelo Ministério Público Federal contra União “e suas administrações indiretas”, possui abrangência nacional ou está limitada a servidores com lotação geográfica no Estado de Mato Grosso do Sul.]"
+            }
+          ],
+          "nota": "Com o bloco “Prescrição” marcado, a controvérsia passa à redação do próprio bloco (território e prescrição)."
+        },
+        {
+          "id": "fund-territorial",
+          "grupo": "Fundamentação",
+          "titulo": "Abrangência nacional do título (Tema 1.075/STF)",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Para elucidação da controvérsia cabe, inicialmente, destacar os pedidos formulado pelo Ministério Público Federal na ação civil pública em referência:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "“Em termos definitivos, REQUER que seja reconhecido o direito dos servidores ativos e inativos e dos pensionistas que lhe são vinculados - com exceção dos que sejam parte em outra demanda com idêntico objeto e não tenham requerido a suspensão da ação individual no prazo de trinta dias, contado da ciência da presente ação coletiva (art. 104, do Código de Defesa do Consumidor) - ao reajuste de 28,86%, decorrente da aplicação das Leis nºs 8.622 e 8.627, de 1993, condenando os réus a implantar dito índice em caráter definitivo e a pagar as diferenças incidentes a partir de JANEIRO de 1993, incluindo gratificações, férias e 13º salário, com acréscimos legais, afora os encargos decorrentes do ônus da sucumbência."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Ainda, REQUER que seja reconhecido o direito dos ex-servidores públicos civis federais quais sejam, os exonerados e demitidos que pertenciam ao quadro de pessoal da demandada União Federal, onde mantinham vínculo legal, no período compreendido entre janeiro de 1993 até a data da desinvestidura do cargo, os quais fazem jus ao que está sendo pleiteado nesta ação - com exceção dos que já sejam parte em outra demanda com idêntico objeto e não tenham requerido a suspensão da ação individual no prazo de trinta dias, contado da ciência da presente ação coletiva (art. 104 do Código de Defesa do Consumidor) - ao reajuste de 28,86%, decorrente da aplicação das Leis nºs 8.622 e 8.627, de 1993, condenando os réus a pagar as diferenças incidentes a partir de JANEIRO de 1993 até a data da desinvestidura do cargo, incluindo gratificações, férias e 13º salário, com acréscimos legais, afora os encargos decorrentes do ônus da sucumbência. REQUER a exclusão das pessoas, funcionários públicos federais, que já receberam o percentual, conforme relação."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Para tanto, REQUER a citação dos réus, na pessoa de seus representantes legais, nos termos e para os fins legais, conforme endereço oferecido no preâmbulo e protesta pela produção das provas que se fizerem necessárias.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Como se observa, da leitura dos pedidos formulados não é possível extrair qualquer limitação de abrangência territorial da coisa julgada na ação civil pública, por ausência de menção expressa neste sentido."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Em aditamento, o Ministério Público Federal apresentou relação dos órgãos da União e entidades da administração pública indireta abrangidos pela demanda, sem restrição geográfica, sendo apontados os endereços das respectivas regionais em Mato Grosso do Sul apenas para indicar os endereços locais em que poderiam ser citados e intimados, sem que se permita extrair de tal providência qualquer limitação territorial da pretensão."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Tampouco o título executivo judicial admite tal interpretação, pois igualmente sentença (“Diante do exposto e por mais que dos autos consta, julgo procedente a presente ação para o fim de condenar os réus a incorporar o percentual de 28,86% às remunerações de seus servidores, ativos, inativos e pensionistas, não litigantes em outras ações ou cujas ações estejam suspensas e não firmatários de acordo, a partir de janeiro de 1993, com reflexos, respeitadas as datas de admissões, descontadas as reposições já feitas por força das Leis nº 8622/93 e 8627/93”), acórdãos e decisões posteriores não fizeram nenhuma restrição expressa aos limites geográficos de sua eficácia."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Não obstante, a sentença fundamentou a limitação territorial de tal título executivo judicial nas disposições do artigo 16 da Lei 7.347/1985, com redação dada pela Lei 9.494/1997 (vigente à época do ajuizamento da ação em 18/09/1997, da sentença em 02/07/2001 e do trânsito em julgado em 02/08/2019), que prevê: “a sentença civil fará coisa julgada erga omnes, nos limites da competência territorial do órgão prolator, exceto se o pedido for julgado improcedente por insuficiência de provas, hipótese em que qualquer legitimado poderá intentar outra ação com idêntico fundamento, valendo-se de nova prova”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Porém, em 08/04/2021, no julgamento do RE 1.101.937 (Tema 1.075), o Supremo Tribunal Federal reconheceu, sem modulação de efeitos, ser inconstitucional a limitação limitação territorial automática de sentenças proferidas em ações civis públicas, repristinando expressamente a redação original do artigo 16 da Lei 7.347/1985: “I - É inconstitucional a redação do art. 16 da Lei 7.347/1985, alterada pela Lei 9.494/1997, sendo repristinada sua redação original. II - Em se tratando de ação civil pública de efeitos nacionais ou regionais, a competência deve observar o art. 93, II, da Lei 8.078/1990 (Código de Defesa do Consumidor). [...]”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "O artigo 16 da Lei 7.347/1985, na redação original, previa que \"a sentença civil fará coisa julgada erga omnes, exceto se a ação for julgada improcedente por deficiência de provas, hipótese em que qualquer legitimado poderá intentar outra ação com idêntico fundamento, valendo-se de nova prova”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "A despeito da aplicação imediata e vinculante do Tema 1.075/STF, acrescente-se que, na espécie, o título executivo judicial sequer mencionou o artigo 16 da Lei 7.347/1985, o que dispensa categoricamente a necessidade de sua desconstituição por meio de ação rescisória, nos termos do artigo 535, § 8º, do CPC e Tema 733/STF, pois tal providência restringe-se às hipóteses de coisa julgada inconstitucional, cujo título tenha sido fundado em lei ou ato normativo declarado inconstitucional, o que, repita-se, não é o caso em questão."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Nem se alegue que a limitação territorial do presente título executivo judicial encontra amparo no artigo 2º-A da Lei 9.494/1997 ou tese fixada pela Suprema Corte no julgamento do RE 612.043 (Tema 499)."
+            },
+            {
+              "pos": "jurid",
+              "texto": "É que tal fundamentação somente aplica-se às ações coletivas, de rito ordinário, ajuizadas por associações civis na condição de representantes processuais de seus associados, em nome destes e na defesa dos interesses destes, mediante respectiva autorização e relação nominal, enquanto nas ações civis públicas, como no caso, entre outras ações coletivas (ações coletivas do CDC e mandados de segurança e injunção coletivos), o legitimado atua como substituto processual, em nome próprio e na defesa de direito alheio, dispensadas autorização dos membros da categoria e apresentação de relação nominal dos substituídos:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "AgInt no REsp 1.841.604, Rel. Min. MAURO CAMPBELL, DJe de 27/4/2020: “PROCESSUAL CIVIL E ADMINISTRATIVO. AGRAVO INTERNO NO RECURSO ESPECIAL. ENUNCIADO ADMINISTRATIVO Nº 3/STJ. SERVIDOR PÚBLICO. ALEGADA INCIDÊNCIA DA SÚMULA Nº 7/STJ. INAPLICABILIDADE. MANDADO DE SEGURANÇA COLETIVO Nº 200551010161509 IMPETRADO PELA ASSOCIAÇÃO DE OFICIAIS MILITARES ESTADUAIS DO RIO DE JANEIRO - AME/RJ. ART. 5º, LXX, DA CONSTITUIÇÃO FEDERAL. SUBSTITUIÇÃO PROCESSUAL. DISPENSABILIDADE DE AUTORIZAÇÃO EXPRESSA E RELAÇÃO NOMINAL DOS ASSOCIADOS. LIMITES SUBJETIVOS DA DECISÃO. EXTENSÃO DOS EFEITOS DA SEGURANÇA AOS ASSOCIADOS FILIADOS APÓS A IMPETRAÇÃO DO MANDAMUS. POSSIBILIDADE. INAPLICABILIDADE DO TEMA 499 DO STF. ART. 2º-A DA LEI Nº 9.494/97. AUTORIZAÇÃO EXPRESSA DOS ASSOCIADOS E LIMITAÇÃO DOS EFEITOS DO JULGADO COLETIVO AOS ASSOCIADOS FILIADOS ATÉ A PROPOSITURA DA AÇÃO ORDINÁRIA. DISTINGUISHING. AGRAVO INTERNO NÃO PROVIDO. 1. O óbice previsto na Súmula nº 7/STJ tem sido aplicado por esta Corte Superior nos casos em que o Tribunal de origem afasta a legitimidade ativa por não ser o exequente pertencente à categoria de oficial, mas de praça, razão pela qual não seria beneficiado pela decisão proferida no Mandado de Segurança Coletivo nº 200551010161509, impetrado pela Associação de Oficiais Militares Estaduais do Rio de Janeiro - AME/RJ, hipótese diversa do presente caso, em que o Tribunal de origem afastou a legitimidade do exequente ao argumento de que o nome do agravado não constava da lista de associados juntada quando da impetração do mandado de segurança coletivo, e que a filiação somente ocorreu após a impetração do writ. 2. A jurisprudência deste Tribunal Superior firmou-se no sentido de que o mandado de segurança coletivo configura hipótese de substituição processual, por meio da qual o impetrante, no caso a associação, atua em nome próprio defendendo direito alheio, pertencente aos associados ou parte deles, sendo desnecessária para a impetração do mandamus apresentação de autorização dos substituídos ou mesmo lista nomimal. Por tal razão, os efeitos da decisão proferida em mandado de segurança coletivo beneficia todos os associados, ou parte deles cuja situação jurídica seja idêntica àquela tratada no decisum, sendo irrelevante se a filiação ocorreu após a impetração do writ. 3. Inaplicável ao presente caso a tese firmada pelo Supremo Tribunal Federal no RE nº 612.043/PR (Tema nº 499), pois trata exclusivamente das ações coletivas ajuizadas sob o rito ordinário por associação quando atua como representante processual dos associados, segundo a regra prevista no art. art. 5º, XXI, da Constituição Federal, hipótese em que se faz necessária para a propositura da ação coletiva a apresentação de procuração específica dos associados, ou concedida pela Assembleia Geral convocada para este fim, bem como lista nominal dos associados representados, nos termos do art. 2º-A, parágrafo único, da Lei nº 9.494/97. In casu, o processo originário é um mandado de segurança coletivo impetrado por associação, hipótese de substituição processual (art. 5º, LXX, da Constituição Federal), situação diversa da tratada no RE nº 612.043/PR (representação processual). 4. Agravo interno não provido.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Logo, por todos os ângulos enfocados, não procede a tese de que o título executivo judicial restrinja-se aos beneficiários lotados nos limites geográficos da Seção Judiciária de Mato Grosso do Sul, vez que “a abrangência da coisa julgada nas ações civis públicas é determinada pelo pedido e pelas pessoas afetadas, não pela competência territorial do órgão jurisdicional prolator” (AgInt no AREsp 2.996.314, Rel. Min. TEODORO SILVA SANTOS, DJEN de 17/3/2026)."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Este, aliás, é o entendimento firmado, em instância final, face a acórdão que afastou a limitação territorial da coisa julgada na ACP 0005019-15.1997.4.03.6000, assentando expressamente que “o Tribunal de origem, ao consignar que no caso em tela os efeitos da coisa julgada não estão circunscritos aos limites geográficos do órgão que realizou o julgamento, não destoa da jurisprudência da Suprema Corte” (ARE 1.585.247, Rel. Min. DIAS TOFFOLI, DJE de 19/02/2026)."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Neste contexto, não socorre à parte executada eventual invocação da decisão proferida em abril de 1997 na ADI 1.576 MC, que validou naquela ocasião a restrição dos efeitos da sentença proferida em ação civil pública à competência territorial do órgão prolator, pois restou absolutamente superada pela evolução jurisprudencial vinculante da Suprema Corte."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Portanto, a eficácia erga omnes da coisa julgada em cumprimento alcança qualquer servidor público compreendido no pedido da ação, mesmo que integrante de quadros federais situados em outras unidades federativas."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Em consonância com tal conclusão, encontra-se assente a jurisprudência superior e regional:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "AgInt no AREsp 2.993.227, Rel. Min. TEODORO SILVA SANTOS, DJEN de 25/3/2026: “PROCESSUAL CIVIL. AGRAVO INTERNO NO AGRAVO EM RECURSO ESPECIAL. SERVIDORES PÚBLICOS FEDERAIS. CUMPRIMENTO INDIVIDUAL DE SENTENÇA COLETIVA. ACP. INCORPORAÇÃO DE 28,86%. TÍTULO EXECUTIVO SEM LIMITAÇÃO TERRITORIAL. NEGATIVA DE PRESTAÇÃO JURISDICIONAL. NÃO OCORRÊNCIA. DISPOSITIVOS LEGAIS INDICADOS NÃO PREQUESTIONADOS. ÓBICE DA SÚMULA N. 211 DO STJ. CONDENAÇÃO GENÉRICA. EFEITOS ERGA OMNES. AUSÊNCIA DE LIMITAÇÃO TERRITORIAL. ABRANGÊNCIA NACIONAL. AGRAVO INTERNO DESPROVIDO. 1. Na origem, cumprimento individual de sentença coletiva oriunda da Ação Civil Pública n. 0005019-15.1997.4.03.6000, ajuizada pelo Ministério Público Federal (MPF), que determinou a incorporação do percentual de 28,86% às remunerações de servidores públicos federais, ativos, inativos e pensionista, julgado extinto, nos termos do art. 485, inciso IV, do CPC. 2. O Tribunal Regional deu provimento à apelação da parte Exequente, julgado mantido em sede de embargos. 3. No caso em exame, o acórdão recorrido não possui as omissões suscitadas pela parte agravante. Ao revés, o Tribunal a quo se manifestou sobre todos os aspectos importantes ao deslinde do feito, adotando argumentação concreta e que satisfaz o dever de fundamentação das decisões judiciais, notadamente acerca da abrangência territorial da ação civil pública e da legitimidade ativa da parte exequente. 4. Hipótese em que o Tribunal de origem, apesar da oposição de embargos de declaração, não apreciou a tese de violação dos arts. 502, 503 e 507 do CPC, motivo pelo qual está ausente o necessário prequestionamento. Incidência da Súmula n. 211 do STJ. 5. In casu, revela-se que não houve restrição territorial no pedido, na causa de pedir ou no dispositivo da sentença coletiva proferida na Ação Civil Pública n. 0005019-15.1997.4.03.6000. O acórdão do apelo reforça essa ausência de limitação, destacando que a decisão não faz expressa delimitação dos seus beneficiários. 6. Esta Corte Superior, interpretando o art. 16 da Lei n. 7.347 /1985, possui entendimento no sentido de ser indevida a restrição da eficácia de decisões proferidas em ações civis públicas aos limites territoriais do órgão prolator. Precedente: EREsp n. 1.134.957, relatora Ministra Laurita Vaz, Corte Especial, julgado em 24/10/2016, DJe 30/11/2016. 7. Na espécie, o acórdão recorrido não reformou a coisa julgada nem alterou os limites da decisão transitada em julgado. Limitou-se a interpretar o conteúdo do título executivo à luz dos elementos processuais existentes, concluindo que os efeitos da sentença não foram territorialmente delimitados. Portanto, não há falar em violação do Tema n. 733 do STF (que trata da impossibilidade de reforma automática de decisões transitadas em julgado em razão de superveniente declaração de inconstitucionalidade). 8. Agravo interno desprovido.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "ApCiv 5005688-98.2025.4.03.6000, Rel. Des. Fed. ANTONIO MORIMOTO, DJEN de 19/12/2025: “DIREITO PROCESSUAL CIVIL. APELAÇÃO CÍVEL EM CUMPRIMENTO DE SENTENÇA. AÇÃO CIVIL PÚBLICA. TÍTULO EXECUTIVO JUDICIAL. PERCENTUAL DE 28,86%. AUSÊNCIA DE LIMITAÇÃO TERRITORIAL NA SENTENÇA. ABRANGÊNCIA NACIONAL. ILEGITIMIDADE ATIVA AFASTADA. EXECUÇÃO. SENTENÇA REFORMADA. RECURSO PROVIDO. I. CASO EM EXAME: Apelação interposta contra sentença que extinguiu cumprimento de sentença fundado em título judicial formado na Ação Civil Pública nº 0005019-15.1997.4.03.6000, que condenou a União e entidades da administração indireta a ela vinculadas à incorporação do percentual de 28,86% às remunerações de servidores ativos, inativos e pensionistas, com ressalvas especificadas, a partir de janeiro de 1993. A extinção baseou-se na alegada limitação territorial da sentença original à Seção Judiciária de Mato Grosso do Sul e na suposta ilegitimidade ativa da exequente não lotada naquele estado. II. QUESTÃO EM DISCUSSÃO: Há duas questões em discussão: (i) definir se o título executivo judicial possui limitação territorial que restrinja seus efeitos aos servidores lotados na Seção Judiciária de Mato Grosso do Sul; (ii) estabelecer se a exequente detém legitimidade ativa diante da abrangência subjetiva da sentença coletiva. III. RAZÕES DE DECIDIR: Afasta-se a existência de limitação territorial porque a inicial da Ação Civil Pública, o aditamento e a sentença não contêm qualquer pedido, indicação ou decisão que restrinja seus efeitos aos servidores de Mato Grosso do Sul. Esclareça-se que a referência, no aditamento, aos endereços de entidades da administração indireta no estado teve finalidade apenas de permitir sua citação, não de limitar o alcance material ou territorial da condenação. Rejeita-se a tese de erro da União na defesa, pois inexistem elementos que indiquem indução em erro ou que permitam interpretar a sentença de modo diverso do que efetivamente decidido. Afasta-se a alegada ilegitimidade ativa, pois a sentença expressamente beneficiou todos os servidores dos órgãos e entidades federais contra os quais o MPF atuou, sem vinculação à lotação no Mato Grosso do Sul. Rejeitado o argumento de impossibilidade de ampliação retroativa da sentença após o julgamento do STF sobre o art. 16 da Lei 7.347/1985, pois a premissa -- existência de limitação territorial -- é inexistente no título executivo. Assegura-se que, já em cumprimento de sentença, é inviável alterar o conteúdo ou o alcance de decisão transitada em julgado, razão pela qual deve prevalecer a abrangência nacional reconhecida no próprio título. IV. DISPOSITIVO E TESE: Recurso provido. Tese de julgamento: A sentença proferida na Ação Civil Pública nº 0005019-15.1997.4.03.6000 não contém limitação territorial, possuindo eficácia nacional. A legitimidade ativa para o cumprimento de sentença alcança todos os servidores abrangidos pela condenação coletiva, independentemente da lotação geográfica. O conteúdo e os limites objetivos e territoriais do título judicial não podem ser modificados na fase de cumprimento de sentença. Dispositivos relevantes citados: CPC, art. 1.026, § 2º.”"
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Da leitura dos pedidos da inicial da ACP 0005019-15.1997.4.03.6000 não é possível extrair qualquer limitação de abrangência territorial da coisa julgada na ação civil pública, por ausência de menção expressa neste sentido. A relação apresentada pelo Ministério Público Federal, em aditamento, somente indicou os órgãos da União e entidades da administração pública indireta abrangidos pela demanda, sem restrição geográfica, sendo apontados endereços das respectivas regionais em Mato Grosso do Sul apenas para indicar locais em que poderiam ser citados e intimados, sem que se permita extrair de tal providência qualquer limitação territorial da pretensão. Tampouco o título executivo judicial possibilita tal interpretação, pois igualmente sentença, acórdãos e decisões posteriores não fizeram nenhuma restrição expressa aos limites territoriais de sua eficácia."
+            },
+            {
+              "pos": "razoes",
+              "texto": "Conquanto o artigo 16 da Lei 7.347/1985, na redação da Lei 9.494/1997, estivesse vigente à época do ajuizamento da ação em 18/09/1997, da sentença em 02/07/2001 e do trânsito em julgado em 02/08/2019, é certo que, em 08/04/2021, no julgamento do RE 1.101.937 (Tema 1.075), foi reconhecida, sem modulação, a inconstitucionalidade da limitação territorial automática de sentenças em ações civis públicas com repristinação expressa da redação original daquele preceito legal."
+            },
+            {
+              "pos": "razoes",
+              "texto": "A despeito da aplicação imediata e vinculante do Tema 1.075/STF, acrescente-se que, na espécie, o título executivo judicial sequer mencionou o artigo 16 da Lei 7.347/1985, o que dispensa categoricamente a necessidade de desconstituição por ação rescisória, nos termos do artigo 535, § 8º, do CPC e Tema 733/STF, pois tal providência restringe-se às hipóteses de coisa julgada inconstitucional, cujo título tenha sido fundado em lei ou ato normativo declarado inconstitucional, o que não é o caso em questão."
+            },
+            {
+              "pos": "razoes",
+              "texto": "O disposto no artigo 2º-A da Lei 9.494/1997 ou a tese do Tema 499/STF somente se aplica às ações coletivas, de rito ordinário, ajuizadas por associações civis na condição de representantes processuais de associados, em nome destes e na defesa dos interesses destes, mediante respectiva autorização e relação nominal, enquanto nas ações civis públicas, como no caso, entre outras ações coletivas (ações coletivas do CDC e mandados de segurança e injunção coletivos), o legitimado atua como substituto processual, em nome próprio e na defesa de direito alheio, dispensadas autorização dos membros da categoria ou apresentação de relação nominal dos substituídos."
+            },
+            {
+              "pos": "razoes",
+              "texto": "Não socorre à parte executada eventual invocação da decisão proferida em abril de 1997 na ADI 1.576 MC, que validou naquela ocasião a restrição dos efeitos da sentença proferida em ação civil pública à competência territorial do órgão prolator, pois restou absolutamente superada pela evolução jurisprudencial vinculante da Suprema Corte."
+            }
+          ]
+        },
+        {
+          "id": "conclusao",
+          "grupo": "Conclusão",
+          "titulo": "Legitimidade ativa reconhecida",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "Não se cogita, pois, de ilegitimidade ativa da parte exequente, sob tal enfoque."
+            }
+          ]
+        },
+        {
+          "id": "prescricao",
+          "grupo": "Prescrição",
+          "titulo": "Prescrição alegada em contrarrazões — exame na origem",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "contro",
+              "texto": "A controvérsia envolve discutir: (1) se a sentença coletiva proferida na Ação Civil Pública 0005019-15.1997.4.03.6000, ajuizada pelo Ministério Público Federal contra União “e suas administrações indiretas”, possui abrangência nacional ou está limitada a servidores com lotação geográfica no Estado de Mato Grosso do Sul; e (2) se houve prescrição para o exercício da pretensão de cumprimento do julgado, pelo decurso do prazo quinquenal do Decreto 20.910/1932 e Súmula 150/STF[?herdeiros:, além de prescrição para habilitação de herdeiros]."
+            },
+            {
+              "pos": "concl",
+              "texto": "Como questão de ordem pública, foi alegada a prescrição da pretensão de cumprimento da sentença, pois decorrido o prazo quinquenal do Decreto 20.910/1932 e Súmula 150/STF[?herdeiros:, além da prescrição para habilitação de herdeiros]."
+            },
+            {
+              "pos": "concl",
+              "texto": "Embora se cuide de questão de ordem pública, a controvérsia suscitada em contrarrazões de apelação, não se amolda à hipótese de resolução imediata no âmbito da Corte sem oportunidade de amplo contraditório e dilação probatória na origem, vez que a legislação admite causas interruptivas e suspensivas relativamente a cada prazo aventado, sendo ainda de particular relevância considerar que, no caso específico de cumprimento individual de coisa julgada em ação civil pública, circunstâncias próprias e individuais de cada situação não permitem elucidação e julgamento prévio, genérico e em abstrato de tal ponto controverso da causa."
+            },
+            {
+              "pos": "concl",
+              "texto": "Ressalte-se que não se trata de negar o exame nesta instância da questão prejudicial de mérito, mas de constatar que circunstâncias fáticas relevantes ao cômputo da consumação ou não da prescrição exigem discussão probatória, que não foi garantida anteriormente, e cuja supressão implicaria clara violação dos princípios da ampla defesa, contraditório e devido processo legal."
+            }
+          ],
+          "relatorio": [
+            {
+              "pos": "contrarrazoes",
+              "texto": "[?prelim-ilegitimidade: e prescrição][?!prelim-ilegitimidade:, com alegação de prescrição][?herdeiros:, inclusive para habilitação de herdeiros]"
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Embora a prescrição envolva questão de ordem pública, a controvérsia suscitada em contrarrazões de apelação, não se amolda à hipótese de resolução imediata no âmbito da Corte sem oportunidade de amplo contraditório e dilação probatória na origem, vez que a legislação admite causas interruptivas e suspensivas relativamente a cada prazo aventado, sendo ainda de particular relevância considerar que, no caso específico de cumprimento individual de coisa julgada em ação civil pública, circunstâncias próprias e individuais de cada situação não permitem elucidação e julgamento prévio, genérico e em abstrato de tal ponto controverso da causa."
+            }
+          ]
+        },
+        {
+          "id": "honor-ente",
+          "grupo": "Honorários",
+          "titulo": "Honorários pedidos pelo ente em contrarrazões — prejudicado",
+          "modo": "opcional",
+          "voto": [
+            {
+              "pos": "honor",
+              "texto": "Prejudicado, por fim, o pedido de fixação de honorários advocatícios em favor da {{ENTE_EXECUTADO}}, deduzido em contrarrazões ao fundamento da angularização da relação processual, vez que condicionado à manutenção da sentença, ora reformada, sem prejuízo da fixação da verba honorária na origem, ao final e conforme o resultado do cumprimento de sentença."
+            }
+          ],
+          "relatorio": [
+            {
+              "pos": "contrarrazoes",
+              "texto": "[?honor-ente:, com pedido de fixação de honorários advocatícios]"
+            }
+          ]
+        },
+        {
+          "id": "dispositivo",
+          "grupo": "Dispositivo",
+          "titulo": "Dispositivo",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "disp",
+              "texto": "Ante o exposto, dou provimento à apelação para reformar a sentença e determinar o retorno dos autos à origem para regular prosseguimento do cumprimento de sentença."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "dispositivo",
+              "texto": "Apelação provida."
+            },
+            {
+              "pos": "dispositivos",
+              "texto": "Leis 8.622 e 8.627/1993; Lei 7.347/1985, artigo 16; Lei 9.494/1997; CPC, artigos 535, § 8º, e artigo 2º-A; e Decreto 20.910/1932."
+            },
+            {
+              "pos": "jurisprudencia",
+              "texto": "STF, Temas 1.075, 499 e 733; ARE 1.585.247 e ADI 1.576 MC; STJ, ProAfR no REsp 2.234.888, AgInt no REsp 1.841.604, AgInt no AREsp 2.996.314 e AgInt no AREsp 2.993.227; TRF3, ApCiv 5005688-98.2025.4.03.6000; e STF, Súmula 150."
+            }
+          ],
+          "acordao": [
+            {
+              "pos": "texto",
+              "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, deu provimento à apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mm-2886-a2-territorial-acordo-desprovimento",
+      "nome": "28,86% · A2 — limitação territorial e acordo administrativo · apelação desprovida",
+      "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+      "tipo": "acórdão",
+      "especie": "Apelação",
+      "resultado": "desprovimento",
+      "status": "rascunho",
+      "verificado_em": "",
+      "paradigma": "5001115-51.2024.4.03.6000 (sessão de 05/10/2026)",
+      "fonte": "Inteiro teor do acórdão A00107 no banco (dados/acordaos/2026.json.gz)",
+      "descricao": "Sentença extinguiu o cumprimento por limitação territorial e, também, por acordo administrativo comprovado nas fichas SIAPE; exequente apela contra os dois fundamentos; pode haver recurso adesivo do ente.",
+      "caso_do_modelo": true,
+      "ementa_cabecalho": "",
+      "ementa_cabecalho_fim": "",
+      "opcoes": [
+        {
+          "id": "gratuidade",
+          "rotulo": "exequente com gratuidade de justiça",
+          "situacao": "gratuidade"
+        },
+        {
+          "id": "adesivo",
+          "rotulo": "recurso adesivo do ente"
+        }
+      ],
+      "blocos": [
+        {
+          "id": "ementa-base",
+          "grupo": "Ementa",
+          "titulo": "Cabeçalho e caso em exame",
+          "modo": "fixo",
+          "ementa": [
+            {
+              "pos": "cabecalho",
+              "texto": "DIREITO PROCESSUAL CIVIL. ADMINISTRATIVO. CUMPRIMENTO DE SENTENÇA. AÇÃO CIVIL PÚBLICA. EXTINÇÃO DO PROCESSO SEM RESOLUÇÃO DE MÉRITO. ARTIGO 16 DA LEI 7.347/1985. COISA JULGADA. ABRANGÊNCIA NACIONAL. ACORDO ADMINISTRATIVO DE PAGAMENTO.[?ma-fe: LITIGÂNCIA DE MÁ-FÉ.][?gratuidade-revisao: GRATUIDADE JUDICIÁRIA.] DESPROVIMENTO. HONORÁRIOS RECURSAIS."
+            },
+            {
+              "pos": "caso",
+              "texto": "Em cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000 para incorporação, a partir de janeiro de 1993, do reajuste de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas, a sentença, ora apelada, afastou a alegação de ilegitimidade ativa fundada na limitação territorial do título e extinguiu a execução, nos termos do artigo 924, II, do CPC, diante da quitação integral do débito em razão de acordo administrativo, fixada verba honorária de {{percentual}} sobre {{base de cálculo}}[?gratuidade:, suspensa a exigibilidade em razão da gratuidade da justiça], sem custas processuais.[?adesivo: Recurso adesivo {{do ente}} {{objeto do recurso adesivo}}.]"
+            },
+            {
+              "pos": "questao",
+              "texto": "A controvérsia envolve definir o alcance da coisa julgada na ACP 0005019-15.1997.4.03.6000 para exame da legitimidade ativa para o cumprimento de sentença e verificar a viabilidade da pretensão face à alegação de transação extrajudicial do reajuste de 28,86%."
+            }
+          ]
+        },
+        {
+          "id": "controversia",
+          "grupo": "Controvérsia",
+          "titulo": "Delimitação da controvérsia",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "contro",
+              "texto": "Senhores Desembargadores, a controvérsia envolve discutir a viabilidade do cumprimento individual de sentença coletiva, por não ter a parte exequente vínculo com os limites territoriais de competência do órgão prolator da condenação, e por ser atribuída a existência de acordo administrativo para pagamento da vantagem de 28,86%."
+            }
+          ]
+        },
+        {
+          "id": "fund-territorial",
+          "grupo": "Fundamentação",
+          "titulo": "Abrangência nacional do título (Tema 1.075/STF)",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Para elucidação da controvérsia cabe, inicialmente, destacar os pedidos formulado pelo Ministério Público Federal na ação civil pública em referência:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "“Em termos definitivos, REQUER que seja reconhecido o direito dos servidores ativos e inativos e dos pensionistas que lhe são vinculados - com exceção dos que sejam parte em outra demanda com idêntico objeto e não tenham requerido a suspensão da ação individual no prazo de trinta dias, contado da ciência da presente ação coletiva (art. 104, do Código de Defesa do Consumidor) - ao reajuste de 28,86%, decorrente da aplicação das Leis nºs 8.622 e 8.627, de 1993, condenando os réus a implantar dito índice em caráter definitivo e a pagar as diferenças incidentes a partir de JANEIRO de 1993, incluindo gratificações, férias e 13º salário, com acréscimos legais, afora os encargos decorrentes do ônus da sucumbência."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Ainda, REQUER que seja reconhecido o direito dos ex-servidores públicos civis federais quais sejam, os exonerados e demitidos que pertenciam ao quadro de pessoal da demandada União Federal, onde mantinham vínculo legal, no período compreendido entre janeiro de 1993 até a data da desinvestidura do cargo, os quais fazem jus ao que está sendo pleiteado nesta ação - com exceção dos que já sejam parte em outra demanda com idêntico objeto e não tenham requerido a suspensão da ação individual no prazo de trinta dias, contado da ciência da presente ação coletiva (art. 104 do Código de Defesa do Consumidor) - ao reajuste de 28,86%, decorrente da aplicação das Leis nºs 8.622 e 8.627, de 1993, condenando os réus a pagar as diferenças incidentes a partir de JANEIRO de 1993 até a data da desinvestidura do cargo, incluindo gratificações, férias e 13º salário, com acréscimos legais, afora os encargos decorrentes do ônus da sucumbência. REQUER a exclusão das pessoas, funcionários públicos federais, que já receberam o percentual, conforme relação."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Para tanto, REQUER a citação dos réus, na pessoa de seus representantes legais, nos termos e para os fins legais, conforme endereço oferecido no preâmbulo e protesta pela produção das provas que se fizerem necessárias.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Como se observa, da leitura dos pedidos formulados não é possível extrair qualquer limitação de abrangência territorial da coisa julgada na ação civil pública, por ausência de menção expressa neste sentido."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Em aditamento, o Ministério Público Federal apresentou relação dos órgãos da União e entidades da administração pública indireta abrangidos pela demanda, sem restrição geográfica, sendo apontados os endereços das respectivas regionais em Mato Grosso do Sul apenas para indicar os endereços locais em que poderiam ser citados e intimados, sem que se permita extrair de tal providência qualquer limitação territorial da pretensão."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Tampouco o título executivo judicial admite tal interpretação, pois igualmente sentença (“Diante do exposto e por mais que dos autos consta, julgo procedente a presente ação para o fim de condenar os réus a incorporar o percentual de 28,86% às remunerações de seus servidores, ativos, inativos e pensionistas, não litigantes em outras ações ou cujas ações estejam suspensas e não firmatários de acordo, a partir de janeiro de 1993, com reflexos, respeitadas as datas de admissões, descontadas as reposições já feitas por força das Leis nº 8622/93 e 8627/93”), acórdãos e decisões posteriores não fizeram nenhuma restrição expressa aos limites geográficos de sua eficácia."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Não obstante, a sentença fundamentou a limitação territorial de tal título executivo judicial nas disposições do artigo 16 da Lei 7.347/1985, com redação dada pela Lei 9.494/1997 (vigente à época do ajuizamento da ação em 18/09/1997, da sentença em 02/07/2001 e do trânsito em julgado em 02/08/2019), que prevê: “a sentença civil fará coisa julgada erga omnes, nos limites da competência territorial do órgão prolator, exceto se o pedido for julgado improcedente por insuficiência de provas, hipótese em que qualquer legitimado poderá intentar outra ação com idêntico fundamento, valendo-se de nova prova”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Porém, em 08/04/2021, no julgamento do RE 1.101.937 (Tema 1.075), o Supremo Tribunal Federal reconheceu, sem modulação de efeitos, ser inconstitucional a limitação limitação territorial automática de sentenças proferidas em ações civis públicas, repristinando expressamente a redação original do artigo 16 da Lei 7.347/1985: “I - É inconstitucional a redação do art. 16 da Lei 7.347/1985, alterada pela Lei 9.494/1997, sendo repristinada sua redação original. II - Em se tratando de ação civil pública de efeitos nacionais ou regionais, a competência deve observar o art. 93, II, da Lei 8.078/1990 (Código de Defesa do Consumidor). [...]”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "O artigo 16 da Lei 7.347/1985, na redação original, previa que \"a sentença civil fará coisa julgada erga omnes, exceto se a ação for julgada improcedente por deficiência de provas, hipótese em que qualquer legitimado poderá intentar outra ação com idêntico fundamento, valendo-se de nova prova”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "A despeito da aplicação imediata e vinculante do Tema 1.075/STF, acrescente-se que, na espécie, o título executivo judicial sequer mencionou o artigo 16 da Lei 7.347/1985, o que dispensa categoricamente a necessidade de sua desconstituição por meio de ação rescisória, nos termos do artigo 535, § 8º, do CPC e Tema 733/STF, pois tal providência restringe-se às hipóteses de coisa julgada inconstitucional, cujo título tenha sido fundado em lei ou ato normativo declarado inconstitucional, o que, repita-se, não é o caso em questão."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Nem se alegue que a limitação territorial do presente título executivo judicial encontra amparo no artigo 2º-A da Lei 9.494/1997 ou tese fixada pela Suprema Corte no julgamento do RE 612.043 (Tema 499)."
+            },
+            {
+              "pos": "jurid",
+              "texto": "É que tal fundamentação somente aplica-se às ações coletivas, de rito ordinário, ajuizadas por associações civis na condição de representantes processuais de seus associados, em nome destes e na defesa dos interesses destes, mediante respectiva autorização e relação nominal, enquanto nas ações civis públicas, como no caso, entre outras ações coletivas (ações coletivas do CDC e mandados de segurança e injunção coletivos), o legitimado atua como substituto processual, em nome próprio e na defesa de direito alheio, dispensadas autorização dos membros da categoria e apresentação de relação nominal dos substituídos:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "AgInt no REsp 1.841.604, Rel. Min. MAURO CAMPBELL, DJe de 27/4/2020: “PROCESSUAL CIVIL E ADMINISTRATIVO. AGRAVO INTERNO NO RECURSO ESPECIAL. ENUNCIADO ADMINISTRATIVO Nº 3/STJ. SERVIDOR PÚBLICO. ALEGADA INCIDÊNCIA DA SÚMULA Nº 7/STJ. INAPLICABILIDADE. MANDADO DE SEGURANÇA COLETIVO Nº 200551010161509 IMPETRADO PELA ASSOCIAÇÃO DE OFICIAIS MILITARES ESTADUAIS DO RIO DE JANEIRO - AME/RJ. ART. 5º, LXX, DA CONSTITUIÇÃO FEDERAL. SUBSTITUIÇÃO PROCESSUAL. DISPENSABILIDADE DE AUTORIZAÇÃO EXPRESSA E RELAÇÃO NOMINAL DOS ASSOCIADOS. LIMITES SUBJETIVOS DA DECISÃO. EXTENSÃO DOS EFEITOS DA SEGURANÇA AOS ASSOCIADOS FILIADOS APÓS A IMPETRAÇÃO DO MANDAMUS. POSSIBILIDADE. INAPLICABILIDADE DO TEMA 499 DO STF. ART. 2º-A DA LEI Nº 9.494/97. AUTORIZAÇÃO EXPRESSA DOS ASSOCIADOS E LIMITAÇÃO DOS EFEITOS DO JULGADO COLETIVO AOS ASSOCIADOS FILIADOS ATÉ A PROPOSITURA DA AÇÃO ORDINÁRIA. DISTINGUISHING. AGRAVO INTERNO NÃO PROVIDO. 1. O óbice previsto na Súmula nº 7/STJ tem sido aplicado por esta Corte Superior nos casos em que o Tribunal de origem afasta a legitimidade ativa por não ser o exequente pertencente à categoria de oficial, mas de praça, razão pela qual não seria beneficiado pela decisão proferida no Mandado de Segurança Coletivo nº 200551010161509, impetrado pela Associação de Oficiais Militares Estaduais do Rio de Janeiro - AME/RJ, hipótese diversa do presente caso, em que o Tribunal de origem afastou a legitimidade do exequente ao argumento de que o nome do agravado não constava da lista de associados juntada quando da impetração do mandado de segurança coletivo, e que a filiação somente ocorreu após a impetração do writ. 2. A jurisprudência deste Tribunal Superior firmou-se no sentido de que o mandado de segurança coletivo configura hipótese de substituição processual, por meio da qual o impetrante, no caso a associação, atua em nome próprio defendendo direito alheio, pertencente aos associados ou parte deles, sendo desnecessária para a impetração do mandamus apresentação de autorização dos substituídos ou mesmo lista nomimal. Por tal razão, os efeitos da decisão proferida em mandado de segurança coletivo beneficia todos os associados, ou parte deles cuja situação jurídica seja idêntica àquela tratada no decisum, sendo irrelevante se a filiação ocorreu após a impetração do writ. 3. Inaplicável ao presente caso a tese firmada pelo Supremo Tribunal Federal no RE nº 612.043/PR (Tema nº 499), pois trata exclusivamente das ações coletivas ajuizadas sob o rito ordinário por associação quando atua como representante processual dos associados, segundo a regra prevista no art. art. 5º, XXI, da Constituição Federal, hipótese em que se faz necessária para a propositura da ação coletiva a apresentação de procuração específica dos associados, ou concedida pela Assembleia Geral convocada para este fim, bem como lista nominal dos associados representados, nos termos do art. 2º-A, parágrafo único, da Lei nº 9.494/97. In casu, o processo originário é um mandado de segurança coletivo impetrado por associação, hipótese de substituição processual (art. 5º, LXX, da Constituição Federal), situação diversa da tratada no RE nº 612.043/PR (representação processual). 4. Agravo interno não provido.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Logo, por todos os ângulos enfocados, não procede a tese de que o título executivo judicial restrinja-se aos beneficiários lotados nos limites geográficos da Seção Judiciária de Mato Grosso do Sul, vez que “a abrangência da coisa julgada nas ações civis públicas é determinada pelo pedido e pelas pessoas afetadas, não pela competência territorial do órgão jurisdicional prolator” (AgInt no AREsp 2.996.314, Rel. Min. TEODORO SILVA SANTOS, DJEN de 17/3/2026)."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Este, aliás, é o entendimento firmado, em instância final, face a acórdão que afastou a limitação territorial da coisa julgada na ACP 0005019-15.1997.4.03.6000, assentando expressamente que “o Tribunal de origem, ao consignar que no caso em tela os efeitos da coisa julgada não estão circunscritos aos limites geográficos do órgão que realizou o julgamento, não destoa da jurisprudência da Suprema Corte” (ARE 1.585.247, Rel. Min. DIAS TOFFOLI, DJE de 19/02/2026)."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Neste contexto, não socorre à parte executada eventual invocação da decisão proferida em abril de 1997 na ADI 1.576 MC, que validou naquela ocasião a restrição dos efeitos da sentença proferida em ação civil pública à competência territorial do órgão prolator, pois restou absolutamente superada pela evolução jurisprudencial vinculante da Suprema Corte."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Portanto, a eficácia erga omnes da coisa julgada em cumprimento alcança qualquer servidor público compreendido no pedido da ação, mesmo que integrante de quadros federais situados em outras unidades federativas."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Em consonância com tal conclusão, encontra-se assente a jurisprudência superior e regional:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "AgInt no AREsp 2.993.227, Rel. Min. TEODORO SILVA SANTOS, DJEN de 25/3/2026: “PROCESSUAL CIVIL. AGRAVO INTERNO NO AGRAVO EM RECURSO ESPECIAL. SERVIDORES PÚBLICOS FEDERAIS. CUMPRIMENTO INDIVIDUAL DE SENTENÇA COLETIVA. ACP. INCORPORAÇÃO DE 28,86%. TÍTULO EXECUTIVO SEM LIMITAÇÃO TERRITORIAL. NEGATIVA DE PRESTAÇÃO JURISDICIONAL. NÃO OCORRÊNCIA. DISPOSITIVOS LEGAIS INDICADOS NÃO PREQUESTIONADOS. ÓBICE DA SÚMULA N. 211 DO STJ. CONDENAÇÃO GENÉRICA. EFEITOS ERGA OMNES. AUSÊNCIA DE LIMITAÇÃO TERRITORIAL. ABRANGÊNCIA NACIONAL. AGRAVO INTERNO DESPROVIDO. 1. Na origem, cumprimento individual de sentença coletiva oriunda da Ação Civil Pública n. 0005019-15.1997.4.03.6000, ajuizada pelo Ministério Público Federal (MPF), que determinou a incorporação do percentual de 28,86% às remunerações de servidores públicos federais, ativos, inativos e pensionista, julgado extinto, nos termos do art. 485, inciso IV, do CPC. 2. O Tribunal Regional deu provimento à apelação da parte Exequente, julgado mantido em sede de embargos. 3. No caso em exame, o acórdão recorrido não possui as omissões suscitadas pela parte agravante. Ao revés, o Tribunal a quo se manifestou sobre todos os aspectos importantes ao deslinde do feito, adotando argumentação concreta e que satisfaz o dever de fundamentação das decisões judiciais, notadamente acerca da abrangência territorial da ação civil pública e da legitimidade ativa da parte exequente. 4. Hipótese em que o Tribunal de origem, apesar da oposição de embargos de declaração, não apreciou a tese de violação dos arts. 502, 503 e 507 do CPC, motivo pelo qual está ausente o necessário prequestionamento. Incidência da Súmula n. 211 do STJ. 5. In casu, revela-se que não houve restrição territorial no pedido, na causa de pedir ou no dispositivo da sentença coletiva proferida na Ação Civil Pública n. 0005019-15.1997.4.03.6000. O acórdão do apelo reforça essa ausência de limitação, destacando que a decisão não faz expressa delimitação dos seus beneficiários. 6. Esta Corte Superior, interpretando o art. 16 da Lei n. 7.347 /1985, possui entendimento no sentido de ser indevida a restrição da eficácia de decisões proferidas em ações civis públicas aos limites territoriais do órgão prolator. Precedente: EREsp n. 1.134.957, relatora Ministra Laurita Vaz, Corte Especial, julgado em 24/10/2016, DJe 30/11/2016. 7. Na espécie, o acórdão recorrido não reformou a coisa julgada nem alterou os limites da decisão transitada em julgado. Limitou-se a interpretar o conteúdo do título executivo à luz dos elementos processuais existentes, concluindo que os efeitos da sentença não foram territorialmente delimitados. Portanto, não há falar em violação do Tema n. 733 do STF (que trata da impossibilidade de reforma automática de decisões transitadas em julgado em razão de superveniente declaração de inconstitucionalidade). 8. Agravo interno desprovido.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "ApCiv 5005688-98.2025.4.03.6000, Rel. Des. Fed. ANTONIO MORIMOTO, DJEN de 19/12/2025: “DIREITO PROCESSUAL CIVIL. APELAÇÃO CÍVEL EM CUMPRIMENTO DE SENTENÇA. AÇÃO CIVIL PÚBLICA. TÍTULO EXECUTIVO JUDICIAL. PERCENTUAL DE 28,86%. AUSÊNCIA DE LIMITAÇÃO TERRITORIAL NA SENTENÇA. ABRANGÊNCIA NACIONAL. ILEGITIMIDADE ATIVA AFASTADA. EXECUÇÃO. SENTENÇA REFORMADA. RECURSO PROVIDO. I. CASO EM EXAME: Apelação interposta contra sentença que extinguiu cumprimento de sentença fundado em título judicial formado na Ação Civil Pública nº 0005019-15.1997.4.03.6000, que condenou a União e entidades da administração indireta a ela vinculadas à incorporação do percentual de 28,86% às remunerações de servidores ativos, inativos e pensionistas, com ressalvas especificadas, a partir de janeiro de 1993. A extinção baseou-se na alegada limitação territorial da sentença original à Seção Judiciária de Mato Grosso do Sul e na suposta ilegitimidade ativa da exequente não lotada naquele estado. II. QUESTÃO EM DISCUSSÃO: Há duas questões em discussão: (i) definir se o título executivo judicial possui limitação territorial que restrinja seus efeitos aos servidores lotados na Seção Judiciária de Mato Grosso do Sul; (ii) estabelecer se a exequente detém legitimidade ativa diante da abrangência subjetiva da sentença coletiva. III. RAZÕES DE DECIDIR: Afasta-se a existência de limitação territorial porque a inicial da Ação Civil Pública, o aditamento e a sentença não contêm qualquer pedido, indicação ou decisão que restrinja seus efeitos aos servidores de Mato Grosso do Sul. Esclareça-se que a referência, no aditamento, aos endereços de entidades da administração indireta no estado teve finalidade apenas de permitir sua citação, não de limitar o alcance material ou territorial da condenação. Rejeita-se a tese de erro da União na defesa, pois inexistem elementos que indiquem indução em erro ou que permitam interpretar a sentença de modo diverso do que efetivamente decidido. Afasta-se a alegada ilegitimidade ativa, pois a sentença expressamente beneficiou todos os servidores dos órgãos e entidades federais contra os quais o MPF atuou, sem vinculação à lotação no Mato Grosso do Sul. Rejeitado o argumento de impossibilidade de ampliação retroativa da sentença após o julgamento do STF sobre o art. 16 da Lei 7.347/1985, pois a premissa -- existência de limitação territorial -- é inexistente no título executivo. Assegura-se que, já em cumprimento de sentença, é inviável alterar o conteúdo ou o alcance de decisão transitada em julgado, razão pela qual deve prevalecer a abrangência nacional reconhecida no próprio título. IV. DISPOSITIVO E TESE: Recurso provido. Tese de julgamento: A sentença proferida na Ação Civil Pública nº 0005019-15.1997.4.03.6000 não contém limitação territorial, possuindo eficácia nacional. A legitimidade ativa para o cumprimento de sentença alcança todos os servidores abrangidos pela condenação coletiva, independentemente da lotação geográfica. O conteúdo e os limites objetivos e territoriais do título judicial não podem ser modificados na fase de cumprimento de sentença. Dispositivos relevantes citados: CPC, art. 1.026, § 2º.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Não se cogita, pois, de ilegitimidade ativa da parte exequente, sob tal enfoque."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Da leitura dos pedidos da inicial da ACP 0005019-15.1997.4.03.6000 não é possível extrair qualquer limitação de abrangência territorial da coisa julgada na ação civil pública, por ausência de menção expressa neste sentido. A relação apresentada pelo Ministério Público Federal, em aditamento, somente indicou os órgãos da União e entidades da administração pública indireta abrangidos pela demanda, sem restrição geográfica, sendo apontados endereços das respectivas regionais em Mato Grosso do Sul apenas para indicar locais em que poderiam ser citados e intimados, sem que se permita extrair de tal providência qualquer limitação territorial da pretensão. Tampouco o título executivo judicial possibilita tal interpretação, pois igualmente sentença, acórdãos e decisões posteriores não fizeram nenhuma restrição expressa aos limites territoriais de sua eficácia."
+            },
+            {
+              "pos": "razoes",
+              "texto": "Conquanto o artigo 16 da Lei 7.347/1985, na redação da Lei 9.494/1997, estivesse vigente à época do ajuizamento da ação em 18/09/1997, da sentença em 02/07/2001 e do trânsito em julgado em 02/08/2019, é certo que, em 08/04/2021, no julgamento do RE 1.101.937 (Tema 1.075), foi reconhecida, sem modulação, a inconstitucionalidade da limitação territorial automática de sentenças em ações civis públicas com repristinação expressa da redação original daquele preceito legal."
+            },
+            {
+              "pos": "razoes",
+              "texto": "A despeito da aplicação imediata e vinculante do Tema 1.075/STF, acrescente-se que, na espécie, o título executivo judicial sequer mencionou o artigo 16 da Lei 7.347/1985, o que dispensa categoricamente a necessidade de desconstituição por ação rescisória, nos termos do artigo 535, § 8º, do CPC e Tema 733/STF, pois tal providência restringe-se às hipóteses de coisa julgada inconstitucional, cujo título tenha sido fundado em lei ou ato normativo declarado inconstitucional, o que não é o caso em questão."
+            },
+            {
+              "pos": "razoes",
+              "texto": "O disposto no artigo 2º-A da Lei 9.494/1997 ou a tese do Tema 499/STF somente se aplica às ações coletivas, de rito ordinário, ajuizadas por associações civis na condição de representantes processuais de associados, em nome destes e na defesa dos interesses destes, mediante respectiva autorização e relação nominal, enquanto nas ações civis públicas, como no caso, entre outras ações coletivas (ações coletivas do CDC e mandados de segurança e injunção coletivos), o legitimado atua como substituto processual, em nome próprio e na defesa de direito alheio, dispensadas autorização dos membros da categoria ou apresentação de relação nominal dos substituídos."
+            },
+            {
+              "pos": "razoes",
+              "texto": "Não socorre à parte executada eventual invocação da decisão proferida em abril de 1997 na ADI 1.576 MC, que validou naquela ocasião a restrição dos efeitos da sentença proferida em ação civil pública à competência territorial do órgão prolator, pois restou absolutamente superada pela evolução jurisprudencial vinculante da Suprema Corte."
+            }
+          ]
+        },
+        {
+          "id": "fund-acordo",
+          "grupo": "Acordo",
+          "titulo": "Regime do acordo e da transação (MP 1.704/1998 a 2.169-43/2001; Temas 550 e 1.102/STJ)",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Como fundamento da extinção do processo sem resolução do mérito, a sentença apontou a inexistência de título executivo que ampare a pretensão, em razão da realização de acordo administrativo comprovado nos autos."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Um breve retrospecto é exigido para a compreensão da controvérsia, pois o reajuste de 28,86% foi objeto da MP 1.704, de 30/06/1998, cujo artigo 6º previu acordo individual para pagamento em até sete anos a partir de 1999, abrangendo os valores de 01/01/1993 a 30/06/1998, prevendo o artigo 7º que, para servidores em litígio judicial, seria possível transação administrativa, até 30/12/1998, desde que homologada no juízo competente. O prazo para transação administrativa foi prorrogado para até 19/02/1999 (a partir da MP 1.775-6/1998) e, depois, até 19/05/1999 (MP 1.812-9/1999), prazo este que foi mantido até a MP 2.169-43, de 24/08/2001, a última editada."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Observa-se, porém, que, a partir da MP 1.962-33, de 21/12/2000, foi previsto no § 2º do artigo 7º que \"Para efeito da homologação prevista no caput, a falta do instrumento da transação, por eventual extravio, será suprida pela apresentação de documento expedido pelo Sistema Integrado de Administração de Recursos Humanos - SIAPE, que comprove a celebração da avença\"."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Percebe-se, assim, que, desde que autorizada a incorporação e pagamento de atrasados do reajuste de 28,86%, foi permitido acordo individual para servidores sem litígio judicial e transação administrativa para servidores em litígio judicial desde que com homologação judicial do instrumento de transação ou, na sua falta, com apresentação de documento do SIAPE, comprovando a avença."
+            },
+            {
+              "pos": "jurid",
+              "texto": "A propósito, eis a redação da MP 2.169-43, de 24/08/2001, última editada e fruto de longa cadeia de reedições originada na MP 1.704/1998:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "“Art. 6º Os valores devidos em decorrência do disposto nos arts. 1º ao 5º, correspondentes ao período compreendido entre 1º de janeiro de 1993 e 30 de junho de 1998, serão pagos, a partir de 1999, em até sete anos, nos meses de maio e dezembro, mediante acordo firmado individualmente pelo servidor até 19 de maio de 1999."
+            },
+            {
+              "pos": "jurid",
+              "texto": "[...]"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Art. 7º Ao servidor que se encontre em litígio judicial visando ao pagamento da vantagem de que tratam os arts. 1º ao 6º, é facultado receber os valores devidos até 30 de junho de 1998, pela via administrativa, firmando transação, até 19 de maio de 1999, a ser homologada no juízo competente."
+            },
+            {
+              "pos": "jurid",
+              "texto": "§ 1º Para efeito do cumprimento do disposto nesta Medida Provisória, a Advocacia-Geral da União e as Procuradorias Jurídicas das autarquias e fundações públicas federais ficam autorizadas a celebrar transação nos processos movidos contra a União ou suas entidades que tenham o mesmo objeto do Mandado de Segurança referenciado no art. 1º."
+            },
+            {
+              "pos": "jurid",
+              "texto": "§ 2º Para efeito da homologação prevista no caput, a falta do instrumento da transação, por eventual extravio, será suprida pela apresentação de documento expedido pelo Sistema Integrado de Administração de Recursos Humanos - SIAPE, que comprove a celebração da avença.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Como se observa a legislação cuida de duas situações distintas: a do servidor sem litígio judicial e sujeito a acordo individual, e a do servidor com litígio judicial e sujeito à transação com posterior homologação judicial."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Para o primeiro grupo de servidores, que não ajuizou ação individual nem foi beneficiado por ação coletiva, e que formulou acordo individual até 19/05/1999, a Corte Superior, no julgamento do Tema 550, referente ao REsp 1.318.315, assentou o seguinte entendimento:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "“É despicienda a homologação judicial do termo de transação extrajudicial, posto que inviável a execução de tal providência, diante da inexistência, à época da celebração do acordo, de demanda judicial entre as partes transigentes”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "No tocante ao segundo grupo, em que se pretende aplicação do paradigma firmado no julgamento do Tema 1.102, atinente ao REsp 1.925.194, as teses jurídicas aprovadas foram assim redigidas:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "“I) É possível a comprovação de transação administrativa, relativa ao pagamento da vantagem de 28,86%, por meio de fichas financeiras ou documento expedido pelo Sistema Integrado de Administração de Recursos Humanos - SIAPE, conforme art. 7º, § 2º, da MP 1.962-33/2000, reproduzida na vigente MP 2.169-43/2001, apenas em relação a acordos firmados posteriormente à sua vigência."
+            },
+            {
+              "pos": "jurid",
+              "texto": "II) Quando não for localizado o instrumento de transação devidamente homologado, e buscando impedir o enriquecimento ilícito, os valores recebidos administrativamente, a título de 28,86%, demonstrados por meio dos documentos expedidos pelo SIAPE, devem ser deduzidos da quantia apurada, com as atualizações pertinentes”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Como evidenciado, o Tema 1.102/STJ insere-se no contexto normativo da série de medidas provisórias, desde a MP 1.704, de 30/06/1998, até a MP 2.169-43, de 24/08/2001, prevendo, para servidores em litígio judicial, possibilidade de transação até19/05/1999para quitação administrativa de diferenças, relativas à vantagem de 28,86%, mediante posterior homologação judicial do instrumento de transação ou com base em documentos expedidos pelo SIAPE, validando-se a comprovação da avença por meio de fichas financeiras do SIAPE a partir de 21/12/2000 com fundamento no § 2º do artigo 7º da MP 1.962-33/2000."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Note-se que o artigo 7º da série de medidas provisórias editadas alude à exigência de transação até 19/05/1999 com posterior homologação (\"a ser homologada\") no juízo competente, instituindo, assim, duas fases distintas para servidores em litígio judicial: a fase de transação administrativa até 19/05/1999 e a fase de homologação judicial, que pode ocorrer a qualquer tempo, inclusive sob a vigência da MP 2.169-43, de 24/08/2001."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Havendo homologação judicial, o processo é extinto com resolução do mérito (artigo 487, III, b, CPC), vinculando ambas as partes - tanto a administração como o servidor - aos termos da transação e, portanto, havendo coisa julgada, esta apenas pode ser desconstituída por ação rescisória ajuizada a tempo e modo. Logo, ainda que a homologação judicial tenha sido anterior à vigência da MP 2.169-43, de 24/08/2001, eventual falta de juntada ou comprovação do termo de transação não desconstituiria a sentença homologatória e, tampouco, a coisa julgada, não desobrigando a administração de cumprir os termos da avença homologada, de que derivavam os pagamentos feitos e cobertos, à míngua de prova em contrário, pela presunção de legitimidade e veracidade dos atos administrativos praticados."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Na controvérsia suscitada entre a aplicação dos dois regimes previstos na legislação e jurisprudência, a pretensão é dirigida à hipótese de servidor em litígio judicial com a administração acerca da vantagem de 28,86% (artigo 7º das medidas provisórias e Tema 1.102/STJ), porém tal fato, constitutivo do direito alegado, demanda prova, da qual não se desincumbiu a parte exequente."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Sobre a incorporação da vantagem de 28,86%, previram a MP 1.704, de 30/06/1998, e as sucessivamente editadas até a MP 2.169-43, de 24/08/2001, a possibilidade de pagamento administrativo para satisfação do direito mediante acordo individual (artigo 6º) ou transação administrativa sujeita à homologação judicial no caso de servidores em litígio judicial (artigo 7º), até o prazo de 19/02/1999, prorrogado para 19/05/1999. O acordo individual, destinada aos servidores sem prévia ação judicial, prescinde de homologação judicial (Tema 550/STJ) e a transação administrativa, para os que têm ação judicial proposta, exige, a partir da MP 1.962-33, de 21/12/2000, a homologação judicial da transação, suprindo-se a falta do instrumento, em caso de extravio, por fichas financeiras expedidas pelo SIAPE (Tema 1.102/STJ)."
+            }
+          ]
+        },
+        {
+          "id": "acordo-fichas",
+          "grupo": "Acordo",
+          "titulo": "Fichas financeiras do SIAPE no caso concreto",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "provas",
+              "texto": "Na espécie, a existência de fichas financeiras com registro de pagamento de diferenças decorrentes da vantagem de 28,86% - rubrica \"VANTAGEM ADMINIST. 28.86%-ATIV\"(ID’s 385140944, 385140957, 385140958, 385140959 e 385140960), faz presumir, em favor da Administração Pública, que houve composição administrativa regular entre as partes, sendo ônus do administrado demonstrar a eventual ilegalidade da conduta administrativa, o que não se verificou."
+            },
+            {
+              "pos": "provas",
+              "texto": "Não se podendo presumir ilegalidade nem que pagamentos administrativos tenham sido realizados por mera liberdade da administração, privilegiando interesses privados em detrimento do interesse público, fato grave que pode gerar responsabilidade não apenas administrativa como criminal, o que resta a considerar, na espécie, é que a prova produzida ampara a conclusão no sentido de que a parte exequente aderiu à composição administrativa para satisfação do direito, obstando, consequentemente, o exercício da pretensão deduzida no cumprimento individual da sentença coletiva, a que se refere a ação civil pública ajuizada pelo Ministério Público Federal."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "O pagamento de parcelas devidas referentes à vantagem em discussão (\"VANTAGEM ADMINIST. 28.86%-ATIV\"), conforme demonstrado pelas fichas financeiras juntadas, não pode ser presumido como realizado sem cumprimento regular da legislação, seja quanto ao acordo individual, seja quanto à transação administrativa homologada judicialmente, não se podendo, portanto, imputar ilegalidade à administração sem prova específica e concreta, ônus processual que decorre da presunção de legitimidade e veracidade, que milita em favor dos atos administrativos."
+            }
+          ]
+        },
+        {
+          "id": "acordo-siape",
+          "grupo": "Acordo",
+          "titulo": "Prova do acordo pelas fichas do SIAPE",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Em se tratando de parte que não provou ter previamente ajuizado ação sobre a matéria - fato passível de elucidação por mera certidão de distribuição e/ou certidão de objeto e pé -, o registro de pagamentos de parcelas da vantagem específica nas fichas financeiras emitidas pelo SIAPE comprova, suficientemente, a existência de acordo individual, a impedir a pretensão de nova cobrança em sede de cumprimento individual de sentença coletiva."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Em se tratando, como evidenciado, de parte que não provou ter previamente ajuizado ação sobre a matéria - fato passível de elucidação por mera certidão de distribuição e/ou certidão de objeto e pé -, o registro de pagamentos de parcelas da vantagem específica nas fichas financeiras emitidas pelo SIAPE comprova, suficientemente, a existência de acordo individual, a impedir a pretensão de nova cobrança em sede de cumprimento individual de sentença coletiva."
+            }
+          ]
+        },
+        {
+          "id": "acordo-via",
+          "grupo": "Acordo",
+          "titulo": "Via processual inadequada e renúncia às diferenças",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Mesmo quando não se esteja a impugnar existência ou validade do acordo individual ou transação administrativa com homologação judicial, mas a veicular apenas pretensão de menor alcance - como revisão dos respectivos termos, por serem os da ação coletiva, mais favoráveis, ou cobrança de valores inadimplidos do próprio acordo ou transação -, a via processual adequada não é a do cumprimento individual de sentença coletiva, pois a pretensão, acerca do pagamento de diferenças da vantagem de 28,86%, já foi exercida administrativamente."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Superada que fosse a restrição da via, a jurisprudência da Corte é firme em reconhecer, contra pretensões como tais, que, “ao celebrar o acordo, o demandante expressamente anuiu com os valores então apresentados, considerando a conveniência de recebê-los pela via administrativa, sem a necessidade de instaurar demanda judicial e suportar os encargos dela decorrentes” (ApCiv 5008922-59.2023.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, DJEN de 05/11/2025); e que \"A aceitação dos valores pagos administrativamente, sem litígio judicial concomitante, implica renúncia ao direito de pleitear as diferenças em juízo\" (ApCiv 5008102-06.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, DJEN de 15/04/2026)."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Ainda que se tratasse de diferenças não reconhecidas ou pagas na via administrativa, não se autoriza ajuizar cumprimento individual de sentença coletiva para reabrir objeto e pretensão exauridos com a adesão a acordo administrativo, em conformidade com a jurisprudência da Corte."
+            }
+          ]
+        },
+        {
+          "id": "concl-origem",
+          "grupo": "Conclusão",
+          "titulo": "Solução da origem correta",
+          "modo": "alternativa",
+          "alt": "conclusao",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "Afigura-se, pois, correta a solução dada na origem."
+            }
+          ]
+        },
+        {
+          "id": "concl-transacionado",
+          "grupo": "Conclusão",
+          "titulo": "Legitimidade sem título para o valor transacionado",
+          "modo": "alternativa",
+          "alt": "conclusao",
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "Em suma, embora a parte exequente seja legitimada, não se autoriza, em razão do acordo administrativo firmado, a pretensão de promover cumprimento individual da sentença coletiva referente ao mesmo valor transacionado administrativamente."
+            }
+          ]
+        },
+        {
+          "id": "ma-fe",
+          "grupo": "Contrarrazões",
+          "titulo": "Litigância de má-fé pedida em contrarrazões — afastada",
+          "modo": "opcional",
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "A despeito da improcedência da pretensão recursal, não cabe cogitar, como apontado em contrarrazões, de sanção processual, pois não evidenciado exercício abusivo do direito recursal ou de ação para efeito de litigância de má-fé, fato grave a exigir demonstração inequívoca, inexistente na espécie."
+            }
+          ],
+          "relatorio": [
+            {
+              "pos": "contrarrazoes",
+              "texto": ", com pedido de aplicação de multa por litigância de má-fé"
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Afastada a litigância de má-fé, como requerido em contrarrazões, ante a ausência de demonstração inequívoca de exercício abusivo do direito recursal."
+            }
+          ]
+        },
+        {
+          "id": "gratuidade-revisao",
+          "grupo": "Gratuidade",
+          "titulo": "Gratuidade impugnada por critério objetivo (Tema 1.178/STJ e ADC 80)",
+          "modo": "opcional",
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "Finalmente, quanto à gratuidade judiciária, não cabe alterar a concessão do benefício, conforme decisão anteriormente proferida, sem garantir prévio contraditório e, menos ainda, com base em critério exclusivamente objetivo, a teor do que dispõe o julgamento repetitivo do Tema 1.178/STJ"
+            },
+            {
+              "pos": "concl",
+              "texto": "Com efeito, discute-se, sob prisma objetivo, a invalidade da presunção de hipossuficiência declarada pela pessoa natural, alegando-se que a parte exequente percebe remuneração mensal superior a parâmetros objetivos indicados, o que afastaria o cabimento do benefício."
+            },
+            {
+              "pos": "concl",
+              "texto": "Sucede, porém, que, na atualidade, prevalece o entendimento do Tema 1.178/STJ que, além de procedimento específico, não permite, de qualquer modo, seja adotado critério estritamente objetivo para indeferimento da gratuidade judiciária."
+            },
+            {
+              "pos": "concl",
+              "texto": "A propósito, eis o teor das teses aprovadas:"
+            },
+            {
+              "pos": "concl",
+              "texto": "\"i) É vedado o uso de critérios objetivos para o indeferimento imediato da gratuidade judiciária requerida por pessoa natural."
+            },
+            {
+              "pos": "concl",
+              "texto": "ii) Verificada a existência nos autos de elementos aptos a afastar a presunção de hipossuficiência econômica da pessoa natural, o juiz deverá determinar ao requerente a comprovação de sua condição, indicando de modo preciso as razões que justificam tal afastamento, nos termos do art. 99, § 2º, do CPC."
+            },
+            {
+              "pos": "concl",
+              "texto": "iii) Cumprida a diligência, a adoção de parâmetros objetivos pelo magistrado pode ser realizada em caráter meramente suplementar e desde que não sirva como fundamento exclusivo para o indeferimento do pedido de gratuidade.\""
+            },
+            {
+              "pos": "concl",
+              "texto": "Perceba-se que a jurisprudência tematizada exige que parâmetros objetivos sejam adotados apenas em caráter suplementar, não podendo servir de fundamento exclusivo para o indeferimento do benefício."
+            },
+            {
+              "pos": "concl",
+              "texto": "No caso concreto, veiculou-se apenas critério objetivo para revisão da concessão à parte exequente do benefício da gratuidade judiciária, razão pela qual não se autoriza o acolhimento da pretensão."
+            },
+            {
+              "pos": "concl",
+              "texto": "Embora no julgamento da ADC 80, Rel. p/ acórdão Min. GILMAR MENDES, na sessão de 03/09/2026, a Suprema Corte tenha fixado novos parâmetros para aferição da gratuidade judiciária, limitando a presunção relativa de hipossuficiência a percepção de salário igual ou inferior a R$ 5.000,00, conforme teto da tabela do imposto de renda, permitindo que, mesmo nestes casos, possa ser indeferida gratuidade judiciária no caso de apurado patrimônio ou renda familiar incompatível com tal presunção, aplicado o princípio da razoabilidade, é certo que tal interpretação conforme à Constituição restou modulada para \"que produza efeitos ex nunc, a contar da publicação da ata de julgamento de mérito, sendo aplicável, portanto, somente aos processos ajuizados a partir de tal marco\", razão pela qual, no caso concreto, deve prevalecer o que decorre da jurisprudência tematizada da Corte Superior."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "No tocante à gratuidade judiciária, concedida na origem, não pode ser revogada sem garantir prévio contraditório e, menos ainda, com base em critério exclusivamente objetivo, a teor do que dispõe o julgamento repetitivo do Tema 1.178/STJ, cuja eficácia prevalece, no caso concreto, diante da modulação da interpretação conforme atribuída pela Suprema Corte no julgamento da ADC 80."
+            }
+          ],
+          "nota": "No paradigma, a revisão da gratuidade veio no recurso adesivo do ente."
+        },
+        {
+          "id": "honorarios",
+          "grupo": "Honorários",
+          "titulo": "Honorários recursais (1%)",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "honor",
+              "texto": "Pela sucumbência recursal, a parte exequente deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, a ser acrescido ao fixado na origem[?gratuidade:, observada a gratuidade de justiça concedida (artigo 98, § 3º, do CPC)]."
+            }
+          ],
+          "nota": "Paradigma: “o autor”; uniformizado para “a parte exequente”, como no voto do 5007937-56.2024."
+        },
+        {
+          "id": "dispositivo",
+          "grupo": "Dispositivo",
+          "titulo": "Dispositivo",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "disp",
+              "texto": "Ante o exposto, nego provimento à apelação[?adesivo: da parte exequente e ao recurso adesivo {{do ente}}]."
+            }
+          ],
+          "relatorio": [
+            {
+              "pos": "apos_recurso",
+              "texto": "[?adesivo:Recorreu adesivamente {{o ente}} (ID {{ID}}), sustentando em síntese que: {{(1) …; e (2) …}}.]"
+            },
+            {
+              "pos": "antes_mpf",
+              "texto": "[?adesivo:Houve contrarrazões ao recurso adesivo (ID {{ID}}).]"
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "dispositivo",
+              "texto": "[?!adesivo:Apelação desprovida][?adesivo:Apelação e recurso adesivo desprovidos], honorários recursais em acréscimo ao fixado na origem."
+            },
+            {
+              "pos": "dispositivos",
+              "texto": "CF, artigo 5º, XXI e LXX; CPC, artigos 85, §§ 2º a 6º e 11, 98, § 3º, e 535, § 8º; Lei 7.347/1985, artigos 2º e 16; Lei 8.078/1990, artigo 93, II; Lei 9.494/1997, artigo 2º-A; MP 2.169-43/2001, artigos 6º e 7º, §§ 1º e 2º; MP 1.704/1998, artigos 6º e 7º; MP 1.775-6/1998; MP 1.812-9/1999; MP 1.962-33/2000, artigo 7º, § 2º; MP 2.163-43/2001, artigos 6º e 7º; CPC, artigos 487, III, b, 331, §§ 2º e 3º, 85, §§ 2º e 3º, e 98, § 3º"
+            },
+            {
+              "pos": "jurisprudencia",
+              "texto": "STF, Temas 1.075, 499/STF e 733; e ARE 1.585.247; STJ, Temas 1.102, 550; EREsp 1.134.957; AgInt no REsp 1.841.604; AgInt nos EDcl no REsp 1.513.012; AgInt no AREsp 2.993.227; TRF-3, ApCiv 5005688-98.2025.4.03.6000; ApCiv 5002058-68.2024.4.03.6000; ApCiv 5008102-06.2024.4.03.6000 e ApCiv 5008102-06.2024.4.03.6000."
+            }
+          ],
+          "acordao": [
+            {
+              "pos": "texto",
+              "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, negou provimento à apelação[?adesivo: e ao recurso adesivo], nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+            }
+          ]
+        }
+      ],
+      "nota": "Na ementa do paradigma (5001115-51.2024), o dispositivo não menciona o recurso adesivo; a versão com adesivo é acréscimo condicional."
+    },
+    {
+      "id": "mm-2886-a3-acordo-desprovimento",
+      "nome": "28,86% · A3 — só acordo administrativo · apelação desprovida",
+      "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+      "tipo": "acórdão",
+      "especie": "Apelação",
+      "resultado": "desprovimento",
+      "status": "rascunho",
+      "verificado_em": "",
+      "paradigma": "5006719-90.2024.4.03.6000 (sessão de 05/10/2026)",
+      "fonte": "Inteiro teor do acórdão A00130 no banco (dados/acordaos/2026.json.gz)",
+      "descricao": "Sentença afastou a limitação territorial (Tema 1.075/STF) e extinguiu o cumprimento por acordo administrativo, provado pelas fichas SIAPE; exequente apela.",
+      "caso_do_modelo": true,
+      "ementa_cabecalho": "",
+      "ementa_cabecalho_fim": "",
+      "opcoes": [
+        {
+          "id": "gratuidade",
+          "rotulo": "exequente com gratuidade de justiça",
+          "situacao": "gratuidade"
+        }
+      ],
+      "blocos": [
+        {
+          "id": "ementa-base",
+          "grupo": "Ementa",
+          "titulo": "Cabeçalho e caso em exame",
+          "modo": "fixo",
+          "ementa": [
+            {
+              "pos": "cabecalho",
+              "texto": "DIREITO PROCESSUAL CIVIL E ADMINISTRATIVO. CUMPRIMENTO INDIVIDUAL DE SENTENÇA COLETIVA. VANTAGEM DE 28.86%. AÇÃO CIVIL PÚBLICA. ACORDO INDIVIDUAL OU TRANSAÇÃO ADMINISTRATIVA. TEMAS 550 E 1.102/STJ. PAGAMENTO ADMINISTRATIVO. DESPROVIMENTO. HONORÁRIOS RECURSAIS."
+            },
+            {
+              "pos": "caso",
+              "texto": "Em cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000 para incorporação, a partir de janeiro de 1993, do reajuste de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas, a sentença, ora apelada, extinguiu o processo, sem resolução do mérito, em razão de acordo sobre as diferenças pleiteadas."
+            },
+            {
+              "pos": "questao",
+              "texto": "A controvérsia envolve discutir, como centralidade decisória a repercutir em pontos secundários veiculados, o efeito de acordo individual ou transação administrativa sobre a pretensão de cumprimento individual de sentença coletiva proferida na ACP 0005019-15.1997.4.03.6000, que trata da incorporação, a partir de janeiro de 1993, do reajuste de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas."
+            }
+          ]
+        },
+        {
+          "id": "controversia",
+          "grupo": "Controvérsia",
+          "titulo": "Delimitação da controvérsia",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "contro",
+              "texto": "Senhores Desembargadores, a sentença decretou extinto cumprimento de sentença, por ter havido acordo administrativo, não restando título judicial a executar."
+            }
+          ]
+        },
+        {
+          "id": "fund-acordo",
+          "grupo": "Acordo",
+          "titulo": "Regime do acordo e da transação (MP 1.704/1998 a 2.169-43/2001; Temas 550 e 1.102/STJ)",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Um breve retrospecto é exigido para a compreensão da controvérsia, pois o reajuste de 28,86% foi objeto da MP 1.704, de 30/06/1998, cujo artigo 6º previu acordo individual para pagamento em até sete anos a partir de 1999, abrangendo os valores de 01/01/1993 a 30/06/1998, prevendo o artigo 7º que, para servidores em litígio judicial, seria possível transação administrativa, até 30/12/1998, desde que homologada no juízo competente. O prazo para transação administrativa foi prorrogado para até 19/02/1999 (a partir da MP 1.775-6/1998) e, depois, até 19/05/1999 (MP 1.812-9/1999), prazo este que foi mantido até a MP 2.169-43, de 24/08/2001, a última editada."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Observa-se, porém, que, a partir da MP 1.962-33, de 21/12/2000, foi previsto no § 2º do artigo 7º que \"Para efeito da homologação prevista no caput, a falta do instrumento da transação, por eventual extravio, será suprida pela apresentação de documento expedido pelo Sistema Integrado de Administração de Recursos Humanos - SIAPE, que comprove a celebração da avença\"."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Percebe-se, assim, que, desde que autorizada a incorporação e pagamento de atrasados do reajuste de 28,86%, foi permitido acordo individual para servidores sem litígio judicial e transação administrativa para servidores em litígio judicial desde que com homologação judicial do instrumento de transação ou, na sua falta, com apresentação de documento do SIAPE, comprovando a avença."
+            },
+            {
+              "pos": "jurid",
+              "texto": "A propósito, eis a redação da MP 2.169-43, de 24/08/2001, última editada e fruto de longa cadeia de reedições originada na MP 1.704/1998:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "“Art. 6º Os valores devidos em decorrência do disposto nos arts. 1º ao 5º, correspondentes ao período compreendido entre 1º de janeiro de 1993 e 30 de junho de 1998, serão pagos, a partir de 1999, em até sete anos, nos meses de maio e dezembro, mediante acordo firmado individualmente pelo servidor até 19 de maio de 1999."
+            },
+            {
+              "pos": "jurid",
+              "texto": "[...]"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Art. 7º Ao servidor que se encontre em litígio judicial visando ao pagamento da vantagem de que tratam os arts. 1º ao 6º, é facultado receber os valores devidos até 30 de junho de 1998, pela via administrativa, firmando transação, até 19 de maio de 1999, a ser homologada no juízo competente."
+            },
+            {
+              "pos": "jurid",
+              "texto": "§ 1º Para efeito do cumprimento do disposto nesta Medida Provisória, a Advocacia-Geral da União e as Procuradorias Jurídicas das autarquias e fundações públicas federais ficam autorizadas a celebrar transação nos processos movidos contra a União ou suas entidades que tenham o mesmo objeto do Mandado de Segurança referenciado no art. 1º."
+            },
+            {
+              "pos": "jurid",
+              "texto": "§ 2º Para efeito da homologação prevista no caput, a falta do instrumento da transação, por eventual extravio, será suprida pela apresentação de documento expedido pelo Sistema Integrado de Administração de Recursos Humanos - SIAPE, que comprove a celebração da avença.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Como se observa a legislação cuida de duas situações distintas: a do servidor sem litígio judicial e sujeito a acordo individual, e a do servidor com litígio judicial e sujeito à transação com posterior homologação judicial."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Para o primeiro grupo de servidores, que não ajuizou ação individual nem foi beneficiado por ação coletiva, e que formulou acordo individual até 19/05/1999, a Corte Superior, no julgamento do Tema 550, referente ao REsp 1.318.315, assentou o seguinte entendimento:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "“É despicienda a homologação judicial do termo de transação extrajudicial, posto que inviável a execução de tal providência, diante da inexistência, à época da celebração do acordo, de demanda judicial entre as partes transigentes”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "No tocante ao segundo grupo, em que se pretende aplicação do paradigma firmado no julgamento do Tema 1.102, atinente ao REsp 1.925.194, as teses jurídicas aprovadas foram assim redigidas:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "“I) É possível a comprovação de transação administrativa, relativa ao pagamento da vantagem de 28,86%, por meio de fichas financeiras ou documento expedido pelo Sistema Integrado de Administração de Recursos Humanos - SIAPE, conforme art. 7º, § 2º, da MP 1.962-33/2000, reproduzida na vigente MP 2.169-43/2001, apenas em relação a acordos firmados posteriormente à sua vigência."
+            },
+            {
+              "pos": "jurid",
+              "texto": "II) Quando não for localizado o instrumento de transação devidamente homologado, e buscando impedir o enriquecimento ilícito, os valores recebidos administrativamente, a título de 28,86%, demonstrados por meio dos documentos expedidos pelo SIAPE, devem ser deduzidos da quantia apurada, com as atualizações pertinentes”."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Como evidenciado, o Tema 1.102/STJ insere-se no contexto normativo da série de medidas provisórias, desde a MP 1.704, de 30/06/1998, até a MP 2.169-43, de 24/08/2001, prevendo, para servidores em litígio judicial, possibilidade de transação até19/05/1999para quitação administrativa de diferenças, relativas à vantagem de 28,86%, mediante posterior homologação judicial do instrumento de transação ou com base em documentos expedidos pelo SIAPE, validando-se a comprovação da avença por meio de fichas financeiras do SIAPE a partir de 21/12/2000 com fundamento no § 2º do artigo 7º da MP 1.962-33/2000."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Note-se que o artigo 7º da série de medidas provisórias editadas alude à exigência de transação até 19/05/1999 com posterior homologação (\"a ser homologada\") no juízo competente, instituindo, assim, duas fases distintas para servidores em litígio judicial: a fase de transação administrativa até 19/05/1999 e a fase de homologação judicial, que pode ocorrer a qualquer tempo, inclusive sob a vigência da MP 2.169-43, de 24/08/2001."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Havendo homologação judicial, o processo é extinto com resolução do mérito (artigo 487, III, b, CPC), vinculando ambas as partes - tanto a administração como o servidor - aos termos da transação e, portanto, havendo coisa julgada, esta apenas pode ser desconstituída por ação rescisória ajuizada a tempo e modo. Logo, ainda que a homologação judicial tenha sido anterior à vigência da MP 2.169-43, de 24/08/2001, eventual falta de juntada ou comprovação do termo de transação não desconstituiria a sentença homologatória e, tampouco, a coisa julgada, não desobrigando a administração de cumprir os termos da avença homologada, de que derivavam os pagamentos feitos e cobertos, à míngua de prova em contrário, pela presunção de legitimidade e veracidade dos atos administrativos praticados."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Na controvérsia suscitada entre a aplicação dos dois regimes previstos na legislação e jurisprudência, a pretensão é dirigida à hipótese de servidor em litígio judicial com a administração acerca da vantagem de 28,86% (artigo 7º das medidas provisórias e Tema 1.102/STJ), porém tal fato, constitutivo do direito alegado, demanda prova, da qual não se desincumbiu a parte exequente."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Sobre a incorporação da vantagem de 28,86%, previram a MP 1.704, de 30/06/1998, e as sucessivamente editadas até a MP 2.169-43, de 24/08/2001, a possibilidade de pagamento administrativo para satisfação do direito mediante acordo individual (artigo 6º) ou transação administrativa sujeita à homologação judicial no caso de servidores em litígio judicial (artigo 7º), até o prazo de 19/02/1999, prorrogado para 19/05/1999. O acordo individual, destinada aos servidores sem prévia ação judicial, prescinde de homologação judicial (Tema 550/STJ) e a transação administrativa, para os que têm ação judicial proposta, exige, a partir da MP 1.962-33, de 21/12/2000, a homologação judicial da transação, suprindo-se a falta do instrumento, em caso de extravio, por fichas financeiras expedidas pelo SIAPE (Tema 1.102/STJ)."
+            }
+          ]
+        },
+        {
+          "id": "acordo-fichas",
+          "grupo": "Acordo",
+          "titulo": "Fichas financeiras do SIAPE no caso concreto",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "provas",
+              "texto": "Na espécie, a existência de fichas financeiras com registro de pagamento de diferenças decorrentes da vantagem de 28,86% - rubrica \"VANTAGEM ADMINIST. 28.86%-ATIV\" (ID {{ID das fichas financeiras}}), faz presumir, em favor da Administração Pública, que houve composição administrativa regular entre as partes, sendo ônus do administrado demonstrar a eventual ilegalidade da conduta administrativa, o que não se verificou."
+            },
+            {
+              "pos": "provas",
+              "texto": "Não se podendo presumir ilegalidade nem que pagamentos administrativos tenham sido realizados por mera liberdade da administração, privilegiando interesses privados em detrimento do interesse público, fato grave que pode gerar responsabilidade não apenas administrativa como criminal, o que resta a considerar, na espécie, é que a prova produzida ampara a conclusão no sentido de que a parte exequente aderiu à composição administrativa para satisfação do direito, obstando, consequentemente, o exercício da pretensão deduzida no cumprimento individual da sentença coletiva, a que se refere a ação civil pública ajuizada pelo Ministério Público Federal."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "O pagamento de parcelas devidas referentes à vantagem em discussão (\"VANTAGEM ADMINIST. 28.86%-ATIV\"), conforme demonstrado pelas fichas financeiras juntadas, não pode ser presumido como realizado sem cumprimento regular da legislação, seja quanto ao acordo individual, seja quanto à transação administrativa homologada judicialmente, não se podendo, portanto, imputar ilegalidade à administração sem prova específica e concreta, ônus processual que decorre da presunção de legitimidade e veracidade, que milita em favor dos atos administrativos."
+            }
+          ]
+        },
+        {
+          "id": "acordo-siape",
+          "grupo": "Acordo",
+          "titulo": "Prova do acordo pelas fichas do SIAPE",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Em se tratando de parte que não provou ter previamente ajuizado ação sobre a matéria - fato passível de elucidação por mera certidão de distribuição e/ou certidão de objeto e pé -, o registro de pagamentos de parcelas da vantagem específica nas fichas financeiras emitidas pelo SIAPE comprova, suficientemente, a existência de acordo individual, a impedir a pretensão de nova cobrança em sede de cumprimento individual de sentença coletiva."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Em se tratando, como evidenciado, de parte que não provou ter previamente ajuizado ação sobre a matéria - fato passível de elucidação por mera certidão de distribuição e/ou certidão de objeto e pé -, o registro de pagamentos de parcelas da vantagem específica nas fichas financeiras emitidas pelo SIAPE comprova, suficientemente, a existência de acordo individual, a impedir a pretensão de nova cobrança em sede de cumprimento individual de sentença coletiva."
+            }
+          ]
+        },
+        {
+          "id": "acordo-via",
+          "grupo": "Acordo",
+          "titulo": "Via processual inadequada e renúncia às diferenças",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Mesmo quando não se esteja a impugnar existência ou validade do acordo individual ou transação administrativa com homologação judicial, mas a veicular apenas pretensão de menor alcance - como revisão dos respectivos termos, por serem os da ação coletiva, mais favoráveis, ou cobrança de valores inadimplidos do próprio acordo ou transação -, a via processual adequada não é a do cumprimento individual de sentença coletiva, pois a pretensão, acerca do pagamento de diferenças da vantagem de 28,86%, já foi exercida administrativamente."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Superada que fosse a restrição da via, a jurisprudência da Corte é firme em reconhecer, contra pretensões como tais, que, “ao celebrar o acordo, o demandante expressamente anuiu com os valores então apresentados, considerando a conveniência de recebê-los pela via administrativa, sem a necessidade de instaurar demanda judicial e suportar os encargos dela decorrentes” (ApCiv 5008922-59.2023.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, DJEN de 05/11/2025); e que \"A aceitação dos valores pagos administrativamente, sem litígio judicial concomitante, implica renúncia ao direito de pleitear as diferenças em juízo\" (ApCiv 5008102-06.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, DJEN de 15/04/2026)."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Ainda que se tratasse de diferenças não reconhecidas ou pagas na via administrativa, não se autoriza ajuizar cumprimento individual de sentença coletiva para reabrir objeto e pretensão exauridos com a adesão a acordo administrativo, em conformidade com a jurisprudência da Corte."
+            }
+          ]
+        },
+        {
+          "id": "concl-origem",
+          "grupo": "Conclusão",
+          "titulo": "Solução da origem correta",
+          "modo": "alternativa",
+          "alt": "conclusao",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "Afigura-se, pois, correta a solução dada na origem."
+            }
+          ]
+        },
+        {
+          "id": "concl-transacionado",
+          "grupo": "Conclusão",
+          "titulo": "Legitimidade sem título para o valor transacionado",
+          "modo": "alternativa",
+          "alt": "conclusao",
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "Em suma, embora a parte exequente seja legitimada, não se autoriza, em razão do acordo administrativo firmado, a pretensão de promover cumprimento individual da sentença coletiva referente ao mesmo valor transacionado administrativamente."
+            }
+          ]
+        },
+        {
+          "id": "honorarios",
+          "grupo": "Honorários",
+          "titulo": "Honorários recursais (1%)",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "honor",
+              "texto": "Pela sucumbência recursal, a parte exequente deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, à sucumbência fixada na sentença pelo decaimento na instância de origem[?gratuidade:, observada a gratuidade de justiça concedida (artigo 98, § 3º, do CPC)]."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Pela sucumbência recursal, a parte exequente deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, à sucumbência fixada na sentença pelo decaimento na instância de origem[?gratuidade:, observada a gratuidade de justiça concedida (artigo 98, § 3º, do CPC)]."
+            }
+          ],
+          "nota": "Cláusula da gratuidade acrescentada como condicional (não consta do paradigma)."
+        },
+        {
+          "id": "dispositivo",
+          "grupo": "Dispositivo",
+          "titulo": "Dispositivo",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "disp",
+              "texto": "Ante o exposto, nego provimento à apelação."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "dispositivo",
+              "texto": "Apelação desprovida."
+            },
+            {
+              "pos": "dispositivos",
+              "texto": "MP 1.704/1998, artigos 6º e 7º; MP 1.775-6/1998; MP 1.812-9/1999; MP 1.962-33/2000, artigo 7º, § 2º; MP 2.163-43/2001, artigos 6º e 7º; CPC, artigos 487, III, b, 331, §§ 2º e 3º, 85, §§ 2º e 3º, e 98, § 3º"
+            },
+            {
+              "pos": "jurisprudencia",
+              "texto": "STJ, Temas 550 e 1.102; TRF3, ApCiv 5008922-59.2023.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, DJEN de 05/11/2025; e ApCiv 5008102-06.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, DJEN de 15/04/2026."
+            }
+          ],
+          "acordao": [
+            {
+              "pos": "texto",
+              "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, negou provimento à apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mm-2886-a4-sindicato-conhecimento-parcial",
+      "nome": "28,86% · A4 — categoria com ação coletiva de sindicato · conhecimento parcial e desprovimento",
+      "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+      "tipo": "acórdão",
+      "especie": "Apelação",
+      "resultado": "conhecimento parcial e desprovimento",
+      "status": "rascunho",
+      "verificado_em": "",
+      "paradigma": "5006675-71.2024.4.03.6000 (sessão de 05/10/2026)",
+      "fonte": "Inteiro teor do acórdão A00131 no banco (dados/acordaos/2026.json.gz)",
+      "descricao": "Exequente pertence a categoria cujo sindicato ajuizou ação coletiva com o mesmo objeto antes da ACP; a coisa julgada da ACP o exclui. Não se aplica à execução coletiva promovida pelo sindicato.",
+      "caso_do_modelo": true,
+      "ementa_cabecalho": "",
+      "ementa_cabecalho_fim": "",
+      "opcoes": [
+        {
+          "id": "gratuidade",
+          "rotulo": "exequente com gratuidade de justiça",
+          "situacao": "gratuidade"
+        }
+      ],
+      "blocos": [
+        {
+          "id": "ementa-base",
+          "grupo": "Ementa",
+          "titulo": "Cabeçalho e caso em exame",
+          "modo": "fixo",
+          "ementa": [
+            {
+              "pos": "cabecalho",
+              "texto": "DIREITO PROCESSUAL CIVIL. ADMINISTRATIVO. APELAÇÃO. RAZÕES EM PARTE DISSOCIADAS. CUMPRIMENTO DE SENTENÇA. AÇÃO CIVIL PÚBLICA. EXTINÇÃO DO PROCESSO SEM EXAME DE MÉRITO. EFEITOS DA COISA JULGADA. ILEGITIMIDADE ATIVA. PRETENSÃO ABRANGIDA POR AÇÃO COLETIVA DISTINTA. EXCLUSÃO EXPRESSA. SENTENÇA CONFIRMADA. HONORÁRIOS RECURSAIS."
+            },
+            {
+              "pos": "caso",
+              "texto": "Em cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000 para incorporação a partir de janeiro de 1993 de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas, extinguiu o processo, nos termos dos artigos 924, III, e 485, VI, Código de Processo Civil, por ser a parte exequente integrante de categoria profissional contemplada por outra ação coletiva com objeto idêntico e ajuizada anteriormente, e por falta de título executivo que ampare a pretensão, por ter firmado acordo administrativo, fixada verba honorária de {{percentual}} sobre {{base de cálculo}}, suspensa a exigibilidade nos termos do artigo 98, § 3º, do CPC."
+            },
+            {
+              "pos": "questao",
+              "texto": "Definir o alcance da coisa julgada na ACP 0005019-15.1997.4.03.6000 para exame da legitimidade ativa para o cumprimento de sentença, considerada a propositura de ação coletiva anterior pelo {{SIGLA_DO_SINDICATO}} com o mesmo objeto, representando a categoria funcional da parte exequente."
+            }
+          ]
+        },
+        {
+          "id": "conhecimento-parcial",
+          "grupo": "Admissibilidade",
+          "titulo": "Conhecimento parcial — razões em parte dissociadas",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "admiss",
+              "texto": "Senhores Desembargadores, conheço em parte da apelação, pois não se tratou na sentença da questão da ilegitimidade ativa, por não possuir a parte exequente vínculo com os limites territoriais de competência do órgão prolator da condenação e, por outro lado, embora haja dois fundamentos, somente tendo sido um deles impugnado, o que poderia resultar em fundamentação suficiente para a confirmação da sentença, adentra-se, de qualquer modo, no exame da questão remanescente suscitada."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Não se conhece da apelação, no que veiculadas razões dissociadas do julgamento, referente a fundamento de extinção do processo sem resolução do mérito, que não foi tratado na sentença."
+            }
+          ]
+        },
+        {
+          "id": "controversia",
+          "grupo": "Controvérsia",
+          "titulo": "Exclusões da coisa julgada e ação do sindicato",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "contro",
+              "texto": "O caso é peculiar, pois a abrangência com que tem sido tratado o alcance da ACP 0005019-15.1997.4.03.6000, ajuizada pelo Ministério Público Federal, é excepcionada, pela própria coisa julgada, nas seguintes hipóteses: (1) se comprovado o recebimento do reajuste na época; (2) se pertencer à categoria cujo sindicato ajuizou ação com idêntica finalidade, salvo se demonstrado que não foi contemplado com a ação do sindicato; (3) se tiver ajuizado ação individual ou por meio de sindicato com igual objeto; e (4) se firmado acordo para recebimento das diferenças do reajuste discutido."
+            },
+            {
+              "pos": "contro",
+              "texto": "Na espécie, o lastro probatório dos autos demonstra que o {{NOME_DO_SINDICATO}} ({{SIGLA_DO_SINDICATO}}), por meio da Ação {{NUMERO_DA_ACAO_COLETIVA_DO_SINDICATO}}, pleiteou e garantiu, em nome de seus substituídos, o pagamento das diferenças de remuneração relativas ao percentual de 28,86%, a partir de 1º de janeiro de 1993, com a incorporação do citado percentual à remuneração dos substituídos."
+            }
+          ]
+        },
+        {
+          "id": "fund-litispendencia",
+          "grupo": "Fundamentação",
+          "titulo": "Litispendência e limites subjetivos da coisa julgada",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "A jurisprudência é consolidada no sentido de que não há litispendência entre execução individual e execução promovida na ação coletiva desde que fundadas no mesmo título judicial, pois o cumprimento coletivo de sentença não impede a execução individual."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Neste sentido:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "ApCiv 5001464-12.2024.4.03.6111, Rel. Des. Fed. JOSE CARLOS FRANCISCO, DJEN 15/04/2026: \"DIREITO PROCESSUAL CIVIL. EMBARGOS DE DECLARAÇÃO. EXECUÇÃO INDIVIDUAL DE SENTENÇA PROFERIDA EM AÇÃO CIVIL PÚBLICA. ACP Nº 0005019-15.1997.4.03.6000. LITISPENDÊNCIA. PRESCRIÇÃO. PROTESTO INTERRUPTIVO. LEGITIMIDADE DO MINISTÉRIO PÚBLICO FEDERAL. TEMA 1.033/STJ. ACOLHIMENTO PARCIAL SEM EFEITOS INFRINGENTES. I. CASO EM EXAME 1. Embargos de declaração opostos pelo INSS em face de acórdão que, em execução individual fundada na ACP nº 0005019-15.1997.4.03.6000, afastou alegações de ilegitimidade ativa, litispendência e prescrição. A autarquia sustenta omissões quanto à abrangência territorial da ACP e à legitimidade ativa da exequente; à existência de litispendência/coisa julgada em relação às ações nº 0027907-71.1994.4.03.6100 e nº 0067032-51.2014.4.01.3400; à prescrição e à impossibilidade de interrupção por protesto; e à afetação do Tema 1.033/STJ. II. QUESTÃO EM DISCUSSÃO 2. Há quatro questões em discussão: (i) definir se o acórdão incorreu em omissão quanto à abrangência da ACP nº 0005019-15.1997.4.03.6000 e à legitimidade ativa; (ii) estabelecer se há litispendência em razão das ações nº 0027907-71.1994.4.03.6100 e nº 0067032-51.2014.4.01.3400; (iii) determinar se a pretensão executiva está prescrita e se houve válida interrupção do prazo prescricional; (iv) verificar se a afetação do Tema 1.033/STJ impede o julgamento do feito. III. RAZÕES DE DECIDIR 3. O acórdão enfrenta expressamente a abrangência territorial da ACP e a legitimidade ativa, inexistindo omissão, sendo incabível a rediscussão do mérito por meio de embargos de declaração, nos termos do art. 1.022 do CPC/2015. 4. Não há litispendência entre execução coletiva promovida por sindicato e execução individual fundada no mesmo título judicial, pois o cumprimento coletivo de sentença não impede o ajuizamento de execução individual pelo beneficiário, conforme jurisprudência consolidada do STJ. 5. Afasta-se a litispendência em relação à ação nº 0067032-51.2014.4.01.3400, diante da exclusão da exequente daqueles autos. 6. A interrupção da prescrição somente pode ocorrer uma vez, nos termos do art. 202 do Código Civil, reiniciando-se a contagem a partir do ato interruptivo. 7. Reconhece-se a legitimidade do Ministério Público Federal para propor medida cautelar de protesto com vistas à interrupção do prazo prescricional em favor dos beneficiários da ação civil pública, conforme precedentes do STJ, inclusive no âmbito do Tema 1.033. 8. A suspensão determinada na afetação do Tema 1.033/STJ alcança apenas recursos especiais e agravos em recurso especial em trâmite na segunda instância ou no STJ, não impedindo o julgamento do presente feito. 9. Considerado o protesto interruptivo promovido no âmbito da ACP nº 0005019-15.1997.4.03.6000, o prazo prescricional foi validamente prorrogado, afastando-se a alegação de prescrição da execução individual. IV. DISPOSITIVO E TESE 10. Embargos de declaração parcialmente acolhidos, sem efeitos infringentes. Tese de julgamento: \"1. Não há litispendência entre execução coletiva promovida por substituto processual e execução individual ajuizada pelo beneficiário com base no mesmo título judicial. 2. O Ministério Público Federal possui legitimidade para ajuizar medida cautelar de protesto com o objetivo de interromper a prescrição para a execução individual de sentença coletiva. 3. A interrupção da prescrição, nos termos do art. 202 do Código Civil, ocorre uma única vez e reinicia a contagem do prazo a partir do ato interruptivo. 4. A afetação de recurso repetitivo no STJ não impede o julgamento do feito na origem quando a suspensão se limita a recursos especiais e agravos em recurso especial\". Dispositivos relevantes citados: CPC/2015, arts. 1.022 e 1.025; CC, art. 202. Jurisprudência relevante citada: STJ, REsp nº 1.762.498/RJ, Rel. Min. Herman Benjamin, Segunda Turma, j. 25.9.2018, DJe 11.3.2019; STJ, AgInt no REsp nº 1.710.202/DF, Rel. Min. Moura Ribeiro, Terceira Turma, j. 19.8.2019, DJe 21.8.2019; STJ, AgInt no AREsp nº 1.340.673/MS, Rel. Min. Marco Aurélio Bellizze, Terceira Turma, j. 10.6.2019, DJe 13.6.2019; STJ, AgInt no AREsp nº 1.316.210/MS, Rel. Min. Raul Araújo, Quarta Turma, j. 28.5.2019, DJe 13.6.2019.”"
+            },
+            {
+              "pos": "jurid",
+              "texto": "Tratando de ação coletiva, decidiu o Superior Tribunal de Justiça que a identidade de partes, para efeito de litispendência, deve observar os beneficiários da sentença coletiva:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "REsp 2.018.707, Rel. Min. MOURA RIBEIRO, DJEN 9/2/2025: \"CONSUMIDOR E PROCESSUAL CIVIL. RECURSO ESPECIAL. AÇÃO CIVIL PÚBLICA. FORNECIMENTO DE MODENS DE INTERNET SEM SOLICITAÇÃO PRÉVIA E COBRANÇA PELA PRESTAÇÃO DOS SERVIÇOS CORRELATOS. NEGATIVA DE PRESTAÇÃO JURISDICIONAL NÃO VERIFICADA. LITISPENÊNCIA. SÚMULA Nº 7 DO STJ. DANOS MORAIS COLETIVOS. OFENSA A DIREITOS FUNDAMENTAIS DA SOCIEDADE NÃO VERIFICADOS. RECURSO ESPECIAL PARCIALMENTE CONHECIDO E, NESSA EXTENSÃO, PROVIDO. 1. Não há como cogitar negativa de prestação jurisdicional quanto à alegação de litispendência e de ausência dos pressupostos configuradores do dano moral coletivo, porque o Tribunal estadual se manifestou de forma expressa sobre esses temas. 2. A Quarta Turma desta Corte Superior já se manifestou no sentido de que, tratando-se de ações coletivas, a identidade de partes, para efeito de litispendência, deve observar os beneficiários da sentença coletiva (REsp n. 1.726.147/SP, relator Ministro ANTONIO CARLOS FERREIRA, Quarta Turma, julgado em 14/5/2019, DJe de 21/5/2019). 3. O TJMG não esclareceu, porém, se a ação civil pública em relação à qual se alega litispendência teria por objetivo tutelar os mesmos consumidores contemplados na presente ação coletiva, de modo que o exame dessa questão esbarra na Súmula nº 7 do STJ. 4. Na linha dos precedentes desta Corte, os danos morais coletivos de que trata o CDC somente estarão configurados quando houver ofensa a valores fundamentais da sociedade, e não quando verificada ofensa a qualquer direito consumerista, sob pena de banalização do instituto. 5. O envio de produtos e o fornecimento de serviços não solicitados previamente constitui prática abusiva vedada pelo CDC, mas não enseja condenação por danos morais coletivos. 6. Recurso especial parcialmente conhecido e, nessa extensão, provido.\""
+            },
+            {
+              "pos": "jurid",
+              "texto": "Igualmente, deve a execução de sentenças coletivas atentar-se aos limites objetivos e subjetivos do que decidido na coisa julgada."
+            },
+            {
+              "pos": "jurid",
+              "texto": "A propósito:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "REsp 2.163.451, Rel. Min. TEODORO SILVA SANTOS, DJEN 24/4/2026: \"DIREITO PROCESSUAL CIVIL E PREVIDENCIÁRIO. RECURSO ESPECIAL. NEGATIVA DE PRESTAÇÃO JURISDICIONAL. INOCORRÊNCIA. CUMPRIMENTO DE SENTENÇA DECORRENTE DE AÇÃO CIVIL PÚBLICA. LIMITES OBJETIVOS E SUBJETIVOS DA COISA JULGADA. TEMA N. 1075 DO STF. INAPLICABILIDADE PARA AMPLIAR OS LIMITES SUBJETIVOS DA DECISÃO COLETIVA. REVISÃO DOS LIMITES SUBJETIVOS DO TÍTULO COLETIVO. IMPOSSIBILIDADE. ÓBICE DA SÚMULA N. 7 DO STJ. ACÓRDÃO RECORRIDO EM CONSONÂNCIA COM A JURISPRUDÊNCIA DO STJ. SÚMULA N. 83 DO STJ. AUSÊNCIA DE PREQUESTIONAMENTO. INCIDÊNCIA DAS SÚMULAS N. 282 E 356 DO STF. RECURSO ESPECIAL CONHECIDO EM PARTE E, NESSA EXTENSÃO, NÃO PROVIDO. 1. Na origem, o cumprimento de sentença fundado em título judicial decorrente de ação civil pública que condenou o INSS a revisar benefícios concedidos entre março/1994 e fevereiro/1997 com a inclusão do IRSM de 39,67%, julgado extinto por ilegitimidade ativa. 2. O Tribunal Regional negou provimento ao apelo interposto pela parte Exequente, ao fundamento de que o título executivo limita seus efeitos aos beneficiários vinculados à Gerência Executiva de Manaus, enquanto o benefício do apelante está vinculado a agência em Fortaleza/CE, situando-se fora dos limites objetivos e subjetivos da coisa julgada. 3. Inocorrente a alegada negativa de prestação jurisdicional, pois o Tribunal de origem enfrentou de modo suficiente e fundamentado as questões essenciais, concluindo pela ilegitimidade ativa e pela impossibilidade de ampliar os limites subjetivos da coisa julgada, mesmo após o Tema n. 1075 do Supremo Tribunal Federal. 4. A revisão, em recurso especial, dos limites subjetivos fixados no título coletivo demanda reexame do acervo fático-probatório, o que é vedado a esta Corte. Incidência da Súmula n. 7 do STJ. 5. Ainda que as sentenças coletivas produzam efeitos erga omnes, sua eficácia está adstrita aos limites objetivos e subjetivos do que foi decidido, considerada a extensão do dano e a natureza dos interesses metaindividuais. Precedentes. Óbice da Súmula n. 83 do STJ. 6. No que diz respeito à alegada ofensa aos arts. 924 e 925 do Código de Processo Civil, o acórdão recorrido, apesar da análise genérica da tese da ausência de intimação da autarquia previdenciária, concluiu que são aplicáveis as regras gerais previstas no Código de Processo Civil às execuções de sentença contra a Fazenda Pública. Contudo, a parte recorrente não suscitou a questão nos seus embargos de declaração, pelo que carece o recurso do indispensável requisito do prequestionamento. Incidência das Súmulas n. 282 e 356 do Supremo Tribunal Federal. 7. Recurso especial parcialmente conhecido e, nessa parte, não provido.\""
+            }
+          ]
+        },
+        {
+          "id": "aplicacao",
+          "grupo": "Aplicação",
+          "titulo": "Exclusão do servidor representado pelo sindicato",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "aplic",
+              "texto": "No caso, porém, não se trata de ajuizamento de ação individual em vez de adesão à ação civil pública ou à ação coletiva proposta pelo sindicato, tampouco de cumprimento de sentença individual em detrimento da execução coletiva do mesmo título judicial, hipóteses em que, como visto, não se configura litispendência."
+            },
+            {
+              "pos": "aplic",
+              "texto": "O caso revela que se trata de servidor representado pelo {{SIGLA_DO_SINDICATO}}, entidade esta que ajuizou a ação coletiva {{NUMERO_DA_ACAO_COLETIVA_DO_SINDICATO}}, em {{DATA_DE_AJUIZAMENTO_DA_ACAO_DO_SINDICATO}}, que discute a mesma pretensão objeto da ACP 0005019-15.1997.403.6000, proposta em data posterior pelo Ministério Público Federal, pretendendo-se, agora, o cumprimento não daquela decisão da categoria específica, mas a coisa julgada nesta última, de maior abrangência subjetiva em abstrato."
+            },
+            {
+              "pos": "aplic",
+              "texto": "Sucede que a própria coisa julgada já excluiu do seu alcance as situações acima declinadas, dentre as quais a de servidores representados em ações ajuizadas com o mesmo objeto, evitando-se, portanto, litispendência ou coisa julgada, além, claro, de pretensão de cumprimento do mesmo objeto em duas ações distintas com risco de duplicidade e enriquecimento sem causa."
+            },
+            {
+              "pos": "aplic",
+              "texto": "O sindicato autor da ação coletiva {{NUMERO_DA_ACAO_COLETIVA_DO_SINDICATO}} representa categoria profissional de {{CATEGORIA_PROFISSIONAL_REPRESENTADA_E_BASE_TERRITORIAL_DO_SINDICATO}}, incluindo a categoria funcional do apelante (ID {{ID_DOCUMENTO}}, f. {{FOLHA}}), resultando em situação contemplada como excluída do alcance da coisa julgada na ACP 0005019-15.1997.4.03.6000."
+            },
+            {
+              "pos": "aplic",
+              "texto": "Não se trata, portanto, de litispendência entre execução ou cumprimento individual e coletiva a partir do mesmo título judicial condenatório, mas de execução ou cumprimento individual de título judicial cuja condenação expressamente veda a sua aplicação à parte, ora exequente, por estar representada por sindicato que ajuizou ação distinta com o mesmo objeto, sendo inviável cogitar de direito subjetivo à escolha do título judicial condenatório mais favorável, quando este objetivamente proíbe a sua extensão ao caso concreto."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "A coisa julgada, firmada na ACP 0005019-15.1997.4.03.6000, excluiu de seu alcance os servidores que tenham ajuizado individualmente ou por sindicato ação que tenha por objeto a mesma pretensão deduzida, não se tratando, portanto, de título judicial passível de cumprimento em favor da parte exequente."
+            },
+            {
+              "pos": "razoes",
+              "texto": "A extinção do cumprimento não foi fundada em litispendência, mas em ilegitimidade ativa por exclusão contida na própria extensão dos beneficiários definida expressamente pela coisa julgada, sendo impertinente, pois, a alegação de que inexiste litispendência entre cumprimento individual e coletivo a partir do mesmo título executivo. Não existindo, a partir da coisa julgada na ACP 0005019-15.1997.4.03.6000, título judicial condenatório em favor da parte exequente, esta não pode pretender o seu cumprimento e, menos ainda, alegar direito subjetivo à escolha do título judicial condenatório mais favorável, quando este objetivamente proíbe a sua extensão ao caso concreto."
+            }
+          ]
+        },
+        {
+          "id": "conclusao",
+          "grupo": "Conclusão",
+          "titulo": "Conclusão",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "Em suma, nada colhe a pretensão recursal deduzida."
+            }
+          ]
+        },
+        {
+          "id": "honorarios",
+          "grupo": "Honorários",
+          "titulo": "Honorários recursais (1%)",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "honor",
+              "texto": "Pela sucumbência recursal, o autor deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, à sucumbência fixada na sentença pelo decaimento na instância de origem[?gratuidade:, observada a gratuidade de justiça concedida (artigo 98, § 3º, do CPC)]."
+            }
+          ]
+        },
+        {
+          "id": "dispositivo",
+          "grupo": "Dispositivo",
+          "titulo": "Dispositivo",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "disp",
+              "texto": "Ante o exposto, conheço em parte da apelação e nego-lhe provimento."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "dispositivo",
+              "texto": "Apelação conhecida em parte e desprovida, honorários recursais em acréscimo ao fixado na origem."
+            },
+            {
+              "pos": "dispositivos",
+              "texto": "Leis 8.622 e 8.627/1993; CPC, 924, III, 485, VI, 85, § 11, e 98, § 3º."
+            },
+            {
+              "pos": "jurisprudencia",
+              "texto": "TRF3, ApCiv 5001464-12.2024.4.03.6111, Rel. Des. Fed. JOSE CARLOS FRANCISCO, DJEN 15/04/2026; STJ, REsp 2.018.707, Rel. Min. MOURA RIBEIRO, DJEN 9/2/2025; REsp 2.163.451, Rel. Min. TEODORO SILVA SANTOS, DJEN 24/4/2026."
+            }
+          ],
+          "acordao": [
+            {
+              "pos": "texto",
+              "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, negou provimento à apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+            }
+          ]
+        }
+      ],
+      "nota": "Voto conforme o texto parametrizado do gabinete (sindicato, ação coletiva, ID e folha como campos). Na ementa do paradigma, o dispositivo repete o número 5 (itens 5 e 5)."
+    },
+    {
+      "id": "mm-2886-a5-bacen-gratuidade-desprovimento",
+      "nome": "28,86% · A5 — BACEN apela só da gratuidade · apelação desprovida",
+      "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+      "tipo": "acórdão",
+      "especie": "Apelação",
+      "resultado": "desprovimento",
+      "status": "rascunho",
+      "verificado_em": "",
+      "paradigma": "5006182-94.2024.4.03.6000 (sessão de 05/10/2026)",
+      "fonte": "Inteiro teor do acórdão A00142 no banco (dados/acordaos/2026.json.gz)",
+      "descricao": "Sentença extinguiu por ilegitimidade passiva da União e do BACEN e manteve a gratuidade do exequente; só o BACEN apela, contra a gratuidade.",
+      "caso_do_modelo": true,
+      "ementa_cabecalho": "",
+      "ementa_cabecalho_fim": "",
+      "opcoes": [],
+      "blocos": [
+        {
+          "id": "ementa-base",
+          "grupo": "Ementa",
+          "titulo": "Cabeçalho e caso em exame",
+          "modo": "fixo",
+          "ementa": [
+            {
+              "pos": "cabecalho",
+              "texto": "DIREITO PROCESSUAL CIVIL. APELAÇÃO. CUMPRIMENTO INDIVIDUAL DE SENTENÇA COLETIVA. GRATUIDADE DA JUSTIÇA. DECLARAÇÃO DE HIPOSSUFICIÊNCIA. REVISÃO BASEADA EM CRITÉRIO ESTRITAMENTE OBJETIVO. TEMA 1.178/STJ. DESPROVIMENTO."
+            },
+            {
+              "pos": "caso",
+              "texto": "Apelação interposta contra sentença que, ao extinguir cumprimento de sentença sem resolução do mérito por ilegitimidade passiva da União e do BACEN, deferiu à parte exequente benefícios da gratuidade da justiça. A autarquia sustentou que a remuneração básica bruta mensal da parte exequente, superior a vinte mil reais, afasta a presunção de hipossuficiência econômica exigida para a concessão do benefício."
+            },
+            {
+              "pos": "questao",
+              "texto": "A questão em discussão consiste em definir se a remuneração auferida pela parte exequente autoriza a manutenção da gratuidade da justiça."
+            }
+          ]
+        },
+        {
+          "id": "controversia",
+          "grupo": "Controvérsia",
+          "titulo": "Delimitação e cabimento da discussão na apelação",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "contro",
+              "texto": "Senhores Desembargadores, a controvérsia envolve exclusivamente a questão da assistência judiciária gratuita concedida à parte exequente."
+            },
+            {
+              "pos": "contro",
+              "texto": "Concedida a gratuidade judiciária (ID {{ID}}), houve impugnação a tal decisão na resposta do BACEN ao cumprimento de sentença (ID {{ID}}), que foi replicada pela parte exequente (ID {{ID}}), sobrevindo a sentença, que manteve a concessão (ID {{ID}}), donde a apelação."
+            },
+            {
+              "pos": "contro",
+              "texto": "Considerando que a matéria não é passível de agravo de instrumento, cabível apenas no caso de \"rejeição do pedido de gratuidade da justiça ou acolhimento do pedido de sua revogação\" (artigo 1.015, V, CPC), resta viável a discussão na sede recursal eleita."
+            },
+            {
+              "pos": "contro",
+              "texto": "Todavia, a pretensão deduzida na apelação não pode ser acolhida."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "A concessão do benefício de gratuidade de justiça foi impugnada pela autarquia na primeira oportunidade de manifestação nos autos e, tendo sido mantida em sentença, resta autorizada a renovação da discussão em sede de apelação."
+            }
+          ]
+        },
+        {
+          "id": "fund-gratuidade",
+          "grupo": "Gratuidade",
+          "titulo": "Tema 1.178/STJ — vedação de critério objetivo",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Com efeito, discute-se, sob prisma objetivo, a invalidade da presunção de hipossuficiência declarada pela pessoa natural, alegando-se na apelação que a parte exequente percebe remuneração mensal superior a parâmetros objetivos indicados, o que afastaria o cabimento do benefício."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Sucede, porém, que, na atualidade, prevalece o entendimento do Tema 1.178/STJ que, além de procedimento específico, não permite, de qualquer modo, seja adotado critério estritamente objetivo para indeferimento da gratuidade judiciária."
+            },
+            {
+              "pos": "jurid",
+              "texto": "A propósito, eis o teor das teses aprovadas:"
+            },
+            {
+              "pos": "jurid",
+              "texto": "\"i) É vedado o uso de critérios objetivos para o indeferimento imediato da gratuidade judiciária requerida por pessoa natural."
+            },
+            {
+              "pos": "jurid",
+              "texto": "ii) Verificada a existência nos autos de elementos aptos a afastar a presunção de hipossuficiência econômica da pessoa natural, o juiz deverá determinar ao requerente a comprovação de sua condição, indicando de modo preciso as razões que justificam tal afastamento, nos termos do art. 99, § 2º, do CPC."
+            },
+            {
+              "pos": "jurid",
+              "texto": "iii) Cumprida a diligência, a adoção de parâmetros objetivos pelo magistrado pode ser realizada em caráter meramente suplementar e desde que não sirva como fundamento exclusivo para o indeferimento do pedido de gratuidade.\""
+            }
+          ]
+        },
+        {
+          "id": "aplicacao",
+          "grupo": "Aplicação",
+          "titulo": "Caso concreto e modulação da ADC 80",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "aplic",
+              "texto": "Perceba-se que a jurisprudência tematizada exige que parâmetros objetivos sejam adotados apenas em caráter suplementar, não podendo servir de fundamento exclusivo para o indeferimento do benefício."
+            },
+            {
+              "pos": "aplic",
+              "texto": "No caso concreto, veiculou-se apenas critério objetivo para revisão da concessão à parte exequente do benefício da gratuidade judiciária, razão pela qual não se autoriza o acolhimento da pretensão."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "No tocante à gratuidade judiciária, concedida na origem, não pode ser revogada sem garantir prévio contraditório e, menos ainda, com base em critério exclusivamente objetivo, a teor do que dispõe o julgamento repetitivo do Tema 1.178/STJ, cuja eficácia prevalece, no caso concreto, diante da modulação da interpretação conforme atribuída pela Suprema Corte no julgamento da ADC 80."
+            }
+          ]
+        },
+        {
+          "id": "honor-bacen",
+          "grupo": "Honorários",
+          "titulo": "Pedido de honorários do BACEN (sentença não os fixou)",
+          "modo": "opcional",
+          "voto": [
+            {
+              "pos": "honor",
+              "texto": "{{exame do pedido de honorários advocatícios formulado pelo BACEN}}"
+            }
+          ],
+          "nota": "Hipótese indicada nos pressupostos do modelo (“submeter ao relator”); não há texto no paradigma."
+        },
+        {
+          "id": "dispositivo",
+          "grupo": "Dispositivo",
+          "titulo": "Dispositivo",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "disp",
+              "texto": "Embora no julgamento da ADC 80, Rel. p/ acórdão Min. GILMAR MENDES, na sessão de 03/09/2026, a Suprema Corte tenha fixado novos parâmetros para aferição da gratuidade judiciária, limitando a presunção relativa de hipossuficiência a percepção de salário igual ou inferior a R$ 5.000,00, conforme teto da tabela do imposto de renda, permitindo que, mesmo nestes casos, possa ser indeferida gratuidade judiciária no caso de apurado patrimônio ou renda familiar incompatível com tal presunção, aplicado o princípio da razoabilidade, é certo que tal interpretação conforme à Constituição restou modulada para \"que produza efeitos ex nunc, a contar da publicação da ata de julgamento de mérito, sendo aplicável, portanto, somente aos processos ajuizados a partir de tal marco\", razão pela qual, no caso concreto, deve prevalecer o que decorre da jurisprudência tematizada da Corte Superior."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "dispositivo",
+              "texto": "Apelação desprovida."
+            },
+            {
+              "pos": "dispositivos",
+              "texto": "CPC, arts. 98, § 3º, e 99, caput e § 3º."
+            },
+            {
+              "pos": "jurisprudencia",
+              "texto": "STF, ADC 80, Rel. p/ acórdão Min. GILMAR MENDES, j. 03/09/2026; STJ: Tema 1.178."
+            }
+          ],
+          "acordao": [
+            {
+              "pos": "texto",
+              "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, negou provimento à apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mm-2886-a6-razoes-dissociadas-nao-conhecimento",
+      "nome": "28,86% · A6 — razões dissociadas · apelação não conhecida",
+      "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+      "tipo": "acórdão",
+      "especie": "Apelação",
+      "resultado": "não conhecimento",
+      "status": "rascunho",
+      "verificado_em": "",
+      "paradigma": "5006685-18.2024.4.03.6000 (sessão de 05/10/2026)",
+      "fonte": "Inteiro teor do acórdão A00132 no banco (dados/acordaos/2026.json.gz)",
+      "descricao": "A apelação ataca fundamento que a sentença não adotou (sentença por acordo e apelação só territorial, ou o inverso) ou transcreve trecho de sentença estranha aos autos. Pode ser julgado por decisão monocrática.",
+      "caso_do_modelo": true,
+      "ementa_cabecalho": "",
+      "ementa_cabecalho_fim": "",
+      "opcoes": [
+        {
+          "id": "gratuidade",
+          "rotulo": "exequente com gratuidade de justiça",
+          "situacao": "gratuidade"
+        }
+      ],
+      "blocos": [
+        {
+          "id": "ementa-base",
+          "grupo": "Ementa",
+          "titulo": "Cabeçalho e caso em exame",
+          "modo": "fixo",
+          "ementa": [
+            {
+              "pos": "cabecalho",
+              "texto": "DIREITO PROCESSUAL CIVIL. APELAÇÃO. CUMPRIMENTO INDIVIDUAL DE SENTENÇA COLETIVA. REAJUSTE DE 28,86%. ACORDO ADMINISTRATIVO. RAZÕES DISSOCIADAS. FALTA DE DIALETICIDADE RECURSAL. NÃO CONHECIMENTO."
+            },
+            {
+              "pos": "caso",
+              "texto": "Em cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000, para incorporação a partir de janeiro de 1993 do reajuste de 28,86% (Leis 8.622/1993 e 8.627/1993) às remunerações de servidores públicos civis federais, ativos, inativos e pensionistas, houve extinção do processo, sem resolução do mérito, por falta de título executivo que ampare a pretensão, em razão da realização de acordo administrativo, fixada verba honorária de {{percentual}} sobre {{base de cálculo}}, suspensa a exigibilidade nos termos do artigo 98, § 3º, do CPC. A apelante {{síntese das razões — ex.: sustentou a inexistência de limitação territorial dos efeitos da ação civil pública e invocou o julgamento do Tema 1.075/STF}}."
+            },
+            {
+              "pos": "questao",
+              "texto": "A questão em discussão consiste em verificar se a apelação deve ser conhecida quando as razões recursais não impugnam o fundamento efetivamente adotado na sentença, vertendo razões dissociadas em descumprimento ao princípio da dialeticidade recursal."
+            }
+          ]
+        },
+        {
+          "id": "sentenca",
+          "grupo": "Sentença",
+          "titulo": "Fundamento da sentença e transcrição",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "contro",
+              "texto": "Senhores Desembargadores, o Juízo de origem extinguiu o cumprimento de sentença, sem resolução do mérito, nos termos do artigo 485, inciso VI, do Código de Processo Civil, por {{fundamento da sentença — ex.: reconhecer a ausência de título executivo em virtude da realização de acordo administrativo e do recebimento, pela via administrativa, das diferenças relativas ao reajuste de 28,86%}} (ID {{ID da sentença}})."
+            },
+            {
+              "pos": "contro",
+              "texto": "No ponto, consignou a sentença (ID {{ID da sentença}}):"
+            },
+            {
+              "pos": "contro",
+              "texto": "{{transcrição dos trechos determinantes da sentença}}"
+            }
+          ]
+        },
+        {
+          "id": "razoes",
+          "grupo": "Razões",
+          "titulo": "Razões recursais dissociadas",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "aplic",
+              "texto": "A apelante, contudo, desenvolveu argumentação em torno da controvérsia sobre {{tema das razões — ex.: o alcance territorial da ação civil pública, defendendo que o título coletivo teria eficácia nacional, que não haveria limitação aos servidores residentes ou lotados em Mato Grosso do Sul e que seria inaplicável a restrição territorial fundada no art. 16 da Lei nº 7.347/1985}} (ID {{ID}}). Atribuiu à sentença fundamento diverso do efetivamente adotado, reproduzindo passagem e trechos de provimento estranhos a estes autos."
+            }
+          ]
+        },
+        {
+          "id": "transcricao-estranha",
+          "grupo": "Razões",
+          "titulo": "Transcrição de sentença estranha aos autos",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "aplic",
+              "texto": "Para tanto, reproduziu, como trecho do pronunciamento recorrido, passagem que não consta da sentença proferida nos autos (ID {{ID}}):"
+            },
+            {
+              "pos": "aplic",
+              "texto": "{{trecho estranho reproduzido nas razões}}"
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "A transcrição, nas razões recursais, de dispositivo de sentença estranho ao processo reforça a ausência de correlação entre o recurso e a decisão impugnada, aprofundando o vício de conteúdo da apelação para viabilizar o enfrentamento da matéria decidida na sentença."
+            }
+          ]
+        },
+        {
+          "id": "fundamento-nao-impugnado",
+          "grupo": "Razões",
+          "titulo": "Fundamento determinante não impugnado",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "aplic",
+              "texto": "Verifica-se, assim, que a apelante não impugnou o fundamento determinante da sentença, consistente {{no fundamento determinante}}. As alegações acerca da abrangência territorial da sentença coletiva e da aplicação do Tema 1.075/STF versam sobre questão diversa e não infirmam a conclusão que motivou a extinção do cumprimento de sentença."
+            }
+          ],
+          "nota": "[VALIDAR] No paradigma este parágrafo cita “ilegitimidade passiva da FUNASA por falta de vinculação ao título executivo”, divergente do fundamento descrito no 1º parágrafo (acordo administrativo)."
+        },
+        {
+          "id": "dialeticidade",
+          "grupo": "Fundamentação",
+          "titulo": "Dialeticidade recursal (artigo 1.010, III, do CPC)",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "Nos termos do artigo 1.010, III, do CPC, incumbe ao apelante deduzir razões de fato e de direito que sustentem o pedido de reforma ou anulação, mediante impugnação específica e pertinente dos fundamentos da sentença. A apresentação de razões dissociadas do pronunciamento recorrido viola o princípio da dialeticidade, pois impede o cotejo entre o que foi decidido e os fundamentos invocados para sua revisão, impondo o não conhecimento do recurso."
+            },
+            {
+              "pos": "concl",
+              "texto": "Nesse sentido:"
+            },
+            {
+              "pos": "concl",
+              "texto": "AgInt no AREsp 3.144.390, Rel. Min. TEODORO SILVA SANTOS, DJEN 11/06/2026: \"PROCESSUAL CIVIL E DIREITO ADMINISTRATIVO. AGRAVO INTERNO NO AGRAVO EM RECURSO ESPECIAL. PENSÃO POR MORTE DE MILITAR. EXTINÇÃO DO BENEFÍCIO EM RAZÃO DE NOVA UNIÃO ESTÁVEL. JUÍZO DE ADMISSIBILIDADE. FUNDAMENTOS: ÓBICE DAS SÚMULAS N. 7 DO STJ E 280 DO STF E AUSÊNCIA DE COTEJO ANALÍTICO. AUSÊNCIA DE IMPUGNAÇÃO CONCRETA. INCIDÊNCIA DA SÚMULA N. 182 DO STJ. AGRAVO INTERNO DESPROVIDO. 1. Na origem: ação de concessão de pensão por morte ajuizada pela Agravante em face do Instituto de Previdência dos Servidores Militares do Estado de Minas Gerais - IPSM. O pleito foi julgado improcedente. 2. O Tribunal de origem negou provimento à apelação da Autora. 3. A Corte a quo não admitiu o apelo nobre, por incidir o recurso no óbice das Súmulas n. 280 do STF e 7 do STJ e por ausência do devido cotejo analítico entre os acórdãos tidos por divergentes. 4. Nesta Corte, decisão da lavra da Presidência, que não conheceu do agravo em recurso especial. 5. No caso, para infirmar, de modo adequado, o fundamento autônomo de ausência de cotejo analítico, no tocante à alegação de dissídio jurisprudencial, a comprovação exige o atendimento dos requisitos previstos no art. 1.029, § 1º, do Código de Processo Civil e no art. 255, § 1º, do Regimento Interno do Superior Tribunal de Justiça, consistentes em: apresentação de cópia, certidão ou citação de repositório oficial/credenciado do acórdão paradigma, com indicação da fonte, e realização de cotejo analítico entre o acórdão recorrido e o paradigma, demonstrando circunstâncias fáticas e jurídicas idênticas ou semelhantes. 6. A dialeticidade recursal é um princípio fundamental para se conhecer do recurso, a partir do qual se entende que o agravante deve atacar concretamente os argumentos da decisão agravada, e não somente manifestar a vontade de recorrer, ou aduzir razões genéricas, como fez a parte Agravante no caso em exame. 7. Não tendo a parte Agravante logrado êxito em infirmar os fundamentos que nortearam a decisão ora agravada, impõe-se a sua manutenção, em todos os seus termos. 8. Agravo interno desprovido.\""
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Veiculadas razões dissociadas do fundamento adotado na sentença, a apelação não cumpre o requisito da dialeticidade recursal, violando o artigo 1.010, II e III, do Código de Processo Civil, segundo o qual o recurso deve deve expor os fatos e o direito e indicar as razões do pedido de reforma, estabelecendo correlação lógica entre a impugnação recursal e os fundamentos da sentença, que permita a compreensão da controvérsia e a solução específica e pertinente ao caso concreto."
+            }
+          ]
+        },
+        {
+          "id": "honorarios",
+          "grupo": "Honorários",
+          "titulo": "Honorários recursais (1%)",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "honor",
+              "texto": "Pela sucumbência recursal, a parte exequente deve suportar condenação adicional (artigo 85, § 11, CPC), no equivalente a 1%, à sucumbência fixada na sentença pelo decaimento na instância de origem[?gratuidade:, suspensa a exigibilidade pela gratuidade judiciária]."
+            }
+          ]
+        },
+        {
+          "id": "dispositivo",
+          "grupo": "Dispositivo",
+          "titulo": "Dispositivo",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "disp",
+              "texto": "Ante o exposto, não conheço da apelação."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "dispositivo",
+              "texto": "Apelação não conhecida, honorários recursais em acréscimo ao fixado na origem."
+            },
+            {
+              "pos": "dispositivos",
+              "texto": "Código de Processo Civil, artigos 1.010, incisos II e III; 932, inciso III; 485, inciso VI; 85, §§ 2º a 6º e 11; e 98, § 3º. Lei 7.347/1985, artigo 16. Leis 8.622/1993 e 8.627/1993."
+            },
+            {
+              "pos": "jurisprudencia",
+              "texto": "Supremo Tribunal Federal, RE 1.101.937, Tema 1.075."
+            }
+          ],
+          "acordao": [
+            {
+              "pos": "texto",
+              "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, não conheceu da apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mm-2886-a7-ilegitimidade-uniao-bacen-desprovimento",
+      "nome": "28,86% · A7 — ilegitimidade passiva da União e do BACEN · apelações desprovidas",
+      "materia": "28,86% — cumprimento individual da ACP 0005019-15.1997.4.03.6000",
+      "tipo": "acórdão",
+      "especie": "Apelação",
+      "resultado": "desprovimento",
+      "status": "rascunho",
+      "verificado_em": "",
+      "paradigma": "5007534-87.2024.4.03.6000 (sessão de 05/10/2026)",
+      "fonte": "Inteiro teor do acórdão A00137 no banco (dados/acordaos/2026.json.gz)",
+      "descricao": "Sentença indeferiu a inicial ou extinguiu o cumprimento por ilegitimidade passiva da União e do BACEN; exequente apela. Se o BACEN também apela da gratuidade, marcar os blocos de gratuidade e honorários.",
+      "caso_do_modelo": true,
+      "ementa_cabecalho": "",
+      "ementa_cabecalho_fim": "",
+      "opcoes": [],
+      "blocos": [
+        {
+          "id": "ementa-base",
+          "grupo": "Ementa",
+          "titulo": "Cabeçalho e caso em exame",
+          "modo": "fixo",
+          "ementa": [
+            {
+              "pos": "cabecalho",
+              "texto": "DIREITO PROCESSUAL CIVIL. APELAÇÕES. CUMPRIMENTO DE SENTENÇA. AÇÃO CIVIL PÚBLICA. REAJUSTE DE 28,86%. ILEGITIMIDADE PASSIVA DO BANCO CENTRAL DO BRASIL E DA UNIÃO. COISA JULGADA COLETIVA. LIMITES SUBJETIVOS.[?gratuidade-revisao: GRATUIDADE DA JUSTIÇA. CRITÉRIOS OBJETIVOS DE RENDA.][?honor-sucumbencia: HONORÁRIOS ADVOCATÍCIOS SUCUMBENCIAIS. FIXAÇÃO EM GRAU RECURSAL.] APELAÇÕES DESPROVIDAS."
+            },
+            {
+              "pos": "caso",
+              "texto": "Apelações interpostas contra sentença integrada por embargos de declaração que, em cumprimento de sentença fundado na Ação Civil Pública 0005019-15.1997.4.03.6000 relativo ao reajuste de 28,86%, extinguiu o processo sem resolução do mérito por ilegitimidade passiva da União e do BACEN, deferiu a gratuidade da justiça e não fixou honorários advocatícios. A parte exequente sustentou a legitimidade passiva de ambas as rés e a eficácia erga omnes do título coletivo.[?gratuidade-revisao: O BACEN requereu revogação da gratuidade da justiça com base em parâmetros objetivos de renda e a fixação de honorários advocatícios sucumbenciais.]"
+            }
+          ]
+        },
+        {
+          "id": "controversia",
+          "grupo": "Controvérsia",
+          "titulo": "Delimitação da controvérsia",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "contro",
+              "texto": "Senhores Desembargadores, discute-se, no caso, a legitimidade passiva da União e do BACEN para figurar no polo passivo de cumprimento de sentença proferida na ACP 0005019-15.1997.4.03.6000, ajuizada pelo Ministério Público Federal contra União “e suas administrações indiretas”, bem como a concessão da gratuidade de justiça."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "questao",
+              "texto": "se a União e o BACEN possuem legitimidade passiva no cumprimento de sentença individual derivado da ACP 0005019-15.1997.4.03.6000"
+            }
+          ]
+        },
+        {
+          "id": "fund-legitimidade",
+          "grupo": "Fundamentação",
+          "titulo": "BACEN e União não integraram a ACP",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "jurid",
+              "texto": "Registre-se, de logo, que a ACP 0005019-15.1997.4.03.6000 foi ajuizada pelo Ministério Público Federal contra União “e suas administrações indiretas”, tendo o parquet apresentado relações dos órgãos da União e entidades da administração pública indireta abrangidos pela demanda."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Em nenhum momento o BACEN figurou em tais relações."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Não obstante, após exclusão de determinados réus, o feito teve regular tramitação apenas contra as seguintes pessoas jurídicas, que foram citadas e apresentaram defesa: 1) União; 2) IBAMA; 3) INCRA; 4) INSS; 5) DNER; 6) UFMS; 7) FNS; 8) IBGE; e 9) FUNAI."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Logo, o Banco Central não participou da lide originária, sequer tendo sido citado ou intimado."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Nem se alegue eventual inexistência de limitação expressa na inicial ou no respectivo título executivo judicial, ou ainda que, apenas por integrar a Administração Pública Indireta, a coisa julgada atingiria o BACEN pelo efeito erga omnes da sentença coletiva, sob pena de violação à isonomia ou aos artigos 103, §§ 3º e 4º, e 104, CDC, pois é inequívoco que na relação de entidades apresentadas pelo Ministério Público Federal o próprio autor da ACP 0005019-15.1997.4.03.6000 consignou expressamente que são tais pessoas jurídicas “que deverão integrar a lide” e que, portanto, sujeitam-se ao título judicial."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Enfim, não tendo o BACEN figurado na inicial da ação, nem nas listagens juntadas pelo Ministério Público Federal e sequer participado, a qualquer momento e a qualquer título, da ação originária para exercer direito de defesa e recurso, os efeitos da coisa julgada na ACP 0005019-15.1997.4.03.6000, que tampouco fizerem referência ao ente autárquico dotado de personalidade jurídica própria e distinta de todos os demais, não podem atingir o respectivo patrimônio jurídico."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Assim, afigura-se flagrante a ilegitimidade passiva do BACEN para o presente cumprimento de sentença."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Quanto à União, não existe legitimidade passiva para integrar a lide, pois a relação funcional da parte exequente, no período do reajuste discutido, era somente e exclusivamente com o BACEN, inexistindo responsabilidade solidária ou subsidiária do ente político, dada a autonomia e personalidade jurídica própria das autarquias no plano da Administração Pública."
+            },
+            {
+              "pos": "jurid",
+              "texto": "O fato de o BACEN integrar a Administração Pública Federal Indireta não torna a União interessada nem parte legítima para as demandas propostas contra as entidades autárquicas federais, por vínculos ou relações jurídicas próprias firmadas com base na personalidade jurídica própria e na respectiva autonomia administrativa, financeira e orçamentária."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Portanto, inexiste título executivo judicial formado na ACP 0005019-15.1997.4.03.6000 que ampare a pretensão da parte exequente, na linha de farta jurisprudência da Corte: ApCiv 5006908-68.2024.4.03.6000, Rel. Des. Fed. AUDREY GASPARINI, Intimação via sistema 31/03/2026; ApCiv 5007711-51.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, Intimação via sistema 20/02/2026; ApCiv 5007786-90.2024.4.03.6000, Rel. Des. Fed. ANTONIO MORIMOTO, Intimação via sistema 02/12/2025; ApCiv 5006653-13.2024.4.03.6000, Rel. Des. Fed. COTRIM GUIMARÃES, Intimação via sistema 18/11/2025; e ApCiv 5006785-70.2024.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, Intimação via sistema 04/11/2025."
+            },
+            {
+              "pos": "jurid",
+              "texto": "Mantém-se, pois, a sentença de extinção do feito, sem resolução do mérito, em conformidade com a fundamentação exposta."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "razoes",
+              "texto": "Não constando o BACEN como parte demandada na ação civil pública, cuja sentença transitou em julgado, constituindo o título executivo condenatório, cujo cumprimento se pretende, e sendo a parte exequente vinculada funcionalmente a tal autarquia e não à União, a decretação da ilegitimidade passiva de tais entidades é condizente com a coisa julgada, não sendo possível inovar ou alterar os termos da condenação somente na fase processual de cumprimento."
+            }
+          ]
+        },
+        {
+          "id": "gratuidade-revisao",
+          "grupo": "Gratuidade",
+          "titulo": "Apelação do BACEN contra a gratuidade (Tema 1.178/STJ e ADC 80)",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "Com efeito, discute-se, sob prisma objetivo, a invalidade da presunção de hipossuficiência declarada pela pessoa natural, alegando-se que a parte exequente percebe remuneração mensal superior a parâmetros objetivos indicados, o que afastaria o cabimento do benefício."
+            },
+            {
+              "pos": "concl",
+              "texto": "Sucede, porém, que, na atualidade, prevalece o entendimento do Tema 1.178/STJ que, além de procedimento específico, não permite, de qualquer modo, seja adotado critério estritamente objetivo para indeferimento da gratuidade judiciária."
+            },
+            {
+              "pos": "concl",
+              "texto": "A propósito, eis o teor das teses aprovadas:"
+            },
+            {
+              "pos": "concl",
+              "texto": "\"i) É vedado o uso de critérios objetivos para o indeferimento imediato da gratuidade judiciária requerida por pessoa natural."
+            },
+            {
+              "pos": "concl",
+              "texto": "ii) Verificada a existência nos autos de elementos aptos a afastar a presunção de hipossuficiência econômica da pessoa natural, o juiz deverá determinar ao requerente a comprovação de sua condição, indicando de modo preciso as razões que justificam tal afastamento, nos termos do art. 99, § 2º, do CPC."
+            },
+            {
+              "pos": "concl",
+              "texto": "iii) Cumprida a diligência, a adoção de parâmetros objetivos pelo magistrado pode ser realizada em caráter meramente suplementar e desde que não sirva como fundamento exclusivo para o indeferimento do pedido de gratuidade.\""
+            },
+            {
+              "pos": "concl",
+              "texto": "Perceba-se que a jurisprudência tematizada exige que parâmetros objetivos sejam adotados apenas em caráter suplementar, não podendo servir de fundamento exclusivo para o indeferimento do benefício."
+            },
+            {
+              "pos": "concl",
+              "texto": "No caso concreto, veiculou-se apenas critério objetivo para revisão da concessão à parte exequente do benefício da gratuidade judiciária, razão pela qual não se autoriza o acolhimento da pretensão."
+            },
+            {
+              "pos": "concl",
+              "texto": "Embora no julgamento da ADC 80, Rel. p/ acórdão Min. GILMAR MENDES, na sessão de 03/09/2026, a Suprema Corte tenha fixado novos parâmetros para aferição da gratuidade judiciária, limitando a presunção relativa de hipossuficiência a percepção de salário igual ou inferior a R$ 5.000,00, conforme teto da tabela do imposto de renda, permitindo que, mesmo nestes casos, possa ser indeferida gratuidade judiciária no caso de apurado patrimônio ou renda familiar incompatível com tal presunção, aplicado o princípio da razoabilidade, é certo que tal interpretação conforme à Constituição restou modulada para \"que produza efeitos ex nunc, a contar da publicação da ata de julgamento de mérito, sendo aplicável, portanto, somente aos processos ajuizados a partir de tal marco\", razão pela qual, no caso concreto, deve prevalecer o que decorre da jurisprudência tematizada da Corte Superior."
+            }
+          ],
+          "relatorio": [
+            {
+              "pos": "apos_recurso",
+              "texto": "[?gratuidade-revisao:Apelou também a parte exequente (ID {{ID}}), alegando, em suma, que: (1) União e BACEN são partes legítimas para figurar no polo passivo da ação; (2) a União integrou o polo passivo da ação que gerou o título judicial em execução; (3) conquanto autarquia federal de natureza especial com autonomia, o BACEN recebe recursos financeiros da União para custeio de despesas obrigatórias, relacionadas a pessoal, encargos sociais e benefícios; (4) o BACEN integra a Administração Pública Indireta, vinculando-se ao Ministério da Economia e desempenhando poder de polícia da União no setor financeiro; (5) o título executivo judicial abrange servidores ativos, inativos e pensionistas do quadro de pessoal da União (Administração Direta e Indireta), com efeito erga omnes, sem restrição (Tema 1.075/STF e Tema 480/STJ); (6) mesmo que não tenha figurado no polo passivo da ação civil pública, a coisa julgada atinge o Banco Central, pois integra a Administração Pública Indireta; e (7) não houve limitação expressa a determinados servidores ou órgãos da Administração Pública Indireta e entender o contrário implica violação à isonomia e ao princípio do máximo benefício da tutela jurisdicional coletiva (artigos 5º, CF e 103, §§ 3º e 4º, e 104, CDC).]"
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "questao",
+              "texto": "se a remuneração da parte exequente e parâmetros objetivos de renda autorizam a revogação da gratuidade da justiça"
+            },
+            {
+              "pos": "razoes",
+              "texto": "No tocante à gratuidade judiciária, concedida na origem, não pode ser revogada sem garantir prévio contraditório e, menos ainda, com base em critério exclusivamente objetivo, a teor do que dispõe o julgamento repetitivo do Tema 1.178/STJ, cuja eficácia prevalece, no caso concreto, diante da modulação da interpretação conforme atribuída pela Suprema Corte no julgamento da ADC 80."
+            }
+          ],
+          "nota": "No paradigma, o BACEN é o primeiro apelante e a parte exequente apela em seguida (relatório). No formulário, informe o BACEN como recorrente."
+        },
+        {
+          "id": "honor-sucumbencia",
+          "grupo": "Honorários",
+          "titulo": "Honorários sucumbenciais fixados em grau recursal (artigo 331 do CPC)",
+          "modo": "opcional",
+          "padrao": true,
+          "voto": [
+            {
+              "pos": "aplic",
+              "texto": "Quanto à sucumbência, verifica-se que, no regime do artigo 331 do Código de Processo Civil, se houver reforma da sentença de indeferimento da inicial ou extinção sem resolução do mérito antes da citação da parte ré, para determinar a retomada do curso do processo na origem, a condenação em honorários advocatícios, ainda que citada a parte demandada para oferecer contrarrazões (artigo 331, § 1º, CPC), é fixada ao final do feito após citada a parte requerida para contestar com prazo contado da intimação do retorno dos autos (artigo 331, § 2º, CPC)."
+            },
+            {
+              "pos": "aplic",
+              "texto": "Em caso contrário, se mantida a sentença com desprovimento da apelação, a parte apelante sucumbe em face da parte apelada, que tenha ofertado contrarrazões, assim autorizando, à luz do princípio da causalidade e responsabilidade processual, a condenação da sucumbente em honorários advocatícios em cenário distinto, portanto, daquele em que baseada a sentença para deixar de condenar a parte exequente em tal verba sucumbencial por inexistente, à época, a triangulação da relação processual até então."
+            },
+            {
+              "pos": "aplic",
+              "texto": "Logo, cabível, no caso concreto, a imposição de condenação sucumbencial à parte exequente, cujo apelo foi desprovido, tratando-se não de honorários recursais, mas honorários pela sucumbência na relação processual de origem, ainda que resolvida em sede recursal."
+            },
+            {
+              "pos": "aplic",
+              "texto": "Considerando os critérios da legislação processual, arbitra-se, em face da sucumbência da parte exequente, honorários advocatícios calculados sobre o valor atualizado da causa com aplicação do percentual mínimo da faixa de enquadramento para o caso concreto, considerados os incisos do § 3º do artigo 85, CPC, rateados os valores entre as partes requeridas, que ofertaram contrarrazões à apelação interposta."
+            },
+            {
+              "pos": "aplic",
+              "texto": "A execução da condenação fica suspensa diante do requerimento de justiça gratuita, nos termos do artigo 98, § 3º, do CPC[?gratuidade-revisao:, rejeitando-se a pretensão deduzida pelo BACEN, em contrarrazões, de indeferimento do benefício]."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "questao",
+              "texto": "se a manutenção da sentença extintiva, após a apresentação de contrarrazões, autoriza o arbitramento de honorários advocatícios sucumbenciais em desfavor da parte exequente"
+            },
+            {
+              "pos": "razoes",
+              "texto": "Desprovido o recurso e mantida a sentença de extinção do processo sem resolução do mérito, a parte demandada, que ofereceu contrarrazões ao recurso, tem direito, à luz dos princípios da causalidade e responsabilidade processual, a honorários advocatícios pela sucumbência da parte exequente e apelante, arbitrando-se a condenação no percentual mínimo sobre o valor atualizado da causa, em conformidade com as faixas previstas nos incisos do § 3º do artigo 85 do Código de Processo Civil, com suspensão da respectiva exigibilidade, nos termos do artigo 98, § 3º, da legislação processual."
+            }
+          ]
+        },
+        {
+          "id": "conclusao",
+          "grupo": "Conclusão",
+          "titulo": "Conclusão",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "concl",
+              "texto": "[?honor-sucumbencia:Em suma, confirma-se a sentença, fixando-se os honorários advocatícios com suspensão da respectiva exigibilidade nos termos do artigo 98, § 3º, CPC.]"
+            }
+          ]
+        },
+        {
+          "id": "dispositivo",
+          "grupo": "Dispositivo",
+          "titulo": "Dispositivo",
+          "modo": "fixo",
+          "voto": [
+            {
+              "pos": "disp",
+              "texto": "Ante o exposto, nego provimento [?gratuidade-revisao:às apelações][?!gratuidade-revisao:à apelação], conforme explicitado."
+            }
+          ],
+          "ementa": [
+            {
+              "pos": "dispositivo",
+              "texto": "[?gratuidade-revisao:Apelações desprovidas][?!gratuidade-revisao:Apelação desprovida]."
+            },
+            {
+              "pos": "dispositivos",
+              "texto": "CF/1988, art. 5º; Leis nº 8.622/1993 e nº 8.627/1993; CPC, arts. 85, § 3º, 98, §§ 2º e 3º, 99, caput e §§ 2º e 3º, 331, §§ 1º e 2º, e 1.015, V; CLT, art. 790, § 3º; CDC, arts. 103, §§ 3º e 4º, e 104."
+            },
+            {
+              "pos": "jurisprudencia",
+              "texto": "STF, ADC 80, Rel. p/ acórdão Min. GILMAR MENDES, j. 03/09/2026; Tema 1.178/STJ; Tema 1.075/STF; Tema 480/STJ; ApCiv 5006908-68.2024.4.03.6000, Rel. Des. Fed. AUDREY GASPARINI, intimação via sistema 31.03.2026; ApCiv 5007711-51.2024.4.03.6000, Rel. Des. Fed. CARLOS FRANCISCO, intimação via sistema 20.02.2026; ApCiv 5007786-90.2024.4.03.6000, Rel. Des. Fed. ANTONIO MORIMOTO, intimação via sistema 02.12.2025; ApCiv 5006653-13.2024.4.03.6000, Rel. Des. Fed. COTRIM GUIMARÃES, intimação via sistema 18.11.2025; ApCiv 5006785-70.2024.4.03.6000, Rel. Des. Fed. RENATA LOTUFO, intimação via sistema 04.11.2025."
+            }
+          ],
+          "acordao": [
+            {
+              "pos": "texto",
+              "texto": "Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, negou provimento à apelação, nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado."
+            }
+          ]
+        }
+      ],
+      "nota": "[VALIDAR] No paradigma (duas apelações), o dispositivo do voto diz “nego provimento à apelação”, e a ementa, “Apelações desprovidas”; o modelo usa o plural quando há apelação do BACEN. Ordem das razões da ementa difere do paradigma (legitimidade, gratuidade, honorários) para manter a ordem das questões."
+    }
+  ]
+}

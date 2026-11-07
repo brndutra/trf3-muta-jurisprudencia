@@ -1,0 +1,52 @@
+{
+  "schema": "gabA.modelos-matriz.indice",
+  "schema_versao": 1,
+  "atualizado_em": "2026-11-06",
+  "descricao": "Modelos-matriz do gabinete. Cada bloco reúne o texto do voto e o que ele exige no relatório, na ementa e no acórdão; blocos opcionais e alternativos viram escolhas no preenchimento. Sintaxe: {{campo}} = dado dos autos; [?id:texto] entra só com a opção ou o bloco 'id' marcado; [?!id:texto], só com ele desmarcado. Curadoria manual: nada aqui é gerado por algoritmo.",
+  "organizacao": "Um arquivo por modelo: modelos/matriz/ (verificados) e modelos/rascunhos/ (em elaboração). A Central carrega só o que este índice lista. Sugestões automáticas: modelos/sugestoes.json.gz (scripts/modelos.py). Tipos de julgamento automáticos: modelos/tipos-julgamento.json.gz (scripts/matrizes.py). Reserva num arquivo só: modelos/modelos-matriz.json.",
+  "matriz": [],
+  "rascunhos": [
+    {
+      "id": "mm-2886-a1-territorial-provimento",
+      "nome": "28,86% · A1 — limitação territorial afastada · apelação provida",
+      "arquivo": "rascunhos/mm-2886-a1-territorial-provimento.json",
+      "status": "rascunho"
+    },
+    {
+      "id": "mm-2886-a2-territorial-acordo-desprovimento",
+      "nome": "28,86% · A2 — limitação territorial e acordo administrativo · apelação desprovida",
+      "arquivo": "rascunhos/mm-2886-a2-territorial-acordo-desprovimento.json",
+      "status": "rascunho"
+    },
+    {
+      "id": "mm-2886-a3-acordo-desprovimento",
+      "nome": "28,86% · A3 — só acordo administrativo · apelação desprovida",
+      "arquivo": "rascunhos/mm-2886-a3-acordo-desprovimento.json",
+      "status": "rascunho"
+    },
+    {
+      "id": "mm-2886-a4-sindicato-conhecimento-parcial",
+      "nome": "28,86% · A4 — categoria com ação coletiva de sindicato · conhecimento parcial e desprovimento",
+      "arquivo": "rascunhos/mm-2886-a4-sindicato-conhecimento-parcial.json",
+      "status": "rascunho"
+    },
+    {
+      "id": "mm-2886-a5-bacen-gratuidade-desprovimento",
+      "nome": "28,86% · A5 — BACEN apela só da gratuidade · apelação desprovida",
+      "arquivo": "rascunhos/mm-2886-a5-bacen-gratuidade-desprovimento.json",
+      "status": "rascunho"
+    },
+    {
+      "id": "mm-2886-a6-razoes-dissociadas-nao-conhecimento",
+      "nome": "28,86% · A6 — razões dissociadas · apelação não conhecida",
+      "arquivo": "rascunhos/mm-2886-a6-razoes-dissociadas-nao-conhecimento.json",
+      "status": "rascunho"
+    },
+    {
+      "id": "mm-2886-a7-ilegitimidade-uniao-bacen-desprovimento",
+      "nome": "28,86% · A7 — ilegitimidade passiva da União e do BACEN · apelações desprovidas",
+      "arquivo": "rascunhos/mm-2886-a7-ilegitimidade-uniao-bacen-desprovimento.json",
+      "status": "rascunho"
+    }
+  ]
+}
