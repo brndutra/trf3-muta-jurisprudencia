@@ -447,6 +447,34 @@ html[data-tema="noturno"] .pe-ey{color:var(--f-minuta)}
 @media print{nav.appbar,aside.filtros,section.lista,.dacts,.dx{display:none!important}main{display:block}section.detalhe{display:block!important}}
 
 
+
+/* ---- Modelos: lista recolhível à esquerda; editor no topo; campos em painel lateral direito ---- */
+.lista-tog{border:1px solid var(--line2);background:var(--panel2);color:var(--muted);border-radius:6px;width:22px;height:22px;font:700 12px/1 Inter,system-ui;cursor:pointer;padding:0;flex:none}
+#mMod.sem-detalhe .lista-tog{display:none}
+#mMod.lista-min:not(.sem-detalhe){grid-template-columns:40px minmax(0,1fr)}
+#mMod.lista-min:not(.sem-detalhe)>section.lista{overflow:hidden}
+#mMod.lista-min:not(.sem-detalhe)>section.lista .lbar>*:not(.fac-tit),#mMod.lista-min:not(.sem-detalhe)>section.lista .res,#mMod.lista-min:not(.sem-detalhe)>section.lista .fac-tit>:not(.lista-tog){display:none!important}
+#mMod.lista-min .lista-tog{transform:rotate(180deg)}
+#mMod.lista-min:not(.sem-detalhe)>section.lista .fac-tit{font-size:0;letter-spacing:0;justify-content:center}
+.rel-fonte label{flex-wrap:wrap}
+.rel-fonte small{flex-basis:100%;padding-left:21px;margin-top:-2px}
+#mMod.lista-min:not(.sem-detalhe)>section.lista .lbar{padding:10px 8px}
+.min-grid.min-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,400px);gap:14px;align-items:start;padding:10px 14px 30px}
+.min-ed{min-width:0}
+.min-ed>.lote:first-child{margin-top:2px}
+.min-side{position:sticky;top:0;max-height:calc(100vh - 150px);overflow:auto;border:1px solid var(--line2);border-radius:10px;background:var(--panel);padding:0 10px 10px}
+.min-side-h{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;background:var(--panel);padding:8px 0 6px;border-bottom:1px solid var(--line2);font:800 10px Figtree,Inter,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--f-minuta)}
+.min-side .gl{grid-template-columns:1fr!important;gap:3px 0!important}
+.min-side .gl>label{padding-top:6px!important}
+.min-side .min-blk{margin:8px 0}
+.min-grid textarea.editor{min-height:calc(100vh - 250px)}
+.min-grid.side-min{grid-template-columns:minmax(0,1fr) 44px}
+.min-grid.side-min .min-side{padding:0 4px}
+.min-grid.side-min .min-side>*:not(.min-side-h){display:none!important}
+.min-grid.side-min .min-side-h b{display:none}
+.min-grid.side-min .min-side-h .btn{transform:rotate(180deg)}
+.min-grid.side-min .min-side-h{border:0;justify-content:center}
+@media(max-width:1150px){.min-grid.min-main{grid-template-columns:minmax(0,1fr)}.min-side{position:static;max-height:none}.min-grid textarea.editor{min-height:55vh}}
 /* Tópicos (#mMod): mesmo cabeçalho do mapa mental; muda só o conteúdo do espaço principal */
 html.modo-arvore:not(.arv-diagrama) #mMod{display:block!important;height:100%;overflow:hidden}
 html.modo-arvore:not(.arv-diagrama) #mMod>aside.filtros,html.modo-arvore:not(.arv-diagrama) #mMod>section.lista,html.modo-arvore:not(.arv-diagrama) #mMod>section.detalhe{display:none!important}
@@ -926,7 +954,7 @@ html.modo-arvore.arv-diagrama.arv-max main.modulo>section.detalhe{display:none!i
   </aside>
   <section class="lista">
     <div class="lbar">
-      <div class="fac-tit"><i>II</i>Modelos <span>· extraídos das decisões do gabinete — escolha, preencha, gere</span>
+      <div class="fac-tit"><button type="button" class="lista-tog" onclick="alternarListaModelos()" title="Recolher/expandir a lista de modelos">«</button><i>II</i>Modelos <span>· extraídos das decisões do gabinete — escolha, preencha, gere</span>
         <div class="vista-mod" role="group" aria-label="Exibição dos modelos"><button type="button" id="btnVistaLista" aria-pressed="true" onclick="alternarModoArvore(false)" title="Lista de modelos com filtros">☷ Lista</button><button type="button" id="btnModoArvTab" aria-pressed="false" onclick="alternarModoArvore(true)" title="Modelos organizados por assunto (Alt+3)">◇ Árvore</button></div></div>
       <div class="qwrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input class="inp" id="mq" placeholder='Buscar modelos — ex.: deserção, "perda superveniente", BPC' autocomplete="off" spellcheck="false"></div>
@@ -1429,6 +1457,8 @@ let MIN_MODO='padrao';        // 'padrao' | 'matriz'
 let ED_DIRTY=false;           // o editor foi alterado à mão
 // Padrão Muta e diretrizes: módulo independente em /central/apoio/.
 const RX_CAMPO=/\[[^\]\n]{1,80}\]/g;
+function alternarListaModelos(forcar){const el=$('mMod');const v=forcar??!el.classList.contains('lista-min');el.classList.toggle('lista-min',v);LS.set('acv_lista_min',v?'1':'')}
+function alternarPainelCampos(forcar){const g=$('gerador');if(!g)return;const v=forcar??!g.classList.contains('side-min');g.classList.toggle('side-min',v);LS.set('acv_side_min',v?'1':'')}
 function abrirApoioMinuta(){
   const texto=document.getElementById('minEd')?.value||'';
   try{sessionStorage.setItem('cmt_apoio_minuta_transfer',texto)}catch(e){}
@@ -1452,15 +1482,8 @@ function abrirModelo(id){
     <div style="font-weight:700;margin:6px 0 2px">${esc(m.nome)}</div>
     <div class="meta">${esc(m.fase_nome)} · ${m.frequencia} decisões (${esc(fmtData(m.periodo[0]))} a ${esc(fmtData(m.periodo[1]))}) · texto-base <a href="#" onclick="irParaDecisao('${m.fonte_modelo}');return false">${esc(m.processo_modelo)}</a>${fonte?` (${fmtData(fonte.d)})`:''}</div>
   </div>
-  <div class="min-grid">
-    <div class="min-main" id="gerador" data-m="${m.id}">
-      <details class="min-blk" open id="relBlk"><summary>Relatório</summary>
-        <div class="rel-fonte" role="radiogroup" aria-label="Origem do relatório">
-          <label><input type="radio" name="relFonte" value="modelo" checked> do modelo-base <small>(preencha os campos marcados “relatório” abaixo)</small></label>
-          <label><input type="radio" name="relFonte" value="montar"> montar pelas diretrizes <small>(formulário; substitui o relatório do modelo)</small></label>
-        </div>
-        <div id="relForm" hidden>${relatorioHTML(m,null)}</div></details>
-      <details class="min-blk" open id="minCamposD"><summary id="minCamposS">${MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento'}</summary><div id="minCampos">${MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m)}</div></details>
+  <div class="min-grid min-main" id="gerador" data-m="${m.id}">
+    <div class="min-ed">
       <div class="lote">Minuta · editor <span class="meta" id="edEstado" style="text-transform:none;letter-spacing:0;font-weight:500"></span></div>
       <div class="edbar">
         <label class="meta" for="regSec" style="text-transform:none">Recompor</label>
@@ -1481,8 +1504,18 @@ function abrirModelo(id){
       <details class="min-ref"><summary>Decisões que seguem o modelo (${m.exemplos.length})</summary>
         <div class="sim-list" style="margin-top:8px">${m.exemplos.map(i=>{const x=POR_ID.get(i);return x?`<div class="sim" onclick="irParaDecisao('${i}')"><div class="h"><span class="tp ${x.t}" style="min-width:20px;height:20px;font-size:10.5px">${x.t}</span><span class="num">${esc(x.n)}</span><span class="ct2">${esc(x.c)}</span><span class="meta">${fmtData(x.d)}</span></div>${esc((x.e||'').slice(0,220))}</div>`:''}).join('')}</div></details>
     </div>
+    <aside class="min-side" aria-label="Campos para preenchimento">
+      <div class="min-side-h"><b>Preenchimento</b><button type="button" class="btn sm" onclick="alternarPainelCampos()" title="Ocultar/mostrar o painel de campos">⇥</button></div>
+      <details class="min-blk" open id="relBlk"><summary>Relatório</summary>
+        <div class="rel-fonte" role="radiogroup" aria-label="Origem do relatório">
+          <label><input type="radio" name="relFonte" value="modelo" checked> do modelo-base <small>(preencha os campos marcados “relatório” abaixo)</small></label>
+          <label><input type="radio" name="relFonte" value="montar"> montar pelas diretrizes <small>(formulário; substitui o relatório do modelo)</small></label>
+        </div>
+        <div id="relForm" hidden>${relatorioHTML(m,null)}</div></details>
+      <details class="min-blk" open id="minCamposD"><summary id="minCamposS">${MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento'}</summary><div id="minCampos">${MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m)}</div></details>
+    </aside>
   </div>`;
-  $('mDet').scrollTop=0;
+  $('mDet').scrollTop=0; if(LS.get('acv_side_min'))alternarPainelCampos(true); if(LS.get('acv_lista_min'))alternarListaModelos(true);
   $('minModo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MIN_MODO=b.dataset.m;$('minModo').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('minCampos').innerHTML=MIN_MODO==='padrao'?camposHTML(m):matrizHTML(m);$('minCamposS').textContent=MIN_MODO==='padrao'?'Texto-modelo · campos':'Modelo-matriz · tipo de julgamento';if(MIN_MODO==='matriz'){const r=document.querySelector('input[name="relFonte"][value="montar"]');if(r&&!r.checked){r.checked=true;$('relForm').hidden=false}}$('minCamposD').open=true;atualizarMinuta()});
   $('minEd').addEventListener('input',()=>{ED_DIRTY=true;estadoEditor()});
   if(MIN_MODO==='matriz'){const r=document.querySelector('input[name="relFonte"][value="montar"]');if(r){r.checked=true;$('relForm').hidden=false}}
