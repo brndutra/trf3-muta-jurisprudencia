@@ -1050,6 +1050,18 @@ html main#muMain{grid-template-columns:330px minmax(0,1fr) 410px!important;backg
 .mu-centro.mu-sem>*:not(.mu-cab){display:none!important}
 .mu-vazio{max-width:620px;margin:60px auto 0;padding:26px 28px;border:1px dashed var(--f-mu);border-radius:14px;background:var(--panel2);display:flex;flex-direction:column;gap:10px}
 .mu-vazio b{font:700 17px Inter,system-ui,sans-serif}.mu-vazio p{margin:0;color:var(--muted);font-size:13.5px;line-height:1.55}
+#muMain.mu-gmode>.mu-esq,#muMain.mu-gmode>.mu-centro{display:none!important}
+html main#muMain.mu-gmode{grid-template-columns:minmax(0,1fr) 380px!important}
+.mu-gbox{display:flex;flex-direction:column;min-height:0;grid-column:1;border-right:1px solid var(--line2)}
+.mu-gbox[hidden]{display:none!important}
+.mu-gbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line2);background:var(--panel)}
+.mu-gbar select{height:30px;max-width:260px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px}
+.mu-gbar .vista-mod,.mu-bar .mu-modo{margin-left:0}
+.mu-gfr{flex:1;width:100%;border:0;min-height:calc(100vh - 120px);background:#e9eef2}
+.mu-org-gerador{background:rgba(33,73,104,.12);color:#214968;border-color:rgba(33,73,104,.4)}
+@media(max-width:1250px){html main#muMain.mu-gmode{grid-template-columns:minmax(0,1fr)!important}#muMain.mu-gmode .mu-dir{grid-column:1}}
+html main#muMain.mu-gmode.mu-semdir{grid-template-columns:minmax(0,1fr)!important}
+#muMain.mu-gmode.mu-semdir>.mu-dir{display:none}
 </style>
 </head>
 <body>
@@ -1188,6 +1200,7 @@ html main#muMain{grid-template-columns:330px minmax(0,1fr) 410px!important;backg
     <div class="mu-cab" id="muCab"></div>
     <div class="mu-org-l" id="muOrigem"></div>
     <div class="mu-bar">
+      <div class="vista-mod mu-modo" role="group" aria-label="Modo do Minutário"><button type="button" data-mu-modo="editor">Editor</button><button type="button" data-mu-modo="gerador" title="Prontuário guiado e Gerador do gabinete: os campos do prontuário alimentam o relatório, o voto, a ementa e a proclamação">Prontuário e Gerador</button></div>
       <div class="vista-mod" role="group" aria-label="Exibição da minuta"><button type="button" data-mu-vista="previa">Prévia</button><button type="button" data-mu-vista="texto">Texto</button></div>
       <button type="button" class="btn sm" data-mu-acao="base" title="Recomeça pela estrutura-base do gabinete com os dados do processo">↺ Estrutura-base</button>
       <button type="button" class="btn sm" id="btnMuDesf" data-mu-acao="desfazer" disabled>↶ Desfazer</button>
@@ -1200,6 +1213,7 @@ html main#muMain{grid-template-columns:330px minmax(0,1fr) 410px!important;backg
     </div>
     <textarea id="muEd" class="editor" spellcheck="true" hidden aria-label="Minuta em texto"></textarea><div id="muPrev" class="previa"></div>
   </section>
+  <section class="mu-gbox" id="muGBox" hidden aria-label="Prontuário e Gerador"><div class="mu-gbar" id="muGBar"></div><iframe id="muGFr" class="mu-gfr" title="Prontuário e Gerador"></iframe></section>
   <aside class="mu-dir" aria-label="Localizar">
     <div class="mu-tabs" role="group" aria-label="Localizar"><button type="button" data-mu-tab="modelos">Modelos</button><button type="button" data-mu-tab="prec">Precedentes</button><button type="button" data-mu-tab="par">Parágrafos</button><button type="button" data-mu-tab="cit">Citações</button><button type="button" data-mu-tab="dir">Diretrizes</button></div>
     <div id="muLado"></div>
@@ -3787,6 +3801,89 @@ document.addEventListener('click',e=>{
 let pvRsz;addEventListener('resize',()=>{clearTimeout(pvRsz);pvRsz=setTimeout(()=>{if(['mosaico','fluxo'].includes(PV_VISTA))pvRender()},200)});
 
 var ARV7_INI=false;
+/* ---------- Prontuário e Gerador (central/minutario/gerador.html) ----------
+   O prontuário guiado e o gerador do gabinete, embutidos: recebem o processo do Minutário e devolvem,
+   a cada alteração, o registro do prontuário (que atualiza os dados do processo) e os textos gerados. */
+var MU_MODO=LS.get('acv_mu_modo')==='gerador'?'gerador':'editor', MU_GER_OK=false;
+const MU_REC_ESP={ap:'Apelação',dap:'Apelação',rnap:'Apelação',rn:'',ai:'Agravo de instrumento',agint:'Agravo interno',ed:'Embargos de declaração'};
+const MU_PAD_ESP={ap:'apel',dap:'apel',rnap:'apel',rn:'rn',ai:'ai',agint:'agint',ed:'ed'};
+const MU_RES_VOTO={'provimento':'Dar provimento','parcial provimento':'Dar parcial provimento','desprovimento':'Negar provimento','não conhecimento':'Não conhecer','prejudicado':'Prejudicado','rejeição':'Rejeitar','acolhimento':'Acolher sem efeitos infringentes'};
+const MU_MPF_SENT={desp:'Não provimento do recurso',prov:'Provimento do recurso',pross:'Prosseguimento do feito',desn:'Outro'};
+const muInv=o=>Object.fromEntries(Object.entries(o).map(([a,b])=>[b,a]));
+function muSentencaDecisao(t){t=semAcento(String(t||''));if(!t)return '';if(/parcial/.test(t))return 'Parcialmente procedente';if(/improced/.test(t))return 'Improcedente';if(/sem resolu|extingu/.test(t))return 'Extinção sem resolução do mérito';if(/homolog/.test(t))return 'Homologatória';if(/proced/.test(t))return 'Procedente';return 'Outra'}
+const MU_DEC_VERBO={'Procedente':'julgou procedente o pedido','Parcialmente procedente':'julgou parcialmente procedente o pedido','Improcedente':'julgou improcedente o pedido','Extinção sem resolução do mérito':'extinguiu o processo, sem resolução do mérito','Homologatória':'homologou [acordo / desistência]'};
+function muParaRegistro(it){
+  const d=it.dados,cx=String(d.rContraId||'').split(';').map(x=>x.trim()),ag=['ai','agint'].includes(d.rEsp);
+  const r={id:'mu-'+it.id,Processo:d.numero||'',classe_judicial:d.classe||(MU_ESP_NOME[d.rEsp]||'').toUpperCase(),Assunto:d.assunto||'',Tema:d.tema||'',
+    'Polo Ativo':d.ativo||'','Polo Passivo':d.passivo||'',Etiquetas:String(d.etiquetas||'').split(/\s*,\s*/).filter(Boolean),tarefa_atual:d.tarefa||'',Relator:'DES. FED. CARLOS MUTA',
+    'Padrão - Espécie':MU_PAD_ESP[d.rEsp]||'apel','Sentença - Reexame':/^rn/.test(d.rEsp)?'Sim':'',
+    'Sentença - ID':ag||d.rEsp==='ed'?'':d.rDecId||'','Impugnada - ID':ag||d.rEsp==='ed'?d.rDecId||'':'','Sentença - Decisão':muSentencaDecisao(d.rDec),
+    _recursos:d.rEsp==='rn'?[]:[{especie:MU_REC_ESP[d.rEsp]||'Apelação',parte:d.rRec||'',ids:d.rRecId||'',data:'',contra:{situacao:d.rContra==='nao'?'nao':d.rContra==='sim'||d.rContra==='pre'?'apresentadas':'',ids:cx[0]||'',data:''}}],
+    _ocorrencias:[],MPF:d.rMpf&&d.rMpf!=='-'?'Com Parecer':'','ID do Parecer MPF':d.rMpfId||'','Parecer - Sentido':MU_MPF_SENT[d.rMpf]||'','MPF - Custos Legis':d.mpfHip||'',
+    'Voto - Resultado':MU_RES_VOTO[d.resultado]||'','Status de Julgamento':'',_acervoManaged:['classe_judicial','Assunto','tarefa_atual','Polo Ativo','Polo Passivo'],_src:{'Polo Ativo':'acervo','Polo Passivo':'acervo'}};
+  return r;
+}
+function muRegistroAtual(it){ // o prontuário prevalece; dados do Minutário completam o que ele ainda não tem
+  const base=muParaRegistro(it);if(!it.prontuario)return base;const r=JSON.parse(JSON.stringify(it.prontuario));
+  Object.entries(base).forEach(([k,v])=>{const vazio=x=>x==null||x===''||(Array.isArray(x)&&!x.length);if(vazio(r[k])&&!vazio(v))r[k]=v});
+  r.id=base.id;return r;
+}
+const MU_GER_TXT={dec:d=>d.rDec,ctx:d=>d.rCtx,'recs.0.aleg':d=>d.rAleg,'recs.0.ped':d=>d.rPed,'recs.0.rec':d=>d.rRec,'recs.0.recId':d=>d.rRecId,decId:d=>d.rDecId,contraId:d=>String(d.rContraId||'').split(';')[0],pre:d=>String(d.rContraId||'').split(';')[1]||'',hon:d=>d.rHon};
+const MU_GER_VOLTA={dec:'rDec',ctx:'rCtx','recs.0.aleg':'rAleg','recs.0.ped':'rPed',hon:'rHon'};
+function muDoGD(it,gd){const v=gd&&gd.val||{},d=it.dados;Object.entries(MU_GER_VOLTA).forEach(([k,c])=>{const x=String(v[k]==null?'':v[k]).trim();if(x&&d[c]!==x)d[c]=x});
+  const pr=String(v.pre||'').trim();if(pr){const id=String(d.rContraId||'').split(';')[0].trim();d.rContraId=id+'; '+pr;d.rContra='pre'}}
+function muDoRegistro(it,r){
+  const d=it.dados,s=v=>String(v==null?'':v).trim(),rec=(r._recursos||[])[0]||{},ct=rec.contra||{};
+  const set=(k,v)=>{v=s(v);if(v&&d[k]!==v)d[k]=v};
+  set('numero',r.Processo);set('classe',r.classe_judicial);set('assunto',r.Assunto);set('tema',r.Tema);set('ativo',r['Polo Ativo']);set('passivo',r['Polo Passivo']);
+  if(Array.isArray(r.Etiquetas)&&r.Etiquetas.length)set('etiquetas',r.Etiquetas.join(', '));
+  const pe=muInv(MU_PAD_ESP)[r['Padrão - Espécie']];if(pe&&!(pe==='ap'&&['dap','rnap'].includes(d.rEsp)))set('rEsp',pe);
+  set('rDecId',r['Sentença - ID']||r['Impugnada - ID']);
+  if(!s(d.rDec)&&MU_DEC_VERBO[r['Sentença - Decisão']])d.rDec=MU_DEC_VERBO[r['Sentença - Decisão']];
+  set('rRec',rec.parte==='custom'?rec.parteCustom:rec.parte);set('rRecId',rec.ids);
+  if(ct.situacao==='nao')d.rContra='nao';else if(ct.situacao==='apresentadas'&&d.rContra!=='pre')d.rContra='sim';
+  if(s(ct.ids)){const p=String(d.rContraId||'').split(';')[1];d.rContraId=s(ct.ids)+(p?'; '+p.trim():'')}
+  const mp=muInv(MU_MPF_SENT)[r['Parecer - Sentido']];if(mp)d.rMpf=mp;set('rMpfId',r['ID do Parecer MPF']);set('mpfHip',r['MPF - Custos Legis']);
+  const rv=muInv(MU_RES_VOTO)[r['Voto - Resultado']];if(rv)d.resultado=rv;
+}
+function muGerHTMLBar(){const opts=MU&&MU.fila.length?MU.fila.map(x=>`<option value="${x.id}"${x.id===MU.atual?' selected':''}>${esc(x.dados.numero||'Processo sem número')}</option>`).join(''):'<option>—</option>';
+  return `<select class="inp" id="muGProc" aria-label="Processo">${opts}</select><div class="vista-mod" role="group" aria-label="Modo do Minutário"><button type="button" data-mu-modo="editor">Editor</button><button type="button" data-mu-modo="gerador">Prontuário e Gerador</button></div><button type="button" class="btn sm pri" data-mu-acao="levar" title="Monta a minuta no editor com o relatório, o voto, a ementa e a proclamação do Gerador">Levar ao editor →</button><span class="meta" id="muGEst"></span><button type="button" class="btn sm" data-mu-acao="lado" style="margin-left:auto" title="Mostrar ou ocultar a coluna Localizar">${$('muMain').classList.contains('mu-semdir')?'Localizar ⇤':'Ocultar Localizar ⇥'}</button>`}
+function muModo(m){
+  MU_MODO=m==='gerador'?'gerador':'editor';LS.set('acv_mu_modo',MU_MODO);
+  const main=$('muMain');if(!main)return;if(!main.dataset.ld){main.dataset.ld='1';const sd=LS.get('acv_mu_semdir');main.classList.toggle('mu-semdir',sd?sd==='1':innerWidth<1500)}main.classList.toggle('mu-gmode',MU_MODO==='gerador');$('muGBox').hidden=MU_MODO!=='gerador';
+  document.querySelectorAll('[data-mu-modo]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.muModo===MU_MODO)));
+  if(MU_MODO==='gerador'){$('muGBar').innerHTML=muGerHTMLBar();document.querySelectorAll('[data-mu-modo]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.muModo===MU_MODO)));
+    const fr=$('muGFr');if(!fr.getAttribute('src')){MU_GER_OK=false;fr.src='./minutario/gerador.html?minutario=1'}else muGerCarregar()}
+}
+function muGerCarregar(){
+  const fr=$('muGFr'),it=muAtual();if(!fr||!MU_GER_OK)return;
+  if(!it){$('muGEst').textContent='crie ou receba um processo';return}
+  const gd=JSON.parse(JSON.stringify(it.gerGD||{val:{},inc:{},alt:{}}));gd.val=gd.val||{};const d=it.dados,cx=String(d.rContraId||'').split(';');
+  // campos de texto do Gerador (chaves do próprio Gerador) que o Minutário já conhece
+  Object.entries(MU_GER_TXT).forEach(([k,f])=>{const v=String(f(d)||'').trim();if(v&&!String(gd.val[k]||'').trim())gd.val[k]=v});
+  try{fr.contentWindow.postMessage({type:'cmt-ger-carregar',registro:muRegistroAtual(it),gd},location.origin)}catch(e){}
+}
+let MU_GER_T=null;
+window.addEventListener('message',ev=>{
+  const fr=$('muGFr');if(!fr||ev.source!==fr.contentWindow||ev.origin!==location.origin||!ev.data)return;const d=ev.data;
+  if(d.type==='cmt-ger-pronto'){MU_GER_OK=true;muGerCarregar();return}
+  if(d.type==='cmt-ger-estado'){const it=muAtual();if(!it||!d.registro)return;
+    it.prontuario=d.registro;it.gerGD=d.gd;it.gerTextos=d.textos||{};muDoRegistro(it,d.registro);muDoGD(it,d.gd);it.atualizado=new Date().toISOString();
+    clearTimeout(MU_GER_T);MU_GER_T=setTimeout(()=>{muSalvar();const e=$('muGEst');if(e)e.textContent='prontuário salvo no minutário · '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});$('muFila').innerHTML=muFilaHTML();if(MU_TAB==='modelos'||MU_TAB==='prec')muDesenharLado()},400)}
+});
+function muLevarAoEditor(){
+  const it=muAtual();if(!it)return;const T=it.gerTextos||{};
+  if(!Object.values(T).some(x=>String(x||'').trim())){toast('O Gerador ainda não produziu texto para este processo.');return}
+  if(it.dirty&&!confirm('A minuta do editor foi alterada. Substituí-la pelo texto do Gerador? (↶ Desfazer recupera o texto atual)'))return;
+  const cv=x=>String(x||'').replace(/\{\{\s*([^}]+?)\s*\}\}/g,'[$1]').replace(/\n{3,}/g,'\n\n').trim();
+  const mono=it.dados.tipo==='monocrática';let rel=cv(T.rel).replace(/\n*\s*É o relatório\.?\s*$/,''),voto=cv(T.voto).replace(/\n*\s*É como voto\.?\s*$/,''),em=cv(T.em).replace(/^EMENTA\s*\n+/,''),pr=cv(T.proc);
+  muHist(it);const P=[];
+  if(mono)P.push('DECISÃO',rel,'DECIDO.',voto||'[fundamentação]');
+  else{P.push('RELATÓRIO',rel||muRelatorio(it),'É o relatório.','VOTO',voto||'[voto]','É como voto.','EMENTA',em||'[ementa]','ACÓRDÃO',/^Vistos/.test(pr)?pr:'Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, [resultado], nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado.');if(pr&&!/^Vistos/.test(pr))P.push('[Proclamação do Gerador: '+pr.replace(/\s+/g,' ')+']')}
+  it.texto=P.filter(x=>String(x||'').trim()).join('\n\n');it.origem={tipo:'gerador',nome:'Prontuário e Gerador'};it.modelo=null;it.dirty=false;muSalvar();muModo('editor');muRender();
+  toast('Minuta montada no editor com o texto do Gerador. Use as abas à direita para completar.');
+}
+
 /* =====================================================================
    MINUTÁRIO — minutas em elaboração, conectado ao acervo do Gabinete CMT.
    Não é banco: cada processo recebido (ou criado à mão) abre com a estrutura-base
@@ -3834,7 +3931,7 @@ function muReceber(p,origem){
   let it=d.numero&&MU.fila.find(x=>x.dados.numero===d.numero);
   if(it){Object.entries(d).forEach(([k,v])=>{if(v&&!it.dados[k])it.dados[k]=v});toast(`Processo ${d.numero} já estava no minutário: dados completados, minuta preservada.`)}
   else{it=muNovo(d);MU.fila.unshift(it);toast(`Processo ${d.numero||'sem número'} recebido${origem&&origem!==location.origin?' de '+origem:' do acervo'}.`)}
-  MU.atual=it.id;if(!it.texto)muBase(it);muSalvar();setModulo('minutario');muRender();
+  MU.atual=it.id;if(!it.texto)muBase(it);muSalvar();setModulo('minutario');muRender();if(MU_MODO==='gerador'){$('muGBar').innerHTML=muGerHTMLBar();muModo('gerador')}
 }
 window.addEventListener('message',ev=>{
   const d=ev.data;if(!d||typeof d!=='object')return;
@@ -4025,7 +4122,7 @@ function muEstado(){
   if($('btnMuDesf'))$('btnMuDesf').disabled=!MU_HIST.some(h=>h.id===it.id);
   muApoioEnviar();
 }
-function muOrigemHTML(it){const o=it.origem||{};const r={base:'Estrutura-base',modelo:o.fonte==='sugestao'?'Sugestão aplicada':o.fonte==='matriz'?'Modelo-matriz aplicado':'Rascunho de modelo aplicado',precedente:'Precedente como base'}[o.tipo]||'Minuta';
+function muOrigemHTML(it){const o=it.origem||{};const r={base:'Estrutura-base',modelo:o.fonte==='sugestao'?'Sugestão aplicada':o.fonte==='matriz'?'Modelo-matriz aplicado':'Rascunho de modelo aplicado',precedente:'Precedente como base',gerador:'Do Gerador'}[o.tipo]||'Minuta';
   return `<span class="mu-org mu-org-${esc(o.tipo||'base')}">${r}</span><span class="mu-org-n">${esc(o.nome||'')}</span>${it.dirty?'<span class="mu-org-e">editada à mão</span>':''}`}
 function muDesenharEditor(){
   const it=muAtual(),ed=$('muEd');if(!ed)return;
@@ -4107,7 +4204,7 @@ function muRender(){
   document.querySelector('#muMain .mu-centro').classList.toggle('mu-sem',!it);
   muDesenharEditor();muDesenharLado();
 }
-function muAbrir(){muCarregar();const it=muAtual();if(it&&!it.texto){muBase(it);muSalvar()}muRender();
+function muAbrir(){muCarregar();const it=muAtual();if(it&&!it.texto){muBase(it);muSalvar()}muRender();muModo(MU_MODO);
   if(!Array.isArray(MATRIZES)||!MATRIZES.length)Promise.resolve(carregarMatrizes()).then(()=>{const x=muAtual();if(x&&!x.dirty&&x.origem?.tipo==='base'){muBase(x);muSalvar();muDesenharEditor()}}).catch(()=>{})}
 
 /* ---------- eventos ---------- */
@@ -4119,6 +4216,7 @@ document.addEventListener('input',e=>{
 });
 document.addEventListener('change',e=>{
   const el=e.target;if(!el.closest||!el.closest('#muMain'))return;const it=muAtual();if(!it)return;
+  if(el.id==='muGProc'){MU.atual=el.value;muSalvar();MU_CUR=0;const x=muAtual();if(x&&!x.texto){muBase(x);muSalvar()}muGerCarregar();muDesenharLado();return}
   if(el.dataset.mud&&el.tagName==='SELECT'){it.dados[el.dataset.mud]=el.value;muSalvar();if(el.dataset.mud==='rEsp'||el.dataset.mud==='tipo')$('muDados').innerHTML=muFormHTML(it);if(!it.dirty&&it.origem?.tipo==='base'){muBase(it);muDesenharEditor()}muDesenharLado();return}
   if(el.dataset.muOp||el.dataset.muBl){const m=curPorId(it.modelo.id);if(!m)return;const st={sel:[...document.querySelectorAll('#muLado [data-mu-bl]:checked')].map(x=>x.dataset.muBl).concat((m.blocos||[]).filter(b=>b.modo!=='opcional'&&b.modo!=='alternativa').map(b=>b.id)),op:Object.fromEntries([...document.querySelectorAll('#muLado [data-mu-op]')].map(x=>[x.dataset.muOp,x.checked]))};
     if(it.dirty&&!confirm('A minuta foi editada. Recompor com os blocos marcados? (↶ Desfazer recupera o texto atual)')){muDesenharLado();return}
@@ -4128,6 +4226,7 @@ document.addEventListener('change',e=>{
 document.addEventListener('click',e=>{
   const el=e.target;if(!el.closest||!el.closest('#muMain'))return;let b;
   if((b=el.closest('[data-mu-it]'))){MU.atual=b.dataset.muIt;muSalvar();MU_CUR=0;muAbrir();return}
+  if((b=el.closest('[data-mu-modo]'))){muModo(b.dataset.muModo);if(MU_MODO==='editor')muRender();return}
   if((b=el.closest('[data-mu-tab]'))){MU_TAB=b.dataset.muTab;muDesenharLado();return}
   if((b=el.closest('[data-mu-vista]'))){MU_VISTA=b.dataset.muVista;LS.set('acv_mu_vista',MU_VISTA);muDesenharEditor();return}
   if((b=el.closest('[data-mu-mod]'))){const [f,id]=b.dataset.muMod.split('|');muAplicarModelo(f,id);return}
@@ -4137,6 +4236,8 @@ document.addEventListener('click',e=>{
   if((b=el.closest('[data-mu-abrir]'))){irParaDecisao(b.dataset.muAbrir);return}
   if((b=el.closest('[data-mu-ins]'))){const o=($('muRes')._lista||[])[+b.dataset.muIns];if(o)muInserir(o.txt);return}
   if((b=el.closest('[data-mu-acao]'))){const a=b.dataset.muAcao,it=muAtual();
+    if(a==='levar'){muLevarAoEditor();return}
+    if(a==='lado'){const v=!$('muMain').classList.contains('mu-semdir');$('muMain').classList.toggle('mu-semdir',v);LS.set('acv_mu_semdir',v?'1':'0');b.textContent=v?'Localizar ⇤':'Ocultar Localizar ⇥';return}
     if(a==='novo'){const n=prompt('Nº do processo (opcional):','');if(n===null)return;muCarregar();const x=muNovo({numero:n.trim()});muBase(x);MU.fila.unshift(x);MU.atual=x.id;muSalvar();muRender();return}
     if(a==='colar'){const s=prompt('Cole o JSON do processo enviado pelo acervo:','');if(!s)return;try{const j=JSON.parse(s);muReceber(j.processo||j,location.origin)}catch(er){toast('JSON inválido.')}return}
     if(a==='ajuda'){muAjuda();return}
