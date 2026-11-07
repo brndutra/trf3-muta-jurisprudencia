@@ -382,6 +382,11 @@ textarea.editor:focus{border-color:color-mix(in srgb,var(--f-minuta) 60%,transpa
 .mx-sit{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 10px;margin-bottom:8px;border:1px solid color-mix(in srgb,var(--f-minuta) 45%,transparent);border-left:4px solid var(--f-minuta);border-radius:10px;background:var(--f-minuta-s)}
 .mx-sit b{font:700 12.5px Figtree,Inter,system-ui,sans-serif}
 .mx-sit .btn{margin-left:auto}
+.tv-ops{display:flex;flex-wrap:wrap;gap:4px 14px;padding:6px 10px;border-top:1px solid var(--line);font:600 12px Figtree,Inter,system-ui,sans-serif;color:var(--c-ink2)}
+.tv-ops input{width:auto!important;margin-right:4px}
+.tv-g{font:800 9.5px Figtree,Inter,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--c-ink2);padding:6px 10px 2px;border-top:1px solid var(--line)}
+#mxTv .mx-b{grid-template-columns:18px 1fr}
+#mxTv .mx-b small{color:var(--c-ink2)}
 .mx-pt{padding:7px 10px;border-top:1px solid var(--line);font:500 12.5px/1.45 Figtree,Inter,system-ui,sans-serif}
 .mx-pt.off .mx-t{display:none}
 .mx-pt-h{display:flex;gap:8px;align-items:baseline}
@@ -1668,16 +1673,20 @@ function matrizHTML(m){
       <span class="meta">${X.decisoes} decisões · ${X.materias} matérias · ${esc(fmtData(X.periodo[0]))} a ${esc(fmtData(X.periodo[1]))}</span></div>
     <div class="mx-sit" id="mxSit"><span class="pe-ey">Situação</span><b id="mxSitT">${esc(sitRotulo(MXT.sit)||'não identificada — preencha o recorrente no relatório')}</b>
       <button class="btn sm" onclick="sugerirMatriz(true);$('minCampos').innerHTML=matrizHTML(MOD_POR.get($('gerador').dataset.m));atualizarMinuta()" title="Reaplica as versões sugeridas pela situação (desfaz escolhas manuais)">↺ aplicar situação</button></div>
+    ${tvHTML(m)}
     <p class="ajuda">Fixos: fórmulas presentes em metade ou mais das decisões do tipo. Opcionais: entre 10% e 50%. Onde há versões, a sugerida segue a situação (recorrente, gratuidade, Súmula 111); escolha outra ou omita. Campos <b>[ ]</b> e textos do caso ficam para você.</p>
     ${posHTML}${mono?'':extra('Ementa','ementa')+extra('Acórdão','acordao')}`;
 }
 document.addEventListener('change',e=>{
   const t=e.target; if(!MXT) return;
-  if(t.id==='mxTipo'){const m=MOD_POR.get($('gerador').dataset.m), X=MATRIZES.find(x=>x.id===t.value);novaMatriz(m,X);
+  if(t.id==='mxTipo'){const m=MOD_POR.get($('gerador').dataset.m), X=MATRIZES.find(x=>x.id===t.value), tvAnt=MXT.tv;novaMatriz(m,X);if(tvAnt)MXT.tv=tvAnt;
     const ev=ESP_REL[X.especie];if(ev&&$('rEsp')&&$('rEsp').value!==ev&&(X.especie==='Embargos de declaração'||$('rEsp').value==='ed')){$('rEsp').value=ev}$('minCampos').innerHTML=matrizHTML(m);atualizarMinuta();return}
+  if(t.id==='tvMat'){MXT.tv={mat:t.value,sel:new Set(),op:{},toque:new Set()};tvSituacao();redesenharMatriz();return}
+  if(t.dataset.tvt!=null){t.checked?MXT.tv.sel.add(t.dataset.tvt):MXT.tv.sel.delete(t.dataset.tvt);atualizarMinuta();return}
+  if(t.dataset.tvo!=null){MXT.tv.op[t.dataset.tvo]=t.checked;MXT.tv.toque.add(t.dataset.tvo);atualizarMinuta();return}
   if(t.dataset.mxk!=null){MXT.esc[t.dataset.mxk]=+t.value;MXT.toque.add(t.dataset.mxk);const m=MOD_POR.get($('gerador').dataset.m);const y=$('mDet').scrollTop;$('minCampos').innerHTML=matrizHTML(m);$('mDet').scrollTop=y;atualizarMinuta();return}
   if(t.dataset.mxm!=null){t.checked?MXT.mat.add(+t.dataset.mxm):MXT.mat.delete(+t.dataset.mxm);atualizarMinuta();return}
-  if(t.dataset&&t.dataset.relf!=null&&MIN_MODO==='matriz'){const ant=sitRotulo(MXT.sit);sugerirMatriz(false);if(sitRotulo(MXT.sit)!==ant){const m=MOD_POR.get($('gerador').dataset.m);const y=$('mDet').scrollTop;$('minCampos').innerHTML=matrizHTML(m);$('mDet').scrollTop=y;atualizarMinuta()}}
+  if(t.dataset&&t.dataset.relf!=null&&MIN_MODO==='matriz'){const ant=sitRotulo(MXT.sit), tvA=JSON.stringify(MXT.tv&&MXT.tv.op||{});sugerirMatriz(false);tvSituacao();if(sitRotulo(MXT.sit)!==ant||JSON.stringify(MXT.tv&&MXT.tv.op||{})!==tvA){const m=MOD_POR.get($('gerador').dataset.m);const y=$('mDet').scrollTop;$('minCampos').innerHTML=matrizHTML(m);$('mDet').scrollTop=y;atualizarMinuta()}}
 });
 document.addEventListener('input',e=>{const f=e.target.dataset&&e.target.dataset.mxl;if(f&&MXT){MXT.livre[f]=e.target.value;atualizarMinuta()}});
 /* ementa no formato da Recomendação CNJ 154/2024: as fórmulas escolhidas entram nas razões de decidir
@@ -1688,12 +1697,20 @@ function ementaMatriz(X,esco){
   const cab=L.find(t=>/^DIREITO\b/.test(t)), refs=L.filter(t=>/^(Dispositivos|Jurisprud[êe]ncia) relevantes? citad/.test(t));
   const disp=L.filter(t=>t.length<320&&/^(Embargos|Apela[çc][ãa]o|Remessa|Agravo|Recurso|Pedido)[^.]{0,90}(rejeitad|desprovid|provid|acolhid|conhecid|prejudicad|homologad)/i.test(t));
   const raz=L.filter(t=>t!==cab&&!refs.includes(t)&&!disp.includes(t)&&!/^[IVX]+\.\s/.test(t));
+  // trechos vinculados: cabeçalho, caso, questão, razões e dispositivo acompanham o voto
+  const M=tvMat(), tc=tvPartes('ementa','cabecalho'), tq=tvPartes('ementa','questao'), tr=tvPartes('ementa','razoes'), td=tvPartes('ementa','dispositivo');
+  let cabF=cab||(M&&M.ementa_cabecalho)||'[RAMO DO DIREITO]. [CLASSE]. [TEMA]. [RESULTADO].';
+  if(tc.length) cabF=cabF.trim()+' '+tc.join(' ');
+  const caso=[casoEmExame(),...tvPartes('ementa','caso')].filter(Boolean).join(' ')||'[caso em exame: recurso, decisão recorrida e pedido]';
+  const ord=['i','ii','iii','iv','v','vi'], qtd=['','uma','duas','três','quatro','cinco','seis'];
+  const quest=!tq.length?'[questão em discussão]':tq.length===1?`A questão em discussão consiste em ${tq[0]}.`
+    :`Há ${qtd[tq.length]||tq.length} questões em discussão: ${tq.map((q,i)=>`(${ord[i]}) ${q}`).map((x,i,a)=>i===a.length-1?'e '+x:x).join('; ')}.`;
   let n=0; const N=t=>`${++n}. ${t}`;
-  return [cab||'[RAMO DO DIREITO]. [CLASSE]. [TEMA]. [RESULTADO].',
-    'I. Caso em exame', N('[caso em exame: recurso, decisão recorrida e pedido]'),
-    'II. Questão em discussão', N('[questão em discussão]'),
-    'III. Razões de decidir', ...(raz.length?raz:['[razões de decidir]']).map(N),
-    'IV. Dispositivo', ...(disp.length?disp:['[dispositivo]']).map(N),
+  return [cabF,
+    'I. Caso em exame', N(caso),
+    'II. Questão em discussão', N(quest),
+    'III. Razões de decidir', ...([...raz,...tr].length?[...raz,...tr]:['[razões de decidir]']).map(N),
+    'IV. Dispositivo', ...(td.length?td:disp.length?disp:['[dispositivo]']).map(N),
     ...(refs.length?['__________',...refs]:[])];
 }
 function textoMatriz(m){
@@ -1710,13 +1727,60 @@ function textoMatriz(m){
     const mat=ehMat?B.map((b,i)=>({b,i})).filter(o=>o.b.secao==='fundamentacao'&&MXT.mat.has(o.i)).map(o=>o.b.texto):[];
     const liv=(MXT.livre[p.id]||'').trim();
     const temFixo=p.slots.some((s,i)=>!s.opcional&&esco(p.id+':'+i,s));
-    const caso=liv||(p.base&&!temFixo&&!mat.length?chv(p.base):'');
-    if(DEPOIS.has(p.id)) P.push(...mat,caso,...fs); else P.push(...fs,...mat,caso);
+    const tv=tvPartes('voto',p.id), fx=(p.id==='honor'||p.id==='disp')&&tv.length?[]:fs;   // trecho de honorários/dispositivo substitui as fórmulas da matriz
+    const caso=liv||(p.base&&!temFixo&&!mat.length&&!tv.length?chv(p.base):'');
+    if(DEPOIS.has(p.id)) P.push(...mat,caso,...fx,...tv); else P.push(...fx,...tv,...mat,caso);
   }
   if(!mono){P.push('É como voto.');
     const em=ementaMatriz(X,esco); if(em.length) P.push('EMENTA',...em);
     const ac=(X.acordao||[]).map((s,i)=>esco('ac:'+i,s)).filter(Boolean); if(ac.length) P.push('ACÓRDÃO',...ac);}
   return P.filter(x=>x&&x.trim()).join('\n\n').replace(/\n{3,}/g,'\n\n');
+}
+
+/* ---------- trechos vinculados (modelos/trechos.json) ----------
+   Curadoria do gabinete: cada trecho escolhido no voto leva junto o texto correspondente do relatório e da ementa.
+   [?id:texto] entra só com a opção/trecho 'id' marcado; [?!id:texto], só com ele desmarcado; {{campo}} vira [campo]. */
+let TRECHOS=null;
+async function carregarTrechos(){
+  if(TRECHOS) return TRECHOS;
+  try{const r=await fetch(new URL('../modelos/trechos.json',baseDados()).href,{cache:'no-cache'});TRECHOS=r.ok?((await r.json()).materias||[]):[]}catch(e){TRECHOS=[]}
+  return TRECHOS;
+}
+function tvMateriaPara(m){if(!TRECHOS)return null;const t=(m.nome||'')+' '+String(m.modelo||'').slice(0,30000);return TRECHOS.find(x=>x.gatilho&&new RegExp(x.gatilho,'i').test(t))||null}
+function tvMat(){return MXT&&MXT.tv&&TRECHOS?TRECHOS.find(x=>x.id===MXT.tv.mat)||null:null}
+function tvEstado(m){if(!MXT)return null;if(!MXT.tv){const M=tvMateriaPara(m);MXT.tv={mat:M?M.id:'',sel:new Set(),op:{},toque:new Set()};tvSituacao()}return MXT.tv}
+function tvSituacao(){const tv=MXT&&MXT.tv, M=tvMat();if(!tv||!M)return;const S=situacaoCaso();(M.opcoes||[]).forEach(o=>{if(o.situacao&&!tv.toque.has(o.id))tv.op[o.id]=!!S[o.situacao]})}
+function tvLigado(id){const tv=MXT&&MXT.tv;return !!tv&&(!!tv.op[id]||tv.sel.has(id))}
+function tvTexto(s){return chv(String(s||'').replace(/\[\?(!?)([\w-]+):([^\]]*)\]/g,(_,neg,id,t)=>tvLigado(id)!==!!neg?t:''))}
+function tvPartes(sec,pos){
+  const M=tvMat(); if(!M) return [];
+  const o=[]; for(const t of M.trechos) if(MXT.tv.sel.has(t.id)) for(const p of (t[sec]||[])) if(p.pos===pos){const x=tvTexto(p.texto);if(x.trim()&&!o.includes(x))o.push(x)}
+  return o;
+}
+function redesenharMatriz(){const m=MOD_POR.get($('gerador').dataset.m);const y=$('mDet').scrollTop;$('minCampos').innerHTML=matrizHTML(m);$('mDet').scrollTop=y;atualizarMinuta()}
+function tvHTML(m){
+  if(!TRECHOS){carregarTrechos().then(()=>{if(MIN_MODO==='matriz'&&$('mxTv')&&MXT){$('mxTv').outerHTML=tvHTML(m);atualizarMinuta()}});return '<div id="mxTv"></div>'}
+  if(!TRECHOS.length) return '<div id="mxTv"></div>';
+  const tv=tvEstado(m), M=tvMat(), ROT={voto:'voto',relatorio:'relatório',ementa:'ementa'};
+  const opts=['<option value="">— nenhuma matéria —</option>',...TRECHOS.map(x=>`<option value="${esc(x.id)}"${M&&x.id===M.id?' selected':''}>${esc(x.nome)}</option>`)].join('');
+  let corpo='';
+  if(M){
+    const grupos=[...new Set(M.trechos.map(t=>t.grupo))];
+    corpo=(M.opcoes&&M.opcoes.length?`<div class="tv-ops"><span class="meta">Opções</span>${M.opcoes.map(o=>`<label><input type="checkbox" data-tvo="${esc(o.id)}"${tv.op[o.id]?' checked':''}>${esc(o.rotulo)}</label>`).join('')}</div>`:'')
+      +grupos.map(g=>`<div class="tv-g">${esc(g)}</div>`+M.trechos.filter(t=>t.grupo===g).map(t=>{
+        const onde=Object.keys(ROT).filter(s=>(t[s]||[]).length).map(s=>ROT[s]).join(' · ');
+        return `<label class="mx-b"><input type="checkbox" data-tvt="${esc(t.id)}"${tv.sel.has(t.id)?' checked':''}><span class="mx-t"><b>${esc(t.titulo)}</b> <span class="meta">${onde}</span>${t.nota?`<br><small>${esc(t.nota)}</small>`:''}</span></label>`}).join('')).join('');
+  }
+  return `<div class="mx-sec" id="mxTv"><div class="mx-h">Trechos vinculados <span class="meta">voto · relatório · ementa</span></div>
+    <div style="padding:6px 10px"><select id="tvMat" class="inp" style="height:28px;max-width:100%">${opts}</select>
+    <p class="ajuda" style="margin:4px 0 0">Cada trecho marcado entra no voto e leva junto o texto correspondente do relatório e da ementa. As opções acendem as partes condicionais nas três seções; a gratuidade segue o relatório.</p></div>${corpo}</div>`;
+}
+/* caso em exame da ementa a partir do relatório montado */
+function casoEmExame(){
+  if(!relAtivo()||!vRel('rDec')) return '';
+  const esp=vRel('rEsp')||'ap', ctx=vRel('rCtx').replace(/^em\s+/i,''), dec=vRel('rDec').replace(/\.$/,'');
+  const ab={ap:'Apelação interposta contra sentença',dap:'Apelações interpostas contra sentença',rnap:'Remessa necessária e apelação contra sentença',rn:'Remessa necessária de sentença',ai:'Agravo de instrumento interposto contra decisão',agint:'Agravo interno contra decisão'}[esp];
+  return ab?`${ab} que${ctx?`, em ${ctx},`:''} ${dec}.`:'';
 }
 
 /* ---------- Relatório · dados do processo (diretrizes do relatório do gabinete) ---------- */
@@ -1789,11 +1853,16 @@ function montarRelatorio(){
     P.push(`Trata-se de ${ab} ${sentenca}.${hon?' '+hon.charAt(0).toUpperCase()+hon.slice(1)+'.':''}`);
     P.push(`Apelou ${rec}${recId?ID(recId):''}, ${razoes()}${ped?', pelo que requereu '+ped:''}.`);
   }
+  const tvOn=MIN_MODO==='matriz';   // trechos vinculados do voto que repercutem no relatório
+  if(tvOn) P.push(...tvPartes('relatorio','apos_recurso'));
   const ag=esp==='ai'||esp==='agint', ct=vRel('rContra'), [ctId,pre]=vRel('rContraId').split(';').map(x=>(x||'').trim());
+  const ctc=tvOn?tvPartes('relatorio','contrarrazoes').join(''):'';
   if(esp!=='rn'&&esp!=='ed'){
-    if(ct==='nao') P.push(ag?'Não houve contraminuta.':'Não houve contrarrazões.');
-    else if(ct==='sim'||ct==='pre') P.push(`Houve ${ag?'contraminuta':'contrarrazões'}${ID(ctId)}${ct==='pre'?`, com arguição preliminar de ${pre||'[preliminar]'}`:''}.`);
+    if(ctc&&ct!=='sim'&&ct!=='pre') P.push(`Houve ${ag?'contraminuta':'contrarrazões'}${ID(ctId)}${ctc}.`);
+    else if(ct==='nao') P.push(ag?'Não houve contraminuta.':'Não houve contrarrazões.');
+    else if(ct==='sim'||ct==='pre') P.push(`Houve ${ag?'contraminuta':'contrarrazões'}${ID(ctId)}${ct==='pre'?`, com arguição preliminar de ${pre||'[preliminar]'}`:''}${ctc}.`);
   }
+  if(tvOn) P.push(...tvPartes('relatorio','antes_mpf'));
   const mp={desp:'opinou pelo desprovimento do recurso',prov:'opinou pelo provimento do recurso',pross:'opinou pelo prosseguimento do feito, abstendo-se de manifestação sobre o mérito',desn:'opinou pela desnecessidade de sua intervenção'}[vRel('rMpf')];
   if(mp) P.push(`A Procuradoria Regional da República ${mp}${vRel('rMpfId')?ID(vRel('rMpfId')):''}.`);
   const ou=vRel('rOutros'); if(ou) P.push(...ou.split(/\n+/).map(x=>x.trim()).filter(Boolean));
