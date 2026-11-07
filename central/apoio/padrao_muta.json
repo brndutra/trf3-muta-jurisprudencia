@@ -1,0 +1,2150 @@
+{
+ "schema": "cmt.padrao-muta",
+ "versao": "2.0.0",
+ "atualizado_em": "2026-11-07",
+ "fontes": [
+  "gabcmt/banco/redacao.json",
+  "gabcmt/banco/normas.json",
+  "PADRÃO DE VOTO E RELATÓRIO (projeto CMT)",
+  "Acórdão ApCiv 5003616-85.2018",
+  "Decisões do gabinete 06–07/11/2026"
+ ],
+ "redacao": {
+  "registros": [
+   {
+    "id": "red-ale-01",
+    "tipo": "alerta",
+    "escopo": "ementa",
+    "padrao": "\\bwrit\\b",
+    "flags": "i",
+    "mensagem": "“writ”: use o nome do instrumento (mandado de segurança, habeas corpus…)"
+   },
+   {
+    "id": "red-ale-02",
+    "tipo": "alerta",
+    "escopo": "ementa",
+    "padrao": "\\b[a-zà-ÿ]{3,}[íi]ssim[oa]s?\\b",
+    "flags": "i",
+    "mensagem": "superlativo — prefira formulação neutra"
+   },
+   {
+    "id": "red-ale-03",
+    "tipo": "alerta",
+    "escopo": "ementa",
+    "padrao": "\\b(?:extremamente|absolutamente|flagrantemente|veementemente|indubitavelmente|inquestionavelmente|inegavelmente|cristalinamente|sobremaneira)\\b",
+    "flags": "i",
+    "mensagem": "advérbio enfático — evite"
+   },
+   {
+    "id": "red-ale-04",
+    "tipo": "alerta",
+    "escopo": "ementa",
+    "padrao": "\\b(?:apud|op\\.\\s?cit\\.|idem|ibidem)\\b|\\bin:\\s|\\bp\\.\\s?\\d+|\\bEditora\\b|\\bed\\.\\s?(?:rev|atual|amp)|\\([A-ZÀ-Ý]{3,}[^)]{0,80}\\d{4}[^)]*\\)|\\b[A-ZÀ-Ý]{3,},\\s+[A-ZÀ-Ý][a-zà-ÿ]+\\.\\s",
+    "flags": "",
+    "mensagem": "possível citação doutrinária ou referência bibliográfica — não incluir"
+   },
+   {
+    "id": "red-ale-05",
+    "tipo": "alerta",
+    "escopo": "ementa",
+    "padrao": "\\b(?:Sodal[íi]cio|Pret[óo]rio|Lex|Codex|Diploma\\s+Processual|Estatuto\\s+Processual|Digesto)\\b",
+    "flags": "i",
+    "mensagem": "sinônimo ou metáfora — use a denominação própria (Tribunal, Código de Processo Civil…)"
+   },
+   {
+    "id": "red-alv-01",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\bUnião Federal\\b",
+    "flags": "i",
+    "mensagem": "use “União”, e não “União Federal”"
+   },
+   {
+    "id": "red-alv-02",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\b(STF|STJ)\\b",
+    "flags": "",
+    "mensagem": "órgão abreviado no corpo do voto — prefira “Supremo Tribunal Federal” / “Superior Tribunal de Justiça”, salvo exceções do Manual"
+   },
+   {
+    "id": "red-alv-03",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\b(Lei|Decreto(?:-Lei)?)\\s+n[º°.]",
+    "flags": "i",
+    "mensagem": "atos normativos sem “nº” (ex.: Lei 13.105/2015)"
+   },
+   {
+    "id": "red-alv-04",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\b[Aa]\\s+r\\.\\s+senten",
+    "flags": "i",
+    "mensagem": "“a sentença”, e não “a r. sentença”"
+   },
+   {
+    "id": "red-alv-05",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\b(cristalin[oa]|indubit[áa]vel|inquestion[áa]vel|clarividente)\\b",
+    "flags": "i",
+    "mensagem": "evite adjetivação enfática (“cristalino”, “indubitável”) — prefira “No caso, verifica-se…”"
+   },
+   {
+    "id": "red-alv-06",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\b(Egr[ée]gi[oa]|Colend[oa]|Excels[oa])\\s",
+    "flags": "",
+    "mensagem": "evite tratamento honorífico (“Egrégio”, “Colendo”)"
+   },
+   {
+    "id": "red-alv-07",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\bNesse\\s+(?:sentido|contexto|cenário|panorama)\\b",
+    "flags": "gi",
+    "mensagem": "uniformização: prefira “Neste sentido / Neste contexto”"
+   },
+   {
+    "id": "red-alv-08",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\bAlém\\s+disto\\b",
+    "flags": "gi",
+    "mensagem": "uniformização: prefira “Além disso”"
+   },
+   {
+    "id": "red-alv-09",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\(g\\.\\s+n\\.\\)|\\(g\\.n\\)",
+    "flags": "g",
+    "mensagem": "uniformização: use “(g.n.)”"
+   },
+   {
+    "id": "red-alv-10",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\bID'?s\\b(?=\\s|\\))",
+    "flags": "g",
+    "mensagem": "uniformização: use “IDs” (sem apóstrofo)"
+   },
+   {
+    "id": "red-alv-11",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\bpelo\\s+inciso\\s+[IVXL]+,\\s+do\\s+artigo",
+    "flags": "gi",
+    "mensagem": "remissão: escreva “pelo artigo 932, III, do CPC”"
+   },
+   {
+    "id": "red-alv-12",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\b(?:Por\\s+outro\\s+lado|Nesse\\s+diapasão)\\b",
+    "flags": "gi",
+    "mensagem": "conectivo fora do padrão — use conectivo com função lógica (Ademais, Contudo, Por sua vez)"
+   },
+   {
+    "id": "red-alv-13",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\bTema\\s+998\\b",
+    "flags": "g",
+    "mensagem": "confira: a taxatividade mitigada do artigo 1.015 do CPC é o Tema 988/STJ"
+   },
+   {
+    "id": "red-alv-14",
+    "tipo": "alerta",
+    "escopo": "voto",
+    "padrao": "\\[PREENCHER[^\\]]*\\]",
+    "flags": "g",
+    "mensagem": "marcador de preenchimento não substituído"
+   },
+   {
+    "id": "red-con-01",
+    "tipo": "conectivo",
+    "expressao": "Senhores Desembargadores,",
+    "funcao": "Abertura da fundamentação colegiada",
+    "base": "Voto Muta"
+   },
+   {
+    "id": "red-con-02",
+    "tipo": "conectivo",
+    "expressao": "Inicialmente,",
+    "funcao": "Introduzir questão antecedente",
+    "base": "Adaptado"
+   },
+   {
+    "id": "red-con-03",
+    "tipo": "conectivo",
+    "expressao": "No mérito,",
+    "funcao": "Iniciar fundamentação de mérito",
+    "base": "Voto Muta"
+   },
+   {
+    "id": "red-con-04",
+    "tipo": "conectivo",
+    "expressao": "Cabe registrar que",
+    "funcao": "Ressalva ou esclarecimento jurídico",
+    "base": "Voto Muta · baixa frequência no corpus (0 ocorrências em 184 textos)"
+   },
+   {
+    "id": "red-con-05",
+    "tipo": "conectivo",
+    "expressao": "Neste sentido,",
+    "funcao": "Relacionar fundamento e orientação jurisprudencial",
+    "base": "Voto Muta"
+   },
+   {
+    "id": "red-con-06",
+    "tipo": "conectivo",
+    "expressao": "Importa considerar que",
+    "funcao": "Acrescentar elemento relevante à análise",
+    "base": "Voto Muta · baixa frequência no corpus (0 ocorrências em 184 textos)"
+   },
+   {
+    "id": "red-con-07",
+    "tipo": "conectivo",
+    "expressao": "Conforme jurisprudência do…",
+    "funcao": "Invocar orientação jurisprudencial",
+    "base": "Compêndio · baixa frequência no corpus (1 ocorrência em 184 textos)"
+   },
+   {
+    "id": "red-con-08",
+    "tipo": "conectivo",
+    "expressao": "Em relação à…",
+    "funcao": "Individualizar parte ou questão",
+    "base": "Compêndio · baixa frequência no corpus (1 ocorrência em 184 textos)"
+   },
+   {
+    "id": "red-con-09",
+    "tipo": "conectivo",
+    "expressao": "Quanto à…",
+    "funcao": "Passar a outra questão",
+    "base": "Compêndio"
+   },
+   {
+    "id": "red-con-10",
+    "tipo": "conectivo",
+    "expressao": "Assim,",
+    "funcao": "Dedução ou consequência",
+    "base": "Compêndio"
+   },
+   {
+    "id": "red-con-11",
+    "tipo": "conectivo",
+    "expressao": "Portanto,",
+    "funcao": "Conclusão do raciocínio",
+    "base": "Compêndio"
+   },
+   {
+    "id": "red-con-12",
+    "tipo": "conectivo",
+    "expressao": "Ante o exposto,",
+    "funcao": "Início do dispositivo",
+    "base": "Votos e compêndio"
+   },
+   {
+    "id": "red-con-13",
+    "tipo": "conectivo",
+    "expressao": "Na espécie,",
+    "funcao": "Transição ao caso concreto, com data e ID",
+    "base": "Corpus Muta — 53 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-14",
+    "tipo": "conectivo",
+    "expressao": "No caso,",
+    "funcao": "Transição ao caso concreto",
+    "base": "Corpus Muta — 40 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-15",
+    "tipo": "conectivo",
+    "expressao": "Com efeito,",
+    "funcao": "Confirmação ou explicação do que antecede",
+    "base": "Corpus Muta — 27 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-16",
+    "tipo": "conectivo",
+    "expressao": "Ademais,",
+    "funcao": "Acréscimo de fundamento ou prova",
+    "base": "Corpus Muta — 33 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-17",
+    "tipo": "conectivo",
+    "expressao": "Por sua vez,",
+    "funcao": "Retomada; apresentação da tese da outra parte",
+    "base": "Corpus Muta — 20 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-18",
+    "tipo": "conectivo",
+    "expressao": "Contrariamente ao sustentado pela autarquia,",
+    "funcao": "Oposição frontal ao recurso",
+    "base": "Corpus Muta — 3 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-19",
+    "tipo": "conectivo",
+    "expressao": "Embora",
+    "funcao": "Concessão seguida de conclusão contrária",
+    "base": "Corpus Muta — 23 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-20",
+    "tipo": "conectivo",
+    "expressao": "Ainda que",
+    "funcao": "Concessão seguida de limite",
+    "base": "Corpus Muta — 12 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-21",
+    "tipo": "conectivo",
+    "expressao": "Contudo,",
+    "funcao": "Oposição",
+    "base": "Corpus Muta — 9 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-22",
+    "tipo": "conectivo",
+    "expressao": "Como se observa,",
+    "funcao": "Retomada de dado já exposto",
+    "base": "Corpus Muta — 11 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-23",
+    "tipo": "conectivo",
+    "expressao": "Logo,",
+    "funcao": "Conclusão",
+    "base": "Corpus Muta — 13 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-24",
+    "tipo": "conectivo",
+    "expressao": "Em suma,",
+    "funcao": "Síntese antes do desfecho",
+    "base": "Corpus Muta — 15 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-25",
+    "tipo": "conectivo",
+    "expressao": "Neste contexto,",
+    "funcao": "Síntese contextual",
+    "base": "Corpus Muta — 7 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-26",
+    "tipo": "conectivo",
+    "expressao": "Em casos que tais,",
+    "funcao": "Transição para o precedente ou o bloco do Tema 629",
+    "base": "Corpus Muta — 18 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-27",
+    "tipo": "conectivo",
+    "expressao": "Cumpre destacar que",
+    "funcao": "Ênfase em regra geral",
+    "base": "Corpus Muta — 4 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-28",
+    "tipo": "conectivo",
+    "expressao": "Registre-se que",
+    "funcao": "Ênfase em dado relevante",
+    "base": "Corpus Muta — 3 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-con-29",
+    "tipo": "conectivo",
+    "expressao": "com esteio no",
+    "funcao": "Ancoragem do dispositivo na norma",
+    "base": "Corpus Muta — 10 ocorrências em 184 textos"
+   },
+   {
+    "id": "red-cor-01",
+    "tipo": "correcao",
+    "motivo": "“Carta Magna” e equivalentes → “Constituição Federal”",
+    "padrao": "\\bCarta\\s+(?:Magna|Pol[íi]tica|da\\s+Rep[úu]blica|Constitucional|Federal)\\b",
+    "flags": "gi",
+    "substituir": "Constituição Federal"
+   },
+   {
+    "id": "red-cor-02",
+    "tipo": "correcao",
+    "motivo": "“Lei Maior” → “Constituição Federal”",
+    "padrao": "\\b(?:Lei\\s+Maior|Lei\\s+Fundamental|Magna\\s+Carta)\\b",
+    "flags": "gi",
+    "substituir": "Constituição Federal"
+   },
+   {
+    "id": "red-cor-03",
+    "tipo": "correcao",
+    "motivo": "“mandamus” → “mandado de segurança”",
+    "padrao": "mandamus\\b",
+    "flags": "gi",
+    "substituir": "mandado de segurança",
+    "artigo": "manter"
+   },
+   {
+    "id": "red-cor-04",
+    "tipo": "correcao",
+    "motivo": "“decisum” → “decisão”",
+    "padrao": "decisum\\b",
+    "flags": "gi",
+    "substituir": "decisão",
+    "artigo": "masc>fem"
+   },
+   {
+    "id": "red-cor-05",
+    "tipo": "correcao",
+    "motivo": "“Corte Cidadã” → “Superior Tribunal de Justiça”",
+    "padrao": "Corte\\s+Cidad[ãa](?![A-Za-zÀ-ú])",
+    "flags": "gi",
+    "substituir": "Superior Tribunal de Justiça",
+    "artigo": "fem>masc"
+   },
+   {
+    "id": "red-cor-06",
+    "tipo": "correcao",
+    "motivo": "“Excelso Pretório” → “Supremo Tribunal Federal”",
+    "padrao": "\\b(?:Excelso\\s+Pret[óo]rio|Pret[óo]rio\\s+Excelso)\\b",
+    "flags": "gi",
+    "substituir": "Supremo Tribunal Federal"
+   },
+   {
+    "id": "red-cor-07",
+    "tipo": "correcao",
+    "motivo": "“Parquet” → “Ministério Público”",
+    "padrao": "\\bParquet\\b",
+    "flags": "g",
+    "substituir": "Ministério Público"
+   },
+   {
+    "id": "red-cor-08",
+    "tipo": "correcao",
+    "motivo": "“in casu” → “no caso”",
+    "padrao": "\\bin\\s+casu\\b",
+    "flags": "gi",
+    "substituir": "no caso"
+   },
+   {
+    "id": "red-cor-09",
+    "tipo": "correcao",
+    "motivo": "“in limine” → “liminarmente”",
+    "padrao": "\\bin\\s+limine\\b",
+    "flags": "gi",
+    "substituir": "liminarmente"
+   },
+   {
+    "id": "red-cor-10",
+    "tipo": "correcao",
+    "motivo": "“ex officio” → “de ofício”",
+    "padrao": "\\bex\\s+officio\\b",
+    "flags": "gi",
+    "substituir": "de ofício"
+   },
+   {
+    "id": "red-cor-11",
+    "tipo": "correcao",
+    "motivo": "“ex vi” → “por força”",
+    "padrao": "\\bex\\s+vi\\b",
+    "flags": "gi",
+    "substituir": "por força"
+   },
+   {
+    "id": "red-cor-12",
+    "tipo": "correcao",
+    "motivo": "“ab initio” → “desde o início”",
+    "padrao": "\\bab\\s+initio\\b",
+    "flags": "gi",
+    "substituir": "desde o início"
+   },
+   {
+    "id": "red-cor-13",
+    "tipo": "correcao",
+    "motivo": "“mutatis mutandis” → “com as devidas adaptações”",
+    "padrao": "\\bmutatis\\s+mutandis\\b",
+    "flags": "gi",
+    "substituir": "com as devidas adaptações"
+   },
+   {
+    "id": "red-cor-14",
+    "tipo": "correcao",
+    "motivo": "“ad cautelam” → “por cautela”",
+    "padrao": "\\bad\\s+cautelam\\b",
+    "flags": "gi",
+    "substituir": "por cautela"
+   },
+   {
+    "id": "red-cor-15",
+    "tipo": "correcao",
+    "motivo": "“sub judice” → “em julgamento”",
+    "padrao": "\\bsub\\s+judice\\b",
+    "flags": "gi",
+    "substituir": "em julgamento"
+   },
+   {
+    "id": "red-cor-16",
+    "tipo": "correcao",
+    "motivo": "“in totum” → “integralmente”",
+    "padrao": "\\bin\\s+totum\\b",
+    "flags": "gi",
+    "substituir": "integralmente"
+   },
+   {
+    "id": "red-cor-17",
+    "tipo": "correcao",
+    "motivo": "“verbi gratia” → “por exemplo”",
+    "padrao": "\\b(?:verbi\\s+gratia|v\\.\\s?g\\.)",
+    "flags": "gi",
+    "substituir": "por exemplo"
+   },
+   {
+    "id": "red-cor-18",
+    "tipo": "correcao",
+    "motivo": "“data venia” → “com a devida vênia”",
+    "padrao": "\\bdata\\s+(?:m[áa]xima\\s+)?v[êe]nia\\b",
+    "flags": "gi",
+    "substituir": "com a devida vênia"
+   },
+   {
+    "id": "red-cor-19",
+    "tipo": "correcao",
+    "motivo": "“quantum” → “valor”",
+    "padrao": "\\bquantum\\b",
+    "flags": "gi",
+    "substituir": "valor"
+   },
+   {
+    "id": "red-cor-20",
+    "tipo": "correcao",
+    "motivo": "tratamentos laudatórios (“Egrégio”, “Colendo”, “Excelso”) suprimidos",
+    "padrao": "\\b(?:Egr[ée]gi[oa]|Colend[oa]|Excels[oa])\\s+(?=[A-ZÀ-Ý])",
+    "flags": "g",
+    "substituir": ""
+   },
+   {
+    "id": "red-cor-21",
+    "tipo": "correcao",
+    "motivo": "sigla da Constituição → “CF/1988”",
+    "padrao": "\\b(?:CF\\/88|CRFB\\/(?:19)?88|CRFB)\\b",
+    "flags": "g",
+    "substituir": "CF/1988"
+   },
+   {
+    "id": "red-cor-22",
+    "tipo": "correcao",
+    "motivo": "sigla do Código de Processo Civil → “CPC”",
+    "padrao": "\\b(?:NCPC|CPC\\/15|CPC\\/2015)\\b",
+    "flags": "g",
+    "substituir": "CPC"
+   },
+   {
+    "id": "red-cor-23",
+    "tipo": "correcao",
+    "motivo": "“CPC/73” → “CPC/1973”",
+    "padrao": "\\bCPC\\/73\\b",
+    "flags": "g",
+    "substituir": "CPC/1973"
+   },
+   {
+    "id": "red-cor-24",
+    "tipo": "correcao",
+    "motivo": "“CC/02” → “CC”",
+    "padrao": "\\bCC\\/02\\b",
+    "flags": "g",
+    "substituir": "CC"
+   },
+   {
+    "id": "red-cor-25",
+    "tipo": "correcao",
+    "motivo": "“CC/16” → “CC/1916”",
+    "padrao": "\\bCC\\/16\\b",
+    "flags": "g",
+    "substituir": "CC/1916"
+   },
+   {
+    "id": "red-dir-01",
+    "tipo": "preferencia",
+    "regra": "R01",
+    "grupo": "A. Estrutura",
+    "titulo": "Abrir pelo caso concreto, não pela tese",
+    "preferir": "Na espécie, a autora, nascida em [DATA] (ID [ID]), completou o requisito etário em [DATA]…",
+    "evitar": "Abrir com a transcrição da lei ou com considerações gerais sobre o benefício.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-02",
+    "tipo": "preferencia",
+    "regra": "R02",
+    "grupo": "A. Estrutura",
+    "titulo": "Seguir a sequência canônica do voto rural",
+    "preferir": "Enquadramento etário; requerimento; inventário documental; sentença; razões recursais; controvérsia; valoração documental; prova oral; desfecho.",
+    "evitar": "Misturar a síntese da sentença ou das razões com a valoração.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-03",
+    "tipo": "preferencia",
+    "regra": "R03",
+    "grupo": "A. Estrutura",
+    "titulo": "Na monocrática terminativa, enquadrar antes de decidir",
+    "preferir": "Artigo 932 + “Segundo a Corte Superior…” + “A hipótese comporta julgamento sob tais parâmetros.” Depois: “O recurso não merece conhecimento.”",
+    "evitar": "Fundamentar sem indicar o inciso do artigo 932.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-04",
+    "tipo": "preferencia",
+    "regra": "R04",
+    "grupo": "A. Estrutura",
+    "titulo": "Relatório objetivo e com fecho formal",
+    "preferir": "Decisão recorrida, recurso, contrarrazões, ocorrências; “É o relatório.” e “DECIDO.”",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-05",
+    "tipo": "preferencia",
+    "regra": "R05",
+    "grupo": "B. Fatos e prova",
+    "titulo": "Toda afirmação de fato traz a sua fonte",
+    "preferir": "…extrato do CNIS (ID [ID], f. [F]), o que corresponde a [N] meses…",
+    "evitar": "Remeter genericamente “aos autos”.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-06",
+    "tipo": "preferencia",
+    "regra": "R06",
+    "grupo": "B. Fatos e prova",
+    "titulo": "Inventariar os documentos em lista numerada",
+    "preferir": "3 - certidão de casamento, celebrado em [DATA], na qual o cônjuge foi qualificado como lavrador (ID [ID]); e",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-07",
+    "tipo": "preferencia",
+    "regra": "R07",
+    "grupo": "B. Fatos e prova",
+    "titulo": "Pesar cada documento: o que prova e de quem é",
+    "preferir": "Distinguir documento próprio, documento extensível do núcleo familiar e vínculo personalíssimo de terceiro.",
+    "evitar": "Somar documentos sem titularidade ou época.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-08",
+    "tipo": "preferencia",
+    "regra": "R08",
+    "grupo": "B. Fatos e prova",
+    "titulo": "Medir a prova contra os marcos temporais",
+    "preferir": "Referir implemento etário e DER (artigo 143 da Lei 8.213/1991; Tema 642/STJ): prova contemporânea, próxima ou remota.",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-09",
+    "tipo": "preferencia",
+    "regra": "R09",
+    "grupo": "B. Fatos e prova",
+    "titulo": "Qualificar a prova oral pela concretude",
+    "preferir": "Nome, ID da mídia, tempo de conhecimento, locais, tarefas, contemporaneidade.",
+    "evitar": "“As testemunhas confirmaram o labor rural”, sem dados concretos.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-10",
+    "tipo": "preferencia",
+    "regra": "R10",
+    "grupo": "C. Fundamentação",
+    "titulo": "Declarar a distinção que decide o caso",
+    "preferir": "A hipótese, como visto, não é de insuficiência probatória a permitir renovação da pretensão, mas de prova da improcedência do pedido.",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-11",
+    "tipo": "preferencia",
+    "regra": "R11",
+    "grupo": "C. Fundamentação",
+    "titulo": "Responder ao recurso ponto a ponto",
+    "preferir": "Contrariamente ao sustentado pela autarquia, o conjunto probatório revela…",
+    "evitar": "Rebater em bloco, sem identificar a alegação.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-12",
+    "tipo": "preferencia",
+    "regra": "R12",
+    "grupo": "C. Fundamentação",
+    "titulo": "Conceder para limitar",
+    "preferir": "Ainda que não se exija prova com sequenciamento temporal… é essencial que exista, ao menos, início de prova material…",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-13",
+    "tipo": "preferencia",
+    "regra": "R13",
+    "grupo": "C. Fundamentação",
+    "titulo": "Precedente depois do raciocínio",
+    "preferir": "“Em casos que tais, assim tem decidido a Corte:” ou “Neste sentido:” após a conclusão própria.",
+    "evitar": "Abrir capítulo pelo precedente.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-14",
+    "tipo": "preferencia",
+    "regra": "R14",
+    "grupo": "C. Fundamentação",
+    "titulo": "Neutralizar a objeção previsível",
+    "preferir": "Nem se alegue que…; Não cabe, pois, afastar a aplicação da Súmula 149/STJ…",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-15",
+    "tipo": "preferencia",
+    "regra": "R15",
+    "grupo": "D. Frase e vocabulário",
+    "titulo": "Uma ideia por frase; partir o que passar de 40 palavras",
+    "preferir": "Dividir na adversativa ou na consequência; ordem direta na oração principal.",
+    "evitar": "Três subordinadas e uma adversativa antes do verbo principal.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-16",
+    "tipo": "preferencia",
+    "regra": "R16",
+    "grupo": "D. Frase e vocabulário",
+    "titulo": "Conectivo com função lógica real",
+    "preferir": "Ademais · Com efeito · Por sua vez · Contudo · Assim · Portanto · Em suma",
+    "evitar": "Por outro lado · Nesse diapasão · Porém em início de período",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-17",
+    "tipo": "preferencia",
+    "regra": "R17",
+    "grupo": "D. Frase e vocabulário",
+    "titulo": "Uniformizar as formas oscilantes",
+    "preferir": "Neste (sentido, contexto); Além disso; Em casos que tais; IDs; (g.n.).",
+    "evitar": "Nesse · Além disto · ID's · (g. n.)",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-18",
+    "tipo": "preferencia",
+    "regra": "R18",
+    "grupo": "D. Frase e vocabulário",
+    "titulo": "Rodízio controlado de sinônimos",
+    "preferir": "atividade rural / labor rural / labor rurícola · autora / parte autora / apelante · INSS / autarquia",
+    "evitar": "Trocar a categoria jurídica por variação estilística.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-19",
+    "tipo": "preferencia",
+    "regra": "R19",
+    "grupo": "D. Frase e vocabulário",
+    "titulo": "Léxico técnico, sem adorno",
+    "preferir": "corroborado por prova oral idônea",
+    "evitar": "“robustíssima prova”, “r. sentença”, “Excelso Pretório”",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-20",
+    "tipo": "preferencia",
+    "regra": "R20",
+    "grupo": "E. Citação",
+    "titulo": "Normas sem “nº” e com “artigo” por extenso",
+    "preferir": "Lei 8.213/1991; artigo 55, § 3º; Súmula 149/STJ; Tema 642/STJ.",
+    "evitar": "“art.” fora de transcrições; “Lei nº”.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-21",
+    "tipo": "preferencia",
+    "regra": "R21",
+    "grupo": "E. Citação",
+    "titulo": "Precedente com cabeça padronizada",
+    "preferir": "ApCiv 5051139-51.2023.4.03.9999, Rel. Des. Fed. LOUISE FILGUEIRAS, DJEN 11/02/2026: “…” (g.n.)",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-22",
+    "tipo": "preferencia",
+    "regra": "R22",
+    "grupo": "E. Citação",
+    "titulo": "Datas, valores e provas em forma única",
+    "preferir": "DD/MM/AAAA; R$ 2.736,98; (ID [ID], f. 5/9).",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-23",
+    "tipo": "preferencia",
+    "regra": "R23",
+    "grupo": "F. Dispositivo e fecho",
+    "titulo": "Dispositivo ancorado na norma",
+    "preferir": "Ante o exposto, com esteio no artigo 932, III, do CPC, não conheço do agravo de instrumento.",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-24",
+    "tipo": "preferencia",
+    "regra": "R24",
+    "grupo": "F. Dispositivo e fecho",
+    "titulo": "Conclusão expressa antes do dispositivo",
+    "preferir": "“impõe-se a manutenção”, “impõe-se a reforma”, “Cabe, pois, … a extinção”.",
+    "evitar": "Parágrafo de valoração terminando em suspenso.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-25",
+    "tipo": "preferencia",
+    "regra": "R25",
+    "grupo": "F. Dispositivo e fecho",
+    "titulo": "Fecho processual na ordem estável",
+    "preferir": "Comunique-se o Juízo de origem. · Publique-se. Intime-se. · Oportunamente, arquivem-se os autos. · Campo Grande, data da assinatura.",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-26",
+    "tipo": "preferencia",
+    "regra": "R26",
+    "grupo": "G. Matéria rural",
+    "titulo": "Escolher a fórmula de desfecho pela natureza da prova",
+    "preferir": "Manutenção · Reforma · Extinção (Tema 629) · Improcedência (fato impeditivo).",
+    "evitar": "Extinguir pelo Tema 629 quando a prova demonstra fato impeditivo.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-27",
+    "tipo": "preferencia",
+    "regra": "R27",
+    "grupo": "G. Matéria rural",
+    "titulo": "Prova oral nunca isolada",
+    "preferir": "Artigo 55, § 3º, da Lei 8.213/1991 e Súmula 149/STJ; boias-frias: Tema 554/STJ.",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-28",
+    "tipo": "preferencia",
+    "regra": "R28",
+    "grupo": "G. Matéria rural",
+    "titulo": "Natureza do trabalho, não o local",
+    "preferir": "Não é o local do trabalho, mas a natureza do trabalho que define a sua caracterização como rural ou não.",
+    "evitar": "Computar cozinheira de fazenda como rural; negar natureza rural ao motorista da lida agropecuária.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-29",
+    "tipo": "preferencia",
+    "regra": "R29",
+    "grupo": "G. Matéria rural",
+    "titulo": "Renda de outro membro: verificar a dispensabilidade",
+    "preferir": "Temas 532 e 533/STJ; artigo 11, § 9º, da Lei 8.213/1991.",
+    "evitar": "Descaracterizar o segurado especial só pela renda urbana do cônjuge.",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-dir-30",
+    "tipo": "preferencia",
+    "regra": "R30",
+    "grupo": "G. Matéria rural",
+    "titulo": "Não converter em híbrida no recurso",
+    "preferir": "Vedação de inovação da lide (ApCiv 5134582-26.2025.4.03.9999).",
+    "evitar": "",
+    "base": "Diretrizes de minuta no padrão Carlos Muta (PDF, 12/10/2026)"
+   },
+   {
+    "id": "red-pre-01",
+    "tipo": "preferencia",
+    "preferir": "União",
+    "evitar": "União Federal"
+   },
+   {
+    "id": "red-pre-02",
+    "tipo": "preferencia",
+    "preferir": "Supremo Tribunal Federal",
+    "evitar": "STF no corpo do voto, salvo exceções do Manual"
+   },
+   {
+    "id": "red-pre-03",
+    "tipo": "preferencia",
+    "preferir": "Superior Tribunal de Justiça",
+    "evitar": "STJ no corpo do voto, salvo exceções"
+   },
+   {
+    "id": "red-pre-04",
+    "tipo": "preferencia",
+    "preferir": "Lei 13.105/2015",
+    "evitar": "Lei nº 13.105/2015"
+   },
+   {
+    "id": "red-pre-05",
+    "tipo": "preferencia",
+    "preferir": "A sentença reconheceu…",
+    "evitar": "A r. sentença reconheceu…"
+   },
+   {
+    "id": "red-pre-06",
+    "tipo": "preferencia",
+    "preferir": "A parte autora alegou…",
+    "evitar": "A parte autora alega…, ao narrar ato passado"
+   },
+   {
+    "id": "red-pre-07",
+    "tipo": "preferencia",
+    "preferir": "No caso, verifica-se…",
+    "evitar": "É cristalino e indubitável…"
+   },
+   {
+    "id": "red-pre-08",
+    "tipo": "preferencia",
+    "preferir": "Neste sentido:",
+    "evitar": "Uma longa introdução repetindo a ementa"
+   },
+   {
+    "id": "red-pre-09",
+    "tipo": "preferencia",
+    "preferir": "Neste sentido / Neste contexto",
+    "evitar": "Nesse sentido / Nesse contexto (uniformização)"
+   },
+   {
+    "id": "red-pre-10",
+    "tipo": "preferencia",
+    "preferir": "Além disso",
+    "evitar": "Além disto"
+   },
+   {
+    "id": "red-pre-11",
+    "tipo": "preferencia",
+    "preferir": "(g.n.)",
+    "evitar": "(g. n.) ou (g.n)"
+   },
+   {
+    "id": "red-pre-12",
+    "tipo": "preferencia",
+    "preferir": "IDs",
+    "evitar": "ID's"
+   },
+   {
+    "id": "red-pre-13",
+    "tipo": "preferencia",
+    "preferir": "pelo artigo 932, III, do CPC",
+    "evitar": "pelo inciso III, do artigo 932, do CPC"
+   },
+   {
+    "id": "red-pre-14",
+    "tipo": "preferencia",
+    "preferir": "Tema 988/STJ (taxatividade mitigada do artigo 1.015 do CPC)",
+    "evitar": "Tema 998/STJ para essa tese"
+   },
+   {
+    "id": "red-pre-15",
+    "tipo": "preferencia",
+    "preferir": "A parte autora / autarquia (rodízio sem trocar a categoria jurídica)",
+    "evitar": "Chamar empregado rural de segurado especial por variação estilística"
+   },
+   {
+    "id": "red-vrb-01",
+    "tipo": "verbo",
+    "verbo": "Verificar",
+    "construcao": "Verifica-se que…",
+    "emprego": "Constatação nos autos"
+   },
+   {
+    "id": "red-vrb-02",
+    "tipo": "verbo",
+    "verbo": "Observar",
+    "construcao": "Cabe observar que…",
+    "emprego": "Ressalva relevante"
+   },
+   {
+    "id": "red-vrb-03",
+    "tipo": "verbo",
+    "verbo": "Registrar",
+    "construcao": "Cabe registrar que…",
+    "emprego": "Informação jurídica"
+   },
+   {
+    "id": "red-vrb-04",
+    "tipo": "verbo",
+    "verbo": "Considerar",
+    "construcao": "Importa considerar que…",
+    "emprego": "Premissa complementar"
+   },
+   {
+    "id": "red-vrb-05",
+    "tipo": "verbo",
+    "verbo": "Reconhecer",
+    "construcao": "Reconhece-se que…",
+    "emprego": "Qualificação jurídica"
+   },
+   {
+    "id": "red-vrb-06",
+    "tipo": "verbo",
+    "verbo": "Evidenciar",
+    "construcao": "O documento evidencia…",
+    "emprego": "Exame probatório"
+   },
+   {
+    "id": "red-vrb-07",
+    "tipo": "verbo",
+    "verbo": "Comprovar",
+    "construcao": "A documentação comprova…",
+    "emprego": "Fato demonstrado"
+   },
+   {
+    "id": "red-vrb-08",
+    "tipo": "verbo",
+    "verbo": "Demonstrar",
+    "construcao": "Não restou demonstrado…",
+    "emprego": "Insuficiência probatória"
+   },
+   {
+    "id": "red-vrb-09",
+    "tipo": "verbo",
+    "verbo": "Afastar",
+    "construcao": "Impõe-se afastar…",
+    "emprego": "Rejeição de fundamento"
+   },
+   {
+    "id": "red-vrb-10",
+    "tipo": "verbo",
+    "verbo": "Incidir",
+    "construcao": "Incide, na espécie, …",
+    "emprego": "Aplicação normativa"
+   },
+   {
+    "id": "red-vrb-11",
+    "tipo": "verbo",
+    "verbo": "Prevalecer",
+    "construcao": "Deve prevalecer…",
+    "emprego": "Solução de conflito"
+   },
+   {
+    "id": "red-vrb-12",
+    "tipo": "verbo",
+    "verbo": "Concluir",
+    "construcao": "Conclui-se que…",
+    "emprego": "Encerramento do raciocínio"
+   },
+   {
+    "id": "red-vrb-13",
+    "tipo": "verbo",
+    "verbo": "Corroborar",
+    "construcao": "A prova oral corroborou os elementos materiais.",
+    "emprego": "Confirmação da prova documental"
+   },
+   {
+    "id": "red-vrb-14",
+    "tipo": "verbo",
+    "verbo": "Infirmar",
+    "construcao": "Os elementos não infirmam a conclusão.",
+    "emprego": "Prova insuficiente para afastar a conclusão"
+   },
+   {
+    "id": "red-vrb-15",
+    "tipo": "verbo",
+    "verbo": "Inviabilizar",
+    "construcao": "…o que inviabiliza o reconhecimento do direito postulado.",
+    "emprego": "Consequência impeditiva"
+   },
+   {
+    "id": "red-vrb-16",
+    "tipo": "verbo",
+    "verbo": "Impor-se",
+    "construcao": "Impõe-se a manutenção da sentença.",
+    "emprego": "Consequência obrigatória"
+   },
+   {
+    "id": "red-vrb-17",
+    "tipo": "verbo",
+    "verbo": "Restar",
+    "construcao": "Resta evidente a perda superveniente do objeto.",
+    "emprego": "Constatação conclusiva"
+   },
+   {
+    "id": "red-vrb-18",
+    "tipo": "verbo",
+    "verbo": "Assentar",
+    "construcao": "A jurisprudência consolidada assenta o cabimento…",
+    "emprego": "Referência à orientação consolidada"
+   },
+   {
+    "id": "BASE-CON-1",
+    "tipo": "conectivo",
+    "expressao": "Com efeito",
+    "funcao": "Retoma, confirma ou desenvolve o argumento anterior, conforme o contexto."
+   },
+   {
+    "id": "BASE-PREF-1",
+    "tipo": "preferencia",
+    "evitar": "alegando, em síntese",
+    "preferir": "alegando, em suma"
+   },
+   {
+    "id": "BASE-NOR-1",
+    "tipo": "preferencia",
+    "evitar": "Lei nº",
+    "preferir": "Lei"
+   },
+   {
+    "id": "BASE-R-1",
+    "grupo": "Estrutura do relatório",
+    "regra": "Base A",
+    "titulo": "Abertura do relatório",
+    "preferir": "Trata-se de apelação à sentença (ID …) que …",
+    "evitar": "Trata-se de apelação interposta em ação de …"
+   },
+   {
+    "id": "BASE-R-2",
+    "grupo": "Estrutura do relatório",
+    "regra": "Fecho",
+    "titulo": "Encerramento do relatório",
+    "preferir": "É o relatório.",
+    "evitar": "Omissão do fecho, quando aplicável"
+   },
+   {
+    "id": "BASE-R-3",
+    "grupo": "Normas",
+    "regra": "Nome canônico",
+    "titulo": "Identificação da legislação",
+    "preferir": "Lei 8.213/1991",
+    "evitar": "Lei nº 8.213/91"
+   },
+   {
+    "id": "BASE-R-4",
+    "grupo": "Documentos",
+    "regra": "ID",
+    "titulo": "Referência ao documento",
+    "preferir": "(ID 123456)",
+    "evitar": "ID nº 123456"
+   },
+   {
+    "id": "BASE-R-5",
+    "grupo": "Decisão",
+    "regra": "Fecho decisório",
+    "titulo": "Separação do relatório e da fundamentação",
+    "preferir": "DECIDO.",
+    "evitar": "Omissão do marco decisório em monocráticas"
+   },
+   {
+    "id": "gab-ed-01",
+    "tipo": "preferencia",
+    "regra": "ED1",
+    "grupo": "Embargos de declaração",
+    "titulo": "Correção de erro material de ofício — fundamentação",
+    "preferir": "Não obstante, cumpre corrigir, de ofício, mero erro material do acórdão embargado para, sem qualquer efeito infringente, constar, como correto, que […] (ou: “…que consignou […], quando o correto é […]”).",
+    "evitar": "“Onde se lê … leia-se …”; citar o artigo 494, I, do CPC.",
+    "base": "EDcl 5121591-18.2025, 5003937-23.2018, 5003212-91.2019; ApelRemNec 5002550-02.2020"
+   },
+   {
+    "id": "gab-ed-02",
+    "tipo": "preferencia",
+    "regra": "ED2",
+    "grupo": "Embargos de declaração",
+    "titulo": "Correção de erro material de ofício — voto e ementa",
+    "preferir": "Voto: “Ante o exposto, rejeito [não conheço d]os embargos de declaração e corrijo, de ofício, o acórdão embargado, nos termos da fundamentação mencionada.” Ementa: resultado dos embargos e, depois, “Erro material do acórdão embargado corrigido, de ofício[, sem efeitos infringentes].” Cabeçalho na mesma ordem.",
+    "evitar": "Correção antes do resultado dos embargos; omitir a correção no dispositivo da ementa.",
+    "base": "Acervo 2026 (8 ementas com correção de ofício)"
+   },
+   {
+    "id": "gab-ed-03",
+    "tipo": "preferencia",
+    "regra": "ED3",
+    "grupo": "Embargos de declaração",
+    "titulo": "Correção que esvazia os embargos",
+    "preferir": "Feita tal correção, de ofício, restam prejudicados os embargos declaratórios.",
+    "evitar": "Julgar o mérito de embargos já atendidos pela correção.",
+    "base": "EDcl 5006911-91.2022"
+   },
+   {
+    "id": "gab-ed-04",
+    "tipo": "preferencia",
+    "regra": "ED4",
+    "grupo": "Embargos de declaração",
+    "titulo": "Precedente em embargos de declaração",
+    "preferir": "Decidir os embargos pela fundamentação própria; precedente só quando indispensável.",
+    "evitar": "“Em casos que tais…” com precedente que só reforça ponto secundário.",
+    "base": "Acervo 2026: precedente citado em 1 de 35 votos de embargos"
+   },
+   {
+    "id": "gab-agi-01",
+    "tipo": "preferencia",
+    "regra": "AI1",
+    "grupo": "Agravo interno",
+    "titulo": "Multa do art. 1.021, § 4º, CPC — aplicação (Tema 1.201/STJ, item 2)",
+    "preferir": "Decisão agravada fundada em precedente qualificado do STJ/STF e distinção alegada de forma genérica: “À luz do item “2” da tese firmada no Tema 1.201/STJ, não se impõe a aplicação da multa prevista no artigo 1.021, § 4º, do CPC quando alegada fundamentadamente a distinção ou a superação do precedente qualificado oriundo do STJ ou do STF. Contudo, a alegação, da forma como apresentada, permanece genérica […]” — “nego provimento ao agravo interno e aplico multa, nos termos da fundamentação” (1% do valor atualizado da causa).",
+    "evitar": "Aplicar a multa pelo mero desprovimento ou não conhecimento.",
+    "base": "AI 5008045-72.2026, 5007705-31.2026, 5000131-51.2026 (julg. 15/09/2026)"
+   },
+   {
+    "id": "gab-agi-02",
+    "tipo": "preferencia",
+    "regra": "AI2",
+    "grupo": "Agravo interno",
+    "titulo": "Multa do art. 1.021, § 4º, CPC — afastamento (Tema 1.201/STJ, item 3)",
+    "preferir": "Decisão agravada não fundada em precedente qualificado do STJ/STF: “À luz do item “3” da tese firmada no Tema 1.201/STJ, não se impõe, no caso, a aplicação da multa prevista no artigo 1.021, § 4º, do CPC.”",
+    "evitar": "Silenciar sobre a multa quando requerida em contrarrazões.",
+    "base": "14 AI de 15/09/2026 (ex.: AI 5029639-79.2025) e SuspApel 5000111-60.2026"
+   },
+   {
+    "id": "gab-rel-01",
+    "tipo": "preferencia",
+    "regra": "RL1",
+    "grupo": "Estrutura do relatório",
+    "titulo": "Ministério Público: 1º e 2º graus",
+    "preferir": "Manifestação em 2º grau: “A Procuradoria Regional da República opinou […] (ID …).” Parecer em 1º grau: “Ministério Público Federal”.",
+    "evitar": "“Procuradoria Regional da República” para parecer de 1º grau; “O Ministério Público Federal opinou” para manifestação em 2º grau.",
+    "base": "Decisão do gabinete, 06/11/2026"
+   },
+   {
+    "id": "gab-rel-02",
+    "tipo": "preferencia",
+    "regra": "RL2",
+    "grupo": "Estrutura do relatório",
+    "titulo": "Abertura do agravo de instrumento",
+    "preferir": "Trata-se de agravo de instrumento à decisão que, em [ação], [conteúdo] (ID …).",
+    "evitar": "Chamar de “agravo interno” o agravo de instrumento; “interposto à decisão interlocutória proferida no…”.",
+    "base": "Conferência da pauta de 13/11/2026"
+   },
+   {
+    "id": "gab-fmt-01",
+    "tipo": "preferencia",
+    "regra": "FM1",
+    "grupo": "Formatação",
+    "titulo": "Corpo do relatório e do voto",
+    "preferir": "Arial 12, justificado, recuo de 2,5 cm na primeira linha, espaço entre parágrafos; “O Desembargador Federal Carlos Muta (Relator):” em negrito, parágrafo próprio; enumerações dentro do parágrafo: (1) …; (2) …; e (3) ….",
+    "evitar": "Listas com marcadores no relatório; parágrafos sem recuo.",
+    "base": "Acórdão ApCiv 5003616-85.2018 (TRgMS, 2026)"
+   },
+   {
+    "id": "gab-fmt-02",
+    "tipo": "preferencia",
+    "regra": "FM2",
+    "grupo": "Formatação",
+    "titulo": "Transcrições",
+    "preferir": "Introdução em parágrafo normal (“Cite-se, por oportuno, trecho da decisão:”); trecho em bloco, itálico, recuado 2,5 cm em todas as linhas, entre aspas, com “[...]”; citação curta de precedente dentro do parágrafo, ementa entre aspas e em itálico, referência sem itálico.",
+    "evitar": "Transcrição em fonte normal sem recuo.",
+    "base": "Acórdão ApCiv 5003616-85.2018"
+   },
+   {
+    "id": "gab-fmt-03",
+    "tipo": "preferencia",
+    "regra": "FM3",
+    "grupo": "Formatação",
+    "titulo": "Ementa",
+    "preferir": "Sem recuo; cabeçalho em maiúsculas e negrito; subtítulos em negrito com iniciais maiúsculas (I. Caso em exame; II. Questão em discussão; III. Razões de decidir; IV. Dispositivo); número do item em negrito; traço “__________” antes do rodapé; rótulos “Dispositivos relevantes citados:” e “Jurisprudência relevante citada:” em itálico.",
+    "evitar": "“IV. Dispositivo e tese”; subtítulos em maiúsculas.",
+    "base": "Acórdão ApCiv 5003616-85.2018"
+   }
+  ]
+ },
+ "normas": {
+  "registros": [
+   {
+    "id": "nrm-adct",
+    "nome": "Ato das Disposições Constitucionais Transitórias",
+    "sigla": "ADCT",
+    "tipo": "Ato constitucional",
+    "numero": "",
+    "ano": "",
+    "prosa": "do ADCT",
+    "ordem": 1,
+    "aliases": [
+     "ADCT"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cc",
+    "nome": "Código Civil",
+    "sigla": "CC",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CC",
+    "ordem": 3,
+    "aliases": [
+     "CC",
+     "CC/02",
+     "CC/2002",
+     "Código Civil de 2002"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cc-1916",
+    "nome": "Código Civil de 1916",
+    "sigla": "CC/1916",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CC/1916",
+    "ordem": 3,
+    "aliases": [
+     "CC/16",
+     "CC/1916"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-ccom",
+    "nome": "Código Comercial",
+    "sigla": "CCom",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CCom",
+    "ordem": 3,
+    "aliases": [
+     "CCom"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cdc",
+    "nome": "Código de Defesa do Consumidor",
+    "sigla": "CDC",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CDC",
+    "ordem": 3,
+    "aliases": [
+     "CDC"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-ce",
+    "nome": "Código Eleitoral",
+    "sigla": "CE",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CE",
+    "ordem": 3,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cf-1988",
+    "nome": "Constituição Federal",
+    "sigla": "CF/1988",
+    "tipo": "Constituição",
+    "numero": "",
+    "ano": "",
+    "prosa": "da Constituição Federal",
+    "ordem": 0,
+    "aliases": [
+     "CF",
+     "CF/88",
+     "CF/1988",
+     "CRFB",
+     "CRFB/88",
+     "CRFB/1988",
+     "Constituição",
+     "Constituição Federal de 1988",
+     "Constituição da República",
+     "Constituição da República de 1988",
+     "Constituição da República Federativa do Brasil"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-clt",
+    "nome": "Consolidação das Leis do Trabalho",
+    "sigla": "CLT",
+    "tipo": "Consolidação",
+    "numero": "",
+    "ano": "",
+    "prosa": "da CLT",
+    "ordem": 3,
+    "aliases": [
+     "CLT"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cp",
+    "nome": "Código Penal",
+    "sigla": "CP",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CP",
+    "ordem": 3,
+    "aliases": [
+     "CP"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cpc",
+    "nome": "Código de Processo Civil",
+    "sigla": "CPC",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CPC",
+    "ordem": 3,
+    "aliases": [
+     "CPC",
+     "NCPC",
+     "CPC/15",
+     "CPC/2015",
+     "Código de Processo Civil de 2015"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cpc-1973",
+    "nome": "Código de Processo Civil de 1973",
+    "sigla": "CPC/1973",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CPC/1973",
+    "ordem": 3,
+    "aliases": [
+     "CPC/73",
+     "CPC/1973"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cpm",
+    "nome": "Código Penal Militar",
+    "sigla": "CPM",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CPM",
+    "ordem": 3,
+    "aliases": [
+     "CPM"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cpp",
+    "nome": "Código de Processo Penal",
+    "sigla": "CPP",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CPP",
+    "ordem": 3,
+    "aliases": [
+     "CPP"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-cppm",
+    "nome": "Código de Processo Penal Militar",
+    "sigla": "CPPM",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CPPM",
+    "ordem": 3,
+    "aliases": [
+     "CPPM"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-ctb",
+    "nome": "Código de Trânsito Brasileiro",
+    "sigla": "CTB",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CTB",
+    "ordem": 3,
+    "aliases": [
+     "CTB"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-ctn",
+    "nome": "Código Tributário Nacional",
+    "sigla": "CTN",
+    "tipo": "Código",
+    "numero": "",
+    "ano": "",
+    "prosa": "do CTN",
+    "ordem": 3,
+    "aliases": [
+     "CTN"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-decreto-20-910-1932",
+    "nome": "Decreto 20.910/1932",
+    "sigla": "Decreto 20.910/1932",
+    "tipo": "Decreto",
+    "numero": "20.910",
+    "ano": "1932",
+    "prosa": "do Decreto 20.910/1932",
+    "ordem": 8,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-decreto-6-759-2009",
+    "nome": "Decreto 6.759/2009",
+    "sigla": "Decreto 6.759/2009",
+    "tipo": "Decreto",
+    "numero": "6.759",
+    "ano": "2009",
+    "prosa": "do Decreto 6.759/2009",
+    "ordem": 8,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-decreto-lei-37-1966",
+    "nome": "Decreto-Lei 37/1966",
+    "sigla": "Decreto-Lei 37/1966",
+    "tipo": "Decreto-Lei",
+    "numero": "37",
+    "ano": "1966",
+    "prosa": "do Decreto-Lei 37/1966",
+    "ordem": 7,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-decreto-lei-4-657-1942",
+    "nome": "Decreto-Lei 4.657/1942",
+    "sigla": "Decreto-Lei 4.657/1942",
+    "tipo": "Decreto-Lei",
+    "numero": "4.657",
+    "ano": "1942",
+    "prosa": "do Decreto-Lei 4.657/1942",
+    "ordem": 7,
+    "aliases": [
+     "LINDB"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-decreto-lei-70-1966",
+    "nome": "Decreto-Lei 70/1966",
+    "sigla": "Decreto-Lei 70/1966",
+    "tipo": "Decreto-Lei",
+    "numero": "70",
+    "ano": "1966",
+    "prosa": "do Decreto-Lei 70/1966",
+    "ordem": 7,
+    "aliases": [
+     "DL 70/66",
+     "Decreto-Lei 70/66",
+     "Decreto-Lei nº 70/1966"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-emenda-constitucional-103-2019",
+    "nome": "Emenda Constitucional 103/2019",
+    "sigla": "EC 103/2019",
+    "tipo": "Emenda Constitucional",
+    "numero": "103",
+    "ano": "2019",
+    "prosa": "da Emenda Constitucional 103/2019",
+    "ordem": 1,
+    "aliases": [
+     "EC 103/2019",
+     "EC 103",
+     "Emenda Constitucional nº 103/2019",
+     "Reforma da Previdência"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-emenda-constitucional-113-2021",
+    "nome": "Emenda Constitucional 113/2021",
+    "sigla": "EC 113/2021",
+    "tipo": "Emenda Constitucional",
+    "numero": "113",
+    "ano": "2021",
+    "prosa": "da Emenda Constitucional 113/2021",
+    "ordem": 1,
+    "aliases": [
+     "EC 113/2021",
+     "EC 113",
+     "Emenda Constitucional nº 113/2021"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-10-259-2001",
+    "nome": "Lei 10.259/2001",
+    "sigla": "Lei 10.259/2001",
+    "tipo": "Lei",
+    "numero": "10.259",
+    "ano": "2001",
+    "prosa": "da Lei 10.259/2001",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-11-718-2008",
+    "nome": "Lei 11.718/2008",
+    "sigla": "Lei 11.718/2008",
+    "tipo": "Lei",
+    "numero": "11.718",
+    "ano": "2008",
+    "prosa": "da Lei 11.718/2008",
+    "ordem": 5,
+    "aliases": [
+     "Lei 11.718/08",
+     "Lei nº 11.718/2008",
+     "Lei nº 11.718, de 2008"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-12-016-2009",
+    "nome": "Lei 12.016/2009",
+    "sigla": "Lei 12.016/2009",
+    "tipo": "Lei",
+    "numero": "12.016",
+    "ano": "2009",
+    "prosa": "da Lei 12.016/2009",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-12-101-2009",
+    "nome": "Lei 12.101/2009",
+    "sigla": "Lei 12.101/2009",
+    "tipo": "Lei",
+    "numero": "12.101",
+    "ano": "2009",
+    "prosa": "da Lei 12.101/2009",
+    "ordem": 5,
+    "aliases": [
+     "Lei 12.101/09",
+     "Lei nº 12.101/2009"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-12-153-2009",
+    "nome": "Lei 12.153/2009",
+    "sigla": "Lei 12.153/2009",
+    "tipo": "Lei",
+    "numero": "12.153",
+    "ano": "2009",
+    "prosa": "da Lei 12.153/2009",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-12-514-2011",
+    "nome": "Lei 12.514/2011",
+    "sigla": "Lei 12.514/2011",
+    "tipo": "Lei",
+    "numero": "12.514",
+    "ano": "2011",
+    "prosa": "da Lei 12.514/2011",
+    "ordem": 5,
+    "aliases": [
+     "Lei 12.514/11",
+     "Lei nº 12.514/2011"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-13-465-2017",
+    "nome": "Lei 13.465/2017",
+    "sigla": "Lei 13.465/2017",
+    "tipo": "Lei",
+    "numero": "13.465",
+    "ano": "2017",
+    "prosa": "da Lei 13.465/2017",
+    "ordem": 5,
+    "aliases": [
+     "Lei 13.465/17",
+     "Lei nº 13.465/2017"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-13-846-2019",
+    "nome": "Lei 13.846/2019",
+    "sigla": "Lei 13.846/2019",
+    "tipo": "Lei",
+    "numero": "13.846",
+    "ano": "2019",
+    "prosa": "da Lei 13.846/2019",
+    "ordem": 5,
+    "aliases": [
+     "Lei 13.846/19",
+     "Lei nº 13.846/2019"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-13-959-2019",
+    "nome": "Lei 13.959/2019",
+    "sigla": "Lei 13.959/2019",
+    "tipo": "Lei",
+    "numero": "13.959",
+    "ano": "2019",
+    "prosa": "da Lei 13.959/2019",
+    "ordem": 5,
+    "aliases": [
+     "Lei 13.959/19",
+     "Lei nº 13.959/2019",
+     "Lei do Revalida"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-14-128-2021",
+    "nome": "Lei 14.128/2021",
+    "sigla": "Lei 14.128/2021",
+    "tipo": "Lei",
+    "numero": "14.128",
+    "ano": "2021",
+    "prosa": "da Lei 14.128/2021",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-14-195-2021",
+    "nome": "Lei 14.195/2021",
+    "sigla": "Lei 14.195/2021",
+    "tipo": "Lei",
+    "numero": "14.195",
+    "ano": "2021",
+    "prosa": "da Lei 14.195/2021",
+    "ordem": 5,
+    "aliases": [
+     "Lei 14.195/21",
+     "Lei nº 14.195/2021"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-5-010-1966",
+    "nome": "Lei 5.010/1966",
+    "sigla": "Lei 5.010/1966",
+    "tipo": "Lei",
+    "numero": "5.010",
+    "ano": "1966",
+    "prosa": "da Lei 5.010/1966",
+    "ordem": 5,
+    "aliases": [
+     "Lei 5.010/66",
+     "Lei nº 5.010/1966"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-6-015-1973",
+    "nome": "Lei 6.015/1973",
+    "sigla": "Lei 6.015/1973",
+    "tipo": "Lei",
+    "numero": "6.015",
+    "ano": "1973",
+    "prosa": "da Lei 6.015/1973",
+    "ordem": 5,
+    "aliases": [
+     "Lei 6.015/73",
+     "Lei nº 6.015/1973",
+     "Lei de Registros Públicos",
+     "LRP"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-6-830-1980",
+    "nome": "Lei 6.830/1980",
+    "sigla": "Lei 6.830/1980",
+    "tipo": "Lei",
+    "numero": "6.830",
+    "ano": "1980",
+    "prosa": "da Lei 6.830/1980",
+    "ordem": 5,
+    "aliases": [
+     "LEF"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-6-880-1980",
+    "nome": "Lei 6.880/1980",
+    "sigla": "Lei 6.880/1980",
+    "tipo": "Lei",
+    "numero": "6.880",
+    "ano": "1980",
+    "prosa": "da Lei 6.880/1980",
+    "ordem": 5,
+    "aliases": [
+     "Lei 6.880/80",
+     "Lei 6880/80",
+     "Lei nº 6.880/1980",
+     "Estatuto dos Militares"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-7-347-1985",
+    "nome": "Lei 7.347/1985",
+    "sigla": "Lei 7.347/1985",
+    "tipo": "Lei",
+    "numero": "7.347",
+    "ano": "1985",
+    "prosa": "da Lei 7.347/1985",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-8-069-1990",
+    "nome": "Lei 8.069/1990",
+    "sigla": "Lei 8.069/1990",
+    "tipo": "Lei",
+    "numero": "8.069",
+    "ano": "1990",
+    "prosa": "da Lei 8.069/1990",
+    "ordem": 5,
+    "aliases": [
+     "ECA"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-8-112-1990",
+    "nome": "Lei 8.112/1990",
+    "sigla": "Lei 8.112/1990",
+    "tipo": "Lei",
+    "numero": "8.112",
+    "ano": "1990",
+    "prosa": "da Lei 8.112/1990",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-8-212-1991",
+    "nome": "Lei 8.212/1991",
+    "sigla": "Lei 8.212/1991",
+    "tipo": "Lei",
+    "numero": "8.212",
+    "ano": "1991",
+    "prosa": "da Lei 8.212/1991",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-8-213-1991",
+    "nome": "Lei 8.213/1991",
+    "sigla": "Lei 8.213/1991",
+    "tipo": "Lei",
+    "numero": "8.213",
+    "ano": "1991",
+    "prosa": "da Lei 8.213/1991",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-8-429-1992",
+    "nome": "Lei 8.429/1992",
+    "sigla": "Lei 8.429/1992",
+    "tipo": "Lei",
+    "numero": "8.429",
+    "ano": "1992",
+    "prosa": "da Lei 8.429/1992",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-8-622-1993",
+    "nome": "Lei 8.622/1993",
+    "sigla": "Lei 8.622/1993",
+    "tipo": "Lei",
+    "numero": "8.622",
+    "ano": "1993",
+    "prosa": "da Lei 8.622/1993",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-8-627-1993",
+    "nome": "Lei 8.627/1993",
+    "sigla": "Lei 8.627/1993",
+    "tipo": "Lei",
+    "numero": "8.627",
+    "ano": "1993",
+    "prosa": "da Lei 8.627/1993",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-8-742-1993",
+    "nome": "Lei 8.742/1993",
+    "sigla": "Lei 8.742/1993",
+    "tipo": "Lei",
+    "numero": "8.742",
+    "ano": "1993",
+    "prosa": "da Lei 8.742/1993",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-8-906-1994",
+    "nome": "Lei 8.906/1994",
+    "sigla": "Lei 8.906/1994",
+    "tipo": "Lei",
+    "numero": "8.906",
+    "ano": "1994",
+    "prosa": "da Lei 8.906/1994",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-9-099-1995",
+    "nome": "Lei 9.099/1995",
+    "sigla": "Lei 9.099/1995",
+    "tipo": "Lei",
+    "numero": "9.099",
+    "ano": "1995",
+    "prosa": "da Lei 9.099/1995",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-9-394-1996",
+    "nome": "Lei 9.394/1996",
+    "sigla": "Lei 9.394/1996",
+    "tipo": "Lei",
+    "numero": "9.394",
+    "ano": "1996",
+    "prosa": "da Lei 9.394/1996",
+    "ordem": 5,
+    "aliases": [
+     "Lei 9.394/96",
+     "Lei 9394/96",
+     "Lei nº 9.394/1996",
+     "LDB"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-9-494-1997",
+    "nome": "Lei 9.494/1997",
+    "sigla": "Lei 9.494/1997",
+    "tipo": "Lei",
+    "numero": "9.494",
+    "ano": "1997",
+    "prosa": "da Lei 9.494/1997",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-9-514-1997",
+    "nome": "Lei 9.514/1997",
+    "sigla": "Lei 9.514/1997",
+    "tipo": "Lei",
+    "numero": "9.514",
+    "ano": "1997",
+    "prosa": "da Lei 9.514/1997",
+    "ordem": 5,
+    "aliases": [
+     "Lei 9.514/97",
+     "Lei nº 9.514/1997",
+     "Lei 9514/97"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-9-784-1999",
+    "nome": "Lei 9.784/1999",
+    "sigla": "Lei 9.784/1999",
+    "tipo": "Lei",
+    "numero": "9.784",
+    "ano": "1999",
+    "prosa": "da Lei 9.784/1999",
+    "ordem": 5,
+    "aliases": [],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-9-876-1999",
+    "nome": "Lei 9.876/1999",
+    "sigla": "Lei 9.876/1999",
+    "tipo": "Lei",
+    "numero": "9.876",
+    "ano": "1999",
+    "prosa": "da Lei 9.876/1999",
+    "ordem": 5,
+    "aliases": [
+     "Lei 9.876/99",
+     "Lei nº 9.876/1999"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-lei-complementar-8-1970",
+    "nome": "Lei Complementar 8/1970",
+    "sigla": "LC 8/1970",
+    "tipo": "Lei Complementar",
+    "numero": "8",
+    "ano": "1970",
+    "prosa": "da Lei Complementar 8/1970",
+    "ordem": 4,
+    "aliases": [
+     "LC 8/1970",
+     "LC 8/70",
+     "Lei Complementar nº 8/1970",
+     "Lei Complementar 8, de 1970"
+    ],
+    "seletor": true
+   },
+   {
+    "id": "nrm-medida-provisoria-871-2019",
+    "nome": "Medida Provisória 871/2019",
+    "sigla": "MP 871/2019",
+    "tipo": "Medida Provisória",
+    "numero": "871",
+    "ano": "2019",
+    "prosa": "da Medida Provisória 871/2019",
+    "ordem": 5,
+    "aliases": [
+     "MP 871/2019",
+     "MP 871",
+     "Medida Provisória nº 871/2019"
+    ],
+    "seletor": true
+   }
+  ]
+ },
+ "roteiros": {
+  "POS": [
+   [
+    "contro",
+    "Controvérsia"
+   ],
+   [
+    "jurid",
+    "Fundamentação jurídica"
+   ],
+   [
+    "fatos",
+    "Fatos"
+   ],
+   [
+    "provas",
+    "Provas"
+   ],
+   [
+    "aplic",
+    "Aplicação ao caso"
+   ],
+   [
+    "concl",
+    "Conclusão"
+   ],
+   [
+    "honor",
+    "Honorários"
+   ],
+   [
+    "disp",
+    "Dispositivo"
+   ]
+  ],
+  "MESTRE": {
+   "id": "mestre",
+   "t": "Roteiro-base",
+   "s": "Estrutura de apoio reduzida, extraída das posições usadas no Gerador.",
+   "steps": [
+    [
+     "contro",
+     "Delimitar a controvérsia",
+     "Definir o objeto do recurso.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "jurid",
+     "Estabelecer a moldura jurídica",
+     "Expor normas e precedentes pertinentes.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "fatos",
+     "Registrar fatos relevantes",
+     "Identificar elementos provados com os respectivos IDs.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "aplic",
+     "Aplicar o direito ao caso",
+     "Fundamentar a conclusão de modo congruente.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "disp",
+     "Concluir e formular dispositivo",
+     "Conferir congruência entre os fundamentos e o resultado.",
+     "",
+     "",
+     ""
+    ]
+   ]
+  },
+  "ESP": [],
+  "ASS": [],
+  "GRP": [],
+  "TRV": []
+ },
+ "diretrizes_html": {
+  "relatorio": "<h3>Relatório</h3><p>Relatório conciso, objetivo e descritivo, com fórmulas fixas de abertura e encerramento. Sem adjetivação, apreciação da prova ou antecipação da fundamentação; as teses são atribuídas à parte.</p>\n<ul><li><b>Abertura</b>: identifica o recurso e o objeto da ação. Apelação: “Trata-se de apelação interposta em ação de […]”. Agravo de instrumento: “Trata-se de agravo de instrumento à decisão que, em […], […] (ID …).”</li>\n<li><b>Sentença</b>: “A sentença (ID …)” com o resultado e, na mesma frase, honorários, base de cálculo, suspensão da exigibilidade e eventual multa.</li>\n<li><b>Razões</b>: “Apelou o autor/a autora (ID …), alegando, em suma: (1) […]; (2) […]; e (3) […]”, com orações no infinitivo; o pedido integra o último item ou fecha o parágrafo com “pelo que requereu”.</li>\n<li><b>Contrarrazões</b>: parágrafo próprio — “Houve contrarrazões (ID …).” ou “Não houve contrarrazões.”</li>\n<li><b>Ministério Público</b>: manifestação em 2º grau — “A Procuradoria Regional da República opinou […] (ID …).”; parecer de 1º grau — “Ministério Público Federal”.</li>\n<li><b>Referências</b>: “(ID …)” ou “(ID …, f. …/…)”.</li>\n<li><b>Encerramento</b>: “É o relatório.”</li></ul>\n<p>Não acrescentar fatos por força do modelo (gratuidade, multa, parecer) e manter uniforme a identificação da parte.</p>",
+  "gerais": "<h3>Padrão do voto</h3><p>Redação direta, com normas pertinentes e distinções jurídicas explicadas; exame concreto que identifica as fontes, preserva o grau de certeza da prova e demonstra os marcos temporais; enfrentamento específico das alegações; precedentes vinculados ao raciocínio; dispositivo com todas as providências fundamentadas. Sequência: afirmação → fonte → avaliação da prova → consequência jurídica.</p>\n<ul><li>Abertura: “<b>O Desembargador Federal Carlos Muta (Relator):</b>” e “Senhores Desembargadores,”.</li>\n<li>Fundamentação geral antes do caso; “<b>Na espécie,</b>” marca a análise concreta.</li>\n<li>Distinguir alegação de fato demonstrado (“narrou ter…”); preservar o grau de certeza da prova; vincular cada premissa decisiva ao ID.</li>\n<li>Conectivos com função lógica definida (“Com efeito” retoma e demonstra a afirmação anterior); evitar “Por outro lado” como mero início de parágrafo.</li>\n<li>Precedente depois do raciocínio que sustenta: “classe número, Rel. …, veículo de data: “ementa” (g.n.)”.</li>\n<li>Dispositivo direto e completo (resultado, ato anulado e extensão, destino dos autos, providências, situação do recurso); encerramento “É como voto.”</li></ul>\n<h3>Embargos de declaração</h3><ul><li>Correção de erro material de ofício: “Não obstante, cumpre corrigir, de ofício, mero erro material do acórdão embargado para, sem qualquer efeito infringente, constar, como correto, que […]”. Não citar o art. 494, I, do CPC.</li>\n<li>Voto: “rejeito [não conheço d]os embargos de declaração e corrijo, de ofício, o acórdão embargado, nos termos da fundamentação mencionada”. Ementa: resultado dos embargos e “Erro material do acórdão embargado corrigido, de ofício[, sem efeitos infringentes]”.</li>\n<li>Efeitos infringentes: mudança do resultado do julgado embargado; exige intimação prévia da parte contrária (art. 1.023, § 2º, CPC).</li></ul>\n<h3>Agravo interno — multa do art. 1.021, § 4º (Tema 1.201/STJ)</h3><ul><li>Item 2: decisão agravada fundada em precedente qualificado do STJ/STF e distinção genérica → multa de 1% do valor atualizado da causa, fundamentada.</li>\n<li>Item 3: decisão agravada não fundada em precedente qualificado → “não se impõe, no caso, a aplicação da multa”.</li></ul>\n<h3>Formatação (para colar no PJe)</h3><ul><li>Arial 12, justificado, recuo de 2,5 cm na primeira linha, espaço entre parágrafos.</li>\n<li>Transcrição longa: bloco em itálico, recuado 2,5 cm, entre aspas, com “[...]”.</li>\n<li>Ementa sem recuo; cabeçalho em maiúsculas e negrito; subtítulos em negrito; número do item em negrito; rodapé com rótulos em itálico após “__________”.</li>\n<li>Os títulos RELATÓRIO, VOTO, EMENTA e ACÓRDÃO são inseridos pelo PJe.</li></ul>\n<h3>Normas e referências</h3><ul><li>Normas sem “nº” (Lei 8.213/1991); “artigo” por extenso na redação autoral.</li>\n<li>Veículo do precedente conforme a fonte (DJe, DJEN, e-DJF3, Intimação via sistema).</li></ul>"
+ }
+}

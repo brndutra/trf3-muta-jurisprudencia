@@ -585,7 +585,56 @@ function citacao(r){
 }
 async function copiarCitacao(id){const r=registro(id); if(r) copiarTexto(citacao(r),'Citação copiada.')}
 function copiar(id,campo){const r=registro(id); if(!r)return; copiarTexto(campo==='ementa'?limparEmenta(r.ementa):r[campo],campo==='ementa'?'Ementa copiada.':'Inteiro teor copiado.')}
-async function copiarTexto(t,msg){try{await navigator.clipboard.writeText(t);toast(msg)}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast(msg)}}
+/* Padrão visual do Des. Fed. Carlos Muta (acórdão TRF3/TRgMS): Arial 12 pt, justificado,
+   recuo de 2,5 cm na primeira linha; transcrições em bloco, itálico, recuadas 2,5 cm;
+   ementa sem recuo, cabeçalho e subtítulos em negrito, número do item em negrito,
+   rótulos do rodapé em itálico. Copia em HTML (colar formatado no PJe) e em texto puro. */
+const MUTA_TIT=/^(RELAT[ÓO]RIO|VOTO|EMENTA|AC[ÓO]RD[ÃA]O|DECIS[ÃA]O)$/;
+function htmlMuta(t){
+  const E=s=>String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const base='font-family:Arial,Helvetica,sans-serif;font-size:12pt;line-height:1.5;text-align:justify;margin:0 0 12pt 0;';
+  const corpo=base+'text-indent:2.5cm;', bloco=base+'margin-left:2.5cm;text-indent:0;font-style:italic;', sem=base+'text-indent:0;';
+  const citInline=s=>s.replace(/([“"])([^”"]{60,})([”"])/g,(m,a,b,c)=>a+'<i>'+b+'</i>'+c);
+  const linhas=s=>E(s).replace(/\n/g,'<br>');
+  const ps=String(t??'').replace(/\r/g,'').split(/\n{2,}/).map(x=>x.trim()).filter(Boolean);
+  let sec=/^DIREITO\b/.test(ps[0]||'')&&ps[0]===ps[0].toUpperCase()?'EMENTA':'', emCit=false; const H=[];
+  for(const x of ps){
+    if(MUTA_TIT.test(x)){sec=x.toUpperCase().normalize('NFD').replace(/[̀-ͯ]/g,'');emCit=false;
+      H.push(`<p style="${sem}text-align:center;font-weight:bold;font-size:16pt;margin-top:18pt">${E(x)}</p>`);continue}
+    if(/^[_\-–—]{5,}$/.test(x)){H.push(`<p style="${sem}">__________</p>`);continue}
+    if(sec==='EMENTA'){
+      let h;
+      if(/^[IVX]+\.\s/.test(x)) h=`<b>${linhas(x)}</b>`;
+      else if(/^(Dispositivos|Jurisprud[êe]ncia) relevantes? citad[ao]s?:/.test(x)) h=linhas(x).replace(/^([^:]+:)/,'<i>$1</i>');
+      else if(x===x.toUpperCase()&&/[A-ZÁÉÍÓÚÇ]{4}/.test(x)) h=`<b>${linhas(x)}</b>`;
+      else if(/^\d+\.\s/.test(x)) h=linhas(x).replace(/^(\d+\.)/,'<b>$1</b>');
+      else h=linhas(x);
+      H.push(`<p style="${sem}">${h}</p>`);continue}
+    if(sec==='ACORDAO'){H.push(`<p style="${sem}">${linhas(x)}</p>`);continue}
+    const abre=/^[“"]/.test(x);
+    if(abre||emCit){
+      H.push(`<p style="${bloco}">${linhas(x)}</p>`);
+      const fecha=/[”"]\s*(\(g\.n\.\))?\s*[.;:]?$/.test(x)&&x.length>1;
+      emCit=!fecha;
+      continue}
+    if(/^(O|A) Desembargador[a]? Federal .+\((Relator|Relatora)\):$/.test(x)){H.push(`<p style="${corpo}"><b>${E(x)}</b></p>`);continue}
+    H.push(`<p style="${corpo}">${citInline(linhas(x))}</p>`);
+  }
+  return `<div style="font-family:Arial,Helvetica,sans-serif;font-size:12pt">${H.join('')}</div>`;
+}
+async function copiarTexto(t,msg){
+  const txt=String(t??'');
+  try{
+    if(window.ClipboardItem&&navigator.clipboard&&navigator.clipboard.write){
+      await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([htmlMuta(txt)],{type:'text/html'}),'text/plain':new Blob([txt],{type:'text/plain'})})]);
+      toast(msg+' (formatação do gabinete)');return}
+    await navigator.clipboard.writeText(txt);toast(msg)
+  }catch(e){
+    try{const d=document.createElement('div');d.innerHTML=htmlMuta(txt);d.style.cssText='position:fixed;left:-9999px;top:0';document.body.appendChild(d);
+      const r=document.createRange();r.selectNodeContents(d);const s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy');s.removeAllRanges();d.remove();toast(msg)}
+    catch(e2){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast(msg)}
+  }
+}
 
 /* ---------- verificação SHA-256 contra o MANIFESTO ---------- */
 let MANIF=null;
