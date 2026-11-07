@@ -177,8 +177,17 @@ function lint(){
   LINT=achados(ed.value);
   if(DZ_TAB==='correcao') renderDZ();
   const n=LINT.filter(x=>x.sev!=='sug').length; const b=$('dzTabs')&&$('dzTabs').querySelector('[data-t=correcao]'); if(b) b.dataset.n=n||'';
+  diagEnviar();
 }
 const EMBED=()=>document.body.classList.contains('embed');
+function diagEnviar(){ // resumo compacto para o painel nativo do hospedeiro (Central/Minutário)
+  if(!EMBED())return;
+  const c=s=>LINT.filter(x=>x.sev===s).length, pen=LINT.filter(x=>x.sev!=='pend').reduce((s,x)=>s+SEV[x.sev][1],0);
+  try{parent.postMessage({type:'cmt-apoio-diag',semPadrao:!DIR||!!DIR.erro,conf:Math.max(0,100-pen),
+    cor:c('cor'),ale:c('ale')+c('est'),pend:c('pend'),sug:c('sug'),fix:LINT.filter(x=>x.sub!=null&&x.len).length,
+    regras:REGRAS?REGRAS.cor.length+REGRAS.ale.length+REGRAS.pref.length:0,
+    itens:LINT.slice(0,90).map((x,k)=>({k,sev:x.sev,rot:SEV[x.sev][0],fonte:x.fonte||'',msg:x.msg,trecho:(x.trecho||'').slice(0,70),sub:x.sub!=null&&x.len?String(x.sub).slice(0,60):null,i:x.i,len:x.len,fix:x.sub!=null&&!!x.len}))},location.origin)}catch(e){}
+}
 function devolver(){if(EMBED())try{parent.postMessage({type:'cmt-apoio-retorno',texto:$('minEd').value},location.origin)}catch(e){}}
 function irPara(i,len){if(EMBED()){try{parent.postMessage({type:'cmt-apoio-ir',i,len},location.origin)}catch(e){}return}const ed=$('minEd');ed.focus();ed.setSelectionRange(i,i+len);const linhas=ed.value.slice(0,i).split('\n').length;ed.scrollTop=Math.max(0,(linhas-4)*22)}
 function corrigir(k){const x=LINT[k];if(!x||x.sub==null)return;const ed=$('minEd');ed.value=aplicarFix(ed.value,x);ED_DIRTY=true;estadoEditor();lint();devolver()}
@@ -249,7 +258,11 @@ $('btnRecuperar').addEventListener('click',()=>{if(!recuperarPadrao())toast('Nen
 $('btnSalvarImport').addEventListener('click',exportarHtmlDefinitivo);
 $('btnExportar').addEventListener('click',exportarHtmlDefinitivo);
 $('filePadrao').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const raw=await f.text();selecionarPadrao(JSON.parse(raw),'arquivo');toast('Padrão interno incorporado nesta sessão. Salve o HTML definitivo.') }catch(err){toast('Arquivo inválido: '+err.message)}});
-window.addEventListener('message',ev=>{if(ev.origin===location.origin&&ev.data?.type==='cmt-apoio-minuta')aoTextoRecebido(ev.data.texto)});
+window.addEventListener('message',ev=>{if(ev.origin!==location.origin||!ev.data)return;
+  if(ev.data.type==='cmt-apoio-minuta')aoTextoRecebido(ev.data.texto);
+  else if(ev.data.type==='cmt-apoio-corrigir')corrigir(+ev.data.k);
+  else if(ev.data.type==='cmt-apoio-corrigir-todas')corrigirTodas();
+});
 try{const transfer=sessionStorage.getItem('cmt_apoio_minuta_transfer');if(transfer)aoTextoRecebido(transfer)}catch(e){}
 iniciarPadrao();estadoEditor();
 </script></body></html>
