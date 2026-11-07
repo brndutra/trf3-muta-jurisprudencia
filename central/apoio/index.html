@@ -72,7 +72,14 @@ textarea.editor:focus{border-color:#8faac9;box-shadow:0 0 0 3px rgba(81,134,186,
 
 
 </style>
+<style>
+body.embed header,body.embed #alertaBase,body.embed .left{display:none!important}
+body.embed .workspace{display:block;height:auto;min-height:0}
+body.embed .dz{height:100dvh;min-height:0;max-height:none;border-left:0}
+body.embed .dz-head{padding-top:8px}
+</style>
 </head><body>
+<script>if(/[?&]embed=1\b/.test(location.search)||window.top!==window.self)document.body.classList.add('embed')</script>
 <header><div class="brand"><div class="ey">Gabinete CMT · TRF3</div><h1>Minuta · consulta e apoio</h1></div><div class="head-info">Painel de diretrizes independente da Central · Revisão e apoio à redação</div>
 <a class="action headbtn" href="../" title="Voltar à Central de Precedentes e Modelos">Central ↗</a>
 <button class="headbtn" type="button" id="btnIncorporar">Padrão interno</button>
@@ -171,15 +178,17 @@ function lint(){
   if(DZ_TAB==='correcao') renderDZ();
   const n=LINT.filter(x=>x.sev!=='sug').length; const b=$('dzTabs')&&$('dzTabs').querySelector('[data-t=correcao]'); if(b) b.dataset.n=n||'';
 }
-function irPara(i,len){const ed=$('minEd');ed.focus();ed.setSelectionRange(i,i+len);const linhas=ed.value.slice(0,i).split('\n').length;ed.scrollTop=Math.max(0,(linhas-4)*22)}
-function corrigir(k){const x=LINT[k];if(!x||x.sub==null)return;const ed=$('minEd');ed.value=aplicarFix(ed.value,x);ED_DIRTY=true;estadoEditor();lint()}
+const EMBED=()=>document.body.classList.contains('embed');
+function devolver(){if(EMBED())try{parent.postMessage({type:'cmt-apoio-retorno',texto:$('minEd').value},location.origin)}catch(e){}}
+function irPara(i,len){if(EMBED()){try{parent.postMessage({type:'cmt-apoio-ir',i,len},location.origin)}catch(e){}return}const ed=$('minEd');ed.focus();ed.setSelectionRange(i,i+len);const linhas=ed.value.slice(0,i).split('\n').length;ed.scrollTop=Math.max(0,(linhas-4)*22)}
+function corrigir(k){const x=LINT[k];if(!x||x.sub==null)return;const ed=$('minEd');ed.value=aplicarFix(ed.value,x);ED_DIRTY=true;estadoEditor();lint();devolver()}
 function corrigirTodas(){
   const ed=$('minEd');let t=ed.value,n=0;
   for(let passo=0;passo<4;passo++){ // várias passadas: correções sobrepostas (ex.: “Lei nº 8.213/91”) se resolvem em sequência
     const F=achados(t).filter(x=>x.sub!=null&&x.len).sort((a,b)=>b.i-a.i); if(!F.length)break;
     let ult=Infinity; for(const x of F){if(x.i+x.len>ult)continue;t=aplicarFix(t,x);ult=x.i;n++}
   }
-  ed.value=t;ED_DIRTY=true;estadoEditor();lint();toast(`${n} correção(ões) aplicada(s).`)}
+  ed.value=t;ED_DIRTY=true;estadoEditor();lint();devolver();toast(`${n} correção(ões) aplicada(s).`)}
 function renderDZ(){
   const B=$('dzBody'); if(!B) return;
   if(!DIR||DIR.erro){B.innerHTML=`<p style="color:#e9ebee;font-weight:700;margin:4px 0 6px">Carregue o Padrão Muta</p>
