@@ -41,6 +41,7 @@ modelos/modelos.json(.gz)    752 modelos por fase do gabinete, com texto-base ra
 scripts/matrizes.py          extrai os modelos-matriz por tipo de julgamento → modelos/matrizes*.json
 modelos/matrizes.json(.gz)   20 modelos-matriz (fase TRMS): posições, parágrafos-fórmula, versões e situação
 modelos/matrizes_gabA.json   os mesmos, no formato “Modelo-matriz” do gerador (esqueletoModelo/paragrafosModelo)
+modelos/trechos.json         trechos vinculados por matéria (voto ↔ relatório ↔ ementa), curadoria do gabinete
 ```
 
 Os arquivos são JSON compactados com gzip (`zcat dados/acordaos/2021.json.gz | jq '.registros[0]'`).
@@ -91,3 +92,15 @@ O `.gz` é gerado com `mtime=0`; portanto a mesma entrada produz os mesmos bytes
 - **Versões**: redações alternativas do mesmo ponto (variações só de grafia são fundidas). Cada versão traz a **situação** que a distingue — recorrente (autor, autora, ré/INSS, União), gratuidade, Súmula 111, correção de ofício, retorno à origem — e a Central sugere a versão conforme o relatório preenchido.
 - **Fórmula + complemento**: quando a cauda do parágrafo varia caso a caso, guarda-se o trecho fixo seguido de `{{complemento conforme o caso}}`.
 - Nada é redigido pelo algoritmo: todo texto é transcrição de decisões do gabinete, com o percentual de uso no tipo.
+
+## Trechos vinculados (voto ↔ relatório ↔ ementa)
+
+`modelos/trechos.json` reúne, por matéria, os trechos que o gabinete acrescenta ao voto conforme o caso. Cada trecho declara o texto do **voto** e o que ele exige no **relatório** e na **ementa**; na Central (Minutas › Matriz › *Trechos vinculados*), marcar o trecho insere as três partes de uma vez, nas posições indicadas.
+
+- **Voto** (`pos`): `contro`, `jurid`, `provas`, `aplic`, `concl`, `honor`, `disp` — em `honor` e `disp` o trecho substitui as fórmulas da matriz.
+- **Relatório** (`pos`): `apos_recurso` (parágrafo após as razões), `contrarrazoes` (complemento da frase das contrarrazões), `antes_mpf`.
+- **Ementa** (`pos`): `cabecalho` (termos), `caso`, `questao` (oração no infinitivo; com duas ou mais, “Há … questões em discussão: (i) …; e (ii) …”), `razoes`, `dispositivo` (substitui o da matriz).
+- **Opções da matéria**: `[?id:texto]` entra só com a opção (ou o trecho) `id` marcada; `[?!id:texto]`, só com ela desmarcada. Uma mesma opção acende o texto correspondente nas três seções (ex.: *habilitação de herdeiros* no voto, nas contrarrazões e na questão em discussão). Opções com `situacao` seguem o relatório (ex.: gratuidade).
+- `{{campo}}` = dado dos autos a preencher; aparece como `[campo]` na minuta.
+- O caso em exame da ementa passa a ser montado a partir do relatório (espécie, contexto e resultado da decisão recorrida).
+- Diferentemente dos modelos e matrizes, este arquivo não é extraído por algoritmo: é texto curado do gabinete. Primeira matéria: 28,86% (cumprimento da ACP 0005019-15.1997.4.03.6000).
