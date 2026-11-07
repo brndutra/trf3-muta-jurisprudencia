@@ -977,6 +977,11 @@ details.pv-top>summary:hover .pv-top-f,.pv-top-f:focus-visible{opacity:1}
 .pv-tip{position:fixed;z-index:90;pointer-events:none;max-width:340px;white-space:pre-line;font-size:12px;line-height:1.45;background:var(--h-bg);color:var(--h-text);padding:7px 10px;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.2)}
 @media(max-width:900px){.pv-grade{grid-template-columns:minmax(0,1fr)}.pv-hb{grid-template-columns:minmax(90px,38%) 1fr 52px}.pv-folhas button{grid-template-columns:1fr;gap:0}.pv-top-k{display:none}}
 @media(prefers-reduced-motion:reduce){details.pv-top>summary::before,.pv-lk{transition:none}}
+.cmt-mind-node.compacto{width:auto;min-width:0;min-height:0;flex-direction:row;align-items:center;gap:6px;padding:4px 24px 4px 10px;border-radius:999px}
+.cmt-mind-node.compacto .label{font-size:11px;padding-right:0;white-space:nowrap}
+.cmt-mind-node.compacto .pill{font:650 9.5px/1.3 Figtree,Inter,system-ui,sans-serif;color:var(--muted);background:var(--field);padding:1px 6px;border-radius:999px}
+.cmt-mind-node.compacto .branch-mark{top:50%;transform:translateY(-50%);right:5px;width:16px;height:16px;border-radius:5px}
+html .cmt-mind-node.compacto:has(.branch-mark) .label{padding-right:6px}
 </style>
 </head>
 <body>
@@ -1010,7 +1015,7 @@ details.pv-top>summary:hover .pv-top-f,.pv-top-f:focus-visible{opacity:1}
      <div class="arv-viz-width"><label for="arvLargurajuris">Largura</label><input id="arvLargurajuris" type="range" min="45" max="100" value="100" aria-label="Largura do mapa em porcentagem" oninput="arvLargura(+this.value)"><button type="button" class="arv-full-btn" onclick="arvAlternarMax()" aria-pressed="false" title="Ocupar toda a largura / restaurar">⤢ Expandir</button></div>
    </div>
    <div class="arv-esquema" data-arv-esquema="juris" tabindex="0" aria-label="Mapa mental jurídico com ramificações orgânicas"></div>
-   <p class="arv-esq-guide">Após <strong>Tema</strong>, expanda <strong>Monocrática ou Acórdão → Resultado/Dispositivo</strong>. Os resultados são extraídos do índice e devem ser conferidos no documento oficial.</p>
+   <p class="arv-esq-guide">Após <strong>Subassunto</strong>, expanda <strong>Monocrática ou Acórdão → Resultado/Dispositivo</strong>. Os resultados são extraídos do índice e devem ser conferidos no documento oficial.</p>
    <div class="arv-bt"><button class="btn sm" onclick="arvExpandir(true)">Expandir</button><button class="btn sm" onclick="arvExpandir(false)">Recolher</button><button class="btn sm" onclick="alternarModoArvore(false)" title="Desligar o modo árvore (Alt+3)">Sair do modo</button></div>
     <div class="arv-tree"></div>
     <hr class="sep"><details class="arv-fontes"><summary>Fonte, período e critérios da classificação</summary><p class="ajuda">A classificação temática é automática e sujeita à revisão jurídica.</p><p class="ajuda arv-crit"></p></details>
@@ -1515,7 +1520,7 @@ function abrirSobre(){
   <tr><td>Acórdãos da base não coletados (c. 1999–2001)</td><td>162</td></tr></table>
   <p><b>O que é fonte e o que é derivado.</b> Inteiro teor, ementa, número, classe, relator, órgão, datas e links são reproduzidos da base, sem alteração de conteúdo. Prévia, resultado, dispositivo, partes, classificação do texto e órgão normalizado são extraídos automaticamente e servem para filtrar — não para citar.</p>
   <p><b>Autenticidade.</b> Cada registro tem hash SHA-256 do inteiro teor (e da ementa) no <code>MANIFESTO.json</code> do repositório; o botão <i>Verificar autenticidade</i> recalcula o hash no seu navegador e compara. Isso prova integridade desde a extração. A base de jurisprudência não é a publicação oficial: o texto autêntico é o documento assinado no PJe e a publicação no diário.</p>
-  <p><b>Modo árvore.</b> Classificação automática por assunto (área › subárea › tema) dos precedentes relevantes dos últimos 5 anos e dos modelos, gerada por <code>scripts/assuntos.py</code> em <code>assuntos/arvore.json</code>${ASS?` a partir do commit <code>${esc(String(ASS.meta.fonte.commit).slice(0,10))}</code>`:''}. Serve para navegar e filtrar; confira o texto e a vigência da tese antes de citar.</p>
+  <p><b>Modo árvore.</b> Classificação automática por assunto (ramo › assunto › subassunto) dos precedentes relevantes dos últimos 5 anos e dos modelos, gerada por <code>scripts/assuntos.py</code> em <code>assuntos/arvore.json</code>${ASS?` a partir do commit <code>${esc(String(ASS.meta.fonte.commit).slice(0,10))}</code>`:''}. Serve para navegar e filtrar; confira o texto e a vigência da tese antes de citar.</p>
   <p class="meta">Repositório: <a href="https://github.com/${REPO.dono}/${REPO.repo}" target="_blank" rel="noopener">github.com/${REPO.dono}/${REPO.repo}</a></p>`);
 }
 function abrirConfig(){
@@ -2999,7 +3004,7 @@ function cmtJurisResultado(r){
   return 'Outro resultado — conferir dispositivo';
 }
 function cmtJurisCaminho(r){
-  const tema=assDe(r.id)||['Área não classificada','Subárea não classificada','Tema não classificado'];
+  const tema=assDe(r.id)||['Ramo não classificado','Assunto não classificado','Subassunto não classificado'];
   return [...tema,cmtJurisNatureza(r),cmtJurisResultado(r)];
 }
 
@@ -3214,7 +3219,7 @@ const CMT_MIND_INST=new WeakMap();
 const CMT_MIND_OPEN={modelos:new Set(['modelos:root']),juris:new Set(['juris:root'])};
 const CMT_MIND_MORE={modelos:new Map(),juris:new Map()};
 const CMT_MIND_PAL=['#b38727','#257c9b','#499270','#8e70be','#c47448','#5284c6','#aa5d84','#638990','#3e968e','#9779b0','#a1874e','#4c8e68'];
-const CMT_MIND_LEVELS={modelos:['Ramo do direito','Assunto','Classe / espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado','Modelo'],juris:['Área jurídica','Subárea','Tema','Monocrática ou Acórdão','Resultado / dispositivo','Decisão']};
+const CMT_MIND_LEVELS={modelos:['Ramo do direito','Assunto','Classe / espécie','Tipo de julgamento','Subassunto','Questão jurídica','Especificidades','Resultado','Modelo'],juris:['Ramo do direito','Assunto','Subassunto','Monocrática ou Acórdão','Resultado / dispositivo','Decisão']};
 const CMT_MIND_ALL=new WeakMap();
 function cmtMindText(v){return String(v==null?'':v)}
 function cmtMindCount(n){return Number(n||0).toLocaleString('pt-BR')}
@@ -3284,6 +3289,11 @@ function cmtMindVisible(root,mode){
  return out;
 }
 function cmtMindNodeContent(n,mode,sel){
+ if(mode==='juris'&&n.kind==='branch'&&n.depth===3){ // acórdão ou monocrática: cartão compacto
+  const active=n.path.length===sel.length&&n.path.every((p,i)=>p===sel[i]),ancestor=n.path.length<sel.length&&n.path.every((p,i)=>p===sel[i]);
+  const rot=/^Decis/.test(n.label)?'Monocrática':n.label;
+  return {title:`${n.label} · ${n.count} decisões`,active,ancestor,has:true,markup:`<span class="label">${esc(rot)}</span><span class="pill">${cmtMindCount(n.count)}</span><span class="branch-mark" aria-hidden="true">${CMT_MIND_OPEN[mode].has(n.id)?'−':'+'}</span>`};
+ }
  const level=n.depth<0?'Acervo':CMT_MIND_LEVELS[mode][n.depth]||'Registro';
  const active=n.kind!=='more'&&n.path.length===sel.length&&n.path.every((p,i)=>p===sel[i]);
  const ancestor=n.kind!=='more'&&n.path.length<sel.length&&n.path.every((p,i)=>p===sel[i]);
@@ -3352,7 +3362,7 @@ function cmtMindResults(s,records,access,path){
  const count=records.reduce((n,r)=>n+(path.every((p,i)=>access(r)[i]===p)?1:0),0);
  const summary=s.box.querySelector('[data-mind-summary]');if(summary)summary.textContent=`${cmtMindCount(count)} ${s.mode==='modelos'?(count===1?'modelo correspondente':'modelos correspondentes'):(count===1?'precedente correspondente':'precedentes correspondentes')} · abrir registros`;
  b.innerHTML=arvEsqCorrespondentes(records,s.mode,path,access);
- const q=s.box.querySelector('[data-mind-caption]');if(q)q.textContent=`${cmtMindCount(records.length)} registros no recorte · ${s.mode==='modelos'?'ramo do direito › assunto › … › modelo':'Tema → natureza → resultado · campos derivados do índice'}`;
+ const q=s.box.querySelector('[data-mind-caption]');if(q)q.textContent=`${cmtMindCount(records.length)} registros no recorte · ${s.mode==='modelos'?'ramo do direito › assunto › … › modelo':'ramo do direito › assunto › subassunto › natureza › resultado · campos derivados do índice'}`;
  const float=s.box.querySelector('[data-mind-hint]');if(float)float.innerHTML=`<strong>${cmtMindCount(count)} correspondências</strong><div>${path.length?esc(path[path.length-1].slice(0,70)):'Selecione qualquer ramo para filtrar'} · Zoom e arraste disponíveis</div>`;
  const bc=s.box.querySelector('[data-mind-breadcrumb]');if(bc)bc.innerHTML=`<button type="button" data-mind-crumb="0">Acervo</button>`+path.map((p,i)=>`<span class="sep">›</span><button title="${esc(p)}" type="button" data-mind-crumb="${i+1}">${esc(p)}</button>`).join('');
 }
@@ -3365,7 +3375,7 @@ function cmtMindLayout(s,anchor){
  // mede os nós reais após renderizar o conteúdo, mas antes de calcular as posições
  const selected=s.selected||[];
  for(const n of nodes){let el=s.elements.get(n.id);if(!el){el=document.createElement('button');el.type='button';el.className='cmt-mind-node '+n.kind+' is-new';el.dataset.mindNode=n.id;const p=s.oldPositions.get(n.parent?.id);el.style.left=(p?.x||30)+'px';el.style.top=(p?.y||50)+'px';s.stage.appendChild(el);s.elements.set(n.id,el)}
-  const meta=cmtMindNodeContent(n,s.mode,selected);el.innerHTML=meta.markup;el.setAttribute('aria-label',meta.title+' · '+n.label);el.setAttribute('aria-expanded',n.kind==='leaf'||n.kind==='more'?'false':String(CMT_MIND_OPEN[s.mode].has(n.id)));el.classList.toggle('is-active',meta.active);el.classList.toggle('is-ancestor',meta.ancestor);el.style.setProperty('--mind-color',n.color);n.w=el.offsetWidth||212;n.h=el.offsetHeight||78;
+  const meta=cmtMindNodeContent(n,s.mode,selected);el.innerHTML=meta.markup;el.setAttribute('aria-label',meta.title+' · '+n.label);el.setAttribute('aria-expanded',n.kind==='leaf'||n.kind==='more'?'false':String(CMT_MIND_OPEN[s.mode].has(n.id)));el.classList.toggle('is-active',meta.active);el.classList.toggle('compacto',s.mode==='juris'&&n.kind==='branch'&&n.depth===3);el.classList.toggle('is-ancestor',meta.ancestor);el.style.setProperty('--mind-color',n.color);n.w=el.offsetWidth||212;n.h=el.offsetHeight||78;
   if(n.kind==='root'){el.style.display='none';n.w=0;n.h=0} // sem card inicial: o mapa começa nos assuntos
  }
  const colW=[];const collect=(n,d)=>{colW[d]=Math.max(colW[d]||0,n.w);n.drawChildren.forEach(c=>collect(c,d+1))};collect(s.tree.root,0);
@@ -3458,10 +3468,10 @@ let arvDeb;document.addEventListener('input',e=>{if(!e.target.classList.contains
    sem ele, o ramo vem do cabeçalho da ementa ("DIREITO X. …"). Resultado:
    extraído do índice (cmtJurisResultado) — conferir no documento oficial.
    ===================================================================== */
-var PV_VISTAS=[['lista','☷ Lista','Lista de decisões do recorte'],['info','▦ Infográfico','Números e gráficos do recorte'],['mapa','◇ Mapa mental','Ramo › subárea › tema › tipo › resultado, em mapa'],['topicos','☰ Tópicos','A mesma hierarquia, em tópicos recuados'],['mosaico','▥ Mosaico','Área de cada bloco proporcional ao número de decisões'],['matriz','⊞ Matriz','Cruzamento de ramo (ou nível seguinte) com o resultado'],['tempo','⏱ Linha do tempo','Decisões por ano, divididas por ramo'],['fluxo','⇶ Fluxo','Caminho ramo → acórdão/monocrática → resultado']];
+var PV_VISTAS=[['lista','☷ Lista','Lista de decisões do recorte'],['info','▦ Infográfico','Números e gráficos do recorte'],['mapa','◇ Mapa mental','Ramo › assunto › subassunto › tipo › resultado, em mapa'],['topicos','☰ Tópicos','A mesma hierarquia, em tópicos recuados'],['mosaico','▥ Mosaico','Área de cada bloco proporcional ao número de decisões'],['matriz','⊞ Matriz','Cruzamento de ramo (ou nível seguinte) com o resultado'],['tempo','⏱ Linha do tempo','Decisões por ano, divididas por ramo'],['fluxo','⇶ Fluxo','Caminho ramo → acórdão/monocrática → resultado']];
 var PV_VISTA=(()=>{const v=LS.get('acv_prec_vista')||'lista';return PV_VISTAS.some(x=>x[0]===v)?v:'lista'})();
 var PV_NO=[], PV_RES='', PV_MAPA_SEL=[], PV_TOP_ABERTOS=null, PV_CAM=new Map(), PV_ASS_OK=false;
-var PV_NIVEIS=['Ramo do direito','Subárea','Tema','Acórdão ou monocrática','Resultado'];
+var PV_NIVEIS=['Ramo do direito','Assunto','Subassunto','Acórdão ou monocrática','Resultado'];
 var PV_RES_G=['Provimento','Desprovimento / rejeição','Provimento parcial','Não conhecimento / negativa de seguimento','Prejudicado / perda de objeto','Outros / conferir dispositivo'];
 var PV_RAMO_SLOT={'Direito Tributário':1,'Direito Previdenciário':2,'Direito Processual Civil':3,'Direito Administrativo':4,'Direito Civil / Privado':5,'Direito Constitucional':6,'Direito Ambiental':7,'Direito Aduaneiro':8};
 var PV_RAMO_TOK=[['TRIBUT','Direito Tributário'],['PREVIDENCI','Direito Previdenciário'],['ASSISTENCI','Direito Previdenciário'],['AMBIENT','Direito Ambiental'],['ADUANEIR','Direito Aduaneiro'],['ADMINISTRATIV','Direito Administrativo'],['CONSUMIDOR','Direito Civil / Privado'],['CIVIL','Direito Civil / Privado'],['PENAL','Direito Penal'],['CONSTITUCIONAL','Direito Constitucional'],['PROCESSUAL CIVIL','Direito Processual Civil']];
@@ -3477,7 +3487,7 @@ function pvCaminho(x){
   let c=PV_CAM.get(x.id);if(c)return c;
   const k=ASS?assDe(x.id):null;let ramo,sub,tema;
   if(k&&k[0]&&!/^N[ãa]o classificad/.test(k[0])){[ramo,sub,tema]=k}
-  else{ramo=pvRamoEmenta(x)||'Ramo não identificado';sub='Sem subárea no índice temático';tema='Sem tema no índice temático'}
+  else{ramo=pvRamoEmenta(x)||'Ramo não identificado';sub='Sem assunto no índice temático';tema='Sem subassunto no índice temático'}
   c=[ramo,sub,tema,x.t==='A'?'Acórdão':'Decisão monocrática',cmtJurisResultado(x)];PV_CAM.set(x.id,c);return c;
 }
 function pvGrupoRes(rot){
@@ -3528,7 +3538,7 @@ function pvRender(){
   try{f(box)}catch(e){console.error(e);box.innerHTML=`<div class="vazio">Falha ao montar a visualização: ${esc(e.message)}</div>`}
 }
 function pvCab(t,sub){return `<div class="pv-cab"><b>${t}</b>${sub?`<small>${sub}</small>`:''}</div>`}
-function pvNotaFonte(){return `<p class="pv-nota">Ramo, subárea e tema: índice temático do repositório (decisões classificadas); nas demais, o ramo vem do cabeçalho da ementa (“DIREITO …”) e as monocráticas sem cabeçalho ficam como “Ramo não identificado”. Resultado: extraído automaticamente do índice — conferir no documento oficial.</p>`}
+function pvNotaFonte(){return `<p class="pv-nota">Ramo, assunto e subassunto: índice temático do repositório (decisões classificadas); nas demais, o ramo vem do cabeçalho da ementa (“DIREITO …”) e as monocráticas sem cabeçalho ficam como “Ramo não identificado”. Resultado: extraído automaticamente do índice — conferir no documento oficial.</p>`}
 
 /* ---------- Infográfico ---------- */
 function pvInfo(box){
@@ -3547,7 +3557,7 @@ function pvInfo(box){
     return e.map(([k,v])=>`<div class="pv-hb pv-hb-s" data-tip="${esc(k)}: ${pvN(v)} (${pvPct(v,n)})"><span class="pv-hb-l">${esc(k)}</span><span class="pv-hb-b"><span style="width:${v/m*100}%"><span class="pv-stk"><i style="flex:1;background:var(--pv-seq)"></i></span></span></span><span class="pv-hb-n">${pvN(v)}</span></div>`).join('')};
   const resLinhas=PV_RES_G.map((r,i)=>`<button type="button" class="pv-rl${PV_RES===String(i)?' on':''}" data-pv-res="${i}" data-tip="${esc(r)}: ${pvN(res[i])}"><i style="background:var(--pv-r${i})"></i><span>${esc(r)}</span><b>${pvN(res[i])}</b><small>${pvPct(res[i],n)}</small></button>`).join('');
   box.innerHTML=`<div class="pv-info">
-   <div class="pv-kpis">${kpi(pvN(n),'decisões no recorte')}${kpi(pvN(nA),'acórdãos',pvPct(nA,n))}${kpi(pvN(nM),'monocráticas',pvPct(nM,n))}${kpi(a0?(a0===a1?a0:a0+'–'+a1):'—','período')}${kpi(pvPct(prov,ident),'provimento total ou parcial','entre os resultados identificados')}${kpi(pvN(temas),'temas distintos',pvN(ramos)+' ramo'+(ramos===1?'':'s'))}</div>
+   <div class="pv-kpis">${kpi(pvN(n),'decisões no recorte')}${kpi(pvN(nA),'acórdãos',pvPct(nA,n))}${kpi(pvN(nM),'monocráticas',pvPct(nM,n))}${kpi(a0?(a0===a1?a0:a0+'–'+a1):'—','período')}${kpi(pvPct(prov,ident),'provimento total ou parcial','entre os resultados identificados')}${kpi(pvN(temas),'subassuntos distintos',pvN(ramos)+' ramo'+(ramos===1?'':'s'))}</div>
    <div class="pv-grade">
     <section class="pv-card pv-span2">${pvCab(`Por ${PV_NIVEIS[nv].toLowerCase()}${PV_NO.length?' em '+esc(PV_NO[PV_NO.length-1]):''}`,'clique para detalhar · cores = resultado')}${pvLegendaRes(false)}<div class="pv-hbs">${barras}</div></section>
     <section class="pv-card">${pvCab('Resultado','clique para filtrar')}${pvBarraRes(res,n,'pv-stk-g')}<div class="pv-rls">${resLinhas}</div></section>
@@ -3581,7 +3591,7 @@ function pvTopicos(box){
   const walk=(t,path,lv)=>[...t.entries()].sort((a,b)=>b[1].n-a[1].n||a[0].localeCompare(b[0],'pt-BR')).map(([k,o],i)=>{
     const p=[...path,k],ck=chave(p),aberto=PV_TOP_ABERTOS.has(ck),nivel=base+lv;
     const filhos=nivel<4?walk(o.m,p,lv+1):`<div class="pv-folhas">${o.xs.slice().sort((a,b)=>(b.d||'').localeCompare(a.d||'')).slice(0,20).map(x=>`<button type="button" data-pv-dec="${esc(x.id)}"><code>${esc(x.n)}</code><span>${esc(pvRotDec(x))}</span><small>${fmtData(x.d)}</small></button>`).join('')}${o.xs.length>20?`<button type="button" class="pv-mais" data-pv-lista="${esc(ck)}">ver as ${pvN(o.xs.length)} na lista</button>`:''}</div>`;
-    return `<details class="pv-top" data-lv="${nivel}" ${aberto?'open':''}><summary data-pv-top="${esc(ck)}"><span class="pv-top-k">${esc(['Ramo','Subárea','Tema','Tipo','Resultado'][nivel])}</span>${nivel===0?`<i class="pv-dot" style="background:${pvCor(k)}"></i>`:''}<span class="pv-top-n">${esc(k)}</span>${pvBarraRes(o.res,o.n,'pv-stk-mini')}<span class="pv-top-c" title="decisões">${pvN(o.n)}</span><button type="button" class="pv-top-f" data-pv-filtrar="${esc(ck)}" title="Recortar a página por este ramo">recortar</button></summary>${filhos}</details>`;
+    return `<details class="pv-top" data-lv="${nivel}" ${aberto?'open':''}><summary data-pv-top="${esc(ck)}"><span class="pv-top-k">${esc(['Ramo','Assunto','Subassunto','Tipo','Resultado'][nivel])}</span>${nivel===0?`<i class="pv-dot" style="background:${pvCor(k)}"></i>`:''}<span class="pv-top-n">${esc(k)}</span>${pvBarraRes(o.res,o.n,'pv-stk-mini')}<span class="pv-top-c" title="decisões">${pvN(o.n)}</span><button type="button" class="pv-top-f" data-pv-filtrar="${esc(ck)}" title="Recortar a página por este ramo">recortar</button></summary>${filhos}</details>`;
   }).join('');
   box.innerHTML=`<div class="pv-topicos">${pvCab('Tópicos por ramo do direito',`${pvN(R.length)} decisões · ${PV_NIVEIS.slice(base).map(s=>s.toLowerCase()).join(' › ')} › decisão`)}<div class="pv-top-bt"><button type="button" class="btn sm" data-pv-top-acao="abrir">Abrir dois níveis</button><button type="button" class="btn sm" data-pv-top-acao="fechar">Recolher</button></div>${pvLegendaRes(false)}<div class="pv-top-arv">${walk(root,PV_NO.slice(),0)}</div>${pvNotaFonte()}</div>`;
 }
