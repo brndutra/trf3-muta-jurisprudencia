@@ -982,6 +982,71 @@ details.pv-top>summary:hover .pv-top-f,.pv-top-f:focus-visible{opacity:1}
 .cmt-mind-node.compacto .pill{font:650 9.5px/1.3 Figtree,Inter,system-ui,sans-serif;color:var(--muted);background:var(--field);padding:1px 6px;border-radius:999px}
 .cmt-mind-node.compacto .branch-mark{top:50%;transform:translateY(-50%);right:5px;width:16px;height:16px;border-radius:5px}
 html .cmt-mind-node.compacto:has(.branch-mark) .label{padding-right:6px}
+/* ===== Minutário (não é banco: minutas em elaboração, conectado ao acervo) ===== */
+:root{--f-mu:#2fa59a;--f-mu-s:rgba(47,165,154,.15)}
+.faceta.mu-tab{margin-left:14px;border-style:dashed;background:transparent}
+.faceta.mu-tab .fn{border-radius:50%;font:700 14px/1 Inter,system-ui,sans-serif}
+.faceta.mu-tab.active{border-style:solid;background:var(--fcs)}
+.facetas .mu-sep{width:1px;height:28px;background:var(--h-line2);margin-left:10px}
+main.modulo[data-mod="minutario"]{--fc-main:var(--f-mu)}
+html main#muMain{grid-template-columns:330px minmax(0,1fr) 410px!important;background:linear-gradient(180deg,color-mix(in srgb,var(--f-mu) 5%,var(--bg)),var(--bg) 220px)}
+#muMain>aside,#muMain>section{min-height:0;overflow:auto}
+.mu-esq{border-right:1px solid var(--line2);background:var(--panel);padding:14px 14px 30px}
+.mu-dir{border-left:1px solid var(--line2);background:var(--panel);padding:12px 14px 30px}
+.mu-centro{padding:14px 18px 30px;display:flex;flex-direction:column;gap:8px}
+.mu-h{display:flex;flex-direction:column;gap:2px;margin-bottom:10px}
+.mu-k{font:800 11px/1 Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--f-mu)}
+.mu-h small{color:var(--muted);font-size:12px}
+.mu-bt{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.mu-fila{display:flex;flex-direction:column;gap:4px;max-height:230px;overflow:auto;margin-bottom:14px}
+.mu-it{display:grid;grid-template-columns:1fr auto;gap:1px 8px;text-align:left;font:inherit;border:1px solid var(--line);background:var(--panel2);border-radius:9px;padding:7px 10px;cursor:pointer;color:var(--text)}
+.mu-it b{font-family:ui-monospace,Consolas,monospace;font-size:12.5px}.mu-it small{grid-column:1;color:var(--muted);font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mu-it .mu-st{grid-row:1/3;grid-column:2;align-self:center;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:999px;background:var(--field);color:var(--muted)}
+.mu-it .mu-st-pronta{background:var(--green-soft);color:var(--green)}
+.mu-it.on{border-color:var(--f-mu);box-shadow:inset 3px 0 0 var(--f-mu);background:var(--f-mu-s)}
+.mu-sec{font:800 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:6px 0 8px}
+.mu-form{display:flex;flex-direction:column;gap:8px}
+.mu-g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mu-l{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--muted)}
+.mu-l>span{font-weight:600}
+.mu-l .inp{height:32px;font-size:13px}.mu-l textarea.inp{height:auto;min-height:52px;padding:6px 9px;resize:vertical;font:13px/1.45 Inter,system-ui,sans-serif}
+.mu-l small{font-size:11px;color:var(--faint)}
+.mu-res .inp{border-color:var(--f-mu);font-weight:700}
+.mu-det{border:1px solid var(--line);border-radius:9px;padding:6px 10px 10px;background:var(--panel2)}
+.mu-det>summary{cursor:pointer;font-weight:700;font-size:12.5px;color:var(--text);padding:3px 0 6px}
+.mu-det .mu-l{margin-bottom:7px}
+.mu-acv{display:flex;flex-direction:column;gap:2px;font-size:11.5px;color:var(--muted);border-left:3px solid var(--f-mu);padding:4px 8px}
+.mu-acv b{color:var(--text);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+.mu-cab{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.mu-cab b{font:700 17px ui-monospace,Consolas,monospace}.mu-cab small{color:var(--muted)}
+.mu-org-l{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px}
+.mu-org{font-weight:700;padding:2px 9px;border-radius:999px;background:var(--f-mu-s);color:var(--f-mu);border:1px solid color-mix(in srgb,var(--f-mu) 45%,transparent)}
+.mu-org-modelo{background:var(--f-minuta-s);color:#a7761a;border-color:color-mix(in srgb,var(--f-minuta) 50%,transparent)}
+.mu-org-precedente{background:var(--f-juris-s);color:var(--accent);border-color:var(--accent-line)}
+.mu-org-n{color:var(--muted)}.mu-org-e{font-size:11px;color:var(--amber);font-weight:700}
+.mu-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.mu-bar .vista-mod{margin-left:0}
+#muMain textarea.editor{min-height:calc(100vh - 270px);border-radius:9px}
+#muMain .previa{min-height:calc(100vh - 270px);border-radius:9px}
+#muPrev p.mu-sel{box-shadow:-6px 0 0 -3px var(--f-mu)}
+#muPrev p{cursor:text}
+.mu-tabs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;position:sticky;top:-12px;background:var(--panel);padding:4px 0 8px;z-index:2}
+.mu-tabs button{font:inherit;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;border:1px solid var(--line2);background:var(--panel2);color:var(--muted);cursor:pointer}
+.mu-tabs button[aria-pressed="true"]{background:var(--f-mu-s);border-color:var(--f-mu);color:var(--text)}
+#muLado .ajuda{font-size:12px}
+#muQ{width:100%;height:34px;margin-bottom:4px}
+.mu-c{border:1px solid var(--line);background:var(--panel2);border-radius:10px;padding:9px 11px;margin-bottom:8px;display:flex;flex-direction:column;gap:4px}
+.mu-c-h{display:flex;align-items:center;gap:7px}.mu-c-h b{font-size:12.5px;line-height:1.3}.mu-c-h .tp{flex:none}.mu-c .mu-dt{margin-left:auto;color:var(--faint);white-space:nowrap}
+.mu-c small{font-size:11.5px;color:var(--muted);line-height:1.4}.mu-c .mu-r{color:var(--faint)}
+.mu-c-b{display:flex;flex-wrap:wrap;gap:5px;margin-top:3px}.mu-c-b .btn{height:28px;font-size:12px;padding:0 9px}
+.mu-txt{font:13px/1.5 var(--serif);color:var(--text);max-height:150px;overflow:auto;white-space:pre-line}
+.mu-fonte{flex:none;font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:999px;background:var(--field);color:var(--muted)}
+.mu-f-matriz{background:var(--green-soft);color:var(--green)}.mu-f-rascunho{background:var(--amber-soft);color:var(--amber)}
+.mu-blocos{display:flex;flex-direction:column;gap:3px;border:1px solid var(--f-minuta);border-radius:10px;padding:9px 11px;margin-bottom:10px;background:var(--f-minuta-s);font-size:12.5px}
+.mu-blocos small{color:var(--muted);font-size:11px;margin-bottom:3px}.mu-blocos label{display:flex;gap:6px;align-items:flex-start;cursor:pointer}.mu-blocos i{color:var(--faint)}
+.mu-apoio{width:100%;height:calc(100vh - 230px);border:1px solid var(--line2);border-radius:10px;background:var(--panel2)}
+.mu-pre{font-size:11.5px;max-height:300px;overflow:auto;background:var(--field);padding:10px;border-radius:8px}
+@media(max-width:1250px){html main#muMain{grid-template-columns:290px minmax(0,1fr)!important}#muMain .mu-dir{grid-column:1/-1;border-left:0;border-top:1px solid var(--line2)}}
+@media(max-width:820px){html main#muMain{grid-template-columns:minmax(0,1fr)!important}#muMain>aside,#muMain>section{overflow:visible}}
 </style>
 </head>
 <body>
@@ -998,6 +1063,9 @@ html .cmt-mind-node.compacto:has(.branch-mark) .label{padding-right:6px}
     <span class="fluxo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     <button class="faceta mtab" data-mod="modelos" style="--fc:var(--f-minuta);--fcs:var(--f-minuta-s)" onclick="setModulo('modelos')" title="Alt+2" role="tab">
       <span class="fn">II</span><span class="ft"><b>Modelos</b><small><span id="ctMod">—</span> extraídos das decisões</small></span></button>
+    <span class="mu-sep" aria-hidden="true"></span>
+    <button class="faceta mtab mu-tab" data-mod="minutario" style="--fc:var(--f-mu);--fcs:var(--f-mu-s)" onclick="setModulo('minutario')" title="Minutas em elaboração, conectadas ao acervo (Alt+4)" role="tab">
+      <span class="fn">✎</span><span class="ft"><b>Minutário</b><small>minutas do acervo</small></span></button>
   </nav>
   <div class="spacer"></div>
   <div class="status"><i id="stDot"></i><span id="stTxt">carregando índice…</span></div>
@@ -1105,6 +1173,35 @@ html .cmt-mind-node.compacto:has(.branch-mark) .label{padding-right:6px}
 </main>
 
 <!-- ===================== MÓDULO MODELOS ===================== -->
+<main class="modulo" id="muMain" data-mod="minutario" hidden aria-label="Minutário">
+  <aside class="mu-esq">
+    <div class="mu-h"><span class="mu-k">✎ Minutário</span><small>minutas em elaboração · recebidas do acervo · não é banco do gabinete</small></div>
+    <div class="mu-bt"><button type="button" class="btn sm" data-mu-acao="novo">+ Processo</button><button type="button" class="btn sm" data-mu-acao="colar" title="Cole o JSON do processo exportado pelo acervo">Colar do acervo</button><button type="button" class="btn sm" data-mu-acao="ajuda" title="Como o acervo envia processos ao Minutário">Como receber</button></div>
+    <div class="mu-fila" id="muFila"></div>
+    <div class="mu-sec">Dados do processo</div>
+    <div id="muDados"></div>
+  </aside>
+  <section class="mu-centro">
+    <div class="mu-cab" id="muCab"></div>
+    <div class="mu-org-l" id="muOrigem"></div>
+    <div class="mu-bar">
+      <div class="vista-mod" role="group" aria-label="Exibição da minuta"><button type="button" data-mu-vista="previa">Prévia</button><button type="button" data-mu-vista="texto">Texto</button></div>
+      <button type="button" class="btn sm" data-mu-acao="base" title="Recomeça pela estrutura-base do gabinete com os dados do processo">↺ Estrutura-base</button>
+      <button type="button" class="btn sm" id="btnMuDesf" data-mu-acao="desfazer" disabled>↶ Desfazer</button>
+      <button type="button" class="pend" id="muPend" data-mu-acao="pend" title="Ir ao próximo [campo] pendente"></button>
+      <button type="button" class="btn sm pri" data-mu-acao="copiar">Copiar</button>
+      <button type="button" class="btn sm" data-mu-acao="doc">Baixar .doc</button>
+      <button type="button" class="btn sm" data-mu-acao="pronta" title="Marca a minuta como pronta (ou volta a rascunho) e avisa o acervo, se aberto por ele">✓ Pronta</button>
+      <button type="button" class="btn sm" data-mu-acao="excluir" title="Retira o processo do minutário deste navegador">Retirar</button>
+      <span class="meta" id="muConta" style="margin-left:auto"></span>
+    </div>
+    <textarea id="muEd" class="editor" spellcheck="true" hidden aria-label="Minuta em texto"></textarea><div id="muPrev" class="previa"></div>
+  </section>
+  <aside class="mu-dir" aria-label="Localizar">
+    <div class="mu-tabs" role="group" aria-label="Localizar"><button type="button" data-mu-tab="modelos">Modelos</button><button type="button" data-mu-tab="prec">Precedentes</button><button type="button" data-mu-tab="par">Parágrafos</button><button type="button" data-mu-tab="cit">Citações</button><button type="button" data-mu-tab="dir">Diretrizes</button></div>
+    <div id="muLado"></div>
+  </aside>
+</main>
 <main class="sem-detalhe modulo" id="mMod" data-mod="modelos" hidden>
   <aside class="arvcol" aria-label="Árvore de assuntos">
     <div class="arv-h"><span class="lbl">◈ Modelos por ramo do direito e assunto</span><button type="button" class="btn sm arv-voltar" onclick="alternarModoArvore(false)" title="Voltar à lista de modelos (Alt+3)">☷ Voltar à lista de modelos</button></div>
@@ -1566,7 +1663,7 @@ $('q').addEventListener('keydown',e=>{if(e.key==='Enter')buscar()});
 document.querySelectorAll('input[name=modo]').forEach(r=>r.addEventListener('change',()=>{if(r.value==='indice'&&r.checked){hitsIntegral=null;aplicar()}}));
 document.addEventListener('keydown',e=>{
   if(e.altKey&&e.key==='3'){e.preventDefault();alternarModoArvore();return}
-  if(e.altKey&&['1','2'].includes(e.key)){e.preventDefault();setModulo(['juris','modelos'][+e.key-1]);return}
+  if(e.altKey&&['1','2','4'].includes(e.key)){e.preventDefault();setModulo({1:'juris',2:'modelos',4:'minutario'}[e.key]);return}
   const q={juris:'q',modelos:'mq'}[MODULO];
   if(e.key==='/'&&document.activeElement!==$(q)&&!dlg.open&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();$(q).focus()}
   if(e.key==='Escape'&&!dlg.open){if(MODULO==='juris'&&selId)fechar();else if(MODULO!=='juris')fecharLateral(MODULO)}
@@ -1583,6 +1680,7 @@ function setModulo(m){
   document.querySelectorAll('main.modulo').forEach(el=>el.hidden=el.dataset.mod!==m);
   if(m==='modelos') abrirModelos();
   if(m==='juris') salvarHash();
+  if(m==='minutario') muAbrir();
   arvRender();
 }
 function fecharLateral(m){const el=$('mMod');el.classList.add('sem-detalhe');el.querySelectorAll('li.sel').forEach(l=>l.classList.remove('sel'))}
@@ -1699,7 +1797,7 @@ function abrirApoioPainel(){
 }
 document.addEventListener('toggle',e=>{if(e.target.id!=='apoioBlk')return;LS.set('acv_apoio_aberto',e.target.open?'1':'');if(e.target.open){apoioMontar();apoioEnviar(true)}},true);
 window.addEventListener('message',ev=>{
-  if(ev.origin!==location.origin||!ev.data) return; const ed=$('minEd'); if(!ed) return;
+  if(ev.origin!==location.origin||!ev.data) return; if($('muApoioFr')&&ev.source===$('muApoioFr').contentWindow) return; const ed=$('minEd'); if(!ed) return;
   if(ev.data.type==='cmt-apoio-retorno'&&typeof ev.data.texto==='string'&&ev.data.texto!==ed.value){
     ED_HIST.push(ed.value); if(ED_HIST.length>20)ED_HIST.shift(); ed.value=ev.data.texto; APOIO_ULT=ed.value; ED_DIRTY=true;
     if($('btnDesfazer'))$('btnDesfazer').disabled=false; estadoEditor(); toast('Correção das diretrizes aplicada à minuta. ↶ Desfazer disponível.');
@@ -2529,8 +2627,9 @@ function relatorioHTML(m,a){
     <label>Ementa embargada</label><textarea id="rEmenta" data-relf placeholder="Só para embargos de declaração: a ementa transcrita do acórdão embargado"></textarea>
   </div>`;
 }
-const vRel=id=>{const el=$(id);return el?el.value.trim():''};
-function relAtivo(){const r=document.querySelector('input[name="relFonte"]:checked');return !!r&&r.value==='montar'}
+var REL_OVR=null;   // Minutário: dados do processo no lugar do formulário da aba Modelos
+const vRel=id=>{if(REL_OVR)return String(REL_OVR[id]??'').trim();const el=$(id);return el?el.value.trim():''};
+function relAtivo(){if(REL_OVR)return true;const r=document.querySelector('input[name="relFonte"]:checked');return !!r&&r.value==='montar'}
 document.addEventListener('change',e=>{if(e.target.name!=='relFonte')return;const f=$('relForm');if(f)f.hidden=e.target.value!=='montar';atualizarMinuta()});
 function enumerar(itens){
   if(!itens.length) return '';
@@ -3685,6 +3784,401 @@ document.addEventListener('click',e=>{
 let pvRsz;addEventListener('resize',()=>{clearTimeout(pvRsz);pvRsz=setTimeout(()=>{if(['mosaico','fluxo'].includes(PV_VISTA))pvRender()},200)});
 
 var ARV7_INI=false;
+/* =====================================================================
+   MINUTÁRIO — minutas em elaboração, conectado ao acervo do Gabinete CMT.
+   Não é banco: cada processo recebido (ou criado à mão) abre com a estrutura-base
+   da minuta do gabinete; à direita, localizam-se modelos e precedentes aplicáveis
+   (clique = minuta preenchida) e parágrafos, trechos e citações dos bancos.
+   Entrada: postMessage {type:'cmt-minutario-processo', processo:{…}} · localStorage
+   'cmt_minutario_entrada' (mesmo site) · #mu=<base64url de JSON>. Contrato no README.
+   ===================================================================== */
+var MU_ULT={n:'',t:0}, MU_T1=null, MU_T2=null, MU=null, MU_REF=null, MU_CUR=0, MU_TAB='modelos', MU_VISTA='previa', MU_HIST=[];
+const MU_LS='acv_mu_v1';
+const MU_ESP=[['ap','Apelação'],['dap','Dupla apelação'],['rnap','Remessa necessária e apelação'],['rn','Remessa necessária'],['ai','Agravo de instrumento'],['agint','Agravo interno'],['ed','Embargos de declaração']];
+const MU_ESP_NOME={ap:'Apelação',dap:'Apelação',rnap:'Apelação',rn:'Remessa necessária',ai:'Agravo de instrumento',agint:'Agravo interno',ed:'Embargos de declaração'};
+const MU_RES=[['','— a definir'],['provimento','provimento'],['parcial provimento','parcial provimento'],['desprovimento','desprovimento'],['não conhecimento','não conhecimento'],['prejudicado','prejudicado'],['rejeição','rejeição (embargos)'],['acolhimento','acolhimento (embargos)']];
+const MU_CAMPOS=[ // [chave, rótulo, tipo, dica]
+  ['numero','Nº do processo','t','0000000-00.0000.4.03.0000'],['classe','Classe','t','APELAÇÃO CÍVEL'],['assunto','Assunto (TPU/CNJ)','t','ex.: Reajustes de Remuneração'],
+  ['tema','Tema / especificidade','t','ex.: 28,86% · limitação territorial'],['etiquetas','Etiquetas','t','separadas por vírgula'],
+  ['ativo','Polo ativo','t',''],['passivo','Polo passivo','t',''],
+  ['rRec','Recorrente','t','o autor · a impetrante · o INSS'],['rDecId','ID da decisão recorrida','t','ex.: 287103188'],['rCtx','Contexto (ação de origem)','t','ex.: cumprimento de sentença coletiva'],
+  ['rDec','Resultado da decisão recorrida','a','julgou improcedente o pedido · extinguiu o processo…'],['rHon','Honorários / custas','a','opcional'],
+  ['rRecId','ID do recurso','t',''],['rAleg','Alegações (uma por linha)','a','cada linha vira (1), (2)…'],['rPed','Pedido','t','opcional'],
+  ['rContraId','ID das contrarrazões; preliminar','t','ID ; preliminar arguida'],['rMpfId','ID do parecer do MPF','t',''],['rOutros','Ocorrências','a','uma por linha'],
+  ['rEmenta','Ementa embargada (ED)','a','só para embargos de declaração'],['palavras','Palavras para localizar','t','termos que ajudam a achar modelo e precedente']];
+function muNovo(p){return {id:'mu-'+Date.now().toString(36)+Math.random().toString(36).slice(2,5),dados:Object.assign({tipo:'acórdão',rEsp:'ap',rForma:'A',rRaz:'que',rContra:'nao',rMpf:'-',resultado:''},p||{}),texto:'',origem:{tipo:'base'},dirty:false,criado:new Date().toISOString(),atualizado:new Date().toISOString(),status:'rascunho'}}
+function muCarregar(){if(MU)return MU;try{MU=JSON.parse(LS.get(MU_LS)||'null')}catch(e){MU=null}if(!MU||!Array.isArray(MU.fila))MU={fila:[],atual:null};return MU}
+function muSalvar(){try{LS.set(MU_LS,JSON.stringify(MU))}catch(e){toast('Não foi possível guardar o minutário neste navegador (espaço cheio?).')}}
+const muAtual=()=>MU&&MU.fila.find(x=>x.id===MU.atual)||null;
+
+/* ---------- entrada do acervo ---------- */
+function muDoAcervo(p,origem){
+  p=p||{};const m=p.minuta||{};const L=v=>Array.isArray(v)?v.join(', '):String(v||'');
+  const cl=String(p.classe||'').toUpperCase(),tj=String(p.tipo_julgamento||p.tipoJulgamento||'');
+  let esp=p.especie||'';
+  if(!esp){esp=tj==='ED'?'ed':tj==='AgInt'?'agint':/REMESSA/.test(cl)&&/APELA/.test(cl)?'rnap':/APELA/.test(cl)?'ap':/AGRAVO DE INSTRUMENTO/.test(cl)?'ai':/REMESSA/.test(cl)?'rn':/EMBARGOS DE DECLARA/.test(cl)?'ed':/AGRAVO INTERNO|REGIMENTAL/.test(cl)?'agint':'ap'}
+  let tipo=p.tipo_ato||p.tipoAto||'';if(!tipo){const t=String(p.tarefa||'');tipo=/ato judicial|monocr/i.test(t)?'monocrática':'acórdão'}
+  const ct=m.contrarrazoes||{};
+  return {numero:p.numero||p.processo||'',classe:p.classe||'',assunto:p.assunto||'',tema:[p.tema,p.especificidade].filter(Boolean).join(' · '),etiquetas:L(p.etiquetas),
+    ativo:p.polo_ativo||p.ativo||'',passivo:p.polo_passivo||p.passivo||'',orgao:p.orgao||'',tarefa:p.tarefa||'',mpfHip:p.mpf||'',meta:p.meta||'',prioridade:p.prioridade?'sim':'',
+    tipo,rEsp:esp,rForma:'A',rRaz:'que',rDecId:m.id_decisao||'',rDec:m.resultado_decisao||'',rCtx:m.contexto||'',rHon:m.honorarios||'',rRec:m.recorrente||'',rRecId:m.id_recurso||'',
+    rAleg:(Array.isArray(m.alegacoes)?m.alegacoes.join('\n'):m.alegacoes||''),rPed:m.pedido||'',rContra:ct.houve===false?'nao':ct.preliminar?'pre':ct.houve||ct.id?'sim':'nao',
+    rContraId:[ct.id,ct.preliminar].filter(Boolean).join('; '),rMpf:({desprovimento:'desp',provimento:'prov',prosseguimento:'pross',desnecessidade:'desn'})[String((m.mpf||{}).parecer||'').toLowerCase()]||'-',rMpfId:(m.mpf||{}).id||'',
+    rOutros:'',rEmenta:'',resultado:m.resultado_pretendido||'',palavras:'',_origem:origem||''};
+}
+function muReceber(p,origem){
+  muCarregar();const d=muDoAcervo(p,origem);
+  let it=d.numero&&MU.fila.find(x=>x.dados.numero===d.numero);
+  if(it){Object.entries(d).forEach(([k,v])=>{if(v&&!it.dados[k])it.dados[k]=v});toast(`Processo ${d.numero} já estava no minutário: dados completados, minuta preservada.`)}
+  else{it=muNovo(d);MU.fila.unshift(it);toast(`Processo ${d.numero||'sem número'} recebido${origem&&origem!==location.origin?' de '+origem:' do acervo'}.`)}
+  MU.atual=it.id;if(!it.texto)muBase(it);muSalvar();setModulo('minutario');muRender();
+}
+window.addEventListener('message',ev=>{
+  const d=ev.data;if(!d||typeof d!=='object')return;
+  if(d.type==='cmt-minutario-processo'&&d.processo){const n=d.processo.numero||d.processo.processo||'',agora=Date.now();if(!(n&&MU_ULT.n===n&&agora-MU_ULT.t<10000))muReceber(d.processo,ev.origin);MU_ULT={n,t:agora};try{ev.source&&ev.source.postMessage({type:'cmt-minutario-recebido',numero:d.processo.numero||d.processo.processo||''},ev.origin)}catch(e){}}
+});
+function muEntradaLocal(){try{const s=localStorage.getItem('cmt_minutario_entrada');if(s){localStorage.removeItem('cmt_minutario_entrada');const j=JSON.parse(s);(Array.isArray(j)?j:[j]).forEach(p=>muReceber(p.processo||p,location.origin))}}catch(e){}}
+addEventListener('storage',e=>{if(e.key==='cmt_minutario_entrada'&&e.newValue)muEntradaLocal()});
+function muEntradaHash(){const m=location.hash.match(/(?:^#|&)mu=([A-Za-z0-9_-]+)/);if(!m)return false;
+  try{const b=m[1].replace(/-/g,'+').replace(/_/g,'/');const j=JSON.parse(decodeURIComponent(escape(atob(b))));history.replaceState(null,'',location.pathname+'#minutario');muReceber(j.processo||j,location.origin)}catch(e){toast('Não foi possível ler os dados do processo enviados no endereço.')}return true}
+
+/* ---------- relatório e estrutura-base ---------- */
+function muComDados(it,fn){const ant=REL_OVR;REL_OVR=Object.assign({},it.dados);try{return fn()}finally{REL_OVR=ant}}
+function muRelatorio(it){return muComDados(it,()=>montarRelatorio())}
+function muTipoJulgamento(it){
+  const d=it.dados;if(!d.resultado||!Array.isArray(MATRIZES)||!MATRIZES.length)return null;
+  const esp=MU_ESP_NOME[d.rEsp]||'Apelação',r=semAcento(d.resultado).replace(/\s+/g,''),tp=d.tipo==='monocrática'?'monocrática':'acórdão';
+  return MATRIZES.find(x=>x.tipo===tp&&semAcento(x.especie||'').startsWith(semAcento(esp).slice(0,7))&&semAcento(x.resultado||'').replace(/\s+/g,'')===r)||null;
+}
+function muVersao(s,S){ // versão compatível com a situação do caso; sem compatível, nenhuma (o lugar fica como campo)
+  const V=s.versoes||[];let best=null,bk=-1;
+  for(const v of V){const c=Object.entries(v.situacao||{});if(c.every(([k,x])=>S[k]===x)&&c.length>bk){best=v;bk=c.length}}
+  return best;
+}
+function muFormulas(X,pos,S){const p=(X.posicoes||[]).find(q=>q.id===pos);if(!p)return [];const o=[];if(p.base)o.push(chv(p.base));
+  (p.slots||[]).filter(s=>!s.opcional&&s.versoes&&s.versoes.length).forEach(s=>{const v=muVersao(s,S||{});o.push(v?chv(v.texto):`[${String(p.titulo||p.id).replace(/^\d+\s*·\s*/,'').toLowerCase()}: conferir a versão adequada ao caso]`)});return o}
+function muBaseTexto(it){
+  const d=it.dados,mono=d.tipo==='monocrática',X=muTipoJulgamento(it),rel=muRelatorio(it),P=[],S=muComDados(it,()=>situacaoCaso());
+  const pos=(id,ph)=>{const f=X?muFormulas(X,id,S):[];return f.length?f:(ph?[ph]:[])};
+  if(mono){
+    P.push('DECISÃO',rel,'DECIDO.');
+    P.push(...pos('admiss',''),...pos('contro','[delimitação da controvérsia]'),...pos('jurid','[fundamentação jurídica: normas, teses e precedentes aplicáveis]'),...pos('fatos',''),...pos('provas',''),...pos('aplic','[aplicação ao caso]'),...pos('concl',''),...pos('honor',''));
+    P.push(...pos('disp','Ante o exposto, [dispositivo].'),'Publique-se. Intime-se.');
+  }else{
+    P.push('RELATÓRIO',rel,'É o relatório.','VOTO','O Desembargador Federal Carlos Muta (Relator):');
+    const c=pos('contro','[delimitação da controvérsia]');c[0]=/^Senhores Desembargadores/.test(c[0])?c[0]:'Senhores Desembargadores, '+String(c[0]).replace(/^\[/,'[').replace(/^([A-ZÁÉÍÓÚ])/,s=>s.toLowerCase());
+    P.push(...pos('admiss',''),...pos('prelim',''),...c,...pos('jurid','[fundamentação jurídica: normas, teses e precedentes aplicáveis]'),...pos('fatos',''),...pos('provas',''),...pos('aplic','[aplicação ao caso]'),...pos('concl','[conclusão]'),...pos('honor',''));
+    P.push(...pos('disp','Ante o exposto, [dispositivo].'),'É como voto.');
+    const caso=muComDados(it,()=>casoEmExame())||'[caso em exame: recurso, decisão recorrida e pedido]';
+    P.push('EMENTA','[CABEÇALHO DA EMENTA: RAMO DO DIREITO. CLASSE. TEMA. RESULTADO.]','I. Caso em exame','1. '+caso,'II. Questão em discussão','2. [A questão em discussão consiste em …]','III. Razões de decidir','3. [razão de decidir]','IV. Dispositivo','4. [Recurso desprovido/provido.]','__________','Dispositivos relevantes citados: [dispositivos]','Jurisprudência relevante citada: [precedentes]');
+    const ac=X&&X.acordao&&X.acordao[0]&&X.acordao[0].versoes&&X.acordao[0].versoes[0]?chv(X.acordao[0].versoes[0].texto).replace(/\s+,/g,','):'Vistos e relatados estes autos em que são partes as acima indicadas, a Turma Regional de Mato Grosso do Sul, por unanimidade, [resultado], nos termos do relatório e voto que ficam fazendo parte integrante do presente julgado.';
+    P.push('ACÓRDÃO',ac);
+  }
+  return {texto:P.filter(x=>x&&String(x).trim()).join('\n\n'),tipo:X};
+}
+function muBase(it,forcar){const b=muBaseTexto(it);it.texto=b.texto;it.origem={tipo:'base',nome:b.tipo?`Estrutura-base do gabinete · ${b.tipo.especie} · ${b.tipo.resultado} (${b.tipo.decisoes} decisões)`:'Estrutura-base do gabinete'};it.dirty=false;it.modelo=null}
+function muTrocaRelatorio(it){
+  const t=it.texto,rel=muRelatorio(it),mono=it.dados.tipo==='monocrática';
+  const ini=t.search(mono?/^DECIS[ÃA]O\s*$/m:/^RELAT[ÓO]RIO\s*$/m),fimRx=mono?/^DECIDO\.?\s*$/m:/^É o relatório\.?\s*$/m;
+  if(ini<0){return rel+'\n\n'+t}
+  const h=t.indexOf('\n',ini),f=t.slice(h).search(fimRx);if(f<0)return t;
+  return t.slice(0,h)+'\n\n'+rel+'\n\n'+t.slice(h+f);
+}
+
+/* ---------- localizar: modelos ---------- */
+const MU_STOP=new Set('para pela pelo pelos pelas com sem que dos das nos nas uma uns umas por como sobre entre apos contra mais menos esta este esse essa isso aquele aquela parte autos acao recurso processo sentenca decisao direito federal tribunal apelacao civel agravo instrumento'.split(' '));
+function muTokens(s){return [...new Set(semAcento(String(s||'')).replace(/[^a-z0-9,%\s]/g,' ').split(/\s+/).map(w=>/^\d+,\d+%?$/.test(w)?w.replace(/%$/,''):w.replace(/[,%]+$/,'').replace(/^[,%]+/,'')).filter(w=>/^\d+,\d+$/.test(w)||(w.length>3&&/[a-z]/.test(w)&&!MU_STOP.has(w))))]}
+function muTermos(it){const d=it.dados;return muTokens([d.assunto,d.tema,d.etiquetas,d.palavras,d.rCtx,d.rDec,String(d.rAleg||'').slice(0,600),d.classe].join(' '))}
+function muResultadoIgual(a,b){a=semAcento(String(a||'')).replace(/\s+/g,' ').trim();b=semAcento(String(b||'')).replace(/\s+/g,' ').trim();return !!a&&!!b&&(a===b||a.endsWith(' '+b)||b.endsWith(' '+a))}
+function muRankModelos(it){
+  const d=it.dados,T=muTermos(it),esp=MU_ESP_NOME[d.rEsp]||'',txtD=semAcento([d.assunto,d.tema,d.etiquetas,d.palavras,d.rCtx,d.numero].join(' '));
+  const C=[];
+  (CURADOS?curLista():[]).forEach(m=>{const txt=[m.nome,m.materia,m.descricao,(m.blocos||[]).map(b=>b.titulo).join(' ')].join(' ');C.push({fonte:ehVerif(m)?'matriz':'rascunho',m,id:m.id,nome:m.nome,peso:ehVerif(m)?3:1,X:semAcento(txt),gat:/28,86|0005019/.test(txt)?['28,86|0005019-15\\.1997']:[]})});
+  (MODS||[]).forEach(m=>{const txt=[m.nome,m.tema,(m.palavras_chave||[]).join(' '),(m.ementa_modelo||'').slice(0,500)].join(' ');C.push({fonte:'sugestao',m,id:m.id,nome:m.nome,freq:m.frequencia,peso:Math.min(2,Math.log10((m.frequencia||1)+1)),X:semAcento(txt),gat:[]})});
+  // peso de cada termo: raro entre os modelos vale mais (o que é comum a todos não distingue)
+  const N=C.length||1,W={};T.forEach(w=>{const df=C.reduce((n,c)=>n+(c.X.includes(w)?1:0),0);W[w]=Math.log((N+1)/(df+1))+.25});
+  const out=[];
+  for(const c of C){
+    const m=c.m,R=[];let s=c.peso;
+    if(d.tipo&&(m.tipo||'acórdão')!==d.tipo)continue;
+    if(esp&&m.especie){if(semAcento(m.especie).startsWith(semAcento(esp).slice(0,7))){s+=3;R.push(m.especie)}else s-=3}
+    const resOk=d.resultado&&m.resultado&&muResultadoIgual(m.resultado,d.resultado);
+    if(d.resultado&&m.resultado){if(resOk){s+=4;R.push(m.resultado)}else s-=4}
+    let soma=0;const hs=[];T.filter(w=>c.X.includes(w)).sort((a,b)=>W[b]-W[a]).forEach(w=>{soma+=W[w];if(hs.length<5)hs.push(w)});
+    s+=soma*1.2;if(hs.length)R.push('termos: '+hs.join(', '));
+    c.gat.forEach(g=>{try{if(new RegExp(g,'i').test(txtD)){s+=4;R.push('matéria do modelo')}}catch(e){}});
+    if(!hs.length&&!resOk)s-=3;
+    out.push({fonte:c.fonte,id:c.id,nome:c.nome,res:m.resultado,esp:m.especie,freq:c.freq,s,R});
+  }
+  return out.filter(o=>o.s>1).sort((a,b)=>b.s-a.s).slice(0,14);
+}
+function muAplicarModelo(fonte,id){
+  const it=muAtual();if(!it)return;
+  if(it.dirty&&!confirm('A minuta foi editada. Substituir pelo modelo escolhido? (↶ Desfazer recupera o texto atual)'))return;
+  muHist(it);let txt='',nome='';
+  if(fonte==='sugestao'){const m=MOD_POR.get(id);if(!m)return;nome=m.nome;txt=muComDados(it,()=>textoPadrao(m));it.modelo={fonte,id}}
+  else{const m=curPorId(id);if(!m)return;nome=m.nome;const r=muGerarCurado(it,m,null);txt=r.texto;it.modelo={fonte,id,sel:r.sel,op:r.op}}
+  it.texto=txt.replace(/\n{3,}/g,'\n\n');it.origem={tipo:'modelo',fonte,id,nome};it.dirty=false;muSalvar();muDesenharEditor();muDesenharLado();toast('Modelo aplicado com os dados do processo. Confira os campos pendentes.');
+}
+function muGerarCurado(it,m,estado){
+  const ant={CUR,CUR_EDIT};let r;
+  try{CUR={id:m.id,m:curLimpo(m),sel:new Set(),op:{},toque:new Set(),alt:{},sujo:false,local:''};CUR_EDIT=false;
+    r=muComDados(it,()=>{curPadroes();if(estado){CUR.sel=new Set(estado.sel);Object.assign(CUR.op,estado.op||{});Object.keys(estado.op||{}).forEach(k=>CUR.toque.add(k))}return {texto:textoCurado(),sel:[...CUR.sel],op:Object.assign({},CUR.op)}});
+  }finally{CUR=ant.CUR;CUR_EDIT=ant.CUR_EDIT}
+  return r;
+}
+function muBlocosHTML(it){
+  if(!it.modelo||it.modelo.fonte==='sugestao')return '';const m=curPorId(it.modelo.id);if(!m)return '';
+  const sel=new Set(it.modelo.sel||[]),op=it.modelo.op||{};
+  const bl=(m.blocos||[]).filter(b=>b.modo==='opcional'||b.modo==='alternativa');
+  if(!bl.length&&!(m.opcoes||[]).length)return '';
+  return `<div class="mu-blocos"><b>Blocos do modelo</b><small>marque o que se aplica ao caso · recompõe a minuta</small>${(m.opcoes||[]).map(o=>`<label><input type="checkbox" data-mu-op="${esc(o.id)}"${op[o.id]?' checked':''}> ${esc(o.rotulo||o.id)}</label>`).join('')}${bl.map(b=>`<label><input type="${b.modo==='alternativa'?'radio':'checkbox'}" name="mu-alt-${esc(b.alt||b.grupo||'x')}" data-mu-bl="${esc(b.id)}"${sel.has(b.id)?' checked':''}> ${esc(b.titulo||b.id)}${b.modo==='alternativa'?' <i>(alternativa)</i>':''}</label>`).join('')}</div>`;
+}
+
+/* ---------- localizar: precedentes ---------- */
+var MU_IDX_N=null;
+function muRankPrec(it){
+  if(!IDX||!IDX.length)return [];
+  if(!MU_IDX_N)MU_IDX_N=new Map();
+  const d=it.dados,T=muTermos(it);if(!T.length&&!d.numero)return [];
+  const sig=String(d.classe||'').toUpperCase(),out=[];
+  for(const x of IDX){
+    let t=MU_IDX_N.get(x.id);if(!t){t=semAcento(textoIndice(x));MU_IDX_N.set(x.id,t)}
+    let h=0;const hs=[];for(const w of T){if(t.includes(w)){h++;if(hs.length<4)hs.push(w)}}
+    if(!h)continue;let s=h*2;
+    if(sig&&x.cl&&sig===String(x.cl).toUpperCase())s+=2;
+    if(d.resultado){const g=pvGrupoRes(cmtJurisResultado(x)),alvo=/parcial/.test(d.resultado)?2:/^provi|acolh/.test(semAcento(d.resultado))?0:/despro|rejei/.test(semAcento(d.resultado))?1:/conhec/.test(semAcento(d.resultado))?3:/prejud/.test(semAcento(d.resultado))?4:-1;if(g===alvo)s+=3}
+    if(x.o&&/Mato Grosso do Sul/.test(x.o))s+=1.5;
+    s+=Math.max(0,(+(x.y||0)-2015))*.08;
+    out.push({x,s,hs});
+  }
+  return out.sort((a,b)=>b.s-a.s).slice(0,25);
+}
+async function muUsarPrecedente(id){
+  const it=muAtual(),x=POR_ID.get(id);if(!it||!x)return;
+  if(it.dirty&&!confirm('A minuta foi editada. Substituir pelo texto do precedente? (↶ Desfazer recupera o texto atual)'))return;
+  try{await carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y)}catch(e){toast('Falha ao carregar o inteiro teor: '+e.message);return}
+  const r=registro(id);if(!r||!r.inteiro_teor){toast('Inteiro teor indisponível para este precedente.');return}
+  muHist(it);const t=r.inteiro_teor.replace(/\r/g,'');
+  const cortar=(rx,de)=>{const m=t.slice(de).match(rx);return m?de+m.index:-1};
+  const sec=n=>{const m=t.match(new RegExp('^\\s*'+n+'\\s*$','m'));return m?t.indexOf(m[0])+m[0].length:-1};
+  const iV=sec('VOTO'),iE=sec('EMENTA'),iA=sec('AC[ÓO]RD[ÃA]O'),iD=x.t==='M'?sec('DECIDO\\.?'):-1;
+  const limpa=s=>s.replace(/\bID\s*\d{6,}(?:,\s*f\.\s*[\d\/-]+)?/g,'ID [nº]').replace(new RegExp(String(r.numero_processo||'---').replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g'),'[nº do processo]').replace(/\n{3,}/g,'\n\n').trim();
+  const P=[];
+  if(x.t==='M'){const fim=t.search(/^\s*(Publique-se|P\.\s*I\.)/m);P.push('DECISÃO',muRelatorio(it),'DECIDO.',limpa(iD>=0?t.slice(iD,fim>iD?fim:undefined):t),'Publique-se. Intime-se.')}
+  else{
+    const fimV=iE>0?t.lastIndexOf('\n',iE-6):-1,voto=iV>0?t.slice(iV,fimV>iV?fimV:undefined):'',em=iE>0?t.slice(iE,iA>iE?t.lastIndexOf('\n',iA-9):undefined):'',ac=iA>0?t.slice(iA).replace(/\n\s*CARLOS MUTA[\s\S]*$/,''):'';
+    P.push('RELATÓRIO',muRelatorio(it),'É o relatório.','VOTO',limpa(voto)||'[voto]','EMENTA',limpa(em)||'[ementa]','ACÓRDÃO',limpa(ac)||'[acórdão]');
+  }
+  it.texto=P.filter(Boolean).join('\n\n');it.origem={tipo:'precedente',id,nome:`${x.c} ${x.n} (${fmtData(x.d)})`};it.modelo=null;it.dirty=false;muSalvar();muDesenharEditor();muDesenharLado();
+  toast('Texto do precedente aplicado com o relatório do processo. IDs e número marcados; confira nomes, datas e o resultado.',7000);
+}
+
+/* ---------- localizar: parágrafos, trechos e citações ---------- */
+async function muRefs(){
+  if(MU_REF)return MU_REF;MU_REF={par:[],cit:[],ok:false};
+  const urls=f=>[new URL('../../gabcmt/referencias/'+f,location.href).href,'https://raw.githubusercontent.com/brndutra/gabcmt/main/referencias/'+f];
+  const ler=async f=>{for(const u of urls(f)){try{const r=await fetch(u,{cache:'no-cache'});if(r.ok)return await r.json()}catch(e){}}return null};
+  const conv=s=>String(s||'').replace(/\{([\w.-]+)\|([^}]+)\}/g,'[$2]').replace(/\{([\w.-]+)\}/g,'[$1]');
+  const [p,c]=await Promise.all([ler('paragrafos.json'),ler('citacoes.json')]);
+  (p&&p.registros||[]).forEach(r=>MU_REF.par.push({fonte:'Parágrafos-padrão do gabinete',tit:r.titulo||r.id,cat:r.categoria||'',txt:conv(r.texto),uso:r.uso||'',status:r.status||''}));
+  (c&&c.registros||[]).forEach(r=>MU_REF.cit.push({fonte:r.tribunal||r.categoria||'',tit:r.referencia||r.id,cat:[r.assunto,r.tema,r.especificacao].filter(Boolean).join(' › '),txt:[r.referencia,r.tese?`(“${r.tese}”)`:''].filter(Boolean).join(' '),tese:r.tese||''}));
+  // trechos vinculados e blocos dos modelos-matriz (voto)
+  try{const r=await fetch(new URL('../modelos/trechos.json',baseDados()).href,{cache:'no-cache'});if(r.ok){const j=await r.json();(j.materias||[]).forEach(mt=>(mt.trechos||[]).forEach(tr=>(tr.voto||[]).forEach(v=>MU_REF.par.push({fonte:'Trechos vinculados · '+mt.nome,tit:tr.titulo||tr.id,cat:'Voto › '+v.pos,txt:chv(v.texto)}))))}}catch(e){}
+  (CURADOS?curLista():[]).forEach(m=>(m.blocos||[]).forEach(b=>(b.voto||[]).forEach(v=>MU_REF.par.push({fonte:(ehVerif(m)?'Modelo-matriz · ':'Rascunho · ')+m.nome,tit:b.titulo||b.id,cat:'Voto › '+v.pos,txt:chv(String(v.texto).replace(/\[\?!?[\w-]+:([^\]]*)\]/g,'$1'))}))));
+  (MATRIZES||[]).forEach(X=>(X.posicoes||[]).forEach(p=>(p.slots||[]).forEach(s=>(s.versoes||[]).slice(0,3).forEach(v=>MU_REF.par.push({fonte:'Fórmulas · '+X.especie+' · '+X.resultado+(X.tipo==='monocrática'?' (monocrática)':''),tit:(p.titulo||p.id)+(v.titulo&&v.titulo!=='padrão'?' · '+v.titulo:''),cat:'Voto › '+p.id,txt:chv(v.texto)})))));
+  const vistos=new Set();MU_REF.par=MU_REF.par.filter(o=>{const k=o.txt.slice(0,160);if(!o.txt.trim()||vistos.has(k))return false;vistos.add(k);return true});
+  MU_REF.ok=true;return MU_REF;
+}
+function muBuscar(lista,q,max){const c=parseConsulta(q||'');return lista.filter(o=>c.vazia||casa([o.tit,o.cat,o.txt,o.fonte].join(' '),c)).slice(0,max||60)}
+
+/* ---------- edição ---------- */
+function muHist(it){MU_HIST.push({id:it.id,texto:it.texto,origem:it.origem,modelo:it.modelo,dirty:it.dirty});if(MU_HIST.length>30)MU_HIST.shift()}
+function muDesfazer(){const it=muAtual();if(!it)return;let i=MU_HIST.length-1;while(i>=0&&MU_HIST[i].id!==it.id)i--;if(i<0)return;const h=MU_HIST.splice(i,1)[0];Object.assign(it,{texto:h.texto,origem:h.origem,modelo:h.modelo,dirty:h.dirty});muSalvar();muDesenharEditor();muDesenharLado()}
+function muInserir(txt){
+  const it=muAtual();if(!it||!txt)return;muHist(it);const t=it.texto;let i=MU_CUR;
+  if(!(i>0&&i<=t.length)){const m=t.search(/^(Ante o exposto|Pelo exposto)/m);i=m>0?m:t.length}
+  const antes=t.slice(0,i).replace(/\s*$/,''),depois=t.slice(i).replace(/^\s*/,'');
+  it.texto=antes+'\n\n'+txt.trim()+'\n\n'+depois;MU_CUR=antes.length+2+txt.trim().length;it.dirty=true;muSalvar();muDesenharEditor();toast('Inserido na minuta.');
+}
+function muRenderPrevia(){
+  const p=$('muPrev'),it=muAtual();if(!p||!it)return;
+  const t=it.texto;let k=0,sec='',off=0;const H=[];
+  const marcar=s=>{let o='',last=0;s.replace(/\[[^\]\n]{1,120}\]/g,(m,pos)=>{o+=esc(s.slice(last,pos));last=pos+m.length;o+=/^\[(sic|\.\.\.|…)\]$/i.test(m)?esc(m):`<span class="pv-f mu-f" data-mun="${k++}" tabindex="0" title="Clique para preencher">${esc(m.slice(1,-1))}</span>`;return m});return o+esc(s.slice(last))};
+  for(const seg of t.split(/(\n{2,})/)){const ini=off;off+=seg.length;if(/^\n+$/.test(seg)||!seg.trim())continue;const x=seg.trim();
+    if(PV_TIT.test(x)){sec=x.toUpperCase();H.push(`<h4 class="pv-h">${esc(x)}</h4>`);continue}
+    if(/^_{5,}$/.test(x)){H.push('<hr class="pv-hr">');continue}
+    let c='pv-p';if(/^[“"]/.test(x))c+=' pv-cit';
+    if(sec==='EMENTA'){if(/^[IVX]+\.\s/.test(x))c+=' pv-et';else if(/^(Dispositivos|Jurisprud[êe]ncia) relevantes? citad/.test(x))c+=' pv-ref';else if(x===x.toUpperCase()&&/[A-ZÁÉÍÓÚÇ]{4}/.test(x))c+=' pv-ec';else c+=' pv-ei'}
+    if(/^(É o relatório\.|É como voto\.|DECIDO\.)$/.test(x))c+=' pv-fecho';
+    H.push(`<p class="${c}" data-muoff="${ini}">${marcar(x).replace(/\n/g,'<br>')}</p>`)}
+  p.innerHTML=H.join('')||'<p class="ajuda">A minuta aparece aqui.</p>';
+}
+function muEstado(){
+  const it=muAtual(),ed=$('muEd');if(!it||!ed)return;
+  const pd=pendenciasMinuta(it.texto),b=$('muPend');if(b){b.classList.toggle('zero',!pd.length);b.innerHTML=pd.length?`⚠ ${pd.length} campo${pd.length>1?'s':''} pendente${pd.length>1?'s':''}`:'✓ sem campos pendentes'}
+  const c=$('muConta');if(c){const pal=(it.texto.match(/\S+/g)||[]).length;c.textContent=`${pal.toLocaleString('pt-BR')} palavras`}
+  const o=$('muOrigem');if(o)o.innerHTML=muOrigemHTML(it);
+  if($('btnMuDesf'))$('btnMuDesf').disabled=!MU_HIST.some(h=>h.id===it.id);
+  muApoioEnviar();
+}
+function muOrigemHTML(it){const o=it.origem||{};const r={base:'Estrutura-base',modelo:o.fonte==='sugestao'?'Sugestão aplicada':o.fonte==='matriz'?'Modelo-matriz aplicado':'Rascunho de modelo aplicado',precedente:'Precedente como base'}[o.tipo]||'Minuta';
+  return `<span class="mu-org mu-org-${esc(o.tipo||'base')}">${r}</span><span class="mu-org-n">${esc(o.nome||'')}</span>${it.dirty?'<span class="mu-org-e">editada à mão</span>':''}`}
+function muDesenharEditor(){
+  const it=muAtual(),ed=$('muEd');if(!ed)return;
+  if(!it){ed.value='';$('muPrev').innerHTML='';return}
+  if(ed.value!==it.texto)ed.value=it.texto;
+  ed.hidden=MU_VISTA!=='texto';$('muPrev').hidden=MU_VISTA==='texto';
+  document.querySelectorAll('[data-mu-vista]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.muVista===MU_VISTA)));
+  if(MU_VISTA!=='texto')muRenderPrevia();muEstado();
+}
+function muPreencherCampo(n,v){const it=muAtual();if(!it)return;const x=pendenciasMinuta(it.texto)[n];if(!x)return;muHist(it);it.texto=it.texto.slice(0,x.index)+v+it.texto.slice(x.index+x[0].length);it.dirty=true;muSalvar();muDesenharEditor()}
+
+/* ---------- desenho ---------- */
+function muFormHTML(it){
+  const d=it.dados,v=k=>esc(d[k]||'');
+  const sel=(k,ops)=>`<select class="inp" data-mud="${k}">${ops.map(([a,b])=>`<option value="${esc(a)}"${String(d[k]||'')===a?' selected':''}>${esc(b)}</option>`).join('')}</select>`;
+  const campo=([k,r,t,ph])=>`<label class="mu-l"><span>${esc(r)}</span>${t==='a'?`<textarea class="inp" data-mud="${k}" rows="${k==='rAleg'?4:2}" placeholder="${esc(ph)}">${v(k)}</textarea>`:`<input class="inp" data-mud="${k}" value="${v(k)}" placeholder="${esc(ph)}">`}</label>`;
+  const C=Object.fromEntries(MU_CAMPOS.map(c=>[c[0],c]));
+  return `<div class="mu-form">
+    <div class="mu-g2"><label class="mu-l"><span>Ato</span>${sel('tipo',[['acórdão','Acórdão (voto)'],['monocrática','Decisão monocrática']])}</label><label class="mu-l"><span>Espécie</span>${sel('rEsp',MU_ESP)}</label></div>
+    <label class="mu-l mu-res"><span>Resultado pretendido</span>${sel('resultado',MU_RES)}<small>decisão sua; orienta modelo, fórmulas e precedentes</small></label>
+    ${['numero','classe','assunto','tema','etiquetas','palavras'].map(k=>campo(C[k])).join('')}
+    <details class="mu-det" open><summary>Relatório</summary>
+      ${['ativo','passivo','rRec','rDecId','rCtx','rDec','rHon','rRecId'].map(k=>campo(C[k])).join('')}
+      <label class="mu-l"><span>Forma das razões</span>${sel('rRaz',[['que','alegando, em suma, que: (1) …'],['inf','alegando, em suma: (1) ter …']])}</label>
+      ${['rAleg','rPed'].map(k=>campo(C[k])).join('')}
+      <label class="mu-l"><span>Contrarrazões</span>${sel('rContra',[['nao','Não houve'],['sim','Houve (ID …)'],['pre','Houve, com preliminar'],['-','— omitir']])}</label>${campo(C.rContraId)}
+      <label class="mu-l"><span>Ministério Público</span>${sel('rMpf',[['-','— sem manifestação'],['desp','opinou pelo desprovimento'],['prov','opinou pelo provimento'],['pross','opinou pelo prosseguimento'],['desn','desnecessidade de intervenção']])}</label>${campo(C.rMpfId)}
+      ${campo(C.rOutros)}${d.rEsp==='ed'?campo(C.rEmenta):''}
+      <button type="button" class="btn sm" data-mu-acao="relatorio" title="Substitui só o relatório da minuta pelo montado com estes dados">↻ Recompor o relatório na minuta</button>
+    </details>
+    ${d.tarefa||d.mpfHip||d.meta||d.orgao?`<div class="mu-acv"><b>Do acervo</b>${d.orgao?`<span>Órgão: ${esc(d.orgao)}</span>`:''}${d.tarefa?`<span>Tarefa: ${esc(d.tarefa)}</span>`:''}${d.mpfHip?`<span>MPF: ${esc(d.mpfHip)}</span>`:''}${d.meta?`<span>Meta: ${esc(d.meta)}</span>`:''}${d.prioridade?'<span>Prioridade</span>':''}</div>`:''}
+  </div>`;
+}
+function muFilaHTML(){
+  return MU.fila.length?MU.fila.map(it=>`<button type="button" class="mu-it${it.id===MU.atual?' on':''}" data-mu-it="${it.id}"><b>${esc(it.dados.numero||'Processo sem número')}</b><small>${esc([it.dados.classe||MU_ESP_NOME[it.dados.rEsp],it.dados.assunto].filter(Boolean).join(' · ')||'—')}</small><span class="mu-st mu-st-${it.status}">${it.status==='pronta'?'pronta':'rascunho'}</span></button>`).join(''):'<p class="ajuda">Nenhum processo. Envie do acervo (botão “Minutar” no app do gabinete) ou crie um aqui.</p>';
+}
+function muDesenharLado(){
+  const box=$('muLado'),it=muAtual();if(!box)return;
+  document.querySelectorAll('[data-mu-tab]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.muTab===MU_TAB)));
+  if(!it){box.innerHTML='<p class="ajuda">Escolha ou crie um processo.</p>';return}
+  if(MU_TAB==='modelos'){
+    if(!MODS||!CURADOS){box.innerHTML='<p class="ajuda">carregando modelos…</p>';Promise.all([MODS?0:carregarModelos(),CURADOS?0:carregarCurados(),carregarMatrizes()]).then(()=>muDesenharLado()).catch(()=>{});return}
+    const L=muRankModelos(it);
+    box.innerHTML=`${muBlocosHTML(it)}<p class="ajuda">Ordenados por espécie, resultado pretendido e termos do processo (assunto, tema, etiquetas, palavras). ${it.dados.resultado?'':'<b>Defina o resultado pretendido</b> para separar provimento e desprovimento.'}</p>${L.length?L.map(o=>`<div class="mu-c"><div class="mu-c-h"><span class="mu-fonte mu-f-${o.fonte}">${{matriz:'✓ Matriz',rascunho:'✎ Rascunho',sugestao:'Sugestão'}[o.fonte]}</span><b>${esc(o.nome)}</b></div><small>${esc(o.R.join(' · ')||'—')}${o.freq?` · ${o.freq} decisões`:''}</small><div class="mu-c-b"><button type="button" class="btn sm pri" data-mu-mod="${esc(o.fonte)}|${esc(o.id)}">Aplicar à minuta</button><button type="button" class="btn sm" data-mu-ver-mod="${esc(o.fonte)}|${esc(o.id)}">ver na aba Modelos</button></div></div>`).join(''):'<p class="ajuda">Nenhum modelo com afinidade suficiente. Continue pela estrutura-base e busque parágrafos e citações nas outras abas.</p>'}`;
+  }else if(MU_TAB==='prec'){
+    const L=muRankPrec(it);
+    box.innerHTML=`<p class="ajuda">Precedentes do gabinete com os termos do processo, priorizando a mesma classe, o resultado pretendido e a Turma Regional de MS.</p>${L.length?L.map(({x,hs})=>`<div class="mu-c"><div class="mu-c-h"><span class="tp ${x.t}">${x.t}</span><b>${esc(x.c)} ${esc(x.n)}</b>${it.dados.numero&&x.n===it.dados.numero?'<span class="mu-fonte mu-f-rascunho" title="Decisão anterior deste mesmo processo">mesmo processo</span>':''}<small class="mu-dt">${fmtData(x.d)}</small></div><small>${esc(assunto(x)||'').slice(0,190)}</small><small class="mu-r">${esc(cmtJurisResultado(x))} · termos: ${esc(hs.join(', '))}</small><div class="mu-c-b"><button type="button" class="btn sm pri" data-mu-prec="${x.id}">Usar como base</button><button type="button" class="btn sm" data-mu-citar="${x.id}">Inserir citação</button><button type="button" class="btn sm" data-mu-abrir="${x.id}">abrir</button></div></div>`).join(''):'<p class="ajuda">Preencha assunto, tema, etiquetas ou palavras para localizar precedentes.</p>'}`;
+  }else if(MU_TAB==='par'||MU_TAB==='cit'){
+    const q=box.querySelector('#muQ')?.value??'';
+    if(!MU_REF||!MU_REF.ok){box.innerHTML='<p class="ajuda">carregando parágrafos e citações…</p>';Promise.all([CURADOS?0:carregarCurados(),carregarMatrizes()]).then(muRefs).then(()=>muDesenharLado());return}
+    const lista=MU_TAB==='par'?MU_REF.par:MU_REF.cit;
+    box.innerHTML=`<input class="inp" id="muQ" placeholder="${MU_TAB==='par'?'Buscar parágrafos e trechos — ex.: honorários recursais':'Buscar citações — ex.: Tema 1.178, EPI'}" value="${esc(q)}" autocomplete="off"><p class="ajuda" id="muQn"></p><div id="muRes"></div>`;
+    muBuscaPintar();const i=$('muQ');i.focus();i.setSelectionRange(i.value.length,i.value.length);
+  }else if(MU_TAB==='dir'){
+    box.innerHTML='<p class="ajuda">Diretrizes do gabinete: conferência e correções da minuta; “ir” leva ao trecho, “corrigir” aplica na minuta.</p><iframe id="muApoioFr" class="mu-apoio" src="./apoio/?embed=1" title="Diretrizes · consulta e apoio"></iframe>';
+    $('muApoioFr').addEventListener('load',()=>muApoioEnviar(true));
+  }
+}
+function muBuscaPintar(){
+  const q=$('muQ')?.value||'',lista=MU_TAB==='par'?MU_REF.par:MU_REF.cit,L=muBuscar(lista,q,60);
+  $('muQn').textContent=`${L.length} de ${lista.length} ${MU_TAB==='par'?'parágrafos e trechos':'citações'}${MU_TAB==='par'?' · parágrafos-padrão do gabinete, trechos vinculados, blocos dos modelos-matriz e fórmulas dos tipos de julgamento':' · banco de citações do gabinete'}`;
+  $('muRes').innerHTML=L.map((o,i)=>`<div class="mu-c"><div class="mu-c-h"><b>${esc(o.tit)}</b></div><small class="mu-r">${esc(o.fonte)}${o.cat?' · '+esc(o.cat):''}</small><div class="mu-txt">${esc(o.txt.length>420?o.txt.slice(0,420)+'…':o.txt)}</div><div class="mu-c-b"><button type="button" class="btn sm pri" data-mu-ins="${i}">Inserir na minuta</button></div></div>`).join('')||'<p class="ajuda">Nada encontrado.</p>';
+  $('muRes')._lista=L;
+}
+let MU_AP_T=null,MU_AP_ULT=null;
+function muApoioEnviar(ja){const fr=$('muApoioFr'),it=muAtual();if(!fr||!it)return;clearTimeout(MU_AP_T);MU_AP_T=setTimeout(()=>{if(!ja&&it.texto===MU_AP_ULT)return;MU_AP_ULT=it.texto;try{fr.contentWindow.postMessage({type:'cmt-apoio-minuta',texto:it.texto},location.origin)}catch(e){}},ja?0:400)}
+window.addEventListener('message',ev=>{
+  const fr=$('muApoioFr');if(!fr||ev.source!==fr.contentWindow||ev.origin!==location.origin||!ev.data)return;const it=muAtual();if(!it)return;
+  if(ev.data.type==='cmt-apoio-retorno'&&typeof ev.data.texto==='string'&&ev.data.texto!==it.texto){muHist(it);it.texto=ev.data.texto;it.dirty=true;MU_AP_ULT=it.texto;muSalvar();muDesenharEditor();toast('Correção das diretrizes aplicada. ↶ Desfazer disponível.')}
+  if(ev.data.type==='cmt-apoio-ir'){MU_VISTA='texto';muDesenharEditor();const ed=$('muEd'),i=+ev.data.i||0,n=+ev.data.len||0;ed.focus();ed.setSelectionRange(i,i+n);ed.scrollTop=Math.max(0,(ed.value.slice(0,i).split('\n').length-4)*18)}
+});
+function muRender(){
+  muCarregar();if(!MU.atual&&MU.fila[0])MU.atual=MU.fila[0].id;
+  const it=muAtual();
+  $('muFila').innerHTML=muFilaHTML();
+  $('muDados').innerHTML=it?muFormHTML(it):'';
+  $('muCab').innerHTML=it?`<b>${esc(it.dados.numero||'Processo sem número')}</b><small>${esc([it.dados.classe,it.dados.assunto].filter(Boolean).join(' · '))}</small>`:'<b>Minutário</b><small>nenhum processo aberto</small>';
+  document.querySelector('#muMain .mu-centro').hidden=!it;
+  muDesenharEditor();muDesenharLado();
+}
+function muAbrir(){muCarregar();const it=muAtual();if(it&&!it.texto){muBase(it);muSalvar()}muRender();
+  if(!Array.isArray(MATRIZES)||!MATRIZES.length)Promise.resolve(carregarMatrizes()).then(()=>{const x=muAtual();if(x&&!x.dirty&&x.origem?.tipo==='base'){muBase(x);muSalvar();muDesenharEditor()}}).catch(()=>{})}
+
+/* ---------- eventos ---------- */
+document.addEventListener('input',e=>{
+  const el=e.target;if(!el.closest||!el.closest('#muMain'))return;
+  if(el.id==='muEd'){const it=muAtual();if(!it)return;if(!it.dirty)muHist(it);it.texto=el.value;it.dirty=true;MU_CUR=el.selectionStart;clearTimeout(MU_T1);MU_T1=setTimeout(()=>{muSalvar();muEstado()},300);return}
+  if(el.id==='muQ'){clearTimeout(el._t);el._t=setTimeout(muBuscaPintar,150);return}
+  if(el.dataset.mud){const it=muAtual();if(!it)return;it.dados[el.dataset.mud]=el.value;it.atualizado=new Date().toISOString();clearTimeout(MU_T2);MU_T2=setTimeout(()=>{muSalvar();$('muFila').innerHTML=muFilaHTML();if(!it.dirty&&it.origem?.tipo==='base'){muBase(it);muDesenharEditor()}if(MU_TAB==='modelos'||MU_TAB==='prec')muDesenharLado()},450)}
+});
+document.addEventListener('change',e=>{
+  const el=e.target;if(!el.closest||!el.closest('#muMain'))return;const it=muAtual();if(!it)return;
+  if(el.dataset.mud&&el.tagName==='SELECT'){it.dados[el.dataset.mud]=el.value;muSalvar();if(el.dataset.mud==='rEsp'||el.dataset.mud==='tipo')$('muDados').innerHTML=muFormHTML(it);if(!it.dirty&&it.origem?.tipo==='base'){muBase(it);muDesenharEditor()}muDesenharLado();return}
+  if(el.dataset.muOp||el.dataset.muBl){const m=curPorId(it.modelo.id);if(!m)return;const st={sel:[...document.querySelectorAll('#muLado [data-mu-bl]:checked')].map(x=>x.dataset.muBl).concat((m.blocos||[]).filter(b=>b.modo!=='opcional'&&b.modo!=='alternativa').map(b=>b.id)),op:Object.fromEntries([...document.querySelectorAll('#muLado [data-mu-op]')].map(x=>[x.dataset.muOp,x.checked]))};
+    if(it.dirty&&!confirm('A minuta foi editada. Recompor com os blocos marcados? (↶ Desfazer recupera o texto atual)')){muDesenharLado();return}
+    muHist(it);const r=muGerarCurado(it,m,st);it.texto=r.texto;it.modelo={...it.modelo,sel:r.sel,op:r.op};it.dirty=false;muSalvar();muDesenharEditor()}
+});
+['click','keyup','select'].forEach(t=>document.addEventListener(t,e=>{if(e.target&&e.target.id==='muEd')MU_CUR=e.target.selectionStart}));
+document.addEventListener('click',e=>{
+  const el=e.target;if(!el.closest||!el.closest('#muMain'))return;let b;
+  if((b=el.closest('[data-mu-it]'))){MU.atual=b.dataset.muIt;muSalvar();MU_CUR=0;muAbrir();return}
+  if((b=el.closest('[data-mu-tab]'))){MU_TAB=b.dataset.muTab;muDesenharLado();return}
+  if((b=el.closest('[data-mu-vista]'))){MU_VISTA=b.dataset.muVista;LS.set('acv_mu_vista',MU_VISTA);muDesenharEditor();return}
+  if((b=el.closest('[data-mu-mod]'))){const [f,id]=b.dataset.muMod.split('|');muAplicarModelo(f,id);return}
+  if((b=el.closest('[data-mu-ver-mod]'))){const [f,id]=b.dataset.muVerMod.split('|');setModulo('modelos');setModFonte(f==='sugestao'?'sugeridos':f==='matriz'?'matriz':'rascunhos');setTimeout(()=>f==='sugestao'?abrirModelo(id):abrirCurado(id),300);return}
+  if((b=el.closest('[data-mu-prec]'))){muUsarPrecedente(b.dataset.muPrec);return}
+  if((b=el.closest('[data-mu-citar]'))){const id=b.dataset.muCitar,x=POR_ID.get(id);carregarShard((x.t==='A'?'acordaos/':'monocraticas/')+x.y).then(()=>{const r=registro(id);if(r)muInserir(citacao(r))}).catch(er=>toast('Falha ao carregar: '+er.message));return}
+  if((b=el.closest('[data-mu-abrir]'))){irParaDecisao(b.dataset.muAbrir);return}
+  if((b=el.closest('[data-mu-ins]'))){const o=($('muRes')._lista||[])[+b.dataset.muIns];if(o)muInserir(o.txt);return}
+  if((b=el.closest('[data-mu-acao]'))){const a=b.dataset.muAcao,it=muAtual();
+    if(a==='novo'){const n=prompt('Nº do processo (opcional):','');if(n===null)return;muCarregar();const x=muNovo({numero:n.trim()});muBase(x);MU.fila.unshift(x);MU.atual=x.id;muSalvar();muRender();return}
+    if(a==='colar'){const s=prompt('Cole o JSON do processo enviado pelo acervo:','');if(!s)return;try{const j=JSON.parse(s);muReceber(j.processo||j,location.origin)}catch(er){toast('JSON inválido.')}return}
+    if(a==='ajuda'){muAjuda();return}
+    if(!it)return;
+    if(a==='base'){if(it.dirty&&!confirm('Recomeçar pela estrutura-base? O texto atual vai para ↶ Desfazer.'))return;muHist(it);muBase(it);muSalvar();muDesenharEditor();muDesenharLado();return}
+    if(a==='relatorio'){muHist(it);it.texto=muTrocaRelatorio(it);muSalvar();muDesenharEditor();toast('Relatório recomposto com os dados do processo.');return}
+    if(a==='desfazer'){muDesfazer();return}
+    if(a==='pend'){MU_VISTA='texto';muDesenharEditor();const ed=$('muEd'),pd=pendenciasMinuta(it.texto);if(!pd.length)return;const x=pd.find(p=>p.index>=ed.selectionEnd)||pd[0];ed.focus();ed.setSelectionRange(x.index,x.index+x[0].length);ed.scrollTop=Math.max(0,(it.texto.slice(0,x.index).split('\n').length-4)*18);return}
+    if(a==='copiar'){copiarTexto(it.texto,'Minuta copiada.');return}
+    if(a==='doc'){const html=`<html><head><meta charset="utf-8"><style>body{font-family:"Times New Roman";font-size:12pt;line-height:1.5}p{text-align:justify;margin:0 0 10pt;text-indent:2cm}p.c{text-align:center;text-indent:0;font-weight:bold}</style></head><body>${it.texto.split(/\n{2,}/).map(par=>`<p${/^(DECISÃO|RELATÓRIO|VOTO|EMENTA|ACÓRDÃO|DECIDO\.?|É O RELATÓRIO\.?)$/i.test(par.trim())?' class="c"':''}>${esc(par.trim()).replace(/\n/g,'<br>')}</p>`).join('')}</body></html>`;const a2=document.createElement('a');a2.href=URL.createObjectURL(new Blob(['\ufeff'+html],{type:'application/msword'}));a2.download=`minuta_${(it.dados.numero||'processo').replace(/\W+/g,'')}.doc`;a2.click();setTimeout(()=>URL.revokeObjectURL(a2.href),4000);return}
+    if(a==='pronta'){it.status=it.status==='pronta'?'rascunho':'pronta';muSalvar();muRender();muDevolver(it);return}
+    if(a==='excluir'){if(!confirm(`Retirar ${it.dados.numero||'este processo'} do minutário? A minuta deste navegador será apagada.`))return;MU.fila=MU.fila.filter(x=>x.id!==it.id);MU.atual=MU.fila[0]?.id||null;muSalvar();muRender();return}
+  }
+});
+document.addEventListener('click',e=>{
+  const f=e.target.closest&&e.target.closest('.mu-f');if(!f||f.querySelector('input'))return;
+  const n=+f.dataset.mun,rot=f.textContent;let feito=false;
+  f.innerHTML=`<input class="pv-in" placeholder="${esc(rot)}" aria-label="${esc(rot)}">`;const i=f.firstChild;i.focus();
+  const fim=ok=>{if(feito)return;feito=true;if(ok&&i.value.trim())muPreencherCampo(n,i.value.trim());else muRenderPrevia()};
+  i.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();fim(true)}else if(ev.key==='Escape'){ev.preventDefault();fim(false)}});
+  i.addEventListener('blur',()=>fim(true));
+},true);
+document.addEventListener('dblclick',e=>{const p=e.target.closest&&e.target.closest('#muPrev p[data-muoff]');if(!p||e.target.closest('.mu-f'))return;const o=+p.dataset.muoff;MU_VISTA='texto';muDesenharEditor();const ed=$('muEd');ed.focus();ed.setSelectionRange(o,o);MU_CUR=o;ed.scrollTop=Math.max(0,(ed.value.slice(0,o).split('\n').length-3)*18)});
+document.addEventListener('click',e=>{const p=e.target.closest&&e.target.closest('#muPrev p[data-muoff]');if(!p||e.target.closest('.mu-f'))return;MU_CUR=+p.dataset.muoff+p.textContent.length+1;document.querySelectorAll('#muPrev p.mu-sel').forEach(x=>x.classList.remove('mu-sel'));p.classList.add('mu-sel')});
+function muDevolver(it){const o=window.opener;if(!o)return;try{o.postMessage({type:'cmt-minutario-retorno',numero:it.dados.numero,status:it.status,origem:it.origem,texto:it.texto},'*')}catch(e){}}
+function muAjuda(){
+  const ex={type:'cmt-minutario-processo',processo:{numero:'5006182-94.2024.4.03.6000',classe:'APELAÇÃO CÍVEL',assunto:'Reajustes de Remuneração, Proventos ou Pensão',tema:'28,86%',especificidade:'gratuidade',etiquetas:['28,86%'],polo_ativo:'…',polo_passivo:'…',tarefa:'Minutar Acórdão',tipo_julgamento:'',mpf:'',
+    minuta:{id_decisao:'',resultado_decisao:'',contexto:'',honorarios:'',recorrente:'',id_recurso:'',alegacoes:[],pedido:'',contrarrazoes:{houve:true,id:'',preliminar:''},mpf:{parecer:'',id:''},resultado_pretendido:''}}};
+  $('dlgT').textContent='Minutário · como receber processos do acervo';
+  $('dlgB').innerHTML=`<p>O Minutário recebe um processo por vez, no formato abaixo (só <code>numero</code> é necessário; o resto completa o relatório e a localização de modelos):</p><pre class="mu-pre">${esc(JSON.stringify(ex,null,2))}</pre>
+  <p><b>No app do gabinete</b>, o botão “Minutar” do processo pode enviar de três formas:</p>
+  <ol><li><b>Mensagem entre janelas</b> (qualquer endereço, inclusive o Replit): abrir <code>${esc(new URL('./#minutario',location.href).href)}</code> com <code>window.open</code>, esperar a mensagem <code>{type:'cmt-minutario-pronto'}</code> e responder com <code>postMessage</code> do objeto acima.</li>
+  <li><b>Mesmo site</b> (brndutra.github.io): gravar o objeto em <code>localStorage['cmt_minutario_entrada']</code> e abrir o endereço acima.</li>
+  <li><b>Pelo endereço</b>: <code>#mu=</code> seguido do JSON em base64url.</li></ol>
+  <p>Ao marcar a minuta como pronta, o Minutário devolve à janela que o abriu <code>{type:'cmt-minutario-retorno', numero, status, origem, texto}</code>.</p>`;
+  $('dlgF').innerHTML='<button class="btn sm" onclick="dlg.close()">Fechar</button>';dlg.showModal();
+}
+(()=>{ // aberto pelo acervo: avisa que está pronto e lê o que veio pelo endereço ou pelo armazenamento
+  const veio=/(?:^#|&)(minutario|mu=)/.test(location.hash);
+  addEventListener('load',()=>setTimeout(()=>{
+    if(muEntradaHash()){} else if(veio){setModulo('minutario')}
+    muEntradaLocal();
+    if(window.opener){try{window.opener.postMessage({type:'cmt-minutario-pronto'},'*')}catch(e){}}
+  },600));
+})();
+
 let ARV_HASH=false;
 $('btnFiltrosMob').onclick=()=>$('filtros').classList.toggle('aberto');
 if(matchMedia('(max-width:720px)').matches)$('btnFiltrosMob').style.display='grid';
